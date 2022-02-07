@@ -60,7 +60,20 @@
                             aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
-                        <p>Try scrolling the rest of the page to see this option in action.</p>
+                    <ul class="list-unstyled text-dark">
+                            <li>
+                                <a href="#!" class="text-dark">Link 1</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-dark">Link 2</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-dark">Link 3</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-dark">Link 4</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -76,9 +89,8 @@
 
     <!-- START FOOTER -->
     <footer class="bg-dark text-center text-white">
-        <!-- Grid container -->
         <div class="container p-4">
-            <!-- Section: Social media -->
+            <!-- SECTION: SOCIAL MEDIA -->
             <section class="mb-4">
                 <!-- Facebook -->
                 <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
@@ -104,22 +116,18 @@
                 <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
                         class="fab fa-github"></i></a>
             </section>
-            <!-- Section: Social media -->
+            <!-- SECTION: SOCIAL MEDIA -->
 
-            <!-- Section: Form -->
+            <!-- SECTION: FORM -->
             <section class="">
                 <form action="">
-                    <!--Grid row-->
                     <div class="row d-flex justify-content-center">
-                        <!--Grid column-->
                         <div class="col-auto">
                             <p class="pt-2">
                                 <strong>Sign up for our newsletter</strong>
                             </p>
                         </div>
-                        <!--Grid column-->
 
-                        <!--Grid column-->
                         <div class="col-md-5 col-12">
                             <!-- Email input -->
                             <div class="form-outline form-white mb-4">
@@ -127,23 +135,19 @@
                                 <label class="form-label" for="form5Example21">Email address</label>
                             </div>
                         </div>
-                        <!--Grid column-->
 
-                        <!--Grid column-->
                         <div class="col-auto">
                             <!-- Submit button -->
                             <button type="submit" class="btn btn-outline-light mb-4">
                                 Subscribe
                             </button>
                         </div>
-                        <!--Grid column-->
                     </div>
-                    <!--Grid row-->
                 </form>
             </section>
-            <!-- Section: Form -->
+            <!-- SECTION: FORM -->
 
-            <!-- Section: Text -->
+            <!-- SECTION: TEXT -->
             <section class="mb-4">
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
@@ -151,13 +155,11 @@
                     eum harum corrupti dicta, aliquam sequi voluptate quas.
                 </p>
             </section>
-            <!-- Section: Text -->
+            <!-- SECTION: TEXT -->
 
-            <!-- Section: Links -->
+            <!-- SECTION: LINKS -->
             <section class="">
-                <!--Grid row-->
                 <div class="row">
-                    <!--Grid column-->
                     <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
                         <h5 class="text-uppercase">Links</h5>
 
@@ -176,9 +178,7 @@
                             </li>
                         </ul>
                     </div>
-                    <!--Grid column-->
 
-                    <!--Grid column-->
                     <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
                         <h5 class="text-uppercase">Links</h5>
 
@@ -197,9 +197,7 @@
                             </li>
                         </ul>
                     </div>
-                    <!--Grid column-->
 
-                    <!--Grid column-->
                     <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
                         <h5 class="text-uppercase">Links</h5>
 
@@ -218,9 +216,7 @@
                             </li>
                         </ul>
                     </div>
-                    <!--Grid column-->
 
-                    <!--Grid column-->
                     <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
                         <h5 class="text-uppercase">Links</h5>
 
@@ -239,20 +235,17 @@
                             </li>
                         </ul>
                     </div>
-                    <!--Grid column-->
                 </div>
-                <!--Grid row-->
             </section>
-            <!-- Section: Links -->
+            <!-- SECTION: LINKS -->
         </div>
-        <!-- Grid container -->
 
-        <!-- Copyright -->
+        <!-- COPYRIGHT -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            © 2020 Copyright:
+            © 2022 Copyright:
             <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
         </div>
-        <!-- Copyright -->
+        <!-- COPYRIGHT -->
     </footer>
     <!-- END FOOTER -->
 </body>
