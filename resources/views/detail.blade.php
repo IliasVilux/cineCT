@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layoutAll')
 @section('content')
 <section class="container">
     <h1>DETAIL</h1>
