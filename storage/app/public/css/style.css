@@ -1,0 +1,37 @@
+/* GENERAL*/
+main {
+    margin-top: 8px;
+}
+i.fas{
+    padding: 0px 7px 0px 0px;
+}
+/* HEADER */ 
+.dropdown-divider{
+    margin: 0.5rem 0.5rem;
+}
+
+button.btn-close {
+    color: #FFFFFF;
+}
+.offcanvas.show {
+    background-color: #101214;
+}
+
+/* REGISTER */
+
+body {
+    background-color: #101214;
+}
+
+/* FOOTER */
+.btn-outline-light {
+    border-color: transparent;
+}
+a.footer-links {
+    margin: 7px 10px;
+    text-decoration: none;
+}
+
+a.footer-links:hover {
+    text-decoration: underline;
+}
