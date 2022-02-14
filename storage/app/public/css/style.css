@@ -1,37 +1,54 @@
 /* GENERAL*/
 main {
-    margin-top: 8px;
+  margin-top: 8px;
 }
-i.fas{
-    padding: 0px 7px 0px 0px;
+
+i.fas {
+  padding: 0px 7px 0px 0px;
 }
-/* HEADER */ 
-.dropdown-divider{
-    margin: 0.5rem 0.5rem;
+
+/* HEADER */
+.dropdown-divider {
+  margin: 0.5rem 0.5rem;
 }
 
 button.btn-close {
-    color: #FFFFFF;
+  color: #FFFFFF;
 }
+
 .offcanvas.show {
-    background-color: #101214;
+  background-color: #101214;
 }
 
 /* REGISTER */
+section.section-signin-register {
+  background-color: #FFFFFF;
+}
 
-body {
-    background-color: #101214;
+section.section-signin-register ul.nav.nav-tabs {
+  text-align: center;
+}
+
+section.section-signin-register ul.nav.nav-tabs li.nav-item {
+  width: 50%;
+}
+
+div.card {
+  border-top: 1px solid transparent;
+  border-radius: 0rem 0rem 0.25rem 0.25rem;
 }
 
 /* FOOTER */
 .btn-outline-light {
-    border-color: transparent;
+  border-color: transparent;
 }
+
 a.footer-links {
-    margin: 7px 10px;
-    text-decoration: none;
+  margin: 7px 10px;
+  text-decoration: none;
 }
 
 a.footer-links:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
+/*# sourceMappingURL=style.css.map */
