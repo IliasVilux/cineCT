@@ -1,7 +1,4 @@
-@extends('layout')
-<head>
-    <link rel="stylesheet" href="storage/css/HomeStyle.css">
-</head>
+@extends('layoutAll')
 @section('content')
 <section>
 <img class="banner" src="{{ url('storage/img/OnePiece.jpg')}}">
