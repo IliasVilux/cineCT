@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\GenreController;
+use App\Models\Genre;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/asd', [GenreController::class, 'store']);
