@@ -11,7 +11,5 @@ class Episode extends Model
 
     protected $table = 'episodes';
 
-    public function serie() {
-        //return $this->
-    }
+    
 }

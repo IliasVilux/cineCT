@@ -12,7 +12,4 @@ class Image extends Model
 
     protected $table = 'profile_images';
 
-    public function user() {
-        return $this->hasOne(User::class);
-    }
 }
