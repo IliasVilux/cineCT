@@ -16,11 +16,11 @@
     <link rel="stylesheet" href="storage/css/style.css">
 </head>
 
-<body class="pt-5">
+<body>
     <!-- START HEADER -->
-    <header>
+    <header class="bg-dark navbar-dark fixed-top">
         <!-- START NAVBAR -->
-        <nav class="navbar navbar-expand-xs bg-dark navbar-dark fixed-top">
+        <nav class="navbar navbar-expand-xs">
             <div class="container-fluid">
                 <div class="col-9">
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
@@ -80,7 +80,7 @@
     </header>
     <!-- END HEADER -->
     <!-- START MAIN -->
-    <main class="pt-4">
+    <main>
         @yield('content')
     </main>
     <!-- END MAIN -->

@@ -37,6 +37,11 @@ div.card {
     border-radius: 0rem 0rem 0.25rem 0.25rem;
 }
 
+/* DETAIL */
+div.card.card-comment {
+    border: 1px solid rgba(0,0,0,.125)!important;
+}
+
 /* FOOTER */
 .btn-outline-light {
     border-color: transparent;
