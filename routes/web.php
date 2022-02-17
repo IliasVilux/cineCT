@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GenreController;
+use App\Http\Controllers\SerieController;
 use App\Models\Genre;
 use Illuminate\Support\Facades\Route;
 
@@ -19,4 +20,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/asd', [GenreController::class, 'store']);
+Route::get('/asd', [SerieController::class, 'store']);
