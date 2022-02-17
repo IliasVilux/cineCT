@@ -3,16 +3,20 @@
     height: 300px;
 }
 h5{
-    margin: 20px!important;
-    margin-bottom: 5px!important;
+    margin: 20px 20px 5px 37px;
 }
-.row{
-    margin: 20px!important;
-    margin-top: 0px!important;
-}
+
 .defaultSize{
     width: 220px!important;
     height: 121px;
     padding: 0%!important;
     margin-right: 5px;
+}
+
+div.container {
+    padding: 0;
+}
+
+.img-carousel {
+    width: 80%;
 }
