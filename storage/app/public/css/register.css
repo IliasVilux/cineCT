@@ -1,0 +1,17 @@
+/* REGISTER */
+section.section-signin-register {
+  background-color: #FFFFFF;
+}
+
+section.section-signin-register ul.nav.nav-tabs {
+  text-align: center;
+}
+
+section.section-signin-register ul.nav.nav-tabs li.nav-item {
+  width: 50%;
+}
+
+div.card {
+  border-top: 1px solid transparent;
+  border-radius: 0rem 0rem 0.25rem 0.25rem;
+}

@@ -1,0 +1,12 @@
+/* HEADER */
+.dropdown-divider {
+  margin: 0.5rem 0.5rem;
+}
+
+button.btn-close {
+  color: #FFFFFF;
+}
+
+.offcanvas.show {
+  background-color: #101214;
+}
