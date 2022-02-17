@@ -1,7 +1,7 @@
-@extends('layoutAll')
+@extends('headerFooter')
 @section('content')
 <head>
-	<link rel="stylesheet" href="storage/css/HomeStyle.css">
+	<link rel="stylesheet" href="storage/css/home.css">
 </head>
 <section class="container">
     <h1>MENU</h1>

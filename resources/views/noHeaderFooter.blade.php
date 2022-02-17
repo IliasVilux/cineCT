@@ -13,7 +13,7 @@
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/1f7457abdb.js"></script>
     <title>Cinect</title>
-    <link rel="stylesheet" href="storage/css/style.css">
+    <link rel="stylesheet" href="storage/css/general.css">
 </head>
 <script>
       function showPasswd() {

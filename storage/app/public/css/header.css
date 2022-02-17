@@ -7,6 +7,10 @@ button.btn-close {
   color: #FFFFFF;
 }
 
-.offcanvas.show {
+.offcanvas.offcanvas-start {
   background-color: #101214;
+}
+
+div.offcanvas-header button.btn-close {
+  margin: 10px;
 }
