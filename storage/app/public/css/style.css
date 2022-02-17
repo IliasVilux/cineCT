@@ -1,6 +1,9 @@
 /* GENERAL*/
+html {
+  scroll-padding-top: 150px;
+}
 main {
-  margin-top: 8px;
+  margin-top: 60px;
 }
 
 i.fas {
@@ -37,6 +40,10 @@ div.card {
   border-top: 1px solid transparent;
   border-radius: 0rem 0rem 0.25rem 0.25rem;
 }
+
+/* HOME */
+
+
 
 /* FOOTER */
 .btn-outline-light {
