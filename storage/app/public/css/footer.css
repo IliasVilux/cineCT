@@ -1,0 +1,14 @@
+/* FOOTER */
+.btn-outline-light {
+  border-color: transparent;
+}
+
+a.footer-links {
+  margin: 7px 10px;
+  text-decoration: none;
+}
+
+a.footer-links:hover {
+  text-decoration: underline;
+}
+/*# sourceMappingURL=style.css.map */

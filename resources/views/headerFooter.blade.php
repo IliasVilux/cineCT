@@ -13,7 +13,9 @@
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/1f7457abdb.js"></script>
     <title>Cinect</title>
-    <link rel="stylesheet" href="storage/css/style.css">
+    <link rel="stylesheet" href="storage/css/general.css">
+    <link rel="stylesheet" href="storage/css/header.css">
+    <link rel="stylesheet" href="storage/css/footer.css">
 </head>
 
 <body>
@@ -48,7 +50,7 @@
                     aria-labelledby="offcanvasWithBothOptionsLabel">
                     <div class="offcanvas-header">
                         <h2 class="offcanvas-title text-uppercase text-light" id="offcanvasWithBothOptionsLabel">Menu</h2>
-                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
                             aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">

@@ -1,0 +1,27 @@
+/* REGISTER */
+body, 
+section.section-signin-register  {
+  background-color: #212529;
+}
+
+section.section-signin-register ul.nav.nav-tabs {
+  text-align: center;
+}
+
+section.section-signin-register ul.nav.nav-tabs li.nav-item {
+  width: 50%;
+}
+
+.nav-link,
+.nav-link:hover  {
+  color: white;
+}
+
+.nav-link:active {
+  color: black;
+}
+
+div.card {
+  border-top: 1px solid transparent;
+  border-radius: 0rem 0rem 0.25rem 0.25rem;
+}

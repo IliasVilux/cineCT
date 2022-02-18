@@ -1,0 +1,16 @@
+/* HEADER */
+.dropdown-divider {
+  margin: 0.5rem 0.5rem;
+}
+
+button.btn-close {
+  color: #FFFFFF;
+}
+
+.offcanvas.offcanvas-start {
+  background-color: #101214;
+}
+
+div.offcanvas-header button.btn-close {
+  margin: 10px;
+}
