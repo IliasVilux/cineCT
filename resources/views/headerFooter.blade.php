@@ -20,7 +20,7 @@
 
 <body>
     <!-- START HEADER -->
-    <header class="bg-dark navbar-dark fixed-top">
+    <header class="navbar-dark fixed-top">
         <!-- START NAVBAR -->
         <nav class="navbar navbar-expand-xs">
             <div class="container-fluid">
@@ -73,13 +73,23 @@
                             <li>
                                 <a href="#!" class="footer-links text-light text-uppercase fs-3">Mis Listas</a>
                             </li>
+                            <li>
+                                <a href="#!" class="footer-links text-light text-uppercase fs-3">Sobre Nosotros</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </nav>
         <!-- END NAVBAR -->
+        <div class="div-gradient col-6">
+
+    </div>
+    <div class="div-gradient-2 col-6">
+        
+    </div>
     </header>
+    
     <!-- END HEADER -->
     <!-- START MAIN -->
     <main>
@@ -101,6 +111,7 @@
                         <a href="#!" class="footer-links text-white fs-5">Top</a>
                         <a href="#!" class="footer-links text-white fs-5">Buscador</a>
                         <a href="#!" class="footer-links text-white fs-5">Mis Listas</a>
+                        <a href="{{url('/aboutUs')}}" class="footer-links text-white fs-5">Sobre Nosotros</a>
                 </div>
             </section>
             <!-- SECTION: LINKS -->

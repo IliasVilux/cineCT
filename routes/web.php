@@ -24,3 +24,7 @@ Route::get('/register', function () {
 Route::get('/detail', function () {
     return view('detail');
 });
+
+Route::get('/aboutUs', function () {
+    return view('aboutUs');
+});
