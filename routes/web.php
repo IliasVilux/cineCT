@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\GenreController;
+use App\Http\Controllers\SerieController;
+use App\Http\Controllers\FilmController;
+use App\Http\Controllers\AnimeController;
+use App\Models\Genre;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +29,5 @@ Route::get('/register', function () {
 Route::get('/detail', function () {
     return view('detail');
 });
+
+Route::get('/asd', [AnimeController::class, 'store']);
