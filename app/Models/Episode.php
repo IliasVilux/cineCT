@@ -11,5 +11,11 @@ class Episode extends Model
 
     protected $table = 'episodes';
 
+    public function serie() {
+        return $this->hasMany(Serie::class);
+    }
     
+    public function film() {
+        return $this->hasMany(Film::class);
+    }
 }
