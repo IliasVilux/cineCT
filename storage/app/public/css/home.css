@@ -1,15 +1,22 @@
 main {
-    margin-top: 55px;
+    margin-top: 54px;
+    background: #16181d;
 }
 section.section-container {
     height: 50%;
 }
+section.section-content {
+    width: 90%;
+    padding: 2em 0em;
+}
+
 .banner{
     width: 100%;
     height: 300px;
 }
 h5{
     margin: 20px 20px 5px 37px;
+    color: #FFFFFF;
 }
 
 .defaultSize{
@@ -44,4 +51,13 @@ div.container {
 
 a.btn-floating {
     margin: 0px 10px;
+}
+
+i.fa.fa-chevron-right, 
+i.fa.fa-chevron-left {
+    color: white;
+}
+
+i.fa.fa-chevron-left {
+    margin: 0px 7px 0px 0px;
 }
