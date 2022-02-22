@@ -1,6 +1,23 @@
 /* HEADER */
 header {
   background: black;
+  background-image: linear-gradient(to bottom, black 25%, #9966ff 150%);
+}
+ul.list-unstyled li a i.fas {
+  width: 45px;
+}
+i.fas.fa-film,
+i.fas.fa-home  {
+  font-size: 35px;
+}
+
+h1.offcanvas-title.text-uppercase {
+  color: #6600cc;
+  margin: 0px 0px 0px 7px;
+}
+
+.navbar-dark .navbar-toggler {
+  border: none;
 }
 
 .dropdown-divider {
@@ -13,24 +30,20 @@ button.btn-close {
 
 .offcanvas.offcanvas-start {
   background-color: black;
+  background-image: linear-gradient(to bottom, black 50%, #9966ff 150%);
 }
 
 div.offcanvas-header button.btn-close {
   margin: 10px;
 }
 
-div.div-gradient {
-  background: linear-gradient(to right, #000000 0%, #9966ff 100%);
-  height: 18px;
-    position: relative;
-    top: 0;
+div.offcanvas-body ul.list-unstyled {
+  line-height: 2;
 }
 
-
-div.div-gradient-2 {
-  background: linear-gradient(to left, #000000 0%, #9966ff 100%);
-  height: 18px;
-  position: relative;
-  top: -18px;
-  left: 36em;
+div.copyright {
+  background-color: black;
+}
+.footer {
+  background-image: linear-gradient(to bottom, black 25%, #9966ff 150%);
 }

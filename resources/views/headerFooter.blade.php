@@ -28,14 +28,12 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
                     <span class="navbar-toggler-icon"></span></button>
-                    <div class="vr"></div>
-                <a class="navbar-brand col-8 text-center" href="#">Logo</a>
+                <a class="navbar-brand col-8 text-center" href="{{url('/')}}">Logo</a>
                 </div>
                 <div class="col-3 d-flex flex-direction-row flex-nowrap justify-content-end align-items-center">
                     <i class="fas fa-search text-light fs-4"></i>
-                    <div class="vr"></div>
                     <div class="dropdown">
-                        <button class="btn btn-dark dropdown-toggle d-flex flex-direction-row flex-nowrap justify-content-end align-items-center" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn text-light dropdown-toggle d-flex flex-direction-row flex-nowrap justify-content-end align-items-center" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-user-circle fs-4 pe-1"></i> <p class="d-none d-sm-flex m-0">Usuario</p>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
@@ -49,32 +47,35 @@
                 <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
                     aria-labelledby="offcanvasWithBothOptionsLabel">
                     <div class="offcanvas-header">
-                        <h2 class="offcanvas-title text-uppercase text-light" id="offcanvasWithBothOptionsLabel">Menu</h2>
+                        <h1 class="offcanvas-title text-uppercase" id="offcanvasWithBothOptionsLabel">Menu</h1>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
                             aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
                     <ul class="list-unstyled text-dark">
                             <li>
-                                <a href="#!" class="footer-links text-light text-uppercase fs-3">Películas</a>
+                                <a href="{{url('/')}}" class="footer-links text-light text-uppercase fs-3"><i class="fas fa-home pe-2"></i>Home</a>
                             </li>
                             <li>
-                                <a href="#!" class="footer-links text-light text-uppercase fs-3">Series</a>
+                                <a href="{{url('/content')}}" class="footer-links text-light text-uppercase fs-3"><i class="fas fa-film pe-2 fa-2x"></i>Películas</a>
                             </li>
                             <li>
-                                <a href="#!" class="footer-links text-light text-uppercase fs-3">Anime</a>
+                                <a href="{{url('/content')}}" class="footer-links text-light text-uppercase fs-3"><i class="fas fa-tv pe-2"></i>Series</a>
                             </li>
                             <li>
-                                <a href="#!" class="footer-links text-light text-uppercase fs-3">Top</a>
+                                <a href="{{url('/content')}}" class="footer-links text-light text-uppercase fs-3"><i class="fas fa-dragon pe-2"></i>Anime</a>
                             </li>
                             <li>
-                                <a href="#!" class="footer-links text-light text-uppercase fs-3">Buscador</a>
+                                <a href="{{url('/top')}}" class="footer-links text-light text-uppercase fs-3"><i class="fas fa-sort-amount-up-alt pe-2"></i>Top</a>
                             </li>
                             <li>
-                                <a href="#!" class="footer-links text-light text-uppercase fs-3">Mis Listas</a>
+                                <a href="{{url('/search')}}" class="footer-links text-light text-uppercase fs-3"><i class="fas fa-search pe-2"></i>Buscador</a>
                             </li>
                             <li>
-                                <a href="#!" class="footer-links text-light text-uppercase fs-3">Sobre Nosotros</a>
+                                <a href="{{url('/list')}}" class="footer-links text-light text-uppercase fs-3"><i class="fas fa-th-list pe-2"></i>Mis Listas</a>
+                            </li>
+                            <li>
+                                <a href="{{url('/aboutUs')}}" class="footer-links text-light text-uppercase fs-3"><i class="fas fa-user pe-2"></i>Sobre Nosotros</a>
                             </li>
                         </ul>
                     </div>
@@ -82,12 +83,6 @@
             </div>
         </nav>
         <!-- END NAVBAR -->
-        <div class="div-gradient col-6">
-
-    </div>
-    <div class="div-gradient-2 col-6">
-        
-    </div>
     </header>
     
     <!-- END HEADER -->
@@ -98,19 +93,20 @@
     <!-- END MAIN -->
 
     <!-- START FOOTER -->
-    <footer class="bg-dark text-center text-white">
+    <footer class="footer text-center text-white">
         <div class="container p-4">
             
             <!-- SECTION: LINKS -->
             <section class="d-flex justify-content-center mb-2">
                 <div class="d-inline-block col-12">
                     <h5 class="text-uppercase fs-4">Links</h5>
-                        <a href="#!" class="footer-links text-white fs-5">Películas</a>
-                        <a href="#!" class="footer-links text-white fs-5">Series</a>
-                        <a href="#!" class="footer-links text-white fs-5">Anime</a>
-                        <a href="#!" class="footer-links text-white fs-5">Top</a>
-                        <a href="#!" class="footer-links text-white fs-5">Buscador</a>
-                        <a href="#!" class="footer-links text-white fs-5">Mis Listas</a>
+                        <a href="{{url('/')}}" class="footer-links text-white fs-5">Home</a>
+                        <a href="{{url('/content')}}" class="footer-links text-white fs-5">Películas</a>
+                        <a href="{{url('/content')}}" class="footer-links text-white fs-5">Series</a>
+                        <a href="{{url('/content')}}" class="footer-links text-white fs-5">Anime</a>
+                        <a href="{{url('/top')}}" class="footer-links text-white fs-5">Top</a>
+                        <a href="{{url('/search')}}" class="footer-links text-white fs-5">Buscador</a>
+                        <a href="{{url('/list')}}" class="footer-links text-white fs-5">Mis Listas</a>
                         <a href="{{url('/aboutUs')}}" class="footer-links text-white fs-5">Sobre Nosotros</a>
                 </div>
             </section>
@@ -145,7 +141,7 @@
         </div>
         
         <!-- COPYRIGHT -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        <div class="copyright text-center p-3">
             © 2022 Copyright:
             <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
         </div>

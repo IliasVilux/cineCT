@@ -21,8 +21,24 @@ Route::get('/register', function () {
     return view('register');
 });
 
+Route::get('/content', function () {
+    return view('content');
+});
+
 Route::get('/detail', function () {
     return view('detail');
+});
+
+Route::get('/top', function () {
+    return view('top');
+});
+
+Route::get('/search', function () {
+    return view('search');
+});
+
+Route::get('/list', function () {
+    return view('list');
 });
 
 Route::get('/aboutUs', function () {

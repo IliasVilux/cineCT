@@ -37,11 +37,11 @@
         </button>
     </div>
 </section>
-<section class="container">
+<section class="section-content container-fluid">
 
     <!-- SERIES -->
     <h5>SERIES</h5>
-    <div class="container d-flex flex-row align-items-center">
+    <div class="container-fluid d-flex flex-row align-items-center">
         <a class="btn-floating" href="#series" data-bs-slide="prev"><i class="fa fa-chevron-left fa-2x"
                 aria-hidden="true"></i></a>
 
@@ -51,63 +51,90 @@
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
                     <div class="row">
-                        <div class="col-3 d-flex justify-content-center">
-                        <a class="carousel-link" href="{{url('/detail')}}">
-                            <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt="">
-                        </a>
-                            
+                        <div class="col d-flex justify-content-center">
+                            <a class="carousel-link" href="{{url('/detail')}}">
+                                <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt="">
+                            </a>
                         </div>
-                        <div class="col-3 d-flex justify-content-center">
-                        <a class="carousel-link" href="{{url('/detail')}}">
-                            <img class="img-carousel" src="{{url('storage/img/Euphoria.jpeg')}}" alt="">
-                        </a>
+                        <div class="col d-flex justify-content-center">
+                            <a class="carousel-link" href="{{url('/detail')}}">
+                                <img class="img-carousel" src="{{url('storage/img/Euphoria.jpeg')}}" alt="">
+                            </a>
                         </div>
-
-                        <div class="col-3 d-flex justify-content-center">
-                        <a class="carousel-link" href="{{url('/detail')}}">
-                            <img class="img-carousel" src="{{url('storage/img/SexEducation.jpg')}}" alt="">
-                        </a>
+                        <div class="col d-flex justify-content-center">
+                            <a class="carousel-link" href="{{url('/detail')}}">
+                                <img class="img-carousel" src="{{url('storage/img/SexEducation.jpg')}}" alt="">
+                            </a>
                         </div>
-                        <div class="col-3 d-flex justify-content-center">
-                        <a class="carousel-link" href="{{url('/detail')}}">
-                            <img class="img-carousel" src="{{url('storage/img/SquidGame.jpg')}}" alt="">
-                        </a>
+                        <div class="col d-flex justify-content-center">
+                            <a class="carousel-link" href="{{url('/detail')}}">
+                                <img class="img-carousel" src="{{url('storage/img/SquidGame.jpg')}}" alt="">
+                            </a>
                         </div>
-                    </div>
-                </div>
-
-                <div class="carousel-item">
-                    <div class="row">
-                        <div class="col-3 d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt="">
-                        </div>
-                        <div class="col-3 d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/Euphoria.jpeg')}}" alt="">
-                        </div>
-
-                        <div class="col-3 d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/SexEducation.jpg')}}" alt="">
-                        </div>
-                        <div class="col-3 d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/SquidGame.jpg')}}" alt="">
+                        <div class="col d-flex justify-content-center">
+                            <a class="carousel-link" href="{{url('/detail')}}">
+                                <img class="img-carousel" src="{{url('storage/img/EstamosMuertos.jpeg')}}" alt="">
+                            </a>
                         </div>
                     </div>
                 </div>
 
                 <div class="carousel-item">
-                    <div class="row">
-                        <div class="col-3 d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt="">
+                <div class="row">
+                        <div class="col d-flex justify-content-center">
+                            <a class="carousel-link" href="{{url('/detail')}}">
+                                <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt="">
+                            </a>
                         </div>
-                        <div class="col-3 d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/Euphoria.jpeg')}}" alt="">
+                        <div class="col d-flex justify-content-center">
+                            <a class="carousel-link" href="{{url('/detail')}}">
+                                <img class="img-carousel" src="{{url('storage/img/Euphoria.jpeg')}}" alt="">
+                            </a>
                         </div>
+                        <div class="col d-flex justify-content-center">
+                            <a class="carousel-link" href="{{url('/detail')}}">
+                                <img class="img-carousel" src="{{url('storage/img/SexEducation.jpg')}}" alt="">
+                            </a>
+                        </div>
+                        <div class="col d-flex justify-content-center">
+                            <a class="carousel-link" href="{{url('/detail')}}">
+                                <img class="img-carousel" src="{{url('storage/img/SquidGame.jpg')}}" alt="">
+                            </a>
+                        </div>
+                        <div class="col d-flex justify-content-center">
+                            <a class="carousel-link" href="{{url('/detail')}}">
+                                <img class="img-carousel" src="{{url('storage/img/EstamosMuertos.jpeg')}}" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-                        <div class="col-3 d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/SexEducation.jpg')}}" alt="">
+                <div class="carousel-item">
+                <div class="row">
+                        <div class="col d-flex justify-content-center">
+                            <a class="carousel-link" href="{{url('/detail')}}">
+                                <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt="">
+                            </a>
                         </div>
-                        <div class="col-3 d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/SquidGame.jpg')}}" alt="">
+                        <div class="col d-flex justify-content-center">
+                            <a class="carousel-link" href="{{url('/detail')}}">
+                                <img class="img-carousel" src="{{url('storage/img/Euphoria.jpeg')}}" alt="">
+                            </a>
+                        </div>
+                        <div class="col d-flex justify-content-center">
+                            <a class="carousel-link" href="{{url('/detail')}}">
+                                <img class="img-carousel" src="{{url('storage/img/SexEducation.jpg')}}" alt="">
+                            </a>
+                        </div>
+                        <div class="col d-flex justify-content-center">
+                            <a class="carousel-link" href="{{url('/detail')}}">
+                                <img class="img-carousel" src="{{url('storage/img/SquidGame.jpg')}}" alt="">
+                            </a>
+                        </div>
+                        <div class="col d-flex justify-content-center">
+                            <a class="carousel-link" href="{{url('/detail')}}">
+                                <img class="img-carousel" src="{{url('storage/img/EstamosMuertos.jpeg')}}" alt="">
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -120,7 +147,7 @@
 
     <!-- PELICULAS -->
     <h5>PELICULAS</h5>
-    <div class="container d-flex flex-row align-items-center">
+    <div class="container-fluid d-flex flex-row align-items-center">
         <a class="btn-floating" href="#peliculas" data-bs-slide="prev"><i class="fa fa-chevron-left fa-2x"
                 aria-hidden="true"></i></a>
 
@@ -129,54 +156,63 @@
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
                     <div class="row">
-                        <div class="col-3 d-flex justify-content-center">
+                        <div class="col d-flex justify-content-center">
                             <img class="img-carousel" src="{{url('storage/img/agente-355.jpg')}}" alt="">
                         </div>
-                        <div class="col-3 d-flex justify-content-center">
+                        <div class="col d-flex justify-content-center">
                             <img class="img-carousel" src="{{url('storage/img/Encanto.jpg')}}" alt="">
                         </div>
 
-                        <div class="col-3 d-flex justify-content-center">
+                        <div class="col d-flex justify-content-center">
                             <img class="img-carousel" src="{{url('storage/img/matrix.jpg')}}" alt="">
                         </div>
-                        <div class="col-3 d-flex justify-content-center">
+                        <div class="col d-flex justify-content-center">
                             <img class="img-carousel" src="{{url('storage/img/uncharted.jpg')}}" alt="">
+                        </div>
+                        <div class="col d-flex justify-content-center">
+                            <img class="img-carousel" src="{{url('storage/img/Coco.jpg')}}" alt="">
                         </div>
                     </div>
                 </div>
 
                 <div class="carousel-item">
                     <div class="row">
-                        <div class="col-3 d-flex justify-content-center">
+                        <div class="col d-flex justify-content-center">
                             <img class="img-carousel" src="{{url('storage/img/agente-355.jpg')}}" alt="">
                         </div>
-                        <div class="col-3 d-flex justify-content-center">
+                        <div class="col d-flex justify-content-center">
                             <img class="img-carousel" src="{{url('storage/img/Encanto.jpg')}}" alt="">
                         </div>
 
-                        <div class="col-3 d-flex justify-content-center">
+                        <div class="col d-flex justify-content-center">
                             <img class="img-carousel" src="{{url('storage/img/matrix.jpg')}}" alt="">
                         </div>
-                        <div class="col-3 d-flex justify-content-center">
+                        <div class="col d-flex justify-content-center">
                             <img class="img-carousel" src="{{url('storage/img/uncharted.jpg')}}" alt="">
+                        </div>
+                        <div class="col d-flex justify-content-center">
+                            <img class="img-carousel" src="{{url('storage/img/Coco.jpg')}}" alt="">
                         </div>
                     </div>
                 </div>
 
                 <div class="carousel-item">
                     <div class="row">
-                        <div class="col-3 d-flex justify-content-center">
+                        <div class="col d-flex justify-content-center">
                             <img class="img-carousel" src="{{url('storage/img/agente-355.jpg')}}" alt="">
                         </div>
-                        <div class="col-3 d-flex justify-content-center">
+                        <div class="col d-flex justify-content-center">
                             <img class="img-carousel" src="{{url('storage/img/Encanto.jpg')}}" alt="">
                         </div>
 
-                        <div class="col-3 d-flex justify-content-center">
+                        <div class="col d-flex justify-content-center">
                             <img class="img-carousel" src="{{url('storage/img/matrix.jpg')}}" alt="">
                         </div>
-                        <div class="col-3 d-flex justify-content-center">
+                        <div class="col d-flex justify-content-center">
                             <img class="img-carousel" src="{{url('storage/img/uncharted.jpg')}}" alt="">
+                        </div>
+                        <div class="col d-flex justify-content-center">
+                            <img class="img-carousel" src="{{url('storage/img/Coco.jpg')}}" alt="">
                         </div>
                     </div>
                 </div>
@@ -189,7 +225,7 @@
 
     <!-- ANIMES -->
     <h5>ANIMES</h5>
-    <div class="container d-flex flex-row align-items-center">
+    <div class="container-fluid d-flex flex-row align-items-center">
 
         <a class="btn-floating" href="#animes" data-bs-slide="prev"><i class="fa fa-chevron-left fa-2x"
                 aria-hidden="true"></i></a>
@@ -199,54 +235,63 @@
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
                     <div class="row">
-                        <div class="col-3 d-flex justify-content-center">
+                        <div class="col d-flex justify-content-center">
                             <img class="img-carousel" src="{{url('storage/img/Boku.jpg')}}" alt="">
                         </div>
-                        <div class="col-3 d-flex justify-content-center">
+                        <div class="col d-flex justify-content-center">
                             <img class="img-carousel" src="{{url('storage/img/Kimetsu.jpg')}}" alt="">
                         </div>
 
-                        <div class="col-3 d-flex justify-content-center">
+                        <div class="col d-flex justify-content-center">
                             <img class="img-carousel" src="{{url('storage/img/OnePiece.jpg')}}" alt="">
                         </div>
-                        <div class="col-3 d-flex justify-content-center">
+                        <div class="col d-flex justify-content-center">
                             <img class="img-carousel" src="{{url('storage/img/Shingeki.jpg')}}" alt="">
+                        </div>
+                        <div class="col d-flex justify-content-center">
+                            <img class="img-carousel" src="{{url('storage/img/FoodWars.jpeg')}}" alt="">
                         </div>
                     </div>
                 </div>
 
                 <div class="carousel-item">
                     <div class="row">
-                        <div class="col-3 d-flex justify-content-center">
+                        <div class="col d-flex justify-content-center">
                             <img class="img-carousel" src="{{url('storage/img/Boku.jpg')}}" alt="">
                         </div>
-                        <div class="col-3 d-flex justify-content-center">
+                        <div class="col d-flex justify-content-center">
                             <img class="img-carousel" src="{{url('storage/img/Kimetsu.jpg')}}" alt="">
                         </div>
 
-                        <div class="col-3 d-flex justify-content-center">
+                        <div class="col d-flex justify-content-center">
                             <img class="img-carousel" src="{{url('storage/img/OnePiece.jpg')}}" alt="">
                         </div>
-                        <div class="col-3 d-flex justify-content-center">
+                        <div class="col d-flex justify-content-center">
                             <img class="img-carousel" src="{{url('storage/img/Shingeki.jpg')}}" alt="">
+                        </div>
+                        <div class="col d-flex justify-content-center">
+                            <img class="img-carousel" src="{{url('storage/img/FoodWars.jpeg')}}" alt="">
                         </div>
                     </div>
                 </div>
 
                 <div class="carousel-item">
                     <div class="row">
-                        <div class="col-3 d-flex justify-content-center">
+                        <div class="col d-flex justify-content-center">
                             <img class="img-carousel" src="{{url('storage/img/Boku.jpg')}}" alt="">
                         </div>
-                        <div class="col-3 d-flex justify-content-center">
+                        <div class="col d-flex justify-content-center">
                             <img class="img-carousel" src="{{url('storage/img/Kimetsu.jpg')}}" alt="">
                         </div>
 
-                        <div class="col-3 d-flex justify-content-center">
+                        <div class="col d-flex justify-content-center">
                             <img class="img-carousel" src="{{url('storage/img/OnePiece.jpg')}}" alt="">
                         </div>
-                        <div class="col-3 d-flex justify-content-center">
+                        <div class="col d-flex justify-content-center">
                             <img class="img-carousel" src="{{url('storage/img/Shingeki.jpg')}}" alt="">
+                        </div>
+                        <div class="col d-flex justify-content-center">
+                            <img class="img-carousel" src="{{url('storage/img/FoodWars.jpeg')}}" alt="">
                         </div>
                     </div>
                 </div>
