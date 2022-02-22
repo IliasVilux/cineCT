@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\SerieController;
+use App\Http\Controllers\FilmController;
+use App\Http\Controllers\AnimeController;
 use App\Models\Genre;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +22,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/asd', [SerieController::class, 'store']);
+Route::get('/asd', [AnimeController::class, 'store']);
