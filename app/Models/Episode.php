@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Serie;
+use App\Models\Anime;
 
 class Episode extends Model
 {
@@ -12,10 +14,10 @@ class Episode extends Model
     protected $table = 'episodes';
 
     public function serie() {
-        return $this->hasMany(Serie::class);
+        return $this->belongsTo(Serie::class);
     }
     
-    public function film() {
-        return $this->hasMany(Film::class);
+    public function anime() {
+        return $this->belongsTo(Anime::class);
     }
 }
