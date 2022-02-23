@@ -77,4 +77,14 @@ class SerieController extends Controller
         return $allSeries;
 
     }
+
+    public function returnSeries() {
+        $series = Serie::all();
+
+        foreach($series as $serie) {
+            echo $serie;
+        }
+
+        return view('detail', ['serie' => $series]);
+    }
 }

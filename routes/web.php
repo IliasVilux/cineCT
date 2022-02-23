@@ -18,8 +18,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('home');
+});*/
+
+Route::get('/', function () {
+
+    $series = DB::table('series')->get();
+
+    return view('home', ['serie' => $series]);
 });
 
 Route::get('/register', function () {
@@ -30,8 +37,12 @@ Route::get('/content', function () {
     return view('content');
 });
 
-Route::get('/detail', function () {
-    return view('detail');
+Route::get('/detail/{id}', function ($id) {
+
+    $series = DB::table('series')->get();
+    $request->route('id');
+
+    return view('detail', ['serie' => $series]);
 });
 
 Route::get('/top', function () {

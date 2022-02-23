@@ -55,6 +55,14 @@
     <!-- END CAROUSEL -->
 </section>
 <!-- START CONTENT -->
+<table>
+@foreach($serie as $key => $data)
+    <tr>    
+      <th>{{$data->name}}</th>
+      <th>{{$data->release_date}}</th>            
+    </tr>
+@endforeach
+</table>
 <section>
     <h1>TITLE</h1>
     <h3>Category</h3>
