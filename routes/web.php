@@ -49,3 +49,7 @@ Route::get('/list', function () {
 Route::get('/aboutUs', function () {
     return view('aboutUs');
 });
+
+Route::get('/films', [FilmController::class, 'fetchAllFilms']);
+
+Route::get('/series', [SerieController::class, 'fetchAllSeries']);

@@ -4,10 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Review;
-use App\Models\Image;
 use App\Models\Genre;
-use App\Models\Episode;
+
 
 class Serie extends Model
 {
@@ -15,12 +13,13 @@ class Serie extends Model
 
     protected $table = 'series';
 
-    public function reviews(){
-        return $this->hasMany(Review::class);
+    public function genre() {
+        return $this->belongsTo(Genre::class);
     }
 
-    public function genre() {
-        return $this->hasMany(Genre::class);
+    /*
+    public function reviews(){
+        return $this->hasMany(Review::class);
     }
 
     public function episode(){
@@ -30,5 +29,5 @@ class Serie extends Model
     public function image() {
         return $this->hasMany(Image::class);
     }
-
+    */
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Film;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -77,5 +78,15 @@ class FilmController extends Controller
 
         return $allFilms;
 
+    }
+
+    public function fetchAllFilms(){
+
+        $films = Film::all();
+
+        foreach($films as $film){
+            echo $film->name . ' - ';
+            echo $film->genre->name . "<br>";
+        }
     }
 }
