@@ -37,13 +37,16 @@ Route::get('/content', function () {
     return view('content');
 });
 
-Route::get('/detail/{id}', function ($id) {
+/*Route::get('/detail/{id}', function () {
 
-    $series = DB::table('series')->get();
-    $request->route('id');
+    $series = DB::table('series')
+    ->where('id', $id)
+    ->first();
 
     return view('detail', ['serie' => $series]);
-});
+});*/
+
+Route::get('/detail/{id}', [SerieController::class,  'returnSeries']);
 
 Route::get('/top', function () {
     return view('top');

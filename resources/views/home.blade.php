@@ -2,7 +2,7 @@
 @section('content')
 
 <head>
-    <link rel="stylesheet" href="storage/css/home.css">
+    <link rel="stylesheet" href="../storage/css/home.css">
 </head>
 <section class="section-container">
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -51,19 +51,27 @@
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
                     <div class="row">
+                    @foreach($serie as $key => $data)
                         <div class="col d-flex justify-content-center">
+                            <a class="carousel-link" href="/detail/{{$data->id}}">
+                                <p class="text-light fs-2 p-5">{{$data->id}}</p>
+                                <!-- <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt=""> -->
+                            </a>
+                        </div>
+                    @endforeach
+                        <!--<div class="col d-flex justify-content-center">
                             <a class="carousel-link" href="{{url('/detail')}}">
                                 <p class="text-light fs-2 p-5">{{$serie[0]->id}}</p>
-                                <!-- <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt=""> -->
+                                <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt="">
                             </a>
                         </div>
                         <div class="col d-flex justify-content-center">
                             <a class="carousel-link" href="{{url('/detail')}}">
                                 <p class="text-light fs-2 p-5">{{$serie[1]->id}}</p>
-                                <!-- <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt=""> -->
+                                <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt="">
                             </a>
                         </div>
-                        <!-- <div class="col d-flex justify-content-center">
+                         <div class="col d-flex justify-content-center">
                             <a class="carousel-link" href="{{url('/detail')}}">
                                 <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt="">
                             </a>

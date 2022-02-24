@@ -1,7 +1,7 @@
 @extends('headerFooter')
 @section('content')
 <head>
-	<link rel="stylesheet" href="storage/css/detail.css">
+	<link rel="stylesheet" href="../storage/css/detail.css">
 </head>
 <section class="container">
     <h1>SOBRE NOSOTROS</h1>

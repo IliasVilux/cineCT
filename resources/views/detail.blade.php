@@ -1,7 +1,7 @@
 @extends('headerFooter')
 @section('content')
 <head>
-	<link rel="stylesheet" href="storage/css/detail.css">
+	<link rel="stylesheet" href="../storage/css/detail.css">
 </head>
 <section class="container">
     <h1>DETAIL</h1>
@@ -55,17 +55,15 @@
     <!-- END CAROUSEL -->
 </section>
 <!-- START CONTENT -->
-<table>
-@foreach($serie as $key => $data)
-    <tr>    
-      <th>{{$data->name}}</th>
-      <th>{{$data->release_date}}</th>            
-    </tr>
-@endforeach
-</table>
 <section>
-    <h1>TITLE</h1>
-    <h3>Category</h3>
+    <h1>{{$serie->name}}</h1>
+    <h3><b>Genero (id):</b> {{$serie->genre_id}}</h3>
+    <h3><b>Fecha de lanzamiento:</b>  {{$serie->release_date}}</h3>
+    <h3><b>Temporadas:</b>  {{$serie->seasons}}</h3>
+    <h3><b>Episodios:</b>  {{$serie->total_episodes}}</h3>
+    <h3><b>Puntucación:</b>  {{$serie->puntuation}}</h3>
+    <h3><b>Creado:</b>  {{$serie->created_at}}</h3>
+    <h3><b>Ultima actualización:</b>  {{$serie->updated_at}}</h3>
     <div class="container d-flex justify-content-center mt-5">
 
         <div class="container-wrapper">
@@ -112,13 +110,7 @@
         </div>
 
     </div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam et orci id ipsum dignissim suscipit sit amet
-        porttitor justo. Maecenas iaculis sit amet dolor sit amet viverra. Phasellus interdum tempor nisi, non rutrum
-        neque efficitur ac. Etiam quis massa finibus, imperdiet mi a, commodo elit. Nullam at ipsum sem. Etiam
-        sollicitudin quam vel rhoncus lobortis. Donec leo turpis, aliquam nec facilisis nec, placerat eget mi. Proin
-        lorem risus, tristique non sapien nec, lacinia tempus mauris. In malesuada nibh at ligula vehicula venenatis. In
-        hac habitasse platea dictumst. Quisque dictum risus nibh, ut semper nisi finibus ac. Praesent faucibus mauris
-        nisi, sed interdum arcu aliquam id.</p>
+    <p class="fs-2">{{$serie->description}}</p>
 </section>
 <!-- END CONTENT -->
 <!-- START COMMMENT SECTION -->

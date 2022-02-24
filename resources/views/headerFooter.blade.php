@@ -13,9 +13,9 @@
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/1f7457abdb.js"></script>
     <title>Cinect</title>
-    <link rel="stylesheet" href="storage/css/general.css">
-    <link rel="stylesheet" href="storage/css/header.css">
-    <link rel="stylesheet" href="storage/css/footer.css">
+    <link rel="stylesheet" href="../storage/css/general.css">
+    <link rel="stylesheet" href="../storage/css/header.css">
+    <link rel="stylesheet" href="../storage/css/footer.css">
 </head>
 
 <body>
@@ -31,7 +31,7 @@
                 <a class="navbar-brand col-8 text-center" href="{{url('/')}}">Logo</a>
                 </div>
                 <div class="col-3 d-flex flex-direction-row flex-nowrap justify-content-end align-items-center">
-                    <i class="fas fa-search text-light fs-4"></i>
+                    <i class="fas fa-search text-light fs-4 p-0"></i>
                     <div class="dropdown">
                         <button class="btn text-light dropdown-toggle d-flex flex-direction-row flex-nowrap justify-content-end align-items-center" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-user-circle fs-4 pe-1"></i> <p class="d-none d-sm-flex m-0">Usuario</p>

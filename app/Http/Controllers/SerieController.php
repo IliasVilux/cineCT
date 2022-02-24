@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Serie;
 use Illuminate\Support\Facades\Http;
 
 class SerieController extends Controller
@@ -78,13 +79,18 @@ class SerieController extends Controller
 
     }
 
-    public function returnSeries() {
-        $series = Serie::all();
+    public function returnSeries($id) {
+        $series = Serie::find($id);
+        if (!is_null($series)) {
+            return view('detail', ['serie' => $series]);
+        } else {
+            return response('No encontrado', 404);
+        }
 
-        foreach($series as $serie) {
+        /*foreach($series as $serie) {
             echo $serie;
         }
 
-        return view('detail', ['serie' => $series]);
+        return view('detail', ['serie' => $series]);*/
     }
 }

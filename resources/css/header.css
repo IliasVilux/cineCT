@@ -1,0 +1,49 @@
+/* HEADER */
+header {
+  background: black;
+  background-image: linear-gradient(to bottom, black 25%, #9966ff 150%);
+}
+ul.list-unstyled li a i.fas {
+  width: 45px;
+}
+i.fas.fa-film,
+i.fas.fa-home  {
+  font-size: 35px;
+}
+
+h1.offcanvas-title.text-uppercase {
+  color: #6600cc;
+  margin: 0px 0px 0px 7px;
+}
+
+.navbar-dark .navbar-toggler {
+  border: none;
+}
+
+.dropdown-divider {
+  margin: 0.5rem 0.5rem;
+}
+
+button.btn-close {
+  color: #FFFFFF;
+}
+
+.offcanvas.offcanvas-start {
+  background-color: black;
+  background-image: linear-gradient(to bottom, black 50%, #9966ff 150%);
+}
+
+div.offcanvas-header button.btn-close {
+  margin: 10px;
+}
+
+div.offcanvas-body ul.list-unstyled {
+  line-height: 2;
+}
+
+div.copyright {
+  background-color: black;
+}
+.footer {
+  background-image: linear-gradient(to bottom, black 25%, #9966ff 150%);
+}
