@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Actorcontroller;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\SerieController;
 use App\Http\Controllers\FilmController;
@@ -53,3 +54,5 @@ Route::get('/aboutUs', function () {
 Route::get('/films', [FilmController::class, 'fetchAllFilms']);
 
 Route::get('/series', [SerieController::class, 'fetchAllSeries']);
+
+Route::get('/actors', [Actorcontroller::class , 'store']);
