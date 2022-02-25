@@ -19,7 +19,7 @@ class Actorcontroller extends Controller
             $actorApi = Http::get('https://api.themoviedb.org/3/movie/'. $contador .'/credits?api_key=9d981b068284aca44fb7530bdd218c30&language=en-ES');
             array_push($apiLinks, $actorApi);
             $contador++;
-        }while($contador < 3);
+        }while($contador < 20);
     
         
         $limitActor = 3;
@@ -33,6 +33,8 @@ class Actorcontroller extends Controller
                     if(isset($actors->{'cast'}[$i]->{'name'}))
                     echo $actors->{'cast'}[$i]->{'name'} . "<br>";
                 }
+
+                echo "--------------------------------"."<br><br><br>";
             }
             
         }
