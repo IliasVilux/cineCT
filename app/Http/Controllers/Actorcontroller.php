@@ -13,27 +13,29 @@ class Actorcontroller extends Controller
         $apiLinks = array();
         $allActors = array();
         
+        
+        
         do{
-            $actorApi = Http::get('https://api.themoviedb.org/3/person/popular?api_key=9d981b068284aca44fb7530bdd218c30&language=en-US&page='.$contador);
+            $actorApi = Http::get('https://api.themoviedb.org/3/movie/'. $contador .'/credits?api_key=9d981b068284aca44fb7530bdd218c30&language=en-ES');
             array_push($apiLinks, $actorApi);
             $contador++;
-        }while($contador < 2);
-
+        }while($contador < 3);
+    
         
+        $limitActor = 3;
         foreach($apiLinks as $link) {
             $actorJson = json_decode($link);
-            $actors = $actorJson->{"results"};
-            $contadorActores = count($actors);
-
-            if(isset($actors->{"known_for"}[0]->{"name"})){
-                echo "i";
-                for ($i=0; $i < $contadorActores ; $i++) { 
+            $actors = $actorJson;
+            
+            
+            if(isset($actors->{'id'})){
+                for ($i=0; $i <=$limitActor ; $i++) { 
+                    if(isset($actors->{'cast'}[$i]->{'name'}))
+                    echo $actors->{'cast'}[$i]->{'name'} . "<br>";
                 }
             }
+            
         }
-    
-     
-        //return $allActors;
 
     }
 }

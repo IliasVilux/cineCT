@@ -85,6 +85,7 @@ class FilmController extends Controller
         $films = Film::all();
 
         foreach($films as $film){
+            echo $film->id . ' - ';
             echo $film->name . ' - ';
             echo $film->genre->name . "<br>";
         }
