@@ -51,32 +51,20 @@
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
                     <div class="row">
-                    @foreach($serie as $key => $data)
+                        @foreach($serie as $key => $dataSerie)
                         <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="/detail/{{$data->id}}">
-                                <p class="text-light fs-2 p-5">{{$data->id}}</p>
+                            <a class="carousel-link" href="/detail/{{$dataSerie->id}}">
+                                <p class="text-light fs-2 p-5">{{$dataSerie->id}}</p>
                                 <!-- <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt=""> -->
                             </a>
                         </div>
-                    @endforeach
+                        @endforeach
                         <!--<div class="col d-flex justify-content-center">
                             <a class="carousel-link" href="{{url('/detail')}}">
-                                <p class="text-light fs-2 p-5">{{$serie[0]->id}}</p>
                                 <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt="">
                             </a>
                         </div>
                         <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
-                                <p class="text-light fs-2 p-5">{{$serie[1]->id}}</p>
-                                <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt="">
-                            </a>
-                        </div>
-                         <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt="">
-                            </a>
-                        </div>
-                       <div class="col d-flex justify-content-center">
                             <a class="carousel-link" href="{{url('/detail')}}">
                                 <img class="img-carousel" src="{{url('storage/img/Euphoria.jpeg')}}" alt="">
                             </a>
@@ -176,7 +164,15 @@
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
                     <div class="row">
+                        @foreach($film as $key => $dataFilm)
                         <div class="col d-flex justify-content-center">
+                            <a class="carousel-link" href="/detail/{{$dataFilm->id}}">
+                                <p class="text-light fs-2 p-5">{{$dataFilm->id}}</p>
+                                <!-- <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt=""> -->
+                            </a>
+                        </div>
+                        @endforeach
+                        <!-- <div class="col d-flex justify-content-center"> 
                             <img class="img-carousel" src="{{url('storage/img/agente-355.jpg')}}" alt="">
                         </div>
                         <div class="col d-flex justify-content-center">
@@ -191,7 +187,7 @@
                         </div>
                         <div class="col d-flex justify-content-center">
                             <img class="img-carousel" src="{{url('storage/img/Coco.jpg')}}" alt="">
-                        </div>
+                        </div>-->
                     </div>
                 </div>
 
@@ -255,7 +251,15 @@
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
                     <div class="row">
+                        @foreach($anime as $key => $dataAnime)
                         <div class="col d-flex justify-content-center">
+                            <a class="carousel-link" href="/detail/{{$dataAnime->id}}">
+                                <p class="text-light fs-2 p-5">{{$dataAnime->id}}</p>
+                                <!-- <img class="img-carousel" src="{{url('storage/img/Boku.jpg')}}" alt=""> -->
+                            </a>
+                        </div>
+                        @endforeach
+                        <!-- <div class="col d-flex justify-content-center">
                             <img class="img-carousel" src="{{url('storage/img/Boku.jpg')}}" alt="">
                         </div>
                         <div class="col d-flex justify-content-center">
@@ -270,7 +274,7 @@
                         </div>
                         <div class="col d-flex justify-content-center">
                             <img class="img-carousel" src="{{url('storage/img/FoodWars.jpeg')}}" alt="">
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 

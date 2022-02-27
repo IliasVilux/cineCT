@@ -79,4 +79,19 @@ class FilmController extends Controller
         return $allFilms;
 
     }
+
+    public function returnFilms($id) {
+        $films = Film::find($id);
+        if (!is_null($films)) {
+            return view('detail', ['film' => $films]);
+        } else {
+            return response('No encontrado', 404);
+        }
+
+        /*foreach($films as $film) {
+            echo $film;
+        }
+
+        return view('detail', ['film' => $films]);*/
+    }
 }

@@ -5,6 +5,9 @@ use App\Http\Controllers\SerieController;
 use App\Http\Controllers\FilmController;
 use App\Http\Controllers\AnimeController;
 use App\Models\Genre;
+use App\Models\Serie;
+use App\Models\Films;
+use App\Models\Anime;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,8 +28,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
 
     $series = DB::table('series')->get();
+    $films = DB::table('films')->get();
+    $animes = DB::table('animes')->get();
 
-    return view('home', ['serie' => $series]);
+    return view('home', ['serie' => $series, 'film' => $films, 'anime' => $animes]);
 });
 
 Route::get('/register', function () {
@@ -46,7 +51,7 @@ Route::get('/content', function () {
     return view('detail', ['serie' => $series]);
 });*/
 
-Route::get('/detail/{id}', [SerieController::class,  'returnSeries']);
+Route::get('/detail/{id}', [SerieController::class,  'returnSeries', FilmController::class,  'returnFilms', AnimeController::class,  'returnAnimes']);
 
 Route::get('/top', function () {
     return view('top');

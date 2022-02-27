@@ -98,4 +98,19 @@ class AnimeController extends Controller
 
         return $allAnimes;
     }
+
+    public function returnAnimes($id) {
+        $animes = Anime::find($id);
+        if (!is_null($animes)) {
+            return view('detail', ['anime' => $animes]);
+        } else {
+            return response('No encontrado', 404);
+        }
+
+        /*foreach($animes as $anime) {
+            echo $anime;
+        }
+
+        return view('detail', ['anime' => $animes]);*/
+    }
 }
