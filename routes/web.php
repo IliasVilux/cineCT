@@ -56,3 +56,4 @@ Route::get('/films', [FilmController::class, 'fetchAllFilms']);
 Route::get('/series', [SerieController::class, 'fetchAllSeries']);
 
 Route::get('/actors', [Actorcontroller::class , 'store']);
+
