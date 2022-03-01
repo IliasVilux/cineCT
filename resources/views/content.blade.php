@@ -36,7 +36,32 @@
         </button>
     </div>
 </section>
-<section class="type">
+<section class="type d-flex flex-wrap justify-content-around align-items-center">
 
+        <button class="button-category">
+            <p>Aventura</p>
+        </button>
+        <button class="button-category">
+            <p>Aventura</p>
+        </button>
+        <button class="button-category">
+            <p>Aventura</p>
+        </button>
+        <button class="button-category">
+            <p>Aventura</p>
+        </button>
+
+        <button class="button-category">
+            <p>Aventura</p>
+        </button>
+        <button class="button-category">
+            <p>Aventura</p>
+        </button>
+        <button class="button-category">
+            <p>Aventura</p>
+        </button>
+        <button class="button-category">
+            <p>Aventura</p>
+        </button>
 </section>
 @endsection
