@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Http\Controllers\Actorcontroller;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\SerieController;
 use App\Http\Controllers\FilmController;
@@ -60,6 +61,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }  */
 
+        /*
         $tmp = AnimeController::store();
         foreach ($tmp as $tmp2){
             DB::table('animes')->insert([
@@ -70,6 +72,19 @@ class DatabaseSeeder extends Seeder
                 'genre_id' => $tmp2->{'genres'}[0]->{'name'},
                 'release_date' => $tmp2->{'release_date'},
                 'puntuation' => $tmp2->{'vote_average'},
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+        } 
+        */
+
+        $tmp = Actorcontroller::store();
+        $limitActor = 2;
+        foreach ($tmp as $tmp2){
+            DB::table('actors')->insert([
+                'name' => $tmp2->{'cast'}[0]->{'name'},
+                'film_id' => $tmp2->{'id'},
+                'serie_id' => NULL, 
                 'created_at' => now(),
                 'updated_at' => now()
             ]);

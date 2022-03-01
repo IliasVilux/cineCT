@@ -83,9 +83,6 @@ class SerieController extends Controller
 
         $series = Serie::get();
 
-        foreach($series as $serie){
-            echo $serie->name . ' - ';
-            echo $serie->genre->name . "<br>";
-        }
+       return view('', ['series' => $series]);
     }
 }
