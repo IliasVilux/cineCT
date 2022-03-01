@@ -16,3 +16,10 @@ main {
 .carousel-item.full {
     height: 500px;
 }
+.button-category{
+    width: 24%;
+    height: 80px;
+    margin-top: 10px;
+    background: linear-gradient(to bottom, black 25%, #9966ff 150%);;
+    color: white;
+}
