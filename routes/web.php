@@ -42,9 +42,7 @@ Route::get('/content', function () {
     return view('content');
 });
 
-/*Route::get('/detail/{id}', [SerieController::class,  'returnSeries', FilmController::class,  'returnFilms', AnimeController::class,  'returnAnimes']);*/
-
-Route::get('/detail/{id}', array('as'=>'detail', function(){
+/*Route::get('/detail/{id}', array('as'=>'detail', function(){
 
     if($series) {
         Route::get('/detail/{id}', array('uses'=>'SerieController@returnSeries'));
@@ -53,9 +51,9 @@ Route::get('/detail/{id}', array('as'=>'detail', function(){
     } else {
         Route::get('/detail/{id}', array('uses'=>'AnimeController@returnAnimes'));
     }
-}));
+}));*/
 
-/*Route::get('/detail/{id}', [SerieController::class,  'returnSeries', FilmController::class,  'returnFilms', AnimeController::class,  'returnAnimes']);*/
+Route::get('/detail/{id}', [SerieController::class,  'returnSeries', FilmController::class,  'returnFilms', AnimeController::class,  'returnAnimes']);
 
 
 Route::get('/top', function () {

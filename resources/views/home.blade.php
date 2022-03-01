@@ -49,108 +49,49 @@
             data-bs-interval="false">
 
             <div class="carousel-inner" role="listbox">
+                @ $totalSeries = count($series);
+                @ $seriesForCarousel = floor($totalSeries/5);
+
+            @for ($i=0; $i< $seriesForCarousel; $i++)
                 <div class="carousel-item active">
                     <div class="row">
-                        @foreach($serie ?? '' as $key => $dataSerie)
-                        <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="/detail/{{$dataSerie->id}}">
-                                <p class="text-light fs-2 p-5">{{$dataSerie->id}}</p>
+                        @for ($j=0; $j < $j; $j++) <div class="col d-flex justify-content-center">
+                            <a class="carousel-link" href="/detail/{{$serie[$i]->id}}">
+                                <p class="text-light fs-2 p-5">{{$serie[$i]->id}}</p>
                                 <!-- <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt=""> -->
                             </a>
-                        </div>
-                        @endforeach
-                        <!--<div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt="">
-                            </a>
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/Euphoria.jpeg')}}" alt="">
-                            </a>
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/SexEducation.jpg')}}" alt="">
-                            </a>
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/SquidGame.jpg')}}" alt="">
-                            </a>
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/EstamosMuertos.jpeg')}}" alt="">
-                            </a>
-                        </div>-->
                     </div>
+                    @endfor
                 </div>
-
-                <div class="carousel-item">
-                    <div class="row">
-                        <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt="">
-                            </a>
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/Euphoria.jpeg')}}" alt="">
-                            </a>
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/SexEducation.jpg')}}" alt="">
-                            </a>
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/SquidGame.jpg')}}" alt="">
-                            </a>
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/EstamosMuertos.jpeg')}}" alt="">
-                            </a>
-                        </div>
-                    </div>
+            </div>
+            @endfor
+            <div class="carousel-item">
+                <div class="row">
+                    @for ($i=4; $i < 8; $i++) <div class="col d-flex justify-content-center">
+                        <a class="carousel-link" href="/detail/{{$serie[$i]->id}}">
+                            <p class="text-light fs-2 p-5">{{$serie[$i]->id}}</p>
+                            <!-- <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt=""> -->
+                        </a>
                 </div>
-
-                <div class="carousel-item">
-                    <div class="row">
-                        <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt="">
-                            </a>
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/Euphoria.jpeg')}}" alt="">
-                            </a>
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/SexEducation.jpg')}}" alt="">
-                            </a>
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/SquidGame.jpg')}}" alt="">
-                            </a>
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/EstamosMuertos.jpeg')}}" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
+                @endfor
             </div>
         </div>
-        <a class="btn-floating" href="#series" data-bs-slide="next"><i class="fa fa-chevron-right fa-2x"
-                aria-hidden="true"></i></a>
+        <div class="carousel-item">
+            <div class="row">
+                @for ($i=8; $i < 12; $i++) <div class="col d-flex justify-content-center">
+                    <a class="carousel-link" href="/detail/{{$serie[$i]->id}}">
+                        <p class="text-light fs-2 p-5">{{$serie[$i]->id}}</p>
+                        <!-- <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt=""> -->
+                    </a>
+            </div>
+            @endfor
+        </div>
+    </div>
+
+    </div>
+    </div>
+    <a class="btn-floating" href="#series" data-bs-slide="next"><i class="fa fa-chevron-right fa-2x"
+            aria-hidden="true"></i></a>
     </div>
 
     <!-- PELICULAS -->
