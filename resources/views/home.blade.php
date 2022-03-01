@@ -51,7 +51,7 @@
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
                     <div class="row">
-                        @foreach($serie as $key => $dataSerie)
+                        @foreach($serie ?? '' as $key => $dataSerie)
                         <div class="col d-flex justify-content-center">
                             <a class="carousel-link" href="/detail/{{$dataSerie->id}}">
                                 <p class="text-light fs-2 p-5">{{$dataSerie->id}}</p>

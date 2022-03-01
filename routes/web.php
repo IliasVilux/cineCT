@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 /*Route::get('/', function () {
-    return view('home');
+    return view('register');
 });*/
 
 Route::get('/', function () {
@@ -42,16 +42,21 @@ Route::get('/content', function () {
     return view('content');
 });
 
-/*Route::get('/detail/{id}', function () {
+/*Route::get('/detail/{id}', [SerieController::class,  'returnSeries', FilmController::class,  'returnFilms', AnimeController::class,  'returnAnimes']);*/
 
-    $series = DB::table('series')
-    ->where('id', $id)
-    ->first();
+Route::get('/detail/{id}', array('as'=>'detail', function(){
 
-    return view('detail', ['serie' => $series]);
-});*/
+    if($series) {
+        Route::get('/detail/{id}', array('uses'=>'SerieController@returnSeries'));
+    } else if($films) {
+        Route::get('/detail/{id}', array('uses'=>'FilmController@returnFilms'));
+    } else {
+        Route::get('/detail/{id}', array('uses'=>'AnimeController@returnAnimes'));
+    }
+}));
 
-Route::get('/detail/{id}', [SerieController::class,  'returnSeries', FilmController::class,  'returnFilms', AnimeController::class,  'returnAnimes']);
+/*Route::get('/detail/{id}', [SerieController::class,  'returnSeries', FilmController::class,  'returnFilms', AnimeController::class,  'returnAnimes']);*/
+
 
 Route::get('/top', function () {
     return view('top');
