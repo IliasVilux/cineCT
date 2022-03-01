@@ -17,7 +17,7 @@ class AnimeController extends Controller
             array_push($apiLinks, $animeApi);
             $contador++;
             sleep(4);
-        }while($contador < 20);
+        }while($contador < 12);
 
         foreach($apiLinks as $link) {
             $animeJson = json_decode($link);
@@ -67,18 +67,27 @@ class AnimeController extends Controller
             } else if (isset($asd->{'data'}->{'genres'}[0]->{'name'})){
                 echo $asd->{'data'}->{'genres'}[0]->{'name'};
             }
-        }
-        die(); */
-        /* foreach ($allAnimes as $asd){
-                echo $asd->{'data'}->{'images'}->{'webp'}->{'large_image_url'};
-                echo $asd->{'data'}->{'title'} . "<br>";
-                echo $asd->{'data'}->{'duration'} . "<br>";
-                echo $asd->{'data'}->{'synopsis'} . "<br>";
-                echo $asd->{'data'}->{'themes'}[0]->{'name'} . "<br>";
-                echo $asd->{'data'}->{'year'} . "<br>";
-                echo $asd->{'data'}->{'score'} . "<br>";
         } */
-
+        echo "<section style='display: flex;'>";
+        foreach ($allAnimes as $asd){
+            echo "<div style='width: 30%'>";
+            echo "<img src='" . $asd->{'data'}->{'images'}->{'webp'}->{'large_image_url'} . "'><br>";
+            echo $asd->{'data'}->{'title'} . "<br>";
+            echo $asd->{'data'}->{'duration'} . "<br>";
+            echo $asd->{'data'}->{'synopsis'} . "<br>";
+            if (isset($tmp2->{'data'}->{'themes'}[0]->{'name'})){
+                echo $asd->{'data'}->{'themes'}[0]->{'name'} . "<br>";
+            } else if (isset($tmp2->{'data'}->{'genres'}[0]->{'name'})){
+                echo $asd->{'data'}->{'genres'}[0]->{'name'} . "<br>";
+            }
+            echo $asd->{'data'}->{'year'} . "<br>";
+            echo $asd->{'data'}->{'score'} . "<br>";
+            echo "<br>----------------------------------<br>";
+            echo "</div>";
+        }
+        echo "</section>";
+        die();
+        
         return $allAnimes;
     }
 }

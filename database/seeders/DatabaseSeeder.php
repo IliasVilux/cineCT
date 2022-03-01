@@ -6,6 +6,7 @@ use App\Http\Controllers\GenreController;
 use App\Http\Controllers\SerieController;
 use App\Http\Controllers\FilmController;
 use App\Http\Controllers\AnimeController;
+use App\Http\Controllers\CharacterController;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -60,7 +61,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }  */
 
-        $tmp = AnimeController::store();
+        /* $tmp = AnimeController::store();
         foreach ($tmp as $tmp2){
             if (isset($tmp2->{'data'}->{'themes'}[0]->{'name'})){
                 $genreValidation = $tmp2->{'data'}->{'themes'}[0]->{'name'};
@@ -80,6 +81,20 @@ class DatabaseSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now()
             ]);
-        } 
+        } */
+
+        $tmp = CharacterController::store();
+        foreach ($tmp as $tmp2){
+            if (!empty($tmp2->{'data'}->{'nicknames'}) && isset($tmp2->{'data'}->{'nicknames'}[0])){
+                $characterNickname = $tmp2->{'data'}->{'nicknames'}[0];
+            } else { $characterNickname = ""; }
+            DB::table('characters')->insert([
+                'name' => $tmp2->{'data'}->{'name'},
+                'surname' => $characterNickname,
+                'anime_id' => $tmp2->{'data'}->{'mal_id'},
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+        }
     }
 }
