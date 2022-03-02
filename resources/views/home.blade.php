@@ -48,7 +48,7 @@
         <div id="series" class="carousel slide carousel-equal-heights my-4" data-bs-ride="carousel"
             data-bs-interval="false">
 
-            <div class="carousel-inner" role="listbox">
+            <div class="carousel-inner" role="listbox">           
                 <div class="carousel-item active">
                     <div class="row">
                         @foreach($serie as $key => $dataSerie)
@@ -146,11 +146,24 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-        <a class="btn-floating" href="#series" data-bs-slide="next"><i class="fa fa-chevron-right fa-2x"
-                aria-hidden="true"></i></a>
+        <div class="carousel-item">
+            <div class="row">
+                @for ($i=8; $i < 12; $i++) <div class="col d-flex justify-content-center">
+                    <a class="carousel-link" href="/detail/{{$serie[$i]->id}}">
+                        <p class="text-light fs-2 p-5">{{$serie[$i]->id}}</p>
+                        <!-- <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt=""> -->
+                    </a>
+            </div>
+            @endfor
+        </div>
+    </div>
+
+    </div>
+    </div>
+    <a class="btn-floating" href="#series" data-bs-slide="next"><i class="fa fa-chevron-right fa-2x"
+            aria-hidden="true"></i></a>
     </div>
 
     <!-- PELICULAS -->

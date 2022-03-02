@@ -8,30 +8,36 @@
     <a href="{{ url('/') }}" class="btn btn-primary" title="Home">
         Home
     </a>
+    @if($serie)
     <h1 class="detail-title">{{$serie->name}}</h1>
+    @elseif($film)
+    <h1 class="detail-title">{{$film->name}}</h1>
+    @else
+    <h1 class="detail-title">{{$anime->name}}</h1>
+    @endif
     <div class="rating-wrapper">
 
-                        <label for="5-star-rating" class="star-rating">
-                            <i class="fas fa-star d-inline-block"></i>
-                        </label>
+        <label for="5-star-rating" class="star-rating">
+            <i class="fas fa-star d-inline-block"></i>
+        </label>
 
-                        <label for="4-star-rating" class="star-rating star">
-                            <i class="fas fa-star d-inline-block"></i>
-                        </label>
+        <label for="4-star-rating" class="star-rating star">
+            <i class="fas fa-star d-inline-block"></i>
+        </label>
 
-                        <label for="3-star-rating" class="star-rating star">
-                            <i class="fas fa-star d-inline-block"></i>
-                        </label>
+        <label for="3-star-rating" class="star-rating star">
+            <i class="fas fa-star d-inline-block"></i>
+        </label>
 
-                        <label for="2-star-rating" class="star-rating star">
-                            <i class="fas fa-star d-inline-block"></i>
-                        </label>
+        <label for="2-star-rating" class="star-rating star">
+            <i class="fas fa-star d-inline-block"></i>
+        </label>
 
-                        <label for="1-star-rating" class="star-rating star">
-                            <i class="fas fa-star d-inline-block"></i>
-                        </label>
+        <label for="1-star-rating" class="star-rating star">
+            <i class="fas fa-star d-inline-block"></i>
+        </label>
 
-                    </div>
+    </div>
 
     <div class="container mt-5">
         <!-- START CAROUSEL -->
@@ -82,7 +88,8 @@
 </section>
 <!-- START CONTENT -->
 <section>
-    <h3><b>Genero (id):</b> {{$serie->genre_id}}</h3>
+@if($serie)
+<h3><b>Genero (id):</b> {{$serie->genre_id}}</h3>
     <h3><b>Fecha de lanzamiento:</b> {{$serie->release_date}}</h3>
     <h3><b>Temporadas:</b> {{$serie->seasons}}</h3>
     <h3><b>Episodios:</b> {{$serie->total_episodes}}</h3>
@@ -91,6 +98,27 @@
     <h3><b>Ultima actualización:</b> {{$serie->updated_at}}</h3>
 
     <p class="fs-2">{{$serie->description}}</p>
+    @elseif($film)
+    <h3><b>Genero (id):</b> {{$film->genre_id}}</h3>
+    <h3><b>Fecha de lanzamiento:</b> {{$film->release_date}}</h3>
+    <h3><b>Temporadas:</b> {{$film->duration}}</h3>
+    <h3><b>Episodios:</b> {{$film->total_episodes}}</h3>
+    <h3><b>Puntucación:</b> {{$film->puntuation}}</h3>
+    <h3><b>Creado:</b> {{$film->created_at}}</h3>
+    <h3><b>Ultima actualización:</b> {{$film->updated_at}}</h3>
+
+    <p class="fs-2">{{$film->description}}</p>
+    @else
+    <h3><b>Genero (id):</b> {{$anime->genre_id}}</h3>
+    <h3><b>Fecha de lanzamiento:</b> {{$anime->release_date}}</h3>
+    <h3><b>Temporadas:</b> {{$anime->duration}}</h3>
+    <h3><b>Episodios:</b> {{$anime->total_episodes}}</h3>
+    <h3><b>Puntucación:</b> {{$anime->puntuation}}</h3>
+    <h3><b>Creado:</b> {{$anime->created_at}}</h3>
+    <h3><b>Ultima actualización:</b> {{$anime->updated_at}}</h3>
+
+    <p class="fs-2">{{$anime->description}}</p>
+    @endif
 </section>
 <!-- END CONTENT -->
 <!-- START COMMMENT SECTION -->
