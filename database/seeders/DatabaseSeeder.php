@@ -78,8 +78,8 @@ class DatabaseSeeder extends Seeder
         } 
         */
 
+        /*
         $tmp = Actorcontroller::store();
-        $limitActor = 2;
         foreach ($tmp as $tmp2){
             DB::table('actors')->insert([
                 'name' => $tmp2->{'cast'}[0]->{'name'},
@@ -89,5 +89,17 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => now()
             ]);
         } 
+
+        $tmp = Actorcontroller::store();
+        foreach ($tmp as $tmp2){
+            DB::table('actors')->insert([
+                'name' => $tmp2->{'cast'}[1]->{'name'},
+                'film_id' => $tmp2->{'id'},
+                'serie_id' => NULL, 
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+        } 
+        */
     }
 }

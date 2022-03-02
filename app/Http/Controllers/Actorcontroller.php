@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Film;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -10,31 +11,46 @@ class Actorcontroller extends Controller
     public static function store()
     {
 
-        $contador = 1;
+
+        $film = new FilmController();
+        $films = $film::store();
+
+        $dbFilms = Film::get();
+
+        /*
+        foreach($dbFilms as $dbFilm){
+            echo 'ID:' .$dbFilm->id .'- API ID: '.$dbFilm->original_id .'<br>';
+        }
+
+        die();
+        */
+
         $apiLinks = array();
         $allActors = array();
 
-
-
-        do {
-            $actorApi = Http::get('https://api.themoviedb.org/3/movie/' . $contador . '/credits?api_key=9d981b068284aca44fb7530bdd218c30&language=en-ES');
+        foreach($films as $film) {
+            $actorApi = Http::get('https://api.themoviedb.org/3/movie/' . $film->id . '/credits?api_key=9d981b068284aca44fb7530bdd218c30&language=en-ES');
             array_push($apiLinks, $actorApi);
-            $contador++;
-        } while ($contador < 20);
+        };
 
 
         foreach ($apiLinks as $link) {
             $actorJson = json_decode($link);
             $actors = $actorJson;
-            if (isset($actors->{'id'})) {
-                if (!empty($actors->{'cast'})) {
-                    array_push($allActors, $actors);
+            if (isset($actors->{'id'}) && !empty($actors->{'cast'})) {
+                foreach($dbFilms as $dbFilm){
+                    if($actors->{'id'} == $dbFilm->original_id){
+                        $actors->{'id'} = $dbFilm->id;
+                    }
                 }
+                array_push($allActors, $actors);
             }
         }
+
         
-        $limitActor = 2;
+        
         /*
+        $limitActor = 2;
         $totalActores = count($allActors);
         var_dump($totalActores);
         die();
