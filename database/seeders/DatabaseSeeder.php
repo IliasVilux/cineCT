@@ -78,7 +78,7 @@ class DatabaseSeeder extends Seeder
         } 
         */
 
-        /*
+        
         $tmp = Actorcontroller::store();
         foreach ($tmp as $tmp2){
             DB::table('actors')->insert([
@@ -100,6 +100,6 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => now()
             ]);
         } 
-        */
+        
     }
 }

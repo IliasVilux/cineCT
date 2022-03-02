@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Review;
 use App\Models\Image;
 use App\Models\Genre;
+use App\Models\Actor;
 
 
 class Film extends Model
@@ -17,6 +18,10 @@ class Film extends Model
 
     public function genre() {
         return $this->belongsTo(Genre::class);
+    }
+
+    public function actor() {
+        return $this->belongsTo(Actor::class);
     }
 
     public function reviews(){
