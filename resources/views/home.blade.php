@@ -53,34 +53,34 @@
                     <div class="row">
                         @foreach($serie as $key => $dataSerie)
                         <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="/detail/{{$dataSerie->id}}">
+                            <a href="/detail/{{$dataSerie->id}}">
                                 <p class="text-light fs-2 p-5">{{$dataSerie->id}}</p>
                                 <!-- <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt=""> -->
                             </a>
                         </div>
                         @endforeach
                         <!--<div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
+                            <a href="{{url('/detail')}}">
                                 <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt="">
                             </a>
                         </div>
                         <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
+                            <a href="{{url('/detail')}}">
                                 <img class="img-carousel" src="{{url('storage/img/Euphoria.jpeg')}}" alt="">
                             </a>
                         </div>
                         <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
+                            <a href="{{url('/detail')}}">
                                 <img class="img-carousel" src="{{url('storage/img/SexEducation.jpg')}}" alt="">
                             </a>
                         </div>
                         <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
+                            <a href="{{url('/detail')}}">
                                 <img class="img-carousel" src="{{url('storage/img/SquidGame.jpg')}}" alt="">
                             </a>
                         </div>
                         <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
+                            <a href="{{url('/detail')}}">
                                 <img class="img-carousel" src="{{url('storage/img/EstamosMuertos.jpeg')}}" alt="">
                             </a>
                         </div>-->
@@ -90,27 +90,27 @@
                 <div class="carousel-item">
                     <div class="row">
                         <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
+                            <a href="{{url('/detail')}}">
                                 <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt="">
                             </a>
                         </div>
                         <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
+                            <a href="{{url('/detail')}}">
                                 <img class="img-carousel" src="{{url('storage/img/Euphoria.jpeg')}}" alt="">
                             </a>
                         </div>
                         <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
+                            <a href="{{url('/detail')}}">
                                 <img class="img-carousel" src="{{url('storage/img/SexEducation.jpg')}}" alt="">
                             </a>
                         </div>
                         <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
+                            <a href="{{url('/detail')}}">
                                 <img class="img-carousel" src="{{url('storage/img/SquidGame.jpg')}}" alt="">
                             </a>
                         </div>
                         <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
+                            <a href="{{url('/detail')}}">
                                 <img class="img-carousel" src="{{url('storage/img/EstamosMuertos.jpeg')}}" alt="">
                             </a>
                         </div>
@@ -120,27 +120,27 @@
                 <div class="carousel-item">
                     <div class="row">
                         <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
+                            <a href="{{url('/detail')}}">
                                 <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt="">
                             </a>
                         </div>
                         <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
+                            <a href="{{url('/detail')}}">
                                 <img class="img-carousel" src="{{url('storage/img/Euphoria.jpeg')}}" alt="">
                             </a>
                         </div>
                         <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
+                            <a href="{{url('/detail')}}">
                                 <img class="img-carousel" src="{{url('storage/img/SexEducation.jpg')}}" alt="">
                             </a>
                         </div>
                         <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
+                            <a href="{{url('/detail')}}">
                                 <img class="img-carousel" src="{{url('storage/img/SquidGame.jpg')}}" alt="">
                             </a>
                         </div>
                         <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="{{url('/detail')}}">
+                            <a href="{{url('/detail')}}">
                                 <img class="img-carousel" src="{{url('storage/img/EstamosMuertos.jpeg')}}" alt="">
                             </a>
                         </div>
@@ -166,7 +166,7 @@
                     <div class="row">
                         @foreach($film as $key => $dataFilm)
                         <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="/detail/{{$dataFilm->id}}">
+                            <a href="/detail/{{$dataFilm->id}}">
                                 <p class="text-light fs-2 p-5">{{$dataFilm->id}}</p>
                                 <!-- <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt=""> -->
                             </a>
@@ -253,7 +253,7 @@
                     <div class="row">
                         @foreach($anime as $key => $dataAnime)
                         <div class="col d-flex justify-content-center">
-                            <a class="carousel-link" href="/detail/{{$dataAnime->id}}">
+                            <a href="/detail/{{$dataAnime->id}}">
                                 <p class="text-light fs-2 p-5">{{$dataAnime->id}}</p>
                                 <!-- <img class="img-carousel" src="{{url('storage/img/Boku.jpg')}}" alt=""> -->
                             </a>
