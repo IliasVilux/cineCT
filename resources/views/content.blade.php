@@ -36,32 +36,48 @@
         </button>
     </div>
 </section>
-<section class="type d-flex flex-wrap justify-content-around align-items-center">
+<section class="d-flex flex-wrap justify-content-around align-items-center">
+        <button class="button-category">
+            <p class="m-0">Acción / Aventura</p>
+        </button>
+        <button class="button-category">
+            <p class="m-0">Animación / Familia</p>
+        </button>
+        <button class="button-category">
+            <p class="m-0">Comedia</p>
+        </button>
+        <button class="button-category">
+            <p class="m-0">Terror / Suspense</p>
+        </button>
 
         <button class="button-category">
-            <p>Aventura</p>
+            <p class="m-0">Romance</p>
         </button>
         <button class="button-category">
-            <p>Aventura</p>
+            <p class="m-0">Ciencia ficción / Fantasía</p>
         </button>
         <button class="button-category">
-            <p>Aventura</p>
+            <p class="m-0">Drama / Misterio</p>
         </button>
         <button class="button-category">
-            <p>Aventura</p>
+            <p class="m-0">Bélica / Crimen</p>
         </button>
-
-        <button class="button-category">
-            <p>Aventura</p>
-        </button>
-        <button class="button-category">
-            <p>Aventura</p>
-        </button>
-        <button class="button-category">
-            <p>Aventura</p>
-        </button>
-        <button class="button-category">
-            <p>Aventura</p>
-        </button>
+</section>
+<section class="d-flex flex-wrap">
+        <a href="{{url('/detail')}}">
+            <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}">
+        </a>
+        <a href="{{url('/detail')}}">
+            <img class="img-carousel" src="{{url('storage/img/Euphoria.jpeg')}}">
+        </a>
+        <a href="{{url('/detail')}}">
+            <img class="img-carousel" src="{{url('storage/img/SexEducation.jpg')}}">
+        </a>
+        <a href="{{url('/detail')}}">
+            <img class="img-carousel" src="{{url('storage/img/SquidGame.jpg')}}">
+        </a>
+        <a href="{{url('/detail')}}">
+            <img class="img-carousel" src="{{url('storage/img/EstamosMuertos.jpeg')}}">
+        </a>
 </section>
 @endsection
