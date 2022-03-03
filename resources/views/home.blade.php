@@ -285,7 +285,7 @@
                     <div class="row">
                         @foreach($anime as $key => $dataAnime)
                         <div class="col d-flex justify-content-center">
-                            <a href="/detail/{{$dataAnime->id">
+                            <a href="/detail/{{$dataAnime->id}}">
                                 <p class="text-light fs-2 p-5">{{$dataAnime->id}}</p>
                                 <!-- <img class="img-carousel" src="{{url('storage/img/Boku.jpg')}}" alt=""> -->
                             </a>
