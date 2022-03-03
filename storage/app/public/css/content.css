@@ -1,5 +1,6 @@
 main {
     background: #16181d;
+    margin: 0px;
 }
 
 .slider {
@@ -21,4 +22,13 @@ main {
     margin-top: 10px;
     background: linear-gradient(to bottom, black 25%, #9966ff 150%);;
     color: white;
+}
+a img{
+    width: 220px;
+    margin: 10px;
+}
+.container{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
 }
