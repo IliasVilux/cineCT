@@ -63,21 +63,62 @@
             <p class="m-0">Bélica / Crimen</p>
         </button>
 </section>
-<section class="d-flex flex-wrap">
-        <a href="{{url('/detail')}}">
-            <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}">
-        </a>
-        <a href="{{url('/detail')}}">
-            <img class="img-carousel" src="{{url('storage/img/Euphoria.jpeg')}}">
-        </a>
-        <a href="{{url('/detail')}}">
-            <img class="img-carousel" src="{{url('storage/img/SexEducation.jpg')}}">
-        </a>
-        <a href="{{url('/detail')}}">
-            <img class="img-carousel" src="{{url('storage/img/SquidGame.jpg')}}">
-        </a>
-        <a href="{{url('/detail')}}">
-            <img class="img-carousel" src="{{url('storage/img/EstamosMuertos.jpeg')}}">
-        </a>
+<section class="container-fluid d-flex align-items-center justify-content-center">
+        <div class="container d-flex justify-content-start flex-wrap">
+            <a href="{{url('/detail')}}">
+                <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}">
+            </a>
+            <a href="{{url('/detail')}}">
+                <img class="img-carousel" src="{{url('storage/img/Euphoria.jpeg')}}">
+            </a>
+            <a href="{{url('/detail')}}">
+                <img class="img-carousel" src="{{url('storage/img/SexEducation.jpg')}}">
+            </a>
+            <a href="{{url('/detail')}}">
+                <img class="img-carousel" src="{{url('storage/img/SquidGame.jpg')}}">
+            </a>
+            <a href="{{url('/detail')}}">
+                <img class="img-carousel" src="{{url('storage/img/EstamosMuertos.jpeg')}}">
+            </a>
+            <a href="{{url('/detail')}}">
+                <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}">
+            </a>
+            <a href="{{url('/detail')}}">
+                <img class="img-carousel" src="{{url('storage/img/Euphoria.jpeg')}}">
+            </a>
+            <a href="{{url('/detail')}}">
+                <img class="img-carousel" src="{{url('storage/img/SexEducation.jpg')}}">
+            </a>
+            <a href="{{url('/detail')}}">
+                <img class="img-carousel" src="{{url('storage/img/SquidGame.jpg')}}">
+            </a>
+            <a href="{{url('/detail')}}">
+                <img class="img-carousel" src="{{url('storage/img/EstamosMuertos.jpeg')}}">
+            </a>
+            <a href="{{url('/detail')}}">
+                <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}">
+            </a>
+            <a href="{{url('/detail')}}">
+                <img class="img-carousel" src="{{url('storage/img/Euphoria.jpeg')}}">
+            </a>
+            <a href="{{url('/detail')}}">
+                <img class="img-carousel" src="{{url('storage/img/SexEducation.jpg')}}">
+            </a>
+            <a href="{{url('/detail')}}">
+                <img class="img-carousel" src="{{url('storage/img/SquidGame.jpg')}}">
+            </a>
+            <a href="{{url('/detail')}}">
+                <img class="img-carousel" src="{{url('storage/img/EstamosMuertos.jpeg')}}">
+            </a>
+            <a href="{{url('/detail')}}">
+                <img class="img-carousel" src="{{url('storage/img/SexEducation.jpg')}}">
+            </a>
+            <a href="{{url('/detail')}}">
+                <img class="img-carousel" src="{{url('storage/img/SquidGame.jpg')}}">
+            </a>
+            <a href="{{url('/detail')}}">
+                <img class="img-carousel" src="{{url('storage/img/EstamosMuertos.jpeg')}}">
+            </a>
+        </div>
 </section>
 @endsection
