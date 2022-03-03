@@ -96,7 +96,7 @@
 
     <!-- START FOOTER -->
     <footer class="footer text-center text-white">
-        <div class="container p-4">
+        <div class="container-fluid p-4">
             
             <!-- SECTION: LINKS -->
             <section class="d-flex justify-content-center mb-2">

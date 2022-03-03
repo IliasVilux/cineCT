@@ -63,8 +63,8 @@
             <p class="m-0">Bélica / Crimen</p>
         </button>
 </section>
-<section class="container-fluid d-flex align-items-center justify-content-center">
-        <div class="container d-flex justify-content-start flex-wrap">
+<section class="container-fluid d-flex align-items-center">
+        <div class="container-fluid d-flex flex-wrap">
             <a href="{{url('/detail')}}">
                 <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}">
             </a>
