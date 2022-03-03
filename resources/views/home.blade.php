@@ -149,14 +149,33 @@
             </div>
         </div>
         <div class="carousel-item">
-            <div class="row">
-                @for ($i=8; $i < 12; $i++) <div class="col d-flex justify-content-center">
-                    <a class="carousel-link" href="/detail/{{$serie[$i]->id}}">
-                        <p class="text-light fs-2 p-5">{{$serie[$i]->id}}</p>
-                        <!-- <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt=""> -->
-                    </a>
-            </div>
-            @endfor
+        <div class="row">
+                        <div class="col d-flex justify-content-center">
+                            <a href="{{url('/detail')}}">
+                                <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt="">
+                            </a>
+                        </div>
+                        <div class="col d-flex justify-content-center">
+                            <a href="{{url('/detail')}}">
+                                <img class="img-carousel" src="{{url('storage/img/Euphoria.jpeg')}}" alt="">
+                            </a>
+                        </div>
+                        <div class="col d-flex justify-content-center">
+                            <a href="{{url('/detail')}}">
+                                <img class="img-carousel" src="{{url('storage/img/SexEducation.jpg')}}" alt="">
+                            </a>
+                        </div>
+                        <div class="col d-flex justify-content-center">
+                            <a href="{{url('/detail')}}">
+                                <img class="img-carousel" src="{{url('storage/img/SquidGame.jpg')}}" alt="">
+                            </a>
+                        </div>
+                        <div class="col d-flex justify-content-center">
+                            <a href="{{url('/detail')}}">
+                                <img class="img-carousel" src="{{url('storage/img/EstamosMuertos.jpeg')}}" alt="">
+                            </a>
+                        </div>
+                    </div>
         </div>
     </div>
 
@@ -266,7 +285,7 @@
                     <div class="row">
                         @foreach($anime as $key => $dataAnime)
                         <div class="col d-flex justify-content-center">
-                            <a href="/detail/{{$dataAnime->id}}">
+                            <a href="/detail/{{$dataAnime->id">
                                 <p class="text-light fs-2 p-5">{{$dataAnime->id}}</p>
                                 <!-- <img class="img-carousel" src="{{url('storage/img/Boku.jpg')}}" alt=""> -->
                             </a>

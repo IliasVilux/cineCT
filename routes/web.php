@@ -42,19 +42,23 @@ Route::get('/content', function () {
     return view('content');
 });
 
-/*Route::get('/detail/{id}', array('as'=>'detail', function(){
+/*Route::get('/detail/{id}/{name}', function($id, $name){
 
-    if($series) {
-        Route::get('/detail/{id}', array('uses'=>'SerieController@returnSeries'));
+    $series = DB::table('series')->get();
+    $films = DB::table('films')->get();
+    $animes = DB::table('animes')->get();
+
+
+    if($series->id === $id && $series->name === $name) {
+        Route::get('/detail/{id}/{name}', [SerieController::class,  'returnSeries']);
     } else if($films) {
-        Route::get('/detail/{id}', array('uses'=>'FilmController@returnFilms'));
+        Route::get('/detail/{id}/{name}', [FilmController::class,  'returnFilms']);
     } else {
-        Route::get('/detail/{id}', array('uses'=>'AnimeController@returnAnimes'));
+        Route::get('/detail/{id}/{name}', [AnimeController::class,  'returnAnimes']);
     }
-}));*/
+});*/
 
 Route::get('/detail/{id}', [SerieController::class,  'returnSeries', FilmController::class,  'returnFilms', AnimeController::class,  'returnAnimes']);
-
 
 Route::get('/top', function () {
     return view('top');
