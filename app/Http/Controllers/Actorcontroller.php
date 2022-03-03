@@ -99,6 +99,7 @@ class Actorcontroller extends Controller
             }
         }
 
+        /*
         foreach($allActors as $serieActor) {
             if(count($serieActor->{'cast'}) > 2){
                 for ($i=0; $i <2 ; $i++) { 
@@ -108,6 +109,7 @@ class Actorcontroller extends Controller
                 echo $serieActor->{'id'} . ' - ' . $serieActor->{'cast'}[0]->{'name'} .'<br>';
             }
         }
+        */
 
         return $allActors;
 
