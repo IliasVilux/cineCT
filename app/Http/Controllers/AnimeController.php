@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use App\Models\Anime;
 
 class AnimeController extends Controller
 {
@@ -68,7 +69,7 @@ class AnimeController extends Controller
                 echo $asd->{'data'}->{'genres'}[0]->{'name'};
             }
         } */
-        echo "<section style='display: flex;'>";
+        /* echo "<section style='display: flex;'>";
         foreach ($allAnimes as $asd){
             echo "<div style='width: 30%'>";
             echo "<img src='" . $asd->{'data'}->{'images'}->{'webp'}->{'large_image_url'} . "'><br>";
@@ -86,8 +87,13 @@ class AnimeController extends Controller
             echo "</div>";
         }
         echo "</section>";
-        die();
+        die(); */
         
         return $allAnimes;
+    }
+    public function index()
+    {
+        $animes = Anime::all();
+        return $animes;
     }
 }

@@ -11,13 +11,14 @@ class CharacterController extends Controller
         $contador = 1;
         $apiLinks = array();
         $allCharacters = array();
+        $allCharacters = array();
 
         do{
             $chracterApi = Http::get('https://api.jikan.moe/v4/characters/' . $contador);
             array_push($apiLinks, $chracterApi);
             $contador++;
             sleep(4);
-        } while($contador < 6);
+        } while($contador < 100);
 
         foreach($apiLinks as $link){
             $characterJson = json_decode($link);

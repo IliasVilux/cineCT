@@ -4,6 +4,7 @@ use App\Http\Controllers\GenreController;
 use App\Http\Controllers\SerieController;
 use App\Http\Controllers\FilmController;
 use App\Http\Controllers\AnimeController;
+use App\Http\Controllers\EpisodeController;
 use App\Models\Genre;
 use Illuminate\Support\Facades\Route;
 
@@ -49,3 +50,5 @@ Route::get('/list', function () {
 Route::get('/aboutUs', function () {
     return view('aboutUs');
 });
+
+Route::get('/asd', [EpisodeController::class, 'store']);

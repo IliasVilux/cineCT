@@ -7,6 +7,7 @@ use App\Http\Controllers\SerieController;
 use App\Http\Controllers\FilmController;
 use App\Http\Controllers\AnimeController;
 use App\Http\Controllers\CharacterController;
+use App\Http\Controllers\EpisodeController;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -41,6 +42,7 @@ class DatabaseSeeder extends Seeder
                 'seasons' => $tmp2->{'number_of_seasons'},
                 'total_episodes' => $tmp2->{'number_of_episodes'},
                 'puntuation' => $tmp2->{'vote_average'},
+                'poster_path' => $tmp2->{'backdrop_path'},
                 'created_at' => now(),
                 'updated_at' => now()
             ]);
@@ -83,7 +85,7 @@ class DatabaseSeeder extends Seeder
             ]);
         } */
 
-        $tmp = CharacterController::store();
+        /* $tmp = CharacterController::store();
         foreach ($tmp as $tmp2){
             if (!empty($tmp2->{'data'}->{'nicknames'}) && isset($tmp2->{'data'}->{'nicknames'}[0])){
                 $characterNickname = $tmp2->{'data'}->{'nicknames'}[0];
@@ -95,6 +97,28 @@ class DatabaseSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now()
             ]);
+        } */
+
+        $tmp = EpisodeController::store();
+        $durationEpisode = array();
+        foreach ($tmp[2] as $tmpDos2){
+            array_push($durationEpisode, $tmpDos2);
+        }
+        $idEpisode = array();
+        foreach ($tmp[1] as $tmpTres3){
+            array_push($idEpisode, $tmpTres3);
+        }
+        $contEpisodes = 0;
+        foreach ($tmp[0] as $tmp2){
+            DB::table('episodes')->insert([
+                'title' => $tmp2->{'title'},
+                'duration' => $durationEpisode[$contEpisodes],
+                'description' => $tmp2->{'title_japanese'},
+                'anime_id' => $idEpisode[$contEpisodes],
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+            $contEpisodes++;
         }
     }
 }
