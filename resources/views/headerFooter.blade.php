@@ -59,13 +59,13 @@
                                 <a href="{{url('/')}}" class="footer-links text-light text-uppercase fs-3"><i class="fas fa-home pe-2"></i>Home</a>
                             </li>
                             <li>
-                                <a href="{{url('/content')}}" class="footer-links text-light text-uppercase fs-3"><i class="fas fa-film pe-2 fa-2x"></i>Películas</a>
+                                <a href="{{url('/contentFilms')}}" class="footer-links text-light text-uppercase fs-3"><i class="fas fa-film pe-2 fa-2x"></i>Películas</a>
                             </li>
                             <li>
-                                <a href="{{url('/content')}}" class="footer-links text-light text-uppercase fs-3"><i class="fas fa-tv pe-2"></i>Series</a>
+                                <a href="{{url('/contentSeries')}}" class="footer-links text-light text-uppercase fs-3"><i class="fas fa-tv pe-2"></i>Series</a>
                             </li>
                             <li>
-                                <a href="{{url('/content')}}" class="footer-links text-light text-uppercase fs-3"><i class="fas fa-dragon pe-2"></i>Anime</a>
+                                <a href="{{url('/contentAnimes')}}" class="footer-links text-light text-uppercase fs-3"><i class="fas fa-dragon pe-2"></i>Anime</a>
                             </li>
                             <li>
                                 <a href="{{url('/top')}}" class="footer-links text-light text-uppercase fs-3"><i class="fas fa-sort-amount-up-alt pe-2"></i>Top</a>

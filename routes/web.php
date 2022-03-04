@@ -38,10 +38,15 @@ Route::get('/register', function () {
     return view('register');
 });
 
-Route::get('/content', function () {
-    return view('content');
+Route::get('/contentSeries', function () {
+    return view('contentSeries');
 });
-
+Route::get('/contentFilms', function () {
+    return view('contentFilms');
+});
+Route::get('/contentAnimes', function () {
+    return view('contentAnimes');
+});
 /*Route::get('/detail/{id}/{name}', function($id, $name){
 
     $series = DB::table('series')->get();
