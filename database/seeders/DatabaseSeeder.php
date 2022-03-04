@@ -31,14 +31,15 @@ class DatabaseSeeder extends Seeder
         }
         */
 
+        /*
         $tmp = SerieController::store();
         foreach ($tmp as $tmp2){
             DB::table('series')->insert([
                 'original_id' => $tmp2->{'id'},
+                'genre_id' => $tmp2->{'genres'}[0]->{'name'},
                 'name' => $tmp2->{'name'}, 
                 'description' => $tmp2->{'overview'},
                 'poster_path' => $tmp2->{'poster_path'},
-                'genre_id' => $tmp2->{'genres'}[0]->{'name'},
                 'release_date' => $tmp2->{'first_air_date'},
                 'seasons' => $tmp2->{'number_of_seasons'},
                 'total_episodes' => $tmp2->{'number_of_episodes'},
@@ -47,6 +48,8 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => now()
             ]);
         } 
+        */
+        
 
         /*
         $tmp = FilmController::store();
@@ -94,7 +97,7 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => now()
             ]);
         } 
-
+        
         $tmp = Actorcontroller::filmActors();
         foreach ($tmp as $tmp2){
             DB::table('actors')->insert([
@@ -108,9 +111,33 @@ class DatabaseSeeder extends Seeder
 
         */
 
+        /*-------------------------------------------------------------------------------------------------------*/
         /*
+        $tmp = Actorcontroller::filmActors();
+        foreach ($tmp as $tmp2){
+            if(count($tmp2->{'cast'}) > 2){
+                for ($i=0; $i <2 ; $i++) { 
+                    DB::table('actors')->insert([
+                        'name' => $tmp2->{'cast'}[$i]->{'name'},
+                        'film_id' => $tmp2->{'id'},
+                        'serie_id' => NULL, 
+                        'created_at' => now(),
+                        'updated_at' => now()
+                    ]);
+                }
+            }else{
+                DB::table('actors')->insert([
+                    'name' => $tmp2->{'cast'}[0]->{'name'},
+                    'film_id' => $tmp2->{'id'},
+                    'serie_id' => NULL, 
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]);
+            }
+        } 
+        */
+        
         $tmp = Actorcontroller::serieActors();
-
         foreach ($tmp as $tmp2){
             if(count($tmp2->{'cast'}) > 2){
                 for ($i=0; $i <2 ; $i++) { 
@@ -132,7 +159,9 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
         } 
-        */
+        
+
+        /*-------------------------------------------------------------------------------------------------------*/
         
     }
 }
