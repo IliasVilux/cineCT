@@ -18,7 +18,7 @@ class SerieController extends Controller
             $serieApi = Http::get('https://api.themoviedb.org/3/tv/' .$contador. '?api_key=9d981b068284aca44fb7530bdd218c30&language=en-EN');
             array_push($apiLinks, $serieApi);
             $contador++;
-        }while($contador < 20);
+        }while($contador < 500);
         
         foreach($apiLinks as $link) {
             $serieJson = json_decode($link);

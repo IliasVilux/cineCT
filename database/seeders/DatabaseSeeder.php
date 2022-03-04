@@ -31,13 +31,14 @@ class DatabaseSeeder extends Seeder
         }
         */
 
-        /* $tmp = SerieController::store();
+        /*
+        $tmp = SerieController::store();
         foreach ($tmp as $tmp2){
             DB::table('series')->insert([
-                'image_api_id' => $tmp2->{'id'},
+                'original_id' => $tmp2->{'id'},
+                'genre_id' => $tmp2->{'genres'}[0]->{'name'},
                 'name' => $tmp2->{'name'}, 
                 'description' => $tmp2->{'overview'},
-                'genre_id' => $tmp2->{'genres'}[0]->{'name'},
                 'release_date' => $tmp2->{'first_air_date'},
                 'seasons' => $tmp2->{'number_of_seasons'},
                 'total_episodes' => $tmp2->{'number_of_episodes'},
@@ -45,22 +46,24 @@ class DatabaseSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now()
             ]);
-        } */
+        } 
+        */
 
-        /* $tmp = FilmController::store();
+        $tmp = FilmController::store();
         foreach ($tmp as $tmp2){
             DB::table('films')->insert([
-                'image_api_id' => $tmp2->{'id'},
+                'original_id' => $tmp2->{'id'},
                 'name' => $tmp2->{'original_title'},
-                'duration' => $tmp2->{'runtime'}, 
                 'description' => $tmp2->{'overview'},
+                'poster_path' => $tmp2->{'poster_path'},
+                'duration' => $tmp2->{'runtime'}, 
                 'genre_id' => $tmp2->{'genres'}[0]->{'name'},
                 'release_date' => $tmp2->{'release_date'},
                 'puntuation' => $tmp2->{'vote_average'},
                 'created_at' => now(),
                 'updated_at' => now()
             ]);
-        }  */
+        }  
 
         /*
         $tmp = AnimeController::store();
@@ -104,6 +107,7 @@ class DatabaseSeeder extends Seeder
 
         */
 
+        /*
         $tmp = Actorcontroller::serieActors();
 
         foreach ($tmp as $tmp2){
@@ -127,6 +131,7 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
         } 
+        */
         
     }
 }

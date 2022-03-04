@@ -18,11 +18,16 @@ class FilmController extends Controller
             $filmApi = Http::get('https://api.themoviedb.org/3/movie/' . $contador . '?api_key=9d981b068284aca44fb7530bdd218c30&language=en-US');
             array_push($apiLinks, $filmApi);
             $contador++;
-        }while($contador < 20);
+        }while($contador < 200);
         
         foreach($apiLinks as $link) {
             $filmJson = json_decode($link);
             if (isset($filmJson->{'id'})){
+                
+                if($filmJson->{'poster_path'}){
+                    $filmJson->{'poster_path'} = 'https://image.tmdb.org/t/p/w500/'.$filmJson->{'poster_path'};
+                }
+
                 $genreName = $filmJson->{'genres'}[0]->{'name'};
                 if($genreName == "Action") {
                     $filmJson->{'genres'}[0]->{'name'} = 1;

@@ -53,6 +53,8 @@ Route::get('/aboutUs', function () {
 
 Route::get('/films', [FilmController::class, 'fetchAllFilms']);
 
+Route::get('/api/films', [FilmController::class, 'store']);
+
 Route::get('/series', [SerieController::class, 'fetchAllSeries']);
 
 Route::get('/actors/films', [Actorcontroller::class , 'filmActors']);
