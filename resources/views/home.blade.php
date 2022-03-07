@@ -48,310 +48,140 @@
         <div id="series" class="carousel slide carousel-equal-heights my-4" data-bs-ride="carousel"
             data-bs-interval="false">
 
-            <div class="carousel-inner" role="listbox">           
-                <div class="carousel-item active">
-                    <div class="row">
-                        @foreach($serie as $key => $dataSerie)
-                        <div class="col d-flex justify-content-center">
-                            <a href="/detail/{{$dataSerie->id}}">
-                                <p class="text-light fs-2 p-5">{{$dataSerie->id}}</p>
-                                <!-- <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt=""> -->
-                            </a>
-                        </div>
-                        @endforeach
-                        <!--<div class="col d-flex justify-content-center">
-                            <a href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt="">
-                            </a>
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <a href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/Euphoria.jpeg')}}" alt="">
-                            </a>
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <a href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/SexEducation.jpg')}}" alt="">
-                            </a>
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <a href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/SquidGame.jpg')}}" alt="">
-                            </a>
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <a href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/EstamosMuertos.jpeg')}}" alt="">
-                            </a>
-                        </div>-->
-                    </div>
-                </div>
-
-                <div class="carousel-item">
-                    <div class="row">
-                        <div class="col d-flex justify-content-center">
-                            <a href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt="">
-                            </a>
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <a href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/Euphoria.jpeg')}}" alt="">
-                            </a>
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <a href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/SexEducation.jpg')}}" alt="">
-                            </a>
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <a href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/SquidGame.jpg')}}" alt="">
-                            </a>
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <a href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/EstamosMuertos.jpeg')}}" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="carousel-item">
-                    <div class="row">
-                        <div class="col d-flex justify-content-center">
-                            <a href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt="">
-                            </a>
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <a href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/Euphoria.jpeg')}}" alt="">
-                            </a>
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <a href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/SexEducation.jpg')}}" alt="">
-                            </a>
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <a href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/SquidGame.jpg')}}" alt="">
-                            </a>
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <a href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/EstamosMuertos.jpeg')}}" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-        <div class="row">
-                        <div class="col d-flex justify-content-center">
-                            <a href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt="">
-                            </a>
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <a href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/Euphoria.jpeg')}}" alt="">
-                            </a>
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <a href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/SexEducation.jpg')}}" alt="">
-                            </a>
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <a href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/SquidGame.jpg')}}" alt="">
-                            </a>
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <a href="{{url('/detail')}}">
-                                <img class="img-carousel" src="{{url('storage/img/EstamosMuertos.jpeg')}}" alt="">
-                            </a>
-                        </div>
-                    </div>
-        </div>
-    </div>
-
-    </div>
-    </div>
-    <a class="btn-floating" href="#series" data-bs-slide="next"><i class="fa fa-chevron-right fa-2x"
-            aria-hidden="true"></i></a>
-    </div>
-
-    <!-- PELICULAS -->
-    <h5>PELICULAS</h5>
-    <div class="container-fluid d-flex flex-row align-items-center">
-        <a class="btn-floating" href="#peliculas" data-bs-slide="prev"><i class="fa fa-chevron-left fa-2x"
-                aria-hidden="true"></i></a>
-
-        <div id="peliculas" class="carousel slide carousel-equal-heights my-4" data-bs-ride="carousel"
-            data-bs-interval="false">
             <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                    <div class="row">
-                        @foreach($film as $key => $dataFilm)
-                        <div class="col d-flex justify-content-center">
-                            <a href="/detail/{{$dataFilm->id}}">
-                                <p class="text-light fs-2 p-5">{{$dataFilm->id}}</p>
-                                <!-- <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}" alt=""> -->
+            <?php            
+                $numSeries = count($serie); //368
+                $numCarousel = round($numSeries/5); //74
+                
+                $k=0;
+                echo '<div class="carousel-item active">
+                <div class="row">';
+                for($j=0; $j < 5; $j++) {
+                        echo '<div class="col d-flex justify-content-center">
+                            <a href="/detail/'.$serie[$k]->id.'">
+                                <p class="text-light fs-2 p-5">'.$serie[$k++]->name.'</p>
+                                <!-- <img class="img-carousel" src="{{url("storage/img/Dexter.jpg")}}" alt=""> -->
                             </a>
-                        </div>
-                        @endforeach
-                        <!-- <div class="col d-flex justify-content-center"> 
-                            <img class="img-carousel" src="{{url('storage/img/agente-355.jpg')}}" alt="">
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/Encanto.jpg')}}" alt="">
-                        </div>
+                        </div>';
+                        }
 
-                        <div class="col d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/matrix.jpg')}}" alt="">
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/uncharted.jpg')}}" alt="">
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/Coco.jpg')}}" alt="">
-                        </div>-->
-                    </div>
-                </div>
-
-                <div class="carousel-item">
-                    <div class="row">
-                        <div class="col d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/agente-355.jpg')}}" alt="">
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/Encanto.jpg')}}" alt="">
-                        </div>
-
-                        <div class="col d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/matrix.jpg')}}" alt="">
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/uncharted.jpg')}}" alt="">
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/Coco.jpg')}}" alt="">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="carousel-item">
-                    <div class="row">
-                        <div class="col d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/agente-355.jpg')}}" alt="">
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/Encanto.jpg')}}" alt="">
-                        </div>
-
-                        <div class="col d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/matrix.jpg')}}" alt="">
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/uncharted.jpg')}}" alt="">
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/Coco.jpg')}}" alt="">
-                        </div>
-                    </div>
-                </div>
-
+                   echo '</div>
+                </div>';
+                for($i=5; $i < $numCarousel; $i++) {
+                    echo '<div class="carousel-item">
+                    <div class="row">';
+                    for($j=0; $j < 5; $j++) {
+                        echo '<div class="col d-flex justify-content-center">
+                            <a href="/detail/'.$serie[$k]->id.'">
+                                <p class="text-light fs-2 p-5">'.$serie[$k]->name.'</p>
+                                <!-- <img class="img-carousel" src="{{url("storage/img/Dexter.jpg")}}" alt=""> -->
+                            </a>
+                        </div>';
+                        $k++;
+                    }
+                        
+                   echo '</div>
+                </div>';
+                }
+                ?>
             </div>
         </div>
-        <a class="btn-floating" href="#peliculas" data-bs-slide="next"><i class="fa fa-chevron-right fa-2x"
+        <a class="btn-floating" href="#series" data-bs-slide="next"><i class="fa fa-chevron-right fa-2x"
                 aria-hidden="true"></i></a>
     </div>
 
-    <!-- ANIMES -->
-    <h5>ANIMES</h5>
+    <!-- PELÍCULAS -->
+    <h5>PELÍCULAS</h5>
     <div class="container-fluid d-flex flex-row align-items-center">
+        <a class="btn-floating" href="#films" data-bs-slide="prev"><i class="fa fa-chevron-left fa-2x"
+                aria-hidden="true"></i></a>
 
+        <div id="films" class="carousel slide carousel-equal-heights my-4" data-bs-ride="carousel"
+            data-bs-interval="false">
+
+            <div class="carousel-inner" role="listbox">
+            <?php            
+                $numFilms = count($film);
+                $numCarousel = round($numFilms/5);
+                
+                $k=0;
+                echo '<div class="carousel-item active">
+                <div class="row">';
+                for($j=0; $j < 5; $j++) {
+                        echo '<div class="col d-flex justify-content-center">
+                            <a href="/detail/'.$film[$k]->id.'">
+                                <p class="text-light fs-2 p-5">'.$film[$k++]->name.'</p>
+                            </a>
+                        </div>';
+                        }
+
+                   echo '</div>
+                </div>';
+                for($i=5; $i < $numCarousel; $i++) {
+                    echo '<div class="carousel-item">
+                    <div class="row">';
+                    for($j=0; $j < 5; $j++) {
+                        echo '<div class="col d-flex justify-content-center">
+                            <a href="/detail/'.$film[$k]->id.'">
+                                <p class="text-light fs-2 p-5">'.$film[$k]->name.'</p>
+                            </a>
+                        </div>';
+                        $k++;
+                    }
+                        
+                   echo '</div>
+                </div>';
+                }
+                ?>
+            </div>
+        </div>
+        <a class="btn-floating" href="#films" data-bs-slide="next"><i class="fa fa-chevron-right fa-2x"
+                aria-hidden="true"></i></a>
+    </div>
+
+   <!-- ANIME -->
+   <h5>ANIME</h5>
+    <div class="container-fluid d-flex flex-row align-items-center">
         <a class="btn-floating" href="#animes" data-bs-slide="prev"><i class="fa fa-chevron-left fa-2x"
                 aria-hidden="true"></i></a>
 
         <div id="animes" class="carousel slide carousel-equal-heights my-4" data-bs-ride="carousel"
             data-bs-interval="false">
+
             <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                    <div class="row">
-                        @foreach($anime as $key => $dataAnime)
-                        <div class="col d-flex justify-content-center">
-                            <a href="/detail/{{$dataAnime->id}}">
-                                <p class="text-light fs-2 p-5">{{$dataAnime->id}}</p>
-                                <!-- <img class="img-carousel" src="{{url('storage/img/Boku.jpg')}}" alt=""> -->
+            <?php            
+                $numAnimes = count($anime);
+                $numCarousel = round($numAnimes/5);
+                
+                $k=0;
+                echo '<div class="carousel-item active">
+                <div class="row">';
+                for($j=0; $j < 5; $j++) {
+                        echo '<div class="col d-flex justify-content-center">
+                            <a href="/detail/'.$anime[$k]->id.'">
+                                <p class="text-light fs-2 p-5">'.$anime[$k++]->name.'</p>
                             </a>
-                        </div>
-                        @endforeach
-                        <!-- <div class="col d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/Boku.jpg')}}" alt="">
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/Kimetsu.jpg')}}" alt="">
-                        </div>
+                        </div>';
+                        }
 
-                        <div class="col d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/OnePiece.jpg')}}" alt="">
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/Shingeki.jpg')}}" alt="">
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/FoodWars.jpeg')}}" alt="">
-                        </div> -->
-                    </div>
-                </div>
-
-                <div class="carousel-item">
-                    <div class="row">
-                        <div class="col d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/Boku.jpg')}}" alt="">
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/Kimetsu.jpg')}}" alt="">
-                        </div>
-
-                        <div class="col d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/OnePiece.jpg')}}" alt="">
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/Shingeki.jpg')}}" alt="">
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/FoodWars.jpeg')}}" alt="">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="carousel-item">
-                    <div class="row">
-                        <div class="col d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/Boku.jpg')}}" alt="">
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/Kimetsu.jpg')}}" alt="">
-                        </div>
-
-                        <div class="col d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/OnePiece.jpg')}}" alt="">
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/Shingeki.jpg')}}" alt="">
-                        </div>
-                        <div class="col d-flex justify-content-center">
-                            <img class="img-carousel" src="{{url('storage/img/FoodWars.jpeg')}}" alt="">
-                        </div>
-                    </div>
-                </div>
-
+                   echo '</div>
+                </div>';
+                for($i=5; $i < $numCarousel; $i++) {
+                    echo '<div class="carousel-item">
+                    <div class="row">';
+                    for($j=0; $j < 5; $j++) {
+                        echo '<div class="col d-flex justify-content-center">
+                            <a href="/detail/'.$anime[$k]->id.'">
+                                <p class="text-light fs-2 p-5">'.$anime[$k]->name.'</p>
+                            </a>
+                        </div>';
+                        $k++;
+                    }
+                        
+                   echo '</div>
+                </div>';
+                }
+                ?>
             </div>
         </div>
         <a class="btn-floating" href="#animes" data-bs-slide="next"><i class="fa fa-chevron-right fa-2x"
