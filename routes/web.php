@@ -51,13 +51,21 @@ Route::get('/aboutUs', function () {
     return view('aboutUs');
 });
 
-Route::get('/films', [FilmController::class, 'fetchAllFilms']);
+Route::get('/films', [FilmController::class, 'store']);
+//Route::get('/films', [FilmController::class, 'fetchAllFilms']);
 
+<<<<<<< HEAD
 Route::get('/api/films', [FilmController::class, 'store']);
 
 Route::get('/series', [SerieController::class, 'fetchAllSeries']);
+=======
+//Route::get('/series', [SerieController::class, 'fetchAllSeries']);
+Route::get('/series', [SerieController::class, 'store']);
+>>>>>>> 1ec2d0f21ec83ff29f6fb140b47e1de7fad7d064
 
 Route::get('/actors/films', [Actorcontroller::class , 'filmActors']);
 
 Route::get('/actors/series', [Actorcontroller::class , 'serieActors']);
+
+
 

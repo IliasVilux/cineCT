@@ -71,6 +71,7 @@ class Actorcontroller extends Controller
         return $allActors; 
     }
 
+    
     public static function serieActors() 
     {
         $serie = new SerieController();
@@ -112,6 +113,5 @@ class Actorcontroller extends Controller
         */
 
         return $allActors;
-
     }
 }
