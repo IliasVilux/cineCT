@@ -83,7 +83,7 @@ class FilmController extends Controller
     public function returnFilms($id) {
         $films = Film::find($id);
         if (!is_null($films)) {
-            return view('detail', ['film' => $films]);
+            return view('detailFilms', ['film' => $films]);
         } else {
             return response('No encontrado', 404);
         }

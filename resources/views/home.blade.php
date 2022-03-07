@@ -58,7 +58,7 @@
                 <div class="row">';
                 for($j=0; $j < 5; $j++) {
                         echo '<div class="col d-flex justify-content-center">
-                            <a href="/detail/'.$serie[$k]->id.'">
+                            <a href="/detailSeries/'.$serie[$k]->id.'">
                                 <p class="text-light fs-2 p-5">'.$serie[$k++]->name.'</p>
                                 <!-- <img class="img-carousel" src="{{url("storage/img/Dexter.jpg")}}" alt=""> -->
                             </a>
@@ -72,7 +72,7 @@
                     <div class="row">';
                     for($j=0; $j < 5; $j++) {
                         echo '<div class="col d-flex justify-content-center">
-                            <a href="/detail/'.$serie[$k]->id.'">
+                            <a href="/detailSeries/'.$serie[$k]->id.'">
                                 <p class="text-light fs-2 p-5">'.$serie[$k]->name.'</p>
                                 <!-- <img class="img-carousel" src="{{url("storage/img/Dexter.jpg")}}" alt=""> -->
                             </a>
@@ -109,7 +109,7 @@
                 <div class="row">';
                 for($j=0; $j < 5; $j++) {
                         echo '<div class="col d-flex justify-content-center">
-                            <a href="/detail/'.$film[$k]->id.'">
+                            <a href="/detailFilms/'.$film[$k]->id.'">
                                 <p class="text-light fs-2 p-5">'.$film[$k++]->name.'</p>
                             </a>
                         </div>';
@@ -122,7 +122,7 @@
                     <div class="row">';
                     for($j=0; $j < 5; $j++) {
                         echo '<div class="col d-flex justify-content-center">
-                            <a href="/detail/'.$film[$k]->id.'">
+                            <a href="/detailFilms/'.$film[$k]->id.'">
                                 <p class="text-light fs-2 p-5">'.$film[$k]->name.'</p>
                             </a>
                         </div>';
@@ -158,7 +158,7 @@
                 <div class="row">';
                 for($j=0; $j < 5; $j++) {
                         echo '<div class="col d-flex justify-content-center">
-                            <a href="/detail/'.$anime[$k]->id.'">
+                            <a href="/detailAnimes/'.$anime[$k]->id.'">
                                 <p class="text-light fs-2 p-5">'.$anime[$k++]->name.'</p>
                             </a>
                         </div>';
@@ -171,7 +171,7 @@
                     <div class="row">';
                     for($j=0; $j < 5; $j++) {
                         echo '<div class="col d-flex justify-content-center">
-                            <a href="/detail/'.$anime[$k]->id.'">
+                            <a href="/detailAnimes/'.$anime[$k]->id.'">
                                 <p class="text-light fs-2 p-5">'.$anime[$k]->name.'</p>
                             </a>
                         </div>';

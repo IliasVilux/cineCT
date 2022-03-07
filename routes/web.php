@@ -41,12 +41,22 @@ Route::get('/register', function () {
 Route::get('/contentSeries', function () {
     return view('contentSeries');
 });
+
 Route::get('/contentFilms', function () {
     return view('contentFilms');
 });
+
+
 Route::get('/contentAnimes', function () {
     return view('contentAnimes');
 });
+
+Route::get('/detailSeries/{id}', [SerieController::class,  'returnSeries']);
+
+Route::get('/detailFilms/{id}', [FilmController::class,  'returnFilms']);
+
+Route::get('/detailAnimes/{id}', [AnimeController::class,  'returnAnimes']);
+
 /*Route::get('/detail/{id}/{name}', function($id, $name){
 
     $series = DB::table('series')->get();
@@ -62,8 +72,6 @@ Route::get('/contentAnimes', function () {
         Route::get('/detail/{id}/{name}', [AnimeController::class,  'returnAnimes']);
     }
 });*/
-
-Route::get('/detail/{id}', [SerieController::class,  'returnSeries', FilmController::class,  'returnFilms', AnimeController::class,  'returnAnimes']);
 
 Route::get('/top', function () {
     return view('top');

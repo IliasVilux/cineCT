@@ -102,7 +102,7 @@ class AnimeController extends Controller
     public function returnAnimes($id) {
         $animes = Anime::find($id);
         if (!is_null($animes)) {
-            return view('detail', ['anime' => $animes]);
+            return view('detailAnimes', ['anime' => $animes]);
         } else {
             return response('No encontrado', 404);
         }

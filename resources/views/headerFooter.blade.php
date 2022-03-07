@@ -103,9 +103,9 @@
                 <div class="d-inline-block col-12">
                     <h5 class="text-uppercase fs-4">Links</h5>
                         <a href="{{url('/')}}" class="footer-links text-white fs-5">Home</a>
-                        <a href="{{url('/content')}}" class="footer-links text-white fs-5">Películas</a>
-                        <a href="{{url('/content')}}" class="footer-links text-white fs-5">Series</a>
-                        <a href="{{url('/content')}}" class="footer-links text-white fs-5">Anime</a>
+                        <a href="{{url('/contentFilms')}}" class="footer-links text-white fs-5">Películas</a>
+                        <a href="{{url('/contentSeries')}}" class="footer-links text-white fs-5">Series</a>
+                        <a href="{{url('/contentAnime')}}" class="footer-links text-white fs-5">Anime</a>
                         <a href="{{url('/top')}}" class="footer-links text-white fs-5">Top</a>
                         <a href="{{url('/search')}}" class="footer-links text-white fs-5">Buscador</a>
                         <a href="{{url('/list')}}" class="footer-links text-white fs-5">Mis Listas</a>
