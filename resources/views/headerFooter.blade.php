@@ -12,8 +12,6 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/1f7457abdb.js"></script>
-    <!-- JS -->
-    <script src="../storage/js/header.js"></script>
     <title>Cinect</title>
     <link rel="stylesheet" href="../storage/css/general.css">
     <link rel="stylesheet" href="../storage/css/header.css">
@@ -22,7 +20,7 @@
 
 <body>
     <!-- START HEADER -->
-    <header class="navbar-dark fixed-top" id="navbar_top">
+    <header class="navbar-dark sticky-top" id="navbar_top">
         <!-- START NAVBAR -->
         <nav class="navbar navbar-expand-xs">
             <div class="container-fluid">

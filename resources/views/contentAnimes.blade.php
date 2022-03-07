@@ -38,29 +38,29 @@
 </section>
 <section class="d-flex flex-wrap justify-content-around align-items-center">
         <button class="button-category">
-            <p class="m-0">Acción / Aventura</p>
+            <p class="m-0">Samurai</p>
         </button>
         <button class="button-category">
-            <p class="m-0">Animación / Familia</p>
+            <p class="m-0">Shounen</p>
         </button>
         <button class="button-category">
-            <p class="m-0">Comedia</p>
+            <p class="m-0">Seinen</p>
         </button>
         <button class="button-category">
-            <p class="m-0">Terror / Suspense</p>
+            <p class="m-0">Shoujo</p>
         </button>
 
         <button class="button-category">
-            <p class="m-0">Romance</p>
+            <p class="m-0">Demons</p>
         </button>
         <button class="button-category">
-            <p class="m-0">Ciencia ficción / Fantasía</p>
+            <p class="m-0">Sci-fi</p>
         </button>
         <button class="button-category">
-            <p class="m-0">Drama / Misterio</p>
+            <p class="m-0">Mecha</p>
         </button>
         <button class="button-category">
-            <p class="m-0">Bélica / Crimen</p>
+            <p class="m-0">Josei</p>
         </button>
 </section>
 <section class="container-fluid d-flex align-items-center">
