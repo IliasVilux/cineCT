@@ -72,6 +72,7 @@ class DatabaseSeeder extends Seeder
             }
             DB::table('animes')->insert([
                 'name' => $tmp2->{'data'}->{'title'},
+                'original_id' => $tmp2->{'data'}->{'mal_id'},
                 'description' => $tmp2->{'data'}->{'synopsis'},
                 'poster_path' => $tmp2->{'data'}->{'images'}->{'webp'}->{'large_image_url'},
                 'trailer_link' => $tmp2->{'data'}->{'trailer'}->{'youtube_id'},
@@ -104,21 +105,38 @@ class DatabaseSeeder extends Seeder
         foreach ($tmp[2] as $tmpDos2){
             array_push($durationEpisode, $tmpDos2);
         }
-        $idEpisode = array();
+        $idAnime = array();
         foreach ($tmp[1] as $tmpTres3){
-            array_push($idEpisode, $tmpTres3);
+            array_push($idAnime, $tmpTres3);
         }
         $contEpisodes = 0;
-        foreach ($tmp[0] as $tmp2){
-            DB::table('episodes')->insert([
-                'title' => $tmp2->{'title'},
-                'duration' => $durationEpisode[$contEpisodes],
-                'description' => $tmp2->{'title_japanese'},
-                'anime_id' => $idEpisode[$contEpisodes],
-                'created_at' => now(),
-                'updated_at' => now()
-            ]);
-            $contEpisodes++;
+        $contAnime = 0;
+        $numRandom = 0;
+        $numRandom = rand(-10, 10);
+        for($i=0; $i<=count($tmp[0]); $i++){
+            $durationFinal = $durationEpisode[$contEpisodes] + $numRandom;
+            if ($tmp[0][$i]->{'mal_id'} < $tmp[0][$i+1]->{'mal_id'}){
+                DB::table('episodes')->insert([
+                    'title' => $tmp[0][$i]->{'title'},
+                    'duration' => $durationFinal,
+                    'description' => $tmp[0][$i]->{'title_japanese'},
+                    'anime_id' => $idAnime[$contAnime],
+                    'aired' => $tmp[0][$i]->{'aired'},
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]);
+            } else if ($tmp[0][$i]->{'mal_id'} > $tmp[0][$i+1]->{'mal_id'}){
+                $contAnime++;
+                DB::table('episodes')->insert([
+                    'title' => $tmp[0][$i]->{'title'},
+                    'duration' => $durationEpisode[$contEpisodes],
+                    'description' => $tmp[0][$i]->{'title_japanese'},
+                    'anime_id' => $idAnime[$contAnime],
+                    'aired' => $tmp[0][$i]->{'aired'},
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]);
+            }
         }
     }
 }

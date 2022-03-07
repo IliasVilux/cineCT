@@ -11,19 +11,27 @@ class AnimeController extends Controller
     public static function store(){
         $contador = 1;
         $apiLinks = array();
+        $episodesLinks = array();
         $allAnimes = array();
 
         do{
             $animeApi = Http::get('https://api.jikan.moe/v4/anime/' . $contador);
+            $espisodesApi = Http::get('https://api.jikan.moe/v4/anime/' . $contador . "/episodes");
             array_push($apiLinks, $animeApi);
+            array_push($episodesLinks, $espisodesApi);
             $contador++;
             sleep(4);
-        }while($contador < 12);
+        }while($contador < 20);
 
+        $contEpisode = 0;
         foreach($apiLinks as $link) {
             $animeJson = json_decode($link);
-            if (isset($animeJson->{'data'}->{'mal_id'}) && $animeJson->{'data'}->{'type'} == 'TV'){
+            $episodeJson = json_decode($episodesLinks[$contEpisode]);
+            if (isset($animeJson->{'data'}->{'mal_id'}) && $animeJson->{'data'}->{'type'} == 'TV' && count($episodeJson->{'data'}) > 0){
                 $animeJson->{'data'}->{'duration'} = substr($animeJson->{'data'}->{'duration'}, 0, 2);
+                if (isset($animeJson->{'data'}->{'episodes'})){
+                    $animeJson->{'data'}->{'episodes'} = count($episodeJson->{'data'});
+                } else { $animeJson->{'data'}['episodes'] = count($episodeJson->{'data'}); }
                 if (!empty($animeJson->{'data'}->{'themes'})){
                     $themeName = $animeJson->{'data'}->{'themes'}[0]->{'name'};
                     switch ($themeName){
@@ -60,6 +68,7 @@ class AnimeController extends Controller
                     array_push($allAnimes, $animeJson);
                 }
             }
+            $contEpisode++;
         }
 
         /* foreach ($allAnimes as $asd){
@@ -74,6 +83,7 @@ class AnimeController extends Controller
             echo "<div style='width: 30%'>";
             echo "<img src='" . $asd->{'data'}->{'images'}->{'webp'}->{'large_image_url'} . "'><br>";
             echo $asd->{'data'}->{'title'} . "<br>";
+            echo $asd->{'data'}->{'mal_id'} . "<br>";
             echo $asd->{'data'}->{'duration'} . "<br>";
             echo $asd->{'data'}->{'synopsis'} . "<br>";
             if (isset($tmp2->{'data'}->{'themes'}[0]->{'name'})){

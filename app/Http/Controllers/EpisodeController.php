@@ -23,9 +23,6 @@ class EpisodeController extends Controller
             $episodeApi = Http::get('https://api.jikan.moe/v4/anime/' . $idLink->original_id . '/episodes');
             array_push($apiLinks, $episodeApi);
             array_push($id_animes, $idLink->original_id);
-
-            $numRandom = rand(-10, 10);
-            $idLink->duration += $numRandom;
             array_push($duration_animes, $idLink->duration);
             sleep(4);
         }
