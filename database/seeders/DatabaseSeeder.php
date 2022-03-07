@@ -39,10 +39,7 @@ class DatabaseSeeder extends Seeder
                 'genre_id' => $tmp2->{'genres'}[0]->{'name'},
                 'name' => $tmp2->{'name'}, 
                 'description' => $tmp2->{'overview'},
-<<<<<<< HEAD
-=======
                 'poster_path' => $tmp2->{'poster_path'},
->>>>>>> 1ec2d0f21ec83ff29f6fb140b47e1de7fad7d064
                 'release_date' => $tmp2->{'first_air_date'},
                 'seasons' => $tmp2->{'number_of_seasons'},
                 'total_episodes' => $tmp2->{'number_of_episodes'},
@@ -52,13 +49,9 @@ class DatabaseSeeder extends Seeder
             ]);
         } 
         */
-<<<<<<< HEAD
-
-=======
         
 
         /*
->>>>>>> 1ec2d0f21ec83ff29f6fb140b47e1de7fad7d064
         $tmp = FilmController::store();
         foreach ($tmp as $tmp2){
             DB::table('films')->insert([
@@ -66,10 +59,7 @@ class DatabaseSeeder extends Seeder
                 'name' => $tmp2->{'original_title'},
                 'description' => $tmp2->{'overview'},
                 'poster_path' => $tmp2->{'poster_path'},
-<<<<<<< HEAD
                 'duration' => $tmp2->{'runtime'}, 
-=======
->>>>>>> 1ec2d0f21ec83ff29f6fb140b47e1de7fad7d064
                 'genre_id' => $tmp2->{'genres'}[0]->{'name'},
                 'release_date' => $tmp2->{'release_date'},
                 'puntuation' => $tmp2->{'vote_average'},
@@ -77,10 +67,7 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => now()
             ]);
         }  
-<<<<<<< HEAD
-=======
         */
->>>>>>> 1ec2d0f21ec83ff29f6fb140b47e1de7fad7d064
 
         /*
         $tmp = AnimeController::store();
@@ -124,9 +111,8 @@ class DatabaseSeeder extends Seeder
 
         */
 
-<<<<<<< HEAD
         /*
-=======
+
         /*-------------------------------------------------------------------------------------------------------*/
         /*
         $tmp = Actorcontroller::filmActors();
@@ -153,7 +139,6 @@ class DatabaseSeeder extends Seeder
         } 
         */
         
->>>>>>> 1ec2d0f21ec83ff29f6fb140b47e1de7fad7d064
         $tmp = Actorcontroller::serieActors();
         foreach ($tmp as $tmp2){
             if(count($tmp2->{'cast'}) > 2){
@@ -176,7 +161,7 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
         } 
-        */
+        
         
 
         /*-------------------------------------------------------------------------------------------------------*/
