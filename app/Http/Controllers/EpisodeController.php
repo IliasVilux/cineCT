@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -59,6 +60,58 @@ class EpisodeController extends Controller
         array_push($tresArrays, $duration_animes);
 
         return $tresArrays;
+    }
+
+    public static function seriesEpisode()
+    {
+        $serie = new SerieController;
+        $series = $serie::fetchAllSeries();
+
+        $allseriesFromApiWithFiltred = new SerieController();
+        $seriesWithFilter = $allseriesFromApiWithFiltred::store();      
+
+        $allSerieEpisodes = array();
+
+        foreach($series as $serie){
+            $episodeSerieApi = Http::get('https://api.themoviedb.org/3/tv/'.$serie->original_id.'/season/1?api_key=9d981b068284aca44fb7530bdd218c30&language=en-EN');
+            if($serie->original_id >= 10)
+            {
+                break;
+            }
+            array_push($allSerieEpisodes, $episodeSerieApi);
+        }
+
+        
+        foreach($allSerieEpisodes as $serieEpisode)
+        {
+            $episodeJson = json_decode($serieEpisode);
+            $episodeCount = count($episodeJson->{'episodes'});
+            if(isset($episodeJson->{'episodes'}) && $episodeCount > 0){
+                foreach($seriesWithFilter as $serieManipulated){
+                    if(isset($serieManipulated->{'last_episode_to_air'})){
+
+                        if($serieManipulated->{'last_episode_to_air'}->{'name'} == end($episodeJson->{'episodes'}->{'name'})){
+
+                        }
+                        echo $serieManipulated->{'last_episode_to_air'}->{'name'};
+                        
+                        /*
+                        for ($i=0; $i <$episodeCount ; $i++) { 
+                            echo $episodeJson->{'episodes'}[$i]->{'episode_number'}.' - '.$episodeJson->{'episodes'}[$i]->{'name'}.'<br>';
+                        }
+                        echo "-------------------------------<br>";
+                        */
+
+                    }
+                   
+                }
+
+                
+            }
+        }
+
+
+
     }
     
 }

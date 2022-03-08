@@ -54,4 +54,6 @@ Route::get('/aboutUs', function () {
 
 Route::get('/asd', [EpisodeController::class, 'store']);
 
+Route::get('/asdaa', [EpisodeController::class, 'seriesEpisode']);
+
 Route::get('/asda', [CharacterController::class, 'store']);

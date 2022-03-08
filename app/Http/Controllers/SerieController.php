@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Serie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -76,5 +77,11 @@ class SerieController extends Controller
 
         return $allSeries;
 
+    }
+
+    public static function fetchAllSeries()
+    {
+        $animes = Serie::all();
+        return $animes;
     }
 }
