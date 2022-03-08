@@ -37,7 +37,7 @@
                         <i class="fas fa-user-circle fs-4 pe-1"></i> <p class="d-none d-sm-flex m-0">Usuario</p>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-user-circle"></i>Perfil</a></li>
+                            <li><a class="dropdown-item" href="{{url('/profile/profile')}}"><i class="fas fa-user-circle"></i>Perfil</a></li>
                             <li><a class="dropdown-item" href="#"><i class="fas fa-list"></i>Mis listas</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i>Cerrar sessión</a></li>
@@ -57,13 +57,13 @@
                                 <a href="{{url('/')}}" class="footer-links text-light text-uppercase fs-3"><i class="fas fa-home pe-2"></i>Home</a>
                             </li>
                             <li>
-                                <a href="{{url('/contentFilms')}}" class="footer-links text-light text-uppercase fs-3"><i class="fas fa-film pe-2 fa-2x"></i>Películas</a>
+                                <a href="{{url('/content/contentFilms')}}" class="footer-links text-light text-uppercase fs-3"><i class="fas fa-film pe-2 fa-2x"></i>Películas</a>
                             </li>
                             <li>
-                                <a href="{{url('/contentSeries')}}" class="footer-links text-light text-uppercase fs-3"><i class="fas fa-tv pe-2"></i>Series</a>
+                                <a href="{{url('/content/contentSeries')}}" class="footer-links text-light text-uppercase fs-3"><i class="fas fa-tv pe-2"></i>Series</a>
                             </li>
                             <li>
-                                <a href="{{url('/contentAnimes')}}" class="footer-links text-light text-uppercase fs-3"><i class="fas fa-dragon pe-2"></i>Anime</a>
+                                <a href="{{url('/content/contentAnimes')}}" class="footer-links text-light text-uppercase fs-3"><i class="fas fa-dragon pe-2"></i>Anime</a>
                             </li>
                             <li>
                                 <a href="{{url('/top')}}" class="footer-links text-light text-uppercase fs-3"><i class="fas fa-sort-amount-up-alt pe-2"></i>Top</a>
@@ -101,9 +101,9 @@
                 <div class="d-inline-block col-12">
                     <h5 class="text-uppercase fs-4">Links</h5>
                         <a href="{{url('/')}}" class="footer-links text-white fs-5">Home</a>
-                        <a href="{{url('/contentFilms')}}" class="footer-links text-white fs-5">Películas</a>
-                        <a href="{{url('/contentSeries')}}" class="footer-links text-white fs-5">Series</a>
-                        <a href="{{url('/contentAnime')}}" class="footer-links text-white fs-5">Anime</a>
+                        <a href="{{url('/content/contentFilms')}}" class="footer-links text-white fs-5">Películas</a>
+                        <a href="{{url('/content/contentSeries')}}" class="footer-links text-white fs-5">Series</a>
+                        <a href="{{url('/content/contentAnime')}}" class="footer-links text-white fs-5">Anime</a>
                         <a href="{{url('/top')}}" class="footer-links text-white fs-5">Top</a>
                         <a href="{{url('/search')}}" class="footer-links text-white fs-5">Buscador</a>
                         <a href="{{url('/list')}}" class="footer-links text-white fs-5">Mis Listas</a>
