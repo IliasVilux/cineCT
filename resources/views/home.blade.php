@@ -50,8 +50,8 @@
 
             <div class="carousel-inner" role="listbox">
             <?php            
-                $numSeries = count($serie); //368
-                $numCarousel = round($numSeries/5); //74
+                $numSeries = count($serie); //338
+                $numCarousel = round($numSeries/5); // 68
                 
                 $k=0;
                 echo '<div class="carousel-item active">
@@ -67,7 +67,7 @@
 
                    echo '</div>
                 </div>';
-                for($i=5; $i < $numCarousel; $i++) {
+                for($i=2; $i < $numCarousel; $i++) {
                     echo '<div class="carousel-item">
                     <div class="row">';
                     for($j=0; $j < 5; $j++) {
@@ -117,7 +117,7 @@
 
                    echo '</div>
                 </div>';
-                for($i=5; $i < $numCarousel; $i++) {
+                for($i=2; $i < $numCarousel; $i++) {
                     echo '<div class="carousel-item">
                     <div class="row">';
                     for($j=0; $j < 5; $j++) {
@@ -150,8 +150,8 @@
 
             <div class="carousel-inner" role="listbox">
             <?php            
-                $numAnimes = count($anime);
-                $numCarousel = round($numAnimes/5);
+               $numAnimes = count($anime);
+               $numCarousel = round($numAnimes/5);
                 
                 $k=0;
                 echo '<div class="carousel-item active">
@@ -166,7 +166,7 @@
 
                    echo '</div>
                 </div>';
-                for($i=5; $i < $numCarousel; $i++) {
+                for($i=2; $i < $numCarousel; $i++) {
                     echo '<div class="carousel-item">
                     <div class="row">';
                     for($j=0; $j < 5; $j++) {

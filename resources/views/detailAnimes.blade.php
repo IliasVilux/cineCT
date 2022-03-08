@@ -8,7 +8,43 @@
     <a href="{{ url('/') }}" class="btn btn-primary" title="Home">
         Home
     </a>
+
     <h1 class="detail-title">{{$anime->name}}</h1>
+
+    <div class="d-flex flex-row align-items-center justify-content-around">
+        <div class="d-flex flex-column align-items-center">
+            <h3><b>Genero</b></h3>
+            <strong class="fw-bold fs-3"> {{$anime->genre_id}}</strong>
+        </div>
+        <div class="d-flex flex-column align-items-center">
+            <h3><b>Fecha de lanzamiento</b></h3>
+            <strong class="fw-bold fs-3"> {{$anime->release_date}}</strong>
+        </div>
+        <div class="d-flex flex-column align-items-center">
+            <h3><b>Duración</b></h3>
+            <strong class="fw-bold fs-3"> {{$anime->duration}} min</strong>
+        </div>
+
+        <div class="d-flex flex-column align-items-center">
+            <h3><b>Episodios</b></h3>
+            <strong class="fw-bold fs-3"> {{$anime->total_episodes}}</strong>
+        </div>
+        <div class="d-flex flex-column align-items-center">
+            <h3><b>Puntuación</b></h3>
+            <div class="d-flex flex-row">
+                <h4><i class="fas fa-star"></i><strong class="fw-bold fs-3"> {{$anime->puntuation}}</strong>/10<h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex flex-row justify-content-around mt-4">
+        @if($anime->poster_path == NULL) 
+        <img src="{{url('storage/img/NoImg.jpg')}}" class="img-thumbnail" alt="">
+        @else 
+        <img src="{{$anime->poster_path}}" class="img-thumbnail" alt="Img {{$anime->name}}">
+        @endif
+    </div>
+
     <div class="rating-wrapper">
 
         <label for="5-star-rating" class="star-rating">
@@ -33,72 +69,19 @@
 
     </div>
 
-    <div class="container mt-5">
-        <!-- START CAROUSEL -->
-        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="{{url('storage/img/img.png')}}" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>First slide label</h5>
-                        <p>Some representative placeholder content for the first slide.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="{{url('storage/img/img2.png')}}" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Second slide label</h5>
-                        <p>Some representative placeholder content for the second slide.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="{{url('storage/img/img3.png')}}" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Third slide label</h5>
-                        <p>Some representative placeholder content for the third slide.</p>
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-        <!-- END CAROUSEL -->
-</section>
-<!-- START CONTENT -->
-<section>
-    <h3><b>Genero (id):</b> {{$anime->genre_id}}</h3>
-    <h3><b>Fecha de lanzamiento:</b> {{$anime->release_date}}</h3>
-    <h3><b>Temporadas:</b> {{$anime->duration}}</h3>
-    <h3><b>Episodios:</b> {{$anime->total_episodes}}</h3>
-    <h3><b>Puntucación:</b> {{$anime->puntuation}}</h3>
-    <h3><b>Creado:</b> {{$anime->created_at}}</h3>
-    <h3><b>Ultima actualización:</b> {{$anime->updated_at}}</h3>
+        <p class="description fs-2 pt-5">{{$anime->description}}</p>
 
-    <p class="fs-2">{{$anime->description}}</p>
+         <!-- <h3><b>Creado:</b> {{$anime->created_at}}</h3>
+        <h3><b>Ultima actualización:</b> {{$anime->updated_at}}</h3> -->
+
 </section>
-<!-- END CONTENT -->
+
 <!-- START COMMMENT SECTION -->
 <section class="gradient-custom">
     <div class="container my-5 py-5">
         <div class="row d-flex justify-content-center">
             <div class="col-12">
-                <div class="card card-comment">
+                <div class="card card-comment bg-dark">
                     <div class="card-body card-body-comment p-4">
                         <h4 class="text-center mb-4 pb-2">Nested comments section</h4>
 
