@@ -38,24 +38,24 @@ Route::get('/register', function () {
     return view('register');
 });
 
-Route::get('/contentSeries', function () {
-    return view('contentSeries');
+Route::get('/content/contentSeries', function () {
+    return view('/content/contentSeries');
 });
 
-Route::get('/contentFilms', function () {
-    return view('contentFilms');
+Route::get('/content/contentFilms', function () {
+    return view('/content/contentFilms');
 });
 
 
-Route::get('/contentAnimes', function () {
-    return view('contentAnimes');
+Route::get('/content/contentAnimes', function () {
+    return view('/content/contentAnimes');
 });
 
-Route::get('/detailSeries/{id}', [SerieController::class,  'returnSeries']);
+Route::get('/detail/detailSeries/{id}', [SerieController::class,  'returnSeries']);
 
-Route::get('/detailFilms/{id}', [FilmController::class,  'returnFilms']);
+Route::get('/detail/detailFilms/{id}', [FilmController::class,  'returnFilms']);
 
-Route::get('/detailAnimes/{id}', [AnimeController::class,  'returnAnimes']);
+Route::get('/detail/detailAnimes/{id}', [AnimeController::class,  'returnAnimes']);
 
 /*Route::get('/detail/{id}/{name}', function($id, $name){
 
@@ -87,4 +87,12 @@ Route::get('/list', function () {
 
 Route::get('/aboutUs', function () {
     return view('aboutUs');
+});
+
+Route::get('/profile/profile', function () {
+    return view('/profile/profile');
+});
+
+Route::get('/profile/profileImg', function () {
+    return view('/profile/profileImg');
 });
