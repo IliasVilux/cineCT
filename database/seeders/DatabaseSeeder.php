@@ -6,6 +6,7 @@ use App\Http\Controllers\GenreController;
 use App\Http\Controllers\SerieController;
 use App\Http\Controllers\FilmController;
 use App\Http\Controllers\AnimeController;
+use App\Http\Controllers\ImageController;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -60,6 +61,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }  */
 
+        /*
         $tmp = AnimeController::store();
         foreach ($tmp as $tmp2){
             DB::table('animes')->insert([
@@ -70,6 +72,16 @@ class DatabaseSeeder extends Seeder
                 'genre_id' => $tmp2->{'genres'}[0]->{'name'},
                 'release_date' => $tmp2->{'release_date'},
                 'puntuation' => $tmp2->{'vote_average'},
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+        } 
+        */
+
+        $tmp = ImageController::profileImageStore();
+        foreach ($tmp as $tmp2){
+            DB::table('profile_images')->insert([
+                'path' => $tmp2,
                 'created_at' => now(),
                 'updated_at' => now()
             ]);
