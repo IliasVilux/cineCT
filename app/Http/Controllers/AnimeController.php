@@ -9,7 +9,7 @@ use App\Models\Anime;
 class AnimeController extends Controller
 {
     public static function store(){
-        $contador = 1;
+        $contador = 20;
         $apiLinks = array();
         $episodesLinks = array();
         $allAnimes = array();
@@ -21,7 +21,7 @@ class AnimeController extends Controller
             array_push($episodesLinks, $espisodesApi);
             $contador++;
             sleep(4);
-        }while($contador < 20);
+        }while($contador < 100);
 
         $contEpisode = 0;
         foreach($apiLinks as $link) {
@@ -31,7 +31,7 @@ class AnimeController extends Controller
                 $animeJson->{'data'}->{'duration'} = substr($animeJson->{'data'}->{'duration'}, 0, 2);
                 if (isset($animeJson->{'data'}->{'episodes'})){
                     $animeJson->{'data'}->{'episodes'} = count($episodeJson->{'data'});
-                } else { $animeJson->{'data'}['episodes'] = count($episodeJson->{'data'}); }
+                }else{ $animeJson->{'data'}->{'episodes'} = count($episodeJson->{'data'}); }
                 if (!empty($animeJson->{'data'}->{'themes'})){
                     $themeName = $animeJson->{'data'}->{'themes'}[0]->{'name'};
                     switch ($themeName){
@@ -101,7 +101,7 @@ class AnimeController extends Controller
         
         return $allAnimes;
     }
-    public function index()
+    public static function index()
     {
         $animes = Anime::all();
         return $animes;
