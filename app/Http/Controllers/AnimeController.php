@@ -21,7 +21,7 @@ class AnimeController extends Controller
             array_push($episodesLinks, $espisodesApi);
             $contador++;
             sleep(4);
-        }while($contador < 20);
+        }while($contador < 100);
 
         $contEpisode = 0;
         foreach($apiLinks as $link) {
@@ -31,7 +31,7 @@ class AnimeController extends Controller
                 $animeJson->{'data'}->{'duration'} = substr($animeJson->{'data'}->{'duration'}, 0, 2);
                 if (isset($animeJson->{'data'}->{'episodes'})){
                     $animeJson->{'data'}->{'episodes'} = count($episodeJson->{'data'});
-                } else { $animeJson->{'data'}['episodes'] = count($episodeJson->{'data'}); }
+                } else { $animeJson->{'data'}->{'episodes'} = count($episodeJson->{'data'}); }
                 if (!empty($animeJson->{'data'}->{'themes'})){
                     $themeName = $animeJson->{'data'}->{'themes'}[0]->{'name'};
                     switch ($themeName){
@@ -77,8 +77,8 @@ class AnimeController extends Controller
             } else if (isset($asd->{'data'}->{'genres'}[0]->{'name'})){
                 echo $asd->{'data'}->{'genres'}[0]->{'name'};
             }
-        } */
-        /* echo "<section style='display: flex;'>";
+        }
+        echo "<section style='display: flex;'>";
         foreach ($allAnimes as $asd){
             echo "<div style='width: 30%'>";
             echo "<img src='" . $asd->{'data'}->{'images'}->{'webp'}->{'large_image_url'} . "'><br>";

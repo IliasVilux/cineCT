@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use App\Models\Serie;
 
 class SerieController extends Controller
 {
@@ -76,5 +77,10 @@ class SerieController extends Controller
 
         return $allSeries;
 
+    }
+    public function index()
+    {
+        $series = Serie::all();
+        return $series;
     }
 }
