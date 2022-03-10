@@ -63,7 +63,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }  */
 
-        $tmp = AnimeController::store();
+        /* $tmp = AnimeController::store();
         foreach ($tmp as $tmp2){
             if (isset($tmp2->{'data'}->{'themes'}[0]->{'name'})){
                 $genreValidation = $tmp2->{'data'}->{'themes'}[0]->{'name'};
@@ -84,7 +84,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now()
             ]);
-        } 
+        }  */
 
         /* $tmp = CharacterController::store();
         foreach ($tmp as $tmp2){
@@ -138,5 +138,17 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
         } */
-    }
+
+        $tmp = EpisodeController::store();
+        for($i=0; $i<=count($tmp[1]); $i++){
+                DB::table('characters')->insert([
+                    'name' => $tmp[1][$i]->{'data'}->{'name'},
+                    'surname' => $tmp[1][$i]->{'data'}->{'nicknames'}[0],
+                    'about' => $tmp[1][$i]->{'data'}->{'about'},
+                    'anime_id' => $tmp[0][$i],
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]);
+            }
+        }
 }
