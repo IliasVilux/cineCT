@@ -2,7 +2,7 @@
 @section('content')
 
 <head>
-    <link rel="stylesheet" href="../storage/css/detail.css">
+    <link rel="stylesheet" href="../../storage/css/detail.css">
 </head>
 <section class="container">
     <a href="{{ url('/') }}" class="btn btn-primary" title="Home">

@@ -82,7 +82,7 @@ class SerieController extends Controller
     public function returnSeries($id) {
         $series = Serie::find($id);
         if (!is_null($series)) {
-            return view('detailSeries', ['serie' => $series]);
+            return view('/detail/detailSeries', ['serie' => $series]);
         } else {
             return response('No encontrado', 404);
         }

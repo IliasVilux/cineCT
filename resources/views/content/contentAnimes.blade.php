@@ -1,7 +1,7 @@
 @extends('headerFooter')
 @section('content')
 <head>
-	<link rel="stylesheet" href="../storage/css/content.css">
+	<link rel="stylesheet" href="../../storage/css/content.css">
 </head>
 <section class="slider">
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
