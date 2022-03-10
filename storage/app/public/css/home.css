@@ -28,7 +28,8 @@ h5{
 }
 
 .img-carousel {
-    width: 90%;
+    height: 100%;
+    max-width:100%;
 }
 
 /* Carrusel arrows */
