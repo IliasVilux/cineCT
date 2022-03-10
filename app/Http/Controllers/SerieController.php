@@ -78,7 +78,7 @@ class SerieController extends Controller
         return $allSeries;
 
     }
-    public function index()
+    public static function index()
     {
         $series = Serie::all();
         return $series;

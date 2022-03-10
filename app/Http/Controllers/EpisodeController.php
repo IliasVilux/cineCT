@@ -66,81 +66,31 @@ class EpisodeController extends Controller
     public static function seriesEpisode()
     {
         $serie = new SerieController;
-        $series = $serie::fetchAllSeries();
+        $series = $serie::index();
 
-        $allseriesFromApiWithFiltred = new SerieController();
-        $seriesWithFilter = $allseriesFromApiWithFiltred::store();
+        $seriesEpisodeLink = array();
+        $allSeriesEpisode = array();
 
-        $allSerieEpisodes = array();
-        $allEpisode = array();
-
-        foreach ($series as $serie) {
-            $episodeSerieApi = Http::get('https://api.themoviedb.org/3/tv/' . $serie->original_id . '/season/1?api_key=9d981b068284aca44fb7530bdd218c30&language=en-EN');
-            
-            //array_push($allSerieEpisodes, $episodeSerieApi);
-            
-            $episodeJson = json_decode($episodeSerieApi);
-            $serieEpisode = $episodeJson->{'episodes'};
-            $episodeCount = count($episodeJson->{'episodes'});
-            $serieLastEpisode = array_pop($serieEpisode);
-            if (isset($episodeJson->{'episodes'}) && $episodeCount > 0) {
-                foreach ($seriesWithFilter as $serieManipulated) {
-                    if (isset($serieManipulated->{'last_episode_to_air'}) && ($serieManipulated->{'last_episode_to_air'}->{'id'} === $serieLastEpisode->{'id'}) && ($serieManipulated->{'last_episode_to_air'}->{'name'} === $serieLastEpisode->{'name'})) {
-                        
-                        for ($i=0; $i < $episodeCount; $i++) { 
-                            if(!empty($episodeJson->{'episodes'}[$i])){
-                                array_push($allEpisode, $episodeJson->{'episodes'}[$i]);
-                            }
+        foreach($series as $DataBaseSerie){
+            echo '<b>'.$DataBaseSerie->name.'</b><br>';
+            $serieSeasson = $DataBaseSerie->seasons;
+            if($DataBaseSerie->total_episodes > 0 && $DataBaseSerie->seasons > 0){
+                for ($i=1; $i <=$serieSeasson  ; $i++) { 
+                    $episodeSerieApi = Http::get('https://api.themoviedb.org/3/tv/'.$DataBaseSerie->original_id.'/season/'.$i.'?api_key=9d981b068284aca44fb7530bdd218c30&language=en-EN');
+                    //array_push($seriesEpisodeLink, $episodeSerieApi);
+                    $episodeSerieJson = json_decode($episodeSerieApi);
+                    if(!empty($episodeSerieJson->{'episodes'})){
+                        foreach($episodeSerieJson->{'episodes'} as $episodePosition){
+                            echo $episodePosition->{'name'}.'<br>';
                         }
                     }
+
                 }
-            }
-            foreach($allEpisode as $ep){
-                echo $serie->name;
-                echo $ep->{'episode_number'}.' - '.$ep->{'name'}.'<br>';
-            }
-            echo "-------------------------------<br><br><br>";
-        }
-
-        
-
-        /*
-        foreach ($allSerieEpisodes as $serieEpisode) {
-            $episodeJson = json_decode($serieEpisode);
-            $serieEpisode = $episodeJson->{'episodes'};
-            $episodeCount = count($episodeJson->{'episodes'});
-            $serieLastEpisode = array_pop($serieEpisode);
-            if (isset($episodeJson->{'episodes'}) && $episodeCount > 0) {
-                foreach ($seriesWithFilter as $serieManipulated) {
-                    if (isset($serieManipulated->{'last_episode_to_air'}) && ($serieManipulated->{'last_episode_to_air'}->{'id'} === $serieLastEpisode->{'id'}) && ($serieManipulated->{'last_episode_to_air'}->{'name'} === $serieLastEpisode->{'name'})) {
-                        for ($i=0; $i < $episodeCount; $i++) { 
-                            if(!empty($episodeJson->{'episodes'}[$i])){
-                                array_push($allEpisode, $episodeJson->{'episodes'}[$i]);
-                            }
-                        }
-                    }
-                }
+                echo '------------------------<br><br>';
             }
         }
 
-        echo $allEpisode[1]->{'name'}.'<br>';
-        die();
-        */
-        /*
-        foreach ($series as $serie) {
-            echo "Episodios de <b>" . $serie->name . '</b> (id: <b>' . $serie->original_id . '</b>)' . '<br>';
-            echo "--------------------<br>";
-
-
-            
-            for ($i = 0; $i < $episodeCount; $i++) {
-                echo 'Episodio ' . $episodeJson->{'episodes'}[$i]->{'episode_number'} . ' - ' . $episodeJson->{'episodes'}[$i]->{'name'} . '<br>';
-            }
-
-            echo "-------------------------------<br><br><br>";
-            echo "-------------------------------<br><br><br>";
-        }
-        */
     }
+
 }
 
