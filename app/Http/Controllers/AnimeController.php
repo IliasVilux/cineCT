@@ -9,7 +9,7 @@ use App\Models\Anime;
 class AnimeController extends Controller
 {
     public static function store(){
-        $contador = 1;
+        $contador = 20;
         $apiLinks = array();
         $episodesLinks = array();
         $allAnimes = array();
@@ -101,7 +101,7 @@ class AnimeController extends Controller
         
         return $allAnimes;
     }
-    public function index()
+    public static function index()
     {
         $animes = Anime::all();
         return $animes;

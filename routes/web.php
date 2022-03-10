@@ -52,5 +52,10 @@ Route::get('/aboutUs', function () {
     return view('aboutUs');
 });
 
-Route::get('/asd', [CharacterController::class, 'store']);
+Route::get('/asd1', [CharacterController::class, 'store']);
 Route::get('/qwe', [AnimeController::class, 'store']);
+
+
+Route::get('/asd', [EpisodeController::class, 'store']);
+Route::get('/asdaa', [EpisodeController::class, 'seriesEpisode']);
+Route::get('/asda', [CharacterController::class, 'store']);

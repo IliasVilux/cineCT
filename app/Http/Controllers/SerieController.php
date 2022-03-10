@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Serie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use App\Models\Serie;
 
 class SerieController extends Controller
 {
