@@ -64,10 +64,10 @@ class DatabaseSeeder extends Seeder
         }  */
 
         $tmp = AnimeController::store();
-        foreach ($tmp as $tmp2){
-            if (isset($tmp2->{'data'}->{'themes'}[0]->{'name'})){
+        foreach ($tmp as $tmp2) {
+            if (isset($tmp2->{'data'}->{'themes'}[0]->{'name'})) {
                 $genreValidation = $tmp2->{'data'}->{'themes'}[0]->{'name'};
-            } else if (isset($tmp2->{'data'}->{'genres'}[0]->{'name'})){
+            } else if (isset($tmp2->{'data'}->{'genres'}[0]->{'name'})) {
                 $genreValidation = $tmp2->{'data'}->{'genres'}[0]->{'name'};
             }
             DB::table('animes')->insert([
@@ -77,14 +77,14 @@ class DatabaseSeeder extends Seeder
                 'poster_path' => $tmp2->{'data'}->{'images'}->{'webp'}->{'large_image_url'},
                 'trailer_link' => $tmp2->{'data'}->{'trailer'}->{'youtube_id'},
                 'release_date' => $tmp2->{'data'}->{'year'},
-                'duration' => $tmp2->{'data'}->{'duration'}, 
+                'duration' => $tmp2->{'data'}->{'duration'},
                 'total_episodes' => $tmp2->{'data'}->{'episodes'},
                 'puntuation' => $tmp2->{'data'}->{'score'},
                 'genre_id' => $genreValidation,
                 'created_at' => now(),
                 'updated_at' => now()
             ]);
-        } 
+        }
 
         /* $tmp = CharacterController::store();
         foreach ($tmp as $tmp2){
@@ -138,5 +138,21 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
         } */
+
+        /*
+        $tmp = EpisodeController::seriesEpisode();
+        foreach ($tmp as $tmp2){
+            if (!empty($tmp2->{'data'}->{'nicknames'}) && isset($tmp2->{'data'}->{'nicknames'}[0])){
+                $characterNickname = $tmp2->{'data'}->{'nicknames'}[0];
+            } else { $characterNickname = ""; }
+            DB::table('characters')->insert([
+                'name' => $tmp2->{'data'}->{'name'},
+                'surname' => $characterNickname,
+                'anime_id' => $tmp2->{'data'}->{'mal_id'},
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+        } 
+        */
     }
 }

@@ -70,25 +70,45 @@ class EpisodeController extends Controller
 
         $seriesEpisodeLink = array();
         $allSeriesEpisode = array();
+        $allSerieId = array();
+        $episodes = array();
 
         foreach($series as $DataBaseSerie){
-            echo '<b>'.$DataBaseSerie->name.'</b><br>';
+            //echo '<b>'.$DataBaseSerie->name.' <br>ID_SERIE: '.$DataBaseSerie->original_id.'</b><br>';
             $serieSeasson = $DataBaseSerie->seasons;
             if($DataBaseSerie->total_episodes > 0 && $DataBaseSerie->seasons > 0){
                 for ($i=1; $i <=$serieSeasson  ; $i++) { 
+                   //echo 'Season: (<b>total'.$serieSeasson.'</b>) '.$i.'<br>';
+                    //echo '------------------<br><br>';
                     $episodeSerieApi = Http::get('https://api.themoviedb.org/3/tv/'.$DataBaseSerie->original_id.'/season/'.$i.'?api_key=9d981b068284aca44fb7530bdd218c30&language=en-EN');
-                    //array_push($seriesEpisodeLink, $episodeSerieApi);
                     $episodeSerieJson = json_decode($episodeSerieApi);
                     if(!empty($episodeSerieJson->{'episodes'})){
+                        /*
                         foreach($episodeSerieJson->{'episodes'} as $episodePosition){
-                            echo $episodePosition->{'name'}.'<br>';
+                            //echo '<b>Episodi: '.$episodePosition->{'episode_number'}.'</b>: '. $episodePosition->{'name'}.'<br>';
                         }
+                        */
+                        array_push($allSeriesEpisode, $episodeSerieJson->{'episodes'});
+                        array_push($allSerieId, $DataBaseSerie);
                     }
-
+                    
                 }
-                echo '------------------------<br><br>';
+                //echo '------------------------<br><br>';
             }
         }
+        
+        array_push($episodes, $allSeriesEpisode);
+        array_push($episodes, $allSerieId);
+
+        foreach($episodes as $episode){
+            echo $episode[0]->{'episode_number'}.'</b>: '. $episode[0]->{'name'}.'<br>';
+            echo $episode[1]->{'name'}.'<br>';
+        }
+        echo '------------------------<br><br>';
+
+
+
+        //return $allSeriesEpisode;
 
     }
 
