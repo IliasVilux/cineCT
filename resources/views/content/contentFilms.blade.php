@@ -63,62 +63,38 @@
             <p class="m-0">Bélica / Crimen</p>
         </button>
 </section>
+<h5>PELÍCULAS</h5>
 <section class="container-fluid d-flex align-items-center">
-        <div class="container-fluid d-flex flex-wrap">
-            <a href="{{url('/detail')}}">
-                <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}">
-            </a>
-            <a href="{{url('/detail')}}">
-                <img class="img-carousel" src="{{url('storage/img/Euphoria.jpeg')}}">
-            </a>
-            <a href="{{url('/detail')}}">
-                <img class="img-carousel" src="{{url('storage/img/SexEducation.jpg')}}">
-            </a>
-            <a href="{{url('/detail')}}">
-                <img class="img-carousel" src="{{url('storage/img/SquidGame.jpg')}}">
-            </a>
-            <a href="{{url('/detail')}}">
-                <img class="img-carousel" src="{{url('storage/img/EstamosMuertos.jpeg')}}">
-            </a>
-            <a href="{{url('/detail')}}">
-                <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}">
-            </a>
-            <a href="{{url('/detail')}}">
-                <img class="img-carousel" src="{{url('storage/img/Euphoria.jpeg')}}">
-            </a>
-            <a href="{{url('/detail')}}">
-                <img class="img-carousel" src="{{url('storage/img/SexEducation.jpg')}}">
-            </a>
-            <a href="{{url('/detail')}}">
-                <img class="img-carousel" src="{{url('storage/img/SquidGame.jpg')}}">
-            </a>
-            <a href="{{url('/detail')}}">
-                <img class="img-carousel" src="{{url('storage/img/EstamosMuertos.jpeg')}}">
-            </a>
-            <a href="{{url('/detail')}}">
-                <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}">
-            </a>
-            <a href="{{url('/detail')}}">
-                <img class="img-carousel" src="{{url('storage/img/Euphoria.jpeg')}}">
-            </a>
-            <a href="{{url('/detail')}}">
-                <img class="img-carousel" src="{{url('storage/img/SexEducation.jpg')}}">
-            </a>
-            <a href="{{url('/detail')}}">
-                <img class="img-carousel" src="{{url('storage/img/SquidGame.jpg')}}">
-            </a>
-            <a href="{{url('/detail')}}">
-                <img class="img-carousel" src="{{url('storage/img/EstamosMuertos.jpeg')}}">
-            </a>
-            <a href="{{url('/detail')}}">
-                <img class="img-carousel" src="{{url('storage/img/SexEducation.jpg')}}">
-            </a>
-            <a href="{{url('/detail')}}">
-                <img class="img-carousel" src="{{url('storage/img/SquidGame.jpg')}}">
-            </a>
-            <a href="{{url('/detail')}}">
-                <img class="img-carousel" src="{{url('storage/img/EstamosMuertos.jpeg')}}">
-            </a>
-        </div>
+    
+<?php            
+                $numFilms = count($film); //387
+                $numCarousel = round($numFilms/5); // 77
+                
+                $k=0;
+                echo '<div class="row m-5 px-5">';
+                for($j=0; $j < 21; $j++) {
+                        echo '<div class="col d-flex justify-content-center p-1">
+                            <a class="py-1" href="/detail/detailFilms/'.$film[$k]->id.'">';
+                            if($film[$k]->poster_path == NULL)
+                            echo '<img src="../storage/img/NoImg.jpg" class="img-carousel" alt="">';
+                            else
+                            echo '<img src="'.$film[$k]->poster_path.'" class="img-carousel"  alt="Img {{$film[$k]->name}}">';
+                            $k++;
+                            echo'</a>
+                        </div>';
+                        }
+                        
+                        echo '</div>';
+                ?>
 </section>
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
 @endsection
