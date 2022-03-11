@@ -39,16 +39,24 @@ Route::get('/register', function () {
 });
 
 Route::get('/content/contentSeries', function () {
-    return view('/content/contentSeries');
+
+    $series = DB::table('series')->get();
+    
+    return view('/content/contentSeries', ['serie' => $series]);
 });
 
 Route::get('/content/contentFilms', function () {
-    return view('/content/contentFilms');
+
+    $films = DB::table('films')->get();
+
+    return view('/content/contentFilms', ['film' => $films]);
 });
 
-
 Route::get('/content/contentAnimes', function () {
-    return view('/content/contentAnimes');
+
+    $animes = DB::table('animes')->get();
+
+    return view('/content/contentAnimes', ['anime' => $animes]);
 });
 
 Route::get('/detail/detailSeries/{id}', [SerieController::class,  'returnSeries']);
