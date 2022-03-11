@@ -17,6 +17,12 @@
     padding: 2em 0em;
 }
 
+/* BUTTONS */
+.btn.btn-more {
+    background-image: linear-gradient(to top, black 25%, #9966ff 150%);
+    color: white;
+}
+
 /* Title each section */
 h5{
     margin: 20px 20px 5px 37px;
@@ -28,8 +34,8 @@ h5{
 }
 
 .img-carousel {
+    max-width: 100%;
     height: 100%;
-    max-width:100%;
 }
 
 /* Carrusel arrows */

@@ -41,7 +41,10 @@
 
 
     <!-- PELÍCULAS -->
-    <h5>PELÍCULAS</h5>
+    <div class="container-fluid d-flex justify-content-between">
+        <h5>PELÍCULAS</h5>
+        <a href="{{url('/content/contentFilms')}}"><button type="button" class="btn btn-more">View more</button></a>
+    </div>
     <div class="container-fluid d-flex flex-row align-items-center">
         <a class="btn-floating" href="#films" data-bs-slide="prev"><i class="fa fa-chevron-left fa-2x"
                 aria-hidden="true"></i></a>
@@ -98,7 +101,10 @@
     </div>
 
     <!-- SERIES -->
-    <h5>SERIES</h5>
+    <div class="container-fluid d-flex justify-content-between">
+        <h5>SERIES</h5>
+        <a href="{{url('/content/contentSeries')}}"><button type="button" class="btn btn-more">View more</button></a>
+    </div>
     <div class="container-fluid d-flex flex-row align-items-center">
         <a class="btn-floating" href="#series" data-bs-slide="prev"><i class="fa fa-chevron-left fa-2x"
                 aria-hidden="true"></i></a>
@@ -154,7 +160,10 @@
     </div>
 
     <!-- ANIME -->
-    <h5>ANIME</h5>
+    <div class="container-fluid d-flex justify-content-between">
+        <h5>ANIME</h5>
+        <a href="{{url('/content/contentAnimes')}}"><button type="button" class="btn btn-more">View more</button></a>
+    </div>
     <div class="container-fluid d-flex flex-row align-items-center">
         <a class="btn-floating" href="#animes" data-bs-slide="prev"><i class="fa fa-chevron-left fa-2x"
                 aria-hidden="true"></i></a>
