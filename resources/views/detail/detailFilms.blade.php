@@ -3,6 +3,13 @@
 
 <head>
     <link rel="stylesheet" href="../../storage/css/detail.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="js/jquery.rating.pack.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('input.star').rating();
+    });
+    </script>
 </head>
 <section class="container">
     <a href="{{ url('/') }}" class="btn btn-primary" title="Home">

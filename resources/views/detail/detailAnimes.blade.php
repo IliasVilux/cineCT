@@ -3,6 +3,13 @@
 
 <head>
     <link rel="stylesheet" href="../../storage/css/detail.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="js/jquery.rating.pack.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('input.star').rating();
+    });
+    </script>
 </head>
 <section class="container">
     <a href="{{ url('/') }}" class="btn btn-primary" title="Home">
@@ -45,29 +52,21 @@
         @endif
     </div>
 
-    <div class="rating-wrapper">
-
-        <label for="5-star-rating" class="star-rating">
-            <i class="fas fa-star d-inline-block"></i>
-        </label>
-
-        <label for="4-star-rating" class="star-rating star">
-            <i class="fas fa-star d-inline-block"></i>
-        </label>
-
-        <label for="3-star-rating" class="star-rating star">
-            <i class="fas fa-star d-inline-block"></i>
-        </label>
-
-        <label for="2-star-rating" class="star-rating star">
-            <i class="fas fa-star d-inline-block"></i>
-        </label>
-
-        <label for="1-star-rating" class="star-rating star">
-            <i class="fas fa-star d-inline-block"></i>
-        </label>
-
-    </div>
+    <form method="GET">
+        <div class="star_content">
+            <input name="rate" value="1" type="radio" class="star"/> 
+            <input name="rate" value="2" type="radio" class="star"/> 
+            <input name="rate" value="3" type="radio" class="star"/> 
+            <input name="rate" value="4" type="radio" class="star" checked="checked"/> 
+            <input name="rate" value="5" type="radio" class="star"/>
+        </div>
+        <button type="submit" name="submitRatingStar" class="btn btn-primary btn-sm">Enviar</button>
+    </form>
+    <?php
+        if (isset($_GET['submitRatingStar'])) {
+            echo '<div class="alert alert-success">Rating recibido: <strong>'.$_GET['rate'].'</strong>.</div>';
+        }
+    ?>
 
         <p class="description fs-2 pt-5">{{$anime->description}}</p>
 
