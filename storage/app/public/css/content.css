@@ -28,3 +28,9 @@ a img{
     margin: 10px;
     height: 100%;
 }
+
+.content img{
+    width: 15%;
+    max-height: 100%;
+    padding: 10px;
+}

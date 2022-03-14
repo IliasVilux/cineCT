@@ -15,14 +15,14 @@
                 aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
-            <div class="carousel-item full active">
-                <img class="full-img" src="{{url('storage/img/SquidGame.jpg')}}" alt="">
+            <div class="carousel-item full text-center active">
+                <img src="{{$film[0]->poster_path}}" class="img-carousel" alt="Img {{$film[0]->name}}">
             </div>
-            <div class="carousel-item full">
-                <img class="full-img" src="{{url('storage/img/uncharted.jpg')}}" alt="">
+            <div class="carousel-item full text-center">
+                <img src="{{$serie[0]->poster_path}}" class="img-carousel" alt="Img {{$serie[0]->name}}">
             </div>
-            <div class="carousel-item full">
-                <img class="full-img" src="{{url('storage/img/Kimetsu.jpg')}}" alt="">
+            <div class="carousel-item full text-center">
+                <img src="{{$anime[0]->poster_path}}" class="img-carousel" alt="Img {{$anime[0]->name}}">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -75,7 +75,7 @@
                         echo '</div>
                 </div>';
                         
-                        for($i=2; $i < $numCarousel; $i++) {
+                        for($i=2; $i < 8; $i++) {
                             echo '<div class="carousel-item">
                     <div class="row">';
                     for($j=0; $j < 5; $j++) {
@@ -134,7 +134,7 @@
         
                            echo '</div>
                         </div>';
-                        for($i=2; $i < $numCarousel; $i++) {
+                        for($i=2; $i < 8; $i++) {
                             echo '<div class="carousel-item">
                             <div class="row">';
                             for($j=0; $j < 5; $j++) {
@@ -193,7 +193,7 @@
 
                    echo '</div>
                 </div>';
-                for($i=2; $i < $numCarousel; $i++) {
+                for($i=2; $i < 8; $i++) {
                     echo '<div class="carousel-item">
                     <div class="row">';
                     for($j=0; $j < 5; $j++) {

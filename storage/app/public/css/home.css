@@ -17,6 +17,10 @@
     padding: 2em 0em;
 }
 
+.carousel.slide.carousel-equal-heights {
+    width: 100%;
+}
+
 /* BUTTONS */
 .btn.btn-more {
     background-image: linear-gradient(to top, black 25%, #9966ff 150%);

@@ -81,7 +81,7 @@ class FilmController extends Controller
     }
 
     public function returnFilms($id) {
-        $films = Film::find($id);
+        $films = Film::Paginate(21);
         
         if (!is_null($films)) {
             return view('/detail/detailFilms', ['film' => $films]);
@@ -95,19 +95,5 @@ class FilmController extends Controller
 
         return view('detail', ['film' => $films]);*/
     }
-
-    public function returnFilmsPage() {
-        $films = Film::Paginate(21);
-        if (!is_null($films)) {
-            return view('/content/contentFilms', ['film' => $films]);
-        } else {
-            return response('No encontrado', 404);
-        }
-
-        /*foreach($films as $film) {
-            echo $film;
-        }
-
-        return view('detail', ['film' => $films]);*/
-    }
+    
 }
