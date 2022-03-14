@@ -73,49 +73,71 @@ class EpisodeController extends Controller
         $allSerieId = array();
         $episodes = array();
 
+        $allEpisodesBySerie = array();
+
+        $contador = 0;
         foreach($series as $DataBaseSerie){
             //echo '<b>'.$DataBaseSerie->name.' <br>ID_SERIE (FK): '.$DataBaseSerie->original_id.'</b><br>';
             $serieSeasson = $DataBaseSerie->seasons;
             if($DataBaseSerie->total_episodes > 0 && $DataBaseSerie->seasons > 0){
+
                 //echo $DataBaseSerie->name.'<b> - Total Seasons:'.$serieSeasson.'</b>';
-                for ($i=1; $i <=$serieSeasson  ; $i++) { 
+                for ($i=1; $i <=$serieSeasson; $i++) {     
+                    if($contador >= 1){
+                        break(2);
+                        
+                    }
+                    
                    //echo 'Season: '.$i.'<br>';
                     //echo '------------------<br><br>';
                     $episodeSerieApi = Http::get('https://api.themoviedb.org/3/tv/'.$DataBaseSerie->original_id.'/season/'.$i.'?api_key=9d981b068284aca44fb7530bdd218c30&language=en-EN');
                     $episodeSerieJson = json_decode($episodeSerieApi);
                     if(!empty($episodeSerieJson->{'episodes'})){
+
                         /*
                         foreach($episodeSerieJson->{'episodes'} as $episodePosition){
                             echo '<b>Episodi: '.$episodePosition->{'episode_number'}.'</b>: '. $episodePosition->{'name'}.'<br>';
                         }
                         */
-                        array_push($allSeriesEpisode, $episodeSerieJson->{'episodes'});
                         
-                        array_push($allSerieId, $DataBaseSerie);
-                    }
+                        array_push($allSeriesEpisode, $episodeSerieJson->{'episodes'});
+                        array_push($allSerieId, $DataBaseSerie->original_id);
 
+                    }
+                    
+                    
+                    $contador++;
                     
                 }
                 //echo '------------------------<br><br>';
             }
         }
-        echo 'Total episodios guardados: '.count($allSeriesEpisode);
-        die();
-        var_dump($allSeriesEpisode[0]->{'name'});
-        die();
-        
+
+        /*
+        echo 'Total episodios guardados: '.count($allSeriesEpisode[0]);
+        echo '<br>------------------------<br>';
+        echo 'Total ID de series guardados: '.count($allSerieId);
+        echo '<br>------------------------<br>';
+        */
         array_push($episodes, $allSeriesEpisode);
         array_push($episodes, $allSerieId);
 
-        var_dump($episodes[0][1]->{'name'});
-        die();
 
-        foreach($episodes as $episode){
-            echo $episode[0]->{'episode_number'}.'</b>: '. $episode[0]->{'name'}.'<br>';
-            echo $episode[1]->{'name'}.'<br>';
+        foreach($episodes as $episode[0]){
+            echo $episode[0]->{'name'}.'<br>';
         }
-        echo '------------------------<br><br>';
+        
 
+
+        /*
+        echo 'Total datos guardados en el array "episodes" : '.count($episodes[0][0]);
+        echo '<br>------------------------<br>';
+*/
+        
+        
+        //die();
+
+        
 
 
         //return $allSeriesEpisode;
