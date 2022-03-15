@@ -59,9 +59,16 @@ Route::get('/content/contentAnimes', function () {
     return view('/content/contentAnimes', ['anime' => $animes]);
 });
 
-Route::get('/detail/detailSeries/{id}', [SerieController::class,  'returnSeries']);
+Route::get('/detail/detailFilms/{id}', function () {
+
+    $profile = DB::table('profile_images')->get();
+    
+    return view('/detail/detailFilms/{id}', ['profile' => $profile]);
+});
 
 Route::get('/detail/detailFilms/{id}', [FilmController::class,  'returnFilms']);
+
+Route::get('/detail/detailSeries/{id}', [SerieController::class,  'returnSeries']);
 
 Route::get('/detail/detailAnimes/{id}', [AnimeController::class,  'returnAnimes']);
 

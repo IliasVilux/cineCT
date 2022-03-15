@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Film;
+use App\Models\Image;
 use Illuminate\Support\Facades\Http;
 
 class FilmController extends Controller
@@ -82,9 +83,10 @@ class FilmController extends Controller
 
     public function returnFilms($id) {
         $films = Film::find($id);
+        $profile = Image::all();
         
         if (!is_null($films)) {
-            return view('/detail/detailFilms', ['film' => $films]);
+            return view('/detail/detailFilms', ['film' => $films, 'profile' => $profile]);
         } else {
             return response('No encontrado', 404);
         }

@@ -16,7 +16,8 @@
         </ul>
         <div class="tab-content">
             <div class="tab-pane fade show active" id="logIn">
-                <div class="card">
+                <div class="card text-dark">
+                    <img src="storage/img/200x200.png" alt="LOGO" height="100px" width="100px">
                     <div class="card-body">
                         <form class="row g-3 needs-validation d-flex flex-column align-items-center p-2 p-sm-5 m-2"
                             novalidate>
@@ -52,7 +53,7 @@
 
             </div>
             <div class="tab-pane fade" id="signUp">
-                <div class="card">
+                <div class="card text-dark">
                     <div class="card-body">
                         <form class="row g-3 needs-validation d-flex flex-column align-items-center p-2 p-sm-5 m-2"
                             novalidate>

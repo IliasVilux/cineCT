@@ -89,7 +89,7 @@
                             <div class="col">
                                 <div class="d-flex flex-start">
                                     <img class="rounded-circle shadow-1-strong me-3"
-                                        src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" alt="avatar"
+                                        src="{{$profile[0]->path}}" alt="13"
                                         width="65" height="65" />
                                     <div class="flex-grow-1 flex-shrink-1">
                                         <div>
@@ -108,9 +108,9 @@
 
                                         <div class="d-flex flex-start mt-4">
                                             <a class="me-3" href="#">
-                                                <img class="rounded-circle shadow-1-strong"
-                                                    src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(11).webp"
-                                                    alt="avatar" width="65" height="65" />
+                                            <img class="rounded-circle shadow-1-strong me-3"
+                                        src="{{$profile[3]->path}}" alt="13"
+                                        width="65" height="65" />
                                             </a>
                                             <div class="flex-grow-1 flex-shrink-1">
                                                 <div>
@@ -129,9 +129,9 @@
 
                                         <div class="d-flex flex-start mt-4">
                                             <a class="me-3" href="#">
-                                                <img class="rounded-circle shadow-1-strong"
-                                                    src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp"
-                                                    alt="avatar" width="65" height="65" />
+                                                <img class="rounded-circle shadow-1-strong me-3"
+                                        src="{{$profile[2]->path}}" alt="13"
+                                        width="65" height="65" />
                                             </a>
                                             <div class="flex-grow-1 flex-shrink-1">
                                                 <div>
@@ -151,8 +151,8 @@
                                 </div>
 
                                 <div class="d-flex flex-start mt-4">
-                                    <img class="rounded-circle shadow-1-strong me-3"
-                                        src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(12).webp" alt="avatar"
+                                <img class="rounded-circle shadow-1-strong me-3"
+                                        src="{{$profile[1]->path}}" alt="13"
                                         width="65" height="65" />
                                     <div class="flex-grow-1 flex-shrink-1">
                                         <div>
@@ -172,9 +172,9 @@
 
                                         <div class="d-flex flex-start mt-4">
                                             <a class="me-3" href="#">
-                                                <img class="rounded-circle shadow-1-strong"
-                                                    src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(31).webp"
-                                                    alt="avatar" width="65" height="65" />
+                                            <img class="rounded-circle shadow-1-strong me-3"
+                                        src="{{$profile[8]->path}}" alt="13"
+                                        width="65" height="65" />
                                             </a>
                                             <div class="flex-grow-1 flex-shrink-1">
                                                 <div>
@@ -194,9 +194,9 @@
 
                                         <div class="d-flex flex-start mt-4">
                                             <a class="me-3" href="#">
-                                                <img class="rounded-circle shadow-1-strong"
-                                                    src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(29).webp"
-                                                    alt="avatar" width="65" height="65" />
+                                            <img class="rounded-circle shadow-1-strong me-3"
+                                        src="{{$profile[4]->path}}" alt="13"
+                                        width="65" height="65" />
                                             </a>
                                             <div class="flex-grow-1 flex-shrink-1">
                                                 <div>
@@ -215,9 +215,9 @@
 
                                         <div class="d-flex flex-start mt-4">
                                             <a class="me-3" href="#">
-                                                <img class="rounded-circle shadow-1-strong"
-                                                    src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp"
-                                                    alt="avatar" width="65" height="65" />
+                                            <img class="rounded-circle shadow-1-strong me-3"
+                                        src="{{$profile[6]->path}}" alt="13"
+                                        width="65" height="65" />
                                             </a>
                                             <div class="flex-grow-1 flex-shrink-1">
                                                 <div>
