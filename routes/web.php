@@ -5,6 +5,9 @@ use App\Http\Controllers\SerieController;
 use App\Http\Controllers\FilmController;
 use App\Http\Controllers\AnimeController;
 use App\Models\Genre;
+use App\Models\Serie;
+use App\Models\Films;
+use App\Models\Anime;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,21 +21,57 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*Route::get('/', function () {
+    return view('register');
+});*/
+
 Route::get('/', function () {
-    return view('home');
+
+    $series = DB::table('series')->get();
+    $films = DB::table('films')->get();
+    $animes = DB::table('animes')->get();
+
+    return view('home', ['serie' => $series, 'film' => $films, 'anime' => $animes]);
 });
 
 Route::get('/register', function () {
     return view('register');
 });
 
-Route::get('/content', function () {
-    return view('content');
+Route::get('/content/contentSeries', function () {
+
+    $series = DB::table('series')->get();
+    
+    return view('/content/contentSeries', ['serie' => $series]);
 });
 
-Route::get('/detail', function () {
-    return view('detail');
+Route::get('/content/contentFilms', function () {
+
+    $films = DB::table('films')->get();
+
+    return view('/content/contentFilms', ['film' => $films]);
 });
+
+Route::get('/content/contentAnimes', function () {
+
+    $animes = DB::table('animes')->get();
+
+    return view('/content/contentAnimes', ['anime' => $animes]);
+});
+
+Route::get('/detail/detailFilms/{id}', function () {
+
+    $profile = DB::table('profile_images')->get();
+    
+    return view('/detail/detailFilms/{id}', ['profile' => $profile]);
+});
+
+Route::get('/detail/detailFilms/{id}', [FilmController::class,  'returnFilms']);
+
+Route::get('/detail/detailSeries/{id}', [SerieController::class,  'returnSeries']);
+
+Route::get('/detail/detailAnimes/{id}', [AnimeController::class,  'returnAnimes']);
+
 
 Route::get('/top', function () {
     return view('top');
@@ -48,4 +87,12 @@ Route::get('/list', function () {
 
 Route::get('/aboutUs', function () {
     return view('aboutUs');
+});
+
+Route::get('/profile/profile', function () {
+    return view('/profile/profile');
+});
+
+Route::get('/profile/profileImg', function () {
+    return view('/profile/profileImg');
 });

@@ -1,9 +1,6 @@
-/* GENERAL*/
-html {
-  scroll-padding-top: 150px;
-}
-main {
-  margin-top: 60px;
+html, main, body {
+  background: #16181d;
+  color: #FFFFFF;
 }
 
 i.fas {

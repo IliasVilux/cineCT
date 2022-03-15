@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Anime;
 use Illuminate\Support\Facades\Http;
 
 class AnimeController extends Controller
@@ -89,5 +90,20 @@ class AnimeController extends Controller
         die();
         
         return $allAnimes;
+    }
+
+    public function returnAnimes($id) {
+        $animes = Anime::find($id);
+        if (!is_null($animes)) {
+            return view('/detail/detailAnimes', ['anime' => $animes]);
+        } else {
+            return response('No encontrado', 404);
+        }
+
+        /*foreach($animes as $anime) {
+            echo $anime;
+        }
+
+        return view('detail', ['anime' => $animes]);*/
     }
 }
