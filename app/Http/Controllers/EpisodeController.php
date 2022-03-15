@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Anime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
 class EpisodeController extends Controller
@@ -63,54 +64,102 @@ class EpisodeController extends Controller
         return $tresArrays;
     }
 
+
+
+
+    
+
+
     public static function seriesEpisode()
     {
         $serie = new SerieController;
         $series = $serie::index();
 
-        $seriesEpisodeLink = array();
+        //$seriesEpisodeLink = array();
         $allSeriesEpisode = array();
         $allSerieId = array();
         $episodes = array();
 
-        $allEpisodesBySerie = array();
 
+        
         $contador = 0;
-        foreach($series as $DataBaseSerie){
-            //echo '<b>'.$DataBaseSerie->name.' <br>ID_SERIE (FK): '.$DataBaseSerie->original_id.'</b><br>';
+        foreach ($series as $DataBaseSerie) {
+            
+            //echo '<b>'.$DataBaseSerie->name.' ID_SERIE: '.$DataBaseSerie->original_id.'</b><br>';
             $serieSeasson = $DataBaseSerie->seasons;
-            if($DataBaseSerie->total_episodes > 0 && $DataBaseSerie->seasons > 0){
+            if ($DataBaseSerie->total_episodes > 0 && $DataBaseSerie->seasons > 0) {
 
                 //echo $DataBaseSerie->name.'<b> - Total Seasons:'.$serieSeasson.'</b>';
-                for ($i=1; $i <=$serieSeasson; $i++) {     
-                    if($contador >= 1){
-                        break(2);
-                        
+                for ($i = 1; $i <= $serieSeasson; $i++) {
+                    
+                    
+                    if ($contador >= 10) {
+                        break (2);
                     }
                     
-                   //echo 'Season: '.$i.'<br>';
+                    
                     //echo '------------------<br><br>';
-                    $episodeSerieApi = Http::get('https://api.themoviedb.org/3/tv/'.$DataBaseSerie->original_id.'/season/'.$i.'?api_key=9d981b068284aca44fb7530bdd218c30&language=en-EN');
+
+                    $episodeSerieApi = Http::get('https://api.themoviedb.org/3/tv/' . $DataBaseSerie->original_id . '/season/' . $i . '?api_key=9d981b068284aca44fb7530bdd218c30&language=en-EN');
                     $episodeSerieJson = json_decode($episodeSerieApi);
-                    if(!empty($episodeSerieJson->{'episodes'})){
-
-                        /*
-                        foreach($episodeSerieJson->{'episodes'} as $episodePosition){
-                            echo '<b>Episodi: '.$episodePosition->{'episode_number'}.'</b>: '. $episodePosition->{'name'}.'<br>';
-                        }
-                        */
+                    
+                    if (!empty($episodeSerieJson->{'episodes'})) {
+                        //echo 'Season: '.$i.'<br>';
                         
-                        array_push($allSeriesEpisode, $episodeSerieJson->{'episodes'});
-                        array_push($allSerieId, $DataBaseSerie->original_id);
-
+                        foreach($episodeSerieJson->{'episodes'} as $episodePosition){
+                            //echo '<b>Episodi: '.$episodePosition->{'episode_number'}.'</b>: '. $episodePosition->{'name'}.'<br>';
+                            
+                            if(isset($episodePosition->{'air_date'})){
+                                $formatDate = date("d-m-Y", strtotime($episodePosition->{'air_date'}));
+                                $episodePosition->{'air_date'} = $formatDate;
+                                //echo 'Fecha de emisión: ' . $episodePosition->{'air_date'}.'<br><br>';
+                            }
+                            
+                        }
+                        //echo '<p style="border:1px solid red; width:200px;">Total Episodios: '.count($episodeSerieJson->{'episodes'}).'</p><br>';
+                        
+                        //echo '<br><br>';
+                        //array_push($allSeriesEpisode, $episodeSerieJson->{'episodes'});
+                        //array_push($allSerieId, $DataBaseSerie);
                     }
                     
+                    echo '<br><br>-------------fwefwe-----------<br><br>';
+                    echo $episodePosition->{'name'} .'<br>';
+                    echo $DataBaseSerie->original_id .'<br>';
+                    echo rand(30,60) .'<br>';
+                    echo $episodePosition->{'overview'} .'<br>';
+                    echo $episodePosition->{'air_date'} .'<br>';
+                    echo '<br><br>------------------------<br><br>';
                     
+
                     $contador++;
-                    
                 }
                 //echo '------------------------<br><br>';
             }
+
+/*
+            echo '<br><br>-------------fwefwe-----------<br><br>';
+            echo $episodePosition->{'name'} .'<br>';
+            echo $DataBaseSerie->original_id .'<br>';
+            echo rand(30,60) .'<br>';
+            echo $episodePosition->{'overview'} .'<br>';
+            echo $episodePosition->{'air_date'} .'<br>';
+            echo '<br><br>------------------------<br><br>';
+*/
+            
+/*
+            DB::table('episodes')->insert([
+                'title' => $episodePosition->{'name'},
+                'anime_id' => null,
+                'serie_id' => $DataBaseSerie->original_id,
+                'duration' => rand(30,60),
+                'description' => $episodePosition->{'overview'},
+                'aired' => $episodePosition->{'air_date'},
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);*/
+
+            
         }
 
         /*
@@ -119,30 +168,81 @@ class EpisodeController extends Controller
         echo 'Total ID de series guardados: '.count($allSerieId);
         echo '<br>------------------------<br>';
         */
-        array_push($episodes, $allSeriesEpisode);
+
         array_push($episodes, $allSerieId);
+        array_push($episodes, $allSeriesEpisode);
 
 
-        foreach($episodes as $episode[0]){
-            echo $episode[0]->{'name'}.'<br>';
-        }
+        $allSeriesFromDataBase = $episodes[0];
+        $allEpisodesFromSeries = $episodes[1];
+
+        $duracionesPromedias = array(30,35,40,45,50,55,60);
+        
         
 
+        /*
+        foreach ($allEpisodesFromSeries as $episode) {
+            foreach ($allSeriesFromDataBase as $series) {
+                echo  '<h3>' . $series->{'name'} . ' (id '.$series->{'original_id'}.')</h3>';
+                for ($i = 0; $i < count($episode); $i++) {
+                    echo '<b>'.$episode[$i]->{'episode_number'} . '</b>: Titulo: ' . $episode[$i]->{'name'};                    
+
+                    //formateamos la fecha en formato dia/mes/año
+                    if(isset($episode[$i]->{'air_date'})){
+                        $formatDate = date("d-m-Y", strtotime($episode[$i]->{'air_date'}));
+                        $episode[$i]->{'air_date'} = $formatDate;
+                        echo '<br>Fecha de emisión: ' . $episode[$i]->{'air_date'}.'<br>';
+                    }
+                    
+                    if(!empty($episode[$i]->{'overview'})){
+                        echo '<br><b>Description</b>: ' . $episode[$i]->{'overview'}.'<br>';
+                    }else{
+                        echo '<b>No tiene descripción</b><br>';
+                    }
+                    
+                    echo 'Duración: '.$duracionesPromedias[array_rand($duracionesPromedias)].'<br>';
+
+                    echo '<br><br>';
+                }
+                echo '<br>---------------------------------------------<br>';
+            }
+        }
+        */
+
+
+        /*
+        foreach($episodes[0] as $serie){
+            echo '<b>ID: '.$serie->{'original_id'}.'</b> - '.$serie->{'name'};
+            echo '<br>------------<br>';
+        }
+
+
+        
+        foreach($episodes[1] as $episode){
+            for ($i=0; $i < count($episode); $i++) { 
+                echo $episode[$i]->{'episode_number'}.' - '.$episode[$i]->{'name'};
+                echo '<br><br>';
+                
+            }
+        }
+        echo "<br>------------------------------------------------------------------<br>";
+        */
 
         /*
         echo 'Total datos guardados en el array "episodes" : '.count($episodes[0][0]);
         echo '<br>------------------------<br>';
 */
-        
-        
+
+
         //die();
 
-        
+
 
 
         //return $allSeriesEpisode;
 
     }
+
 
 }
 

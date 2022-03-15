@@ -47,7 +47,6 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => now()
             ]);
         } */
-
         /* $tmp = FilmController::store();
         foreach ($tmp as $tmp2){
             DB::table('films')->insert([
@@ -63,6 +62,9 @@ class DatabaseSeeder extends Seeder
             ]);
         }  */
 
+        return EpisodeController::seriesEpisode();
+
+        /*
         $tmp = AnimeController::store();
         foreach ($tmp as $tmp2) {
             if (isset($tmp2->{'data'}->{'themes'}[0]->{'name'})) {
@@ -85,6 +87,7 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => now()
             ]);
         }
+        */
 
         /* $tmp = CharacterController::store();
         foreach ($tmp as $tmp2){
