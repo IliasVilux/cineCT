@@ -103,7 +103,7 @@
                         <a href="{{url('/')}}" class="footer-links text-white fs-5">Home</a>
                         <a href="{{url('/content/contentFilms')}}" class="footer-links text-white fs-5">Películas</a>
                         <a href="{{url('/content/contentSeries')}}" class="footer-links text-white fs-5">Series</a>
-                        <a href="{{url('/content/contentAnime')}}" class="footer-links text-white fs-5">Anime</a>
+                        <a href="{{url('/content/contentAnimes')}}" class="footer-links text-white fs-5">Anime</a>
                         <a href="{{url('/top')}}" class="footer-links text-white fs-5">Top</a>
                         <a href="{{url('/search')}}" class="footer-links text-white fs-5">Buscador</a>
                         <a href="{{url('/list')}}" class="footer-links text-white fs-5">Mis Listas</a>
@@ -143,7 +143,7 @@
         <!-- COPYRIGHT -->
         <div class="copyright text-center p-3">
             © 2022 Copyright:
-            <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+            <a class="text-white" href="/">Cinect</a>
         </div>
         <!-- COPYRIGHT -->
     </footer>

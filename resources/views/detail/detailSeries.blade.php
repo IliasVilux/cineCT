@@ -12,7 +12,7 @@
     </script>
 </head>
 <section class="container">
-    <a href="{{ url('/') }}" class="btn btn-primary" title="Home">
+    <a href="{{ url('/content/contentSeries') }}" class="btn btn-primary" title="Home">
         Home
     </a>
 
@@ -52,29 +52,22 @@
         @endif
     </div>
 
-    <div class="rating-wrapper">
+    <form method="GET">
+	<div class="rating">
+        <input name="stars" id="e5" type="radio" value="5"><label for="e5">☆</label>
+		<input name="stars" id="e4" type="radio" value="4"><label for="e4">☆</label>
+		<input name="stars" id="e3" type="radio" value="3"><label for="e3">☆</label>
+		<input name="stars" id="e2" type="radio" value="2"><label for="e2">☆</label>
+		<input name="stars" id="e1" type="radio" value="1"><label for="e1">☆</label>
+	</div>
+    <button type="submit" name="submitRatingStar" class="btn btn-primary btn-sm">Enviar</button>
+</form>
 
-        <label for="5-star-rating" class="star-rating">
-            <i class="fas fa-star d-inline-block"></i>
-        </label>
-
-        <label for="4-star-rating" class="star-rating star">
-            <i class="fas fa-star d-inline-block"></i>
-        </label>
-
-        <label for="3-star-rating" class="star-rating star">
-            <i class="fas fa-star d-inline-block"></i>
-        </label>
-
-        <label for="2-star-rating" class="star-rating star">
-            <i class="fas fa-star d-inline-block"></i>
-        </label>
-
-        <label for="1-star-rating" class="star-rating star">
-            <i class="fas fa-star d-inline-block"></i>
-        </label>
-
-    </div>
+<?php
+        if (isset($_GET['submitRatingStar'])) {
+            echo '<div class="alert alert-success">Rating recibido: <strong>'.$_GET['stars'].'</strong>.</div>';
+        }
+    ?>
 
     <p class="description fs-2 pt-5">{{$serie->description}}</p>
     <!-- <h3><b>Creado:</b> {{$serie->created_at}}</h3>

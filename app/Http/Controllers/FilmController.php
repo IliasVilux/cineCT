@@ -81,7 +81,7 @@ class FilmController extends Controller
     }
 
     public function returnFilms($id) {
-        $films = Film::Paginate(21);
+        $films = Film::find($id);
         
         if (!is_null($films)) {
             return view('/detail/detailFilms', ['film' => $films]);

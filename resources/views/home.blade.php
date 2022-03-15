@@ -54,8 +54,6 @@
 
             <div class="carousel-inner" role="listbox">
                 <?php            
-                $numFilms = count($film);
-                $numCarousel = round($numFilms/5);
                 
                 $k=0;
                 echo '<div class="carousel-item active">
@@ -114,8 +112,6 @@
 
             <div class="carousel-inner" role="listbox">
                 <?php            
-                        $numSeries = count($serie); //338
-                        $numCarousel = round($numSeries/5); // 68
                         
                         $k=0;
                         echo '<div class="carousel-item active">
@@ -173,8 +169,6 @@
 
             <div class="carousel-inner" role="listbox">
                 <?php            
-               $numAnimes = count($anime);
-               $numCarousel = round($numAnimes/5);
                 
                 $k=0;
                 echo '<div class="carousel-item active">

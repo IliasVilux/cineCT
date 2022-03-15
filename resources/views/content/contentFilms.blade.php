@@ -64,16 +64,18 @@
         <p class="m-0">Bélica / Crimen</p>
     </button>
 </section>
-<h5>PELÍCULAS</h5>
-<section class="container">
+<section class="container py-4">
+    <h5>PELÍCULAS</h5>
     @if(!empty($film))
-    <div class="content d-flex flex-wrap align-items-center justify-content-center">
+    <div class="content d-flex flex-wrap align-items-streach justify-content-center">
         @foreach($film as $film)
-        @if($film->poster_path === NULL)
-        <img src="../storage/img/NoImg.jpg" class="img-carousel" alt="">
-        @else
-        <img src="{{$film->poster_path}}" class="img-carousel" alt="">
-        @endif
+        <a href="/detail/detailFilms/{{$film->id}}" class="image-link col-2 p-2">
+            @if($film->poster_path === NULL)
+            <img src="../storage/img/NoImg.jpg" alt="">
+            @else
+            <img src="{{$film->poster_path}}" alt="">
+            @endif
+        </a>
         @endforeach
     </div>
     @else
