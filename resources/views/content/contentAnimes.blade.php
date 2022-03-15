@@ -1,7 +1,8 @@
 @extends('headerFooter')
 @section('content')
+
 <head>
-	<link rel="stylesheet" href="../../storage/css/content.css">
+    <link rel="stylesheet" href="../../storage/css/content.css">
 </head>
 <section class="slider">
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -37,31 +38,31 @@
     </div>
 </section>
 <section class="d-flex flex-wrap justify-content-around align-items-center">
-        <button class="button-category">
-            <p class="m-0">Samurai</p>
-        </button>
-        <button class="button-category">
-            <p class="m-0">Shounen</p>
-        </button>
-        <button class="button-category">
-            <p class="m-0">Seinen</p>
-        </button>
-        <button class="button-category">
-            <p class="m-0">Shoujo</p>
-        </button>
+    <button class="button-category">
+        <p class="m-0">Samurai</p>
+    </button>
+    <button class="button-category">
+        <p class="m-0">Shounen</p>
+    </button>
+    <button class="button-category">
+        <p class="m-0">Seinen</p>
+    </button>
+    <button class="button-category">
+        <p class="m-0">Shoujo</p>
+    </button>
 
-        <button class="button-category">
-            <p class="m-0">Demons</p>
-        </button>
-        <button class="button-category">
-            <p class="m-0">Sci-fi</p>
-        </button>
-        <button class="button-category">
-            <p class="m-0">Mecha</p>
-        </button>
-        <button class="button-category">
-            <p class="m-0">Josei</p>
-        </button>
+    <button class="button-category">
+        <p class="m-0">Demons</p>
+    </button>
+    <button class="button-category">
+        <p class="m-0">Sci-fi</p>
+    </button>
+    <button class="button-category">
+        <p class="m-0">Mecha</p>
+    </button>
+    <button class="button-category">
+        <p class="m-0">Josei</p>
+    </button>
 </section>
 <section class="container py-4">
     <h5>Animes</h5>

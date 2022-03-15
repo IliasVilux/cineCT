@@ -6,7 +6,7 @@
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="js/jquery.rating.pack.js"></script>
     <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
         $('input.star').rating();
     });
     </script>
@@ -45,25 +45,25 @@
     </div>
 
     <div class="d-flex flex-row justify-content-around mt-4">
-        @if($serie->poster_path == NULL) 
+        @if($serie->poster_path == NULL)
         <img src="{{url('storage/img/NoImg.jpg')}}" class="img-thumbnail" alt="">
-        @else 
-        <img src="{{$serie->poster_path}}" class="img-thumbnail"  alt="Img {{$serie->name}}">
+        @else
+        <img src="{{$serie->poster_path}}" class="img-thumbnail" alt="Img {{$serie->name}}">
         @endif
     </div>
 
     <form method="GET">
-	<div class="rating">
-        <input name="stars" id="e5" type="radio" value="5"><label for="e5">☆</label>
-		<input name="stars" id="e4" type="radio" value="4"><label for="e4">☆</label>
-		<input name="stars" id="e3" type="radio" value="3"><label for="e3">☆</label>
-		<input name="stars" id="e2" type="radio" value="2"><label for="e2">☆</label>
-		<input name="stars" id="e1" type="radio" value="1"><label for="e1">☆</label>
-	</div>
-    <button type="submit" name="submitRatingStar" class="btn btn-primary btn-sm">Enviar</button>
-</form>
+        <div class="rating">
+            <input name="stars" id="e5" type="radio" value="5"><label for="e5">☆</label>
+            <input name="stars" id="e4" type="radio" value="4"><label for="e4">☆</label>
+            <input name="stars" id="e3" type="radio" value="3"><label for="e3">☆</label>
+            <input name="stars" id="e2" type="radio" value="2"><label for="e2">☆</label>
+            <input name="stars" id="e1" type="radio" value="1"><label for="e1">☆</label>
+        </div>
+        <button type="submit" name="submitRatingStar" class="btn btn-primary btn-sm">Enviar</button>
+    </form>
 
-<?php
+    <?php
         if (isset($_GET['submitRatingStar'])) {
             echo '<div class="alert alert-success">Rating recibido: <strong>'.$_GET['stars'].'</strong>.</div>';
         }
@@ -72,7 +72,7 @@
     <p class="description fs-2 pt-5">{{$serie->description}}</p>
     <!-- <h3><b>Creado:</b> {{$serie->created_at}}</h3>
     <h3><b>Ultima actualización:</b> {{$serie->updated_at}}</h3> -->
-  
+
 </section>
 
 <!-- START COMMMENT SECTION -->

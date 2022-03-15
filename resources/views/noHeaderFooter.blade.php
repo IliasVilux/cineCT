@@ -16,22 +16,22 @@
     <link rel="stylesheet" href="../storage/css/general.css">
 </head>
 <script>
-      function showPasswd() {
-        var x = document.getElementById("password");
-        if (x.type === "password") {
-          x.type = "text";
-        } else {
-          x.type = "password";
-        }
-      }
-    </script>
+function showPasswd() {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+}
+</script>
 
 <body>
 
     <main>
         @yield('content')
     </main>
-   
+
 </body>
 
 </html>

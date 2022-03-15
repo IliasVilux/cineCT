@@ -7,22 +7,23 @@ p.description {
 }
 
 
-  /* STAR */
+/* STAR */
 
-  .rating {
+.rating {
     width: 226px;
     margin: 0 auto 1em;
     font-size: 45px;
-    overflow:hidden;
+    overflow: hidden;
 }
+
 .rating input {
-float: right;
-opacity: 0;
-position: absolute;
+    float: right;
+    opacity: 0;
+    position: absolute;
 }
 
 .rating label {
-    float:right;
+    float: right;
     color: #aaa;
     text-decoration: none;
     -webkit-transition: color .4s;
@@ -30,9 +31,10 @@ position: absolute;
     -o-transition: color .4s;
     transition: color .4s;
 }
-.rating label:hover ~ label,
-.rating input:focus ~ label,
-.rating label:hover	{
+
+.rating label:hover~label,
+.rating input:focus~label,
+.rating label:hover {
     color: orange;
     cursor: pointer;
 }

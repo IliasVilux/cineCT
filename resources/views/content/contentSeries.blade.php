@@ -1,7 +1,8 @@
 @extends('headerFooter')
 @section('content')
+
 <head>
-	<link rel="stylesheet" href="../../storage/css/content.css">
+    <link rel="stylesheet" href="../../storage/css/content.css">
 </head>
 <section class="slider">
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -37,31 +38,31 @@
     </div>
 </section>
 <section class="d-flex flex-wrap justify-content-around align-items-center">
-        <button class="button-category">
-            <p class="m-0">Acción / Aventura</p>
-        </button>
-        <button class="button-category">
-            <p class="m-0">Animación / Familia</p>
-        </button>
-        <button class="button-category">
-            <p class="m-0">Comedia</p>
-        </button>
-        <button class="button-category">
-            <p class="m-0">Terror / Suspense</p>
-        </button>
+    <button class="button-category">
+        <p class="m-0">Acción / Aventura</p>
+    </button>
+    <button class="button-category">
+        <p class="m-0">Animación / Familia</p>
+    </button>
+    <button class="button-category">
+        <p class="m-0">Comedia</p>
+    </button>
+    <button class="button-category">
+        <p class="m-0">Terror / Suspense</p>
+    </button>
 
-        <button class="button-category">
-            <p class="m-0">Romance</p>
-        </button>
-        <button class="button-category">
-            <p class="m-0">Ciencia ficción / Fantasía</p>
-        </button>
-        <button class="button-category">
-            <p class="m-0">Drama / Misterio</p>
-        </button>
-        <button class="button-category">
-            <p class="m-0">Bélica / Crimen</p>
-        </button>
+    <button class="button-category">
+        <p class="m-0">Romance</p>
+    </button>
+    <button class="button-category">
+        <p class="m-0">Ciencia ficción / Fantasía</p>
+    </button>
+    <button class="button-category">
+        <p class="m-0">Drama / Misterio</p>
+    </button>
+    <button class="button-category">
+        <p class="m-0">Bélica / Crimen</p>
+    </button>
 </section>
 <section class="container py-4">
     <h5>Series</h5>
