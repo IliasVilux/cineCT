@@ -73,7 +73,7 @@ class EpisodeController extends Controller
     public static function seriesEpisode()
     {
         $serie = new SerieController;
-        $series = $serie::index();
+        $series = $serie::store();
 
         //$seriesEpisodeLink = array();
         $allSeriesEpisode = array();
@@ -83,13 +83,13 @@ class EpisodeController extends Controller
 
         
         $contador = 0;
-        foreach ($series as $DataBaseSerie) {
+        foreach ($series as $seriesFromApi) {
             
-            //echo '<b>'.$DataBaseSerie->name.' ID_SERIE: '.$DataBaseSerie->original_id.'</b><br>';
-            $serieSeasson = $DataBaseSerie->seasons;
-            if ($DataBaseSerie->total_episodes > 0 && $DataBaseSerie->seasons > 0) {
+            //echo '<b>'.$seriesFromApi->name.' ID_SERIE: '.$seriesFromApi->original_id.'</b><br>';
+            $serieSeasson = $seriesFromApi->{'number_of_seasons'};
+            if ($seriesFromApi->{'number_of_episodes'} > 0 && $seriesFromApi->{'number_of_seasons'} > 0) {
 
-                //echo $DataBaseSerie->name.'<b> - Total Seasons:'.$serieSeasson.'</b>';
+                //echo $seriesFromApi->name.'<b> - Total {'number_of_seasons'}:'.$serieSeasson.'</b>';
                 for ($i = 1; $i <= $serieSeasson; $i++) {
                     
                     
@@ -100,7 +100,7 @@ class EpisodeController extends Controller
                     
                     //echo '------------------<br><br>';
 
-                    $episodeSerieApi = Http::get('https://api.themoviedb.org/3/tv/' . $DataBaseSerie->original_id . '/season/' . $i . '?api_key=9d981b068284aca44fb7530bdd218c30&language=en-EN');
+                    $episodeSerieApi = Http::get('https://api.themoviedb.org/3/tv/' . $seriesFromApi->{'id'} . '/season/' . $i . '?api_key=9d981b068284aca44fb7530bdd218c30&language=en-EN');
                     $episodeSerieJson = json_decode($episodeSerieApi);
                     
                     if (!empty($episodeSerieJson->{'episodes'})) {
@@ -109,6 +109,15 @@ class EpisodeController extends Controller
                         foreach($episodeSerieJson->{'episodes'} as $episodePosition){
                             //echo '<b>Episodi: '.$episodePosition->{'episode_number'}.'</b>: '. $episodePosition->{'name'}.'<br>';
                             
+                            
+                            if(end($episodePosition->{'id'}) == $seriesFromApi->{'last_episode_to_air'}->{'id'} 
+                            && end($episodePosition->{'air_date'}) == $seriesFromApi->{'last_episode_to_air'}->{'air_date'} 
+                            && end($episodePosition->{'name'}) == $seriesFromApi->{'last_episode_to_air'}->{'name'})
+                            {
+                                
+                            }
+                            
+
                             if(isset($episodePosition->{'air_date'})){
                                 $formatDate = date("d-m-Y", strtotime($episodePosition->{'air_date'}));
                                 $episodePosition->{'air_date'} = $formatDate;
@@ -120,17 +129,18 @@ class EpisodeController extends Controller
                         
                         //echo '<br><br>';
                         //array_push($allSeriesEpisode, $episodeSerieJson->{'episodes'});
-                        //array_push($allSerieId, $DataBaseSerie);
+                        //array_push($allSerieId, $seriesFromApi);
                     }
                     
-                    echo '<br><br>-------------fwefwe-----------<br><br>';
+                    echo '<br><br>------------------------<br><br>';
                     echo $episodePosition->{'name'} .'<br>';
-                    echo $DataBaseSerie->original_id .'<br>';
+                    echo $seriesFromApi->{'id'} .'<br>';
                     echo rand(30,60) .'<br>';
                     echo $episodePosition->{'overview'} .'<br>';
                     echo $episodePosition->{'air_date'} .'<br>';
                     echo '<br><br>------------------------<br><br>';
                     
+
 
                     $contador++;
                 }
@@ -140,24 +150,23 @@ class EpisodeController extends Controller
 /*
             echo '<br><br>-------------fwefwe-----------<br><br>';
             echo $episodePosition->{'name'} .'<br>';
-            echo $DataBaseSerie->original_id .'<br>';
+            echo $seriesFromApi->original_id .'<br>';
             echo rand(30,60) .'<br>';
             echo $episodePosition->{'overview'} .'<br>';
             echo $episodePosition->{'air_date'} .'<br>';
             echo '<br><br>------------------------<br><br>';
 */
             
-/*
             DB::table('episodes')->insert([
                 'title' => $episodePosition->{'name'},
                 'anime_id' => null,
-                'serie_id' => $DataBaseSerie->original_id,
+                'serie_id' => $seriesFromApi->original_id,
                 'duration' => rand(30,60),
                 'description' => $episodePosition->{'overview'},
                 'aired' => $episodePosition->{'air_date'},
                 'created_at' => now(),
                 'updated_at' => now()
-            ]);*/
+            ]);
 
             
         }
