@@ -2,8 +2,8 @@
 @section('content')
 
 <head>
-    <link rel="stylesheet" href="storage/css/general.css">
-    <link rel="stylesheet" href="storage/css/profile.css">
+    <link rel="stylesheet" href="../../storage/css/general.css">
+    <link rel="stylesheet" href="../../storage/css/profile.css">
 </head>
 <section class="container">
     <h1>MI PERFIL</h1>
