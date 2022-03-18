@@ -139,8 +139,40 @@ class DatabaseSeeder extends Seeder
             }
         } */
 
-        $tmp = EpisodeController::store();
-        for($i=0; $i<=count($tmp[1]); $i++){
+        $tmp = CharacterController::store();
+        $i = 0;
+        foreach ($tmp[1] as $key) {
+            if (isset($key->{'data'}->{'nicknames'}[0])){
+                DB::table('characters')->insert([
+                    'name' => $key->{'data'}->{'name'},
+                    'surname' => $key->{'data'}->{'nicknames'}[0],
+                    'about' => $key->{'data'}->{'about'},
+                    'anime_id' => $tmp[0][$i],
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]);
+            } else if (isset($key->{'data'}->{'about'})){
+                DB::table('characters')->insert([
+                    'name' => $key->{'data'}->{'name'},
+                    'surname' => null,
+                    'about' => $key->{'data'}->{'about'},
+                    'anime_id' => $tmp[0][$i],
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]);
+            } else {
+                DB::table('characters')->insert([
+                    'name' => $key->{'data'}->{'name'},
+                    'surname' => null,
+                    'about' => null,
+                    'anime_id' => $tmp[0][$i],
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]);
+            }
+            $i++;
+        }
+        /* for($i=0; $i<=count($tmp[1]); $i++){
                 DB::table('characters')->insert([
                     'name' => $tmp[1][$i]->{'data'}->{'name'},
                     'surname' => $tmp[1][$i]->{'data'}->{'nicknames'}[0],
@@ -149,6 +181,6 @@ class DatabaseSeeder extends Seeder
                     'created_at' => now(),
                     'updated_at' => now()
                 ]);
-            }
+            } */
         }
 }
