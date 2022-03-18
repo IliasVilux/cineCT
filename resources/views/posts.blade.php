@@ -17,11 +17,9 @@
             }          
             div#social-links ul li a {
                 padding: 20px;
-                border: 1px solid #ccc;
                 margin: 1px;
                 font-size: 30px;
-                color: #222;
-                background-color: #ccc;
+                color: #9966ff;
             }
         </style>
     </head>

@@ -29,6 +29,7 @@
         <div class="d-flex flex-column align-items-center">
             <h3><b>Puntuación</b></h3>
             <div class="d-flex flex-row">
+            {!! $shareComponent !!}
                 <h4><i class="fas fa-star"></i><strong class="fw-bold fs-3"> {{$film->puntuation}}</strong>/10<h4>
             </div>
         </div>
