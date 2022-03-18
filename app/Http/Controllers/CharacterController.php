@@ -24,16 +24,13 @@ class CharacterController extends Controller
             $characterJson = json_decode($chracterApi);
             if (isset($characterJson->{'data'}) && !empty($characterJson->{'data'})){
                 foreach ($characterJson->{'data'} as $key) {
-                    $find = false;
                     $title = $key->{'anime'}->{'title'};
                     foreach ($animes as $anime) {
-                        if($title == $anime->name){
-                            if (!$find){
-                                /* array_push($allCharacters, $key); */
-                                array_push($idAnimes, $anime->original_id);
-                                array_push($idCharacters, $contador);
-                                $find = true;
-                            }
+                        if($title === $anime->name){
+                            /* array_push($allCharacters, $key); */
+                            array_push($idAnimes, $anime->original_id);
+                            array_push($idCharacters, $contador);
+                            break(2);
                         }
                     }
                 }
@@ -41,53 +38,46 @@ class CharacterController extends Controller
             $contador++;
         } while($contador < 100);
 
+        $allCharactersSpecs = array();
         $contAnimeId = 0;
+        $idAnimesTmp = array();
         foreach ($idCharacters as $idCharacter) {
             $specificCharaccterApi = Http::get('https://api.jikan.moe/v4/characters/' . $idCharacter);
             $spacificCharacterJson = json_decode($specificCharaccterApi);
-            if(isset($spacificCharacterJson->{'data'}->{'name'})){
-                echo $spacificCharacterJson->{'data'}->{'name'} . "<br>";
+            if(isset($spacificCharacterJson->{'data'}) && isset($spacificCharacterJson->{'data'}->{'name'}) && !empty($spacificCharacterJson->{'data'}->{'name'})){
+                array_push($allCharactersSpecs, $spacificCharacterJson);
+                array_push($idAnimesTmp, $idAnimes[$contAnimeId]);
             }
-            if(isset($spacificCharacterJson->{'data'}->{'nicknames'}) && !empty($spacificCharacterJson->{'data'}->{'nicknames'})){
-                echo $spacificCharacterJson->{'data'}->{'nicknames'}[0] . "<br>";
-            }
-            if(isset($spacificCharacterJson->{'data'}->{'about'})){
-                echo $spacificCharacterJson->{'data'}->{'about'} . "<br>";
-            }
-            echo $idAnimes[$contAnimeId];
             $contAnimeId++;
-            echo "<br><br>";
-            /* if (isset($characterJson->{'data'}) && !empty($characterJson->{'data'})){
-                if (isset($characterJson->{'data'}->{'images'}->{'webp'}) && !empty($characterJson->{'data'}->{'images'}->{'webp'})){
-                    echo "<img src=" . $characterJson->{'data'}->{'images'}->{'webp'}->{'image_url'} . ">";
-                }
-            } */
             sleep(4);
         }
-        die();
 
-        /* foreach($apiLinks as $link){
-            $characterJson = json_decode($link);
-            if (isset($characterJson->{'data'}) && !empty($characterJson->{'data'})){
-                foreach ($characterJson->{'data'} as $key) {
-                    $find = false;
-                    $title = $key->{'anime'}->{'title'};
-                    foreach ($animes as $anime) {
-                        if($title == $anime->name){
-                            if (!$find){
-                                array_push($allCharacters, $key);
-                                $find = true;
-                            }
-                        }
-                    }
+        $idAnimesDB = array();
+        foreach ($idAnimesTmp as $oid){
+            foreach ($animes as $anime) {
+                if ($anime->original_id == $oid){
+                    array_push($idAnimesDB, $anime->id);
+                    break(1);
                 }
             }
+        }
+
+        /* echo "-------------------" . count($idAnimesTmp) . "<br>";
+        echo "-------------------" . count($allCharactersSpecs) . "<br>";
+
+        foreach ($idAnimesTmp as $key) {
+            echo $key . "<br>";
+        }
+
+        $asd = 0;
+        foreach($allCharactersSpecs as $asd){
+            echo $asd->{'data'}->{'name'} . "<br>";
+            $asd++;
         } */
 
-        /* foreach ($allCharacters as $asd) {
-            echo $asd->{'anime'}->{'title'} . "<br>";
-        } */
-        die;
-        return $allCharacters;
+        $datosSeeder = array();
+        array_push($datosSeeder, $idAnimesDB);
+        array_push($datosSeeder, $allCharactersSpecs);
+        return $datosSeeder;
     }
 }
