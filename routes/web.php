@@ -4,6 +4,7 @@ use App\Http\Controllers\GenreController;
 use App\Http\Controllers\SerieController;
 use App\Http\Controllers\FilmController;
 use App\Http\Controllers\AnimeController;
+use App\Http\Controllers\SocialShareButtonsController;
 use App\Models\Genre;
 use App\Models\Serie;
 use App\Models\Films;
@@ -96,3 +97,6 @@ Route::get('/profile/profile', function () {
 Route::get('/profile/profileImg', function () {
     return view('/profile/profileImg');
 });
+
+//SHARE
+Route::get('/social-media-share', [SocialShareButtonsController::class,'ShareWidget']);
