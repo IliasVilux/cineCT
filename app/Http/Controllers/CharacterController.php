@@ -36,26 +36,36 @@ class CharacterController extends Controller
                 }
             }
             $contador++;
-        } while($contador < 75);
+        } while($contador < 100);
 
         $allCharactersSpecs = array();
         $contAnimeId = 0;
-        $idAnimesFinal = array();
+        $idAnimesTmp = array();
         foreach ($idCharacters as $idCharacter) {
             $specificCharaccterApi = Http::get('https://api.jikan.moe/v4/characters/' . $idCharacter);
             $spacificCharacterJson = json_decode($specificCharaccterApi);
             if(isset($spacificCharacterJson->{'data'}) && isset($spacificCharacterJson->{'data'}->{'name'}) && !empty($spacificCharacterJson->{'data'}->{'name'})){
                 array_push($allCharactersSpecs, $spacificCharacterJson);
-                array_push($idAnimesFinal, $idAnimes[$contAnimeId]);
+                array_push($idAnimesTmp, $idAnimes[$contAnimeId]);
             }
             $contAnimeId++;
             sleep(4);
         }
 
-        /* echo "-------------------" . count($idAnimesFinal) . "<br>";
+        $idAnimesDB = array();
+        foreach ($idAnimesTmp as $oid){
+            foreach ($animes as $anime) {
+                if ($anime->original_id == $oid){
+                    array_push($idAnimesDB, $anime->id);
+                    break(1);
+                }
+            }
+        }
+
+        /* echo "-------------------" . count($idAnimesTmp) . "<br>";
         echo "-------------------" . count($allCharactersSpecs) . "<br>";
 
-        foreach ($idAnimesFinal as $key) {
+        foreach ($idAnimesTmp as $key) {
             echo $key . "<br>";
         }
 
@@ -66,7 +76,7 @@ class CharacterController extends Controller
         } */
 
         $datosSeeder = array();
-        array_push($datosSeeder, $idAnimesFinal);
+        array_push($datosSeeder, $idAnimesDB);
         array_push($datosSeeder, $allCharactersSpecs);
         return $datosSeeder;
     }
