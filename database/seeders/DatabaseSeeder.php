@@ -47,7 +47,6 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => now()
             ]);
         } */
-
         /* $tmp = FilmController::store();
         foreach ($tmp as $tmp2){
             DB::table('films')->insert([
@@ -67,7 +66,7 @@ class DatabaseSeeder extends Seeder
         foreach ($tmp as $tmp2){
             if (isset($tmp2->{'data'}->{'themes'}[0]->{'name'})){
                 $genreValidation = $tmp2->{'data'}->{'themes'}[0]->{'name'};
-            } else if (isset($tmp2->{'data'}->{'genres'}[0]->{'name'})){
+            } else if (isset($tmp2->{'data'}->{'genres'}[0]->{'name'})) {
                 $genreValidation = $tmp2->{'data'}->{'genres'}[0]->{'name'};
             }
             DB::table('animes')->insert([
@@ -77,7 +76,7 @@ class DatabaseSeeder extends Seeder
                 'poster_path' => $tmp2->{'data'}->{'images'}->{'webp'}->{'large_image_url'},
                 'trailer_link' => $tmp2->{'data'}->{'trailer'}->{'youtube_id'},
                 'release_date' => $tmp2->{'data'}->{'year'},
-                'duration' => $tmp2->{'data'}->{'duration'}, 
+                'duration' => $tmp2->{'data'}->{'duration'},
                 'total_episodes' => $tmp2->{'data'}->{'episodes'},
                 'puntuation' => $tmp2->{'data'}->{'score'},
                 'genre_id' => $genreValidation,
