@@ -13,9 +13,9 @@
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/1f7457abdb.js"></script>
     <title>Cinect</title>
-    <link rel="stylesheet" href="../../storage/css/general.css">
-    <link rel="stylesheet" href="../../storage/css/header.css">
-    <link rel="stylesheet" href="../../storage/css/footer.css">
+    <link rel="stylesheet" href="storage/css/general.css">
+    <link rel="stylesheet" href="storage/css/header.css">
+    <link rel="stylesheet" href="storage/css/footer.css">
 </head>
 
 <body>

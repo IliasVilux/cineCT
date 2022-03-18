@@ -2,7 +2,7 @@
 @section('content')
 
 <head>
-    <link rel="stylesheet" href="../storage/css/home.css">
+    <link rel="stylesheet" href="storage/css/home.css">
 </head>
 <section class="slider">
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">

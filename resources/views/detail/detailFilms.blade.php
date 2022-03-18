@@ -2,7 +2,7 @@
 @section('content')
 
 <head>
-    <link rel="stylesheet" href="../../storage/css/detail.css">
+    <link rel="stylesheet" href="storage/css/detail.css">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 </head>
 <section class="container">
