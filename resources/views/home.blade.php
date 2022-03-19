@@ -2,7 +2,7 @@
 @section('content')
 
 <head>
-    <link rel="stylesheet" href="../storage/css/home.css">
+    <link href="{{ asset('css/home.css') }}" rel="stylesheet">
 </head>
 <section class="slider">
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">

@@ -2,7 +2,7 @@
 @section('content')
 
 <head>
-    <link rel="stylesheet" href="../storage/css/register.css">
+    <link rel="stylesheet" href="{{asset('css/register.css')}}">
 </head>
 <section class="section-signin-register d-flex flex-wrap justify-content-center h-100 p-5">
     <div class="col-12 col-lg-8 p-sm-5">
