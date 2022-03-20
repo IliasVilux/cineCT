@@ -92,7 +92,7 @@ Route::get('/user/list', [UserController::class, 'userFavoriteList'])->name('use
 Route::get('/login', [UserAuthController::class, 'index']);
 Route::get('/register', [UserAuthController::class, 'index'])->name('user.create');
 
-Route::post('/login', [UserAuthController::class, 'userLogin'])->name('login.user');
 Route::post('/register', [UserAuthController::class, 'userRegister'])->name('register.user');
+Route::post('/login', [UserAuthController::class, 'userLogin'])->name('login.user');
 Route::get('/logout', [UserAuthController::class, 'userSignOut'])->name('signout.user');
 

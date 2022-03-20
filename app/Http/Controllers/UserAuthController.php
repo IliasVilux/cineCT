@@ -42,12 +42,13 @@ class UserAuthController extends Controller
         $register_password = $request->input('register_password');
 
         $validate = $this->validate($request, [
-            'register_name' => 'string|required',
-            'register_surname' => 'string|required',
-            'register_nick' => 'required|string', //unique:users-> ningun nick se repetirá
+            'register_name' => 'string|required|max:30',
+            'register_surname' => 'string|required|max:60',
+            'register_nick' => 'required|string|max:15', //unique:users-> ningun nick se repetirá
             'register_email' => 'required|string|email', //unique:users
-            'register_password' => 'required'
+            'register_password' => 'required|max:15'
         ]);
+
 
         $user = User::create([
             'name' => $register_name,
@@ -68,6 +69,6 @@ class UserAuthController extends Controller
         Session::flush();
         Auth::logout();
   
-        return redirect()->to('register');
+        return redirect()->to('/');
     }
 }

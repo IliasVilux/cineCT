@@ -19,10 +19,8 @@ class UserController extends Controller
 
     public function userFavoriteList()
     {
-        if(Auth::user()){
-            return view('list');
-        }else{
-            return redirect()->to('/');
-        }
+        return view('list');
     }
+
+    
 }

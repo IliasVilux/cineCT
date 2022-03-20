@@ -108,12 +108,10 @@
                                 <a href="{{ url('/search') }}" class="footer-links text-light text-uppercase fs-3"><i
                                         class="fas fa-search pe-2"></i>Buscador</a>
                             </li>
-                            @if (auth()->check())
                             <li>
-                                <a href="{{ url('/list') }}" class="footer-links text-light text-uppercase fs-3"><i
+                                <a href="{{ route('user.favorite.list') }}" class="footer-links text-light text-uppercase fs-3"><i
                                         class="fas fa-th-list pe-2"></i>Mis Listas</a>
                             </li>
-                            @endif
                             <li>
                                 <a href="{{ url('/aboutUs') }}" class="footer-links text-light text-uppercase fs-3"><i
                                         class="fas fa-user pe-2"></i>Sobre Nosotros</a>
