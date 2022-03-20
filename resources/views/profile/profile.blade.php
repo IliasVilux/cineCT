@@ -16,11 +16,11 @@
     <form class="row g-3 my-4 mx-5">
         <div class="col-12 col-sm-6 px-4">
             <label class="form-label">Nombre de usuario</label>
-            <input type="text" class="form-control" name="username">
+            <input type="text" class="form-control" name="username" value="{{ Auth::user()->name }}">
         </div>
         <div class="col-12 col-sm-6 px-4">
             <label class="form-label">Nombre Completo</label>
-            <input type="text" class="form-control" name="name">
+            <input type="text" class="form-control" name="name" value="{{ Auth::user()->name.' '.Auth::user()->surname}}">
         </div>
         <div class="col-12 col-sm-6 px-4">
         <label class="form-label">Idioma</label>

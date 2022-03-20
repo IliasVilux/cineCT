@@ -4,6 +4,9 @@ use App\Http\Controllers\GenreController;
 use App\Http\Controllers\SerieController;
 use App\Http\Controllers\FilmController;
 use App\Http\Controllers\AnimeController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SessionController;
 use App\Models\Genre;
 use App\Models\Serie;
 use App\Models\Films;
@@ -25,18 +28,8 @@ use Illuminate\Support\Facades\Route;
     return view('register');
 });*/
 
-Route::get('/', function () {
 
-    $series = DB::table('series')->get();
-    $films = DB::table('films')->get();
-    $animes = DB::table('animes')->get();
-
-    return view('home', ['serie' => $series, 'film' => $films, 'anime' => $animes]);
-});
-
-Route::get('/register', function () {
-    return view('register');
-});
+Route::get('/', [HomeController::class,  'index'])->name('home');
 
 Route::get('/content/contentSeries', function () {
 
@@ -96,3 +89,17 @@ Route::get('/profile/profile', function () {
 Route::get('/profile/profileImg', function () {
     return view('/profile/profileImg');
 });
+
+
+
+//Registro
+Route::get('/register', [RegisterController::class,  'create'])->name('register.create');
+Route::post('/register', [RegisterController::class,  'store'])->name('register.store');
+
+Route::get('/logout', [SessionController::class,  'destroy'])->name('user.logout');
+
+/*
+Route::get('/login', [SessionController::class,  'create'])->name('user.login-create');
+Route::post('/login', [SessionController::class,  'store'])->name('user.login');
+*/
+

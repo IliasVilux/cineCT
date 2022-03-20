@@ -13,9 +13,9 @@
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/1f7457abdb.js"></script>
     <title>Cinect</title>
-    <link rel="stylesheet" href="{{asset('css/general.css')}}">
-    <link rel="stylesheet" href="{{asset('css/header.css')}}">
-    <link rel="stylesheet" href="{{asset('css/footer.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/general.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/header.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
 </head>
 
 <body>
@@ -28,7 +28,7 @@
                     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
                         <span class="navbar-toggler-icon"></span></button>
-                    <a class="navbar-brand col-8 text-center" href="{{url('/')}}">Logo</a>
+                    <a class="navbar-brand col-8 text-center" href="{{ url('/') }}">Logo</a>
                 </div>
                 <div class="col-3 d-flex flex-direction-row flex-nowrap justify-content-end align-items-center">
                     <i class="fas fa-search text-light fs-4 p-0"></i>
@@ -37,17 +37,29 @@
                             class="btn text-light dropdown-toggle d-flex flex-direction-row flex-nowrap justify-content-end align-items-center"
                             type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-user-circle fs-4 pe-1"></i>
-                            <p class="d-none d-sm-flex m-0">Usuario</p>
+
+                            @if (Auth::check())
+                                <p class="d-none d-sm-flex m-0">{{ Auth::user()->nick }}</p>
+                            @endif
+
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="{{url('/profile/profile')}}"><i
-                                        class="fas fa-user-circle"></i>Perfil</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-list"></i>Mis listas</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i>Cerrar sessión</a>
-                            </li>
+                            @if (auth()->check())
+                                <li><a class="dropdown-item" href="{{ url('/profile/profile') }}"><i
+                                            class="fas fa-user-circle"></i>Perfil</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-list"></i>Mis listas</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+
+                                <li><a class="dropdown-item" href="{{ route('user.logout') }}"><i
+                                            class="fas fa-sign-out-alt"></i>Cerrar sessión</a>
+                                </li>
+                            @else
+                                <li><a class="dropdown-item" href="{{ route('register.create') }}"><i
+                                            class="fas fa-user-circle"></i>Iniciar Session</a></li>
+                                <li><a class="dropdown-item" href="{{ route('register.create') }}"><i class="fas fa-list"></i>Registrar</a></li>
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -61,38 +73,38 @@
                     <div class="offcanvas-body">
                         <ul class="list-unstyled text-dark">
                             <li>
-                                <a href="{{url('/')}}" class="footer-links text-light text-uppercase fs-3"><i
+                                <a href="{{ url('/') }}" class="footer-links text-light text-uppercase fs-3"><i
                                         class="fas fa-home pe-2"></i>Home</a>
                             </li>
                             <li>
-                                <a href="{{url('/content/contentFilms')}}"
+                                <a href="{{ url('/content/contentFilms') }}"
                                     class="footer-links text-light text-uppercase fs-3"><i
                                         class="fas fa-film pe-2 fa-2x"></i>Películas</a>
                             </li>
                             <li>
-                                <a href="{{url('/content/contentSeries')}}"
+                                <a href="{{ url('/content/contentSeries') }}"
                                     class="footer-links text-light text-uppercase fs-3"><i
                                         class="fas fa-tv pe-2"></i>Series</a>
                             </li>
                             <li>
-                                <a href="{{url('/content/contentAnimes')}}"
+                                <a href="{{ url('/content/contentAnimes') }}"
                                     class="footer-links text-light text-uppercase fs-3"><i
                                         class="fas fa-dragon pe-2"></i>Anime</a>
                             </li>
                             <li>
-                                <a href="{{url('/top')}}" class="footer-links text-light text-uppercase fs-3"><i
+                                <a href="{{ url('/top') }}" class="footer-links text-light text-uppercase fs-3"><i
                                         class="fas fa-sort-amount-up-alt pe-2"></i>Top</a>
                             </li>
                             <li>
-                                <a href="{{url('/search')}}" class="footer-links text-light text-uppercase fs-3"><i
+                                <a href="{{ url('/search') }}" class="footer-links text-light text-uppercase fs-3"><i
                                         class="fas fa-search pe-2"></i>Buscador</a>
                             </li>
                             <li>
-                                <a href="{{url('/list')}}" class="footer-links text-light text-uppercase fs-3"><i
+                                <a href="{{ url('/list') }}" class="footer-links text-light text-uppercase fs-3"><i
                                         class="fas fa-th-list pe-2"></i>Mis Listas</a>
                             </li>
                             <li>
-                                <a href="{{url('/aboutUs')}}" class="footer-links text-light text-uppercase fs-3"><i
+                                <a href="{{ url('/aboutUs') }}" class="footer-links text-light text-uppercase fs-3"><i
                                         class="fas fa-user pe-2"></i>Sobre Nosotros</a>
                             </li>
                         </ul>
@@ -118,14 +130,14 @@
             <section class="d-flex justify-content-center mb-2">
                 <div class="d-inline-block col-12">
                     <h5 class="text-uppercase fs-4">Links</h5>
-                    <a href="{{url('/')}}" class="footer-links text-white fs-5">Home</a>
-                    <a href="{{url('/content/contentFilms')}}" class="footer-links text-white fs-5">Películas</a>
-                    <a href="{{url('/content/contentSeries')}}" class="footer-links text-white fs-5">Series</a>
-                    <a href="{{url('/content/contentAnimes')}}" class="footer-links text-white fs-5">Anime</a>
-                    <a href="{{url('/top')}}" class="footer-links text-white fs-5">Top</a>
-                    <a href="{{url('/search')}}" class="footer-links text-white fs-5">Buscador</a>
-                    <a href="{{url('/list')}}" class="footer-links text-white fs-5">Mis Listas</a>
-                    <a href="{{url('/aboutUs')}}" class="footer-links text-white fs-5">Sobre Nosotros</a>
+                    <a href="{{ url('/') }}" class="footer-links text-white fs-5">Home</a>
+                    <a href="{{ url('/content/contentFilms') }}" class="footer-links text-white fs-5">Películas</a>
+                    <a href="{{ url('/content/contentSeries') }}" class="footer-links text-white fs-5">Series</a>
+                    <a href="{{ url('/content/contentAnimes') }}" class="footer-links text-white fs-5">Anime</a>
+                    <a href="{{ url('/top') }}" class="footer-links text-white fs-5">Top</a>
+                    <a href="{{ url('/search') }}" class="footer-links text-white fs-5">Buscador</a>
+                    <a href="{{ url('/list') }}" class="footer-links text-white fs-5">Mis Listas</a>
+                    <a href="{{ url('/aboutUs') }}" class="footer-links text-white fs-5">Sobre Nosotros</a>
                 </div>
             </section>
             <!-- SECTION: LINKS -->

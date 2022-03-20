@@ -39,7 +39,6 @@
 </section>
 <section class="section-content container-fluid">
 
-
     <!-- PELÍCULAS -->
     <div class="container-fluid d-flex justify-content-between">
         <h5>PELÍCULAS</h5>
