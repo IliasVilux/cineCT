@@ -45,20 +45,29 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
                             @if (auth()->check())
-                                <li><a class="dropdown-item" href="{{ url('/profile/profile') }}"><i
-                                            class="fas fa-user-circle"></i>Perfil</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="fas fa-list"></i>Mis listas</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('user.profile') }}">
+                                        <i class="fas fa-user-circle"></i>
+                                        Perfil
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{route('user.favorite.list')}}">
+                                        <i class="fas fa-list"></i>
+                                        Mis listas
+                                    </a>
+                                </li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
 
-                                <li><a class="dropdown-item" href="{{ route('user.logout') }}"><i
+                                <li><a class="dropdown-item" href="{{ route('signout.user') }}"><i
                                             class="fas fa-sign-out-alt"></i>Cerrar sessión</a>
                                 </li>
                             @else
-                                <li><a class="dropdown-item" href="{{ route('register.create') }}"><i
+                                <li><a class="dropdown-item" href="{{ route('user.create') }}"><i
                                             class="fas fa-user-circle"></i>Iniciar Session</a></li>
-                                <li><a class="dropdown-item" href="{{ route('register.create') }}"><i class="fas fa-list"></i>Registrar</a></li>
+                                <li><a class="dropdown-item" href="{{ route('user.create') }}"><i class="fas fa-list"></i>Registrar</a></li>
                             @endif
                         </ul>
                     </div>
@@ -99,10 +108,12 @@
                                 <a href="{{ url('/search') }}" class="footer-links text-light text-uppercase fs-3"><i
                                         class="fas fa-search pe-2"></i>Buscador</a>
                             </li>
+                            @if (auth()->check())
                             <li>
                                 <a href="{{ url('/list') }}" class="footer-links text-light text-uppercase fs-3"><i
                                         class="fas fa-th-list pe-2"></i>Mis Listas</a>
                             </li>
+                            @endif
                             <li>
                                 <a href="{{ url('/aboutUs') }}" class="footer-links text-light text-uppercase fs-3"><i
                                         class="fas fa-user pe-2"></i>Sobre Nosotros</a>

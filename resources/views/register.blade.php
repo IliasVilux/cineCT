@@ -20,23 +20,26 @@
                         <img src="storage/img/200x200.png" alt="LOGO" height="100px" width="100px">
                         <div class="card-body">
                             <form class="row g-3 needs-validation d-flex flex-column align-items-center p-2 p-sm-5 m-2"
-                                method="POST" action="#" novalidate>
+                                method="POST" action="{{ route('login.user') }}" novalidate>
+                                @if(Session::has('msgError'))
+                                    <div class="alert alert-warning">{{ Session::get('msgError') }}</div>
+                                @endif
                                 @csrf
                                 <div class="col-12">
-                                    <label for="auth_email" class="form-label">Email</label>
-                                    <input type="text" class="form-control" id="auth_email" name="auth_email"
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="text" class="form-control" id="email" name="email"
                                         placeholder="Your email" required>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
+                                    @if ($errors->has('email'))
+                                        <span class="text-danger">{{ $errors->first('email') }}</span>
+                                    @endif
                                 </div>
                                 <div class="col-12">
-                                    <label for="auth_password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="auth_password" name="auth_password"
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="password" name="password"
                                         placeholder="Password" required>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
+                                    @if ($errors->has('password'))
+                                        <span class="text-danger">{{ $errors->first('password') }}</span>
+                                    @endif
                                 </div>
                                 <div class="form-check d-flex justify-content-start mb-4">
                                     <input class="form-check-input" type="checkbox" value="" id="remember" />
@@ -57,7 +60,7 @@
                 <div class="tab-pane fade" id="signUp">
                     <div class="card text-dark">
                         <div class="card-body">
-                            <form method="POST" action="{{ route('register.store') }}"
+                            <form method="POST" action="{{ route('register.user') }}"
                                 class="row g-3 needs-validation d-flex flex-column align-items-center p-2 p-sm-5 m-2"
                                 novalidate>
                                 @csrf
@@ -72,14 +75,16 @@
                                     </div>
                                     <div class="col-12 col-md-6 mb-2">
                                         <label for="register_surname" class="form-label">Apellido</label>
-                                        <input type="text" class="form-control" id="register_surname" name="register_surname" placeholder="Ruffalo" required>
+                                        <input type="text" class="form-control" id="register_surname"
+                                            name="register_surname" placeholder="Ruffalo" required>
                                         <div class="valid-feedback">
                                             Looks good!
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6 mb-2">
                                         <label for="register_nick" class="form-label">Nick</label>
-                                        <input type="text" class="form-control" id="register_nick" name="register_nick" placeholder="hulk20" required>
+                                        <input type="text" class="form-control" id="register_nick" name="register_nick"
+                                            placeholder="hulk20" required>
                                         <div class="valid-feedback">
                                             Looks good!
                                         </div>
@@ -110,13 +115,13 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="form-check d-flex justify-content-start mb-4">
                                     <input class="form-check-input" type="checkbox" value="" id="rememberRegister" />
                                     <label class="form-check-label mx-2" for="rememberRegister"> Remember password </label>
                                 </div>
 
                                 <button class="btn btn-primary btn-lg btn-block" type="submit">Register</button>
-
                             </form>
                         </div>
                     </div>

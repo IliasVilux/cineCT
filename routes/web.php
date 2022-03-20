@@ -7,6 +7,8 @@ use App\Http\Controllers\AnimeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\UserAuthController;
+use App\Http\Controllers\UserController;
 use App\Models\Genre;
 use App\Models\Serie;
 use App\Models\Films;
@@ -74,16 +76,8 @@ Route::get('/search', function () {
     return view('search');
 });
 
-Route::get('/list', function () {
-    return view('list');
-});
-
 Route::get('/aboutUs', function () {
     return view('aboutUs');
-});
-
-Route::get('/profile/profile', function () {
-    return view('/profile/profile');
 });
 
 Route::get('/profile/profileImg', function () {
@@ -91,15 +85,14 @@ Route::get('/profile/profileImg', function () {
 });
 
 
+//User-Auth Actions
+Route::get('/user/profile', [UserController::class, 'userProfile'])->name('user.profile');
+Route::get('/user/list', [UserController::class, 'userFavoriteList'])->name('user.favorite.list');
 
-//Registro
-Route::get('/register', [RegisterController::class,  'create'])->name('register.create');
-Route::post('/register', [RegisterController::class,  'store'])->name('register.store');
+Route::get('/login', [UserAuthController::class, 'index']);
+Route::get('/register', [UserAuthController::class, 'index'])->name('user.create');
 
-Route::get('/logout', [SessionController::class,  'destroy'])->name('user.logout');
-
-/*
-Route::get('/login', [SessionController::class,  'create'])->name('user.login-create');
-Route::post('/login', [SessionController::class,  'store'])->name('user.login');
-*/
+Route::post('/login', [UserAuthController::class, 'userLogin'])->name('login.user');
+Route::post('/register', [UserAuthController::class, 'userRegister'])->name('register.user');
+Route::get('/logout', [UserAuthController::class, 'userSignOut'])->name('signout.user');
 
