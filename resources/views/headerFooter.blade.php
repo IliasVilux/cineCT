@@ -65,9 +65,7 @@
                                             class="fas fa-sign-out-alt"></i>Cerrar sessión</a>
                                 </li>
                             @else
-                                <li><a class="dropdown-item" href="{{ route('user.create') }}"><i
-                                            class="fas fa-user-circle"></i>Iniciar Session</a></li>
-                                <li><a class="dropdown-item" href="{{ route('user.create') }}"><i class="fas fa-list"></i>Registrar</a></li>
+                                <li><a class="dropdown-item" href="{{ route('user.create') }}"><i class="fas fa-user-circle"></i>Iniciar Session</a></li>
                             @endif
                         </ul>
                     </div>
