@@ -17,21 +17,39 @@ class UserAuthController extends Controller
     public function userLogin(Request $request)
     {
 
-        $rememberLogin = $request->get('rememberData');
+        $nick = $request->input('nick');
+        $email = $request->input('email');
         
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
-        
-        
+        //login con email
+        if(isset($email) && !empty($email)){
 
-        $logInData = $request->only('email', 'password');
-        
-        if(Auth::attempt($logInData)){
-            return redirect()->to('/')
-                        ->with('userLogged','Sessión Iniciada');
+            $request->validate([
+                'email' => 'required|email',
+                'password' => 'required'
+            ]);
+            $logInData = $request->only('email', 'password');
+            
+            if(Auth::attempt($logInData)){
+                return redirect()->to('/')
+                            ->with('userLogged','Sessión Iniciada');
+            }
         }
+
+        //login con nickname
+        if(isset($nick) && !empty($nick)){
+
+            $request->validate([
+                'nick' => 'required|string',
+                'password' => 'required'
+            ]);
+            $logInData = $request->only('nick', 'password');
+            
+            if(Auth::attempt($logInData)){
+                return redirect()->to('/')
+                            ->with('userLogged','Sessión Iniciada');
+            }
+        }
+
 
         return redirect("register")->with('authErrorMsg','El email o la contraseña que has introducido no pertenece a ninguna cuenta. Comprueba los datos y vuelve a intentarlo.');
         
