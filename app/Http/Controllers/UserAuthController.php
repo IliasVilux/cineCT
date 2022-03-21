@@ -30,7 +30,7 @@ class UserAuthController extends Controller
             $logInData = $request->only('email', 'password');
             
             if(Auth::attempt($logInData)){
-                return redirect()->to('/')
+                return redirect()->to('/home')
                             ->with('userLogged','Sessión Iniciada');
             }
         }
@@ -45,7 +45,7 @@ class UserAuthController extends Controller
             $logInData = $request->only('nick', 'password');
             
             if(Auth::attempt($logInData)){
-                return redirect()->to('/')
+                return redirect()->to('/home')
                             ->with('userLogged','Sessión Iniciada');
             }
         }
