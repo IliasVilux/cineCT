@@ -17,12 +17,18 @@
         <div class="carousel-inner">
             <div class="carousel-item full text-center active">
                 <img src="{{$film[0]->poster_path}}" class="img-carousel" alt="Img {{$film[0]->name}}">
+                <img src="{{$film[1]->poster_path}}" class="img-carousel" alt="Img {{$film[0]->name}}">
+                <img src="{{$film[2]->poster_path}}" class="img-carousel" alt="Img {{$film[0]->name}}">
             </div>
             <div class="carousel-item full text-center">
                 <img src="{{$serie[0]->poster_path}}" class="img-carousel" alt="Img {{$serie[0]->name}}">
+                <img src="{{$serie[1]->poster_path}}" class="img-carousel" alt="Img {{$serie[0]->name}}">
+                <img src="{{$serie[2]->poster_path}}" class="img-carousel" alt="Img {{$serie[0]->name}}">
             </div>
             <div class="carousel-item full text-center">
                 <img src="{{$anime[0]->poster_path}}" class="img-carousel" alt="Img {{$anime[0]->name}}">
+                <img src="{{$anime[1]->poster_path}}" class="img-carousel" alt="Img {{$anime[0]->name}}">
+                <img src="{{$anime[2]->poster_path}}" class="img-carousel" alt="Img {{$anime[0]->name}}">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"

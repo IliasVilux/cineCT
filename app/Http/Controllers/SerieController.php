@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Serie;
+use App\Models\Image;
 use Illuminate\Support\Facades\Http;
 
 class SerieController extends Controller
@@ -81,8 +82,10 @@ class SerieController extends Controller
 
     public function returnSeries($id) {
         $series = Serie::find($id);
+        $profile = Image::all();
+
         if (!is_null($series)) {
-            return view('/detail/detailSeries', ['serie' => $series]);
+            return view('/detail/detailSeries', ['serie' => $series, 'profile' => $profile]);
         } else {
             return response('No encontrado', 404);
         }
