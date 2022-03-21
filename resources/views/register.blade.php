@@ -43,6 +43,7 @@
                                     @csrf
 
                                     <div class="login-errors">
+
                                         @if ($errors->has('email'))
                                             <div class="mt-2 alert alert-danger">
                                                 Este email no es correcto
@@ -54,10 +55,17 @@
                                                 La contrasenya es incorrecta
                                             </div>
                                         @endif
+
                                     </div>
                                     <div class="col-12">
-
+                                        
                                         <p>Como quieres identificarte?</p>
+                                        
+                                        @if ($errors->has('nick'))
+                                            <div class="mt-2 alert alert-danger">
+                                                El nombre de usuario introducido no pertenece a ninguna cuenta
+                                            </div>
+                                        @endif
 
                                         <ul class="nav nav-pills mb-4" id="pills-tab" role="tablist">
                                             <li class="nav-item">
@@ -71,23 +79,27 @@
                                                     aria-selected="false">Con Nickname</a>
                                             </li>
                                         </ul>
-                                        
+
                                         <div class="tab-content" id="pills-tabContent">
                                             <div class="tab-pane fade show active" id="auth_with_email" role="tabpanel"
                                                 aria-labelledby="auth_with_email-tab">
                                                 <label for="email" class="form-label">Email</label>
                                                 <input type="email" class="form-control" id="email" name="email"
-                                                    placeholder="Your email">
+                                                    placeholder="Your email" autofocus>
                                             </div>
                                             <div class="tab-pane fade" id="auth_with_nickname" role="tabpanel"
                                                 aria-labelledby="auth_with_nickname-tab">
-                                                <label for="nick" class="form-label">Nickname</label>
-                                                <input type="text" class="form-control" id="nick" name="nick"
-                                                    placeholder="Your nickname">
+                                                <div class="col-12">
+                                                    <label for="nick" class="form-label">Nickname</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="hashtagUsername">@</span>
+                                                        </div>
+                                                        <input type="text" class="form-control" id="nick" name="nick" placeholder="username" autofocus>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-
-
                                     </div>
 
                                     <div class="col-12">
@@ -149,12 +161,7 @@
                                         @if ($errors->has('register_password'))
                                             <div class="mt-2 alert alert-danger">
                                                 El contraseña no es correcta, debe tener al menos 8 caracteres y una
-                                                mayuscula
-                                            </div>
-                                        @endif
-                                        @if ($errors->has('register_password_repeat'))
-                                            <div class="mt-2 alert alert-danger">
-                                                El contraseñas no coinciden
+                                                mayúscula las dos contrasenñas tienen que coincidir
                                             </div>
                                         @endif
                                     </div>
@@ -163,37 +170,37 @@
                                         <div class="col-12 col-md-6 mb-2">
                                             <label for="register_name" class="form-label">Nombre</label>
                                             <input type="text" class="form-control" id="register_name"
-                                                name="register_name" placeholder="Mark"
-                                                value="{{ old('register_name') }}">
+                                                name="register_name" placeholder="Mark" value="{{ old('register_name') }}"
+                                                autofocus>
                                         </div>
                                         <div class="col-12 col-md-6 mb-2">
                                             <label for="register_surname" class="form-label">Apellido</label>
                                             <input type="text" class="form-control" id="register_surname"
                                                 name="register_surname" placeholder="Ruffalo"
-                                                value="{{ old('register_surname') }}">
+                                                value="{{ old('register_surname') }}" autofocus>
                                         </div>
                                         <div class="col-12 col-md-6 mb-2">
                                             <label for="register_nick" class="form-label">Nick</label>
                                             <input type="text" class="form-control" id="register_nick"
                                                 name="register_nick" placeholder="hulk20"
-                                                value="{{ old('register_nick') }}">
+                                                value="{{ old('register_nick') }}" autofocus>
                                         </div>
                                         <div class="col-12 col-md-6 mb-2">
                                             <label for="register_email" class="form-label">Email</label>
                                             <input type="email" class="form-control" id="register_email"
                                                 name="register_email" placeholder="youremail@gmail.com"
-                                                value="{{ old('register_email') }}">
+                                                value="{{ old('register_email') }}" autofocus>
                                         </div>
                                         <div class="col-12 col-md-6 mb-2">
                                             <label for="register_password" class="form-label">Contraseña</label>
                                             <input type="password" class="form-control" id="register_password"
-                                                name="register_password" placeholder="New Password">
+                                                name="register_password" placeholder="New Password" autofocus>
                                         </div>
                                         <div class="col-12 col-md-6 mb-2">
                                             <label for="register_password_repeat" class="form-label">Repetir
                                                 Contraseña</label>
                                             <input type="password" class="form-control" id="register_password_repeat"
-                                                name="register_password_repeat" placeholder="Repeat Password">
+                                                name="register_password_repeat" placeholder="Repeat Password" autofocus>
                                         </div>
                                     </div>
 
@@ -215,96 +222,96 @@
 
     <script>
         /*
-                        var registerSubmitForm = document.getElementById('btn-register');
-                        var loginSubmitForm = document.getElementById('btn-login');
+                            var registerSubmitForm = document.getElementById('btn-register');
+                            var loginSubmitForm = document.getElementById('btn-login');
 
-                        //register inputs
-                        var registerName = document.getElementById('register_nick');
-                        var registerSurname = document.getElementById('register_surname');
-                        var registerNickname = document.getElementById('register_name');
-                        var registerEmail = document.getElementById('register_email');
-                        var registerPassword = document.getElementById('register_password');
-                        var registerPasswordConfirmation = document.getElementById('register_password_repeat');
-                        var registerErrorsInputs = document.querySelector(".registerErrors");
-                        var loginErrorsInputs = document.querySelector(".loginErrors");
+                            //register inputs
+                            var registerName = document.getElementById('register_nick');
+                            var registerSurname = document.getElementById('register_surname');
+                            var registerNickname = document.getElementById('register_name');
+                            var registerEmail = document.getElementById('register_email');
+                            var registerPassword = document.getElementById('register_password');
+                            var registerPasswordConfirmation = document.getElementById('register_password_repeat');
+                            var registerErrorsInputs = document.querySelector(".registerErrors");
+                            var loginErrorsInputs = document.querySelector(".loginErrors");
 
-                        //login inputs
-                        var loginEmail = document.getElementById('email');
-                        var loginPassword = document.getElementById('password');
-
-
-                        registerSubmitForm.addEventListener("click", (e) => {
-                            e.preventDefault();
-                            let error = validateRegister();
-                            if(error[0]){
-                                registerErrorsInputs.innerHTML = error[1];
-                                registerErrorsInputs.classList.add("alert");
-                                registerErrorsInputs.classList.add("alert-danger");
-                            } else {
-                                registerErrorsInputs.classList.remove("alert");
-                                registerErrorsInputs.classList.remove("alert-danger");
-                            }
-                        })
+                            //login inputs
+                            var loginEmail = document.getElementById('email');
+                            var loginPassword = document.getElementById('password');
 
 
-                        const validateRegister = () => {
-                            let error = [];
+                            registerSubmitForm.addEventListener("click", (e) => {
+                                e.preventDefault();
+                                let error = validateRegister();
+                                if(error[0]){
+                                    registerErrorsInputs.innerHTML = error[1];
+                                    registerErrorsInputs.classList.add("alert");
+                                    registerErrorsInputs.classList.add("alert-danger");
+                                } else {
+                                    registerErrorsInputs.classList.remove("alert");
+                                    registerErrorsInputs.classList.remove("alert-danger");
+                                }
+                            })
 
-                            if (registerName.value == "" && registerSurname.value == "" && registerNickname.value == "" && registerEmail
-                                .value == "" && registerPassword.value == "" && registerPasswordConfirmation.value == "") {
-                                error[0] = true;
-                                error[1] = "Todos los campos estan vacíos"
+
+                            const validateRegister = () => {
+                                let error = [];
+
+                                if (registerName.value == "" && registerSurname.value == "" && registerNickname.value == "" && registerEmail
+                                    .value == "" && registerPassword.value == "" && registerPasswordConfirmation.value == "") {
+                                    error[0] = true;
+                                    error[1] = "Todos los campos estan vacíos"
+                                    return error;
+                                } else {
+                                    if (registerName.value.lenght < 3 && registerSurname.value.lenght < 3) {
+                                        error[0] = true;
+                                        error[1] = "El nombre y el campo apellidos no son válido";
+                                        return error;
+                                    } else if (registerNickname.value.lenght < 3) {
+                                        error[0] = true;
+                                        error[1] = "El nickname no es válido";
+                                        return error;
+                                    } else if (registerPassword.value != registerPasswordConfirmation.value) {
+                                        error[0] = true;
+                                        error[1] = "Las contraseñas no coinciden";
+                                        return error;
+                                    }
+
+                                }
+                                
+                                error[0]=false;
                                 return error;
-                            } else {
-                                if (registerName.value.lenght < 3 && registerSurname.value.lenght < 3) {
+
+                            }
+
+                            loginSubmitForm.addEventListener("click", (e) => {
+                                e.preventDefault();
+                                let error = validateLogin();
+                                if(error[0]){
+                                    loginErrorsInputs.innerHTML = error[1];
+                                    loginErrorsInputs.classList.add("alert");
+                                    loginErrorsInputs.classList.add("alert-danger");
+                                } else {
+                                    loginErrorsInputs.innerHTML = '';
+                                    loginErrorsInputs.classList.remove("alert");
+                                    loginErrorsInputs.classList.remove("alert-danger");
+                                    document.location.href=url;
+                                }
+                            })
+
+                            const validateLogin = () => {
+                                let error = [];
+
+                                if (loginEmail.value == "" && loginPassword.value == "" ) {
                                     error[0] = true;
-                                    error[1] = "El nombre y el campo apellidos no son válido";
-                                    return error;
-                                } else if (registerNickname.value.lenght < 3) {
-                                    error[0] = true;
-                                    error[1] = "El nickname no es válido";
-                                    return error;
-                                } else if (registerPassword.value != registerPasswordConfirmation.value) {
-                                    error[0] = true;
-                                    error[1] = "Las contraseñas no coinciden";
+                                    error[1] = "Todos los campos estan vacíos"
                                     return error;
                                 }
-
-                            }
-                            
-                            error[0]=false;
-                            return error;
-
-                        }
-
-                        loginSubmitForm.addEventListener("click", (e) => {
-                            e.preventDefault();
-                            let error = validateLogin();
-                            if(error[0]){
-                                loginErrorsInputs.innerHTML = error[1];
-                                loginErrorsInputs.classList.add("alert");
-                                loginErrorsInputs.classList.add("alert-danger");
-                            } else {
-                                loginErrorsInputs.innerHTML = '';
-                                loginErrorsInputs.classList.remove("alert");
-                                loginErrorsInputs.classList.remove("alert-danger");
-                                document.location.href=url;
-                            }
-                        })
-
-                        const validateLogin = () => {
-                            let error = [];
-
-                            if (loginEmail.value == "" && loginPassword.value == "" ) {
-                                error[0] = true;
-                                error[1] = "Todos los campos estan vacíos"
+                                error[0]=false;
                                 return error;
-                            }
-                            error[0]=false;
-                            return error;
 
-                        }
-                        */
+                            }
+                            */
         function switchPassword() {
             var showPassword = document.getElementById('showPassword');
             var passwordInput = document.getElementById('password');

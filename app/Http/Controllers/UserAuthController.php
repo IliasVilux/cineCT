@@ -51,7 +51,7 @@ class UserAuthController extends Controller
         }
 
 
-        return redirect("register")->with('authErrorMsg','El email o la contraseña que has introducido no pertenece a ninguna cuenta. Comprueba los datos y vuelve a intentarlo.');
+        return redirect("register")->with('authErrorMsg','Los datos que has introducido no pertenece a ninguna cuenta. Comprueba los datos y vuelve a intentarlo.');
         
     }
 

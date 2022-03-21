@@ -30,8 +30,8 @@ use Illuminate\Support\Facades\Route;
     return view('register');
 });*/
 
-
-Route::get('/', [HomeController::class,  'index'])->name('home');
+Route::get('/', [UserAuthController::class, 'index'])->name('user.login.register');
+Route::get('/home', [HomeController::class,  'index'])->name('home');
 
 Route::get('/content/contentSeries', function () {
 
