@@ -2,9 +2,9 @@
 @section('content')
 
 <head>
-    <link rel="stylesheet" href="../storage/css/general.css">
-    <link rel="stylesheet" href="../storage/css/content.css">
-    <link rel="stylesheet" href="../storage/css/top.css">
+    <link rel="stylesheet" href="{{asset('css/general.css')}}">
+    <link rel="stylesheet" href="{{asset('css/content.css')}}">
+    <link rel="stylesheet" href="{{asset('css/top.css')}}">
 </head>
 <h1>TOP SERIES / PELÍCULAS / ANIMES</h1>
 <section class="container py-4">

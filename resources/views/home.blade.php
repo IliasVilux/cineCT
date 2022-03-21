@@ -2,7 +2,7 @@
 @section('content')
 
 <head>
-    <link rel="stylesheet" href="storage/css/home.css">
+    <link href="{{ asset('css/home.css') }}" rel="stylesheet">
 </head>
 <section class="slider">
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -44,7 +44,6 @@
     </div>
 </section>
 <section class="section-content container-fluid">
-
 
     <!-- PELÍCULAS -->
     <div class="container-fluid d-flex justify-content-between">
