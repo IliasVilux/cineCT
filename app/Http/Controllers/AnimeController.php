@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Anime;
+use App\Models\Image;
 use Illuminate\Support\Facades\Http;
 
 class AnimeController extends Controller
@@ -101,8 +102,10 @@ class AnimeController extends Controller
 
     public function returnAnimes($id) {
         $animes = Anime::find($id);
+        $profile = Image::all();
+
         if (!is_null($animes)) {
-            return view('/detail/detailAnimes', ['anime' => $animes]);
+            return view('/detail/detailAnimes', ['anime' => $animes, 'profile' => $profile]);
         } else {
             return response('No encontrado', 404);
         }
