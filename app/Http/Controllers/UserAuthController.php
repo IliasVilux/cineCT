@@ -16,6 +16,8 @@ class UserAuthController extends Controller
 
     public function userLogin(Request $request)
     {
+
+        $rememberLogin = $request->get('rememberData');
         
         $request->validate([
             'email' => 'required|email',
@@ -59,6 +61,7 @@ class UserAuthController extends Controller
         ]);
 
         auth()->login($user);
+        
 
         return redirect()->to('/');
     }
@@ -66,8 +69,9 @@ class UserAuthController extends Controller
 
     public function userSignOut()
     {
-        Session::flush();
         Auth::logout();
+        
+        Session::flush();
   
         return redirect()->to('register');
     }

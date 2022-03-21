@@ -41,16 +41,21 @@
                                         @endif
                                     </div>
                                     <div class="col-12">
-                                        <label for="password" class="form-label">Password</label>
-                                        <input type="password" class="form-control" id="password" name="password"
-                                            placeholder="Password" required>
+                                            <label for="password" class="form-label">Password</label>
+                                            <div class="input-group">
+                                                <input type="password" class="form-control" id="password" name="password"
+                                                    placeholder="Password" required>
+                                                <input type="checkbox" onclick="switchPassword()" name="showPassword" id="showPassword" style="display:none;">
+                                                <label for="showPassword"><i id="icon-switch" class="fa fa-eye p-3"></i></label>
+                                            </div>
                                         @if ($errors->has('password'))
-                                            <span class="text-danger">{{ $errors->first('password') }}</span>
+                                        <span class="text-danger">{{ $errors->first('password') }}</span>
+
                                         @endif
                                     </div>
                                     <div class="form-check d-flex justify-content-start mb-4">
-                                        <input class="form-check-input" type="checkbox" value="" id="remember" />
-                                        <label class="form-check-label mx-2" for="remember"> Remember password </label>
+                                        <input class="form-check-input" type="checkbox" id="rememberData" />
+                                        <label class="form-check-label mx-2" value="1" for="rememberData"> Remember me </label>
                                     </div>
 
                                     <button class="btn btn-primary btn-lg btn-block" id="btn-login"
@@ -105,8 +110,8 @@
                                                     class="text-danger">{{ $errors->first('register_email') }}</span>
                                             @endif
                                         </div>
-                                        <div class="col-12 col-md-6">
-                                            <label for="register_password" class="form-label">Password</label>
+                                        <div class="col-12 col-md-6 mb-2">
+                                            <label for="register_password" class="form-label">Contraseña</label>
                                             <input type="password" class="form-control" id="register_password"
                                                 name="register_password" placeholder="New Password" required>
                                             @if ($errors->has('register_password'))
@@ -114,9 +119,8 @@
                                                     class="text-danger">{{ $errors->first('register_password') }}</span>
                                             @endif
                                         </div>
-                                        <div class="col-12 col-md-6">
-                                            <label for="register_password_repeat" class="form-label">Repetir
-                                                Password</label>
+                                        <div class="col-12 col-md-6 mb-2">
+                                            <label for="register_password_repeat" class="form-label">Repetir Contraseña</label>
                                             <input type="password" class="form-control" id="register_password_repeat"
                                                 name="register_password_repeat" placeholder="Repeat Password" required>
                                             @if ($errors->has('register_password'))
@@ -143,6 +147,23 @@
     @endif
 
     <script>
+
+        function switchPassword(){
+            var showPassword = document.getElementById('showPassword');
+            var passwordInput = document.getElementById('password');
+            var eyeIcon = document.getElementById('icon-switch')
+            if(passwordInput.type === 'password'){
+                passwordInput.type = 'text';
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            }else{
+                passwordInput.type = 'password';
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            }
+        }
+
+        
         function validateRegister() {
 
             var registerNickname = document.getElementById('register_name');
