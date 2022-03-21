@@ -119,9 +119,9 @@
                                                 Password</label>
                                             <input type="password" class="form-control" id="register_password_repeat"
                                                 name="register_password_repeat" placeholder="Repeat Password" required>
-                                            @if ($errors->has('register_password_repeat'))
+                                            @if ($errors->has('register_password'))
                                                 <span
-                                                    class="text-danger">{{ $errors->first('register_password_repeat') }}</span>
+                                                    class="text-danger">{{ $errors->first('register_password') }}</span>
                                             @endif
                                         </div>
                                     </div>
@@ -162,5 +162,6 @@
         function validateLogin() {
 
         }
+
     </script>
 @endsection
