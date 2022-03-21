@@ -8,8 +8,9 @@ class SocialShareButtonsController extends Controller
 {
     public function ShareWidget()
     {
+        $url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         $shareComponent = \Share::page(
-            '', // Link que se comparte
+            $url, // Link que se comparte
             '', // Texto de compartir
         )
         ->facebook()

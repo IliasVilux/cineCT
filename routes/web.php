@@ -60,14 +60,9 @@ Route::get('/content/contentAnimes', function () {
     return view('/content/contentAnimes', ['anime' => $animes]);
 });
 
-Route::get('/detail/detailFilms/{id}', function () {
-
-    $profile = DB::table('profile_images')->get();
-    
-    return view('/detail/detailFilms/{id}', ['profile' => $profile]);
-});
 
 Route::get('/detail/detailFilms/{id}', [FilmController::class,  'returnFilms']);
+/* Route::get('/detail/detailFilms/{id}', 'SocialShareButtonsController@ShareWidget'); */
 
 Route::get('/detail/detailSeries/{id}', [SerieController::class,  'returnSeries']);
 
@@ -99,4 +94,4 @@ Route::get('/profile/profileImg', function () {
 });
 
 //SHARE
-Route::get('/social-media-share', [SocialShareButtonsController::class,'ShareWidget']);
+/* Route::get('/social-media-share', [SocialShareButtonsController::class,'ShareWidget']); */

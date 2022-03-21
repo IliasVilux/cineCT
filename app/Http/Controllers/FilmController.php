@@ -97,5 +97,21 @@ class FilmController extends Controller
 
         return view('detail', ['film' => $films]);*/
     }
+    public function ShareWidget()
+    {
+        $url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        $shareComponent = \Share::page(
+            $url, // Link que se comparte
+            '', // Texto de compartir
+        )
+        ->facebook()
+        ->twitter()
+        ->linkedin()
+        ->telegram()
+        ->whatsapp()
+        ->reddit();
+        
+        return view('posts', compact('shareComponent'));
+    }
     
 }
