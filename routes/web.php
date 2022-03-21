@@ -4,6 +4,11 @@ use App\Http\Controllers\GenreController;
 use App\Http\Controllers\SerieController;
 use App\Http\Controllers\FilmController;
 use App\Http\Controllers\AnimeController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SessionController;
+use App\Http\Controllers\UserAuthController;
+use App\Http\Controllers\UserController;
 use App\Models\Genre;
 use App\Models\Serie;
 use App\Models\Films;
@@ -25,18 +30,8 @@ use Illuminate\Support\Facades\Route;
     return view('register');
 });*/
 
-Route::get('/', function () {
 
-    $series = DB::table('series')->get();
-    $films = DB::table('films')->get();
-    $animes = DB::table('animes')->get();
-
-    return view('home', ['serie' => $series, 'film' => $films, 'anime' => $animes]);
-});
-
-Route::get('/register', function () {
-    return view('register');
-});
+Route::get('/', [HomeController::class,  'index'])->name('home');
 
 Route::get('/content/contentSeries', function () {
 
@@ -81,18 +76,23 @@ Route::get('/search', function () {
     return view('search');
 });
 
-Route::get('/list', function () {
-    return view('list');
-});
-
 Route::get('/aboutUs', function () {
     return view('aboutUs');
-});
-
-Route::get('/profile/profile', function () {
-    return view('/profile/profile');
 });
 
 Route::get('/profile/profileImg', function () {
     return view('/profile/profileImg');
 });
+
+
+//User-Auth Actions
+Route::get('/user/profile', [UserController::class, 'userProfile'])->name('user.profile');
+Route::get('/user/list', [UserController::class, 'userFavoriteList'])->name('user.favorite.list');
+
+Route::get('/login', [UserAuthController::class, 'index']);
+Route::get('/register', [UserAuthController::class, 'index'])->name('user.create');
+
+Route::post('/register', [UserAuthController::class, 'userRegister'])->name('register.user');
+Route::post('/login', [UserAuthController::class, 'userLogin'])->name('login.user');
+Route::get('/logout', [UserAuthController::class, 'userSignOut'])->name('signout.user');
+
