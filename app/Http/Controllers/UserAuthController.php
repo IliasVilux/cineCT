@@ -24,6 +24,8 @@ class UserAuthController extends Controller
             'password' => 'required'
         ]);
         
+        
+
         $logInData = $request->only('email', 'password');
         
         if(Auth::attempt($logInData)){
@@ -31,7 +33,7 @@ class UserAuthController extends Controller
                         ->with('userLogged','Sessión Iniciada');
         }
 
-        return redirect("register")->with('msgError','El email o la contraseña no son correctos, vuelve a intentarlo');
+        return redirect("register")->with('authErrorMsg','El email o la contraseña que has introducido no pertenece a ninguna cuenta. Comprueba los datos y vuelve a intentarlo.');
         
     }
 
@@ -44,11 +46,13 @@ class UserAuthController extends Controller
         $register_password = $request->input('register_password');
 
         $validate = $this->validate($request, [
-            'register_name' => 'required|string|max:30',
-            'register_surname' => 'required|string|max:60',
+            'register_name' => 'required|string|max:255',
+            'register_surname' => 'required|string|max:255',
             'register_nick' => 'required|string|max:15', //unique:users-> ningun nick se repetirá
             'register_email' => 'required|string|email', //unique:users
-            'register_password' => 'required|max:15|confirmed'
+            'register_password' => 'required|min:6',
+            'register_password_repeat' => 'required|min:6|same:register_password'
+
         ]);
 
 

@@ -8,7 +8,7 @@
     @if (Auth::user())
         <div class="alert alert-success" role="alert">
             Actualmente ya tienes tu session iniciada <a href="{{ route('home') }}">Clica aqui</a> para volver a la
-                session o aqui <a href="{{route('signout.user')}}">cerrar sessión</a>
+            session o aqui <a href="{{ route('signout.user') }}">cerrar sessión</a>
         </div>
     @else
         <section class="section-signin-register d-flex flex-wrap justify-content-center h-100 p-5">
@@ -27,35 +27,46 @@
                             <img src="storage/img/200x200.png" alt="LOGO" height="100px" width="100px">
                             <div class="card-body">
                                 <form class="row g-3 needs-validation d-flex flex-column align-items-center p-2 p-sm-5 m-2"
-                                    method="POST" action="{{ route('login.user') }}" novalidate>
-                                    @if (Session::has('msgError'))
-                                        <div class="alert alert-warning">{{ Session::get('msgError') }}</div>
+                                    method="POST" action="{{ route('login.user') }}">
+                                    @if (Session::has('authErrorMsg'))
+                                        <div class="mt-2 alert alert-danger">{{ Session::get('authErrorMsg') }}</div>
                                     @endif
                                     @csrf
+
+                                    <div class="login-errors">
+                                        @if ($errors->has('email'))
+                                            <div class="mt-2 alert alert-danger">
+                                                Este email no es correcto
+                                            </div>
+                                        @endif
+
+                                        @if ($errors->has('password'))
+                                            <div class="mt-2 alert alert-danger">
+                                                La contrasenya es incorrecta
+                                            </div>
+                                        @endif
+                                    </div>
                                     <div class="col-12">
                                         <label for="email" class="form-label">Email</label>
                                         <input type="text" class="form-control" id="email" name="email"
-                                            placeholder="Your email" required>
-                                        @if ($errors->has('email'))
-                                            <span class="text-danger">{{ $errors->first('email') }}</span>
-                                        @endif
+                                            placeholder="Your email">
                                     </div>
                                     <div class="col-12">
-                                            <label for="password" class="form-label">Password</label>
-                                            <div class="input-group">
-                                                <input type="password" class="form-control" id="password" name="password"
-                                                    placeholder="Password" required>
-                                                <input type="checkbox" onclick="switchPassword()" name="showPassword" id="showPassword" style="display:none;">
-                                                <label for="showPassword"><i id="icon-switch" class="fa fa-eye p-3"></i></label>
-                                            </div>
-                                        @if ($errors->has('password'))
-                                        <span class="text-danger">{{ $errors->first('password') }}</span>
+                                        <label for="password" class="form-label">Password</label>
+                                        <div class="input-group">
+                                            <input type="password" class="form-control" id="password" name="password"
+                                                placeholder="Password">
+                                            <input type="checkbox" onclick="switchPassword()" name="showPassword"
+                                                id="showPassword" style="display:none;">
+                                            <label for="showPassword"><i id="icon-switch"
+                                                    class="fa fa-eye p-3"></i></label>
+                                        </div>
 
-                                        @endif
                                     </div>
                                     <div class="form-check d-flex justify-content-start mb-4">
                                         <input class="form-check-input" type="checkbox" id="rememberData" />
-                                        <label class="form-check-label mx-2" value="1" for="rememberData"> Remember me </label>
+                                        <label class="form-check-label mx-2" value="1" for="rememberData"> Remember me
+                                        </label>
                                     </div>
 
                                     <button class="btn btn-primary btn-lg btn-block" id="btn-login"
@@ -71,62 +82,75 @@
                     <div class="tab-pane fade" id="signUp">
                         <div class="card text-dark">
                             <div class="card-body">
-                                <form method="POST" action="{{ route('register.user') }}" onsubmit="validateRegister()"
-                                    class="row g-3 needs-validation d-flex flex-column align-items-center p-2 p-sm-5 m-2"
-                                    novalidate>
+                                <form method="POST" action="{{ route('register.user') }}"
+                                    class="row g-3 needs-validation d-flex flex-column align-items-center p-2 p-sm-5 m-2">
                                     @csrf
+
+                                    <div class="register-erros">
+                                        @if ($errors->has('register_name'))
+                                            <div class="mt-2 alert alert-danger">
+                                                El nombre no es correcto, debe tener al menos 4 caracteres
+                                            </div>
+                                        @endif
+                                        @if ($errors->has('register_surname'))
+                                            <div class="mt-2 alert alert-danger">
+                                                El apellido no es correcto, debe tener al menos 4 caracteres
+                                            </div>
+                                        @endif
+                                        @if ($errors->has('register_nick'))
+                                            <div class="mt-2 alert alert-danger">
+                                                El nombre de usuario no es correcto, debe tener al menos 4 caracteres
+                                            </div>
+                                        @endif
+                                        @if ($errors->has('register_email'))
+                                            <div class="mt-2 alert alert-danger">
+                                                El email no es correcto
+                                            </div>
+                                        @endif
+                                        @if ($errors->has('register_password'))
+                                            <div class="mt-2 alert alert-danger">
+                                                El contraseña no es correcta, debe tener al menos 8 caracteres y una
+                                                mayuscula
+                                            </div>
+                                        @endif
+                                        @if ($errors->has('register_password_repeat'))
+                                            <div class="mt-2 alert alert-danger">
+                                                El contraseñas no coinciden
+                                            </div>
+                                        @endif
+                                    </div>
+
                                     <div class="row p-0">
                                         <div class="col-12 col-md-6 mb-2">
                                             <label for="register_name" class="form-label">Nombre</label>
                                             <input type="text" class="form-control" id="register_name"
-                                                name="register_name" placeholder="Mark" required>
-                                            @if ($errors->has('register_name'))
-                                                <span class="text-danger">{{ $errors->first('register_name') }}</span>
-                                            @endif
+                                                name="register_name" placeholder="Mark" value="{{ old('register_name') }}">
                                         </div>
                                         <div class="col-12 col-md-6 mb-2">
                                             <label for="register_surname" class="form-label">Apellido</label>
                                             <input type="text" class="form-control" id="register_surname"
-                                                name="register_surname" placeholder="Ruffalo" required>
-                                            @if ($errors->has('register_surname'))
-                                                <span
-                                                    class="text-danger">{{ $errors->first('register_surname') }}</span>
-                                            @endif
+                                                name="register_surname" placeholder="Ruffalo" value="{{ old('register_surname') }}">
                                         </div>
                                         <div class="col-12 col-md-6 mb-2">
                                             <label for="register_nick" class="form-label">Nick</label>
                                             <input type="text" class="form-control" id="register_nick"
-                                                name="register_nick" placeholder="hulk20" required>
-                                            @if ($errors->has('register_nick'))
-                                                <span class="text-danger">{{ $errors->first('register_nick') }}</span>
-                                            @endif
+                                                name="register_nick" placeholder="hulk20" value="{{ old('register_nick') }}">
                                         </div>
                                         <div class="col-12 col-md-6 mb-2">
                                             <label for="register_email" class="form-label">Email</label>
                                             <input type="email" class="form-control" id="register_email"
-                                                name="register_email" placeholder="youremail@gmail.com" required>
-                                            @if ($errors->has('register_email'))
-                                                <span
-                                                    class="text-danger">{{ $errors->first('register_email') }}</span>
-                                            @endif
+                                                name="register_email" placeholder="youremail@gmail.com" value="{{ old('register_email') }}">
                                         </div>
                                         <div class="col-12 col-md-6 mb-2">
                                             <label for="register_password" class="form-label">Contraseña</label>
                                             <input type="password" class="form-control" id="register_password"
-                                                name="register_password" placeholder="New Password" required>
-                                            @if ($errors->has('register_password'))
-                                                <span
-                                                    class="text-danger">{{ $errors->first('register_password') }}</span>
-                                            @endif
+                                                name="register_password" placeholder="New Password" >
                                         </div>
                                         <div class="col-12 col-md-6 mb-2">
-                                            <label for="register_password_repeat" class="form-label">Repetir Contraseña</label>
+                                            <label for="register_password_repeat" class="form-label">Repetir
+                                                Contraseña</label>
                                             <input type="password" class="form-control" id="register_password_repeat"
-                                                name="register_password_repeat" placeholder="Repeat Password" required>
-                                            @if ($errors->has('register_password'))
-                                                <span
-                                                    class="text-danger">{{ $errors->first('register_password') }}</span>
-                                            @endif
+                                                name="register_password_repeat" placeholder="Repeat Password">
                                         </div>
                                     </div>
 
@@ -147,42 +171,111 @@
     @endif
 
     <script>
+        /*
+                    var registerSubmitForm = document.getElementById('btn-register');
+                    var loginSubmitForm = document.getElementById('btn-login');
 
-        function switchPassword(){
+                    //register inputs
+                    var registerName = document.getElementById('register_nick');
+                    var registerSurname = document.getElementById('register_surname');
+                    var registerNickname = document.getElementById('register_name');
+                    var registerEmail = document.getElementById('register_email');
+                    var registerPassword = document.getElementById('register_password');
+                    var registerPasswordConfirmation = document.getElementById('register_password_repeat');
+                    var registerErrorsInputs = document.querySelector(".registerErrors");
+                    var loginErrorsInputs = document.querySelector(".loginErrors");
+
+                    //login inputs
+                    var loginEmail = document.getElementById('email');
+                    var loginPassword = document.getElementById('password');
+
+
+                    registerSubmitForm.addEventListener("click", (e) => {
+                        e.preventDefault();
+                        let error = validateRegister();
+                        if(error[0]){
+                            registerErrorsInputs.innerHTML = error[1];
+                            registerErrorsInputs.classList.add("alert");
+                            registerErrorsInputs.classList.add("alert-danger");
+                        } else {
+                            registerErrorsInputs.classList.remove("alert");
+                            registerErrorsInputs.classList.remove("alert-danger");
+                        }
+                    })
+
+
+                    const validateRegister = () => {
+                        let error = [];
+
+                        if (registerName.value == "" && registerSurname.value == "" && registerNickname.value == "" && registerEmail
+                            .value == "" && registerPassword.value == "" && registerPasswordConfirmation.value == "") {
+                            error[0] = true;
+                            error[1] = "Todos los campos estan vacíos"
+                            return error;
+                        } else {
+                            if (registerName.value.lenght < 3 && registerSurname.value.lenght < 3) {
+                                error[0] = true;
+                                error[1] = "El nombre y el campo apellidos no son válido";
+                                return error;
+                            } else if (registerNickname.value.lenght < 3) {
+                                error[0] = true;
+                                error[1] = "El nickname no es válido";
+                                return error;
+                            } else if (registerPassword.value != registerPasswordConfirmation.value) {
+                                error[0] = true;
+                                error[1] = "Las contraseñas no coinciden";
+                                return error;
+                            }
+
+                        }
+                        
+                        error[0]=false;
+                        return error;
+
+                    }
+
+                    loginSubmitForm.addEventListener("click", (e) => {
+                        e.preventDefault();
+                        let error = validateLogin();
+                        if(error[0]){
+                            loginErrorsInputs.innerHTML = error[1];
+                            loginErrorsInputs.classList.add("alert");
+                            loginErrorsInputs.classList.add("alert-danger");
+                        } else {
+                            loginErrorsInputs.innerHTML = '';
+                            loginErrorsInputs.classList.remove("alert");
+                            loginErrorsInputs.classList.remove("alert-danger");
+                            document.location.href=url;
+                        }
+                    })
+
+                    const validateLogin = () => {
+                        let error = [];
+
+                        if (loginEmail.value == "" && loginPassword.value == "" ) {
+                            error[0] = true;
+                            error[1] = "Todos los campos estan vacíos"
+                            return error;
+                        }
+                        error[0]=false;
+                        return error;
+
+                    }
+                    */
+        function switchPassword() {
             var showPassword = document.getElementById('showPassword');
             var passwordInput = document.getElementById('password');
             var eyeIcon = document.getElementById('icon-switch')
-            if(passwordInput.type === 'password'){
+
+            if (passwordInput.type === 'password') {
                 passwordInput.type = 'text';
                 eyeIcon.classList.remove('fa-eye');
                 eyeIcon.classList.add('fa-eye-slash');
-            }else{
+            } else {
                 passwordInput.type = 'password';
                 eyeIcon.classList.remove('fa-eye-slash');
                 eyeIcon.classList.add('fa-eye');
             }
         }
-
-        
-        function validateRegister() {
-
-            var registerNickname = document.getElementById('register_name');
-            var registerSurname = document.getElementById('register_surname');
-            var registerName = document.getElementById('register_nick');
-            var registerEmail = document.getElementById('register_email');
-            var registerPassword = document.getElementById('register_password');
-            var registerPasswordConfirmation = document.getElementById('register_password_repeat');
-
-            if(registerNickname.value == "" && registerSurname.value == "" && registerName.value == "" && registerEmail.value == "" && registerPassword.value == ""  && registerPasswordConfirmation.value == ""){
-                alert("Los valores no pueden estar nulos!");
-                registerNickname.style.border = '1px solid red';
-            }
-        }
-
-
-        function validateLogin() {
-
-        }
-
     </script>
 @endsection
