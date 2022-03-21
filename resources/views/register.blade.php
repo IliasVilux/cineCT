@@ -152,6 +152,10 @@
             var registerPassword = document.getElementById('register_password');
             var registerPasswordConfirmation = document.getElementById('register_password_repeat');
 
+            if(registerNickname.value == "" && registerSurname.value == "" && registerName.value == "" && registerEmail.value == "" && registerPassword.value == ""  && registerPasswordConfirmation.value == ""){
+                alert("Los valores no pueden estar nulos!");
+                registerNickname.style.border = '1px solid red';
+            }
         }
 
 
