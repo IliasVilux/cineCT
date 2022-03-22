@@ -39,7 +39,7 @@
 </section>
 <section class="d-flex flex-wrap justify-content-around align-items-center">
     <button class="button-category">
-        
+        <p class="m-0">Acción / Aventura</p>
     </button>
     <button class="button-category">
         <p class="m-0">Animación / Familia</p>
