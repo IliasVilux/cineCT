@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Anime;
+use App\Models\Image;
 use Illuminate\Support\Facades\Http;
 
 class AnimeController extends Controller
@@ -93,9 +94,12 @@ class AnimeController extends Controller
     }
 
     public function returnAnimes($id) {
-        $animes = Anime::find($id);
-        if (!is_null($animes)) {
-            return view('/detail/detailAnimes', ['anime' => $animes]);
+        $anime = Anime::find($id);
+        $profile = Image::all();
+        $shareComponent = $this->ShareWidget();
+
+        if (!is_null($anime)) {
+            return view('/detail/detailAnimes', compact('anime', 'profile', 'shareComponent'));
         } else {
             return response('No encontrado', 404);
         }
@@ -105,5 +109,21 @@ class AnimeController extends Controller
         }
 
         return view('detail', ['anime' => $animes]);*/
+    }
+    public function ShareWidget()
+    {
+        $url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        $shareComponent = \Share::page(
+            $url, // Link que se comparte
+            '', // Texto de compartir
+        )
+        ->facebook()
+        ->twitter()
+        ->linkedin()
+        ->telegram()
+        ->whatsapp()
+        ->reddit();
+        
+        return $shareComponent;
     }
 }
