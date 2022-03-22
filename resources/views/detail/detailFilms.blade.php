@@ -51,7 +51,7 @@
     </div>
     <div class="d-flex flex-row justify-content-around mt-4">
         @if($film->poster_path == NULL)
-        <img src="asset('img/NoImg.jpg')}}" class="img-thumbnail" alt="">
+        <img src="/img/NoImg.jpg" class="img-thumbnail" alt="">
         @else
         <img src="{{$film->poster_path}}" class="img-thumbnail" alt="Img {{$film->name}}">
         @endif
