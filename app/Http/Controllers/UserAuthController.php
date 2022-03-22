@@ -34,7 +34,6 @@ class UserAuthController extends Controller
                             ->with('userLogged','Sessión Iniciada');
             }
         }
-        //adfafakjasoj
 
         //login con nickname
         if(isset($nick) && !empty($nick)){

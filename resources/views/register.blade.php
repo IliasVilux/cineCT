@@ -161,13 +161,12 @@
                                         @endif
                                         @if ($errors->has('register_password'))
                                             <div class="mt-2 alert alert-danger">
-                                                El contraseña no es correcta, debe tener al menos 8 caracteres y una
-                                                mayúscula las dos contrasenñas tienen que coincidir
+                                                El contraseña no es correcta, debe tener al menos 8 caracteres
                                             </div>
                                         @endif
                                         @if ($errors->has('register_password_repeat'))
                                             <div class="mt-2 alert alert-danger">
-                                                Las dos contrasenñas tienen que coincidir
+                                                Las dos contraseñas tienen que coincidir
                                             </div>
                                         @endif
                                     </div>
@@ -245,18 +244,15 @@
         let currentEmailAriaSelectedValue = loginWithEmailSelected.ariaSelected;
         let currentNickAriaSelectedValue = loginWithNickSelected.ariaSelected;
 
-        loginWithEmailSelected.onclick = () => {
-            if(currentEmailAriaSelectedValue == 'true'){
-                loginNick.value = ''
-            }
-            
-        }
         
-        loginWithNickSelected.onclick = () => {
-            if(currentNickAriaSelectedValue == 'true'){
-                loginEmail.value = ''
-            }
+        loginWithEmailSelected.onclick = () => {
+            loginNick.value = ''
         }
+
+        loginWithNickSelected.onclick = () => {
+            loginEmail.value = ''
+        }
+     
 
 
         const switchPassword = () => {
