@@ -16,13 +16,13 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item full active">
-                <img class="full-img" src="{{url('storage/img/SquidGame.jpg')}}" alt="">
+                <img class="full-img" src="{{asset('img/SquidGame.jpg')}}" alt="">
             </div>
             <div class="carousel-item full">
-                <img class="full-img" src="{{url('storage/img/uncharted.jpg')}}" alt="">
+                <img class="full-img" src="{{asset('img/uncharted.jpg')}}" alt="">
             </div>
             <div class="carousel-item full">
-                <img class="full-img" src="{{url('storage/img/Kimetsu.jpg')}}" alt="">
+                <img class="full-img" src="{{asset('img/Kimetsu.jpg')}}" alt="">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -39,7 +39,7 @@
 </section>
 <section class="d-flex flex-wrap justify-content-around align-items-center">
     <button class="button-category">
-        <p class="m-0">Acción / Aventura</p>
+        <!-- <a href="/content/contentFilms/{{$filmGenre[0]->id}}"><p class="m-0">Acción / Aventura</p></a> -->
     </button>
     <button class="button-category">
         <p class="m-0">Animación / Familia</p>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Film;
+use App\Models\Genre;
 use App\Models\Image;
 use Illuminate\Support\Facades\Http;
 
@@ -97,5 +98,16 @@ class FilmController extends Controller
 
         return view('detail', ['film' => $films]);*/
     }
+    
+
+   /* public function returnFilmGenre($genre_id) {
+        $filmGenre = Genre::find($genre_id);
+  
+        if (!is_null($filmGenre)) {
+            return view('/content/contentFilms', ['filmGenre' => $filmGenre]);
+        } else {
+            return response('No encontrado', 404);
+        }
+    }*/
     
 }

@@ -16,13 +16,13 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item full active">
-                <img class="full-img" src="{{url('storage/img/SquidGame.jpg')}}" alt="">
+                <img class="full-img" src="asset('img/SquidGame.jpg')}}" alt="">
             </div>
             <div class="carousel-item full">
-                <img class="full-img" src="{{url('storage/img/uncharted.jpg')}}" alt="">
+                <img class="full-img" src="asset('img/uncharted.jpg')}}" alt="">
             </div>
             <div class="carousel-item full">
-                <img class="full-img" src="{{url('storage/img/Kimetsu.jpg')}}" alt="">
+                <img class="full-img" src="asset('img/Kimetsu.jpg')}}" alt="">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
