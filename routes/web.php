@@ -1,18 +1,15 @@
 <?php
 
-use App\Http\Controllers\GenreController;
 use App\Http\Controllers\SerieController;
 use App\Http\Controllers\FilmController;
 use App\Http\Controllers\AnimeController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UserAuthController;
-use App\Http\Controllers\UserController;
 use App\Models\Genre;
 use App\Models\Serie;
 use App\Models\Films;
 use App\Models\Anime;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,8 +27,8 @@ use Illuminate\Support\Facades\Route;
     return view('register');
 });*/
 
-
-Route::get('/', [HomeController::class,  'index'])->name('home');
+Route::get('/', [UserAuthController::class, 'index'])->name('user.login.register');
+Route::get('/home', [HomeController::class,  'index'])->name('home');
 
 Route::get('/content/contentSeries', function () {
 
@@ -54,14 +51,9 @@ Route::get('/content/contentAnimes', function () {
     return view('/content/contentAnimes', ['anime' => $animes]);
 });
 
-Route::get('/detail/detailFilms/{id}', function () {
-
-    $profile = DB::table('profile_images')->get();
-    
-    return view('/detail/detailFilms/{id}', ['profile' => $profile]);
-});
 
 Route::get('/detail/detailFilms/{id}', [FilmController::class,  'returnFilms']);
+/* Route::get('/detail/detailFilms/{id}', 'SocialShareButtonsController@ShareWidget'); */
 
 Route::get('/detail/detailSeries/{id}', [SerieController::class,  'returnSeries']);
 
@@ -102,4 +94,3 @@ Route::get('/register', [UserAuthController::class, 'index'])->name('user.create
 Route::post('/register', [UserAuthController::class, 'userRegister'])->name('register.user');
 Route::post('/login', [UserAuthController::class, 'userLogin'])->name('login.user');
 Route::get('/logout', [UserAuthController::class, 'userSignOut'])->name('signout.user');
-

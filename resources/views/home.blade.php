@@ -4,6 +4,13 @@
 <head>
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
 </head>
+
+    @if (Session::has('welcomeUser'))
+    <div class="alert alert-success" role="alert">
+        <strong>{{ Session::get('welcomeUser') }}!</strong>
+    </div>
+    @endif
+
 <section class="slider">
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">

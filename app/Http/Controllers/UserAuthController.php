@@ -16,20 +16,42 @@ class UserAuthController extends Controller
 
     public function userLogin(Request $request)
     {
+
+        $nick = $request->input('nick');
+        $email = $request->input('email');
         
-        $request->validate([
-            'email' => 'string|required',
-            'password' => 'required'
-        ]);
-        
-        $logInData = $request->only('email', 'password');
-        
-        if(Auth::attempt($logInData)){
-            return redirect()->to('/')
-                        ->with('userLogged','Sessión Iniciada');
+        //login con email
+        if(isset($email) && !empty($email)){
+            $nick = null;
+            $request->validate([
+                'email' => 'required|email',
+                'password' => 'required|min:8|max:15'
+            ]);
+            $logInData = $request->only('email', 'password');
+            
+            if(Auth::attempt($logInData)){
+                return redirect()->to('/home')
+                            ->with('userLogged','Sessión Iniciada');
+            }
         }
 
-        return redirect("register")->with('msgError','El email o la contraseña no son correctos, vuelve a intentarlo');
+        //login con nickname
+        if(isset($nick) && !empty($nick)){
+            $email = null;
+            $request->validate([
+                'nick' => 'required|string',
+                'password' => 'required'
+            ]);
+            $logInData = $request->only('nick', 'password');
+            
+            if(Auth::attempt($logInData)){
+                return redirect()->to('/home')
+                            ->with('userLogged','Sessión Iniciada');
+            }
+        }
+
+
+        return redirect("register")->with('authErrorMsg','Los datos que has introducido no pertenece a ninguna cuenta. Comprueba los datos y vuelve a intentarlo.');
         
     }
 
@@ -42,11 +64,13 @@ class UserAuthController extends Controller
         $register_password = $request->input('register_password');
 
         $validate = $this->validate($request, [
-            'register_name' => 'string|required|max:30',
-            'register_surname' => 'string|required|max:60',
+            'register_name' => 'required|string|max:255',
+            'register_surname' => 'required|string|max:255',
             'register_nick' => 'required|string|max:15', //unique:users-> ningun nick se repetirá
             'register_email' => 'required|string|email', //unique:users
-            'register_password' => 'required|max:15'
+            'register_password' => 'required|min:6',
+            'register_password_repeat' => 'required|min:6|same:register_password'
+
         ]);
 
 
@@ -59,16 +83,18 @@ class UserAuthController extends Controller
         ]);
 
         auth()->login($user);
+        
 
-        return redirect()->to('/');
+        return redirect()->to('/home')->with('welcomeUser', 'Bienvenido a cinect'.$register_nick.'!');
     }
 
 
     public function userSignOut()
     {
-        Session::flush();
         Auth::logout();
+        
+        Session::flush();
   
-        return redirect()->to('/');
+        return redirect()->to('register');
     }
 }

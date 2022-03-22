@@ -35,3 +35,12 @@ div.card {
   border-top: 1px solid transparent;
   border-radius: 0rem 0rem 0.25rem 0.25rem;
 }
+
+.nav-pills a{
+  color: #212529;
+}
+
+.nav-pills a:hover{
+  color: #212529;
+  font-weight: 600;
+}
