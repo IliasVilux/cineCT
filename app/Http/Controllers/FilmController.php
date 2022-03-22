@@ -82,11 +82,12 @@ class FilmController extends Controller
     }
 
     public function returnFilms($id) {
-        $films = Film::find($id);
+        $film = Film::find($id);
         $profile = Image::all();
+        $shareComponent = $this->ShareWidget();
         
-        if (!is_null($films)) {
-            return view('/detail/detailFilms', ['film' => $films, 'profile' => $profile]);
+        if (!is_null($film)) {
+            return view('/detail/detailFilms', compact('film', 'profile', 'shareComponent'));
         } else {
             return response('No encontrado', 404);
         }
@@ -111,7 +112,7 @@ class FilmController extends Controller
         ->whatsapp()
         ->reddit();
         
-        return view('posts', compact('shareComponent'));
+        return $shareComponent;
     }
     
 }

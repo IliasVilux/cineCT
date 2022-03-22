@@ -92,6 +92,3 @@ Route::get('/profile/profile', function () {
 Route::get('/profile/profileImg', function () {
     return view('/profile/profileImg');
 });
-
-//SHARE
-/* Route::get('/social-media-share', [SocialShareButtonsController::class,'ShareWidget']); */
