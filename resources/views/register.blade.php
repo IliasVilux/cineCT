@@ -71,12 +71,12 @@
                                             <li class="nav-item">
                                                 <a class="nav-link active" id="auth_with_email-tab" data-toggle="pill"
                                                     href="#auth_with_email" role="tab" aria-controls="auth_with_email"
-                                                    aria-selected="true">Con Email</a>
+                                                    aria-selected="true">Email</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" id="auth_with_nickname-tab" data-toggle="pill"
                                                     href="#auth_with_nickname" role="tab" aria-controls="auth_with_nickname"
-                                                    aria-selected="false">Con Nickname</a>
+                                                    aria-selected="false">Nickname</a>
                                             </li>
                                         </ul>
 
@@ -91,13 +91,8 @@
                                                 aria-labelledby="auth_with_nickname-tab">
                                                 <div class="col-12">
                                                     <label for="nick" class="form-label">Nickname</label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="hashtagUsername">@</span>
-                                                        </div>
-                                                        <input type="text" class="form-control" id="nick" name="nick"
-                                                            placeholder="username" autofocus>
-                                                    </div>
+                                                    <input type="text" class="form-control" id="nick" name="nick"
+                                                        placeholder="username" autofocus>
                                                 </div>
                                             </div>
                                         </div>
@@ -151,17 +146,17 @@
                                         @endif
                                         @if ($errors->has('register_nick'))
                                             <div class="mt-2 alert alert-danger">
-                                                El nombre de usuario no es correcto, debe tener al menos 4 caracteres
+                                                El nombre de usuario no es correcto
                                             </div>
                                         @endif
                                         @if ($errors->has('register_email'))
                                             <div class="mt-2 alert alert-danger">
-                                                El email no es correcto
+                                                El email no es correcto, introduce un email correcto
                                             </div>
                                         @endif
                                         @if ($errors->has('register_password'))
                                             <div class="mt-2 alert alert-danger">
-                                                El contraseña no es correcta, debe tener al menos 8 caracteres
+                                                El contraseña no es correcta, debe tener al menos 8 caracteres y 15 como máximo, tiene que tener almenos una mayúscula
                                             </div>
                                         @endif
                                         @if ($errors->has('register_password_repeat'))
@@ -187,14 +182,9 @@
                                         <div class="col-12 col-md-6 mb-2">
 
                                             <label for="nick" class="form-label">Nickname</label>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text" id="hashtagUsername">@</span>
-                                                </div>
-                                                <input type="text" class="form-control" id="register_nick"
-                                                    name="register_nick" placeholder="mark20"
-                                                    value="{{ old('register_nick') }}" autofocus>
-                                            </div>
+                                            <input type="text" class="form-control" id="register_nick"
+                                                name="register_nick" placeholder="mark20"
+                                                value="{{ old('register_nick') }}" autofocus>
                                         </div>
                                         <div class="col-12 col-md-6 mb-2">
                                             <label for="register_email" class="form-label">Email</label>
@@ -241,10 +231,9 @@
         var loginWithEmailSelected = document.getElementById('auth_with_email-tab');
         var loginWithNickSelected = document.getElementById('auth_with_nickname-tab');
 
-        let currentEmailAriaSelectedValue = loginWithEmailSelected.ariaSelected;
-        let currentNickAriaSelectedValue = loginWithNickSelected.ariaSelected;
+        //let currentEmailAriaSelectedValue = loginWithEmailSelected.ariaSelected;
+        //let currentNickAriaSelectedValue = loginWithNickSelected.ariaSelected;
 
-        
         loginWithEmailSelected.onclick = () => {
             loginNick.value = ''
         }
@@ -252,8 +241,6 @@
         loginWithNickSelected.onclick = () => {
             loginEmail.value = ''
         }
-     
-
 
         const switchPassword = () => {
             var showPassword = document.getElementById('showPassword');

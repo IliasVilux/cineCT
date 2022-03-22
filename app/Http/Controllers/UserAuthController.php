@@ -25,7 +25,7 @@ class UserAuthController extends Controller
             $nick = null;
             $request->validate([
                 'email' => 'required|email',
-                'password' => 'required'
+                'password' => 'required|min:8|max:15'
             ]);
             $logInData = $request->only('email', 'password');
             
