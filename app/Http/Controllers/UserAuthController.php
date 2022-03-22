@@ -22,7 +22,7 @@ class UserAuthController extends Controller
         
         //login con email
         if(isset($email) && !empty($email)){
-
+            $nick = null;
             $request->validate([
                 'email' => 'required|email',
                 'password' => 'required'
@@ -37,7 +37,7 @@ class UserAuthController extends Controller
 
         //login con nickname
         if(isset($nick) && !empty($nick)){
-
+            $email = null;
             $request->validate([
                 'nick' => 'required|string',
                 'password' => 'required'
@@ -85,7 +85,7 @@ class UserAuthController extends Controller
         auth()->login($user);
         
 
-        return redirect()->to('/');
+        return redirect()->to('/home')->with('welcomeUser', 'Bienvenido a cinect'.$register_nick.'!');
     }
 
 

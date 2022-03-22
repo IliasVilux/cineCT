@@ -58,9 +58,9 @@
 
                                     </div>
                                     <div class="col-12">
-                                        
+
                                         <p>Como quieres identificarte?</p>
-                                        
+
                                         @if ($errors->has('nick'))
                                             <div class="mt-2 alert alert-danger">
                                                 El nombre de usuario introducido no pertenece a ninguna cuenta
@@ -84,7 +84,7 @@
                                             <div class="tab-pane fade show active" id="auth_with_email" role="tabpanel"
                                                 aria-labelledby="auth_with_email-tab">
                                                 <label for="email" class="form-label">Email</label>
-                                                <input type="email" class="form-control" id="email" name="email"
+                                                <input type="text" class="form-control" id="email" name="email"
                                                     placeholder="Your email" autofocus>
                                             </div>
                                             <div class="tab-pane fade" id="auth_with_nickname" role="tabpanel"
@@ -95,7 +95,8 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="hashtagUsername">@</span>
                                                         </div>
-                                                        <input type="text" class="form-control" id="nick" name="nick" placeholder="username" autofocus>
+                                                        <input type="text" class="form-control" id="nick" name="nick"
+                                                            placeholder="username" autofocus>
                                                     </div>
                                                 </div>
                                             </div>
@@ -164,6 +165,11 @@
                                                 mayúscula las dos contrasenñas tienen que coincidir
                                             </div>
                                         @endif
+                                        @if ($errors->has('register_password_repeat'))
+                                            <div class="mt-2 alert alert-danger">
+                                                Las dos contrasenñas tienen que coincidir
+                                            </div>
+                                        @endif
                                     </div>
 
                                     <div class="row p-0">
@@ -180,10 +186,16 @@
                                                 value="{{ old('register_surname') }}" autofocus>
                                         </div>
                                         <div class="col-12 col-md-6 mb-2">
-                                            <label for="register_nick" class="form-label">Nick</label>
-                                            <input type="text" class="form-control" id="register_nick"
-                                                name="register_nick" placeholder="hulk20"
-                                                value="{{ old('register_nick') }}" autofocus>
+
+                                            <label for="nick" class="form-label">Nickname</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="hashtagUsername">@</span>
+                                                </div>
+                                                <input type="text" class="form-control" id="register_nick"
+                                                    name="register_nick" placeholder="mark20"
+                                                    value="{{ old('register_nick') }}" autofocus>
+                                            </div>
                                         </div>
                                         <div class="col-12 col-md-6 mb-2">
                                             <label for="register_email" class="form-label">Email</label>
@@ -221,98 +233,28 @@
     @endif
 
     <script>
-        /*
-                            var registerSubmitForm = document.getElementById('btn-register');
-                            var loginSubmitForm = document.getElementById('btn-login');
 
-                            //register inputs
-                            var registerName = document.getElementById('register_nick');
-                            var registerSurname = document.getElementById('register_surname');
-                            var registerNickname = document.getElementById('register_name');
-                            var registerEmail = document.getElementById('register_email');
-                            var registerPassword = document.getElementById('register_password');
-                            var registerPasswordConfirmation = document.getElementById('register_password_repeat');
-                            var registerErrorsInputs = document.querySelector(".registerErrors");
-                            var loginErrorsInputs = document.querySelector(".loginErrors");
+        var loginBtn = document.getElementById('btn-login');
+        var loginWithEmailSelected = document.getElementById('auth_with_email-tab');
+        var loginWithLoginSelected = document.getElementById('auth_with_nickname-tab');
 
-                            //login inputs
-                            var loginEmail = document.getElementById('email');
-                            var loginPassword = document.getElementById('password');
+        loginBtn.onclick = () =>{
+            checkLoginInputs();
+        }
 
+        function checkLoginInputs()
+        {
+            var loginEmail = document.getElementById('email');
+            var loginNick = document.getElementById('nick');
 
-                            registerSubmitForm.addEventListener("click", (e) => {
-                                e.preventDefault();
-                                let error = validateRegister();
-                                if(error[0]){
-                                    registerErrorsInputs.innerHTML = error[1];
-                                    registerErrorsInputs.classList.add("alert");
-                                    registerErrorsInputs.classList.add("alert-danger");
-                                } else {
-                                    registerErrorsInputs.classList.remove("alert");
-                                    registerErrorsInputs.classList.remove("alert-danger");
-                                }
-                            })
+            return (loginWithEmailSelected.ariaSelected = 'true'){
+                loginNick.value = '';
+            }else{
+                loginEmail.value = '';
+            }
+        }
 
-
-                            const validateRegister = () => {
-                                let error = [];
-
-                                if (registerName.value == "" && registerSurname.value == "" && registerNickname.value == "" && registerEmail
-                                    .value == "" && registerPassword.value == "" && registerPasswordConfirmation.value == "") {
-                                    error[0] = true;
-                                    error[1] = "Todos los campos estan vacíos"
-                                    return error;
-                                } else {
-                                    if (registerName.value.lenght < 3 && registerSurname.value.lenght < 3) {
-                                        error[0] = true;
-                                        error[1] = "El nombre y el campo apellidos no son válido";
-                                        return error;
-                                    } else if (registerNickname.value.lenght < 3) {
-                                        error[0] = true;
-                                        error[1] = "El nickname no es válido";
-                                        return error;
-                                    } else if (registerPassword.value != registerPasswordConfirmation.value) {
-                                        error[0] = true;
-                                        error[1] = "Las contraseñas no coinciden";
-                                        return error;
-                                    }
-
-                                }
-                                
-                                error[0]=false;
-                                return error;
-
-                            }
-
-                            loginSubmitForm.addEventListener("click", (e) => {
-                                e.preventDefault();
-                                let error = validateLogin();
-                                if(error[0]){
-                                    loginErrorsInputs.innerHTML = error[1];
-                                    loginErrorsInputs.classList.add("alert");
-                                    loginErrorsInputs.classList.add("alert-danger");
-                                } else {
-                                    loginErrorsInputs.innerHTML = '';
-                                    loginErrorsInputs.classList.remove("alert");
-                                    loginErrorsInputs.classList.remove("alert-danger");
-                                    document.location.href=url;
-                                }
-                            })
-
-                            const validateLogin = () => {
-                                let error = [];
-
-                                if (loginEmail.value == "" && loginPassword.value == "" ) {
-                                    error[0] = true;
-                                    error[1] = "Todos los campos estan vacíos"
-                                    return error;
-                                }
-                                error[0]=false;
-                                return error;
-
-                            }
-                            */
-        function switchPassword() {
+        const switchPassword = () => {
             var showPassword = document.getElementById('showPassword');
             var passwordInput = document.getElementById('password');
             var eyeIcon = document.getElementById('icon-switch')
