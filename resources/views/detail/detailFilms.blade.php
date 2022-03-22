@@ -1,7 +1,7 @@
 @extends('headerFooter')
 @section('content')
 <head>
-    <link rel="stylesheet" href="../../storage/css/detail.css">
+    <link rel="stylesheet" href="{{asset('css/detail.css')}}">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <style>
         div#social-links {
