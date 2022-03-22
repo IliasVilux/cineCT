@@ -83,11 +83,12 @@ class FilmController extends Controller
     }
 
     public function returnFilms($id) {
-        $films = Film::find($id);
+        $film = Film::find($id);
         $profile = Image::all();
+        $shareComponent = $this->ShareWidget();
         
-        if (!is_null($films)) {
-            return view('/detail/detailFilms', ['film' => $films, 'profile' => $profile]);
+        if (!is_null($film)) {
+            return view('/detail/detailFilms', compact('film', 'profile', 'shareComponent'));
         } else {
             return response('No encontrado', 404);
         }
@@ -97,6 +98,22 @@ class FilmController extends Controller
         }
 
         return view('detail', ['film' => $films]);*/
+    }
+    public function ShareWidget()
+    {
+        $url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        $shareComponent = \Share::page(
+            $url, // Link que se comparte
+            '', // Texto de compartir
+        )
+        ->facebook()
+        ->twitter()
+        ->linkedin()
+        ->telegram()
+        ->whatsapp()
+        ->reddit();
+        
+        return $shareComponent;
     }
     
 

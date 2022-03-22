@@ -81,11 +81,11 @@ class SerieController extends Controller
     }
 
     public function returnSeries($id) {
-        $series = Serie::find($id);
-        $profile = Image::all();
+        $serie = Serie::find($id);
+        $shareComponent = $this->ShareWidget();
 
-        if (!is_null($series)) {
-            return view('/detail/detailSeries', ['serie' => $series, 'profile' => $profile]);
+        if (!is_null($serie)) {
+            return view('/detail/detailSeries', compact('serie', 'profile', 'shareComponentZ'));
         } else {
             return response('No encontrado', 404);
         }
@@ -95,5 +95,21 @@ class SerieController extends Controller
         }
 
         return view('detail', ['serie' => $series]);*/
+    }
+    public function ShareWidget()
+    {
+        $url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        $shareComponent = \Share::page(
+            $url, // Link que se comparte
+            '', // Texto de compartir
+        )
+        ->facebook()
+        ->twitter()
+        ->linkedin()
+        ->telegram()
+        ->whatsapp()
+        ->reddit();
+        
+        return $shareComponent;
     }
 }

@@ -1,15 +1,30 @@
 @extends('headerFooter')
 @section('content')
-
 <head>
     <link rel="stylesheet" href="{{asset('css/detail.css')}}">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <style>
+        div#social-links {
+            margin: 0 auto;
+            max-width: 500px;
+        }
+        div#social-links ul li {
+            display: inline-block;
+        }          
+        div#social-links ul li a {
+            padding: 20px;
+            margin: 1px;
+            font-size: 30px;
+            color: #9966ff;
+        }
+    </style>
 </head>
 <section class="container">
     <a href="{{ url('/content/contentFilms') }}" class="btn btn-primary" title="Home">
         Home
     </a>
 
+    {!! $shareComponent !!}
     <h1 class="detail-title">{{$film->name}}</h1>
 
     <div class="d-flex flex-row align-items-center justify-content-around">
@@ -32,6 +47,7 @@
                 <h4><i class="fas fa-star"></i><strong class="fw-bold fs-3"> {{$film->puntuation}}</strong>/10<h4>
             </div>
         </div>
+
     </div>
     <div class="d-flex flex-row justify-content-around mt-4">
         @if($film->poster_path == NULL)
