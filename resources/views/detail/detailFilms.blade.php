@@ -20,9 +20,7 @@
     </style>
 </head>
 <section class="container">
-    <a href="{{ url('/content/contentFilms') }}" class="btn btn-primary" title="Home">
-        Home
-    </a>
+    <a href="{{ url('/content/contentFilms') }}" class="btn btn-primary" title="Home">Home</a>
 
     {!! $shareComponent !!}
     <h1 class="detail-title">{{$film->name}}</h1>
