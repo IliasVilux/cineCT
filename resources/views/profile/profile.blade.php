@@ -8,8 +8,8 @@
 <section class="container">
     <h1>MI PERFIL</h1>
     <div class="d-flex justify-content-center">
-        <a href="{{url('/profileImg')}}">
-            <img class="img-carousel" src="{{url('storage/img/Dexter.jpg')}}">
+        <a href="{{asset('/profileImg')}}">
+            <img class="img-carousel" src="{{asset('img/Dexter.jpg')}}">
         </a>
     </div>
 

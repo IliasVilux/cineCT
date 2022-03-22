@@ -62,7 +62,7 @@
 
     <div class="d-flex flex-row justify-content-around mt-4">
         @if($anime->poster_path == NULL)
-        <img src="{{url('storage/img/NoImg.jpg')}}" class="img-thumbnail" alt="">
+        <img src="asset('img/NoImg.jpg')}}" class="img-thumbnail" alt="">
         @else
         <img src="{{$anime->poster_path}}" class="img-thumbnail" alt="Img {{$anime->name}}">
         @endif
