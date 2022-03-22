@@ -235,24 +235,29 @@
     <script>
 
         var loginBtn = document.getElementById('btn-login');
+
+        var loginEmail = document.getElementById('email');
+        var loginNick = document.getElementById('nick');
+
         var loginWithEmailSelected = document.getElementById('auth_with_email-tab');
-        var loginWithLoginSelected = document.getElementById('auth_with_nickname-tab');
+        var loginWithNickSelected = document.getElementById('auth_with_nickname-tab');
 
-        loginBtn.onclick = () =>{
-            checkLoginInputs();
+        let currentEmailAriaSelectedValue = loginWithEmailSelected.ariaSelected;
+        let currentNickAriaSelectedValue = loginWithNickSelected.ariaSelected;
+
+        loginWithEmailSelected.onclick = () => {
+            if(currentEmailAriaSelectedValue == 'true'){
+                loginNick.value = ''
+            }
+            
         }
-
-        function checkLoginInputs()
-        {
-            var loginEmail = document.getElementById('email');
-            var loginNick = document.getElementById('nick');
-
-            return (loginWithEmailSelected.ariaSelected = 'true'){
-                loginNick.value = '';
-            }else{
-                loginEmail.value = '';
+        
+        loginWithNickSelected.onclick = () => {
+            if(currentNickAriaSelectedValue == 'true'){
+                loginEmail.value = ''
             }
         }
+
 
         const switchPassword = () => {
             var showPassword = document.getElementById('showPassword');
