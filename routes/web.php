@@ -1,14 +1,15 @@
 <?php
 
-use App\Http\Controllers\GenreController;
 use App\Http\Controllers\SerieController;
 use App\Http\Controllers\FilmController;
 use App\Http\Controllers\AnimeController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserAuthController;
 use App\Models\Genre;
 use App\Models\Serie;
 use App\Models\Films;
 use App\Models\Anime;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
