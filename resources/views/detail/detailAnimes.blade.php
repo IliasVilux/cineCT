@@ -10,12 +10,28 @@
         $('input.star').rating();
     });
     </script>
+    <style>
+        div#social-links {
+            margin: 0 auto;
+            max-width: 500px;
+        }
+        div#social-links ul li {
+            display: inline-block;
+        }          
+        div#social-links ul li a {
+            padding: 20px;
+            margin: 1px;
+            font-size: 30px;
+            color: #9966ff;
+        }
+    </style>
 </head>
 <section class="container">
     <a href="{{ url('/content/contentAnimes') }}" class="btn btn-primary" title="Home">
         Home
     </a>
 
+    {!! $shareComponent !!}
     <h1 class="detail-title">{{$anime->name}}</h1>
 
     <div class="d-flex flex-row align-items-center justify-content-around">
