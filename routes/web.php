@@ -4,6 +4,7 @@ use App\Http\Controllers\SerieController;
 use App\Http\Controllers\FilmController;
 use App\Http\Controllers\AnimeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserAuthController;
 use App\Models\Genre;
 use App\Models\Serie;
@@ -87,3 +88,6 @@ Route::get('/register', [UserAuthController::class, 'index'])->name('user.create
 Route::post('/register', [UserAuthController::class, 'userRegister'])->name('register.user');
 Route::post('/login', [UserAuthController::class, 'userLogin'])->name('login.user');
 Route::get('/logout', [UserAuthController::class, 'userSignOut'])->name('signout.user');
+
+//Reviews
+Route::get('/review/create/{id}', [ReviewController::class, 'createReview'])->name('review.create');

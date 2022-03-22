@@ -78,6 +78,8 @@
     <h3><b>Ultima actualización:</b> {{$film->updated_at}}</h3> -->
 
     <p class="description fs-2 pt-5">{{$film->description}}</p>
+
+    <a class="btn btn-primary" href="{{route('review.create', ['id' => $film->id])}}">Hacer Review</a>
 </section>
 <!-- END CONTENT -->
 <!-- START COMMMENT SECTION -->
@@ -88,7 +90,6 @@
                 <div class="card card-comment bg-dark">
                     <div class="card-body card-body-comment p-4">
                         <h4 class="text-center mb-4 pb-2">Nested comments section</h4>
-
                         <div class="row">
                             <div class="col">
                                 <div class="d-flex flex-start">
