@@ -38,12 +38,10 @@ class ReviewController extends Controller
         $review->description = $description;
         $review->user_id = $user_id;
         $review->film_id = $id;
-
         
         $review->save();
         
-        return redirect()->route('film.films', ['id' => $film])
-        ->with(['message' => 'Tu publicación se ha subido!']);
+        return redirect()->route('film.films', ['id' => $film])->with(['message' => 'Tu review se ha publicado!']);
 
     }
 }
