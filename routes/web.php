@@ -53,7 +53,7 @@ Route::get('/content/contentAnimes', function () {
 });
 
 
-Route::get('/detail/detailFilms/{id}', [FilmController::class,  'returnFilms']);
+Route::get('/detail/detailFilms/{id}', [FilmController::class,  'returnFilms'])->name('film.films');
 /* Route::get('/detail/detailFilms/{id}', 'SocialShareButtonsController@ShareWidget'); */
 
 Route::get('/detail/detailSeries/{id}', [SerieController::class,  'returnSeries']);
@@ -90,4 +90,5 @@ Route::post('/login', [UserAuthController::class, 'userLogin'])->name('login.use
 Route::get('/logout', [UserAuthController::class, 'userSignOut'])->name('signout.user');
 
 //Reviews
-Route::get('/review/create/{id}', [ReviewController::class, 'createReview'])->name('review.create');
+Route::get('/review/create/{id}', [ReviewController::class, 'create'])->name('review.create');
+Route::post('/review/save{id}', [ReviewController::class, 'store'])->name('review.save');
