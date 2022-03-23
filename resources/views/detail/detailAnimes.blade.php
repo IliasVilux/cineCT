@@ -53,7 +53,7 @@
         <div>
             <h5 class="pe-2"><b>Cuánto te ha gustado?</b></h5>
             <form method="GET" class="d-flex justify.content-start">
-                <div class="rating d-flex nowrap">
+                <div class="rating d-inline">
                     <input name="stars" id="e1" type="radio" value="1"><label for="e1">☆</label>
                     <input name="stars" id="e2" type="radio" value="2"><label for="e2">☆</label>
                     <input name="stars" id="e3" type="radio" value="3"><label for="e3">☆</label>
