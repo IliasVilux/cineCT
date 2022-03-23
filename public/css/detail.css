@@ -6,13 +6,17 @@ p.description {
     text-align: justify;
 }
 
+.more-info{
+    float: right;
+    width: 40%;
+}
+
+
 
 /* STAR */
 
 .rating {
-    width: 226px;
-    margin: 0 auto 1em;
-    font-size: 45px;
+    font-size: 30px;
     overflow: hidden;
 }
 
