@@ -5,19 +5,21 @@
     <link rel="stylesheet" href="{{asset('css/detail.css')}}">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <style>
-        div#social-links {
-            margin: 0 auto;
-            max-width: 500px;
-        }
-        div#social-links ul li {
-            display: inline-block;
-        }          
-        div#social-links ul li a {
-            padding: 20px;
-            margin: 1px;
-            font-size: 30px;
-            color: #9966ff;
-        }
+    div#social-links {
+        margin: 0 auto;
+        max-width: 500px;
+    }
+
+    div#social-links ul li {
+        display: inline-block;
+    }
+
+    div#social-links ul li a {
+        padding: 20px;
+        margin: 1px;
+        font-size: 30px;
+        color: #9966ff;
+    }
     </style>
 </head>
 <section class="container">
@@ -28,7 +30,7 @@
     {!! $shareComponent !!}
     <h1 class="detail-title">{{$anime->name}}</h1>
 
-    <section class="more-info bg-dark p-3">
+    <article class="more-info bg-dark p-3">
         <div class="d-flex nowrap">
             <h5 class="pe-2"><b>Género:</b></h5>
             <p>{{$anime->genre_id}}</p>
@@ -48,7 +50,8 @@
         </div>
         <div class="d-flex nowrap">
             <h5 class="pe-2"><b>Puntuación:</b></h5>
-            <p><i class="fas fa-star"></i><p> {{$anime->puntuation}}</p>/10<p>
+            <p><i class="fas fa-star"></i>
+            <p> {{$anime->puntuation}}</p>/10<p>
         </div>
         <div>
             <h5 class="pe-2"><b>Cuánto te ha gustado?</b></h5>
@@ -75,15 +78,15 @@
             }
             ?>
         </div>
-    </section>
+    </article>
 
-    <div class="mt-4">
+    <article class="mt-4">
         @if($anime->poster_path == NULL)
         <img src="/img/NoImg.jpg" class="img-thumbnail" alt="">
         @else
         <img src="{{$anime->poster_path}}" class="img-thumbnail" alt="Img {{$anime->name}}">
         @endif
-    </div>
+    </article>
 
 
 
@@ -108,9 +111,8 @@
                         <div class="row">
                             <div class="col">
                                 <div class="d-flex flex-start">
-                                    <img class="rounded-circle shadow-1-strong me-3"
-                                        src="{{$profile[0]->path}}" alt="13"
-                                        width="65" height="65" />
+                                    <img class="rounded-circle shadow-1-strong me-3" src="{{$profile[0]->path}}"
+                                        alt="13" width="65" height="65" />
                                     <div class="flex-grow-1 flex-shrink-1">
                                         <div>
                                             <div class="d-flex justify-content-between align-items-center">
@@ -128,9 +130,8 @@
 
                                         <div class="d-flex flex-start mt-4">
                                             <a class="me-3" href="#">
-                                            <img class="rounded-circle shadow-1-strong me-3"
-                                        src="{{$profile[3]->path}}" alt="13"
-                                        width="65" height="65" />
+                                                <img class="rounded-circle shadow-1-strong me-3"
+                                                    src="{{$profile[3]->path}}" alt="13" width="65" height="65" />
                                             </a>
                                             <div class="flex-grow-1 flex-shrink-1">
                                                 <div>
@@ -150,8 +151,7 @@
                                         <div class="d-flex flex-start mt-4">
                                             <a class="me-3" href="#">
                                                 <img class="rounded-circle shadow-1-strong me-3"
-                                        src="{{$profile[2]->path}}" alt="13"
-                                        width="65" height="65" />
+                                                    src="{{$profile[2]->path}}" alt="13" width="65" height="65" />
                                             </a>
                                             <div class="flex-grow-1 flex-shrink-1">
                                                 <div>
@@ -171,9 +171,8 @@
                                 </div>
 
                                 <div class="d-flex flex-start mt-4">
-                                <img class="rounded-circle shadow-1-strong me-3"
-                                        src="{{$profile[1]->path}}" alt="13"
-                                        width="65" height="65" />
+                                    <img class="rounded-circle shadow-1-strong me-3" src="{{$profile[1]->path}}"
+                                        alt="13" width="65" height="65" />
                                     <div class="flex-grow-1 flex-shrink-1">
                                         <div>
                                             <div class="d-flex justify-content-between align-items-center">
@@ -192,9 +191,8 @@
 
                                         <div class="d-flex flex-start mt-4">
                                             <a class="me-3" href="#">
-                                            <img class="rounded-circle shadow-1-strong me-3"
-                                        src="{{$profile[8]->path}}" alt="13"
-                                        width="65" height="65" />
+                                                <img class="rounded-circle shadow-1-strong me-3"
+                                                    src="{{$profile[8]->path}}" alt="13" width="65" height="65" />
                                             </a>
                                             <div class="flex-grow-1 flex-shrink-1">
                                                 <div>
@@ -214,9 +212,8 @@
 
                                         <div class="d-flex flex-start mt-4">
                                             <a class="me-3" href="#">
-                                            <img class="rounded-circle shadow-1-strong me-3"
-                                        src="{{$profile[4]->path}}" alt="13"
-                                        width="65" height="65" />
+                                                <img class="rounded-circle shadow-1-strong me-3"
+                                                    src="{{$profile[4]->path}}" alt="13" width="65" height="65" />
                                             </a>
                                             <div class="flex-grow-1 flex-shrink-1">
                                                 <div>
@@ -235,9 +232,8 @@
 
                                         <div class="d-flex flex-start mt-4">
                                             <a class="me-3" href="#">
-                                            <img class="rounded-circle shadow-1-strong me-3"
-                                        src="{{$profile[6]->path}}" alt="13"
-                                        width="65" height="65" />
+                                                <img class="rounded-circle shadow-1-strong me-3"
+                                                    src="{{$profile[6]->path}}" alt="13" width="65" height="65" />
                                             </a>
                                             <div class="flex-grow-1 flex-shrink-1">
                                                 <div>

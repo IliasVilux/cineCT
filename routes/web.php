@@ -60,13 +60,6 @@ Route::get('/detail/detailSeries/{id}', [SerieController::class,  'returnSeries'
 Route::get('/detail/detailAnimes/{id}', [AnimeController::class,  'returnAnimes']);
 
 
-/*Route::get('/content/contentFilms/{genre_id}', [FilmController::class,  'returnFilmGenre']);
-
-Route::get('/content/contentSeries/{genre_id}', [SerieController::class,  'returnSeries']);
-
-Route::get('/content/contentAnimes/{genre_id}', [AnimeController::class,  'returnAnimes']);*/
-
-
 Route::get('/top', function () {
     return view('top');
 });

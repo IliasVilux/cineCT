@@ -35,60 +35,69 @@
 
     <h1 class="detail-title">{{$serie->name}}</h1>
 
-    <div class="d-flex flex-row align-items-center justify-content-around">
-        <div class="d-flex flex-column align-items-center">
-            <h3><b>Genero</b></h3>
-            <strong class="fw-bold fs-3"> {{$serie->genre_id}}</strong>
+    <article class="more-info bg-dark p-3">
+        <div class="d-flex nowrap">
+            <h5 class="pe-2"><b>Género:</b></h5>
+            <p>{{$serie->genre_id}}</p>
         </div>
-        <div class="d-flex flex-column align-items-center">
-            <h3><b>Fecha de lanzamiento</b></h3>
-            <strong class="fw-bold fs-3"> {{$serie->release_date}}</strong>
+        <div class="d-flex nowrap">
+            <h5 class="pe-2"><b>Fecha de lanzamiento:</b></h5>
+            <p> {{$serie->release_date}}</p>
         </div>
-        <div class="d-flex flex-column align-items-center">
-            <h3><b>Temporadas</b></h3>
-            <strong class="fw-bold fs-3"> {{$serie->seasons}}</strong>
+        <div class="d-flex nowrap">
+            <h5 class="pe-2"><b>Duración:</b></h5>
+            <p> {{$serie->duration}} min</p>
         </div>
 
-        <div class="d-flex flex-column align-items-center">
-            <h3><b>Episodios</b></h3>
-            <strong class="fw-bold fs-3"> {{$serie->total_episodes}}</strong>
+        <div class="d-flex nowrap">
+            <h5 class="pe-2"><b>Episodios:</b></h5>
+            <p> {{$serie->total_episodes}}</p>
         </div>
-        <div class="d-flex flex-column align-items-center">
-            <h3><b>Puntuación</b></h3>
-            <div class="d-flex flex-row">
-                <h4><i class="fas fa-star"></i><strong class="fw-bold fs-3"> {{$serie->puntuation}}</strong>/10<h4>
-            </div>
+        <div class="d-flex nowrap">
+            <h5 class="pe-2"><b>Puntuación:</b></h5>
+            <p><i class="fas fa-star"></i>
+            <p> {{$serie->puntuation}}</p>/10<p>
         </div>
-    </div>
+        <div>
+            <h5 class="pe-2"><b>Cuánto te ha gustado?</b></h5>
+            <form method="GET" class="d-flex justify.content-start">
+                <div class="rating d-inline">
+                    <input name="stars" id="e1" type="radio" value="1"><label for="e1">☆</label>
+                    <input name="stars" id="e2" type="radio" value="2"><label for="e2">☆</label>
+                    <input name="stars" id="e3" type="radio" value="3"><label for="e3">☆</label>
+                    <input name="stars" id="e4" type="radio" value="4"><label for="e4">☆</label>
+                    <input name="stars" id="e5" type="radio" value="5"><label for="e5">☆</label>
+                    <input name="stars" id="e6" type="radio" value="6"><label for="e6">☆</label>
+                    <input name="stars" id="e7" type="radio" value="7"><label for="e7">☆</label>
+                    <input name="stars" id="e8" type="radio" value="8"><label for="e8">☆</label>
+                    <input name="stars" id="e9" type="radio" value="9"><label for="e9">☆</label>
+                    <input name="stars" id="e10" type="radio" value="10"><label for="e10">☆</label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm">Enviar</button>
+            </form>
+            <?php
+            if (isset($_GET['stars'])) {
+                echo '<div class="alert alert-success">Rating recibido: <strong>'.$_GET['stars'].'</strong>.</div>';
+            }elseif ((isset($_GET['stars']) == "")){
 
-    <div class="d-flex flex-row justify-content-around mt-4">
+            }
+            ?>
+        </div>
+    </article>
+
+    <article class="mt-4">
         @if($serie->poster_path == NULL)
         <img src="/img/NoImg.jpg" class="img-thumbnail" alt="">
         @else
         <img src="{{$serie->poster_path}}" class="img-thumbnail" alt="Img {{$serie->name}}">
         @endif
-    </div>
+    </article>
 
-    <form method="GET">
-        <div class="rating">
-            <input name="stars" id="e5" type="radio" value="5"><label for="e5">☆</label>
-            <input name="stars" id="e4" type="radio" value="4"><label for="e4">☆</label>
-            <input name="stars" id="e3" type="radio" value="3"><label for="e3">☆</label>
-            <input name="stars" id="e2" type="radio" value="2"><label for="e2">☆</label>
-            <input name="stars" id="e1" type="radio" value="1"><label for="e1">☆</label>
-        </div>
-        <button type="submit" name="submitRatingStar" class="btn btn-primary btn-sm">Enviar</button>
-    </form>
 
-    <?php
-        if (isset($_GET['submitRatingStar'])) {
-            echo '<div class="alert alert-success">Rating recibido: <strong>'.$_GET['stars'].'</strong>.</div>';
-        }
-    ?>
+    <p class="description pt-5">{{$serie->description}}</p>
 
-    <p class="description fs-2 pt-5">{{$serie->description}}</p>
     <!-- <h3><b>Creado:</b> {{$serie->created_at}}</h3>
-    <h3><b>Ultima actualización:</b> {{$serie->updated_at}}</h3> -->
+        <h3><b>Ultima actualización:</b> {{$serie->updated_at}}</h3> -->
 
 </section>
 
