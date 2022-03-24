@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Actor extends Model
 {
     use HasFactory;
-
     protected $table = 'actors';
     
+    public function film() {
+        return $this->hasMany(Film::class, 'film_id');
+    }
+
 }
