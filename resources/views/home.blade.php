@@ -24,35 +24,35 @@
         <div class="carousel-inner">
             <div class="carousel-item full text-center active">
                 <a href="/detail/detailFilms/37" class="link-img-carousel">
-                    <img src="{{$film[37]->poster_path}}" class="img-carousel px-3" alt="Img {{$film[37]->name}}">
+                    <img src="{{$film[36]->poster_path}}" class="img-carousel px-3" alt="Img {{$film[36]->name}}">
                 </a>
                 <a href="/detail/detailFilms/38" class="link-img-carousel">
-                    <img src="{{$film[38]->poster_path}}" class="img-carousel px-3" alt="Img {{$film[38]->name}}">
+                    <img src="{{$film[37]->poster_path}}" class="img-carousel px-3" alt="Img {{$film[37]->name}}">
                 </a>
                 <a href="/detail/detailFilms/39" class="link-img-carousel">
-                    <img src="{{$film[39]->poster_path}}" class="img-carousel px-3" alt="Img {{$film[39]->name}}">
+                    <img src="{{$film[38]->poster_path}}" class="img-carousel px-3" alt="Img {{$film[38]->name}}">
                 </a>
             </div>
             <div class="carousel-item full text-center">
                 <a href="/detail/detailSeries/37" class="link-img-carousel">
-                    <img src="{{$serie[37]->poster_path}}" class="img-carousel px-3" alt="Img {{$serie[37]->name}}">
+                    <img src="{{$serie[36]->poster_path}}" class="img-carousel px-3" alt="Img {{$serie[36]->name}}">
                 </a>
                 <a href="/detail/detailSeries/38" class="link-img-carousel">
-                    <img src="{{$serie[38]->poster_path}}" class="img-carousel px-3" alt="Img {{$serie[38]->name}}">
+                    <img src="{{$serie[37]->poster_path}}" class="img-carousel px-3" alt="Img {{$serie[37]->name}}">
                 </a>
                 <a href="/detail/detailSeries/39" class="link-img-carousel">
-                    <img src="{{$serie[39]->poster_path}}" class="img-carousel px-3" alt="Img {{$serie[39]->name}}">
+                    <img src="{{$serie[38]->poster_path}}" class="img-carousel px-3" alt="Img {{$serie[38]->name}}">
                 </a>
             </div>
             <div class="carousel-item full text-center">
                 <a href="/detail/detailAnimes/37" class="link-img-carousel">
-                    <img src="{{$anime[37]->poster_path}}" class="img-carousel px-3" alt="Img {{$anime[37]->name}}">
+                    <img src="{{$anime[36]->poster_path}}" class="img-carousel px-3" alt="Img {{$anime[36]->name}}">
                 </a>
                 <a href="/detail/detailAnimes/38" class="link-img-carousel">
-                    <img src="{{$anime[38]->poster_path}}" class="img-carousel px-3" alt="Img {{$anime[38]->name}}">
+                    <img src="{{$anime[37]->poster_path}}" class="img-carousel px-3" alt="Img {{$anime[37]->name}}">
                 </a>
                 <a href="/detail/detailAnimes/39" class="link-img-carousel">
-                    <img src="{{$anime[39]->poster_path}}" class="img-carousel px-3" alt="Img {{$anime[39]->name}}">
+                    <img src="{{$anime[38]->poster_path}}" class="img-carousel px-3" alt="Img {{$anime[38]->name}}">
                 </a>
             </div>
         </div>

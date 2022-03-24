@@ -53,17 +53,17 @@
         <div>
             <h5 class="pe-2"><b>Cuánto te ha gustado?</b></h5>
             <form method="GET" class="d-flex justify.content-start">
-                <div class="rating d-inline">
-                    <input name="stars" id="e1" type="radio" value="1"><label for="e1">☆</label>
-                    <input name="stars" id="e2" type="radio" value="2"><label for="e2">☆</label>
-                    <input name="stars" id="e3" type="radio" value="3"><label for="e3">☆</label>
-                    <input name="stars" id="e4" type="radio" value="4"><label for="e4">☆</label>
-                    <input name="stars" id="e5" type="radio" value="5"><label for="e5">☆</label>
-                    <input name="stars" id="e6" type="radio" value="6"><label for="e6">☆</label>
-                    <input name="stars" id="e7" type="radio" value="7"><label for="e7">☆</label>
-                    <input name="stars" id="e8" type="radio" value="8"><label for="e8">☆</label>
-                    <input name="stars" id="e9" type="radio" value="9"><label for="e9">☆</label>
-                    <input name="stars" id="e10" type="radio" value="10"><label for="e10">☆</label>
+            <div class="rating d-inline ">
+                    <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
+                    <input name="stars" id="e2" type="radio" value="9"><label for="e2">☆</label>
+                    <input name="stars" id="e3" type="radio" value="8"><label for="e3">☆</label>
+                    <input name="stars" id="e4" type="radio" value="7"><label for="e4">☆</label>
+                    <input name="stars" id="e5" type="radio" value="6"><label for="e5">☆</label>
+                    <input name="stars" id="e6" type="radio" value="5"><label for="e6">☆</label>
+                    <input name="stars" id="e7" type="radio" value="4"><label for="e7">☆</label>
+                    <input name="stars" id="e8" type="radio" value="3"><label for="e8">☆</label>
+                    <input name="stars" id="e9" type="radio" value="2"><label for="e9">☆</label>
+                    <input name="stars" id="e10" type="radio" value="1"><label for="e10">☆</label>
                 </div>
                 <button type="submit" class="btn btn-primary btn-sm">Enviar</button>
             </form>
