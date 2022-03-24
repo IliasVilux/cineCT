@@ -24,7 +24,7 @@
 </head>
 <section class="container">
     <a href="{{ url('/content/contentAnimes') }}" class="btn btn-primary" title="Home">
-        Home
+        Back
     </a>
 
     {!! $shareComponent !!}

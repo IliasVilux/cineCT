@@ -28,7 +28,7 @@
 </head>
 <section class="container">
     <a href="{{ url('/content/contentSeries') }}" class="btn btn-primary" title="Home">
-        Home
+        Back
     </a>
 
     {!! $shareComponent !!}
@@ -45,8 +45,8 @@
             <p> {{$serie->release_date}}</p>
         </div>
         <div class="d-flex nowrap">
-            <h5 class="pe-2"><b>Duración:</b></h5>
-            <p> {{$serie->duration}} min</p>
+            <h5 class="pe-2"><b>Temporadas:</b></h5>
+            <p> {{$serie->seasons}}</p>
         </div>
 
         <div class="d-flex nowrap">
