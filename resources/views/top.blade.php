@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="{{asset('css/content.css')}}">
     <link rel="stylesheet" href="{{asset('css/top.css')}}">
 </head>
-<h1>TOP SERIES / PELÍCULAS / ANIMES</h1>
 <section class="container py-4">
+    <h4>TOP SERIES / PELÍCULAS / ANIMES</h4>
     <h5>Series</h5>
     @if(!empty($serie))
     <div class="content d-flex flex-wrap align-items-streach justify-content-center">
