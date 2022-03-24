@@ -67,7 +67,7 @@ class UserAuthController extends Controller
             'register_name' => 'required|string|max:255',
             'register_surname' => 'required|string|max:255',
             'register_nick' => 'required|string|max:15', //unique:users-> ningun nick se repetirá
-            'register_email' => 'required|string|email', //unique:users
+            'register_email' => 'required|string|email|unique:users,email',
             'register_password' => 'required|min:6',
             'register_password_repeat' => 'required|min:6|same:register_password'
 
