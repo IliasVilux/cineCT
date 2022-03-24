@@ -79,7 +79,7 @@
 
     <p class="description fs-2 pt-5">{{$film->description}}</p>
 
-    <a class="btn btn-primary" href="{{route('review.create', ['id' => $film->id])}}">Hacer Review</a>
+    <a class="btn btn-primary" href="#create-review">Hacer Review</a>
 </section>
 <!-- END CONTENT -->
 <!-- START COMMMENT SECTION -->
@@ -243,6 +243,11 @@
                                 </div>
                             </div>
                         </div>
+                        <form method="POST" id="create-review" action="{{ route('review.save', ['id' => $film->id]) }}" class="create_review">
+                            @csrf
+                            <textarea name="description" id="description" cols="50" rows="2" placeholder="Escribe aqui tu comentario"></textarea>
+                            <button class="btn btn-outline-primary" type="submit">Guardar</button>
+                        </form>
                     </div>
                 </div>
             </div>

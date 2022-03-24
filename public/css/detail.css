@@ -6,6 +6,10 @@ p.description {
     text-align: justify;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 
 /* STAR */
 
@@ -37,4 +41,16 @@ p.description {
 .rating label:hover {
     color: orange;
     cursor: pointer;
+}
+
+.create_review{
+    width: auto;
+    display: inline;
+}
+
+.create_review  #description{
+    border: none;
+    border-bottom: 2px solid #5A3C97;
+    background: none;
+    resize: none;
 }
