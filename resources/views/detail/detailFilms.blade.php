@@ -99,7 +99,7 @@
                     <div class="card card-comment bg-dark">
                         <div class="card-body card-body-comment p-4">
                             @if (count($comments) == 0)
-                                <h4 class="text-center p-2">No tiene ninguna review, sé el primero!</h4>
+                                <h4 class="text-center p-2">No tiene ninguna review, sé el primer@!</h4>
                             @else
                                 <h4 class="text-center mb-4 pb-2">Nested comments section</h4>
                             @endif
