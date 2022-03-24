@@ -20,15 +20,12 @@ class ReviewController extends Controller
     public function store(Request $request, $id)
     {
 
-
-        
         $user = Auth::user();
         $film = Film::find($id);
         $id = $film->id;
         $user_id = $user->id;
         
         $description = $request->input('description');
-
 
         $request->validate([
             'description' => 'required|string|max:255'

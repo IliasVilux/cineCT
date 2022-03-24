@@ -43,14 +43,31 @@ html{
     cursor: pointer;
 }
 
-.create_review{
-    width: auto;
-    display: inline;
+.create_comment{
+    display: flex;
+    width: 50%;
+    margin-left: 15px;
+    margin-top: 1rem;
+    margin-bottom: 4rem;
+    align-items: center;
 }
 
-.create_review  #description{
+.create_comment  #description{
     border: none;
     border-bottom: 2px solid #5A3C97;
+    padding: 5px;
+    /*border-radius: 10px;*/
     background: none;
     resize: none;
+    outline: none;
+    width: 75%;
+    color: #FFFFFF;
+}
+
+.create_comment button{
+    text-decoration: none;
+    color:#5A3C97;
+}
+.create_comment button i{
+    margin-left: 15px;
 }
