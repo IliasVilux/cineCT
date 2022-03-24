@@ -16,18 +16,28 @@ main {
 .carousel-item.full {
     height: 500px;
 }
-.button-category{
+
+.button-category {
     width: 24%;
     height: 80px;
     margin-top: 10px;
-    background: linear-gradient(to bottom, black 25%, #9966ff 150%);;
+    background: linear-gradient(to bottom, black 25%, #9966ff 150%);
+    ;
     color: white;
 }
+
 a.image-link {
     width: 172px;
     height: 256px;
-  }
-  img {
+}
+
+img {
     width: 100%;
     height: 100%;
-  }
+}
+
+/* Content */
+
+.form-select {
+    width: 10%;
+}

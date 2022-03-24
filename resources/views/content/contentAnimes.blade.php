@@ -65,7 +65,26 @@
     </button>
 </section>
 <section class="container py-4">
-    <h5>Animes</h5>
+    <div class="d-flex justify-content-between py-3 px-5">
+        <h5 class="col-6">Animes</h5>
+        <?php 
+        $quantAnimes = count($anime); //54
+        $numPaginator = $quantAnimes;
+
+        echo '<nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+    </nav>';
+        
+        
+        ?>
+    </div>
+   
     @if(!empty($anime))
     <div class="content d-flex flex-wrap align-items-streach justify-content-center">
         @foreach($anime as $anime)
