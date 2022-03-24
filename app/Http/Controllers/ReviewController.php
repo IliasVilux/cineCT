@@ -4,18 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Film;
 use App\Models\Review;
+use Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
-    public function create($id)
-    {
-        $film = Film::find($id);
-
-        return view('review.create', ['film' => $film]);
-
-    }
 
     public function store(Request $request, $id)
     {
@@ -31,14 +25,14 @@ class ReviewController extends Controller
             'description' => 'required|string|max:255'
         ]);
 
-        $review = new Review();
-        $review->description = $description;
-        $review->user_id = $user_id;
-        $review->film_id = $id;
+        $comment = new Review();
+        $comment->description = $description;
+        $comment->user_id = $user_id;
+        $comment->film_id = $id;
         
-        $review->save();
-        
-        return redirect()->route('film.films', ['id' => $film])->with(['message' => 'Tu review se ha publicado!']);
+        $comment->save();
+
+        return ['msg' => 'Tu comentario se ha añadido!'];
 
     }
 }

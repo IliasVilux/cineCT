@@ -90,7 +90,7 @@ class FilmController extends Controller
         $shareComponent = $this->ShareWidget();
         
         if (!is_null($film)) {
-            return view('/detail/detailFilms', compact('film', 'comments', 'profile', 'shareComponent'));
+            return view('detail.detailFilms', compact('film', 'comments', 'profile', 'shareComponent'));
         } else {
             return response('No encontrado', 404);
         }
