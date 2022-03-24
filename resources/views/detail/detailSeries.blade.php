@@ -28,7 +28,7 @@
 </head>
 <section class="container">
     <a href="{{ url('/content/contentSeries') }}" class="btn btn-primary" title="Home">
-        Home
+        Back
     </a>
 
     {!! $shareComponent !!}
@@ -38,15 +38,15 @@
     <article class="more-info bg-dark p-3">
         <div class="d-flex nowrap">
             <h5 class="pe-2"><b>Género:</b></h5>
-            <p>{{$serie->genre_id}}</p>
+            <p>{{$serie->genre->name}}</p>
         </div>
         <div class="d-flex nowrap">
             <h5 class="pe-2"><b>Fecha de lanzamiento:</b></h5>
             <p> {{$serie->release_date}}</p>
         </div>
         <div class="d-flex nowrap">
-            <h5 class="pe-2"><b>Duración:</b></h5>
-            <p> {{$serie->duration}} min</p>
+            <h5 class="pe-2"><b>Temporadas:</b></h5>
+            <p> {{$serie->seasons}}</p>
         </div>
 
         <div class="d-flex nowrap">
@@ -82,6 +82,24 @@
 
             }
             ?>
+        </div>
+    </article>
+    <article>
+        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-share-alt"></i></button> -->
+        <a type="button" class="btn btn-primary" href="#demo" data-bs-toggle="collapse"><i class="fas fa-share-alt"></i></a>
+        <!-- Modal -->
+        <!-- <div class="modal fade-scale" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    {!! $shareComponent !!}
+                </div>
+            </div>
+        </div> -->
+        <div id="demo" class="collapse">{!! $shareComponent !!}</div>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+            </div>
         </div>
     </article>
 
