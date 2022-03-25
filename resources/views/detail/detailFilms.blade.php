@@ -84,7 +84,7 @@
         <!-- START CONTENT -->
 
         <!-- <h3><b>Creado:</b> {{ $film->created_at }}</h3>
-                                                    <h3><b>Ultima actualización:</b> {{ $film->updated_at }}</h3> -->
+                                                            <h3><b>Ultima actualización:</b> {{ $film->updated_at }}</h3> -->
 
         <p class="description fs-2 pt-5">{{ $film->description }}</p>
 
@@ -116,7 +116,7 @@
                                                             <a href="#!"><i class="fas fa-reply fa-xs"></i><span
                                                                     class="text-muted">reply</span></a>
                                                         </div>
-                                                        <p class="small mb-0">{{ $comment->description }}</p>
+                                                        <p class="small mb-0 comment">{{ $comment->description }}</p>
                                                     </div>
                                                     {{-- <div class="d-flex flex-start mt-4">
                                                     <a class="me-3" href="#"> <img class="rounded-circle shadow-1-strong me-3" src="{{$profile[3]->path}}" alt="13"width="65" height="65" /></a>
@@ -151,9 +151,10 @@
                         </div>
                     @endif
                     <div id="notify_user"></div>
+                    <span id="character-counter"></span>
                     <form method="POST" action="" id="create-comment" class="create_comment">
                         @csrf
-                        <textarea name="description" id="description" cols="50" rows="1" placeholder="Escribe aqui tu comentario"></textarea>
+                        <textarea name="description" id="description" cols="50" rows="3" placeholder="Escribe un comentario"></textarea>
                         <button class="btn btn-primary" type="submit" id="commentSubmit">Publicar</button>
                     </form>
                 </div>
@@ -162,55 +163,106 @@
     </section>
 
     <script type="text/javascript">
-
         $("#notify_user").css("display", "none");
 
         jQuery('#create-comment').submit(function(e) {
-            e.preventDefault();$("#commentSubmit").attr("disabled", true); // deshabilitamos el boton de publicar
+            e.preventDefault();
+            $("#commentSubmit").attr("disabled", true); // deshabilitamos el boton de publicar
             var url = '{{ route('comment.save', ['id' => $film->id]) }}';
-            var data = jQuery('#create-comment').serialize(); // obtenemos toda la data del form
+            var data = jQuery('#create-comment').serialize(); // serializamos los datos para trabajr con ellos en el backend
             jQuery('#commentSubmit').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>'); //agregamos un spinner al boton al darle click, mientras no complete la peticion se seguirá mostrando el spinner
+
             jQuery.ajax({
                 url: url,
                 data: data,
                 type: 'POST',
-                success: function(response) {                    
-                    console.log(response);
-                    jQuery('#notify_user').html(`<div class="alert alert-success" role="alert">${response.msg}</div>`);
+                success: function(response) {
+                    jQuery('#notify_user').html(`<div class="alert alert-success" role="alert"><i class="fas fa-check-circle"></i>${response.msg}</div>`); //el msg hace referencia al 'msg' en el return en el controlador (en este caso al ReviewController)
                     jQuery('#notify_user').fadeIn("slow");
-                    jQuery('#create-comment')[0].reset(); // una vez la peticion se complete y no de error, el input se reiniciarà :D
-                    jQuery('.spinner-border').remove(); // una vez haya echo la petición y lo haya guardado en la bases de datos procedemos a eliminar el spinner
-                    jQuery('#commentSubmit').html('Publicar'); //eliminamos el spinner
+                    jQuery('#create-comment')[0].reset(); // una vez la peticion se complete , el textarea se reiniciarà :D
+                    jQuery('.spinner-border').remove(); // una vez haya echo la petición y lo haya guardado en la bases de datos, el spiner lo elimanos
+                    jQuery('#commentSubmit').html('Publicar'); 
                     jQuery('#notify_user').fadeOut(3000);
-                    setTimeout(() => {jQuery('#commentSubmit').attr('disabled', false);},3200); // removemos el desabled para que el usuario pueda interactuar de nuevo con el boton
-                    
-                    let commentHtml = 
-                    `<div class="d-flex flex-start mb-4">
+                    setTimeout(() => {jQuery('#commentSubmit').attr('disabled', false);},3900); // removemos el 'desabled 'para que el usuario pueda interactuar de nuevo con el botón
+
+                    let commentHtml =
+                        `<div class="d-flex flex-start mb-2">
                         <div><img class="rounded-circle shadow-1-strong me-3" src="{{ $profile[0]->path }}" alt="13" width="65" height="65" /></div>
                         <div class="flex-grow-1 flex-shrink-1"><div>
                             <div class="d-flex justify-content-between align-items-center">
-                                <p class="mb-1">${ response.comment['user_id'] } <span class="text-muted">- 2 hours ago</span></p> 
+                                <p class="mb-1">{{Auth::user()->name }} <span class="text-muted">- 2 hours ago</span></p> 
                                 <a href="#!"><i class="fas fa-reply fa-xs"></i><span class="text-muted">reply</span></a> 
                             </div>
-                            <p class="small mb-0">${ response.comment['description'] }</p>
+                            <p class="small mb-0 comment">${ response.comment['description'] }</p>
                             </div>
                         </div>
                     </div>`
-                    
+
                     jQuery('#comment-container').append(commentHtml);
+                    jQuery('#character-counter').css("display", "none");
+
                 },
                 error: function(response) {
-                    jQuery('#notify_user').html(`<div class="alert alert-danger" role="alert">No puedes publicar un comentario vacío!</div>`);
+                    showInputErrors();
                     jQuery('#notify_user').fadeIn("slow");
                     jQuery('.spinner-border').remove();
                     jQuery('#commentSubmit').html('Publicar');
-                    jQuery('#notify_user').fadeOut(3000);
-                    setTimeout(() => {jQuery('#commentSubmit').attr('disabled', false);}, 3300);
+                    jQuery('#notify_user').fadeOut(4000);
+                    setTimeout(() => {
+                        jQuery('#commentSubmit').attr('disabled', false);
+                    }, 4900);
                 }
             })
 
         });
-        
+
+
+        const showInputErrors = () => {
+
+            const description = $('#description').val();
+            
+
+            if (description == '') {
+                jQuery('#notify_user').html(
+                    `<div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-circle"></i>Tu comentario esta vacío.</div>`
+                );
+            } else if (description.length > 255) {
+                jQuery('#notify_user').html(
+                    `<div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-circle"></i>Tu comentario es demasiado largo.</div>`
+                );
+            } else {
+                jQuery('#notify_user').html(
+                    `<div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-circle"></i>Ha ocurrido un error al publicar tu comentario, porfavor vuelve a intentarlo.</div>`
+                );
+            }
+
+        }
+
+        const characterLiveCount = () => {
+            const description = document.getElementById('description');
+            const characterCounter = document.getElementById('character-counter');
+
+            description.addEventListener("input", () => {
+                let count = (description.value).length;
+                document.getElementById("character-counter").textContent = `${count}/255`;
+                if(count >= 0 && count < 165){
+                    characterCounter.style.color = "white";
+                }else if(count >= 165 && count <= 255){
+                    characterCounter.style.color = "yellow";
+                }else{
+                    characterCounter.style.color = "red";
+                }
+
+                if(count == 0){
+                    characterCounter.style.display = "none";
+                }else{
+                    characterCounter.style.display = "inline";
+                }
+            });
+
+        }
+
+        characterLiveCount();
 
     </script>
 
