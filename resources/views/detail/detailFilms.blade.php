@@ -156,7 +156,7 @@
                     <form method="POST" action="" id="create-comment" class="create_comment">
                         @csrf
                         <textarea name="description" id="description" cols="50" rows="1" placeholder="Escribe aqui tu comentario"></textarea>
-                        <button id="btn" class="btn" type="submit" id="commentSubmit">Publicar</button>
+                        <button class="btn btn-primary" type="submit" id="commentSubmit">Publicar</button>
                     </form>
                 </div>
             </div>
@@ -168,11 +168,10 @@
 
         jQuery('#create-comment').submit(function(e) {
             e.preventDefault();
-            //jQuery('#commentSubmit').attr('disabled', true);
-            //jQuery('#commentSubmit').attr('value', 'Un momento...');
+            $("#commentSubmit").attr("disabled", true);
             var url = '{{ route('comment.save', ['id' => $film->id]) }}';
             var data = jQuery('#create-comment').serialize();
-
+            jQuery('#commentSubmit').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>');
             jQuery.ajax({
                 url: url,
                 data: data,
@@ -181,14 +180,18 @@
                     jQuery('#notify_user').fadeIn("slow");
                     jQuery('#notify_user').html(`<div class="alert alert-success" role="alert">${response.msg}</div>`);
                     jQuery('#create-comment')[0].reset(); // una vez el usuario de al boton de publicar, el input se reiniciarà :D
-                    //jQuery('#commentSubmit').attr('disabled', false);
-                    //jQuery('#commentSubmit').attr('value', 'Publicar');
-                    jQuery('#notify_user').fadeOut(7500);
+                    jQuery('.spinner-border').remove();
+                    jQuery('#commentSubmit').html('Publicar');
+                    jQuery('#notify_user').fadeOut(7500);   
+                    jQuery('#commentSubmit').attr('disabled', false);
                 },
                 error: function(response){
+                    jQuery('.spinner-border').remove();
+                    jQuery('#commentSubmit').html('Publicar');
                     jQuery('#notify_user').fadeIn("slow");
                     jQuery('#notify_user').html(`<div class="alert alert-danger" role="alert">No puedes publicar un comentario vacío!</div>`);
                     jQuery('#notify_user').fadeOut(7500);
+                    jQuery('#commentSubmit').attr('disabled', false);
                 }
             })
 

@@ -66,8 +66,6 @@ html{
 
 .create_comment button{
     text-decoration: none;
-    color:#5A3C97;
+    /*color:#5A3C97;*/
 }
-.create_comment button i{
-    margin-left: 15px;
-}
+
