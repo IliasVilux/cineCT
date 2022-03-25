@@ -4,88 +4,113 @@
 <head>
     <link rel="stylesheet" href="{{asset('css/detail.css')}}">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script src="js/jquery.rating.pack.js"></script>
-    <script>
-    $(document).ready(function() {
-        $('input.star').rating();
-    });
-    </script>
     <style>
-        div#social-links {
-            margin: 0 auto;
-            max-width: 500px;
-        }
-        div#social-links ul li {
-            display: inline-block;
-        }          
-        div#social-links ul li a {
-            padding: 20px;
-            margin: 1px;
-            font-size: 30px;
-            color: #9966ff;
-        }
+    div#social-links {
+        margin: 0 auto;
+        max-width: 500px;
+    }
+
+    div#social-links ul li {
+        display: inline-block;
+    }
+
+    div#social-links ul li a {
+        padding: 20px;
+        margin: 1px;
+        font-size: 30px;
+        color: #9966ff;
+    }
     </style>
 </head>
 <section class="container">
     <a href="{{ url('/content/contentAnimes') }}" class="btn btn-primary" title="Home">
-        Home
+        Back
     </a>
 
     {!! $shareComponent !!}
     <h1 class="detail-title">{{$anime->name}}</h1>
 
-    <div class="d-flex flex-row align-items-center justify-content-around">
-        <div class="d-flex flex-column align-items-center">
-            <h3><b>Genero</b></h3>
-            <strong class="fw-bold fs-3"> {{$anime->genre_id}}</strong>
+    <article class="more-info bg-dark p-3">
+        <div class="d-flex nowrap">
+            <h5 class="pe-2"><b>Género:</b></h5>
+            <p>{{$anime->genre_id}}</p>
         </div>
-        <div class="d-flex flex-column align-items-center">
-            <h3><b>Fecha de lanzamiento</b></h3>
-            <strong class="fw-bold fs-3"> {{$anime->release_date}}</strong>
+        <div class="d-flex nowrap">
+            <h5 class="pe-2"><b>Fecha de lanzamiento:</b></h5>
+            <p> {{$anime->release_date}}</p>
         </div>
-        <div class="d-flex flex-column align-items-center">
-            <h3><b>Duración</b></h3>
-            <strong class="fw-bold fs-3"> {{$anime->duration}} min</strong>
+        <div class="d-flex nowrap">
+            <h5 class="pe-2"><b>Duración:</b></h5>
+            <p> {{$anime->duration}} min</p>
         </div>
 
-        <div class="d-flex flex-column align-items-center">
-            <h3><b>Episodios</b></h3>
-            <strong class="fw-bold fs-3"> {{$anime->total_episodes}}</strong>
+        <div class="d-flex nowrap">
+            <h5 class="pe-2"><b>Episodios:</b></h5>
+            <p> {{$anime->total_episodes}}</p>
         </div>
-        <div class="d-flex flex-column align-items-center">
-            <h3><b>Puntuación</b></h3>
-            <div class="d-flex flex-row">
-                <h4><i class="fas fa-star"></i><strong class="fw-bold fs-3"> {{$anime->puntuation}}</strong>/10<h4>
+        <div class="d-flex nowrap">
+            <h5 class="pe-2"><b>Puntuación:</b></h5>
+            <p><i class="fas fa-star"></i>
+            <p> {{$anime->puntuation}}</p>/10<p>
+        </div>
+        <div>
+            <h5 class="pe-2"><b>Cuánto te ha gustado?</b></h5>
+            <form method="GET" class="d-flex justify.content-start">
+                <div class="rating d-inline ">
+                    <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
+                    <input name="stars" id="e2" type="radio" value="9"><label for="e2">☆</label>
+                    <input name="stars" id="e3" type="radio" value="8"><label for="e3">☆</label>
+                    <input name="stars" id="e4" type="radio" value="7"><label for="e4">☆</label>
+                    <input name="stars" id="e5" type="radio" value="6"><label for="e5">☆</label>
+                    <input name="stars" id="e6" type="radio" value="5"><label for="e6">☆</label>
+                    <input name="stars" id="e7" type="radio" value="4"><label for="e7">☆</label>
+                    <input name="stars" id="e8" type="radio" value="3"><label for="e8">☆</label>
+                    <input name="stars" id="e9" type="radio" value="2"><label for="e9">☆</label>
+                    <input name="stars" id="e10" type="radio" value="1"><label for="e10">☆</label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm">Enviar</button>
+            </form>
+            <?php
+            if (isset($_GET['stars'])) {
+                echo '<div class="alert alert-success">Rating recibido: <strong>'.$_GET['stars'].'</strong>.</div>';
+            }elseif ((isset($_GET['stars']) == "")){
+
+            }
+            ?>
+        </div>
+    </article>
+    <article>
+        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-share-alt"></i></button> -->
+        <a type="button" class="btn btn-primary" href="#demo" data-bs-toggle="collapse"><i class="fas fa-share-alt"></i></a>
+        <!-- Modal -->
+        <!-- <div class="modal fade-scale" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    {!! $shareComponent !!}
+                </div>
+            </div>
+        </div> -->
+        <div id="demo" class="collapse">{!! $shareComponent !!}</div>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
             </div>
         </div>
-    </div>
+    </article>
 
-    <div class="d-flex flex-row justify-content-around mt-4">
+    <article class="mt-4">
         @if($anime->poster_path == NULL)
         <img src="/img/NoImg.jpg" class="img-thumbnail" alt="">
         @else
         <img src="{{$anime->poster_path}}" class="img-thumbnail" alt="Img {{$anime->name}}">
         @endif
-    </div>
+    </article>
 
-    <form method="GET">
-        <div class="rating">
-            <input name="stars" id="e5" type="radio" value="5"><label for="e5">☆</label>
-            <input name="stars" id="e4" type="radio" value="4"><label for="e4">☆</label>
-            <input name="stars" id="e3" type="radio" value="3"><label for="e3">☆</label>
-            <input name="stars" id="e2" type="radio" value="2"><label for="e2">☆</label>
-            <input name="stars" id="e1" type="radio" value="1"><label for="e1">☆</label>
-        </div>
-        <button type="submit" name="submitRatingStar" class="btn btn-primary btn-sm">Enviar</button>
-    </form>
 
-    <?php
-        if (isset($_GET['submitRatingStar'])) {
-            echo '<div class="alert alert-success">Rating recibido: <strong>'.$_GET['stars'].'</strong>.</div>';
-        }
-    ?>
 
-    <p class="description fs-2 pt-5">{{$anime->description}}</p>
+
+
+    <p class="description pt-5">{{$anime->description}}</p>
 
     <!-- <h3><b>Creado:</b> {{$anime->created_at}}</h3>
         <h3><b>Ultima actualización:</b> {{$anime->updated_at}}</h3> -->
@@ -104,9 +129,8 @@
                         <div class="row">
                             <div class="col">
                                 <div class="d-flex flex-start">
-                                    <img class="rounded-circle shadow-1-strong me-3"
-                                        src="{{$profile[0]->path}}" alt="13"
-                                        width="65" height="65" />
+                                    <img class="rounded-circle shadow-1-strong me-3" src="{{$profile[0]->path}}"
+                                        alt="13" width="65" height="65" />
                                     <div class="flex-grow-1 flex-shrink-1">
                                         <div>
                                             <div class="d-flex justify-content-between align-items-center">
@@ -124,9 +148,8 @@
 
                                         <div class="d-flex flex-start mt-4">
                                             <a class="me-3" href="#">
-                                            <img class="rounded-circle shadow-1-strong me-3"
-                                        src="{{$profile[3]->path}}" alt="13"
-                                        width="65" height="65" />
+                                                <img class="rounded-circle shadow-1-strong me-3"
+                                                    src="{{$profile[3]->path}}" alt="13" width="65" height="65" />
                                             </a>
                                             <div class="flex-grow-1 flex-shrink-1">
                                                 <div>
@@ -146,8 +169,7 @@
                                         <div class="d-flex flex-start mt-4">
                                             <a class="me-3" href="#">
                                                 <img class="rounded-circle shadow-1-strong me-3"
-                                        src="{{$profile[2]->path}}" alt="13"
-                                        width="65" height="65" />
+                                                    src="{{$profile[2]->path}}" alt="13" width="65" height="65" />
                                             </a>
                                             <div class="flex-grow-1 flex-shrink-1">
                                                 <div>
@@ -167,9 +189,8 @@
                                 </div>
 
                                 <div class="d-flex flex-start mt-4">
-                                <img class="rounded-circle shadow-1-strong me-3"
-                                        src="{{$profile[1]->path}}" alt="13"
-                                        width="65" height="65" />
+                                    <img class="rounded-circle shadow-1-strong me-3" src="{{$profile[1]->path}}"
+                                        alt="13" width="65" height="65" />
                                     <div class="flex-grow-1 flex-shrink-1">
                                         <div>
                                             <div class="d-flex justify-content-between align-items-center">
@@ -188,9 +209,8 @@
 
                                         <div class="d-flex flex-start mt-4">
                                             <a class="me-3" href="#">
-                                            <img class="rounded-circle shadow-1-strong me-3"
-                                        src="{{$profile[8]->path}}" alt="13"
-                                        width="65" height="65" />
+                                                <img class="rounded-circle shadow-1-strong me-3"
+                                                    src="{{$profile[8]->path}}" alt="13" width="65" height="65" />
                                             </a>
                                             <div class="flex-grow-1 flex-shrink-1">
                                                 <div>
@@ -210,9 +230,8 @@
 
                                         <div class="d-flex flex-start mt-4">
                                             <a class="me-3" href="#">
-                                            <img class="rounded-circle shadow-1-strong me-3"
-                                        src="{{$profile[4]->path}}" alt="13"
-                                        width="65" height="65" />
+                                                <img class="rounded-circle shadow-1-strong me-3"
+                                                    src="{{$profile[4]->path}}" alt="13" width="65" height="65" />
                                             </a>
                                             <div class="flex-grow-1 flex-shrink-1">
                                                 <div>
@@ -231,9 +250,8 @@
 
                                         <div class="d-flex flex-start mt-4">
                                             <a class="me-3" href="#">
-                                            <img class="rounded-circle shadow-1-strong me-3"
-                                        src="{{$profile[6]->path}}" alt="13"
-                                        width="65" height="65" />
+                                                <img class="rounded-circle shadow-1-strong me-3"
+                                                    src="{{$profile[6]->path}}" alt="13" width="65" height="65" />
                                             </a>
                                             <div class="flex-grow-1 flex-shrink-1">
                                                 <div>

@@ -5,11 +5,11 @@
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
 </head>
 
-    @if (Session::has('welcomeUser'))
-    <div class="alert alert-success" role="alert">
-        <strong>{{ Session::get('welcomeUser') }}!</strong>
-    </div>
-    @endif
+@if (Session::has('welcomeUser'))
+<div class="alert alert-success" role="alert">
+    <strong>{{ Session::get('welcomeUser') }}!</strong>
+</div>
+@endif
 
 <section class="slider">
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -23,19 +23,37 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item full text-center active">
-                <img src="{{$film[0]->poster_path}}" class="img-carousel" alt="Img {{$film[0]->name}}">
-                <img src="{{$film[1]->poster_path}}" class="img-carousel" alt="Img {{$film[0]->name}}">
-                <img src="{{$film[2]->poster_path}}" class="img-carousel" alt="Img {{$film[0]->name}}">
+                <a href="/detail/detailFilms/37" class="link-img-carousel">
+                    <img src="{{$film[36]->poster_path}}" class="img-carousel px-3" alt="Img {{$film[36]->name}}">
+                </a>
+                <a href="/detail/detailFilms/38" class="link-img-carousel">
+                    <img src="{{$film[37]->poster_path}}" class="img-carousel px-3" alt="Img {{$film[37]->name}}">
+                </a>
+                <a href="/detail/detailFilms/39" class="link-img-carousel">
+                    <img src="{{$film[38]->poster_path}}" class="img-carousel px-3" alt="Img {{$film[38]->name}}">
+                </a>
             </div>
             <div class="carousel-item full text-center">
-                <img src="{{$serie[0]->poster_path}}" class="img-carousel" alt="Img {{$serie[0]->name}}">
-                <img src="{{$serie[1]->poster_path}}" class="img-carousel" alt="Img {{$serie[0]->name}}">
-                <img src="{{$serie[2]->poster_path}}" class="img-carousel" alt="Img {{$serie[0]->name}}">
+                <a href="/detail/detailSeries/37" class="link-img-carousel">
+                    <img src="{{$serie[36]->poster_path}}" class="img-carousel px-3" alt="Img {{$serie[36]->name}}">
+                </a>
+                <a href="/detail/detailSeries/38" class="link-img-carousel">
+                    <img src="{{$serie[37]->poster_path}}" class="img-carousel px-3" alt="Img {{$serie[37]->name}}">
+                </a>
+                <a href="/detail/detailSeries/39" class="link-img-carousel">
+                    <img src="{{$serie[38]->poster_path}}" class="img-carousel px-3" alt="Img {{$serie[38]->name}}">
+                </a>
             </div>
             <div class="carousel-item full text-center">
-                <img src="{{$anime[0]->poster_path}}" class="img-carousel" alt="Img {{$anime[0]->name}}">
-                <img src="{{$anime[1]->poster_path}}" class="img-carousel" alt="Img {{$anime[0]->name}}">
-                <img src="{{$anime[2]->poster_path}}" class="img-carousel" alt="Img {{$anime[0]->name}}">
+                <a href="/detail/detailAnimes/37" class="link-img-carousel">
+                    <img src="{{$anime[36]->poster_path}}" class="img-carousel px-3" alt="Img {{$anime[36]->name}}">
+                </a>
+                <a href="/detail/detailAnimes/38" class="link-img-carousel">
+                    <img src="{{$anime[37]->poster_path}}" class="img-carousel px-3" alt="Img {{$anime[37]->name}}">
+                </a>
+                <a href="/detail/detailAnimes/39" class="link-img-carousel">
+                    <img src="{{$anime[38]->poster_path}}" class="img-carousel px-3" alt="Img {{$anime[38]->name}}">
+                </a>
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"

@@ -11,5 +11,12 @@ class Episode extends Model
 
     protected $table = 'episodes';
 
+    public function serie() {
+        return $this->belongsTo(Serie::class);
+    }
+    
+    public function anime() {
+        return $this->belongsTo(Anime::class);
+    }
     
 }
