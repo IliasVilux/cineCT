@@ -100,35 +100,28 @@
                 <div class="card card-comment bg-dark">
                     <div class="card-body card-body-comment p-4">
                         <h4 class="text-center mb-4 pb-2">Nested comments section</h4>
-
                         <div class="row">
-                            <div class="col">
-                                <div class="d-flex flex-start">
-                                    <img class="rounded-circle shadow-1-strong me-3"
-                                        src="{{$profile[0]->path}}" alt="13"
-                                        width="65" height="65" />
-                                    <div class="flex-grow-1 flex-shrink-1">
-                                        <div>
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <p class="mb-1">
-                                                    Maria Smantha <span class="text-muted">- 2 hours ago</span>
-                                                </p>
-                                                <a href="#!"><i class="fas fa-reply fa-xs"></i><span class="text-muted">
-                                                        reply</span></a>
+                            <div class="col" id="comment-container">
+                                @foreach ($comments as $comment)
+                                    @if ($comment->film_id == $film->id && !empty($comment->description))
+                                        <div class="d-flex flex-start mb-4">
+                                            <div>
+                                                <img class="rounded-circle shadow-1-strong me-3"
+                                                    src="{{ $profile[0]->path }}" alt="13" width="65" height="65" />
                                             </div>
-                                            <p class="small mb-0">
-                                                It is a long established fact that a reader will be distracted by
-                                                the readable content of a page.
-                                            </p>
-                                        </div>
-
-                                        <div class="d-flex flex-start mt-4">
-                                            <a class="me-3" href="#">
-                                            <img class="rounded-circle shadow-1-strong me-3"
-                                        src="{{$profile[3]->path}}" alt="13"
-                                        width="65" height="65" />
-                                            </a>
                                             <div class="flex-grow-1 flex-shrink-1">
+                                                <div>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <p class="mb-1">{{ $comment->user->name }} <span
+                                                                class="text-muted">- 2 hours ago</span></p>
+                                                        <a href="#!"><i class="fas fa-reply fa-xs"></i><span
+                                                                class="text-muted">reply</span></a>
+                                                    </div>
+                                                    <p class="small mb-0">{{ $comment->description }}</p>
+                                                </div>
+                                                {{-- <div class="d-flex flex-start mt-4">
+                                                <a class="me-3" href="#"> <img class="rounded-circle shadow-1-strong me-3" src="{{$profile[3]->path}}" alt="13"width="65" height="65" /></a>
+                                                <div class="flex-grow-1 flex-shrink-1">
                                                 <div>
                                                     <div class="d-flex justify-content-between align-items-center">
                                                         <p class="mb-1">
@@ -140,125 +133,86 @@
                                                         making it look like readable English.
                                                     </p>
                                                 </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="d-flex flex-start mt-4">
-                                            <a class="me-3" href="#">
-                                                <img class="rounded-circle shadow-1-strong me-3"
-                                        src="{{$profile[2]->path}}" alt="13"
-                                        width="65" height="65" />
-                                            </a>
-                                            <div class="flex-grow-1 flex-shrink-1">
-                                                <div>
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <p class="mb-1">
-                                                            John Smith <span class="text-muted">- 4 hours ago</span>
-                                                        </p>
-                                                    </div>
-                                                    <p class="small mb-0">
-                                                        the majority have suffered alteration in some form, by
-                                                        injected humour, or randomised words.
-                                                    </p>
                                                 </div>
+                                             </div> --}}
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-
-                                <div class="d-flex flex-start mt-4">
-                                <img class="rounded-circle shadow-1-strong me-3"
-                                        src="{{$profile[1]->path}}" alt="13"
-                                        width="65" height="65" />
-                                    <div class="flex-grow-1 flex-shrink-1">
-                                        <div>
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <p class="mb-1">
-                                                    Natalie Smith <span class="text-muted">- 2 hours ago</span>
-                                                </p>
-                                                <a href="#!"><i class="fas fa-reply fa-xs"></i><span class="text-muted">
-                                                        reply</span></a>
-                                            </div>
-                                            <p class="small mb-0">
-                                                The standard chunk of Lorem Ipsum used since the 1500s is
-                                                reproduced below for those interested. Sections 1.10.32 and
-                                                1.10.33.
-                                            </p>
-                                        </div>
-
-                                        <div class="d-flex flex-start mt-4">
-                                            <a class="me-3" href="#">
-                                            <img class="rounded-circle shadow-1-strong me-3"
-                                        src="{{$profile[8]->path}}" alt="13"
-                                        width="65" height="65" />
-                                            </a>
-                                            <div class="flex-grow-1 flex-shrink-1">
-                                                <div>
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <p class="mb-1">
-                                                            Lisa Cudrow <span class="text-muted">- 4 hours ago</span>
-                                                        </p>
-                                                    </div>
-                                                    <p class="small mb-0">
-                                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-                                                        scelerisque ante sollicitudin commodo. Cras purus odio,
-                                                        vestibulum in vulputate at, tempus viverra turpis.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="d-flex flex-start mt-4">
-                                            <a class="me-3" href="#">
-                                            <img class="rounded-circle shadow-1-strong me-3"
-                                        src="{{$profile[4]->path}}" alt="13"
-                                        width="65" height="65" />
-                                            </a>
-                                            <div class="flex-grow-1 flex-shrink-1">
-                                                <div>
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <p class="mb-1">
-                                                            Maggie McLoan <span class="text-muted">- 5 hours ago</span>
-                                                        </p>
-                                                    </div>
-                                                    <p class="small mb-0">
-                                                        a Latin professor at Hampden-Sydney College in Virginia,
-                                                        looked up one of the more obscure Latin words, consectetur
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="d-flex flex-start mt-4">
-                                            <a class="me-3" href="#">
-                                            <img class="rounded-circle shadow-1-strong me-3"
-                                        src="{{$profile[6]->path}}" alt="13"
-                                        width="65" height="65" />
-                                            </a>
-                                            <div class="flex-grow-1 flex-shrink-1">
-                                                <div>
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <p class="mb-1">
-                                                            John Smith <span class="text-muted">- 6 hours ago</span>
-                                                        </p>
-                                                    </div>
-                                                    <p class="small mb-0">
-                                                        Autem, totam debitis suscipit saepe sapiente magnam officiis
-                                                        quaerat necessitatibus odio assumenda, perferendis quae iusto
-                                                        labore laboriosam minima numquam impedit quam dolorem!
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                    @endif
+                                @endforeach
                             </div>
+                        </div>
+                        <div class="alert alert-success d-none" id="msg_div" role="alert">
+
                         </div>
                     </div>
                 </div>
+                @if ($errors->has('description'))
+                    <div class="mt-2 alert alert-danger">
+                        No puedes publicar un comentario sin vacío!
+                    </div>
+                @endif
+                <div id="notify_user"></div>
+                <form method="POST" action="" id="create-comment" class="create_comment">
+                    @csrf
+                    <textarea name="description" id="description" cols="50" rows="1" placeholder="Escribe aqui tu comentario"></textarea>
+                    <button class="btn btn-primary" type="submit" id="commentSubmit">Publicar</button>
+                </form>
             </div>
         </div>
     </div>
 </section>
+
+<script type="text/javascript">
+
+    $("#notify_user").css("display", "none");
+
+    jQuery('#create-comment').submit(function(e) {
+        e.preventDefault();$("#commentSubmit").attr("disabled", true); // deshabilitamos el boton de publicar
+        var url = '{{ route('comment.save', ['id' => $film->id]) }}';
+        var data = jQuery('#create-comment').serialize(); // obtenemos toda la data del form
+        jQuery('#commentSubmit').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>'); //agregamos un spinner al boton al darle click, mientras no complete la peticion se seguirá mostrando el spinner
+        jQuery.ajax({
+            url: url,
+            data: data,
+            type: 'POST',
+            success: function(response) {                    
+                console.log(response);
+                jQuery('#notify_user').html(`<div class="alert alert-success" role="alert">${response.msg}</div>`);
+                jQuery('#notify_user').fadeIn("slow");
+                jQuery('#create-comment')[0].reset(); // una vez la peticion se complete y no de error, el input se reiniciarà :D
+                jQuery('.spinner-border').remove(); // una vez haya echo la petición y lo haya guardado en la bases de datos procedemos a eliminar el spinner
+                jQuery('#commentSubmit').html('Publicar'); //eliminamos el spinner
+                jQuery('#notify_user').fadeOut(3000);
+                setTimeout(() => {jQuery('#commentSubmit').attr('disabled', false);},3200); // removemos el desabled para que el usuario pueda interactuar de nuevo con el boton
+                
+                let commentHtml = 
+                `<div class="d-flex flex-start mb-4">
+                    <div><img class="rounded-circle shadow-1-strong me-3" src="{{ $profile[0]->path }}" alt="13" width="65" height="65" /></div>
+                    <div class="flex-grow-1 flex-shrink-1"><div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p class="mb-1">${ response.comment['user_id'] } <span class="text-muted">- 2 hours ago</span></p> 
+                            <a href="#!"><i class="fas fa-reply fa-xs"></i><span class="text-muted">reply</span></a> 
+                        </div>
+                        <p class="small mb-0">${ response.comment['description'] }</p>
+                        </div>
+                    </div>
+                </div>`
+                
+                jQuery('#comment-container').append(commentHtml);
+            },
+            error: function(response) {
+                jQuery('#notify_user').html(`<div class="alert alert-danger" role="alert">No puedes publicar un comentario vacío!</div>`);
+                jQuery('#notify_user').fadeIn("slow");
+                jQuery('.spinner-border').remove();
+                jQuery('#commentSubmit').html('Publicar');
+                jQuery('#notify_user').fadeOut(3000);
+                setTimeout(() => {jQuery('#commentSubmit').attr('disabled', false);}, 3300);
+            }
+        })
+
+    });
+    
+
+</script>
 <!-- END COMMENT SECTION -->
 @endsection

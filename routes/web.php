@@ -91,4 +91,5 @@ Route::post('/login', [UserAuthController::class, 'userLogin'])->name('login.use
 Route::get('/logout', [UserAuthController::class, 'userSignOut'])->name('signout.user');
 
 //Reviews
-Route::post('/comment/save{id}', [ReviewController::class, 'store'])->name('comment.save');
+Route::post('/film/comment/save/{id}', [ReviewController::class, 'storeFilm'])->name('comment.save');
+Route::post('/serie/comment/save/{id}', [ReviewController::class, 'storeSerie'])->name('comment.save.serie');

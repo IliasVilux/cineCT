@@ -162,6 +162,7 @@
     </section>
 
     <script type="text/javascript">
+
         $("#notify_user").css("display", "none");
 
         jQuery('#create-comment').submit(function(e) {
@@ -175,7 +176,6 @@
                 type: 'POST',
                 success: function(response) {                    
                     console.log(response);
-                    jQuery('#comment-container').html(`<div class="alert alert-success" role="alert">${response.comment['description']}</div>`);
                     jQuery('#notify_user').html(`<div class="alert alert-success" role="alert">${response.msg}</div>`);
                     jQuery('#notify_user').fadeIn("slow");
                     jQuery('#create-comment')[0].reset(); // una vez la peticion se complete y no de error, el input se reiniciarà :D
@@ -183,11 +183,24 @@
                     jQuery('#commentSubmit').html('Publicar'); //eliminamos el spinner
                     jQuery('#notify_user').fadeOut(3000);
                     setTimeout(() => {jQuery('#commentSubmit').attr('disabled', false);},3200); // removemos el desabled para que el usuario pueda interactuar de nuevo con el boton
+                    
+                    let commentHtml = 
+                    `<div class="d-flex flex-start mb-4">
+                        <div><img class="rounded-circle shadow-1-strong me-3" src="{{ $profile[0]->path }}" alt="13" width="65" height="65" /></div>
+                        <div class="flex-grow-1 flex-shrink-1"><div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="mb-1">${ response.comment['user_id'] } <span class="text-muted">- 2 hours ago</span></p> 
+                                <a href="#!"><i class="fas fa-reply fa-xs"></i><span class="text-muted">reply</span></a> 
+                            </div>
+                            <p class="small mb-0">${ response.comment['description'] }</p>
+                            </div>
+                        </div>
+                    </div>`
+                    
+                    jQuery('#comment-container').append(commentHtml);
                 },
                 error: function(response) {
-                    jQuery('#notify_user').html(
-                        `<div class="alert alert-danger" role="alert">No puedes publicar un comentario vacío!</div>`
-                    );
+                    jQuery('#notify_user').html(`<div class="alert alert-danger" role="alert">No puedes publicar un comentario vacío!</div>`);
                     jQuery('#notify_user').fadeIn("slow");
                     jQuery('.spinner-border').remove();
                     jQuery('#commentSubmit').html('Publicar');
