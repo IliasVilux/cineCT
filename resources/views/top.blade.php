@@ -14,7 +14,7 @@
         @foreach($serie as $serie)
         <a href="/detail/detailSeries/{{$serie->id}}" class="image-link col-2 p-2">
             @if($serie->poster_path === NULL)
-            <img src="../storage/img/NoImg.jpg" alt="">
+            <img src="/img/NoImg.jpg" alt="">
             @else
             <img src="{{$serie->poster_path}}" alt="">
             @endif

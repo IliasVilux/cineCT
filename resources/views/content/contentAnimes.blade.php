@@ -139,7 +139,7 @@
         @foreach($anime as $animes)
         <a href="/detail/detailAnimes/{{$animes->id}}" class="image-link col-2 p-2">
             @if($animes->poster_path === NULL)
-            <img src="../storage/img/NoImg.jpg" alt="">
+            <img src="/img/NoImg.jpg" alt="">
             @else
             <img src="{{$animes->poster_path}}" alt="">
             @endif
