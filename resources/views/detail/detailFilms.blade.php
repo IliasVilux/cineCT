@@ -84,7 +84,7 @@
         <!-- START CONTENT -->
 
         <!-- <h3><b>Creado:</b> {{ $film->created_at }}</h3>
-                                            <h3><b>Ultima actualización:</b> {{ $film->updated_at }}</h3> -->
+                                                    <h3><b>Ultima actualización:</b> {{ $film->updated_at }}</h3> -->
 
         <p class="description fs-2 pt-5">{{ $film->description }}</p>
 
@@ -100,7 +100,7 @@
                         <div class="card-body card-body-comment p-4">
                             <h4 class="text-center mb-4 pb-2">Nested comments section</h4>
                             <div class="row">
-                                <div class="col">
+                                <div class="col" id="comment-container">
                                     @foreach ($comments as $comment)
                                         @if ($comment->film_id == $film->id && !empty($comment->description))
                                             <div class="d-flex flex-start mb-4">
@@ -119,8 +119,8 @@
                                                         <p class="small mb-0">{{ $comment->description }}</p>
                                                     </div>
                                                     {{-- <div class="d-flex flex-start mt-4">
-                                                <a class="me-3" href="#"> <img class="rounded-circle shadow-1-strong me-3" src="{{$profile[3]->path}}" alt="13"width="65" height="65" /></a>
-                                                <div class="flex-grow-1 flex-shrink-1">
+                                                    <a class="me-3" href="#"> <img class="rounded-circle shadow-1-strong me-3" src="{{$profile[3]->path}}" alt="13"width="65" height="65" /></a>
+                                                    <div class="flex-grow-1 flex-shrink-1">
                                                     <div>
                                                         <div class="d-flex justify-content-between align-items-center">
                                                             <p class="mb-1">
@@ -132,8 +132,8 @@
                                                             making it look like readable English.
                                                         </p>
                                                     </div>
-                                                </div>
-                                            </div> --}}
+                                                    </div>
+                                                 </div> --}}
                                                 </div>
                                             </div>
                                         @endif
@@ -162,39 +162,43 @@
     </section>
 
     <script type="text/javascript">
-
         $("#notify_user").css("display", "none");
 
         jQuery('#create-comment').submit(function(e) {
-            e.preventDefault();
-            $("#commentSubmit").attr("disabled", true); // deshabilitamos el boton de publicar
-            var url = '{{ route('comment.save', ['id' => $film->id]) }}'; 
+            e.preventDefault();$("#commentSubmit").attr("disabled", true); // deshabilitamos el boton de publicar
+            var url = '{{ route('comment.save', ['id' => $film->id]) }}';
             var data = jQuery('#create-comment').serialize(); // obtenemos toda la data del form
             jQuery('#commentSubmit').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>'); //agregamos un spinner al boton al darle click, mientras no complete la peticion se seguirá mostrando el spinner
             jQuery.ajax({
                 url: url,
                 data: data,
                 type: 'POST',
-                success: function(response) {
+                success: function(response) {                    
+                    console.log(response);
+                    jQuery('#comment-container').html(`<div class="alert alert-success" role="alert">${response.comment['description']}</div>`);
                     jQuery('#notify_user').html(`<div class="alert alert-success" role="alert">${response.msg}</div>`);
                     jQuery('#notify_user').fadeIn("slow");
                     jQuery('#create-comment')[0].reset(); // una vez la peticion se complete y no de error, el input se reiniciarà :D
                     jQuery('.spinner-border').remove(); // una vez haya echo la petición y lo haya guardado en la bases de datos procedemos a eliminar el spinner
-                    jQuery('#commentSubmit').html('Publicar'); //volvemos a poner el valor por defecto al boton
+                    jQuery('#commentSubmit').html('Publicar'); //eliminamos el spinner
                     jQuery('#notify_user').fadeOut(3000);
-                    setTimeout(() => { jQuery('#commentSubmit').attr('disabled', false); }, 3200); // removemos el desabled para que el usuario pueda interactuar de nuevo con el boton
+                    setTimeout(() => {jQuery('#commentSubmit').attr('disabled', false);},3200); // removemos el desabled para que el usuario pueda interactuar de nuevo con el boton
                 },
-                error: function(response){
-                    jQuery('#notify_user').html(`<div class="alert alert-danger" role="alert">No puedes publicar un comentario vacío!</div>`);
+                error: function(response) {
+                    jQuery('#notify_user').html(
+                        `<div class="alert alert-danger" role="alert">No puedes publicar un comentario vacío!</div>`
+                    );
                     jQuery('#notify_user').fadeIn("slow");
                     jQuery('.spinner-border').remove();
                     jQuery('#commentSubmit').html('Publicar');
                     jQuery('#notify_user').fadeOut(3000);
-                    setTimeout(() => { jQuery('#commentSubmit').attr('disabled', false);}, 3300);
+                    setTimeout(() => {jQuery('#commentSubmit').attr('disabled', false);}, 3300);
                 }
             })
 
         });
+        
+
     </script>
 
     <!-- END COMMENT SECTION -->

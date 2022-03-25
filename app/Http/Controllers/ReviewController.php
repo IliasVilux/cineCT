@@ -32,7 +32,7 @@ class ReviewController extends Controller
         
         $comment->save();
 
-        return ['msg' => 'Tu comentario se ha añadido!'];
+        return ['msg' => 'Tu comentario se ha añadido!', 'comment' => $comment];
 
     }
 }
