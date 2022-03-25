@@ -164,14 +164,15 @@
     </section>
 
     <script type="text/javascript">
-        $("#notify_user").css("display", "none"); //primero lo escondemos y luego con la funcion fade lo hacemos aparecer
+
+        $("#notify_user").css("display", "none");
 
         jQuery('#create-comment').submit(function(e) {
             e.preventDefault();
-            $("#commentSubmit").attr("disabled", true);
-            var url = '{{ route('comment.save', ['id' => $film->id]) }}';
-            var data = jQuery('#create-comment').serialize();
-            jQuery('#commentSubmit').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>');
+            $("#commentSubmit").attr("disabled", true); // deshabilitamos el boton de publicar
+            var url = '{{ route('comment.save', ['id' => $film->id]) }}'; 
+            var data = jQuery('#create-comment').serialize(); // obtenemos toda la data del form
+            jQuery('#commentSubmit').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>'); //agregamos un spinner al boton al darle click, mientras no complete la peticion se seguirá mostrando el spinner
             jQuery.ajax({
                 url: url,
                 data: data,
@@ -179,19 +180,19 @@
                 success: function(response) {
                     jQuery('#notify_user').fadeIn("slow");
                     jQuery('#notify_user').html(`<div class="alert alert-success" role="alert">${response.msg}</div>`);
-                    jQuery('#create-comment')[0].reset(); // una vez el usuario de al boton de publicar, el input se reiniciarà :D
-                    jQuery('.spinner-border').remove();
-                    jQuery('#commentSubmit').html('Publicar');
-                    jQuery('#notify_user').fadeOut(7500);   
-                    jQuery('#commentSubmit').attr('disabled', false);
+                    jQuery('#create-comment')[0].reset(); // una vez la peticion se complete y no de error, el input se reiniciarà :D
+                    jQuery('.spinner-border').remove(); // una vez haya echo la petición y lo haya guardado en la bases de datos procedemos a eliminar el spinner
+                    jQuery('#commentSubmit').html('Publicar'); //volvemos a poner el valor por defecto al boton
+                    jQuery('#notify_user').fadeOut(3000);
+                    setTimeout(() => { jQuery('#commentSubmit').attr('disabled', false); }, 3200); // removemos el desabled para que el usuario pueda interactuar de nuevo con el boton
                 },
                 error: function(response){
+                    jQuery('#notify_user').fadeIn("slow");
                     jQuery('.spinner-border').remove();
                     jQuery('#commentSubmit').html('Publicar');
-                    jQuery('#notify_user').fadeIn("slow");
                     jQuery('#notify_user').html(`<div class="alert alert-danger" role="alert">No puedes publicar un comentario vacío!</div>`);
-                    jQuery('#notify_user').fadeOut(7500);
-                    jQuery('#commentSubmit').attr('disabled', false);
+                    jQuery('#notify_user').fadeOut(3000);
+                    setTimeout(() => { jQuery('#commentSubmit').attr('disabled', false);}, 3300);
                 }
             })
 
