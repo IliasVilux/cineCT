@@ -25,11 +25,12 @@
         </div>
         <div class="col-12 col-sm-6 px-4">
         <label class="form-label">Idioma</label>
+        <p id="lang" style="display: none;">{{ Auth::user()->lang }}</p>
         <select class="form-select" name="language">
-            <option hidden value="">Escoge un idioma</option>
-            <option value="spanish">Castellano</option>
-            <option value="catalan">Catalán</option>
-            <option value="english">Inglés</option>
+            <!-- <option hidden value="null">Escoge un idioma</option> -->
+            <option id="es" value="es">Castellano</option>
+            <option id="ca" value="ca">Catalán</option>
+            <option id="en" value="en">Inglés</option>
         </select>
         </div>
         <div class="col-12 col-sm-6 p-4">
@@ -40,4 +41,13 @@
         </div>
     </form>
 </section>
+
+<script>
+    let lang = document.getElementById('lang').innerHTML;
+    switch (lang){
+        case 'es': document.getElementById('es').selected = true; break;
+        case 'ca': document.getElementById('ca').selected = true; break;
+        case 'en': document.getElementById('en').selected = true; break;
+    }
+</script>
 @endsection
