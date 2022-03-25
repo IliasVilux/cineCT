@@ -86,7 +86,7 @@ class FilmController extends Controller
     public function returnFilms($id) {
         $film = Film::find($id);
         $profile = Image::all();
-        $comments = Review::all();
+        $comments = Review::where('film_id' ,'=', $id)->get();
         $shareComponent = $this->ShareWidget();
         
         if (!is_null($film)) {

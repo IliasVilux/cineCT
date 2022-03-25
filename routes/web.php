@@ -6,6 +6,7 @@ use App\Http\Controllers\AnimeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserAuthController;
+use App\Http\Controllers\UserController;
 use App\Models\Genre;
 use App\Models\Serie;
 use App\Models\Films;

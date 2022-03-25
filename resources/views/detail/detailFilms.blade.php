@@ -98,8 +98,6 @@
                 <div class="col-12">
                     <div class="card card-comment bg-dark">
                         <div class="card-body card-body-comment p-4">
-                            {{--TO DO -> verificar si hay comentarios o no --}}
-                            <!--<h4 class="text-center p-2">No tiene ninguna review, sé el primer@!</h4>--->
                             <h4 class="text-center mb-4 pb-2">Nested comments section</h4>
                             <div class="row">
                                 <div class="col">
@@ -113,7 +111,7 @@
                                                 <div class="flex-grow-1 flex-shrink-1">
                                                     <div>
                                                         <div class="d-flex justify-content-between align-items-center">
-                                                            <p class="mb-1">{{ Auth::user()->name }} <span
+                                                            <p class="mb-1">{{ $comment->user->name }} <span
                                                                     class="text-muted">- 2 hours ago</span></p>
                                                             <a href="#!"><i class="fas fa-reply fa-xs"></i><span
                                                                     class="text-muted">reply</span></a>
@@ -178,8 +176,8 @@
                 data: data,
                 type: 'POST',
                 success: function(response) {
-                    jQuery('#notify_user').fadeIn("slow");
                     jQuery('#notify_user').html(`<div class="alert alert-success" role="alert">${response.msg}</div>`);
+                    jQuery('#notify_user').fadeIn("slow");
                     jQuery('#create-comment')[0].reset(); // una vez la peticion se complete y no de error, el input se reiniciarà :D
                     jQuery('.spinner-border').remove(); // una vez haya echo la petición y lo haya guardado en la bases de datos procedemos a eliminar el spinner
                     jQuery('#commentSubmit').html('Publicar'); //volvemos a poner el valor por defecto al boton
@@ -187,10 +185,10 @@
                     setTimeout(() => { jQuery('#commentSubmit').attr('disabled', false); }, 3200); // removemos el desabled para que el usuario pueda interactuar de nuevo con el boton
                 },
                 error: function(response){
+                    jQuery('#notify_user').html(`<div class="alert alert-danger" role="alert">No puedes publicar un comentario vacío!</div>`);
                     jQuery('#notify_user').fadeIn("slow");
                     jQuery('.spinner-border').remove();
                     jQuery('#commentSubmit').html('Publicar');
-                    jQuery('#notify_user').html(`<div class="alert alert-danger" role="alert">No puedes publicar un comentario vacío!</div>`);
                     jQuery('#notify_user').fadeOut(3000);
                     setTimeout(() => { jQuery('#commentSubmit').attr('disabled', false);}, 3300);
                 }

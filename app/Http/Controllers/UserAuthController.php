@@ -85,7 +85,7 @@ class UserAuthController extends Controller
         auth()->login($user);
         
 
-        return redirect()->to('/home')->with('welcomeUser', 'Bienvenido a cinect'.$register_nick.'!');
+        return redirect()->to('/home')->with('welcomeUser', 'Bienvenido a cinect '.$register_nick.'!');
     }
 
 
