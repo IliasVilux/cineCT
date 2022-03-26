@@ -132,13 +132,13 @@
 
     jQuery('#create-comment').submit(function(e) {
         e.preventDefault();
-        $("#commentSubmit").attr("disabled", true); // deshabilitamos el boton de publicar
+        $("#commentSubmit").attr("disabled", true);
         var url = '{{ route('comment.save.anime', ['id' => $anime->id]) }}';
         var data = jQuery('#create-comment')
-            .serialize(); // serializamos los datos para trabajr con ellos en el backend
+            .serialize(); 
         jQuery('#commentSubmit').html(
             '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>'
-        ); //agregamos un spinner al boton al darle click, mientras no complete la peticion se seguirá mostrando el spinner
+        ); 
 
         $('#commentSubmit').addClass('loagindEffect');
 
@@ -150,19 +150,19 @@
                 jQuery("#commentSubmit").removeClass("loagindEffect");
                 jQuery('#notify_user').html(
                     `<div class="alert alert-success" role="alert"><i class="fas fa-check-circle"></i>${response.msg}</div>`
-                ); //el msg hace referencia al 'msg' en el return en el controlador (en este caso al ReviewController)
+                ); 
                 jQuery('#notify_user').fadeIn("slow");
                 jQuery('#create-comment')[0]
-                    .reset(); // una vez la peticion se complete , el textarea se reiniciarà :D
+                    .reset(); 
                 jQuery('.spinner-border')
-                    .remove(); // una vez haya echo la petición y lo haya guardado en la bases de datos, el spiner lo elimanos
+                    .remove(); 
                 jQuery('#commentSubmit').html('Publicar');
                 jQuery('#notify_user').fadeOut(3000);
                 setTimeout(() => {
                         jQuery('#commentSubmit').attr('disabled', false);
                     },
                     3900
-                    ); // removemos el 'desabled 'para que el usuario pueda interactuar de nuevo con el botón
+                    ); 
 
                 let commentHtml =
                     `<div class="d-flex flex-start mb-4">

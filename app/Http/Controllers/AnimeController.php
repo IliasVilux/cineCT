@@ -97,7 +97,7 @@ class AnimeController extends Controller
     public function returnAnimes($id) {
         $anime = Anime::find($id);
         $profile = Image::all();
-        $comments = Review::where('film_id' ,'=', $id)->get();
+        $comments = Review::where('anime_id' ,'=', $id)->get();
         $shareComponent = $this->ShareWidget();
 
         if (!is_null($anime)) {

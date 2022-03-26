@@ -14,11 +14,15 @@
         </script>
     </head>
 
-    @if (Auth::user())
-        <div class="alert alert-success" role="alert">
-            Actualmente ya tienes tu session iniciada <a href="{{ route('home') }}">Clica aqui</a> para volver a la
-            session o aqui <a href="{{ route('signout.user') }}">cerrar sessión</a>
+    @if (Session::has('signOut'))
+        <div class="alert alert-success" role="alert" id="signOut">
+            <strong>{{ Session::get('signOut') }}</strong>
         </div>
+    @endif
+
+
+    @if (Auth::user())
+        @include('includes.session')
     @else
         <section class="section-signin-register d-flex flex-wrap justify-content-center h-100 p-5">
             <div class="col-12 col-lg-8 p-sm-5">
@@ -156,7 +160,8 @@
                                         @endif
                                         @if ($errors->has('register_password'))
                                             <div class="mt-2 alert alert-danger">
-                                                El contraseña no es correcta, debe tener al menos 8 caracteres y 15 como máximo, tiene que tener almenos una mayúscula
+                                                El contraseña no es correcta, debe tener al menos 8 caracteres y 15 como
+                                                máximo, tiene que tener almenos una mayúscula
                                             </div>
                                         @endif
                                         @if ($errors->has('register_password_repeat'))
@@ -222,7 +227,6 @@
     @endif
 
     <script>
-
         var loginBtn = document.getElementById('btn-login');
 
         var loginEmail = document.getElementById('email');
@@ -257,5 +261,7 @@
                 eyeIcon.classList.add('fa-eye');
             }
         }
+
+
     </script>
 @endsection

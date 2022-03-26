@@ -95,6 +95,6 @@ class UserAuthController extends Controller
         
         Session::flush();
   
-        return redirect()->to('register');
+        return redirect()->to('register')->with('signOut', 'Tu sessión se ha cerrado');
     }
 }
