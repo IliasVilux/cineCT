@@ -105,13 +105,8 @@ class AnimeController extends Controller
         } else {
             return response('No encontrado', 404);
         }
-
-        /*foreach($animes as $anime) {
-            echo $anime;
-        }
-
-        return view('detail', ['anime' => $animes]);*/
     }
+    
     public function ShareWidget()
     {
         $url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];

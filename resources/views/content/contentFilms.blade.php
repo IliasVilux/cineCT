@@ -16,13 +16,13 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item full active">
-                <img class="full-img" src="{{url('storage/img/SquidGame.jpg')}}" alt="">
+                <img class="full-img" src="/img/SquidGame.jpg" alt="">
             </div>
             <div class="carousel-item full">
-                <img class="full-img" src="{{url('storage/img/uncharted.jpg')}}" alt="">
+                <img class="full-img" src="/img/uncharted.jpg" alt="">
             </div>
             <div class="carousel-item full">
-                <img class="full-img" src="{{url('storage/img/Kimetsu.jpg')}}" alt="">
+                <img class="full-img" src="/img/Kimetsu.jpg" alt="">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -71,7 +71,7 @@
         @foreach($film as $film)
         <a href="/detail/detailFilms/{{$film->id}}" class="image-link col-2 p-2">
             @if($film->poster_path === NULL)
-            <img src="../storage/img/NoImg.jpg" alt="">
+            <img src="/img/NoImg.jpg" alt="">
             @else
             <img src="{{$film->poster_path}}" alt="">
             @endif

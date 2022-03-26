@@ -10,13 +10,17 @@ html{
     scroll-behavior: smooth;
 }
 
+.more-info{
+    float: right;
+    width: 40%;
+}
+
+
 
 /* STAR */
 
 .rating {
-    width: 226px;
-    margin: 0 auto 1em;
-    font-size: 45px;
+    font-size: 30px;
     overflow: hidden;
 }
 

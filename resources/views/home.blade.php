@@ -5,11 +5,11 @@
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
 </head>
 
-    @if (Session::has('welcomeUser'))
-    <div class="alert alert-success" role="alert">
-        <strong>{{ Session::get('welcomeUser') }}!</strong>
-    </div>
-    @endif
+@if (Session::has('welcomeUser'))
+<div class="alert alert-success" role="alert">
+    <strong>{{ Session::get('welcomeUser') }}!</strong>
+</div>
+@endif
 
 <section class="slider">
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -23,19 +23,37 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item full text-center active">
-                <img src="{{$film[0]->poster_path}}" class="img-carousel" alt="Img {{$film[0]->name}}">
-                <img src="{{$film[1]->poster_path}}" class="img-carousel" alt="Img {{$film[0]->name}}">
-                <img src="{{$film[2]->poster_path}}" class="img-carousel" alt="Img {{$film[0]->name}}">
+                <a href="/detail/detailFilms/37" class="link-img-carousel">
+                    <img src="{{$film[36]->poster_path}}" class="img-carousel px-3" alt="Img {{$film[36]->name}}">
+                </a>
+                <a href="/detail/detailFilms/38" class="link-img-carousel">
+                    <img src="{{$film[37]->poster_path}}" class="img-carousel px-3" alt="Img {{$film[37]->name}}">
+                </a>
+                <a href="/detail/detailFilms/39" class="link-img-carousel">
+                    <img src="{{$film[38]->poster_path}}" class="img-carousel px-3" alt="Img {{$film[38]->name}}">
+                </a>
             </div>
             <div class="carousel-item full text-center">
-                <img src="{{$serie[0]->poster_path}}" class="img-carousel" alt="Img {{$serie[0]->name}}">
-                <img src="{{$serie[1]->poster_path}}" class="img-carousel" alt="Img {{$serie[0]->name}}">
-                <img src="{{$serie[2]->poster_path}}" class="img-carousel" alt="Img {{$serie[0]->name}}">
+                <a href="/detail/detailSeries/37" class="link-img-carousel">
+                    <img src="{{$serie[36]->poster_path}}" class="img-carousel px-3" alt="Img {{$serie[36]->name}}">
+                </a>
+                <a href="/detail/detailSeries/38" class="link-img-carousel">
+                    <img src="{{$serie[37]->poster_path}}" class="img-carousel px-3" alt="Img {{$serie[37]->name}}">
+                </a>
+                <a href="/detail/detailSeries/39" class="link-img-carousel">
+                    <img src="{{$serie[38]->poster_path}}" class="img-carousel px-3" alt="Img {{$serie[38]->name}}">
+                </a>
             </div>
             <div class="carousel-item full text-center">
-                <img src="{{$anime[0]->poster_path}}" class="img-carousel" alt="Img {{$anime[0]->name}}">
-                <img src="{{$anime[1]->poster_path}}" class="img-carousel" alt="Img {{$anime[0]->name}}">
-                <img src="{{$anime[2]->poster_path}}" class="img-carousel" alt="Img {{$anime[0]->name}}">
+                <a href="/detail/detailAnimes/37" class="link-img-carousel">
+                    <img src="{{$anime[36]->poster_path}}" class="img-carousel px-3" alt="Img {{$anime[36]->name}}">
+                </a>
+                <a href="/detail/detailAnimes/38" class="link-img-carousel">
+                    <img src="{{$anime[37]->poster_path}}" class="img-carousel px-3" alt="Img {{$anime[37]->name}}">
+                </a>
+                <a href="/detail/detailAnimes/39" class="link-img-carousel">
+                    <img src="{{$anime[38]->poster_path}}" class="img-carousel px-3" alt="Img {{$anime[38]->name}}">
+                </a>
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -55,7 +73,7 @@
     <!-- PELÍCULAS -->
     <div class="container-fluid d-flex justify-content-between">
         <h5>PELÍCULAS</h5>
-        <a href="{{url('/content/contentFilms')}}"><button type="button" class="btn btn-more">View more</button></a>
+        <a href="{{asset('/content/contentFilms')}}"><button type="button" class="btn btn-more">View more</button></a>
     </div>
     <div class="container-fluid d-flex flex-row align-items-center">
         <a class="btn-floating" href="#films" data-bs-slide="prev"><i class="fa fa-chevron-left fa-2x"
@@ -74,7 +92,7 @@
                         echo '<div class="col d-flex justify-content-center p-1">
                             <a href="/detail/detailFilms/'.$film[$k]->id.'">';
                             if($film[$k]->poster_path == NULL)
-                            echo '<img src="storage/img/NoImg.jpg" class="img-carousel" alt="">';
+                            echo '<img src="/img/NoImg.jpg" class="img-carousel" alt="">';
                             else
                             echo '<img src="'.$film[$k]->poster_path.'" class="img-carousel"  alt="Img {{$film[$k]->name}}">';
                             $k++;
@@ -92,7 +110,7 @@
                         echo '<div class="col d-flex justify-content-center p-1">
                         <a href="/detail/detailFilms/'.$film[$k]->id.'">';
                         if($film[$k]->poster_path == NULL)
-                        echo '<img src="storage/img/NoImg.jpg" class="img-carousel" alt="">';
+                        echo '<img src="/img/NoImg.jpg" class="img-carousel" alt="">';
                         else
                         echo '<img src="'.$film[$k]->poster_path.'" class="img-carousel"  alt="Img {{$film[$k]->name}}">';
                         $k++;
@@ -113,7 +131,7 @@
     <!-- SERIES -->
     <div class="container-fluid d-flex justify-content-between">
         <h5>SERIES</h5>
-        <a href="{{url('/content/contentSeries')}}"><button type="button" class="btn btn-more">View more</button></a>
+        <a href="{{asset('/content/contentSeries')}}"><button type="button" class="btn btn-more">View more</button></a>
     </div>
     <div class="container-fluid d-flex flex-row align-items-center">
         <a class="btn-floating" href="#series" data-bs-slide="prev"><i class="fa fa-chevron-left fa-2x"
@@ -132,7 +150,7 @@
                                 echo '<div class="col d-flex justify-content-center p-1">
                                     <a href="/detail/detailSeries/'.$serie[$k]->id.'">';
                                     if($serie[$k]->poster_path == NULL)
-                                    echo '<img src="storage/img/NoImg.jpg" class="img-carousel" alt="">';
+                                    echo '<img src="/img/NoImg.jpg" class="img-carousel" alt="">';
                                     else
                                     echo '<img src="'.$serie[$k]->poster_path.'" class="img-carousel"  alt="Img {{$serie[$k]->name}}">';
                                     $k++;
@@ -149,7 +167,7 @@
                                 echo '<div class="col d-flex justify-content-center p-1">
                                     <a href="/detail/detailSeries/'.$serie[$k]->id.'">';
                                     if($serie[$k]->poster_path == NULL)
-                                    echo '<img src="storage/img/NoImg.jpg" class="img-carousel" alt="">';
+                                    echo '<img src="/img/NoImg.jpg" class="img-carousel" alt="">';
                                     else
                                     echo '<img src="'.$serie[$k]->poster_path.'" class="img-carousel"  alt="Img {{$serie[$k]->name}}">';
                                     $k++;
@@ -170,7 +188,7 @@
     <!-- ANIME -->
     <div class="container-fluid d-flex justify-content-between">
         <h5>ANIME</h5>
-        <a href="{{url('/content/contentAnimes')}}"><button type="button" class="btn btn-more">View more</button></a>
+        <a href="{{asset('/content/contentAnimes')}}"><button type="button" class="btn btn-more">View more</button></a>
     </div>
     <div class="container-fluid d-flex flex-row align-items-center">
         <a class="btn-floating" href="#animes" data-bs-slide="prev"><i class="fa fa-chevron-left fa-2x"
@@ -189,7 +207,7 @@
                         echo '<div class="col d-flex justify-content-center p-1">
                             <a href="/detail/detailAnimes/'.$anime[$k]->id.'">';
                             if($anime[$k]->poster_path == NULL)
-                            echo '<img src="storage/img/NoImg.jpg" class="img-carousel" alt="">';
+                            echo '<img src="/img/NoImg.jpg" class="img-carousel" alt="">';
                             else
                             echo '<img src="'.$anime[$k]->poster_path.'" class="img-carousel"  alt="Img {{$anime[$k]->name}}">';
                             $k++;
@@ -206,7 +224,7 @@
                         echo '<div class="col d-flex justify-content-center p-1">
                             <a href="/detail/detailAnimes/'.$anime[$k]->id.'">';
                             if($anime[$k]->poster_path == NULL)
-                            echo '<img src="storage/img/NoImg.jpg" class="img-carousel" alt="">';
+                            echo '<img src="/img/NoImg.jpg" class="img-carousel" alt="">';
                             else
                             echo '<img src="'.$anime[$k]->poster_path.'" class="img-carousel"  alt="Img {{$anime[$k]->name}}">';
                             $k++;
