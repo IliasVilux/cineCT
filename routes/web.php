@@ -87,9 +87,9 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     Route::get('/detail/detailAnimes/{id}', [AnimeController::class,  'returnAnimes'])->name('anime.animes');
 
     //Save Reviews
-    Route::post('/film/comment/save/{id}', [ReviewController::class, 'storeFilmReview'])->name('comment.save');
-    Route::post('/serie/comment/save/{id}', [ReviewController::class, 'storeSerieReview'])->name('comment.save.serie');
-    Route::post('/anime/comment/save/{id}', [ReviewController::class, 'storeAnimeReview'])->name('comment.save.anime');
+    Route::post('/film/comment/save/{id}', [ReviewController::class, 'postStoreFilmReview'])->name('comment.save');
+    Route::post('/serie/comment/save/{id}', [ReviewController::class, 'postStoreSerieReview'])->name('comment.save.serie');
+    Route::post('/anime/comment/save/{id}', [ReviewController::class, 'postStoreAnimeReview'])->name('comment.save.anime');
    
 });
 

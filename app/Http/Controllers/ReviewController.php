@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 class ReviewController extends Controller
 {
 
-    public function storeFilmReview(Request $request, $id)
+    public function postStoreFilmReview(Request $request, $id)
     {
 
         $user = Auth::user();
@@ -39,7 +39,7 @@ class ReviewController extends Controller
 
     }
 
-    public function storeSerieReview(Request $request, $id){
+    public function postStoreSerieReview(Request $request, $id){
         $user = Auth::user();
         $serie = Serie::find($id);
         $id = $serie->id;
@@ -62,7 +62,7 @@ class ReviewController extends Controller
 
     }
 
-    public function storeAnimeReview(Request $request, $id)
+    public function postStoreAnimeReview(Request $request, $id)
     {
         $user = Auth::user();
         $anime = Anime::find($id);
