@@ -116,7 +116,7 @@
 
     <!-- <h3><b>Creado:</b> {{$serie->created_at}}</h3>
         <h3><b>Ultima actualización:</b> {{$serie->updated_at}}</h3> -->
-
+        <a class="btn btn-primary" class="add-comment" href="#create-comment">Añadir comentario</a>
 </section>
 
 <!-- START COMMMENT SECTION -->
@@ -129,69 +129,13 @@
                         <h4 class="text-center mb-4 pb-2">Nested comments section</h4>
 
                         <div class="row">
-                            <div class="col">
-                                <div class="d-flex flex-start">
-                                    <img class="rounded-circle shadow-1-strong me-3"
-                                        src="{{$profile[0]->path}}" alt="13"
-                                        width="65" height="65" />
-                                    <div class="flex-grow-1 flex-shrink-1">
-                                        <div>
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <p class="mb-1">
-                                                    Maria Smantha <span class="text-muted">- 2 hours ago</span>
-                                                </p>
-                                                <a href="#!"><i class="fas fa-reply fa-xs"></i><span class="text-muted">
-                                                        reply</span></a>
-                                            </div>
-                                            <p class="small mb-0">
-                                                It is a long established fact that a reader will be distracted by
-                                                the readable content of a page.
-                                            </p>
-                                        </div>
-
-                                        <div class="d-flex flex-start mt-4">
-                                            <a class="me-3" href="#">
-                                            <img class="rounded-circle shadow-1-strong me-3"
-                                        src="{{$profile[3]->path}}" alt="13"
-                                        width="65" height="65" />
-                                            </a>
-                                            <div class="flex-grow-1 flex-shrink-1">
-                                                <div>
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <p class="mb-1">
-                                                            Simona Disa <span class="text-muted">- 3 hours ago</span>
-                                                        </p>
-                                                    </div>
-                                                    <p class="small mb-0">
-                                                        letters, as opposed to using 'Content here, content here',
-                                                        making it look like readable English.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="d-flex flex-start mt-4">
-                                            <a class="me-3" href="#">
-                                                <img class="rounded-circle shadow-1-strong me-3"
-                                        src="{{$profile[2]->path}}" alt="13"
-                                        width="65" height="65" />
-                                            </a>
-                                            <div class="flex-grow-1 flex-shrink-1">
-                                                <div>
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <p class="mb-1">
-                                                            John Smith <span class="text-muted">- 4 hours ago</span>
-                                                        </p>
-                                                    </div>
-                                                    <p class="small mb-0">
-                                                        the majority have suffered alteration in some form, by
-                                                        injected humour, or randomised words.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="col" id="comment-container">
+                                @foreach ($comments as $comment)
+                                    @if ($comment->serie_id == $serie->id && !empty($comment->description))
+                                        @include('includes.review', ['comment' => $comment])
+                                    @endif
+                                @endforeach
+                            </div>
                             </div>
                             <div class="alert alert-success d-none" id="msg_div" role="alert">
 
