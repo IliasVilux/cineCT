@@ -10,11 +10,7 @@ class UserController extends Controller
 
     public function userProfile()
     {
-        if(Auth::user()){
-            return view('profile.profile');
-        }else{
-            return redirect()->to('/');
-        }
+        return view('profile.profile');
     }
 
     public function userFavoriteList()

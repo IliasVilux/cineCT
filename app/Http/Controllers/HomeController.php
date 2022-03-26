@@ -12,16 +12,13 @@ class HomeController extends Controller
 
     public function index()
     {
-        if(!Auth::user()){
-            return view ('register');
-        }else{
-            $series = DB::table('series')->get();
-            $films = DB::table('films')->get();
-            $animes = DB::table('animes')->get();
-    
-            //dd(Session::all());
-    
-            return view('home', ['serie' => $series, 'film' => $films, 'anime' => $animes]);
-        }
+        $series = DB::table('series')->get();
+        $films = DB::table('films')->get();
+        $animes = DB::table('animes')->get();
+
+        //dd(Session::all());
+
+        return view('home', ['serie' => $series, 'film' => $films, 'anime' => $animes]);
+        
     }
 }
