@@ -102,7 +102,9 @@
                             <div class="row">
                                 <div class="col" id="comment-container">
                                     @foreach ($comments as $comment)
-                                        @include('includes.review', ['comment' => $comment])
+                                        @if ($comment->film_id == $film->id && !empty($comment->description))
+                                            @include('includes.review', ['comment' => $comment])
+                                        @endif
                                     @endforeach
                                 </div>
                             </div>
@@ -248,6 +250,4 @@
 
         characterLiveCount();
     </script>
-
-    <!-- END COMMENT SECTION -->
 @endsection

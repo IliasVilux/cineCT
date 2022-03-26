@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anime;
 use App\Models\Film;
 use App\Models\Review;
 use App\Models\Serie;
@@ -59,5 +60,28 @@ class ReviewController extends Controller
 
         return ['msg' => 'Tu comentario se ha añadido!', 'comment' => $comment];
 
+    }
+
+    public function storeAnimeReview(Request $request, $id)
+    {
+        $user = Auth::user();
+        $anime = Anime::find($id);
+        $id = $anime->id;
+        $user_id = $user->id;
+
+        $description = $request->input('description');
+
+        $request->validate([
+            'description' => 'required|string|max:255'
+        ]);
+
+        $comment = new Review();
+        $comment->description = $description;
+        $comment->user_id = $user_id;
+        $comment->anime_id = $id;
+        
+        $comment->save();
+
+        return ['msg' => 'Tu comentario se ha añadido!', 'comment' => $comment];
     }
 }

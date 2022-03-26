@@ -1,4 +1,3 @@
-@if ($comment->film_id == $film->id && !empty($comment->description))
     <div class="d-flex flex-start mb-4">
         <div>
             <img class="rounded-circle shadow-1-strong me-3" src="{{ $profile[0]->path }}" alt="13" width="65"
@@ -36,4 +35,3 @@
             ---}}
         </div>
     </div>
-@endif

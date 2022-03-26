@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Anime;
 use App\Models\Image;
+use App\Models\Review;
 use Illuminate\Support\Facades\Http;
 
 class AnimeController extends Controller
@@ -96,10 +97,11 @@ class AnimeController extends Controller
     public function returnAnimes($id) {
         $anime = Anime::find($id);
         $profile = Image::all();
+        $comments = Review::where('film_id' ,'=', $id)->get();
         $shareComponent = $this->ShareWidget();
 
         if (!is_null($anime)) {
-            return view('/detail/detailAnimes', compact('anime', 'profile', 'shareComponent'));
+            return view('/detail.detailAnimes', compact('anime', 'comments', 'profile', 'shareComponent'));
         } else {
             return response('No encontrado', 404);
         }

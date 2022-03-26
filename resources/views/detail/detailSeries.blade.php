@@ -104,7 +104,9 @@
                             <div class="row">
                                 <div class="col" id="comment-container">
                                     @foreach ($comments as $comment)
-                                        @include('includes.review', ['comment' => $comment])
+                                        @if ($comment->serie_id == $serie->id && !empty($comment->description))
+                                            @include('includes.review', ['comment' => $comment])
+                                        @endif
                                     @endforeach
                                 </div>
                             </div>

@@ -93,3 +93,4 @@ Route::get('/logout', [UserAuthController::class, 'userSignOut'])->name('signout
 //Reviews
 Route::post('/film/comment/save/{id}', [ReviewController::class, 'storeFilmReview'])->name('comment.save');
 Route::post('/serie/comment/save/{id}', [ReviewController::class, 'storeSerieReview'])->name('comment.save.serie');
+Route::post('/anime/comment/save/{id}', [ReviewController::class, 'storeAnimeReview'])->name('comment.save.anime');
