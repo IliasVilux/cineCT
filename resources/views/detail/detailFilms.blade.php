@@ -84,7 +84,7 @@
         <!-- START CONTENT -->
 
         <!-- <h3><b>Creado:</b> {{ $film->created_at }}</h3>
-                                                            <h3><b>Ultima actualización:</b> {{ $film->updated_at }}</h3> -->
+                                                                <h3><b>Ultima actualización:</b> {{ $film->updated_at }}</h3> -->
 
         <p class="description fs-2 pt-5">{{ $film->description }}</p>
 
@@ -151,11 +151,11 @@
                         </div>
                     @endif
                     <div id="notify_user"></div>
-                    <span id="character-counter"></span>
+                    <div class="text-center pt-3 "><span id="character-counter"></span></div>
                     <form method="POST" action="" id="create-comment" class="create_comment">
                         @csrf
                         <textarea name="description" id="description" cols="50" rows="3" placeholder="Escribe un comentario"></textarea>
-                        <button class="btn btn-primary" type="submit" id="commentSubmit">Publicar</button>
+                        <button class="btn" type="submit" id="commentSubmit">Publicar</button>
                     </form>
                 </div>
             </div>
@@ -169,28 +169,41 @@
             e.preventDefault();
             $("#commentSubmit").attr("disabled", true); // deshabilitamos el boton de publicar
             var url = '{{ route('comment.save', ['id' => $film->id]) }}';
-            var data = jQuery('#create-comment').serialize(); // serializamos los datos para trabajr con ellos en el backend
-            jQuery('#commentSubmit').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>'); //agregamos un spinner al boton al darle click, mientras no complete la peticion se seguirá mostrando el spinner
+            var data = jQuery('#create-comment')
+        .serialize(); // serializamos los datos para trabajr con ellos en el backend
+            jQuery('#commentSubmit').html(
+                '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>'
+                ); //agregamos un spinner al boton al darle click, mientras no complete la peticion se seguirá mostrando el spinner
+
+                $('#commentSubmit').addClass('loagindEffect');
 
             jQuery.ajax({
                 url: url,
                 data: data,
                 type: 'POST',
                 success: function(response) {
-                    jQuery('#notify_user').html(`<div class="alert alert-success" role="alert"><i class="fas fa-check-circle"></i>${response.msg}</div>`); //el msg hace referencia al 'msg' en el return en el controlador (en este caso al ReviewController)
+                    jQuery( "#commentSubmit" ).removeClass( "loagindEffect" );
+                    jQuery('#notify_user').html(
+                        `<div class="alert alert-success" role="alert"><i class="fas fa-check-circle"></i>${response.msg}</div>`
+                        ); //el msg hace referencia al 'msg' en el return en el controlador (en este caso al ReviewController)
                     jQuery('#notify_user').fadeIn("slow");
-                    jQuery('#create-comment')[0].reset(); // una vez la peticion se complete , el textarea se reiniciarà :D
-                    jQuery('.spinner-border').remove(); // una vez haya echo la petición y lo haya guardado en la bases de datos, el spiner lo elimanos
-                    jQuery('#commentSubmit').html('Publicar'); 
+                    jQuery('#create-comment')[0]
+                .reset(); // una vez la peticion se complete , el textarea se reiniciarà :D
+                    jQuery('.spinner-border')
+                .remove(); // una vez haya echo la petición y lo haya guardado en la bases de datos, el spiner lo elimanos
+                    jQuery('#commentSubmit').html('Publicar');
                     jQuery('#notify_user').fadeOut(3000);
-                    setTimeout(() => {jQuery('#commentSubmit').attr('disabled', false);},3900); // removemos el 'desabled 'para que el usuario pueda interactuar de nuevo con el botón
+                    setTimeout(() => {
+                        jQuery('#commentSubmit').attr('disabled', false);
+                    },
+                    3900); // removemos el 'desabled 'para que el usuario pueda interactuar de nuevo con el botón
 
                     let commentHtml =
-                        `<div class="d-flex flex-start mb-2">
+                        `<div class="d-flex flex-start mb-4">
                         <div><img class="rounded-circle shadow-1-strong me-3" src="{{ $profile[0]->path }}" alt="13" width="65" height="65" /></div>
                         <div class="flex-grow-1 flex-shrink-1"><div>
                             <div class="d-flex justify-content-between align-items-center">
-                                <p class="mb-1">{{Auth::user()->name }} <span class="text-muted">- 2 hours ago</span></p> 
+                                <p class="mb-1">{{ Auth::user()->name }} <span class="text-muted">- 2 hours ago</span></p> 
                                 <a href="#!"><i class="fas fa-reply fa-xs"></i><span class="text-muted">reply</span></a> 
                             </div>
                             <p class="small mb-0 comment">${ response.comment['description'] }</p>
@@ -203,6 +216,7 @@
 
                 },
                 error: function(response) {
+                    jQuery( "#commentSubmit" ).removeClass( "loagindEffect" );
                     showInputErrors();
                     jQuery('#notify_user').fadeIn("slow");
                     jQuery('.spinner-border').remove();
@@ -220,7 +234,7 @@
         const showInputErrors = () => {
 
             const description = $('#description').val();
-            
+
 
             if (description == '') {
                 jQuery('#notify_user').html(
@@ -232,8 +246,10 @@
                 );
             } else {
                 jQuery('#notify_user').html(
-                    `<div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-circle"></i>Ha ocurrido un error al publicar tu comentario, porfavor vuelve a intentarlo.</div>`
+                    `<div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-circle"></i>Ha ocurrido un error al publicar tu comentario.</div>`
                 );
+                
+                location.reload();
             }
 
         }
@@ -244,18 +260,18 @@
 
             description.addEventListener("input", () => {
                 let count = (description.value).length;
-                document.getElementById("character-counter").textContent = `${count}/255`;
-                if(count >= 0 && count < 165){
+                document.getElementById("character-counter").textContent = `Caracteres: ${count}/255`;
+                if (count >= 0 && count < 165) {
                     characterCounter.style.color = "white";
-                }else if(count >= 165 && count <= 255){
+                } else if (count >= 165 && count <= 255) {
                     characterCounter.style.color = "yellow";
-                }else{
+                } else {
                     characterCounter.style.color = "red";
                 }
 
-                if(count == 0){
+                if (count == 0) {
                     characterCounter.style.display = "none";
-                }else{
+                } else {
                     characterCounter.style.display = "inline";
                 }
             });
@@ -263,7 +279,6 @@
         }
 
         characterLiveCount();
-
     </script>
 
     <!-- END COMMENT SECTION -->
