@@ -83,12 +83,12 @@ class SerieController extends Controller
 
     public function returnSeries($id) {
         $serie = Serie::find($id);
-        $comments = Review::where('serie_id', '=', $id);
+        $comments = Review::where('serie_id', '=', $id)->get();
         $profile = Image::all();
         $shareComponent = $this->ShareWidget();
 
         if (!is_null($serie)) {
-            return view('/detail/detailSeries', compact('serie', 'profile', 'comments', 'shareComponent'));
+            return view('detail.detailSeries', compact('serie', 'comments', 'profile', 'shareComponent'));
         } else {
             return response('No encontrado', 404);
         }

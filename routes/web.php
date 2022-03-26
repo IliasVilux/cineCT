@@ -57,9 +57,9 @@ Route::get('/content/contentAnimes', function () {
 Route::get('/detail/detailFilms/{id}', [FilmController::class,  'returnFilms'])->name('film.films');
 /* Route::get('/detail/detailFilms/{id}', 'SocialShareButtonsController@ShareWidget'); */
 
-Route::get('/detail/detailSeries/{id}', [SerieController::class,  'returnSeries']);
+Route::get('/detail/detailSeries/{id}', [SerieController::class,  'returnSeries'])->name('serie.series');
 
-Route::get('/detail/detailAnimes/{id}', [AnimeController::class,  'returnAnimes']);
+Route::get('/detail/detailAnimes/{id}', [AnimeController::class,  'returnAnimes'])->name('anime.animes');
 
 
 Route::get('/top', function () {
@@ -91,5 +91,5 @@ Route::post('/login', [UserAuthController::class, 'userLogin'])->name('login.use
 Route::get('/logout', [UserAuthController::class, 'userSignOut'])->name('signout.user');
 
 //Reviews
-Route::post('/film/comment/save/{id}', [ReviewController::class, 'storeFilm'])->name('comment.save');
-Route::post('/serie/comment/save/{id}', [ReviewController::class, 'storeSerie'])->name('comment.save.serie');
+Route::post('/film/comment/save/{id}', [ReviewController::class, 'storeFilmReview'])->name('comment.save');
+Route::post('/serie/comment/save/{id}', [ReviewController::class, 'storeSerieReview'])->name('comment.save.serie');
