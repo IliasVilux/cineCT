@@ -6,6 +6,10 @@ p.description {
     text-align: justify;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 .more-info{
     float: right;
     width: 40%;
@@ -43,4 +47,60 @@ p.description {
 .rating label:hover {
     color: orange;
     cursor: pointer;
+}
+
+.create_comment{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    align-items: center;
+}
+
+.create_comment  #description{
+    border: 2px solid #5A3C97;
+    padding: 5px;
+    border-radius: 10px;
+    background: none;
+    resize: none;
+    outline: none;
+    width: 75%;
+    color: #FFFFFF;
+}
+
+#commentSubmit{
+    color: #FFFFFF;
+    border: 2px solid #5A3C97;
+    margin-top: 15px;
+    margin-left: 20px;
+}
+
+/*mientras esté insertando el comment a la base de datos le aplicamos esta classe*/
+.loagindEffect{
+    animation: boxShadow 2s infinite;
+    background-color: #5A3C97;
+}
+
+@keyframes boxShadow {
+    50% {box-shadow: 0 5px 50px rgba(145, 92, 182, .4);}
+}
+
+
+@media (max-width: 600px) {
+    .comment{
+        width: 200px;
+    }
+}
+
+@media only screen and (min-device-width: 601px) and (max-device-width: 1023px) {
+    .comment{
+        width: 400px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .comment{
+        width: 600px;
+    }
 }

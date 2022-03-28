@@ -67,7 +67,7 @@ class UserAuthController extends Controller
             'register_name' => 'required|string|max:255',
             'register_surname' => 'required|string|max:255',
             'register_nick' => 'required|string|max:15', //unique:users-> ningun nick se repetirá
-            'register_email' => 'required|string|email', //unique:users
+            'register_email' => 'required|string|email|unique:users,email',
             'register_password' => 'required|min:6',
             'register_password_repeat' => 'required|min:6|same:register_password'
 
@@ -85,7 +85,7 @@ class UserAuthController extends Controller
         auth()->login($user);
         
 
-        return redirect()->to('/home')->with('welcomeUser', 'Bienvenido a cinect'.$register_nick.'!');
+        return redirect()->to('/home')->with('welcomeUser', 'Bienvenido a cinect '.$register_nick.'!');
     }
 
 
@@ -95,6 +95,6 @@ class UserAuthController extends Controller
         
         Session::flush();
   
-        return redirect()->to('register');
+        return redirect()->to('register')->with('signOut', 'Tu sessión se ha cerrado');
     }
 }

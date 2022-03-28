@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Serie;
 use App\Models\Image;
+use App\Models\Review;
 use Illuminate\Support\Facades\Http;
 
 class SerieController extends Controller
@@ -83,10 +84,11 @@ class SerieController extends Controller
     public function returnSeries($id) {
         $serie = Serie::find($id);
         $profile = Image::all();
+        $comments = Review::where('serie_id' ,'=', $id)->get();
         $shareComponent = $this->ShareWidget();
 
         if (!is_null($serie)) {
-            return view('/detail/detailSeries', compact('serie', 'profile', 'shareComponent'));
+            return view('/detail/detailSeries', compact('serie', 'comments', 'profile', 'shareComponent'));
         } else {
             return response('No encontrado', 404);
         }
