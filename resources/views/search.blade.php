@@ -25,7 +25,7 @@
     <h6 style="text-align:start; margin-bottom:20px; padding-left:5px; border-left:3px solid #5A3C97">Resultados encontrados: <strong>{{$search}}</strong></h6>
     <div class="content d-flex flex-wrap align-items-streach justify-content-center">
         @foreach($content as $content)
-        <a href=""></a>
+        <a href="/detail/detailcontents/{{$content->id}}" class="image-link col-2 p-2">
             @if($content->poster_path === NULL)
                 <img src="/img/NoImg.jpg" alt="">
             @else

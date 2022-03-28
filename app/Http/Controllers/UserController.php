@@ -25,7 +25,7 @@ class UserController extends Controller
     {
         $search = $request->input('search');
 
-        $content = array('film' => array(), 'serie' => array(), 'anime' => array());
+        $content = array();
       
         if($search){
             $films = Film::where('name', 'LIKE', '%'.$search.'%')->get();
