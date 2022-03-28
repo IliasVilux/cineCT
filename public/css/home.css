@@ -21,6 +21,14 @@
     width: 100%;
 }
 
+a.link-img-carousel {
+    color: transparent;
+}
+
+div#container {
+    width: 90%;
+}
+
 /* BUTTONS */
 .btn.btn-more {
     background-image: linear-gradient(to top, black 25%, #9966ff 150%);
