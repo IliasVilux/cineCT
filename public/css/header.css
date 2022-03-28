@@ -42,6 +42,9 @@ div.offcanvas-header button.btn-close {
 div.offcanvas-body ul.list-unstyled {
   line-height: 2;
 }
+img.logo {
+  width: 75px;
+}
 
 div.copyright {
   background-color: black;
