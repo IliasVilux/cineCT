@@ -27,8 +27,7 @@
         Back
     </a>
 
-    {!! $shareComponent !!}
-    <h1 class="detail-title">{{$anime->name}}</h1>
+        <h1 class="detail-title">{{$anime->name}}</h1>
 
     <article class="more-info bg-dark p-3">
         <div class="d-flex nowrap">
@@ -106,7 +105,9 @@
         @endif
     </article>
 
-
+    @if($anime->trailer_link != null)
+        <iframe class="w-75 m-auto" height="500" src="https://www.youtube.com/embed/{{$anime->trailer_link}}"></iframe>
+    @endif
 
 
 
