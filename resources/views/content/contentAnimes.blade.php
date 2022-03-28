@@ -67,81 +67,17 @@
 <section class="container py-4">
     <div class="d-flex justify-content-between py-3 px-5">
         <h5 class="col-6">Animes</h5>
-        <?php 
-       /* $quantAnimes = count($anime); //54
-        $totalPages = ceil($quantAnimes/7);
-        $page = $_GET['page'];
-
-        $previous = $page-1;
-        $next = $page+1;
-
-
-        if($page < 1) {
-            header('Location: /content/contentAnimes?page=1');
-        } 
-        if($page > $totalPages) {
-            header('Location: /content/contentAnimes?page='.$totalPages.'');
-        }
-
-        if(!is_numeric($page)) {
-            header('Location: /content/contentAnimes?page=1');
-        }
-
-        echo '<nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-start">';
-
-            if ($page == 1) {
-            echo '<li class="page-item disabled" id="previous">
-            <a class="page-link" href="/content/contentAnimes?page='.$previous.'" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-                <span class="sr-only">Previous</span>
-            </a>
-            </li>';
-            } else {
-                echo '<li class="page-item" id="previous">
-                <a class="page-link" href="/content/contentAnimes?page='.$previous.'" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                </li>';
-            } 
-                for ($i=1; $i <= $totalPages; $i++) {
-                    echo' <li class="page-item"><a class="page-link" href="/content/contentAnimes?page='.$i.'">'.$i.'</a></li>';
-                }
-            if ($page == $totalPages) {
-                echo '<li class="page-item disabled" id="next">
-                <a class="page-link" href="/content/contentAnimes?page='.$next.'" aria-label="Next">
-            
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                </a>
-                </li>';
-            } else {
-            echo '<li class="page-item" id="next">
-            <a class="page-link" href="/content/contentAnimes?page='.$next.'" aria-label="Next">
-        
-                <span aria-hidden="true">&raquo;</span>
-                <span class="sr-only">Next</span>
-            </a>
-            </li>';
-            }
-
-        echo'</ul>
-        </nav>';*/
-        ?>
-
-
     </div>
 
     @if(!empty($anime))
     <div class="content d-flex flex-wrap align-items-streach justify-content-center">
 
-        @foreach($anime as $animes)
-        <a href="/detail/detailAnimes/{{$animes->id}}" class="image-link col-2 p-2">
-            @if($animes->poster_path === NULL)
+        @foreach($anime as $data)
+        <a href="/detail/detailAnimes/{{$data->id}}" class="image-link col-2 p-2">
+            @if($data->poster_path === NULL)
             <img src="/img/NoImg.jpg" alt="">
             @else
-            <img src="{{$animes->poster_path}}" alt="">
+            <img src="{{$data->poster_path}}" alt="">
             @endif
         </a>
         @endforeach
