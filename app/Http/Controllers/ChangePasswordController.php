@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Rules\Password;
 use Illuminate\Support\Facades\Hash;
-use App\User;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
   
 class ChangePasswordController extends Controller
 {
@@ -36,14 +37,17 @@ class ChangePasswordController extends Controller
      */
     public function store(Request $request)
     {
+        $current_password = $request->input('current_password');
+        $update_password = $request->input('update_password');
+        $update_confirm_password = $request->input('update_confirm_password');
+
         $request->validate([
-            'current_password' => ['required', new Password],
-            'new_password' => ['required'],
-            'new_confirm_password' => ['same:new_password'],
+            'current_password' => new Password,
+            'update_password' => 'min:6',
+            'update_confirm_password' => 'min:6|same:update_password',
         ]);
    
-        User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
-   
-        dd('Password change successfully.');
+        User::find(auth()->user()->id)->update(['password'=> $request->update_password]);
+        return view('profile.profile');
     }
 }

@@ -34,7 +34,7 @@
         </select>
         </div>
         <div class="col-12 col-sm-6 p-4">
-            <a href="{{ route('change.password.post') }}" type="button" class="btn btn-light col-12 my-2">Cambiar contraseña</a>
+            <a href="{{ route('change.password') }}" type="button" class="btn btn-light col-12 my-2">Cambiar contraseña</a>
         </div>
         <div class="col-12 px-4 d-flex justify-content-center">
             <button type="submit" class="btn btn-primary col-12 col-sm-6">Guardar</button>

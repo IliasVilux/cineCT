@@ -89,7 +89,7 @@ Route::get('/profile/profileImg', function () {
 //User-Auth Actions
 Route::get('/user/profile', [UserController::class, 'userProfile'])->name('user.profile');
 Route::post('/user/profile', [UserController::class, 'profileUpdate'])->name('user.update');
-Route::get('/user/profile/change-password', [ChangePasswordController::class, 'store'])->name('change.password');
+Route::get('/user/profile/change-password', [ChangePasswordController::class, 'index'])->name('change.password');
 Route::post('/user/profile/change-password', [ChangePasswordController::class, 'store'])->name('change.password.post');
 
 Route::get('/user/list', [UserController::class, 'userFavoriteList'])->name('user.favorite.list');
