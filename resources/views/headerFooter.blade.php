@@ -31,7 +31,7 @@
                     <a class="navbar-brand col-8 text-center" href="{{ route('home') }}">Logo</a>
                 </div>
                 <div class="col-3 d-flex flex-direction-row flex-nowrap justify-content-end align-items-center">
-                    <i class="fas fa-search text-light fs-4 p-0"></i>
+                    <a href="{{ url('/search') }}"><i class="fas fa-search text-light fs-4 p-0"></i></a>
                     <div class="dropdown">
                         <button
                             class="btn text-light dropdown-toggle d-flex flex-direction-row flex-nowrap justify-content-end align-items-center"
