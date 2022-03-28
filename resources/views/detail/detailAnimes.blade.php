@@ -106,7 +106,10 @@
     </article>
 
     @if($anime->trailer_link != null)
-        <iframe class="w-75 m-auto" height="500" src="https://www.youtube.com/embed/{{$anime->trailer_link}}"></iframe>
+        <iframe class="w-75" height="500" src="https://www.youtube.com/embed/{{$anime->trailer_link}}" allowfullscreen></iframe>
+        <div class="alert alert-dark w-75 m-auto" role="alert">
+            Si el vídeo da error es porque el link no funciona. Pero te invitamos a buscar el trailer en <a href="https://www.youtube.com/">Youtube</a> y descubrir más sobre este anime
+        </div>
     @endif
 
 
