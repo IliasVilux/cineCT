@@ -36,6 +36,26 @@
         <div class="col-12 col-sm-6 p-4">
             <a href="{{ route('change.password') }}" type="button" class="btn btn-light col-12 my-2">Cambiar contraseña</a>
         </div>
+        <div class="col-12">
+            <a type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal">Eliminar Cuenta</a>
+        </div>
+        <div class="modal fade text-dark" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Eliminar cuenta</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    Estás seguro de que quieres eilinar tu cuenta?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-bs-dismiss="modal">Cancelar</button>
+                    <a href="{{ route('delete.account') }}" type="button" class="btn btn-danger">Eliminar</a>
+                </div>
+                </div>
+            </div>
+        </div>
         <div class="col-12 px-4 d-flex justify-content-center">
             <button type="submit" class="btn btn-primary col-12 col-sm-6">Guardar</button>
         </div>

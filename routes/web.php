@@ -55,6 +55,8 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     Route::get('/user/profile/change-password', [ChangePasswordController::class, 'index'])->name('change.password');
     Route::post('/user/profile/change-password', [ChangePasswordController::class, 'store'])->name('change.password.post');
 
+    Route::get('/user/profile/delete-account', [UserController::class, 'deleteAccount'])->name('delete.account');
+
     //Return All Series
     Route::get('/content/contentSeries', function () {
 

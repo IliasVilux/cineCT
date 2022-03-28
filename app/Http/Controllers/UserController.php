@@ -32,4 +32,11 @@ class UserController extends Controller
         $user->save();
         return view('profile.profile')->with('message','Profile Updated');
     }
+    public function deleteAccount(){
+        $user = Auth::user();
+        $user->delete();
+
+        Auth::logout();
+        return redirect()->to('register')->with('signOut', 'Cuenta eliminada!');
+    }
 }
