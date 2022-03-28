@@ -105,7 +105,9 @@
         @endif
     </article>
 
-    <iframe class="w-75 m-auto" height="500" src="https://www.youtube.com/embed/{{$anime->trailer_link}}"></iframe>
+    @if($anime->trailer_link != null)
+        <iframe class="w-75 m-auto" height="500" src="https://www.youtube.com/embed/{{$anime->trailer_link}}"></iframe>
+    @endif
 
 
 
