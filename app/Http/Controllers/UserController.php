@@ -25,7 +25,7 @@ class UserController extends Controller
     {
         $search = $request->input('search');
 
-        $content = array();
+        $filmsContent = array();
       
         if($search){
             $films = Film::where('name', 'LIKE', '%'.$search.'%')->get();
@@ -37,21 +37,18 @@ class UserController extends Controller
             foreach($films as $film){
                 array_push($content, $film);
             }
-            echo '<br>';
         }
 
         if(count($series) != 0 && !empty($series)){
             foreach($series as $serie){
                 array_push($content, $serie);
             }
-            echo '<br>';
         }
 
         if(count($animes) != 0 && !empty($animes)){
             foreach($animes as $anime){
                 array_push($content, $anime);
             }
-            echo '<br>';
         }
 
         return view ('search', ['content' => $content, 'search' => $search]);

@@ -22,7 +22,7 @@
 
 <section class="container py-4">
     @if(!empty($content))
-    <h6 style="text-align:start; margin-bottom:20px; padding-left:5px; border-left:3px solid #5A3C97">Resultados encontrados: <strong>{{count($content)}}</strong></h6>
+    <h6 style="text-align:start; margin-bottom:20px; padding-left:5px; border-left:3px solid #5A3C97">Resultados encontrados con: <strong>{{count($content)}}</strong></h6>
     <div class="content d-flex flex-wrap align-items-streach justify-content-center">
         @foreach($content as $content)
         <a href="/detail/detailcontents/{{$content->id}}" class="image-link col-2 p-2">
@@ -36,7 +36,7 @@
     </div>
     @else
     @if(isset($search))
-        <h4 style="color: red; text-align:center;">No hi ha cap registre per {{$search}}</h4>
+        <h5 class="text-center">No se ha encontrado ningun resultador con <span>{{$search}}</span></h5>
     @endif
     @endif
 </section>
