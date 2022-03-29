@@ -25,12 +25,15 @@ class UserController extends Controller
     {
         $search = $request->input('search');
 
-        $filmsContent = array();
+        $searchValue = strtolower($search);
+
+        $content = array();
       
-        if($search){
-            $films = Film::where('name', 'LIKE', '%'.$search.'%')->get();
-            $series = Serie::where('name', 'LIKE', '%'.$search.'%')->get();
-            $animes = Anime::where('name', 'LIKE', '%'.$search.'%')->get();
+        if($searchValue){
+
+            $films = Film::where('name', 'LIKE', '%'.$searchValue.'%')->get();
+            $series = Serie::where('name', 'LIKE', '%'.$searchValue.'%')->get();
+            $animes = Anime::where('name', 'LIKE', '%'.$searchValue.'%')->get();
         }
         
         if(count($films) != 0 && !empty($films)){
@@ -51,7 +54,9 @@ class UserController extends Controller
             }
         }
 
-        return view ('search', ['content' => $content, 'search' => $search]);
+        shuffle($content);
+
+        return view ('search', ['content' => $content, 'search' => $searchValue]);
 
     }
     
