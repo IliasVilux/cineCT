@@ -54,7 +54,7 @@ class UserController extends Controller
             }
         }
 
-        shuffle($content);
+        //shuffle($content);
 
         return view ('search', ['content' => $content, 'search' => $searchValue]);
 
