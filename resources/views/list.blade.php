@@ -11,7 +11,7 @@
 
 @else
     <h1>MIS LISTAS</h1>
-    <a href="{{ url('/') }}" class="btn btn-primary" title="Home">
+    <a href="{{ url('/') }}" class="btn btn-primary btn-back" title="Home">
         Home
     </a>
 

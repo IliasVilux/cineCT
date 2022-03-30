@@ -25,7 +25,7 @@
         @include('includes.session')
     @else
         <section class="section-signin-register d-flex flex-wrap justify-content-center h-100 p-5">
-            <div class="col-12 col-lg-8 p-sm-5">
+            <div class="col-12 col-sm-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6 p-sm-5 p-sm-5">
                 <ul class="nav nav-tabs" id="myTab">
                     <li class="nav-item">
                         <a href="#logIn" class="nav-link active" data-bs-toggle="tab">Log In</a>
@@ -38,9 +38,9 @@
                     <div class="tab-pane fade show active" id="logIn">
                         <div class="card text-dark">
                             <div class="d-flex justify-content-center">
-                                <img class="my-4" src="/img/CinectLogoDark.svg" alt="LOGO" width="200px">
+                                <img class="my-5" src="/img/CinectLogoDark.svg" alt="LOGO" width="200px">
                             </div>
-                            <div class="card-body p-0">
+                            <div class="card-body p-4 pt-0">
                                 <form class="row g-3 needs-validation d-flex flex-column align-items-center m-4 mt-0" method="POST" action="{{ route('login.user') }}">
                                     @if (Session::has('authErrorMsg'))
                                         <div class="mt-2 alert alert-danger">{{ Session::get('authErrorMsg') }}</div>
@@ -129,9 +129,9 @@
                     <div class="tab-pane fade" id="signUp">
                         <div class="card text-dark">
                             <div class="d-flex justify-content-center">
-                                <img class="my-4" src="/img/CinectLogoDark.svg" alt="LOGO" width="200px">
+                                <img class="my-5" src="/img/CinectLogoDark.svg" alt="LOGO" width="200px">
                             </div>
-                            <div class="card-body p-0">
+                            <div class="card-body p-4 pt-0">
                                 <form method="POST" action="{{ route('register.user') }}" class="row g-3 needs-validation d-flex flex-column align-items-center m-4 mt-0">
                                     @csrf
 
@@ -170,37 +170,37 @@
                                     </div>
 
                                     <div class="row p-0">
-                                        <div class="col-12 col-md-6 mb-3 p-0">
+                                        <div class="col-12 col-md-6 mb-3 p-0 pe-sm-3">
                                             <label for="register_name" class="form-label">Nombre</label>
                                             <input type="text" class="form-control" id="register_name"
                                                 name="register_name" placeholder="Mark" value="{{ old('register_name') }}"
                                                 autofocus>
                                         </div>
-                                        <div class="col-12 col-md-6 mb-3 pe-0">
+                                        <div class="col-12 col-md-6 mb-3 p-0 pe-sm-3">
                                             <label for="register_surname" class="form-label">Apellido</label>
                                             <input type="text" class="form-control" id="register_surname"
                                                 name="register_surname" placeholder="Ruffalo"
                                                 value="{{ old('register_surname') }}" autofocus>
                                         </div>
-                                        <div class="col-12 col-md-6 mb-3 p-0">
+                                        <div class="col-12 col-md-6 mb-3 p-0 pe-sm-3">
 
                                             <label for="nick" class="form-label">Nickname</label>
                                             <input type="text" class="form-control" id="register_nick"
                                                 name="register_nick" placeholder="mark20"
                                                 value="{{ old('register_nick') }}" autofocus>
                                         </div>
-                                        <div class="col-12 col-md-6 mb-3 pe-0">
+                                        <div class="col-12 col-md-6 mb-3 p-0 pe-sm-3">
                                             <label for="register_email" class="form-label">Email</label>
                                             <input type="email" class="form-control" id="register_email"
                                                 name="register_email" placeholder="youremail@gmail.com"
                                                 value="{{ old('register_email') }}" autofocus>
                                         </div>
-                                        <div class="col-12 col-md-6 p-0">
+                                        <div class="col-12 col-md-6 p-0 p-0 pe-sm-3">
                                             <label for="register_password" class="form-label">Contraseña</label>
                                             <input type="password" class="form-control" id="register_password"
                                                 name="register_password" placeholder="New Password" autofocus>
                                         </div>
-                                        <div class="col-12 col-md-6 pe-0">
+                                        <div class="col-12 col-md-6 p-0 pe-sm-3">
                                             <label for="register_password_repeat" class="form-label">Repetir
                                                 Contraseña</label>
                                             <input type="password" class="form-control" id="register_password_repeat"
