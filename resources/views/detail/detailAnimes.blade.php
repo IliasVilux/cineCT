@@ -32,7 +32,7 @@
     <article class="more-info bg-dark p-3">
         <div class="d-flex nowrap">
             <h5 class="pe-2"><b>Género:</b></h5>
-            <p>{{$anime->genre_id}}</p>
+            <p>{{$anime->genre->name}}</p>
         </div>
         <div class="d-flex nowrap">
             <h5 class="pe-2"><b>Fecha de lanzamiento:</b></h5>
