@@ -28,6 +28,7 @@
     </a>
 
         <h1 class="detail-title">{{$anime->name}}</h1>
+        {{$anime->genre->name}}
 
     <article class="more-info bg-dark p-3">
         <div class="d-flex nowrap">
@@ -128,6 +129,18 @@
         <div class="container my-5 py-5">
             <div class="row d-flex justify-content-center">
                 <div class="col-12">
+                    @if ($errors->has('description'))
+                        <div class="mt-2 alert alert-danger">
+                            No puedes publicar un comentario sin vacío!
+                        </div>
+                    @endif
+                    <div id="notify_user"></div>
+                    <div class="text-center pt-3 "><span id="character-counter"></span></div>
+                    <form method="POST" action="" id="create-comment" class="create_comment">
+                        @csrf
+                        <textarea name="description" id="description" cols="50" rows="3" placeholder="Escribe un comentario"></textarea>
+                        <button class="btn" type="submit" id="commentSubmit">Publicar</button>
+                    </form>
                     <div class="card card-comment bg-dark">
                         <div class="card-body card-body-comment p-4">
                             <h4 class="text-center mb-4 pb-2">Nested comments section</h4>
@@ -145,19 +158,6 @@
                             </div>
                         </div>
                     </div>
-                    @if ($errors->has('description'))
-                        <div class="mt-2 alert alert-danger">
-                            No puedes publicar un comentario sin vacío!
-                        </div>
-                    @endif
-                    <div id="notify_user"></div>
-                    <div class="text-center pt-3 "><span id="character-counter"></span></div>
-                    <form method="POST" action="" id="create-comment" class="create_comment">
-                        @csrf
-                        <textarea name="description" id="description" cols="50" rows="3" placeholder="Escribe un comentario"></textarea>
-                        <button class="btn" type="submit" id="commentSubmit">Publicar</button>
-                    </form>
-
                 </div>
             </div>
         </div>
@@ -202,7 +202,7 @@
 
                 let commentHtml =
                     `<div class="d-flex flex-start mb-4">
-                    <div><img class="rounded-circle shadow-1-strong me-3" src="{{ $profile[0]->path }}" alt="13" width="65" height="65" /></div>
+                    <div><img class="rounded-circle shadow-1-strong me-3" src="{{ $profile->path }}" alt="13" width="65" height="65" /></div>
                     <div class="flex-grow-1 flex-shrink-1"><div>
                         <div class="d-flex justify-content-between align-items-center">
                             <p class="mb-1">{{ Auth::user()->name }} <span class="text-muted">- 2 hours ago</span></p> 
