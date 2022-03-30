@@ -25,39 +25,46 @@ class UserController extends Controller
     {
         $search = $request->input('search');
 
-        $searchValue = strtolower($search);
+        $content = array(
+            'film' => array(),
+            'serie' => array(),
+            'anime' => array(),
+        );
 
-        $content = array();
-      
-        if($searchValue){
+        $films = Film::where('name', 'LIKE', '%' . $search . '%')->get();
+        $series = Serie::where('name', 'LIKE', '%' . $search . '%')->get();
+        $animes = Anime::where('name', 'LIKE', '%' . $search . '%')->get();
 
-            $films = Film::where('name', 'LIKE', '%'.$searchValue.'%')->get();
-            $series = Serie::where('name', 'LIKE', '%'.$searchValue.'%')->get();
-            $animes = Anime::where('name', 'LIKE', '%'.$searchValue.'%')->get();
-        }
-        
-        if(count($films) != 0 && !empty($films)){
-            foreach($films as $film){
-                array_push($content, $film);
+        if (!is_null($search) && !empty($search) && $search != '') {
+
+            if (count($films) != 0 && !empty($films)) {
+                foreach ($films as $film) {
+                    array_push($content['film'], $film);
+                }
+            }
+
+            if (count($series) != 0 && !empty($series)) {
+                foreach ($series as $serie) {
+                    array_push($content['serie'], $serie);
+                }
+            }
+
+            if (count($animes) != 0 && !empty($animes)) {
+                foreach ($animes as $anime) {
+                    array_push($content['anime'], $anime);
+                }
             }
         }
 
-        if(count($series) != 0 && !empty($series)){
-            foreach($series as $serie){
-                array_push($content, $serie);
+        $keys = array_keys($content);
+        for ($i = 0; $i < count($content); $i++) {
+            echo $keys[$i] . "{<br>";
+            foreach ($content[$keys[$i]] as $key => $value) {
+                echo $key . " : " . $value . "<br>";
             }
+            echo "}<br>";
         }
 
-        if(count($animes) != 0 && !empty($animes)){
-            foreach($animes as $anime){
-                array_push($content, $anime);
-            }
-        }
-
-        //shuffle($content);
-
-        return view ('search', ['content' => $content, 'search' => $searchValue]);
-
+        return view('search', ['content' => $content, 'search' => $search]);
     }
-    
 }
