@@ -6,7 +6,7 @@
 </head>
 <section class="container">
     <h1>BUSCADOR</h1>
-    <a href="{{ url('/') }}" class="btn btn-primary" title="Home">
+    <a href="{{ url('/') }}" class="btn btn-primary btn-back" title="Home">
         Home
     </a>
     <div class="input-group">

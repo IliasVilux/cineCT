@@ -28,7 +28,7 @@
                     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
                         <span class="navbar-toggler-icon"></span></button>
-                    <a class="navbar-brand col-8 text-center" href="{{ route('home') }}">Logo</a>
+                        <a class="navbar-brand col-8 text-center" href="{{ url('/') }}"><img src="/img/CinectLogo.svg" class="logo"></a>
                 </div>
                 <div class="col-3 d-flex flex-direction-row flex-nowrap justify-content-end align-items-center">
                     <i class="fas fa-search text-light fs-4 p-0"></i>

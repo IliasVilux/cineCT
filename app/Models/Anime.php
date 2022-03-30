@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Review;
 use App\Models\Image;
-use App\Models\Genre;
 use App\Models\Episode;
 
 
@@ -20,7 +19,7 @@ class Anime extends Model
     }
 
     public function genre() {
-        return $this->hasMany(Genre::class);
+        return $this->belongsTo(Genre::class);
     }
 
     public function episode(){

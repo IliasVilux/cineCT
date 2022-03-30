@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ChangePasswordController;
 use App\Models\Genre;
 use App\Models\Serie;
 use App\Models\Films;
@@ -41,6 +42,20 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     //User-Auth Actions
     Route::get('/user/profile', [UserController::class, 'userProfile'])->name('user.profile');
     Route::get('/user/list', [UserController::class, 'userFavoriteList'])->name('user.favorite.list');
+
+    Route::get('/profile/profileImg', function () {
+        return view('/profile/profileImg');
+    });
+    
+    //User-Auth Actions
+    Route::post('/user/profile', [UserController::class, 'profileUpdate'])->name('user.update');
+    
+    Route::get('/user/list', [UserController::class, 'userFavoriteList'])->name('user.favorite.list');
+
+    Route::get('/user/profile/change-password', [ChangePasswordController::class, 'index'])->name('change.password');
+    Route::post('/user/profile/change-password', [ChangePasswordController::class, 'store'])->name('change.password.post');
+
+    Route::get('/user/profile/delete-account', [UserController::class, 'deleteAccount'])->name('delete.account');
 
     //Return All Series
     Route::get('/content/contentSeries', function () {
@@ -87,9 +102,9 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     Route::get('/detail/detailAnimes/{id}', [AnimeController::class,  'returnAnimes'])->name('anime.animes');
 
     //Save Reviews
-    Route::post('/film/comment/save/{id}', [ReviewController::class, 'storeFilmReview'])->name('comment.save');
-    Route::post('/serie/comment/save/{id}', [ReviewController::class, 'storeSerieReview'])->name('comment.save.serie');
-    Route::post('/anime/comment/save/{id}', [ReviewController::class, 'storeAnimeReview'])->name('comment.save.anime');
+    Route::post('/film/comment/save/{id}', [ReviewController::class, 'postStoreFilmReview'])->name('comment.save');
+    Route::post('/serie/comment/save/{id}', [ReviewController::class, 'postStoreSerieReview'])->name('comment.save.serie');
+    Route::post('/anime/comment/save/{id}', [ReviewController::class, 'postStoreAnimeReview'])->name('comment.save.anime');
    
 });
 
@@ -98,6 +113,5 @@ Route::group(['middleware' => 'authenticate.user'], function () {
 Route::get('/aboutUs', function () {
     return view('aboutUs');
 });
-
 
 

@@ -23,17 +23,16 @@
     </style>
 </head>
 <section class="container">
-    <a href="{{ url('/content/contentAnimes') }}" class="btn btn-primary" title="Home">
+    <a href="{{ url('/content/contentAnimes') }}" class="btn btn-primary btn-back" title="Home">
         Back
     </a>
 
-    {!! $shareComponent !!}
-    <h1 class="detail-title">{{$anime->name}}</h1>
+        <h1 class="detail-title">{{$anime->name}}</h1>
 
     <article class="more-info bg-dark p-3">
         <div class="d-flex nowrap">
             <h5 class="pe-2"><b>Género:</b></h5>
-            <p>{{$anime->genre_id}}</p>
+            <p>{{$anime->genre->name}}</p>
         </div>
         <div class="d-flex nowrap">
             <h5 class="pe-2"><b>Fecha de lanzamiento:</b></h5>
@@ -106,7 +105,14 @@
         @endif
     </article>
 
-
+    <!-- START TRAILER SECTION -->
+    @if($anime->trailer_link != null)
+        <iframe class="w-75" height="500" src="https://www.youtube.com/embed/{{$anime->trailer_link}}" allowfullscreen></iframe>
+        <div class="alert alert-dark w-75 m-auto" role="alert">
+            Si el vídeo da error es porque el link no funciona. Pero te invitamos a buscar el trailer en <a href="https://www.youtube.com/results?search_query={{$anime->name}} trailer">Youtube</a> y descubrir más sobre este anime
+        </div>
+    @endif
+    <!-- END TRAILER SECTION -->
 
 
 
