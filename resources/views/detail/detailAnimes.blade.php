@@ -122,6 +122,18 @@
         <div class="container my-5 py-5">
             <div class="row d-flex justify-content-center">
                 <div class="col-12">
+                    @if ($errors->has('description'))
+                        <div class="mt-2 alert alert-danger">
+                            No puedes publicar un comentario sin vacío!
+                        </div>
+                    @endif
+                    <div id="notify_user"></div>
+                    <div class="text-center pt-3 "><span id="character-counter"></span></div>
+                    <form method="POST" action="" id="create-comment" class="create_comment">
+                        @csrf
+                        <textarea name="description" id="description" cols="50" rows="3" placeholder="Escribe un comentario"></textarea>
+                        <button class="btn" type="submit" id="commentSubmit">Publicar</button>
+                    </form>
                     <div class="card card-comment bg-dark">
                         <div class="card-body card-body-comment p-4">
                             <h4 class="text-center mb-4 pb-2">Nested comments section</h4>
@@ -139,19 +151,6 @@
                             </div>
                         </div>
                     </div>
-                    @if ($errors->has('description'))
-                        <div class="mt-2 alert alert-danger">
-                            No puedes publicar un comentario sin vacío!
-                        </div>
-                    @endif
-                    <div id="notify_user"></div>
-                    <div class="text-center pt-3 "><span id="character-counter"></span></div>
-                    <form method="POST" action="" id="create-comment" class="create_comment">
-                        @csrf
-                        <textarea name="description" id="description" cols="50" rows="3" placeholder="Escribe un comentario"></textarea>
-                        <button class="btn" type="submit" id="commentSubmit">Publicar</button>
-                    </form>
-
                 </div>
             </div>
         </div>
