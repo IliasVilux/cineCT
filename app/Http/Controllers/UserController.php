@@ -56,14 +56,19 @@ class UserController extends Controller
             }
         }
 
+        /*
         $keys = array_keys($content);
         for ($i = 0; $i < count($content); $i++) {
             echo $keys[$i] . "{<br>";
             foreach ($content[$keys[$i]] as $key => $value) {
-                echo $key . " : " . $value . "<br>";
+                //echo $key . " : " . $value . "<br>";
+                echo $value->{'poster_path'};
             }
             echo "}<br>";
         }
+        */ 
+
+        //var_dump(empty($content['anime']));
 
         return view('search', ['content' => $content, 'search' => $search]);
     }
