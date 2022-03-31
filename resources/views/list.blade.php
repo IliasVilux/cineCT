@@ -11,6 +11,48 @@
 
 @else
     <h1>MIS LISTAS</h1>
+    {{$cont = 0}}
+    @foreach($userFavs['animes'] as $anime)
+        <div class="d-flex">
+            <a href="/detail/detailAnimes/{{$anime->anime_id}}" class="link-img-carousel">
+                <img src="{{$arrayAnimes[$cont][0]->poster_path}}" class="img-carousel px-3" alt="Img {{$arrayAnimes[$cont][0]->name}}">
+            </a>
+            <h1></h1>
+            {{$anime}}
+            <br>
+        </div>
+        {{$cont++}}
+    @endforeach
+
+    <br><br>
+
+    {{$cont = 0}}
+    @foreach($userFavs['films'] as $film)
+        <div class="d-flex">
+            <a href="/detail/detailFilms/{{$film->film_id}}" class="link-img-carousel">
+                <img src="{{$arrayFilms[$cont][0]->poster_path}}" class="img-carousel px-3" alt="Img {{$arrayFilms[$cont][0]->name}}">
+            </a>
+            <h1></h1>
+            {{$film}}
+            <br>
+        </div>
+        {{$cont++}}
+    @endforeach
+
+    <br><br>
+
+    {{$cont = 0}}
+    @foreach($userFavs['series'] as $serie)
+        <div class="d-flex">
+            <a href="/detail/detailSeries/{{$serie->serie_id}}" class="link-img-carousel">
+                <img src="{{$arraySeries[$cont][0]->poster_path}}" class="img-carousel px-3" alt="Img {{$arraySeries[$cont][0]->name}}">
+            </a>
+            <h1></h1>
+            {{$serie}}
+            <br>
+        </div>
+        {{$cont++}}
+    @endforeach
     <a href="{{ url('/') }}" class="btn btn-primary" title="Home">
         Home
     </a>
