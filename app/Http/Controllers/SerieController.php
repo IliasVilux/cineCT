@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Serie;
+use App\Models\Genre;
 use App\Models\Image;
 use App\Models\Review;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 class SerieController extends Controller
