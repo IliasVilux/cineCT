@@ -25,7 +25,7 @@
         @include('includes.session')
     @else
         <section class="section-signin-register d-flex flex-wrap justify-content-center h-100 p-5">
-            <div class="col-12 col-sm-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6 p-sm-5 p-sm-5">
+            <div class="col-12 col-md-10 col-lg-9 col-xl-8 col-xxl-6 p-sm-5 p-sm-5">
                 <ul class="nav nav-tabs" id="myTab">
                     <li class="nav-item">
                         <a href="#logIn" class="nav-link active" data-bs-toggle="tab">Log In</a>
