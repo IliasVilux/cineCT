@@ -24,7 +24,7 @@
     </style>
 </head>
 <section class="container">
-    <a href="{{ url('/content/contentAnimes') }}" class="btn btn-purple m-0 my-4" title="Home"> Back</a>
+    <a href="{{ url('/content/contentAnimes') }}" class="btn button-purple m-0 my-4" title="Home"> Back</a>
 
     <h1 class="detail-title">{{$anime->name}}</h1>
 
@@ -72,7 +72,7 @@
                         <input name="stars" id="e9" type="radio" value="2"><label for="e9">☆</label>
                         <input name="stars" id="e10" type="radio" value="1"><label for="e10">☆</label>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-sm">Enviar</button>
+                    <button type="submit" class="btn button-purple btn-sm">Enviar</button>
                 </form>
                 <?php
                 if (isset($_GET['stars'])) {
@@ -83,7 +83,7 @@
                 ?>
             </div>
             <div class="social-media-links my-2">
-                <a type="button" class="btn btn-primary" href="#demo" data-bs-toggle="collapse"><i
+                <a type="button" class="btn button-purple" href="#demo" data-bs-toggle="collapse"><i
                         class="fas fa-share-alt"></i></a>
                 <div id="demo" class="collapse">{!! $shareComponent !!}</div>
             </div>
@@ -93,7 +93,7 @@
 
     <!-- <h3><b>Creado:</b> {{$anime->created_at}}</h3>
         <h3><b>Ultima actualización:</b> {{$anime->updated_at}}</h3> -->
-    <a class="btn btn-primary" class="add-comment" href="#create-comment">Añadir comentario</a>
+    <a class="btn button-purple" class="add-comment" href="#create-comment">Añadir comentario</a>
 </section>
 
 <!-- START COMMMENT SECTION -->

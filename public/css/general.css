@@ -9,6 +9,11 @@ html, main, body {
   margin-top: 15px;
   margin-left: 20px;
 }
+.button-purple:hover{
+  border: 2px solid #FFFFFF;
+  color: white;
+  background-color: #5A3C97;
+}
 
 /* Img slider */
 .slider {
