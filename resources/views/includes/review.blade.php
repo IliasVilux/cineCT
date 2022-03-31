@@ -1,6 +1,6 @@
     <div class="d-flex flex-start mb-4">
         <div>
-            <img class="rounded-circle shadow-1-strong me-3" src="{{ $profile->path }}" alt="13" width="65"
+            <img class="rounded-circle shadow-1-strong me-3" src="{{ $profile[0]->path }}" alt="13" width="65"
                 height="65" />
         </div>
         <div class="flex-grow-1 flex-shrink-1">
