@@ -25,37 +25,46 @@ class UserController extends Controller
     {
         $search = $request->input('search');
 
-        $content = array();
-      
-        if($search){
-            $films = Film::where('name', 'LIKE', '%'.$search.'%')->get();
-            $series = Serie::where('name', 'LIKE', '%'.$search.'%')->get();
-            $animes = Anime::where('name', 'LIKE', '%'.$search.'%')->get();
-        }
-        
-        if(count($films) != 0 && !empty($films)){
-            foreach($films as $film){
-                array_push($content, $film);
+        $content = array(
+            'film' => array(),
+            'serie' => array(),
+            'anime' => array(),
+        );
+
+        $films = Film::where('name', 'LIKE', '%' . $search . '%')->get();
+        $series = Serie::where('name', 'LIKE', '%' . $search . '%')->get();
+        $animes = Anime::where('name', 'LIKE', '%' . $search . '%')->get();
+
+        if (!is_null($search) && !empty($search) && $search != '') {
+
+            if (count($films) != 0 && !empty($films)) {
+                foreach ($films as $film) {
+                    array_push($content['film'], $film);
+                }
             }
-            echo '<br>';
-        }
 
-        if(count($series) != 0 && !empty($series)){
-            foreach($series as $serie){
-                array_push($content, $serie);
+            if (count($series) != 0 && !empty($series)) {
+                foreach ($series as $serie) {
+                    array_push($content['serie'], $serie);
+                }
             }
-            echo '<br>';
-        }
 
-        if(count($animes) != 0 && !empty($animes)){
-            foreach($animes as $anime){
-                array_push($content, $anime);
+            if (count($animes) != 0 && !empty($animes)) {
+                foreach ($animes as $anime) {
+                    array_push($content['anime'], $anime);
+                }
             }
-            echo '<br>';
         }
 
-        return view ('search', ['content' => $content, 'search' => $search]);
+        $keys = array_keys($content);
+        for ($i = 0; $i < count($content); $i++) {
+            echo $keys[$i] . "{<br>";
+            foreach ($content[$keys[$i]] as $key => $value) {
+                echo $key . " : " . $value . "<br>";
+            }
+            echo "}<br>";
+        }
 
+        return view('search', ['content' => $content, 'search' => $search]);
     }
-    
 }
