@@ -24,7 +24,7 @@
     </style>
 </head>
 <section class="container">
-    <a href="{{ url('/content/contentAnimes') }}" class="btn button-purple m-0 my-4" title="Home"> Back</a>
+    <a href="{{ url('/content/contentAnimes') }}" class="btn button-purple my-4" title="Back"> Back</a>
 
     <h1 class="detail-title">{{$anime->name}}</h1>
 

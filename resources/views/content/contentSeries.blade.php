@@ -15,14 +15,38 @@
                 aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
-            <div class="carousel-item full active">
-                <img class="full-img" src="/img/SquidGame.jpg" alt="">
+            <div class="carousel-item full text-center active">
+                <a href="/detail/detailSeries/37" class="link-img-carousel">
+                    <img src="{{$serie[36]->poster_path}}" class="img-carousel px-3" alt="Img {{$serie[36]->name}}">
+                </a>
+                <a href="/detail/detailSeries/38" class="link-img-carousel">
+                    <img src="{{$serie[37]->poster_path}}" class="img-carousel px-3" alt="Img {{$serie[37]->name}}">
+                </a>
+                <a href="/detail/detailSeries/39" class="link-img-carousel">
+                    <img src="{{$serie[38]->poster_path}}" class="img-carousel px-3" alt="Img {{$serie[38]->name}}">
+                </a>
             </div>
-            <div class="carousel-item full">
-                <img class="full-img" src="/img/uncharted.jpg" alt="">
+            <div class="carousel-item full text-center">
+                <a href="/detail/detailSeries/40" class="link-img-carousel">
+                    <img src="{{$serie[39]->poster_path}}" class="img-carousel px-3" alt="Img {{$serie[39]->name}}">
+                </a>
+                <a href="/detail/detailSeries/41" class="link-img-carousel">
+                    <img src="{{$serie[40]->poster_path}}" class="img-carousel px-3" alt="Img {{$serie[40]->name}}">
+                </a>
+                <a href="/detail/detailSeries/42" class="link-img-carousel">
+                    <img src="{{$serie[41]->poster_path}}" class="img-carousel px-3" alt="Img {{$serie[41]->name}}">
+                </a>
             </div>
-            <div class="carousel-item full">
-                <img class="full-img" src="/img/Kimetsu.jpg" alt="">
+            <div class="carousel-item full text-center">
+                <a href="/detail/detailSeries/43" class="link-img-carousel">
+                    <img src="{{$serie[42]->poster_path}}" class="img-carousel px-3" alt="Img {{$serie[42]->name}}">
+                </a>
+                <a href="/detail/detailSeries/44" class="link-img-carousel">
+                    <img src="{{$serie[43]->poster_path}}" class="img-carousel px-3" alt="Img {{$serie[43]->name}}">
+                </a>
+                <a href="/detail/detailSeries/45" class="link-img-carousel">
+                    <img src="{{$serie[44]->poster_path}}" class="img-carousel px-3" alt="Img {{$serie[44]->name}}">
+                </a>
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -67,13 +91,13 @@
 <section class="container py-4">
     <h5>Series</h5>
     @if(!empty($serie))
-    <div class="content d-flex flex-wrap align-items-streach justify-content-center">
+    <div class="content d-flex flex-wrap align-items-stretch justify-content-center">
         @foreach($serie as $serie)
-        <a href="/detail/detailSeries/{{$serie->id}}" class="image-link col-2 p-2">
+        <a href="/detail/detailSeries/{{$serie->id}}" class="image-link col-3 col-sm-2 p-2">
             @if($serie->poster_path === NULL)
-            <img src="/img/NoImg.jpg" alt="">
+            <img src="/img/NoImg.jpg" class="img-content col-12" alt="">
             @else
-            <img src="{{$serie->poster_path}}" alt="">
+            <img src="{{$serie->poster_path}}" class="img-content col-12" alt="">
             @endif
         </a>
         @endforeach

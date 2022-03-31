@@ -24,7 +24,7 @@
     @if (Auth::user())
         @include('includes.session')
     @else
-        <section class="section-signin-register d-flex flex-wrap justify-content-center h-100 p-5">
+        <section class="section-signin-register d-flex flex-wrap justify-content-center h-100 p-4">
             <div class="col-12 col-md-10 col-lg-9 col-xl-8 col-xxl-6 p-sm-5 p-sm-5">
                 <ul class="nav nav-tabs" id="myTab">
                     <li class="nav-item">
@@ -117,7 +117,7 @@
                                         <label class="form-check-label mx-2" value="1" for="rememberData"> Remember me</label>
                                     </div>
 
-                                    <button class="btn btn-primary btn-lg btn-block mt-0" id="btn-login" type="submit">Login</button>
+                                    <button class="btn button-purple btn-lg btn-block mt-0" id="btn-login" type="submit">Login</button>
 
                                     <hr class="my-4">
 
@@ -214,7 +214,7 @@
                                         </label>
                                     </div>
 
-                                    <button class="btn btn-primary btn-lg btn-block m-0" id="btn-register" type="submit">Register</button>
+                                    <button class="btn button-purple btn-lg btn-block m-0" id="btn-register" type="submit">Register</button>
                                 </form>
                             </div>
                         </div>

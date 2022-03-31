@@ -6,8 +6,7 @@ html, main, body {
 .button-purple{
   color: #FFFFFF;
   border: 2px solid #5A3C97;
-  margin-top: 15px;
-  margin-left: 20px;
+  background-color: #16181d;
 }
 .button-purple:hover{
   border: 2px solid #FFFFFF;

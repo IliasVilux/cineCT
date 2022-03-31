@@ -27,7 +27,7 @@
     </style>
 </head>
 <section class="container">
-    <a href="{{ url('/content/contentSeries') }}" class="btn btn-primary btn-back" title="Home">
+    <a href="{{ url('/content/contentSeries') }}" class="btn button-purple my-4" title="Back">
         Back
     </a>
 
@@ -73,7 +73,7 @@
                     <input name="stars" id="e9" type="radio" value="2"><label for="e9">☆</label>
                     <input name="stars" id="e10" type="radio" value="1"><label for="e10">☆</label>
                 </div>
-                <button type="submit" class="btn btn-primary btn-sm">Enviar</button>
+                <button type="submit" class="btn button-purple btn-sm">Enviar</button>
             </form>
             <?php
             if (isset($_GET['stars'])) {
@@ -86,7 +86,7 @@
     </article>
     <article>
         <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-share-alt"></i></button> -->
-        <a type="button" class="btn btn-primary" href="#demo" data-bs-toggle="collapse"><i class="fas fa-share-alt"></i></a>
+        <a type="button" class="btn button-purple" href="#demo" data-bs-toggle="collapse"><i class="fas fa-share-alt"></i></a>
         <!-- Modal -->
         <!-- <div class="modal fade-scale" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -116,7 +116,7 @@
 
     <!-- <h3><b>Creado:</b> {{$serie->created_at}}</h3>
         <h3><b>Ultima actualización:</b> {{$serie->updated_at}}</h3> -->
-        <a class="btn btn-primary" class="add-comment" href="#create-comment">Añadir comentario</a>
+        <a class="btn button-purple" class="add-comment" href="#create-comment">Añadir comentario</a>
 </section>
 
 <!-- START COMMMENT SECTION -->

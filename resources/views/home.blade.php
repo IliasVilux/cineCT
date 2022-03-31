@@ -73,7 +73,7 @@
     <!-- PELÍCULAS -->
     <div class="container-fluid d-flex justify-content-between">
         <h5>PELÍCULAS</h5>
-        <a href="{{asset('/content/contentFilms')}}"><button type="button" class="btn btn-more">View more</button></a>
+        <a href="{{asset('/content/contentFilms')}}"><button type="button" class="btn button-purple">View more</button></a>
     </div>
     <div class="container-fluid d-flex flex-row align-items-center" id="container">
         <a class="btn-floating" href="#films" data-bs-slide="prev"><i class="fa fa-chevron-left fa-2x"
@@ -130,7 +130,7 @@
     <!-- SERIES -->
     <div class="container-fluid d-flex justify-content-between">
         <h5>SERIES</h5>
-        <a href="{{asset('/content/contentSeries')}}"><button type="button" class="btn btn-more">View more</button></a>
+        <a href="{{asset('/content/contentSeries')}}"><button type="button" class="btn button-purple">View more</button></a>
     </div>
     <div class="container-fluid d-flex flex-row align-items-center" id="container">
         <a class="btn-floating" href="#series" data-bs-slide="prev"><i class="fa fa-chevron-left fa-2x"
@@ -187,7 +187,7 @@
     <!-- ANIME -->
     <div class="container-fluid d-flex justify-content-between">
         <h5>ANIME</h5>
-        <a href="{{asset('/content/contentAnimes')}}"><button type="button" class="btn btn-more">View more</button></a>
+        <a href="{{asset('/content/contentAnimes')}}"><button type="button" class="btn button-purple">View more</button></a>
     </div>
     <div class="container-fluid d-flex flex-row align-items-center" id="container">
         <a class="btn-floating" href="#animes" data-bs-slide="prev"><i class="fa fa-chevron-left fa-2x"

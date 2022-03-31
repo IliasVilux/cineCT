@@ -23,7 +23,7 @@
     </style>
 </head>
 <section class="container">
-    <a href="{{ url('/content/contentFilms') }}" class="btn btn-primary btn-back" title="Home">
+    <a href="{{ url('/content/contentFilms') }}" class="btn button-purple my-4" title="Back">
         Back
     </a>
 
@@ -48,11 +48,6 @@
                 <h5 class="pe-2"><b>Duración:</b></h5>
                 <p> {{$film->duration}} min</p>
             </div>
-
-            <div class="d-flex nowrap">
-                <h5 class="pe-2"><b>Episodios:</b></h5>
-                <p> {{$film->total_episodes}}</p>
-            </div>
             <div class="d-flex nowrap">
                 <h5 class="pe-2"><b>Puntuación:</b></h5>
                 <p><i class="fas fa-star"></i>
@@ -73,18 +68,16 @@
                         <input name="stars" id="e9" type="radio" value="2"><label for="e9">☆</label>
                         <input name="stars" id="e10" type="radio" value="1"><label for="e10">☆</label>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-sm">Enviar</button>
+                    <button type="submit" class="btn button-purple btn-sm">Enviar</button>
                 </form>
                 <?php
                 if (isset($_GET['stars'])) {
                     echo '<div class="alert alert-success">Rating recibido: <strong>'.$_GET['stars'].'</strong>.</div>';
-                }elseif ((isset($_GET['stars']) == "")){
-    
-                }
+                }elseif ((isset($_GET['stars']) == ""))
                 ?>
             </div>
             <div class="social-media-links my-2">
-                <a type="button" class="btn btn-primary" href="#demo" data-bs-toggle="collapse"><i
+                <a type="button" class="btn button-purple" href="#demo" data-bs-toggle="collapse"><i
                         class="fas fa-share-alt"></i></a>
                 <div id="demo" class="collapse">{!! $shareComponent !!}</div>
             </div>
@@ -94,7 +87,7 @@
 
     <!-- <h3><b>Creado:</b> {{$film->created_at}}</h3>
         <h3><b>Ultima actualización:</b> {{$film->updated_at}}</h3> -->
-    <a class="btn btn-primary" class="add-comment" href="#create-comment">Añadir comentario</a>
+    <a class="btn button-purple" class="add-comment" href="#create-comment">Añadir comentario</a>
 </section>
 
 <!-- START COMMMENT SECTION -->
@@ -130,7 +123,7 @@
                     <form method="POST" action="" id="create-comment" class="create_comment">
                         @csrf
                         <textarea name="description" id="description" cols="50" rows="3" placeholder="Escribe un comentario"></textarea>
-                        <button class="btn" type="submit" id="commentSubmit">Publicar</button>
+                        <button class="btn button-purple mt-3" type="submit" id="commentSubmit">Publicar</button>
                     </form>
 
                 </div>
