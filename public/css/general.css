@@ -2,3 +2,10 @@ html, main, body {
   background: #16181d;
   color: #FFFFFF;
 }
+
+.button-purple{
+  color: #FFFFFF;
+  border: 2px solid #5A3C97;
+  margin-top: 15px;
+  margin-left: 20px;
+}

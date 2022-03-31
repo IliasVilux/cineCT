@@ -15,14 +15,38 @@
                 aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
-            <div class="carousel-item full active">
-                <img class="full-img" src="/img/SquidGame.jpg" alt="">
+            <div class="carousel-item full text-center active">
+                <a href="/detail/detailFilms/37" class="link-img-carousel">
+                    <img src="{{$film[36]->poster_path}}" class="img-carousel px-3" alt="Img {{$film[36]->name}}">
+                </a>
+                <a href="/detail/detailFilms/38" class="link-img-carousel">
+                    <img src="{{$film[37]->poster_path}}" class="img-carousel px-3" alt="Img {{$film[37]->name}}">
+                </a>
+                <a href="/detail/detailFilms/39" class="link-img-carousel">
+                    <img src="{{$film[38]->poster_path}}" class="img-carousel px-3" alt="Img {{$film[38]->name}}">
+                </a>
             </div>
-            <div class="carousel-item full">
-                <img class="full-img" src="/img/uncharted.jpg" alt="">
+            <div class="carousel-item full text-center">
+                <a href="/detail/detailFilms/40" class="link-img-carousel">
+                    <img src="{{$film[39]->poster_path}}" class="img-carousel px-3" alt="Img {{$film[39]->name}}">
+                </a>
+                <a href="/detail/detailFilms/41" class="link-img-carousel">
+                    <img src="{{$film[40]->poster_path}}" class="img-carousel px-3" alt="Img {{$film[40]->name}}">
+                </a>
+                <a href="/detail/detailFilms/42" class="link-img-carousel">
+                    <img src="{{$film[41]->poster_path}}" class="img-carousel px-3" alt="Img {{$film[41]->name}}">
+                </a>
             </div>
-            <div class="carousel-item full">
-                <img class="full-img" src="/img/Kimetsu.jpg" alt="">
+            <div class="carousel-item full text-center">
+                <a href="/detail/detailFilms/43" class="link-img-carousel">
+                    <img src="{{$film[42]->poster_path}}" class="img-carousel px-3" alt="Img {{$film[42]->name}}">
+                </a>
+                <a href="/detail/detailFilms/44" class="link-img-carousel">
+                    <img src="{{$film[43]->poster_path}}" class="img-carousel px-3" alt="Img {{$film[43]->name}}">
+                </a>
+                <a href="/detail/detailFilms/45" class="link-img-carousel">
+                    <img src="{{$film[44]->poster_path}}" class="img-carousel px-3" alt="Img {{$film[44]->name}}">
+                </a>
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"

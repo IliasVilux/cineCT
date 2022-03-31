@@ -3,11 +3,11 @@ main {
     margin: 0px;
 }
 
+/* Img slider */
 .slider {
     height: 50%;
 }
 
-/* Img slider */
 .full-img {
     width: 100%;
     height: 500px;
@@ -17,27 +17,33 @@ main {
     height: 500px;
 }
 
+.section-content {
+    width: 90%;
+    padding: 2em 0em;
+}
+
+.carousel.slide.carousel-equal-heights {
+    width: 100%;
+}
+
+a.link-img-carousel {
+    color: transparent;
+}
+
+div#container {
+    width: 90%;
+}
+
+/* BUTTONS FILTER */
 .button-category {
     width: 24%;
     height: 80px;
     margin-top: 10px;
     background: linear-gradient(to bottom, black 25%, #9966ff 150%);
-    ;
     color: white;
 }
 
-a.image-link {
-    width: 172px;
-    height: 256px;
-}
-
-img {
-    width: 100%;
-    height: 100%;
-}
-
 /* Content */
-
 .form-select {
     width: 10%;
 }

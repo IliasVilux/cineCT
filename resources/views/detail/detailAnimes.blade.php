@@ -3,6 +3,7 @@
 
 <head>
     <link rel="stylesheet" href="{{asset('css/detail.css')}}">
+    <link rel="stylesheet" href="{{asset('css/general.css')}}">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <style>
     div#social-links {
@@ -23,9 +24,7 @@
     </style>
 </head>
 <section class="container">
-    <a href="{{ url('/content/contentAnimes') }}" class="btn btn-primary btn-back" title="Home">
-        Back
-    </a>
+    <a href="{{ url('/content/contentAnimes') }}" class="btn btn-purple m-0 my-4" title="Home"> Back</a>
 
     <h1 class="detail-title">{{$anime->name}}</h1>
     <article class="d-flex flex-column flex-sm-row flex-sm-wrap justify-content-between mt-4">
@@ -131,7 +130,7 @@
                     @csrf
                     <textarea name="description" id="description" cols="50" rows="3"
                         placeholder="Escribe un comentario"></textarea>
-                    <button class="btn" type="submit" id="commentSubmit">Publicar</button>
+                    <button class="btn button-purple" type="submit" id="commentSubmit">Publicar</button>
                 </form>
 
             </div>

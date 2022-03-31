@@ -1,22 +1,19 @@
+html{
+    scroll-behavior: smooth;
+}
+
+/* EXTRA INFO AT THE RIGHT */
+.more-info{
+    float: right;
+    height: 410px;
+}
+
 i.fas.fa-star {
     color: yellow;
 }
 
 p.description {
     text-align: justify;
-}
-
-html{
-    scroll-behavior: smooth;
-}
-
-.more-info{
-    float: right;
-    height: 410px;
-}
-
-.btn.btn-primary.btn-back {
-    margin: 10px 0px;
 }
 
 /* STAR */
@@ -49,6 +46,7 @@ html{
     cursor: pointer;
 }
 
+/* COMMENTS */
 .create_comment{
     display: flex;
     flex-direction: column;
@@ -67,13 +65,6 @@ html{
     outline: none;
     width: 75%;
     color: #FFFFFF;
-}
-
-#commentSubmit{
-    color: #FFFFFF;
-    border: 2px solid #5A3C97;
-    margin-top: 15px;
-    margin-left: 20px;
 }
 
 /*mientras esté insertando el comment a la base de datos le aplicamos esta classe*/

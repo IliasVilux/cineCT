@@ -25,10 +25,12 @@
         <nav class="navbar navbar-expand-xs">
             <div class="container-fluid">
                 <div class="col-9">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
-                        <span class="navbar-toggler-icon"></span></button>
-                        <a class="navbar-brand col-8 text-center" href="{{ url('/') }}"><img src="/img/CinectLogo.svg" class="logo"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                        <a class="navbar-brand col-8 text-center" href="{{ url('/') }}">
+                            <img src="/img/CinectLogo.svg" class="logo">
+                        </a>
                 </div>
                 <div class="col-3 d-flex flex-direction-row flex-nowrap justify-content-end align-items-center">
                 <a href="{{ url('/search') }}" class="footer-links text-light text-uppercase fs-3"><i class="fas fa-search text-light fs-4 p-0"></i></a>
@@ -72,47 +74,52 @@
                 </div>
                 <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
                     aria-labelledby="offcanvasWithBothOptionsLabel">
-                    <div class="offcanvas-header">
-                        <h1 class="offcanvas-title text-uppercase" id="offcanvasWithBothOptionsLabel">Menu</h1>
+                    <div class="offcanvas-header p-4">
+                        <h1 class="menu-title text-uppercase m-0" id="offcanvasWithBothOptionsLabel">Menu</h1>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
                             aria-label="Close"></button>
                     </div>
-                    <div class="offcanvas-body">
-                        <ul class="list-unstyled text-dark">
+                    <div class="offcanvas-body px-4">
+                        <ul class="list-unstyled">
                             <li>
-                                <a href="{{ url('/') }}" class="footer-links text-light text-uppercase fs-3"><i
-                                        class="fas fa-home pe-2"></i>Home</a>
+                                <a href="{{ url('/') }}" class="footer-links text-light text-uppercase fs-3 m-0">
+                                    <i class="fas fa-home pe-2"></i>Home
+                                </a>
                             </li>
                             <li>
-                                <a href="{{ url('/content/contentFilms') }}"
-                                    class="footer-links text-light text-uppercase fs-3"><i
-                                        class="fas fa-film pe-2 fa-2x"></i>Películas</a>
+                                <a href="{{ url('/content/contentFilms') }}" class="footer-links text-light text-uppercase fs-3 m-0">
+                                    <i class="fas fa-film pe-2 fa-2x"></i>Películas
+                                </a>
                             </li>
                             <li>
-                                <a href="{{ url('/content/contentSeries') }}"
-                                    class="footer-links text-light text-uppercase fs-3"><i
-                                        class="fas fa-tv pe-2"></i>Series</a>
+                                <a href="{{ url('/content/contentSeries') }}" class="footer-links text-light text-uppercase fs-3 m-0">
+                                    <i class="fas fa-tv pe-2"></i>Series
+                                </a>
                             </li>
                             <li>
-                                <a href="{{ url('/content/contentAnimes') }}"
-                                    class="footer-links text-light text-uppercase fs-3"><i
-                                        class="fas fa-dragon pe-2"></i>Anime</a>
+                                <a href="{{ url('/content/contentAnimes') }}" class="footer-links text-light text-uppercase fs-3 m-0">
+                                    <i class="fas fa-dragon pe-2"></i>Anime
+                                </a>
                             </li>
                             <li>
-                                <a href="{{ url('/top') }}" class="footer-links text-light text-uppercase fs-3"><i
-                                        class="fas fa-sort-amount-up-alt pe-2"></i>Top</a>
+                                <a href="{{ url('/top') }}" class="footer-links text-light text-uppercase fs-3 m-0">
+                                    <i class="fas fa-sort-amount-up-alt pe-2"></i>Top
+                                </a>
                             </li>
                             <li>
-                                <a href="{{ url('/search') }}" class="footer-links text-light text-uppercase fs-3"><i
-                                        class="fas fa-search pe-2"></i>Buscador</a>
+                                <a href="{{ url('/search') }}" class="footer-links text-light text-uppercase fs-3 m-0">
+                                    <i class="fas fa-search pe-2"></i>Buscador
+                                </a>
                             </li>
                             <li>
-                                <a href="{{ route('user.favorite.list') }}" class="footer-links text-light text-uppercase fs-3"><i
-                                        class="fas fa-th-list pe-2"></i>Mis Listas</a>
+                                <a href="{{ route('user.favorite.list') }}" class="footer-links text-light text-uppercase fs-3 m-0">
+                                    <i class="fas fa-th-list pe-2"></i>Mis Listas
+                                </a>
                             </li>
                             <li>
-                                <a href="{{ url('/aboutUs') }}" class="footer-links text-light text-uppercase fs-3"><i
-                                        class="fas fa-user pe-2"></i>Sobre Nosotros</a>
+                                <a href="{{ url('/aboutUs') }}" class="footer-links text-light text-uppercase fs-3 m-0">
+                                    <i class="fas fa-user pe-2"></i>Sobre Nosotros
+                                </a>
                             </li>
                         </ul>
                     </div>
