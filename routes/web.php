@@ -8,6 +8,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\ModelRelationshipTest;
 use App\Models\Genre;
 use App\Models\Serie;
 use App\Models\Films;
@@ -115,3 +116,5 @@ Route::get('/aboutUs', function () {
 });
 
 
+
+Route::get('/testing/models', [ModelRelationshipTest::class, 'tests'])->name('model.testing');
