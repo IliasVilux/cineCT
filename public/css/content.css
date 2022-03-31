@@ -26,12 +26,15 @@ main {
     width: 100%;
 }
 
-a.link-img-carousel {
+.link-img-carousel {
     color: transparent;
 }
 
-div#container {
+#container {
     width: 90%;
+}
+.img-carousel{
+    height: 500px;
 }
 
 /* BUTTONS FILTER */
@@ -44,6 +47,7 @@ div#container {
 }
 
 /* Content */
-.form-select {
-    width: 10%;
+.img-content{
+    width: 100%;
+    height: 100%;
 }

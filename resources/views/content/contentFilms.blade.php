@@ -91,13 +91,13 @@
 <section class="container py-4">
     <h5>PELÍCULAS</h5>
     @if(!empty($film))
-    <div class="content d-flex flex-wrap align-items-streach justify-content-center">
+    <div class="content d-flex flex-wrap align-items-stretch justify-content-center">
         @foreach($film as $film)
-        <a href="/detail/detailFilms/{{$film->id}}" class="image-link col-2 p-2">
+        <a href="/detail/detailFilms/{{$film->id}}" class="image-link col-3 col-sm-2 p-2">
             @if($film->poster_path === NULL)
-            <img src="/img/NoImg.jpg" alt="">
+            <img src="/img/NoImg.jpg" class="img-content col-12" alt="">
             @else
-            <img src="{{$film->poster_path}}" alt="">
+            <img src="{{$film->poster_path}}" class="img-content col-12" alt="">
             @endif
         </a>
         @endforeach
