@@ -110,6 +110,6 @@
 </section>
 {{-- Pagination --}}
 <div class="d-flex justify-content-center">
-    {{ $films->links() }}
+   {{ $paginator->links('content.contentFilms') }}
 </div>
 @endsection
