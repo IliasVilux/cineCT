@@ -27,9 +27,9 @@ class UserController extends Controller
         $search = $request->input('search');
 
         $content = array(
-            'film' => array(),
-            'serie' => array(),
-            'anime' => array(),
+            'films' => array(),
+            'series' => array(),
+            'animes' => array(),
         );
 
         $films = Film::where('name', 'LIKE', '%' . $search . '%')->get();
@@ -40,19 +40,19 @@ class UserController extends Controller
 
             if (count($films) != 0 && !empty($films)) {
                 foreach ($films as $film) {
-                    array_push($content['film'], $film);
+                    array_push($content['films'], $film);
                 }
             }
 
             if (count($series) != 0 && !empty($series)) {
                 foreach ($series as $serie) {
-                    array_push($content['serie'], $serie);
+                    array_push($content['series'], $serie);
                 }
             }
 
             if (count($animes) != 0 && !empty($animes)) {
                 foreach ($animes as $anime) {
-                    array_push($content['anime'], $anime);
+                    array_push($content['animes'], $anime);
                 }
             }
         }

@@ -5,7 +5,7 @@
             quieres hacer?</p>
         <div class="d-flex flex-column">
             <a href="{{ route('home') }}" class="btn btn-violet mb-2"><i class="fas fa-home"></i> Volver</a>
-            <a href="{{ route('signout.user') }}" class="btn btn-violet"><i class="fas fa-sign-out-alt"></i>Cerrar sessión</a>
+            <a href="{{ route('signout.user') }}" class="btn btn-violet"><i class="fas fa-sign-out-alt"></i> Cerrar sessión</a>
         </div>
     </div>
 </div>

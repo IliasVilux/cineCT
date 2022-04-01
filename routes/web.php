@@ -108,7 +108,8 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     Route::post('/anime/comment/save/{id}', [ReviewController::class, 'postStoreAnimeReview'])->name('comment.save.anime');
 
    //Route::get('/content/{search?}', [UserController::class, 'searchContent'])->name('search.content'); 
-   Route::post('/content/{search}', [UserController::class, 'searchContent'])->name('search.content'); 
+   //Route::get('/content/search', [UserController::class, 'searchContent'])->name('search-content'); 
+   Route::get('/content/{search?}', [UserController::class, 'searchContent'])->name('search-content'); 
    
 });
 

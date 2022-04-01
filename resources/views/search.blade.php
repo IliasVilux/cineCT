@@ -11,24 +11,22 @@
         <a href="{{ url('home') }}" class="btn btn-primary mb-3" title="Home">
             Home
         </a>
-        <form action="{{ route('search.content') }}">
-            @csrf
+        <form action="{{ route('search-content') }}" method="GET">
             <div class="input-group">
-                <input type="text" class="form-control" id="search" name="search" placeholder="Dragon ball">
+                <input type="text" class="form-control" id="search-content" name="search" placeholder="Dragon ball">
                 <button class="btn btn-outline-light" type="submit" id="submitSearch"><i class="fas fa-search"></i></button>
             </div>
         </form>
     </section>
 
     <section class="container py-4">
-        @if (!empty($content['anime']) || !empty($content['anime']) || !empty($content['anime']))
+        @if (!empty($content['films']) || !empty($content['series']) || !empty($content['animes']))
             <p style="text-align:start; margin-bottom:20px; padding-left:5px; border-left:3px solid #5A3C97">Resultados
                 encontrados con: <strong>{{ $search }}</strong></p>
-            @for ($data = 0; $data < count($content); $data++)
-                @foreach ($content[array_keys($content)[$data]] as $key => $value)
-                    <div class="content d-flex flex-wrap align-items-streach justify-content-center searchcontent">
-
-                        <a href="/detail/detail{{ ucfirst(array_keys($content)[$data]) }}s/{{ $value->id }}"
+            <div class="content d-flex flex-wrap align-items-streach justify-content-center searchcontent">
+                @for ($data = 0; $data < count($content); $data++)
+                    @foreach ($content[array_keys($content)[$data]] as $key => $value)
+                        <a href="/detail/detail{{ ucfirst(array_keys($content)[$data]) }}/{{ $value->id }}"
                             class="image-link col-2 p-2">
 
 
@@ -39,12 +37,16 @@
                             @endif
 
                         </a>
-
-                    </div>
-                @endforeach
-            @endfor
+                    @endforeach
+                @endfor
+            </div>
         @else
-            @if (isset($search) && !empty($search))
+            @if ($errors->has('search'))
+                <div class="mt-2 alert alert-danger">
+                    Error
+                </div>
+            @endif
+            @if (isset($search))
                 <h5 class="text-center">No se ha encontrado ningun resultador con <span
                         style="opacity:0.8;">{{ $search }}</span></h5>
             @endif
@@ -53,7 +55,10 @@
 
 
     <script type="text/javascript">
+
         
-    </script>
+
+
+    </script> 
 
 @endsection
