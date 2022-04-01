@@ -195,7 +195,7 @@
                         <div><img class="rounded-circle shadow-1-strong me-3" src="{{ $profile[0]->path }}" alt="13" width="65" height="65" /></div>
                         <div class="flex-grow-1 flex-shrink-1"><div>
                             <div class="d-flex justify-content-between align-items-center">
-                                <p class="mb-1">{{ Auth::user()->name }} <span class="text-muted" id="last-comment-${contador}">{{\DateTimeFormat::timeFilter($comment->created_at})}}</span></p> 
+                                <p class="mb-1">{{ Auth::user()->name }} <span class="text-muted" id="last-comment-${contador}">{{\DateTimeFormat::timeFilter($comments[0]->created_at)}}</span></p> 
                                 <a href="#!"><i class="fas fa-reply fa-xs"></i><span class="text-muted">reply</span></a> 
                             </div>
                             <p class="small mb-0 comment">${ response.comment['description'] }</p>
