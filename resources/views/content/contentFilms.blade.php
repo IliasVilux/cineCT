@@ -16,39 +16,40 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item full text-center active">
-                <a href="/detail/detailFilms/37" class="link-img-carousel">
-                    <img src="{{$film[36]->poster_path}}" class="img-carousel px-3" alt="Img {{$film[36]->name}}">
+                <a href="/detail/detailFilms/1" class="link-img-carousel">
+                    <img src="{{$films[0]->poster_path}}" class="img-carousel px-3" alt="Img {{$films[0]->name}}">
                 </a>
-                <a href="/detail/detailFilms/38" class="link-img-carousel">
-                    <img src="{{$film[37]->poster_path}}" class="img-carousel px-3" alt="Img {{$film[37]->name}}">
+                <a href="/detail/detailFilms/2" class="link-img-carousel">
+                    <img src="{{$films[1]->poster_path}}" class="img-carousel px-3" alt="Img {{$films[1]->name}}">
                 </a>
-                <a href="/detail/detailFilms/39" class="link-img-carousel">
-                    <img src="{{$film[38]->poster_path}}" class="img-carousel px-3" alt="Img {{$film[38]->name}}">
-                </a>
-            </div>
-            <div class="carousel-item full text-center">
-                <a href="/detail/detailFilms/40" class="link-img-carousel">
-                    <img src="{{$film[39]->poster_path}}" class="img-carousel px-3" alt="Img {{$film[39]->name}}">
-                </a>
-                <a href="/detail/detailFilms/41" class="link-img-carousel">
-                    <img src="{{$film[40]->poster_path}}" class="img-carousel px-3" alt="Img {{$film[40]->name}}">
-                </a>
-                <a href="/detail/detailFilms/42" class="link-img-carousel">
-                    <img src="{{$film[41]->poster_path}}" class="img-carousel px-3" alt="Img {{$film[41]->name}}">
+                <a href="/detail/detailFilms/3" class="link-img-carousel">
+                    <img src="{{$films[2]->poster_path}}" class="img-carousel px-3" alt="Img {{$films[2]->name}}">
                 </a>
             </div>
             <div class="carousel-item full text-center">
-                <a href="/detail/detailFilms/43" class="link-img-carousel">
-                    <img src="{{$film[42]->poster_path}}" class="img-carousel px-3" alt="Img {{$film[42]->name}}">
+                <a href="/detail/detailFilms/4" class="link-img-carousel">
+                    <img src="{{$films[3]->poster_path}}" class="img-carousel px-3" alt="Img {{$films[3]->name}}">
                 </a>
-                <a href="/detail/detailFilms/44" class="link-img-carousel">
-                    <img src="{{$film[43]->poster_path}}" class="img-carousel px-3" alt="Img {{$film[43]->name}}">
+                <a href="/detail/detailFilms/5" class="link-img-carousel">
+                    <img src="{{$films[4]->poster_path}}" class="img-carousel px-3" alt="Img {{$films[4]->name}}">
                 </a>
-                <a href="/detail/detailFilms/45" class="link-img-carousel">
-                    <img src="{{$film[44]->poster_path}}" class="img-carousel px-3" alt="Img {{$film[44]->name}}">
+                <a href="/detail/detailFilms/6" class="link-img-carousel">
+                    <img src="{{$films[5]->poster_path}}" class="img-carousel px-3" alt="Img {{$films[5]->name}}">
+                </a>
+            </div>
+            <div class="carousel-item full text-center">
+                <a href="/detail/detailFilms/7" class="link-img-carousel">
+                    <img src="{{$films[6]->poster_path}}" class="img-carousel px-3" alt="Img {{$films[6]->name}}">
+                </a>
+                <a href="/detail/detailFilms/8" class="link-img-carousel">
+                    <img src="{{$films[7]->poster_path}}" class="img-carousel px-3" alt="Img {{$films[7]->name}}">
+                </a>
+                <a href="/detail/detailFilms/9" class="link-img-carousel">
+                    <img src="{{$films[8]->poster_path}}" class="img-carousel px-3" alt="Img {{$films[8]->name}}">
                 </a>
             </div>
         </div>
+        
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
             data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -90,25 +91,25 @@
 </section>
 <section class="container py-4">
     <h5>PELÍCULAS</h5>
-    @if(!empty($film))
     <div class="content d-flex flex-wrap align-items-stretch justify-content-center">
-        @foreach($film as $film)
-        <a href="/detail/detailFilms/{{$film->id}}" class="image-link col-3 col-sm-2 p-2">
-            @if($film->poster_path === NULL)
-            <img src="/img/NoImg.jpg" class="img-content col-12" alt="">
-            @else
-            <img src="{{$film->poster_path}}" class="img-content col-12" alt="">
-            @endif
-        </a>
-        @endforeach
+    <?php
+        foreach($films as $films){
+            echo '<a href="/detail/detailFilms/{{$films->id}}" class="image-link col-3 col-sm-2 p-2">';           
+            if($films[$i]->poster_path === NULL) {
+                echo '<img src="/img/NoImg.jpg" class="img-content col-12" alt="">';
+            } else {
+                echo '<img src="{{$films[$i]->poster_path}}" class="img-content col-12" alt="">';
+            }
+            $i++;
+        echo '</a>';
+        }
+        ?>
     </div>
-    @else
     <h2 style="color: red;">No hi ha cap registre!!!</h2>
-    @endif
 
 </section>
 {{-- Pagination --}}
 <div class="d-flex justify-content-center">
-    <!-- $film->links() -->
+    {{ $films->links() }}
 </div>
 @endsection

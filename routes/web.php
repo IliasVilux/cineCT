@@ -66,9 +66,13 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     //Return All Films
     Route::get('/content/contentFilms', function () {
     
-        $films = DB::table('films')->get();
+        /*$films = DB::table('films')->get();
     
-        return view('/content/contentFilms', ['film' => $films]);
+        return view('/content/contentFilms', ['film' => $films]);*/
+
+        $films = DB::table('films')->paginate(15);
+ 
+        return view('/content/contentFilms', ['films' => $films]);
     });
     
     //Return All animes
