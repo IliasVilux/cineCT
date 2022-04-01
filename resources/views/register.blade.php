@@ -74,12 +74,12 @@
 
                                         <ul class="nav nav-pills mb-4" id="pills-tab" role="tablist">
                                             <li class="nav-item">
-                                                <a class="nav-link active" id="auth_with_email-tab" data-toggle="pill"
+                                                <a class="nav-link selectId active" id="auth_with_email-tab" data-toggle="pill"
                                                     href="#auth_with_email" role="tab" aria-controls="auth_with_email"
                                                     aria-selected="true">Email</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" id="auth_with_nickname-tab" data-toggle="pill"
+                                                <a class="nav-link selectId" id="auth_with_nickname-tab" data-toggle="pill"
                                                     href="#auth_with_nickname" role="tab" aria-controls="auth_with_nickname"
                                                     aria-selected="false">Nickname</a>
                                             </li>
