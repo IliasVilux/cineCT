@@ -14,7 +14,7 @@
         <form action="{{ route('search.content') }}">
             @csrf
             <div class="input-group">
-                <input type="text" class="form-control" id="search" name="search" placeholder="Search">
+                <input type="text" class="form-control" id="search" name="search" placeholder="Dragon ball">
                 <button class="btn btn-outline-light" type="submit" id="submitSearch"><i class="fas fa-search"></i></button>
             </div>
         </form>
@@ -26,16 +26,16 @@
                 encontrados con: <strong>{{ $search }}</strong></p>
             @for ($data = 0; $data < count($content); $data++)
                 @foreach ($content[array_keys($content)[$data]] as $key => $value)
-                    <div class="content d-flex flex-wrap align-items-streach justify-content-center">
+                    <div class="content d-flex flex-wrap align-items-streach justify-content-center searchcontent">
 
-                        <a href="/detail/detail{{ ucfirst(array_keys($content)[$data])}}s/{{$value->id}}"
+                        <a href="/detail/detail{{ ucfirst(array_keys($content)[$data]) }}s/{{ $value->id }}"
                             class="image-link col-2 p-2">
 
 
                             @if ($value->poster_path === null)
                                 <img src="/img/NoImg.jpg" alt="No image">
                             @else
-                                <img src="{{$value->poster_path}}" alt="{{array_keys($content)[$data]}}">
+                                <img src="{{ $value->poster_path }}" alt="{{ array_keys($content)[$data] }}">
                             @endif
 
                         </a>
@@ -44,13 +44,16 @@
                 @endforeach
             @endfor
         @else
-            <h5 class="text-center">No se ha encontrado ningun resultador con <span style="opacity:0.8;">{{ $search }}</span></h5>
+            @if (isset($search) && !empty($search))
+                <h5 class="text-center">No se ha encontrado ningun resultador con <span
+                        style="opacity:0.8;">{{ $search }}</span></h5>
+            @endif
         @endif
     </section>
 
 
     <script type="text/javascript">
-
+        
     </script>
 
 @endsection
