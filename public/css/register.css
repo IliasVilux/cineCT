@@ -18,13 +18,16 @@ section.section-signin-register ul.nav.nav-tabs li.nav-item {
   width: 50%;
 }
 
-.nav-link,
-.nav-link:hover  {
+.nav-link, .nav-link:hover  {
   color: white;
 }
 
 .nav-link:active {
   color: black;
+}
+
+.nav-link.active.selectId{
+  background: #5A3C97;
 }
 
 div.card {
@@ -54,18 +57,6 @@ div.card {
 
 .session-card .card-title{
   color:#5A3C97;
-}
-
-.btn-violet{
-  color: #FFFFFF;
-  border: 2px solid #5A3C97;
-  transition: color 1s, background-color 1s;
-}
-
-.btn-violet:hover{
-  color: #FFFFFF;
-  background-color: #5A3C97;
-  animation: boxShadow 2s infinite;
 }
 
 @keyframes boxShadow {
