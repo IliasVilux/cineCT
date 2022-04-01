@@ -42,12 +42,7 @@
                 @endfor
             </div>
         @else
-            @if ($errors->has('search'))
-                <div class="mt-2 alert alert-danger">
-                    Error
-                </div>
-            @endif
-            
+           
             @if (isset($search))
                 <h5 class="text-center">No se ha encontrado ningun resultador con <span
                         style="opacity:0.8;">{{ $search }}</span></h5>
@@ -61,6 +56,7 @@
         var clearInput = document.getElementById("clear-input");
 
         $(clearInput).css("display", "none");
+        $("#submitSearch").attr("disabled", true);
 
         searchInput.addEventListener("input", () => {
             let count = (searchInput.value).length;
@@ -69,6 +65,7 @@
                 $(clearInput).fadeOut("slow");
             } else {
                 $(clearInput).fadeIn("slow");
+                $("#submitSearch").attr("disabled", false);
                 deleteSearchWords();
             }
         });
@@ -76,6 +73,7 @@
         const deleteSearchWords = () => {
             clearInput.onclick = () => {
                 searchInput.value = '';
+                $("#submitSearch").attr("disabled", true);
                 if (searchInput.value.length == 0) {
                     $(clearInput).fadeOut("slow");
                 }

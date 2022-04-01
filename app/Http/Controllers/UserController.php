@@ -27,6 +27,10 @@ class UserController extends Controller
 
         $search = $request->input('search');
 
+        $request->validate([
+            'search' => 'string|max:255|required',
+        ]);
+
         $content = array(
             'films' => array(),
             'series' => array(),
@@ -57,6 +61,7 @@ class UserController extends Controller
                 }
             }
         }else{
+            /*
             $search = null;
             $randomFilm = rand(1,10);
             $randomSerie = rand(1,10);
@@ -85,6 +90,7 @@ class UserController extends Controller
             shuffle($content['series']);
             shuffle($content['animes']);
             //test
+            */
         }
 
         /*
