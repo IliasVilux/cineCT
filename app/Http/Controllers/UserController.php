@@ -84,6 +84,7 @@ class UserController extends Controller
             shuffle($content['films']);
             shuffle($content['series']);
             shuffle($content['animes']);
+            //test
         }
 
         /*
