@@ -6,9 +6,11 @@ header {
 ul.list-unstyled li a i.fas {
   width: 45px;
 }
+
 i.fas.fa-film,
 i.fas.fa-home  {
   font-size: 35px;
+  padding: 0px 7px 0px 0px;
 }
 
 h1.offcanvas-title.text-uppercase {
@@ -39,6 +41,9 @@ div.offcanvas-header button.btn-close {
 
 div.offcanvas-body ul.list-unstyled {
   line-height: 2;
+}
+img.logo {
+  width: 75px;
 }
 
 div.copyright {

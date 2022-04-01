@@ -23,17 +23,17 @@
     </style>
 </head>
 <section class="container">
-    <a href="{{ url('/content/contentAnimes') }}" class="btn btn-primary" title="Home">
+    <a href="{{ url('/content/contentAnimes') }}" class="btn btn-primary btn-back" title="Home">
         Back
     </a>
 
-    {!! $shareComponent !!}
-    <h1 class="detail-title">{{$anime->name}}</h1>
+        <h1 class="detail-title">{{$anime->name}}</h1>
+        {{$anime->genre->name}}
 
     <article class="more-info bg-dark p-3">
         <div class="d-flex nowrap">
             <h5 class="pe-2"><b>Género:</b></h5>
-            <p>{{$anime->genre_id}}</p>
+            <p>{{$anime->genre->name}}</p>
         </div>
         <div class="d-flex nowrap">
             <h5 class="pe-2"><b>Fecha de lanzamiento:</b></h5>
@@ -106,7 +106,14 @@
         @endif
     </article>
 
-
+    <!-- START TRAILER SECTION -->
+    @if($anime->trailer_link != null)
+        <iframe class="w-75" height="500" src="https://www.youtube.com/embed/{{$anime->trailer_link}}" allowfullscreen></iframe>
+        <div class="alert alert-dark w-75 m-auto" role="alert">
+            Si el vídeo da error es porque el link no funciona. Pero te invitamos a buscar el trailer en <a href="https://www.youtube.com/results?search_query={{$anime->name}} trailer">Youtube</a> y descubrir más sobre este anime
+        </div>
+    @endif
+    <!-- END TRAILER SECTION -->
 
 
 
@@ -122,6 +129,18 @@
         <div class="container my-5 py-5">
             <div class="row d-flex justify-content-center">
                 <div class="col-12">
+                    @if ($errors->has('description'))
+                        <div class="mt-2 alert alert-danger">
+                            No puedes publicar un comentario sin vacío!
+                        </div>
+                    @endif
+                    <div id="notify_user"></div>
+                    <div class="text-center pt-3 "><span id="character-counter"></span></div>
+                    <form method="POST" action="" id="create-comment" class="create_comment">
+                        @csrf
+                        <textarea name="description" id="description" cols="50" rows="3" placeholder="Escribe un comentario"></textarea>
+                        <button class="btn" type="submit" id="commentSubmit">Publicar</button>
+                    </form>
                     <div class="card card-comment bg-dark">
                         <div class="card-body card-body-comment p-4">
                             <h4 class="text-center mb-4 pb-2">Nested comments section</h4>
@@ -139,19 +158,6 @@
                             </div>
                         </div>
                     </div>
-                    @if ($errors->has('description'))
-                        <div class="mt-2 alert alert-danger">
-                            No puedes publicar un comentario sin vacío!
-                        </div>
-                    @endif
-                    <div id="notify_user"></div>
-                    <div class="text-center pt-3 "><span id="character-counter"></span></div>
-                    <form method="POST" action="" id="create-comment" class="create_comment">
-                        @csrf
-                        <textarea name="description" id="description" cols="50" rows="3" placeholder="Escribe un comentario"></textarea>
-                        <button class="btn" type="submit" id="commentSubmit">Publicar</button>
-                    </form>
-
                 </div>
             </div>
         </div>

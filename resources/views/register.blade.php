@@ -37,10 +37,11 @@
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="logIn">
                         <div class="card text-dark">
-                            <img src="storage/img/200x200.png" alt="LOGO" height="100px" width="100px">
-                            <div class="card-body">
-                                <form class="row g-3 needs-validation d-flex flex-column align-items-center p-2 p-sm-5 m-2"
-                                    method="POST" action="{{ route('login.user') }}">
+                            <div class="d-flex justify-content-center">
+                                <img class="my-4" src="/img/CinectLogoDark.svg" alt="LOGO" width="200px">
+                            </div>
+                            <div class="card-body p-0">
+                                <form class="row g-3 needs-validation d-flex flex-column align-items-center m-4 mt-0" method="POST" action="{{ route('login.user') }}">
                                     @if (Session::has('authErrorMsg'))
                                         <div class="mt-2 alert alert-danger">{{ Session::get('authErrorMsg') }}</div>
                                     @endif
@@ -61,7 +62,7 @@
                                         @endif
 
                                     </div>
-                                    <div class="col-12">
+                                    <div class="col-12 mt-0 p-0">
 
                                         <p>Como quieres identificarte?</p>
 
@@ -102,39 +103,36 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-12">
+                                    <div class="col-12 p-0">
                                         <label for="password" class="form-label">Password</label>
                                         <div class="input-group">
-                                            <input type="password" class="form-control" id="password" name="password"
-                                                placeholder="Password">
-                                            <input type="checkbox" onclick="switchPassword()" name="showPassword"
-                                                id="showPassword" style="display:none;">
-                                            <label for="showPassword"><i id="icon-switch"
-                                                    class="fa fa-eye p-3"></i></label>
+                                            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                                            <input type="checkbox" onclick="switchPassword()" name="showPassword" id="showPassword" style="display:none;">
+                                            <label for="showPassword"><i id="icon-switch" class="fa fa-eye p-3"></i></label>
                                         </div>
 
                                     </div>
-                                    <div class="form-check d-flex justify-content-start mb-4">
+                                    <div class="form-check d-flex justify-content-start my-4">
                                         <input class="form-check-input" type="checkbox" id="rememberData" />
-                                        <label class="form-check-label mx-2" value="1" for="rememberData"> Remember me
-                                        </label>
+                                        <label class="form-check-label mx-2" value="1" for="rememberData"> Remember me</label>
                                     </div>
 
-                                    <button class="btn btn-primary btn-lg btn-block" id="btn-login"
-                                        type="submit">Login</button>
+                                    <button class="btn btn-primary btn-lg btn-block mt-0" id="btn-login" type="submit">Login</button>
 
-                                    <hr class="mt-4">
+                                    <hr class="my-4">
 
-                                    <p class="small mb-0"><a class="text-dark-50" href="#!">Forgot password?</a></p>
+                                    <p class="small m-0"><a class="text-dark-50" href="#!">Forgot password?</a></p>
                                 </form>
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="signUp">
                         <div class="card text-dark">
-                            <div class="card-body">
-                                <form method="POST" action="{{ route('register.user') }}"
-                                    class="row g-3 needs-validation d-flex flex-column align-items-center p-2 p-sm-5 m-2">
+                            <div class="d-flex justify-content-center">
+                                <img class="my-4" src="/img/CinectLogoDark.svg" alt="LOGO" width="200px">
+                            </div>
+                            <div class="card-body p-0">
+                                <form method="POST" action="{{ route('register.user') }}" class="row g-3 needs-validation d-flex flex-column align-items-center m-4 mt-0">
                                     @csrf
 
                                     <div class="register-erros">
@@ -172,37 +170,37 @@
                                     </div>
 
                                     <div class="row p-0">
-                                        <div class="col-12 col-md-6 mb-2">
+                                        <div class="col-12 col-md-6 mb-3 p-0">
                                             <label for="register_name" class="form-label">Nombre</label>
                                             <input type="text" class="form-control" id="register_name"
                                                 name="register_name" placeholder="Mark" value="{{ old('register_name') }}"
                                                 autofocus>
                                         </div>
-                                        <div class="col-12 col-md-6 mb-2">
+                                        <div class="col-12 col-md-6 mb-3 pe-0">
                                             <label for="register_surname" class="form-label">Apellido</label>
                                             <input type="text" class="form-control" id="register_surname"
                                                 name="register_surname" placeholder="Ruffalo"
                                                 value="{{ old('register_surname') }}" autofocus>
                                         </div>
-                                        <div class="col-12 col-md-6 mb-2">
+                                        <div class="col-12 col-md-6 mb-3 p-0">
 
                                             <label for="nick" class="form-label">Nickname</label>
                                             <input type="text" class="form-control" id="register_nick"
                                                 name="register_nick" placeholder="mark20"
                                                 value="{{ old('register_nick') }}" autofocus>
                                         </div>
-                                        <div class="col-12 col-md-6 mb-2">
+                                        <div class="col-12 col-md-6 mb-3 pe-0">
                                             <label for="register_email" class="form-label">Email</label>
                                             <input type="email" class="form-control" id="register_email"
                                                 name="register_email" placeholder="youremail@gmail.com"
                                                 value="{{ old('register_email') }}" autofocus>
                                         </div>
-                                        <div class="col-12 col-md-6 mb-2">
+                                        <div class="col-12 col-md-6 p-0">
                                             <label for="register_password" class="form-label">Contraseña</label>
                                             <input type="password" class="form-control" id="register_password"
                                                 name="register_password" placeholder="New Password" autofocus>
                                         </div>
-                                        <div class="col-12 col-md-6 mb-2">
+                                        <div class="col-12 col-md-6 pe-0">
                                             <label for="register_password_repeat" class="form-label">Repetir
                                                 Contraseña</label>
                                             <input type="password" class="form-control" id="register_password_repeat"
@@ -210,14 +208,13 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-check d-flex justify-content-start mb-4">
+                                    <div class="form-check d-flex justify-content-start my-4">
                                         <input class="form-check-input" type="checkbox" value="" id="rememberRegister" />
                                         <label class="form-check-label mx-2" for="rememberRegister"> Remember password
                                         </label>
                                     </div>
 
-                                    <button class="btn btn-primary btn-lg btn-block" id="btn-register"
-                                        type="submit">Register</button>
+                                    <button class="btn btn-primary btn-lg btn-block m-0" id="btn-register" type="submit">Register</button>
                                 </form>
                             </div>
                         </div>

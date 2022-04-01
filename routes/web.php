@@ -7,6 +7,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\ModelRelationshipTest;
 use App\Models\Genre;
 use App\Models\Serie;
 use App\Models\Films;
@@ -41,6 +43,20 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     //User-Auth Actions
     Route::get('/user/profile', [UserController::class, 'userProfile'])->name('user.profile');
     Route::get('/user/list', [UserController::class, 'userFavoriteList'])->name('user.favorite.list');
+
+    Route::get('/profile/profileImg', function () {
+        return view('/profile/profileImg');
+    });
+    
+    //User-Auth Actions
+    Route::post('/user/profile', [UserController::class, 'profileUpdate'])->name('user.update');
+    
+    Route::get('/user/list', [UserController::class, 'userFavoriteList'])->name('user.favorite.list');
+
+    Route::get('/user/profile/change-password', [ChangePasswordController::class, 'index'])->name('change.password');
+    Route::post('/user/profile/change-password', [ChangePasswordController::class, 'store'])->name('change.password.post');
+
+    Route::get('/user/profile/delete-account', [UserController::class, 'deleteAccount'])->name('delete.account');
 
     //Return All Series
     Route::get('/content/contentSeries', function () {
@@ -104,3 +120,4 @@ Route::get('/aboutUs', function () {
 
 
 
+Route::get('/testing/models', [ModelRelationshipTest::class, 'tests'])->name('model.testing');

@@ -27,7 +27,7 @@
     </style>
 </head>
 <section class="container">
-    <a href="{{ url('/content/contentSeries') }}" class="btn btn-primary" title="Home">
+    <a href="{{ url('/content/contentSeries') }}" class="btn btn-primary btn-back" title="Home">
         Back
     </a>
 
