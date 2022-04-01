@@ -60,37 +60,6 @@ class UserController extends Controller
                     array_push($content['animes'], $anime);
                 }
             }
-        }else{
-            /*
-            $search = null;
-            $randomFilm = rand(1,10);
-            $randomSerie = rand(1,10);
-            $randomAnime = rand(1,10);
-
-            $order = ['desc', 'asc'];
-
-
-            $films = Film::limit($randomFilm)->orderBy('id',$order[rand(0,1)])->get();
-            $series = Serie::limit($randomSerie)->orderBy('id',$order[rand(0,1)])->get();
-            $animes = Anime::limit($randomAnime)->orderBy('id',$order[rand(0,1)])->get();
-
-            foreach ($films as $film) {
-                array_push($content['films'], $film);
-            }
-
-            foreach ($series as $serie) {
-                array_push($content['series'], $serie);
-            }
-
-            foreach ($animes as $anime) {
-                array_push($content['animes'], $anime);
-            }
-
-            shuffle($content['films']);
-            shuffle($content['series']);
-            shuffle($content['animes']);
-            //test
-            */
         }
 
         /*
