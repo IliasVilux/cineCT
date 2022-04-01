@@ -12,7 +12,8 @@
             Home
         </a>
         <form action="{{ route('search-content') }}" method="GET">
-            <div class="input-group">
+            <div class="input-group align-items-center">
+                <label id="clear-input"><i class="fas fa-times p-2"></i></label>
                 <input type="text" class="form-control" id="search-content" name="search" placeholder="Dragon ball">
                 <button class="btn btn-outline-light" type="submit" id="submitSearch"><i class="fas fa-search"></i></button>
             </div>
@@ -27,7 +28,7 @@
                 @for ($data = 0; $data < count($content); $data++)
                     @foreach ($content[array_keys($content)[$data]] as $key => $value)
                         <a href="/detail/detail{{ ucfirst(array_keys($content)[$data]) }}/{{ $value->id }}"
-                            class="image-link col-2 p-2">
+                            class="image-link col-2 p-2 search-content-info">
 
 
                             @if ($value->poster_path === null)
@@ -46,6 +47,7 @@
                     Error
                 </div>
             @endif
+            
             @if (isset($search))
                 <h5 class="text-center">No se ha encontrado ningun resultador con <span
                         style="opacity:0.8;">{{ $search }}</span></h5>
@@ -55,10 +57,30 @@
 
 
     <script type="text/javascript">
+        var searchInput = document.getElementById("search-content");
+        var clearInput = document.getElementById("clear-input");
 
-        
+        $(clearInput).css("display", "none");
 
+        searchInput.addEventListener("input", () => {
+            let count = (searchInput.value).length;
 
-    </script> 
+            if (count == 0) {
+                $(clearInput).fadeOut("slow");
+            } else {
+                $(clearInput).fadeIn("slow");
+                deleteSearchWords();
+            }
+        });
+
+        const deleteSearchWords = () => {
+            clearInput.onclick = () => {
+                searchInput.value = '';
+                if (searchInput.value.length == 0) {
+                    $(clearInput).fadeOut("slow");
+                }
+            }
+        }
+    </script>
 
 @endsection
