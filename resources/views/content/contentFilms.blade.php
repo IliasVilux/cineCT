@@ -81,7 +81,6 @@
     @else
     <h2 style="color: red;">No hi ha cap registre!!!</h2>
     @endif
-
 </section>
 {{-- Pagination --}}
 <div class="d-flex justify-content-center">

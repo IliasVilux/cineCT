@@ -41,3 +41,12 @@ img {
 .form-select {
     width: 10%;
 }
+
+.search-content-info{
+    transition: transform .6s;
+}
+
+.search-content-info:hover{
+    transform: scale(1.1);
+    padding: 5px;
+}

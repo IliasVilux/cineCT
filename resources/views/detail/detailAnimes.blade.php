@@ -166,6 +166,7 @@
 <script type="text/javascript">
     $("#notify_user").css("display", "none");
 
+    var contador = 0;
     jQuery('#create-comment').submit(function(e) {
         e.preventDefault();
         $("#commentSubmit").attr("disabled", true);
@@ -200,21 +201,27 @@
                     3900
                     ); 
 
-                let commentHtml =
-                    `<div class="d-flex flex-start mb-4">
-                    <div><img class="rounded-circle shadow-1-strong me-3" src="{{ $profile->path }}" alt="13" width="65" height="65" /></div>
-                    <div class="flex-grow-1 flex-shrink-1"><div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <p class="mb-1">{{ Auth::user()->name }} <span class="text-muted">- 2 hours ago</span></p> 
-                            <a href="#!"><i class="fas fa-reply fa-xs"></i><span class="text-muted">reply</span></a> 
+                    contador++;
+                    
+                    let commentHtml =
+                        `<div class="d-flex flex-start mb-4">
+                        <div><img class="rounded-circle shadow-1-strong me-3" src="{{ $profile[0]->path }}" alt="13" width="65" height="65" /></div>
+                        <div class="flex-grow-1 flex-shrink-1"><div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="mb-1">{{ Auth::user()->name }} <span class="text-muted" id="last-comment-${contador}"></span></p> 
+                                <a href="#!"><i class="fas fa-reply fa-xs"></i><span class="text-muted">reply</span></a> 
+                            </div>
+                            <p class="small mb-0 comment">${ response.comment['description'] }</p>
+                            </div>
                         </div>
-                        <p class="small mb-0 comment">${ response.comment['description'] }</p>
-                        </div>
-                    </div>
-                </div>`
+                    </div>`
+                    //console.log(response.comment);
 
-                jQuery('#comment-container').append(commentHtml);
-                jQuery('#character-counter').css("display", "none");
+                    jQuery('#comment-container').append(commentHtml);
+                    var sinceDate = '{{\DateTimeFormat::timeFilter($comment->created_at)}}'
+                    jQuery(`#last-comment-${contador}`).html(sinceDate);
+                   
+                    jQuery('#character-counter').css("display", "none");
 
             },
             error: function(response) {

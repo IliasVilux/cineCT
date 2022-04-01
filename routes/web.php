@@ -8,6 +8,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\ModelRelationshipTest;
 use App\Models\Genre;
 use App\Models\Serie;
 use App\Models\Films;
@@ -105,6 +106,10 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     Route::post('/film/comment/save/{id}', [ReviewController::class, 'postStoreFilmReview'])->name('comment.save');
     Route::post('/serie/comment/save/{id}', [ReviewController::class, 'postStoreSerieReview'])->name('comment.save.serie');
     Route::post('/anime/comment/save/{id}', [ReviewController::class, 'postStoreAnimeReview'])->name('comment.save.anime');
+
+   //Route::get('/content/{search?}', [UserController::class, 'searchContent'])->name('search.content'); 
+   //Route::get('/content/search', [UserController::class, 'searchContent'])->name('search-content'); 
+   Route::get('/content/{search?}', [UserController::class, 'searchContent'])->name('search-content'); 
    
 });
 
@@ -115,3 +120,5 @@ Route::get('/aboutUs', function () {
 });
 
 
+
+Route::get('/testing/models', [ModelRelationshipTest::class, 'tests'])->name('model.testing');

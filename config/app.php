@@ -1,5 +1,8 @@
 <?php
 
+use App\Helpers\UploadTimeFormat;
+use App\Providers\DateTimeFormatServiceProvider;
+
 return [
 
     /*
@@ -162,11 +165,13 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Jorenvh\Share\Providers\ShareServiceProvider::class,
+        
+        
 
         /*
-         * Package Service Providers...
-         */
-
+        * Package Service Providers...
+        */
+        
         /*
          * Application Service Providers...
          */
@@ -175,6 +180,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\DateTimeFormatServiceProvider::class,
 
     ],
 
@@ -231,6 +237,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Share' => Jorenvh\Share\ShareFacade::class,
+        'DateTimeFormat' => UploadTimeFormat::class,
 
     ],
 
