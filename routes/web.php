@@ -67,12 +67,10 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     });
     
     //Return All Films
-    Route::get('/content/contentFilms', function () {
-    
-        $films = DB::table('films')->get();
-    
-        return view('/content/contentFilms', ['film' => $films]);
-    });
+    Route::get('/content/contentFilms', [FilmController::class,  'fetchAllFilms'])->name('film.all-films');
+
+    //Filter Film
+    Route::get('/content/contentFilms/{genre}', [FilmController::class,  'filterContent'])->name('film.all-films-filter');
     
     //Return All animes
     Route::get('/content/contentAnimes', function () {
