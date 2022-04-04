@@ -72,7 +72,7 @@
 
     <!-- PELÍCULAS -->
     <div class="container-fluid d-flex justify-content-between">
-        <h5>PELÍCULAS</h5>
+        <h5>{{trans('home.prueba')}}</h5>
         <a href="{{asset('/content/contentFilms')}}"><button type="button" class="btn button-purple">View more</button></a>
     </div>
     <div class="container-fluid d-flex flex-row align-items-center" id="container">
