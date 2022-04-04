@@ -49,6 +49,14 @@
             <p> {{$serie->release_date}}</p>
         </div>
         <div class="d-flex nowrap">
+            <h5 class="pe-2"><b>Temporadas:</b></h5>
+            <p> {{$serie->seasons}}</p>
+        </div>
+        <div class="d-flex nowrap">
+            <h5 class="pe-2"><b>Episodios:</b></h5>
+            <p> {{$serie->total_episodes}}</p>
+        </div>
+        <div class="d-flex nowrap">
             <h5 class="pe-2"><b>Puntuación:</b></h5>
             <p><i class="fas fa-star"></i>
             <p> {{$serie->puntuation}}</p>/10<p>
