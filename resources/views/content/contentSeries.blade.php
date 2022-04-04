@@ -30,22 +30,22 @@
                 <a href="/detail/detailSeries/4" class="link-img-carousel">
                     <img src="{{$series[3]->poster_path}}" class="img-carousel px-3" alt="Img {{$series[3]->name}}">
                 </a>
-                <a href="/detail/detailSeries/5" class="link-img-carousel">
-                    <img src="{{$series[4]->poster_path}}" class="img-carousel px-3" alt="Img {{$series[4]->name}}">
-                </a>
                 <a href="/detail/detailSeries/6" class="link-img-carousel">
                     <img src="{{$series[5]->poster_path}}" class="img-carousel px-3" alt="Img {{$series[5]->name}}">
                 </a>
-            </div>
-            <div class="carousel-item full text-center">
                 <a href="/detail/detailSeries/7" class="link-img-carousel">
                     <img src="{{$series[6]->poster_path}}" class="img-carousel px-3" alt="Img {{$series[6]->name}}">
                 </a>
+            </div>
+            <div class="carousel-item full text-center">
                 <a href="/detail/detailSeries/8" class="link-img-carousel">
                     <img src="{{$series[7]->poster_path}}" class="img-carousel px-3" alt="Img {{$series[7]->name}}">
                 </a>
                 <a href="/detail/detailSeries/9" class="link-img-carousel">
                     <img src="{{$series[8]->poster_path}}" class="img-carousel px-3" alt="Img {{$series[8]->name}}">
+                </a>
+                <a href="/detail/detailSeries/10" class="link-img-carousel">
+                    <img src="{{$series[9]->poster_path}}" class="img-carousel px-3" alt="Img {{$series[9]->name}}">
                 </a>
             </div>
         </div>
@@ -95,11 +95,11 @@
     echo '<div class="content d-flex flex-wrap align-items-stretch justify-content-center">';
 
     foreach($series as $data) {
-        echo '<a href="/detail/detailSeries/'.$data->id.'" class="image-link col-3 col-sm-2 p-2">';
+        echo '<a href="/detail/detailFilms/'.$data->id.'" class="image-link col-3 col-sm-2 p-2">';
         if($data->poster_path === NULL) {
-        echo '<img src="/img/NoImg.jpg" class="img-content col-12" alt="">';
+        echo '<img src="/img/NoImg.jpg" class="img-content col-12" alt="No Image">';
         } else {
-        echo '<img src="'.$data->poster_path.'" class="img-content col-12" alt="">
+        echo '<img src="'.$data->poster_path.'" class="img-content col-12" alt="'.$data->name.'">
         </a>';
     }
 }
