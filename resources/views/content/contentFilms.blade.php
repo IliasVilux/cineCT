@@ -33,19 +33,19 @@
                 <a href="/detail/detailFilms/5" class="link-img-carousel">
                     <img src="{{$films[4]->poster_path}}" class="img-carousel px-3" alt="Img {{$films[4]->name}}">
                 </a>
-                <a href="/detail/detailFilms/6" class="link-img-carousel">
-                    <img src="{{$films[5]->poster_path}}" class="img-carousel px-3" alt="Img {{$films[5]->name}}">
-                </a>
-            </div>
-            <div class="carousel-item full text-center">
                 <a href="/detail/detailFilms/7" class="link-img-carousel">
                     <img src="{{$films[6]->poster_path}}" class="img-carousel px-3" alt="Img {{$films[6]->name}}">
                 </a>
+            </div>
+            <div class="carousel-item full text-center">
                 <a href="/detail/detailFilms/8" class="link-img-carousel">
                     <img src="{{$films[7]->poster_path}}" class="img-carousel px-3" alt="Img {{$films[7]->name}}">
                 </a>
                 <a href="/detail/detailFilms/9" class="link-img-carousel">
                     <img src="{{$films[8]->poster_path}}" class="img-carousel px-3" alt="Img {{$films[8]->name}}">
+                </a>
+                <a href="/detail/detailFilms/10" class="link-img-carousel">
+                    <img src="{{$films[9]->poster_path}}" class="img-carousel px-3" alt="Img {{$films[9]->name}}">
                 </a>
             </div>
         </div>
@@ -98,9 +98,9 @@
     foreach($films as $data) {
         echo '<a href="/detail/detailFilms/'.$data->id.'" class="image-link col-3 col-sm-2 p-2">';
         if($data->poster_path === NULL) {
-        echo '<img src="/img/NoImg.jpg" class="img-content col-12" alt="">';
+        echo '<img src="/img/NoImg.jpg" class="img-content col-12" alt="No Image">';
         } else {
-        echo '<img src="'.$data->poster_path.'" class="img-content col-12" alt="">
+        echo '<img src="'.$data->poster_path.'" class="img-content col-12" alt="'.$data->name.'">
         </a>';
     }
 }
