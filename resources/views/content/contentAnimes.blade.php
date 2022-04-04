@@ -16,36 +16,36 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item full text-center active">
-                <a href="/detail/detailAnimes/37" class="link-img-carousel">
-                    <img src="{{$anime[36]->poster_path}}" class="img-carousel px-3" alt="Img {{$anime[36]->name}}">
+                <a href="/detail/detailAnimes/1" class="link-img-carousel">
+                    <img src="{{$animes[0]->poster_path}}" class="img-carousel px-3" alt="Img {{$animes[0]->name}}">
                 </a>
-                <a href="/detail/detailAnimes/38" class="link-img-carousel">
-                    <img src="{{$anime[37]->poster_path}}" class="img-carousel px-3" alt="Img {{$anime[37]->name}}">
+                <a href="/detail/detailAnimes/2" class="link-img-carousel">
+                    <img src="{{$animes[1]->poster_path}}" class="img-carousel px-3" alt="Img {{$animes[1]->name}}">
                 </a>
-                <a href="/detail/detailAnimes/39" class="link-img-carousel">
-                    <img src="{{$anime[38]->poster_path}}" class="img-carousel px-3" alt="Img {{$anime[38]->name}}">
-                </a>
-            </div>
-            <div class="carousel-item full text-center">
-                <a href="/detail/detailAnimes/40" class="link-img-carousel">
-                    <img src="{{$anime[39]->poster_path}}" class="img-carousel px-3" alt="Img {{$anime[39]->name}}">
-                </a>
-                <a href="/detail/detailAnimes/41" class="link-img-carousel">
-                    <img src="{{$anime[40]->poster_path}}" class="img-carousel px-3" alt="Img {{$anime[40]->name}}">
-                </a>
-                <a href="/detail/detailAnimes/42" class="link-img-carousel">
-                    <img src="{{$anime[41]->poster_path}}" class="img-carousel px-3" alt="Img {{$anime[41]->name}}">
+                <a href="/detail/detailAnimes/3" class="link-img-carousel">
+                    <img src="{{$animes[2]->poster_path}}" class="img-carousel px-3" alt="Img {{$animes[2]->name}}">
                 </a>
             </div>
             <div class="carousel-item full text-center">
-                <a href="/detail/detailAnimes/43" class="link-img-carousel">
-                    <img src="{{$anime[42]->poster_path}}" class="img-carousel px-3" alt="Img {{$anime[42]->name}}">
+                <a href="/detail/detailAnimes/4" class="link-img-carousel">
+                    <img src="{{$animes[3]->poster_path}}" class="img-carousel px-3" alt="Img {{$animes[3]->name}}">
                 </a>
-                <a href="/detail/detailAnimes/44" class="link-img-carousel">
-                    <img src="{{$anime[43]->poster_path}}" class="img-carousel px-3" alt="Img {{$anime[43]->name}}">
+                <a href="/detail/detailAnimes/5" class="link-img-carousel">
+                    <img src="{{$animes[4]->poster_path}}" class="img-carousel px-3" alt="Img {{$animes[4]->name}}">
                 </a>
-                <a href="/detail/detailAnimes/45" class="link-img-carousel">
-                    <img src="{{$anime[44]->poster_path}}" class="img-carousel px-3" alt="Img {{$anime[44]->name}}">
+                <a href="/detail/detailAnimes/6" class="link-img-carousel">
+                    <img src="{{$animes[5]->poster_path}}" class="img-carousel px-3" alt="Img {{$animes[5]->name}}">
+                </a>
+            </div>
+            <div class="carousel-item full text-center">
+                <a href="/detail/detailAnimes/7" class="link-img-carousel">
+                    <img src="{{$animes[6]->poster_path}}" class="img-carousel px-3" alt="Img {{$animes[6]->name}}">
+                </a>
+                <a href="/detail/detailAnimes/8" class="link-img-carousel">
+                    <img src="{{$animes[7]->poster_path}}" class="img-carousel px-3" alt="Img {{$animes[7]->name}}">
+                </a>
+                <a href="/detail/detailAnimes/9" class="link-img-carousel">
+                    <img src="{{$animes[8]->poster_path}}" class="img-carousel px-3" alt="Img {{$animes[8]->name}}">
                 </a>
             </div>
         </div>
@@ -93,26 +93,29 @@
         <h5 class="col-6">Animes</h5>
     </div>
 
-    @if(!empty($anime))
-    <div class="content d-flex flex-wrap align-items-stretch justify-content-center">
+    <?php
+    if(!empty($animes)) {
+    echo '<div class="content d-flex flex-wrap align-items-stretch justify-content-center">';
 
-        @foreach($anime as $data)
-        <a href="/detail/detailAnimes/{{$data->id}}" class="image-link col-3 col-sm-2 p-2">
-            @if($data->poster_path === NULL)
-            <img src="/img/NoImg.jpg" class="img-content col-12" alt="">
-            @else
-            <img src="{{$data->poster_path}}" class="img-content col-12" alt="">
-            @endif
-        </a>
-        @endforeach
-    </div>
-    @else
-    <h2 style="color: red;">No hi ha cap registre!!!</h2>
-    @endif
+        foreach($animes as $data) {
+            echo '<a href="/detail/detailAnimes/"'.$data->id.'" class="image-link col-3 col-sm-2 p-2">';
+            if($data->poster_path === NULL) {
+            echo '<img src="/img/NoImg.jpg" class="img-content col-12" alt="">';
+            } else {
+            echo '<img src="'.$data->poster_path.'" class="img-content col-12" alt="">
+            </a>';
+        }
+    }
+   echo' </div>';
+           
+    } else {
+        echo '<h2 style="color: red;">No hi ha cap registre!!!</h2>';
+    }
+    ?>
 
 </section>
 {{-- Pagination --}}
 <div class="d-flex justify-content-center">
-    <!-- $anime->links() -->
+{{$animes->links()}}
 </div>
 @endsection
