@@ -20,5 +20,6 @@ return [
     'change_pass' => 'Change password',
     'change_img' => 'Change image', 
     'save' => 'Save changes',
+    'delete_profile' => 'Delete profile',
 
 ];
