@@ -129,5 +129,24 @@ class FilmController extends Controller
             return response('No encontrado', 404);
         }
     }*/
+
+    public function fetchAllFilms()
+    {
+        $films = Film::all();
+        $filmGenres = ["Animation", "Family", "Science Fiction", "War", "Crime", "Action", "Adventure", "Comedy", "Drama", "Fantasy", "Horror", "Mystery", "Romance", "Suspense"];
+        $genres = Genre::whereIn('name', $filmGenres)->get();
+
+       
+        return view('content.contentFilms', ['film' => $films, 'genres' => $genres]);
+    }
+
+    public function filterContent()
+    {
+        dd("HOLA");
+        /*
+        $films = Film::where('genre_id', 'LIKE', '%' . $genreName . '%')->get();
+        dd($films);
+        */
+    }
     
 }

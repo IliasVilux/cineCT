@@ -1,5 +1,6 @@
 main {
     background: #16181d;
+    padding: 0;
     margin: 0px;
 }
 
@@ -21,9 +22,16 @@ main {
     width: 24%;
     height: 80px;
     margin-top: 10px;
-    background: linear-gradient(to bottom, black 25%, #9966ff 150%);
-    ;
+    background: linear-gradient(to bottom, black 25%, #9966ff 150%);;
+}
+
+.button-category a{
+    text-decoration: none;
     color: white;
+}
+
+.button-category:hover{
+    transform: scale(0.9);
 }
 
 a.image-link {
@@ -49,4 +57,8 @@ img {
 .search-content-info:hover{
     transform: scale(1.1);
     padding: 5px;
+}
+
+form{
+    width: 75%;
 }

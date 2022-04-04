@@ -3,6 +3,7 @@
 
 <head>
     <link rel="stylesheet" href="{{asset('css/content.css')}}">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 </head>
 <section class="slider">
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -37,38 +38,19 @@
         </button>
     </div>
 </section>
-<section class="d-flex flex-wrap justify-content-around align-items-center">
-    <button class="button-category">
-        <p class="m-0">Acción / Aventura</p>
-    </button>
-    <button class="button-category">
-        <p class="m-0">Animación / Familia</p>
-    </button>
-    <button class="button-category">
-        <p class="m-0">Comedia</p>
-    </button>
-    <button class="button-category">
-        <p class="m-0">Terror / Suspense</p>
-    </button>
 
-    <button class="button-category">
-        <p class="m-0">Romance</p>
-    </button>
-    <button class="button-category">
-        <p class="m-0">Ciencia ficción / Fantasía</p>
-    </button>
-    <button class="button-category">
-        <p class="m-0">Drama / Misterio</p>
-    </button>
-    <button class="button-category">
-        <p class="m-0">Bélica / Crimen</p>
-    </button>
+<section class="d-flex flex-wrap justify-content-around align-items-center">
+        @foreach($genres as $genre)
+        <a class="btn button-category m-0" type="submit" id="{{$genre->id}}" href="{{route('film.all-films-filter', ['genre' => $genre->name])}}" 
+            value="{{$genre->name}}">{{$genre->name}}</a>
+        @endforeach
 </section>
+
 <section class="container py-4">
     <h5>PELÍCULAS</h5>
     @if(!empty($film))
     <div class="content d-flex flex-wrap align-items-streach justify-content-center">
-        @foreach($film as $film)
+        @foreach($film->take(10) as $film)
         <a href="/detail/detailFilms/{{$film->id}}" class="image-link col-2 p-2">
             @if($film->poster_path === NULL)
             <img src="/img/NoImg.jpg" alt="">
@@ -86,4 +68,13 @@
 <div class="d-flex justify-content-center">
     <!-- $film->links() -->
 </div>
+
+<script>
+    
+    jQuery('#filterSubmit').submit(function(e) {
+        var valor = $(this).val();
+        alert(valor);
+    });
+
+</script>
 @endsection
