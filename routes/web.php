@@ -55,6 +55,8 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     Route::get('/user/profile/change-password', [ChangePasswordController::class, 'index'])->name('change.password');
     Route::post('/user/profile/change-password', [ChangePasswordController::class, 'store'])->name('change.password.post');
 
+    Route::get('/user/profile/delete-account', [UserController::class, 'deleteAccount'])->name('delete.account');
+
     //Return All Series
     Route::get('/content/contentSeries', function () {
 
@@ -103,6 +105,11 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     Route::post('/film/comment/save/{id}', [ReviewController::class, 'postStoreFilmReview'])->name('comment.save.film');
     Route::post('/serie/comment/save/{id}', [ReviewController::class, 'postStoreSerieReview'])->name('comment.save.serie');
     Route::post('/anime/comment/save/{id}', [ReviewController::class, 'postStoreAnimeReview'])->name('comment.save.anime');
+
+    //Add favourites
+    Route::get('/detail/detailAnimes/{id}/addFav', [AnimeController::class,  'addFavourite'])->name('anime.fav');
+    Route::get('/detail/detailSeries/{id}/addFav', [SerieController::class,  'addFavourite'])->name('serie.fav');
+    Route::get('/detail/detailFilms/{id}/addFav', [FilmController::class,  'addFavourite'])->name('film.fav');
    
 });
 

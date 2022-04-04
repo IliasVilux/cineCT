@@ -26,6 +26,11 @@
         }
     </style>
 </head>
+@if (Session::has('SerieAdded'))
+<div class="alert alert-success" role="alert">
+    <strong>{{ Session::get('SerieAdded') }}!</strong>
+</div>
+@endif
 <section class="container">
     <a href="{{ url('/content/contentSeries') }}" class="btn button-purple my-4" title="Back">
         Back
@@ -78,6 +83,7 @@
                 </div>
                 <button type="submit" class="btn button-purple btn-sm">Enviar</button>
             </form>
+            <a href="/detail/detailSeries/{{$serie->id}}/addFav"><button type="button" class="btn btn-primary btn-sm">Añadir a favoritos</button></a> 
             <?php
             if (isset($_GET['stars'])) {
                 echo '<div class="alert alert-success">Rating recibido: <strong>'.$_GET['stars'].'</strong>.</div>';

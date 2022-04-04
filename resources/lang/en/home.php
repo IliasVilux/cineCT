@@ -15,7 +15,6 @@ return [
 
     'films' => 'Films',
     'series' => 'Series',
-    'animes' => 'Too many login attempts. Please try again in :seconds seconds.Animes',
-    'prueba' => 'engliiish',
-
+    'animes' => 'Animes',
+    'view_more' => 'View more',
 ];
