@@ -11,7 +11,7 @@
 
 @else
     <h1>MIS LISTAS</h1>
-    {{$cont = 0}}
+    <p class="d-none">{{$cont = 0}}</p>
     @foreach($userFavs['animes'] as $anime)
         <div class="d-flex">
             <a href="/detail/detailAnimes/{{$anime->anime_id}}" class="link-img-carousel">
@@ -26,7 +26,7 @@
 
     <br><br>
 
-    {{$cont = 0}}
+    <p class="d-none">{{$cont = 0}}</p>
     @foreach($userFavs['films'] as $film)
         <div class="d-flex">
             <a href="/detail/detailFilms/{{$film->film_id}}" class="link-img-carousel">
@@ -41,7 +41,7 @@
 
     <br><br>
 
-    {{$cont = 0}}
+    <p class="d-none">{{$cont = 0}}</p>
     @foreach($userFavs['series'] as $serie)
         <div class="d-flex">
             <a href="/detail/detailSeries/{{$serie->serie_id}}" class="link-img-carousel">

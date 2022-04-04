@@ -14,6 +14,7 @@ class FavoriteList extends Model
     use HasFactory;
 
     protected $table = 'favorites';
+    protected $fillable = ['user_id', 'anime_id', 'serie_id', 'film_id'];
 
     public function animes(){
         return $this->hasMany(Anime::class);

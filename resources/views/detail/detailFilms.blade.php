@@ -22,6 +22,11 @@
     }
     </style>
 </head>
+@if (Session::has('FilmAdded'))
+<div class="alert alert-success" role="alert">
+    <strong>{{ Session::get('FilmAdded') }}!</strong>
+</div>
+@endif
 <section class="container">
     <a href="{{ url('/content/contentFilms') }}" class="btn btn-primary btn-back" title="Home">
         Back
@@ -64,6 +69,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary btn-sm">Enviar</button>
             </form>
+            <a href="/detail/detailFilms/{{$film->id}}/addFav"><button type="button" class="btn btn-primary btn-sm">Añadir a favoritos</button></a>
             <?php
             if (isset($_GET['stars'])) {
                 echo '<div class="alert alert-success">Rating recibido: <strong>'.$_GET['stars'].'</strong>.</div>';
