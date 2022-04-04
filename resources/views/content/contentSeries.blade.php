@@ -16,36 +16,36 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item full text-center active">
-                <a href="/detail/detailSeries/37" class="link-img-carousel">
-                    <img src="{{$serie[36]->poster_path}}" class="img-carousel px-3" alt="Img {{$serie[36]->name}}">
+                <a href="/detail/detailSeries/1" class="link-img-carousel">
+                    <img src="{{$series[0]->poster_path}}" class="img-carousel px-3" alt="Img {{$series[0]->name}}">
                 </a>
-                <a href="/detail/detailSeries/38" class="link-img-carousel">
-                    <img src="{{$serie[37]->poster_path}}" class="img-carousel px-3" alt="Img {{$serie[37]->name}}">
+                <a href="/detail/detailSeries/2" class="link-img-carousel">
+                    <img src="{{$series[1]->poster_path}}" class="img-carousel px-3" alt="Img {{$series[1]->name}}">
                 </a>
-                <a href="/detail/detailSeries/39" class="link-img-carousel">
-                    <img src="{{$serie[38]->poster_path}}" class="img-carousel px-3" alt="Img {{$serie[38]->name}}">
-                </a>
-            </div>
-            <div class="carousel-item full text-center">
-                <a href="/detail/detailSeries/40" class="link-img-carousel">
-                    <img src="{{$serie[39]->poster_path}}" class="img-carousel px-3" alt="Img {{$serie[39]->name}}">
-                </a>
-                <a href="/detail/detailSeries/41" class="link-img-carousel">
-                    <img src="{{$serie[40]->poster_path}}" class="img-carousel px-3" alt="Img {{$serie[40]->name}}">
-                </a>
-                <a href="/detail/detailSeries/42" class="link-img-carousel">
-                    <img src="{{$serie[41]->poster_path}}" class="img-carousel px-3" alt="Img {{$serie[41]->name}}">
+                <a href="/detail/detailSeries/3" class="link-img-carousel">
+                    <img src="{{$series[2]->poster_path}}" class="img-carousel px-3" alt="Img {{$series[2]->name}}">
                 </a>
             </div>
             <div class="carousel-item full text-center">
-                <a href="/detail/detailSeries/43" class="link-img-carousel">
-                    <img src="{{$serie[42]->poster_path}}" class="img-carousel px-3" alt="Img {{$serie[42]->name}}">
+                <a href="/detail/detailSeries/4" class="link-img-carousel">
+                    <img src="{{$series[3]->poster_path}}" class="img-carousel px-3" alt="Img {{$series[3]->name}}">
                 </a>
-                <a href="/detail/detailSeries/44" class="link-img-carousel">
-                    <img src="{{$serie[43]->poster_path}}" class="img-carousel px-3" alt="Img {{$serie[43]->name}}">
+                <a href="/detail/detailSeries/5" class="link-img-carousel">
+                    <img src="{{$series[4]->poster_path}}" class="img-carousel px-3" alt="Img {{$series[4]->name}}">
                 </a>
-                <a href="/detail/detailSeries/45" class="link-img-carousel">
-                    <img src="{{$serie[44]->poster_path}}" class="img-carousel px-3" alt="Img {{$serie[44]->name}}">
+                <a href="/detail/detailSeries/6" class="link-img-carousel">
+                    <img src="{{$series[5]->poster_path}}" class="img-carousel px-3" alt="Img {{$series[5]->name}}">
+                </a>
+            </div>
+            <div class="carousel-item full text-center">
+                <a href="/detail/detailSeries/7" class="link-img-carousel">
+                    <img src="{{$series[6]->poster_path}}" class="img-carousel px-3" alt="Img {{$series[6]->name}}">
+                </a>
+                <a href="/detail/detailSeries/8" class="link-img-carousel">
+                    <img src="{{$series[7]->poster_path}}" class="img-carousel px-3" alt="Img {{$series[7]->name}}">
+                </a>
+                <a href="/detail/detailSeries/9" class="link-img-carousel">
+                    <img src="{{$series[8]->poster_path}}" class="img-carousel px-3" alt="Img {{$series[8]->name}}">
                 </a>
             </div>
         </div>
@@ -90,25 +90,29 @@
 </section>
 <section class="container py-4">
     <h5>Series</h5>
-    @if(!empty($serie))
-    <div class="content d-flex flex-wrap align-items-stretch justify-content-center">
-        @foreach($serie as $serie)
-        <a href="/detail/detailSeries/{{$serie->id}}" class="image-link col-3 col-sm-2 p-2">
-            @if($serie->poster_path === NULL)
-            <img src="/img/NoImg.jpg" class="img-content col-12" alt="">
-            @else
-            <img src="{{$serie->poster_path}}" class="img-content col-12" alt="">
-            @endif
-        </a>
-        @endforeach
-    </div>
-    @else
-    <h2 style="color: red;">No hi ha cap registre!!!</h2>
-    @endif
+    <?php
+    if(!empty($series)) {
+    echo '<div class="content d-flex flex-wrap align-items-stretch justify-content-center">';
+
+    foreach($series as $data) {
+        echo '<a href="/detail/detailSeries/'.$data->id.'" class="image-link col-3 col-sm-2 p-2">';
+        if($data->poster_path === NULL) {
+        echo '<img src="/img/NoImg.jpg" class="img-content col-12" alt="">';
+        } else {
+        echo '<img src="'.$data->poster_path.'" class="img-content col-12" alt="">
+        </a>';
+    }
+}
+   echo' </div>';
+           
+    } else {
+        echo '<h2 style="color: red;">No hi ha cap registre!!!</h2>';
+    }
+    ?>
 
 </section>
 {{-- Pagination --}}
 <div class="d-flex justify-content-center">
-    <!-- $serie->links() -->
+{{$series->links()}}
 </div>
 @endsection

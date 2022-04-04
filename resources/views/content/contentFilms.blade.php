@@ -91,25 +91,28 @@
 </section>
 <section class="container py-4">
     <h5>PELÍCULAS</h5>
-    <div class="content d-flex flex-wrap align-items-stretch justify-content-center">
     <?php
-        foreach($films as $films){
-            echo '<a href="/detail/detailFilms/{{$films->id}}" class="image-link col-3 col-sm-2 p-2">';           
-            if($films[$i]->poster_path === NULL) {
-                echo '<img src="/img/NoImg.jpg" class="img-content col-12" alt="">';
-            } else {
-                echo '<img src="{{$films[$i]->poster_path}}" class="img-content col-12" alt="">';
-            }
-            $i++;
-        echo '</a>';
-        }
-        ?>
-    </div>
-    <h2 style="color: red;">No hi ha cap registre!!!</h2>
+    if(!empty($films)) {
+    echo '<div class="content d-flex flex-wrap align-items-stretch justify-content-center">';
 
+    foreach($films as $data) {
+        echo '<a href="/detail/detailFilms/'.$data->id.'" class="image-link col-3 col-sm-2 p-2">';
+        if($data->poster_path === NULL) {
+        echo '<img src="/img/NoImg.jpg" class="img-content col-12" alt="">';
+        } else {
+        echo '<img src="'.$data->poster_path.'" class="img-content col-12" alt="">
+        </a>';
+    }
+}
+   echo' </div>';
+           
+    } else {
+        echo '<h2 style="color: red;">No hi ha cap registre!!!</h2>';
+    }
+    ?>
 </section>
 {{-- Pagination --}}
 <div class="d-flex justify-content-center">
-   {{ $paginator->links('content.contentFilms') }}
+{{$films->links()}}
 </div>
 @endsection
