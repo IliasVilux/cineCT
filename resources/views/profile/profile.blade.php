@@ -30,7 +30,6 @@
         <label class="form-label">{{trans('profile.language')}}</label>
         <p id="lang" style="display: none;">{{ Auth::user()->lang }}</p>
         <select class="form-select" name="language">
-            <!-- <option hidden value="null">Escoge un idioma</option> -->
             <option id="es" value="es">Castellano</option>
             <option id="ca" value="ca">Català</option>
             <option id="en" value="en">English</option>

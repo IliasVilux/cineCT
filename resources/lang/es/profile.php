@@ -20,5 +20,6 @@ return [
     'change_pass' => 'Cambiar contraseña',
     'change_img' => 'Cambiar imagen', 
     'save' => 'Guardar cambios',
+    'delete_profile' => 'Borrar perfil',
 
 ];

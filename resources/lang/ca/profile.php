@@ -20,5 +20,6 @@ return [
     'change_pass' => 'Canviar contrassenya',
     'change_img' => 'Canviar imatge', 
     'save' => 'Guardar canvis',
+    'delete_profile' => 'Eliminar perfil',
 
 ];
