@@ -13,9 +13,9 @@ return [
     |
     */
 
-    'films' => 'Films',
+    'films' => 'Películas',
     'series' => 'Series',
-    'animes' => 'Too many login attempts. Please try again in :seconds seconds.Animes',
-    'prueba' => 'espaniiish',
+    'animes' => 'Animes',
+    'view_more' => 'Ver más',
 
 ];
