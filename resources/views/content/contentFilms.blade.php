@@ -95,15 +95,15 @@
     if(!empty($films)) {
     echo '<div class="content d-flex flex-wrap align-items-stretch justify-content-center">';
 
-        foreach($films as $data) {
-            echo '<a href="/detail/detailAnimes/"'.$data->id.'" class="image-link col-3 col-sm-2 p-2">';
-            if($data->poster_path === NULL) {
-            echo '<img src="/img/NoImg.jpg" class="img-content col-12" alt="">';
-            } else {
-            echo '<img src="'.$data->poster_path.'" class="img-content col-12" alt="">
-            </a>';
-        }
+    foreach($films as $data) {
+        echo '<a href="/detail/detailFilms/'.$data->id.'" class="image-link col-3 col-sm-2 p-2">';
+        if($data->poster_path === NULL) {
+        echo '<img src="/img/NoImg.jpg" class="img-content col-12" alt="">';
+        } else {
+        echo '<img src="'.$data->poster_path.'" class="img-content col-12" alt="">
+        </a>';
     }
+}
    echo' </div>';
            
     } else {
