@@ -7,6 +7,7 @@ use App\Models\Serie;
 use App\Models\Genre;
 use App\Models\Image;
 use App\Models\Review;
+use App\Models\FavoriteList;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
@@ -101,6 +102,23 @@ class SerieController extends Controller
 
         return view('detail', ['serie' => $series]);*/
     }
+
+    public function addFavourite($id)
+    {
+        $user = Auth::user()->id;
+        $lista = FavoriteList::query()->where('user_id', $user)->where('serie_id', $id)->get();
+        $serie_name = Serie::query()->where('id', $id)->get();
+
+        if(!isset($lista[0])){
+            $fav = FavoriteList::create([
+                'user_id' => $user,
+                'serie_id' => $id
+            ]);
+            return redirect()->to('/detail/detailSeries/' . $id)->with('SerieAdded','Se ha añadido ' . $serie_name[0]->name . ' a tu lista de favoritos');
+        }
+        return redirect()->to('/detail/detailSeries/' . $id);
+    }
+
     public function ShareWidget()
     {
         $url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];

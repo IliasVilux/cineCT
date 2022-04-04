@@ -22,6 +22,11 @@
     }
     </style>
 </head>
+@if (Session::has('FilmAdded'))
+<div class="alert alert-success" role="alert">
+    <strong>{{ Session::get('FilmAdded') }}!</strong>
+</div>
+@endif
 <section class="container">
     <a href="{{ url('/content/contentFilms') }}" class="btn button-purple my-4" title="Back">
         Back
@@ -29,7 +34,73 @@
 
     <h1 class="detail-title">{{$film->name}}</h1>
 
-    <article class="d-flex flex-column flex-sm-row flex-sm-wrap justify-content-between mt-4">
+    <article class="more-info bg-dark p-3">
+        <div class="d-flex nowrap">
+            <h5 class="pe-2"><b>Género:</b></h5>
+            <p>{{$film->genre->name}}</p>
+        </div>
+        <div class="d-flex nowrap">
+            <h5 class="pe-2"><b>Fecha de lanzamiento:</b></h5>
+            <p> {{$film->release_date}}</p>
+        </div>
+        <div class="d-flex nowrap">
+            <h5 class="pe-2"><b>Duración:</b></h5>
+            <p> {{$film->duration}} min</p>
+        </div>
+        <div class="d-flex nowrap">
+            <h5 class="pe-2"><b>Puntuación:</b></h5>
+            <p><i class="fas fa-star"></i>
+            <p> {{$film->puntuation}}</p>/10<p>
+        </div>
+        <div>
+            <h5 class="pe-2"><b>Cuánto te ha gustado?</b></h5>
+            <form method="GET" class="d-flex justify.content-start">
+                <div class="rating d-inline ">
+                    <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
+                    <input name="stars" id="e2" type="radio" value="9"><label for="e2">☆</label>
+                    <input name="stars" id="e3" type="radio" value="8"><label for="e3">☆</label>
+                    <input name="stars" id="e4" type="radio" value="7"><label for="e4">☆</label>
+                    <input name="stars" id="e5" type="radio" value="6"><label for="e5">☆</label>
+                    <input name="stars" id="e6" type="radio" value="5"><label for="e6">☆</label>
+                    <input name="stars" id="e7" type="radio" value="4"><label for="e7">☆</label>
+                    <input name="stars" id="e8" type="radio" value="3"><label for="e8">☆</label>
+                    <input name="stars" id="e9" type="radio" value="2"><label for="e9">☆</label>
+                    <input name="stars" id="e10" type="radio" value="1"><label for="e10">☆</label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm">Enviar</button>
+            </form>
+            <a href="/detail/detailFilms/{{$film->id}}/addFav"><button type="button" class="btn btn-primary btn-sm">Añadir a favoritos</button></a>
+            <?php
+            if (isset($_GET['stars'])) {
+                echo '<div class="alert alert-success">Rating recibido: <strong>'.$_GET['stars'].'</strong>.</div>';
+            }elseif ((isset($_GET['stars']) == "")){
+
+            }
+            ?>
+        </div>
+        <article>
+            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-share-alt"></i></button> -->
+            <a type="button" class="btn btn-primary" href="#demo" data-bs-toggle="collapse"><i
+                    class="fas fa-share-alt"></i></a>
+            <!-- Modal -->
+            <!-- <div class="modal fade-scale" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    {!! $shareComponent !!}
+                </div>
+            </div>
+        </div> -->
+            <div id="demo" class="collapse">{!! $shareComponent !!}</div>
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
+                    Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                </div>
+            </div>
+        </article>
+    </article>
+
+    <article class="mt-4">
         @if($film->poster_path == NULL)
         <img src="/img/NoImg.jpg" class="img-thumbnail col-12 col-sm-7 col-md-4" alt="">
         @else
