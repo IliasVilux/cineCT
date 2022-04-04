@@ -64,29 +64,29 @@
 </section>
 <section class="d-flex flex-wrap justify-content-around align-items-center">
     <button class="button-category">
-        <p class="m-0">Acción / Aventura</p>
+        <p class="m-0">{{trans('content.action')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Animación / Familia</p>
+        <p class="m-0">{{trans('content.animation')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Comedia</p>
+        <p class="m-0">{{trans('content.comedy')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Terror / Suspense</p>
+        <p class="m-0">{{trans('content.terror')}}</p>
     </button>
 
     <button class="button-category">
-        <p class="m-0">Romance</p>
+        <p class="m-0">{{trans('content.romance')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Ciencia ficción / Fantasía</p>
+        <p class="m-0">{{trans('content.fiction')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Drama / Misterio</p>
+        <p class="m-0">{{trans('content.drama')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Bélica / Crimen</p>
+        <p class="m-0">{{trans('content.crime')}}</p>
     </button>
 </section>
 <section class="container py-4">

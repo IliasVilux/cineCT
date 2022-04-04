@@ -63,29 +63,29 @@
 </section>
 <section class="d-flex flex-wrap justify-content-around align-items-center">
     <button class="button-category">
-        <p class="m-0">Samurai</p>
+        <p class="m-0">{{trans('content.samurai')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Shounen</p>
+        <p class="m-0">{{trans('content.shounen')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Seinen</p>
+        <p class="m-0">{{trans('content.seinen')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Shoujo</p>
+        <p class="m-0">{{trans('content.shoujo')}}</p>
     </button>
 
     <button class="button-category">
-        <p class="m-0">Demons</p>
+        <p class="m-0">{{trans('content.demons')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Sci-fi</p>
+        <p class="m-0">{{trans('content.scifi')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Mecha</p>
+        <p class="m-0">{{trans('content.mecha')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Josei</p>
+        <p class="m-0">{{trans('content.josei')}}</p>
     </button>
 </section>
 <section class="container py-4">
