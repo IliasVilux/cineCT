@@ -32,31 +32,26 @@
 </div>
 @endif
 <section class="container">
-    <a href="{{ url('/content/contentSeries') }}" class="btn btn-primary btn-back" title="Home">
+    <a href="{{ url('/content/contentSeries') }}" class="btn button-purple my-4" title="Back">
         Back
     </a>
 
-    {!! $shareComponent !!}
-
     <h1 class="detail-title">{{$serie->name}}</h1>
 
-    <article class="more-info bg-dark p-3">
+<article class="d-flex flex-column flex-sm-row flex-sm-wrap justify-content-between mt-4">
+    @if($serie->poster_path == NULL)
+    <img src="/img/NoImg.jpg" class="img-thumbnail col-12 col-sm-7 col-md-4" alt="">
+    @else
+    <img src="{{$serie->poster_path}}" class="img-thumbnail col-12 col-sm-7 col-md-4" alt="Img {{$serie->name}}">
+    @endif
+    <article class="col-12 col-md-6 more-info bg-dark p-3">
         <div class="d-flex nowrap">
             <h5 class="pe-2"><b>Género:</b></h5>
-            <p>{{$serie->genre->name}}</p>
+            <p>{{$serie->genre_id}}</p>
         </div>
         <div class="d-flex nowrap">
             <h5 class="pe-2"><b>Fecha de lanzamiento:</b></h5>
             <p> {{$serie->release_date}}</p>
-        </div>
-        <div class="d-flex nowrap">
-            <h5 class="pe-2"><b>Temporadas:</b></h5>
-            <p> {{$serie->seasons}}</p>
-        </div>
-
-        <div class="d-flex nowrap">
-            <h5 class="pe-2"><b>Episodios:</b></h5>
-            <p> {{$serie->total_episodes}}</p>
         </div>
         <div class="d-flex nowrap">
             <h5 class="pe-2"><b>Puntuación:</b></h5>
@@ -65,7 +60,7 @@
         </div>
         <div>
             <h5 class="pe-2"><b>Cuánto te ha gustado?</b></h5>
-            <form method="GET" class="d-flex justify-content-start">
+            <form method="GET" class="d-flex justify.content-start">
                 <div class="rating d-inline ">
                     <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
                     <input name="stars" id="e2" type="radio" value="9"><label for="e2">☆</label>
@@ -78,51 +73,27 @@
                     <input name="stars" id="e9" type="radio" value="2"><label for="e9">☆</label>
                     <input name="stars" id="e10" type="radio" value="1"><label for="e10">☆</label>
                 </div>
-                <button type="submit" class="btn btn-primary btn-sm">Enviar</button>
+                <button type="submit" class="btn button-purple btn-sm">Enviar</button>
             </form>
             <a href="/detail/detailSeries/{{$serie->id}}/addFav"><button type="button" class="btn btn-primary btn-sm">Añadir a favoritos</button></a> 
             <?php
             if (isset($_GET['stars'])) {
                 echo '<div class="alert alert-success">Rating recibido: <strong>'.$_GET['stars'].'</strong>.</div>';
-            }elseif ((isset($_GET['stars']) == "")){
-
-            }
+            }elseif ((isset($_GET['stars']) == ""))
             ?>
         </div>
-    </article>
-    <article>
-        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-share-alt"></i></button> -->
-        <a type="button" class="btn btn-primary" href="#demo" data-bs-toggle="collapse"><i class="fas fa-share-alt"></i></a>
-        <!-- Modal -->
-        <!-- <div class="modal fade-scale" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    {!! $shareComponent !!}
-                </div>
-            </div>
-        </div> -->
-        <div id="demo" class="collapse">{!! $shareComponent !!}</div>
-        <div class="collapse" id="collapseExample">
-            <div class="card card-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-            </div>
+        <div class="social-media-links my-2">
+            <a type="button" class="btn button-purple" href="#demo" data-bs-toggle="collapse"><i
+                    class="fas fa-share-alt"></i></a>
+            <div id="demo" class="collapse">{!! $shareComponent !!}</div>
         </div>
     </article>
-
-    <article class="mt-4">
-        @if($serie->poster_path == NULL)
-        <img src="/img/NoImg.jpg" class="img-thumbnail" alt="">
-        @else
-        <img src="{{$serie->poster_path}}" class="img-thumbnail" alt="Img {{$serie->name}}">
-        @endif
-    </article>
-
-
     <p class="description pt-5">{{$serie->description}}</p>
+</article>
 
-    <!-- <h3><b>Creado:</b> {{$serie->created_at}}</h3>
-        <h3><b>Ultima actualización:</b> {{$serie->updated_at}}</h3> -->
-        <a class="btn btn-primary" class="add-comment" href="#create-comment">Añadir comentario</a>
+<!-- <h3><b>Creado:</b> {{$serie->created_at}}</h3>
+    <h3><b>Ultima actualización:</b> {{$serie->updated_at}}</h3> -->
+<a class="btn button-purple" class="add-comment" href="#create-comment">Añadir comentario</a>
 </section>
 
 <!-- START COMMMENT SECTION -->

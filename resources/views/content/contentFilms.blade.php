@@ -15,16 +15,41 @@
                 aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
-            <div class="carousel-item full active">
-                <img class="full-img" src="/img/SquidGame.jpg" alt="">
+            <div class="carousel-item full text-center active">
+                <a href="/detail/detailFilms/1" class="link-img-carousel">
+                    <img src="{{$films[0]->poster_path}}" class="img-carousel px-3" alt="Img {{$films[0]->name}}">
+                </a>
+                <a href="/detail/detailFilms/2" class="link-img-carousel">
+                    <img src="{{$films[1]->poster_path}}" class="img-carousel px-3" alt="Img {{$films[1]->name}}">
+                </a>
+                <a href="/detail/detailFilms/3" class="link-img-carousel">
+                    <img src="{{$films[2]->poster_path}}" class="img-carousel px-3" alt="Img {{$films[2]->name}}">
+                </a>
             </div>
-            <div class="carousel-item full">
-                <img class="full-img" src="/img/uncharted.jpg" alt="">
+            <div class="carousel-item full text-center">
+                <a href="/detail/detailFilms/4" class="link-img-carousel">
+                    <img src="{{$films[3]->poster_path}}" class="img-carousel px-3" alt="Img {{$films[3]->name}}">
+                </a>
+                <a href="/detail/detailFilms/5" class="link-img-carousel">
+                    <img src="{{$films[4]->poster_path}}" class="img-carousel px-3" alt="Img {{$films[4]->name}}">
+                </a>
+                <a href="/detail/detailFilms/7" class="link-img-carousel">
+                    <img src="{{$films[6]->poster_path}}" class="img-carousel px-3" alt="Img {{$films[6]->name}}">
+                </a>
             </div>
-            <div class="carousel-item full">
-                <img class="full-img" src="/img/Kimetsu.jpg" alt="">
+            <div class="carousel-item full text-center">
+                <a href="/detail/detailFilms/8" class="link-img-carousel">
+                    <img src="{{$films[7]->poster_path}}" class="img-carousel px-3" alt="Img {{$films[7]->name}}">
+                </a>
+                <a href="/detail/detailFilms/9" class="link-img-carousel">
+                    <img src="{{$films[8]->poster_path}}" class="img-carousel px-3" alt="Img {{$films[8]->name}}">
+                </a>
+                <a href="/detail/detailFilms/10" class="link-img-carousel">
+                    <img src="{{$films[9]->poster_path}}" class="img-carousel px-3" alt="Img {{$films[9]->name}}">
+                </a>
             </div>
         </div>
+        
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
             data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -66,25 +91,28 @@
 </section>
 <section class="container py-4">
     <h5>PELÍCULAS</h5>
-    @if(!empty($film))
-    <div class="content d-flex flex-wrap align-items-streach justify-content-center">
-        @foreach($film as $film)
-        <a href="/detail/detailFilms/{{$film->id}}" class="image-link col-2 p-2">
-            @if($film->poster_path === NULL)
-            <img src="/img/NoImg.jpg" alt="">
-            @else
-            <img src="{{$film->poster_path}}" alt="">
-            @endif
-        </a>
-        @endforeach
-    </div>
-    @else
-    <h2 style="color: red;">No hi ha cap registre!!!</h2>
-    @endif
+    <?php
+    if(!empty($films)) {
+    echo '<div class="content d-flex flex-wrap align-items-stretch justify-content-center">';
 
+    foreach($films as $data) {
+        echo '<a href="/detail/detailFilms/'.$data->id.'" class="image-link col-3 col-sm-2 p-2">';
+        if($data->poster_path === NULL) {
+        echo '<img src="/img/NoImg.jpg" class="img-content col-12" alt="No Image">';
+        } else {
+        echo '<img src="'.$data->poster_path.'" class="img-content col-12" alt="'.$data->name.'">
+        </a>';
+    }
+}
+   echo' </div>';
+           
+    } else {
+        echo '<h2 style="color: red;">No hi ha cap registre!!!</h2>';
+    }
+    ?>
 </section>
 {{-- Pagination --}}
 <div class="d-flex justify-content-center">
-    <!-- $film->links() -->
+{{$films->links()}}
 </div>
 @endsection
