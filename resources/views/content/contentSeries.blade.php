@@ -88,11 +88,13 @@
         <p class="m-0">{{trans('titles.crime')}}</p>
     </button>
 </section>
-<section class="container py-4">
-    <h5 class="col-6 text-uppercase">{{trans('titles.series')}}</h5>
 
-    <div class="d-flex justify-content-center">
-        {{$series->links()}}
+<section class="container py-5">
+    <div class="d-flex flex-row justify-content-between">
+        <h5 class="col-6 text-uppercase">{{trans('titles.series')}}</h5>
+        <div class="d-flex justify-content-center">
+            {{$series->links()}}
+        </div>
     </div>
 
     <?php

@@ -88,13 +88,12 @@
         <p class="m-0">{{trans('titles.josei')}}</p>
     </button>
 </section>
-<section class="container py-4">
-    <div class="d-flex justify-content-between py-3 px-5">
+<section class="container py-5">
+    <div class="d-flex flex-row justify-content-between">
         <h5 class="col-6 text-uppercase">{{trans('titles.animes')}}</h5>
-    </div>
-
-    <div class="d-flex justify-content-center">
-        {{$animes->links()}}
+        <div class="d-flex justify-content-center">
+            {{$animes->links()}}
+        </div>
     </div>
 
     <?php
@@ -104,7 +103,7 @@
     foreach($animes as $data) {
         echo '<a href="/detail/detailFilms/'.$data->id.'" class="image-link col-3 col-sm-2 p-2">';
         if($data->poster_path === NULL) {
-        echo '<img src="{{url("/img/NoImg.jpg")}}" class="img-content col-12" alt="No Image">';
+        echo '<img src="/img/NoImg.jpg" class="img-content col-12" alt="No Image">';
         } else {
         echo '<img src="'.$data->poster_path.'" class="img-content col-12" alt="'.$data->name.'">
         </a>';

@@ -21,8 +21,7 @@
     }
 
     div#social-links ul li a {
-        padding: 20px;
-        margin: 1px;
+        padding: 18px;
         font-size: 30px;
         color: #9966ff;
     }
@@ -42,66 +41,67 @@
 
     <article class="d-flex flex-column flex-sm-row flex-sm-wrap justify-content-between mt-4">
         @if($serie->poster_path == NULL)
-        <img src="/img/NoImg.jpg" class="img-thumbnail col-12 col-sm-7 col-md-4" alt="">
+        <img src="/img/NoImg.jpg" class="img-thumbnail col-12 col-md-5 mb-4 mb-md-0" alt="">
         @else
-        <img src="{{$serie->poster_path}}" class="img-thumbnail col-12 col-sm-7 col-md-4" alt="Img {{$serie->name}}">
+        <img src="{{$serie->poster_path}}" class="img-thumbnail col-12 col-md-5 mb-4 mb-md-0" alt="Img {{$serie->name}}">
         @endif
         <article class="col-12 col-md-6 more-info bg-dark p-3">
-            <div class="d-flex nowrap">
-                <h5 class="pe-2"><b>Género:</b></h5>
-                <p>{{$serie->genre_id}}</p>
-            </div>
-            <div class="d-flex nowrap">
-                <h5 class="pe-2"><b>Fecha de lanzamiento:</b></h5>
-                <p> {{$serie->release_date}}</p>
-            </div>
-            <div class="d-flex nowrap">
-                <h5 class="pe-2"><b>Temporadas:</b></h5>
-                <p> {{$serie->seasons}}</p>
-            </div>
-            <div class="d-flex nowrap">
-                <h5 class="pe-2"><b>Episodios:</b></h5>
-                <p> {{$serie->total_episodes}}</p>
-            </div>
-            <div class="d-flex nowrap">
-                <h5 class="pe-2"><b>Puntuación:</b></h5>
-                <p><i class="fas fa-star"></i>
-                <p> {{$serie->puntuation}}</p>/10<p>
-            </div>
             <div>
-                <h5 class="pe-2"><b>Cuánto te ha gustado?</b></h5>
-                <form method="GET" class="d-flex justify.content-start">
-                    <div class="rating d-inline ">
-                        <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
-                        <input name="stars" id="e2" type="radio" value="9"><label for="e2">☆</label>
-                        <input name="stars" id="e3" type="radio" value="8"><label for="e3">☆</label>
-                        <input name="stars" id="e4" type="radio" value="7"><label for="e4">☆</label>
-                        <input name="stars" id="e5" type="radio" value="6"><label for="e5">☆</label>
-                        <input name="stars" id="e6" type="radio" value="5"><label for="e6">☆</label>
-                        <input name="stars" id="e7" type="radio" value="4"><label for="e7">☆</label>
-                        <input name="stars" id="e8" type="radio" value="3"><label for="e8">☆</label>
-                        <input name="stars" id="e9" type="radio" value="2"><label for="e9">☆</label>
-                        <input name="stars" id="e10" type="radio" value="1"><label for="e10">☆</label>
-                    </div>
-                    <button type="submit" class="btn button-purple btn-sm">Enviar</button>
-                </form>
+                <div class="d-flex nowrap">
+                    <h5 class="pe-2"><b>Género:</b></h5>
+                    <p>{{$serie->genre_id}}</p>
+                </div>
+                <div class="d-flex nowrap">
+                    <h5 class="pe-2"><b>Fecha de lanzamiento:</b></h5>
+                    <p> {{$serie->release_date}}</p>
+                </div>
+                <div class="d-flex nowrap">
+                    <h5 class="pe-2"><b>Temporadas:</b></h5>
+                    <p> {{$serie->seasons}}</p>
+                </div>
+                <div class="d-flex nowrap">
+                    <h5 class="pe-2"><b>Episodios:</b></h5>
+                    <p> {{$serie->total_episodes}}</p>
+                </div>
+                <div class="d-flex nowrap">
+                    <h5 class="pe-2"><b>Puntuación:</b></h5>
+                    <p><i class="fas fa-star"></i>
+                    <p> {{$serie->puntuation}}</p>/10<p>
+                </div>
+                <div class="d-flex flex-column align-items-start">
+                    <h5 class="pe-2"><b>Cuánto te ha gustado?</b></h5>
+                    <form method="GET" class="d-flex flex-column flex-xl-row align-items-center">
+                        <div class="rating col-12 me-3">
+                            <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
+                            <input name="stars" id="e2" type="radio" value="9"><label for="e2">☆</label>
+                            <input name="stars" id="e3" type="radio" value="8"><label for="e3">☆</label>
+                            <input name="stars" id="e4" type="radio" value="7"><label for="e4">☆</label>
+                            <input name="stars" id="e5" type="radio" value="6"><label for="e5">☆</label>
+                            <input name="stars" id="e6" type="radio" value="5"><label for="e6">☆</label>
+                            <input name="stars" id="e7" type="radio" value="4"><label for="e7">☆</label>
+                            <input name="stars" id="e8" type="radio" value="3"><label for="e8">☆</label>
+                            <input name="stars" id="e9" type="radio" value="2"><label for="e9">☆</label>
+                            <input name="stars" id="e10" type="radio" value="1"><label for="e10">☆</label>
+                        </div>
+                        <button type="submit" class="btn button-purple btn-sm col-6 mb-2 mb-xl-0">Enviar</button>
+                    </form>
+                </div>
                 <?php
-            if (isset($_GET['stars'])) {
-                echo '<div class="alert alert-success">Rating recibido: <strong>'.$_GET['stars'].'</strong>.</div>';
-            }elseif ((isset($_GET['stars']) == ""))
-            ?>
+                if (isset($_GET['stars'])) {
+                    echo '<div class="alert alert-success">Rating recibido: <strong>'.$_GET['stars'].'</strong>.</div>';
+                }elseif ((isset($_GET['stars']) == ""))
+                ?>
                 <a href="/detail/detailSeries/{{$serie->id}}/addFav"><button type="button"
                         class="btn button-purple btn-md">Añadir a favoritos</button></a>
-            </div>
-            <div class="social-media-links my-2">
-                <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button"
-                    aria-expanded="false" aria-controls="shareComponent">
-                    <i class="fas fa-share-alt"></i>
-                </a>
-                <div class="collapse" id="shareComponent">
-                    {!! $shareComponent !!}
+                <div class="social-media-links my-2">
+                    <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button"
+                        aria-expanded="false" aria-controls="shareComponent">
+                        <i class="fas fa-share-alt"></i>
+                    </a>
+                    <div class="collapse" id="shareComponent">
+                        {!! $shareComponent !!}
+                    </div>
                 </div>
-            </div>
         </article>
         <p class="description pt-5">{{$serie->description}}</p>
     </article>
@@ -109,7 +109,8 @@
     <article class="pb-3">
         <form method="POST" action="" id="create-comment" class="create_comment">
             @csrf
-            <textarea name="description" id="description" cols="50" rows="3" placeholder="Escribe un comentario"></textarea>
+            <textarea name="description" id="description" cols="50" rows="3"
+                placeholder="Escribe un comentario"></textarea>
             <button class="btn button-purple mt-3" type="submit" id="commentSubmit">Publicar</button>
         </form>
     </article>
@@ -122,12 +123,14 @@
         <div class="alert alert-dark w-75 my-3" role="alert">
             Si el vídeo da error es porque el link no funciona. Pero te invitamos a buscar el trailer en <a
                 href="https://www.youtube.com/results?search_query={{$serie->name}} trailer">Youtube</a> y descubrir más
-            sobre esta serie.
+            sobre esta película.
         </div>
         @endif
         <!-- END TRAILER SECTION -->
     </article>
 </section>
+
+
 <!-- START COMMMENT SECTION -->
 <section class="gradient-custom">
     <div class="container my-5 py-5">
