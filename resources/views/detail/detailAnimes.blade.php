@@ -31,96 +31,27 @@
 <section class="container">
     <a href="{{ url('/content/contentAnimes') }}" class="btn button-purple my-4" title="Back"> Back</a>
 
-        <h1 class="detail-title">{{$anime->name}}</h1>
+    <h1 class="detail-title">{{$anime->name}}</h1>
 
-    <article class="more-info bg-dark p-3">
-        <div class="d-flex nowrap">
-            <h5 class="pe-2"><b>Género:</b></h5>
-            <p>{{$anime->genre->name}}</p>
-        </div>
-        <div class="d-flex nowrap">
-            <h5 class="pe-2"><b>Fecha de lanzamiento:</b></h5>
-            <p> {{$anime->release_date}}</p>
-        </div>
-        <div class="d-flex nowrap">
-            <h5 class="pe-2"><b>Duración:</b></h5>
-            <p> {{$anime->duration}} min</p>
-        </div>
-
-        <div class="d-flex nowrap">
-            <h5 class="pe-2"><b>Episodios:</b></h5>
-            <p> {{$anime->total_episodes}}</p>
-        </div>
-        <div class="d-flex nowrap">
-            <h5 class="pe-2"><b>Puntuación:</b></h5>
-            <p><i class="fas fa-star"></i>
-            <p> {{$anime->puntuation}}</p>/10<p>
-        </div>
-        <div>
-            <h5 class="pe-2"><b>Cuánto te ha gustado?</b></h5>
-            <form method="GET" class="d-flex justify.content-start">
-                <div class="rating d-inline ">
-                    <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
-                    <input name="stars" id="e2" type="radio" value="9"><label for="e2">☆</label>
-                    <input name="stars" id="e3" type="radio" value="8"><label for="e3">☆</label>
-                    <input name="stars" id="e4" type="radio" value="7"><label for="e4">☆</label>
-                    <input name="stars" id="e5" type="radio" value="6"><label for="e5">☆</label>
-                    <input name="stars" id="e6" type="radio" value="5"><label for="e6">☆</label>
-                    <input name="stars" id="e7" type="radio" value="4"><label for="e7">☆</label>
-                    <input name="stars" id="e8" type="radio" value="3"><label for="e8">☆</label>
-                    <input name="stars" id="e9" type="radio" value="2"><label for="e9">☆</label>
-                    <input name="stars" id="e10" type="radio" value="1"><label for="e10">☆</label>
-                </div>
-                <button type="submit" class="btn btn-primary btn-sm">Enviar</button>
-            </form>
-            <a href="/detail/detailAnimes/{{$anime->id}}/addFav"><button type="button" class="btn btn-primary btn-sm">Añadir a favoritos</button></a>
-            <?php
-            if (isset($_GET['stars'])) {
-                echo '<div class="alert alert-success">Rating recibido: <strong>'.$_GET['stars'].'</strong>.</div>';
-            }elseif ((isset($_GET['stars']) == "")){
-
-            }
-            ?>
-        </div>
-    </article>
-    <article>
-        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-share-alt"></i></button> -->
-        <a type="button" class="btn btn-primary" href="#demo" data-bs-toggle="collapse"><i class="fas fa-share-alt"></i></a>
-        <!-- Modal -->
-        <!-- <div class="modal fade-scale" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    {!! $shareComponent !!}
-                </div>
-            </div>
-        </div> -->
-        <div id="demo" class="collapse">{!! $shareComponent !!}</div>
-        <div class="collapse" id="collapseExample">
-            <div class="card card-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-            </div>
-        </div>
-    </article>
-
-    <article class="mt-4">
+    <article class="d-flex flex-column flex-sm-row flex-sm-wrap justify-content-between mt-4">
         @if($anime->poster_path == NULL)
         <img src="/img/NoImg.jpg" class="img-thumbnail col-12 col-sm-7 col-md-4" alt="">
         @else
         <img src="{{$anime->poster_path}}" class="img-thumbnail col-12 col-sm-7 col-md-4" alt="Img {{$anime->name}}">
         @endif
-    </article>
-
-    <!-- START TRAILER SECTION -->
-    @if($anime->trailer_link != null)
-        <iframe class="w-75" height="500" src="https://www.youtube.com/embed/{{$anime->trailer_link}}" allowfullscreen></iframe>
-        <div class="alert alert-dark w-75 m-auto" role="alert">
-            Si el vídeo da error es porque el link no funciona. Pero te invitamos a buscar el trailer en <a href="https://www.youtube.com/results?search_query={{$anime->name}} trailer">Youtube</a> y descubrir más sobre este anime
-        </div>
-    @endif
-    <!-- END TRAILER SECTION -->
-
-
-
+        <article class="col-12 col-md-6 more-info bg-dark p-3">
+            <div class="d-flex nowrap">
+                <h5 class="pe-2"><b>Género:</b></h5>
+                <p>{{$anime->genre_id}}</p>
+            </div>
+            <div class="d-flex nowrap">
+                <h5 class="pe-2"><b>Fecha de lanzamiento:</b></h5>
+                <p> {{$anime->release_date}}</p>
+            </div>
+            <div class="d-flex nowrap">
+                <h5 class="pe-2"><b>Temporadas:</b></h5>
+                <p> {{$anime->seasons}}</p>
+            </div>
             <div class="d-flex nowrap">
                 <h5 class="pe-2"><b>Episodios:</b></h5>
                 <p> {{$anime->total_episodes}}</p>
@@ -148,25 +79,47 @@
                     <button type="submit" class="btn button-purple btn-sm">Enviar</button>
                 </form>
                 <?php
-                if (isset($_GET['stars'])) {
-                    echo '<div class="alert alert-success">Rating recibido: <strong>'.$_GET['stars'].'</strong>.</div>';
-                }elseif ((isset($_GET['stars']) == "")){
-    
-                }
-                ?>
+            if (isset($_GET['stars'])) {
+                echo '<div class="alert alert-success">Rating recibido: <strong>'.$_GET['stars'].'</strong>.</div>';
+            }elseif ((isset($_GET['stars']) == ""))
+            ?>
+                <a href="/detail/detailSeries/{{$anime->id}}/addFav"><button type="button"
+                        class="btn button-purple btn-md">Añadir a favoritos</button></a>
             </div>
             <div class="social-media-links my-2">
-                <a type="button" class="btn button-purple" href="#demo" data-bs-toggle="collapse"><i
-                        class="fas fa-share-alt"></i></a>
-                <div id="demo" class="collapse">{!! $shareComponent !!}</div>
+                <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button"
+                    aria-expanded="false" aria-controls="shareComponent">
+                    <i class="fas fa-share-alt"></i>
+                </a>
+                <div class="collapse" id="shareComponent">
+                    {!! $shareComponent !!}
+                </div>
             </div>
         </article>
         <p class="description pt-5">{{$anime->description}}</p>
     </article>
 
-    <!-- <h3><b>Creado:</b> {{$anime->created_at}}</h3>
-        <h3><b>Ultima actualización:</b> {{$anime->updated_at}}</h3> -->
-    <a class="btn button-purple" class="add-comment" href="#create-comment">Añadir comentario</a>
+    <article class="pb-3">
+        <form method="POST" action="" id="create-comment" class="create_comment">
+            @csrf
+            <textarea name="description" id="description" cols="50" rows="3" placeholder="Escribe un comentario"></textarea>
+            <button class="btn button-purple mt-3" type="submit" id="commentSubmit">Publicar</button>
+        </form>
+    </article>
+    <article class="d-flex flex-column flex wrap align-items-center p-3">
+        <h3 class="text-uppercase pb-3">Tráiler</h3>
+        <!-- START TRAILER SECTION -->
+        @if($anime->trailer_link != null)
+        <iframe class="w-75" height="500" src="https://www.youtube.com/embed/{{$anime->trailer_link}}"
+            allowfullscreen></iframe>
+        <div class="alert alert-dark w-75 my-3" role="alert">
+            Si el vídeo da error es porque el link no funciona. Pero te invitamos a buscar el trailer en <a
+                href="https://www.youtube.com/results?search_query={{$anime->name}} trailer">Youtube</a> y descubrir más
+            sobre este anime
+        </div>
+        @endif
+        <!-- END TRAILER SECTION -->
+    </article>
 </section>
 
 <!-- START COMMMENT SECTION -->
@@ -181,38 +134,31 @@
                         <div class="row">
                             <div class="col" id="comment-container">
                                 @foreach ($comments as $comment)
-                                    @if ($comment->anime_id == $anime->id && !empty($comment->description))
-                                        @include('includes.review', ['comment' => $comment])
-                                    @endif
+                                @if ($comment->anime_id == $anime->id && !empty($comment->description))
+                                @include('includes.review', ['comment' => $comment])
+                                @endif
                                 @endforeach
                             </div>
-                            </div>
-                            <div class="alert alert-success d-none" id="msg_div" role="alert">
+                        </div>
+                        <div class="alert alert-success d-none" id="msg_div" role="alert">
 
-                            </div>
                         </div>
                     </div>
                 </div>
-                @if ($errors->has('description'))
-                <div class="mt-2 alert alert-danger">
-                    No puedes publicar un comentario sin vacío!
-                </div>
-                @endif
-                <div id="notify_user"></div>
-                <div class="text-center pt-3 "><span id="character-counter"></span></div>
-                <form method="POST" action="" id="create-comment" class="create_comment">
-                    @csrf
-                    <textarea name="description" id="description" cols="50" rows="3"
-                        placeholder="Escribe un comentario"></textarea>
-                    <button class="btn button-purple" type="submit" id="commentSubmit">Publicar</button>
-                </form>
-
-                </div>
             </div>
+            @if ($errors->has('description'))
+            <div class="mt-2 alert alert-danger">
+                No puedes publicar un comentario sin vacío!
+            </div>
+            @endif
+            <div id="notify_user"></div>
+            <div class="text-center pt-3 "><span id="character-counter"></span></div>
         </div>
-    </section>
+    </div>
+    </div>
+</section>
 
-    <script type="text/javascript">
+<script type="text/javascript">
         $("#notify_user").css("display", "none");
 
         jQuery('#create-comment').submit(function(e) {

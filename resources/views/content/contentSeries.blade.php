@@ -90,6 +90,11 @@
 </section>
 <section class="container py-4">
     <h5>Series</h5>
+
+    <div class="d-flex justify-content-center">
+        {{$series->links()}}
+    </div>
+
     <?php
     if(!empty($series)) {
     echo '<div class="content d-flex flex-wrap align-items-stretch justify-content-center">';
@@ -113,6 +118,6 @@
 </section>
 {{-- Pagination --}}
 <div class="d-flex justify-content-center">
-{{$series->links()}}
+    {{$series->links()}}
 </div>
 @endsection

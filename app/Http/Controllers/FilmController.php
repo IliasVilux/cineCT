@@ -96,12 +96,6 @@ class FilmController extends Controller
         } else {
             return response('No encontrado', 404);
         }
-
-        /*foreach($films as $film) {
-            echo $film;
-        }
-
-        return view('detail', ['film' => $films]);*/
     }
 
     public function addFavourite($id)
@@ -136,16 +130,5 @@ class FilmController extends Controller
         
         return $shareComponent;
     }
-    
-
-   /* public function returnFilmGenre($genre_id) {
-        $filmGenre = Genre::find($genre_id);
-  
-        if (!is_null($filmGenre)) {
-            return view('/content/contentFilms', ['filmGenre' => $filmGenre]);
-        } else {
-            return response('No encontrado', 404);
-        }
-    }*/
     
 }
