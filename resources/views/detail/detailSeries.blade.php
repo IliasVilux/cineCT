@@ -43,8 +43,7 @@
         @if($serie->poster_path == NULL)
         <img src="/img/NoImg.jpg" class="img-thumbnail col-12 col-md-5 mb-4 mb-md-0" alt="">
         @else
-        <img src="{{$serie->poster_path}}" class="img-thumbnail col-12 col-md-5 mb-4 mb-md-0"
-            alt="Img {{$serie->name}}">
+        <img src="{{$serie->poster_path}}" class="img-thumbnail col-12 col-md-5 mb-4 mb-md-0" alt="Img {{$serie->name}}">
         @endif
         <article class="col-12 col-md-6 more-info bg-dark p-3">
             <div>
@@ -72,7 +71,7 @@
                 <div class="d-flex flex-column align-items-start">
                     <h5 class="pe-2"><b>Cuánto te ha gustado?</b></h5>
                     <form method="GET" class="d-flex flex-column flex-xl-row align-items-center">
-                        <div class="rating col-12 ">
+                        <div class="rating col-12 me-3">
                             <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
                             <input name="stars" id="e2" type="radio" value="9"><label for="e2">☆</label>
                             <input name="stars" id="e3" type="radio" value="8"><label for="e3">☆</label>
@@ -84,14 +83,14 @@
                             <input name="stars" id="e9" type="radio" value="2"><label for="e9">☆</label>
                             <input name="stars" id="e10" type="radio" value="1"><label for="e10">☆</label>
                         </div>
-                        <button type="submit" class="btn button-purple btn-sm col-6 mb-2">Enviar</button>
+                        <button type="submit" class="btn button-purple btn-sm col-6 mb-2 mb-xl-0">Enviar</button>
                     </form>
                 </div>
                 <?php
-            if (isset($_GET['stars'])) {
-                echo '<div class="alert alert-success">Rating recibido: <strong>'.$_GET['stars'].'</strong>.</div>';
-            }elseif ((isset($_GET['stars']) == ""))
-            ?>
+                if (isset($_GET['stars'])) {
+                    echo '<div class="alert alert-success">Rating recibido: <strong>'.$_GET['stars'].'</strong>.</div>';
+                }elseif ((isset($_GET['stars']) == ""))
+                ?>
                 <a href="/detail/detailSeries/{{$serie->id}}/addFav"><button type="button"
                         class="btn button-purple btn-md">Añadir a favoritos</button></a>
                 <div class="social-media-links my-2">

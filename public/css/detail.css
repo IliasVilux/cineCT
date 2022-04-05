@@ -21,6 +21,7 @@ p.description {
 .rating {
     font-size: 30px;
     overflow: hidden;
+    width: 270px;
 }
 
 .rating input {

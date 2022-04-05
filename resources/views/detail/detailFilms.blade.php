@@ -55,12 +55,8 @@
                     <p> {{$film->release_date}}</p>
                 </div>
                 <div class="d-flex nowrap">
-                    <h5 class="pe-2"><b>Temporadas:</b></h5>
-                    <p> {{$film->seasons}}</p>
-                </div>
-                <div class="d-flex nowrap">
-                    <h5 class="pe-2"><b>Episodios:</b></h5>
-                    <p> {{$film->total_episodes}}</p>
+                    <h5 class="pe-2"><b>Duración:</b></h5>
+                    <p> {{$film->duration}} min</p>
                 </div>
                 <div class="d-flex nowrap">
                     <h5 class="pe-2"><b>Puntuación:</b></h5>
@@ -70,7 +66,7 @@
                 <div class="d-flex flex-column align-items-start">
                     <h5 class="pe-2"><b>Cuánto te ha gustado?</b></h5>
                     <form method="GET" class="d-flex flex-column flex-xl-row align-items-center">
-                        <div class="rating col-12 ">
+                        <div class="rating col-12 me-3">
                             <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
                             <input name="stars" id="e2" type="radio" value="9"><label for="e2">☆</label>
                             <input name="stars" id="e3" type="radio" value="8"><label for="e3">☆</label>
@@ -82,7 +78,7 @@
                             <input name="stars" id="e9" type="radio" value="2"><label for="e9">☆</label>
                             <input name="stars" id="e10" type="radio" value="1"><label for="e10">☆</label>
                         </div>
-                        <button type="submit" class="btn button-purple btn-sm col-6 mb-2">Enviar</button>
+                        <button type="submit" class="btn button-purple btn-sm col-6 mb-2 mb-xl-0">Enviar</button>
                     </form>
                 </div>
                 <?php
