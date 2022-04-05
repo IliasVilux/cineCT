@@ -116,7 +116,7 @@
         <div class="alert alert-dark w-75 my-3" role="alert">
             Si el vídeo da error es porque el link no funciona. Pero te invitamos a buscar el trailer en <a
                 href="https://www.youtube.com/results?search_query={{$film->name}} trailer">Youtube</a> y descubrir más
-            sobre esta película
+            sobre esta película.
         </div>
         @endif
         <!-- END TRAILER SECTION -->
