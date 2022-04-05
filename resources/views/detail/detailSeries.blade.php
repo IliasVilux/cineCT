@@ -158,13 +158,6 @@
                 @endif
                 <div id="notify_user"></div>
                 <div class="text-center pt-3 "><span id="character-counter"></span></div>
-                <form method="POST" action="" id="create-comment" class="create_comment">
-                    @csrf
-                    <textarea name="description" id="description" cols="50" rows="3"
-                        placeholder="Escribe un comentario"></textarea>
-                    <button class="btn" type="submit" id="commentSubmit">Publicar</button>
-                </form>
-
             </div>
         </div>
     </div>
