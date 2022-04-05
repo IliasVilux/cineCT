@@ -64,33 +64,33 @@
 </section>
 <section class="d-flex flex-wrap justify-content-around align-items-center">
     <button class="button-category">
-        <p class="m-0">{{trans('content.action')}}</p>
+        <p class="m-0">{{trans('titles.action')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">{{trans('content.animation')}}</p>
+        <p class="m-0">{{trans('titles.animation')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">{{trans('content.comedy')}}</p>
+        <p class="m-0">{{trans('titles.comedy')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">{{trans('content.terror')}}</p>
+        <p class="m-0">{{trans('titles.terror')}}</p>
     </button>
 
     <button class="button-category">
-        <p class="m-0">{{trans('content.romance')}}</p>
+        <p class="m-0">{{trans('titles.romance')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">{{trans('content.fiction')}}</p>
+        <p class="m-0">{{trans('titles.fiction')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">{{trans('content.drama')}}</p>
+        <p class="m-0">{{trans('titles.drama')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">{{trans('content.crime')}}</p>
+        <p class="m-0">{{trans('titles.crime')}}</p>
     </button>
 </section>
 <section class="container py-4">
-    <h5>PELÍCULAS</h5>
+    <h5 class="col-6 text-uppercase">{{trans('titles.films')}}</h5>
 
     <div class="d-flex justify-content-center">
         {{$films->links()}}

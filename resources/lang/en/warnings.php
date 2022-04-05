@@ -21,5 +21,8 @@ return [
     'user_used' => 'This username already exists or has more than 15 characters.',
     'email_used' => 'This email is being used in another account.',
     'same_pass' => 'The password is not the same.',
-    
+      
+    // Detalle video yt
+    'video_error' => 'If the video is not working, is because the video was deleted from Youtube. We invite you to search a new trailer to know more about this content.',
+
 ];

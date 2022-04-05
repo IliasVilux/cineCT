@@ -13,6 +13,7 @@ return [
     |
     */
 
+    // Registro
     'email_wrong' => 'Aquest email no és vàlid o ja s\'està utilitzant.',
     'pass_wrong' => 'La contrassenya ha de tenir com a mínim 6 caràcters.',
     'user_no_account' => 'El nom d\'usuari no perteneix a cap compte registrat.',
@@ -22,4 +23,7 @@ return [
     'email_used' => 'Aquest email ja s\'està utilitzant en una altra compta.',
     'same_pass' => 'No és la  mateixa contrassenya.',
     
+    // Detalle video yt
+    'video_error' => 'Si el video no funciona, és perque s\'ha eliminat el video de Youtube. T\'invitem a buscar-ne un de nou i descobrir més sobre aquest contingut.',
+
 ];

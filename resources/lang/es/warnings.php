@@ -22,4 +22,7 @@ return [
     'email_used' => 'Este email se está utilizando en otra cuenta.',
     'same_pass' => 'No es la misma contraseña.',
 
+      // Detalle video yt
+      'video_error' => 'Si el video no funciona, es porque se ha eliminado de Youtube. Te invitamos a buscar uno nuevo y descubrir más sobre este contenido.',
+
 ];

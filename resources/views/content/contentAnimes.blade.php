@@ -63,34 +63,34 @@
 </section>
 <section class="d-flex flex-wrap justify-content-around align-items-center">
     <button class="button-category">
-        <p class="m-0">{{trans('content.samurai')}}</p>
+        <p class="m-0">{{trans('titles.samurai')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">{{trans('content.shounen')}}</p>
+        <p class="m-0">{{trans('titles.shounen')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">{{trans('content.seinen')}}</p>
+        <p class="m-0">{{trans('titles.seinen')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">{{trans('content.shoujo')}}</p>
+        <p class="m-0">{{trans('titles.shoujo')}}</p>
     </button>
 
     <button class="button-category">
-        <p class="m-0">{{trans('content.demons')}}</p>
+        <p class="m-0">{{trans('titles.demons')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">{{trans('content.scifi')}}</p>
+        <p class="m-0">{{trans('titles.scifi')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">{{trans('content.mecha')}}</p>
+        <p class="m-0">{{trans('titles.mecha')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">{{trans('content.josei')}}</p>
+        <p class="m-0">{{trans('titles.josei')}}</p>
     </button>
 </section>
 <section class="container py-4">
     <div class="d-flex justify-content-between py-3 px-5">
-        <h5 class="col-6">Animes</h5>
+        <h5 class="col-6 text-uppercase">{{trans('titles.animes')}}</h5>
     </div>
 
     <div class="d-flex justify-content-center">
