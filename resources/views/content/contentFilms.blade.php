@@ -49,7 +49,7 @@
                 </a>
             </div>
         </div>
-        
+
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
             data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -91,6 +91,11 @@
 </section>
 <section class="container py-4">
     <h5>PELÍCULAS</h5>
+
+    <div class="d-flex justify-content-center">
+        {{$films->links()}}
+    </div>
+
     <?php
     if(!empty($films)) {
     echo '<div class="content d-flex flex-wrap align-items-stretch justify-content-center">';
@@ -113,6 +118,6 @@
 </section>
 {{-- Pagination --}}
 <div class="d-flex justify-content-center">
-{{$films->links()}}
+    {{$films->links()}}
 </div>
 @endsection

@@ -93,6 +93,10 @@
         <h5 class="col-6">Animes</h5>
     </div>
 
+    <div class="d-flex justify-content-center">
+        {{$animes->links()}}
+    </div>
+
     <?php
     if(!empty($animes)) {
     echo '<div class="content d-flex flex-wrap align-items-stretch justify-content-center">';
@@ -116,6 +120,6 @@
 </section>
 {{-- Pagination --}}
 <div class="d-flex justify-content-center">
-{{$animes->links()}}
+    {{$animes->links()}}
 </div>
 @endsection
