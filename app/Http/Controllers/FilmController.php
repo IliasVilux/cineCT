@@ -133,6 +133,7 @@ class FilmController extends Controller
     public function fetchAllFilms()
     {
         $films = Film::all();
+
         $filmGenres = ["Animation", "Family", "Science Fiction", "War", "Crime", "Action", "Adventure", "Comedy", "Drama", "Fantasy", "Horror", "Mystery", "Romance", "Suspense"];
         $genres = Genre::whereIn('name', $filmGenres)->get();
 
@@ -140,13 +141,56 @@ class FilmController extends Controller
         return view('content.contentFilms', ['film' => $films, 'genres' => $genres]);
     }
 
-    public function filterContent()
+    public function filterContent($genre = null)
     {
-        dd("HOLA");
-        /*
-        $films = Film::where('genre_id', 'LIKE', '%' . $genreName . '%')->get();
-        dd($films);
-        */
+
+        if(isset($genre) && !is_null($genre) && !empty($genre)){
+
+            $genreInfo = Genre::where('name','=', $genre)->first();
+            
+            $searchCondition = array();
+            
+            if ($genreInfo){
+                if($genre == 'Action' || $genre == 'Adventure'){
+                    array_push($searchCondition, "Action","Adventure"); 
+                }elseif ($genre == 'Animation' || $genre == 'Family'){
+                    array_push($searchCondition, "Animation","Family"); 
+                }elseif($genre == 'Comedy'){
+                    array_push($searchCondition, "Comedy"); 
+                }elseif ($genre == 'Horror' || $genre == 'Thriller'){
+                    array_push($searchCondition, "Horror", "Thriller"); 
+                }elseif($genre == 'Romance'){
+                    array_push($searchCondition, "Romance"); 
+                }elseif ($genre == 'Sci-fi' || $genre == 'Fantasy'){
+                    array_push($searchCondition, "Sci-fi", "Fantasy");
+                }elseif ($genre == 'Drama' || $genre == 'Mystery'){
+                    array_push($searchCondition, "Drama", "Mystery");
+                }elseif ($genre == 'War' || $genre == 'Crime'){
+                    array_push($searchCondition, "War", "Crime");
+                }
+            }
+
+
+            $films = Film::select('films.*')
+            ->join('genres', 'films.genre_id', '=', 'genres.id')
+            ->whereIn('genres.name', $searchCondition)
+            ->orderBy('genres.name', 'asc')
+            ->get();
+
+            
+            if(count($films) > 0){
+                foreach($films as $film){
+                    echo '<b>'.$film->genre->name.'</b>: '.$film->name .'<br>';
+                }
+            }else{
+                echo "No hay ningun resultado".'<br>';
+            }
+            
+
+            
+            
+        }
+        
     }
     
 }

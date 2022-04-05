@@ -22,16 +22,18 @@ main {
     width: 24%;
     height: 80px;
     margin-top: 10px;
+    color: #FFFFFF;
     background: linear-gradient(to bottom, black 25%, #9966ff 150%);;
 }
 
 .button-category a{
     text-decoration: none;
-    color: white;
+    
 }
 
 .button-category:hover{
     transform: scale(0.9);
+    color: #FFFFFF;
 }
 
 a.image-link {

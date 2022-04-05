@@ -41,8 +41,12 @@
 
 <section class="d-flex flex-wrap justify-content-around align-items-center">
         @foreach($genres as $genre)
-        <a class="btn button-category m-0" type="submit" id="{{$genre->id}}" href="{{route('film.all-films-filter', ['genre' => $genre->name])}}" 
-            value="{{$genre->name}}">{{$genre->name}}</a>
+        
+                <a class="btn button-category m-0" type="submit" id="{{$genre->id}}" href="{{route('film.all-films-filter', ['genre' => $genre->name])}}" 
+                    value="{{$genre->name}}">{{$genre->name}}</a>
+        {{--
+        <a class="btn button-category m-0" type="submit" href="{{route('film.all-films-filter', ['genre' => $genre])}}" 
+            value="{{$genre}}">{{$genre}}</a>--}}
         @endforeach
 </section>
 
@@ -71,10 +75,6 @@
 
 <script>
     
-    jQuery('#filterSubmit').submit(function(e) {
-        var valor = $(this).val();
-        alert(valor);
-    });
 
 </script>
 @endsection

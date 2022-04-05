@@ -138,7 +138,7 @@
                                     <div class="register-erros">
                                         @if ($errors->has('register_name'))
                                             <div class="mt-2 alert alert-danger">
-                                                El nombre no es correcto, debe tener al menos 4 caracteres
+                                                El nombre no es correcto, debe tener al menos 3 caracteres
                                             </div>
                                         @endif
                                         @if ($errors->has('register_surname'))
