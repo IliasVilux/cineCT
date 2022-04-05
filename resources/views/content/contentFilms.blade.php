@@ -89,11 +89,13 @@
         <p class="m-0">{{trans('content.crime')}}</p>
     </button>
 </section>
-<section class="container py-4">
-    <h5>PELÍCULAS</h5>
+<section class="container py-5">
+    <div class="d-flex flex-row justify-content-between">
+        <h3 class="text-uppercase">Películas</h3>
 
-    <div class="d-flex justify-content-center">
-        {{$films->links()}}
+        <div class="d-flex justify-content-center">
+            {{$films->links()}}
+        </div>
     </div>
 
     <?php

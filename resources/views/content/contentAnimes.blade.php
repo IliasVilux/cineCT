@@ -88,9 +88,14 @@
         <p class="m-0">{{trans('content.josei')}}</p>
     </button>
 </section>
-<section class="container py-4">
-    <div class="d-flex justify-content-between py-3 px-5">
-        <h5 class="col-6">Animes</h5>
+<section class="container py-5">
+
+    <div class="d-flex flex-row justify-content-between">
+        <h3 class="text-uppercase">Animes</h3>
+
+        <div class="d-flex justify-content-center">
+            {{$animes->links()}}
+        </div>
     </div>
 
     <div class="d-flex justify-content-center">
