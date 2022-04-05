@@ -8,11 +8,11 @@
     <h1 class="mt-4">{{trans('profile.title_profile')}}</h1>
     <div class="d-flex justify-content-center">
         <a href="{{asset('/profileImg')}}">
-            <img class="img-carousel" src="{{asset('img/NoImg.jpg')}}" width="200px">
+            <img class="img-carousel" src="{{asset('img/NoImg.jpg')}}">
         </a>
     </div>
     <a href="{{asset('/profileImg')}}" class="col-12 d-flex justify-content-center" >
-        <button class="btn btn-primary mt-3 col-3">{{trans('profile.change_img')}}</button>
+        <button class="btn button-purple mt-3 col-3">{{trans('profile.change_img')}}</button>
     </a>
 
 
@@ -36,7 +36,7 @@
         </select>
         </div>
         <div class="col-12 col-sm-6 m-0 ps-2" style="padding-top: 25px;">
-            <a href="{{ route('change.password') }}" type="button" class="btn btn-light col-12 my-2">{{trans('profile.change_pass')}}</a>
+            <a href="{{ route('change.password') }}" type="button" class="btn button-purple col-12 my-2">{{trans('profile.change_pass')}}</a>
         </div>
         <div class="col-12">
             <a type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal">Eliminar Cuenta</a>
@@ -59,7 +59,7 @@
             </div>
         </div>
         <div class="col-12 px-4 d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary col-12 col-sm-6">Guardar</button>
+            <button type="submit" class="btn button-purple col-12 col-sm-6">Guardar</button>
         </div>
     </form>
 </section>

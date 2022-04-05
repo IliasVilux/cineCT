@@ -6,7 +6,7 @@
 </head>
 <section class="container">
     <h1>SOBRE NOSOTROS</h1>
-    <a href="{{ url('/') }}" class="btn btn-primary btn-back" title="Home">
+    <a href="{{ url('/') }}" class="btn button-purple btn-back" title="Home">
         Home
     </a>
     <!-- START CAROUSEL -->
