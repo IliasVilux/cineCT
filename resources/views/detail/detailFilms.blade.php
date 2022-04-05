@@ -4,6 +4,11 @@
 <head>
     <link rel="stylesheet" href="{{asset('css/detail.css')}}">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('input.star').rating();
+    });
+    </script>
     <style>
     div#social-links {
         margin: 0 auto;
