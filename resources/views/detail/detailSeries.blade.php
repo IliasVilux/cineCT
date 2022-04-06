@@ -91,16 +91,18 @@
                     echo '<div class="alert alert-success">Rating recibido: <strong>'.$_GET['stars'].'</strong>.</div>';
                 }elseif ((isset($_GET['stars']) == ""))
                 ?>
-                <a href="/detail/detailSeries/{{$serie->id}}/addFav"><button type="button"
-                        class="btn button-purple btn-md">Añadir a favoritos</button></a>
-                <div class="social-media-links my-2">
-                    <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button"
-                        aria-expanded="false" aria-controls="shareComponent">
-                        <i class="fas fa-share-alt"></i>
-                    </a>
-                    <div class="collapse" id="shareComponent">
-                        {!! $shareComponent !!}
+                 <div class="d-flex flex-row">
+                    <a href="/detail/detailSeries/{{$serie->id}}/addFav"><button type="button"
+                            class="btn button-purple btn-md">Añadir a favoritos</button></a>
+                    <div class="social-media-links mx-2">
+                        <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button"
+                            aria-expanded="false" aria-controls="shareComponent">
+                            <i class="fas fa-share-alt"></i>
+                        </a>
                     </div>
+                </div>
+                <div class="collapse my-3" id="shareComponent">
+                    {!! $shareComponent !!}
                 </div>
         </article>
         <p class="description pt-5">{{$serie->description}}</p>
