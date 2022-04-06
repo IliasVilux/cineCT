@@ -50,13 +50,13 @@
                                 <li>
                                     <a class="dropdown-item" href="{{ route('user.profile') }}">
                                         <i class="fas fa-user-circle"></i>
-                                        Perfil
+                                        {{trans('titles.profile')}}
                                     </a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item" href="{{route('user.favorite.list')}}">
                                         <i class="fas fa-list"></i>
-                                        Mis listas
+                                        {{trans('titles.lists')}}
                                     </a>
                                 </li>
                                 <li>
@@ -75,7 +75,7 @@
                 <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
                     aria-labelledby="offcanvasWithBothOptionsLabel">
                     <div class="offcanvas-header p-4">
-                        <h1 class="menu-title text-uppercase m-0" id="offcanvasWithBothOptionsLabel">Menu</h1>
+                        <h1 class="menu-title text-uppercase m-0" id="offcanvasWithBothOptionsLabel">{{trans('titles.menu')}}</h1>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
                             aria-label="Close"></button>
                     </div>
@@ -83,42 +83,42 @@
                         <ul class="list-unstyled">
                             <li>
                                 <a href="{{ url('/') }}" class="footer-links text-light text-uppercase fs-3 m-0">
-                                    <i class="fas fa-home pe-2"></i>Home
+                                    <i class="fas fa-home pe-2"></i>{{trans('titles.home')}}
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ url('/content/contentFilms') }}" class="footer-links text-light text-uppercase fs-3 m-0">
-                                    <i class="fas fa-film pe-2 fa-2x"></i>Películas
+                                    <i class="fas fa-film pe-2 fa-2x"></i>{{trans('titles.films')}}
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ url('/content/contentSeries') }}" class="footer-links text-light text-uppercase fs-3 m-0">
-                                    <i class="fas fa-tv pe-2"></i>Series
+                                    <i class="fas fa-tv pe-2"></i>{{trans('titles.series')}}
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ url('/content/contentAnimes') }}" class="footer-links text-light text-uppercase fs-3 m-0">
-                                    <i class="fas fa-dragon pe-2"></i>Anime
+                                    <i class="fas fa-dragon pe-2"></i>{{trans('titles.animes')}}
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ url('/top') }}" class="footer-links text-light text-uppercase fs-3 m-0">
-                                    <i class="fas fa-sort-amount-up-alt pe-2"></i>Top
+                                    <i class="fas fa-sort-amount-up-alt pe-2"></i>{{trans('titles.top')}}
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ url('/search') }}" class="footer-links text-light text-uppercase fs-3 m-0">
-                                    <i class="fas fa-search pe-2"></i>Buscador
+                                    <i class="fas fa-search pe-2"></i>{{trans('titles.search')}}
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('user.favorite.list') }}" class="footer-links text-light text-uppercase fs-3 m-0">
-                                    <i class="fas fa-th-list pe-2"></i>Mis Listas
+                                    <i class="fas fa-th-list pe-2"></i>{{trans('titles.lists')}}
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ url('/aboutUs') }}" class="footer-links text-light text-uppercase fs-3 m-0">
-                                    <i class="fas fa-user pe-2"></i>Sobre Nosotros
+                                    <i class="fas fa-user pe-2"></i>{{trans('titles.about')}}
                                 </a>
                             </li>
                         </ul>
@@ -144,14 +144,14 @@
             <section class="d-flex justify-content-center mb-2">
                 <div class="d-inline-block col-12">
                     <h5 class="text-uppercase fs-4">Links</h5>
-                    <a href="{{ url('/') }}" class="footer-links text-white fs-5">Home</a>
-                    <a href="{{ url('/content/contentFilms') }}" class="footer-links text-white fs-5">Películas</a>
-                    <a href="{{ url('/content/contentSeries') }}" class="footer-links text-white fs-5">Series</a>
-                    <a href="{{ url('/content/contentAnimes') }}" class="footer-links text-white fs-5">Anime</a>
-                    <a href="{{ url('/top') }}" class="footer-links text-white fs-5">Top</a>
-                    <a href="{{ url('/search') }}" class="footer-links text-white fs-5">Buscador</a>
-                    <a href="{{ url('/list') }}" class="footer-links text-white fs-5">Mis Listas</a>
-                    <a href="{{ url('/aboutUs') }}" class="footer-links text-white fs-5">Sobre Nosotros</a>
+                    <a href="{{ url('/') }}" class="footer-links text-white fs-5">{{trans('titles.home')}}</a>
+                    <a href="{{ url('/content/contentFilms') }}" class="footer-links text-white fs-5">{{trans('titles.films')}}</a>
+                    <a href="{{ url('/content/contentSeries') }}" class="footer-links text-white fs-5">{{trans('titles.series')}}</a>
+                    <a href="{{ url('/content/contentAnimes') }}" class="footer-links text-white fs-5">{{trans('titles.animes')}}</a>
+                    <a href="{{ url('/top') }}" class="footer-links text-white fs-5">{{trans('titles.top')}}</a>
+                    <a href="{{ url('/search') }}" class="footer-links text-white fs-5">{{trans('titles.search')}}</a>
+                    <a href="{{ url('/list') }}" class="footer-links text-white fs-5">{{trans('titles.lists')}}</a>
+                    <a href="{{ url('/aboutUs') }}" class="footer-links text-white fs-5">{{trans('titles.about')}}</a>
                 </div>
             </section>
             <!-- SECTION: LINKS -->

@@ -13,9 +13,19 @@ return [
     |
     */
 
+    // Menu
+    'menu' => 'Menu',
+    'home' => 'Home',
     'films' => 'Films',
     'series' => 'Series',
     'animes' => 'Animes',
+    'top' => 'Top',
+    'search' => 'Search',
+    'lists' => 'Library',
+    'about' => 'About us',
+
+    // Other links
+    'profile' => 'Profile',    
 
     // Buttons
     'action' => 'Action / Adventure',

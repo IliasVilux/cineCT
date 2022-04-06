@@ -21,5 +21,7 @@ return [
     'change_img' => 'Change image', 
     'save' => 'Save changes',
     'delete_profile' => 'Delete profile',
+    'cancel' => 'Cancel',
+    'delete' => 'Delete',
 
 ];

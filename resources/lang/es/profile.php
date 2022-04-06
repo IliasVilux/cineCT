@@ -21,5 +21,7 @@ return [
     'change_img' => 'Cambiar imagen', 
     'save' => 'Guardar cambios',
     'delete_profile' => 'Borrar perfil',
+    'cancel' => 'Cancelar',
+    'delete' => 'Borrar',
 
 ];
