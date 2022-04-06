@@ -22,6 +22,8 @@ return [
     'user_used' => 'Aquest nom d\'usuari ja existex o té més de 15 caràcters.',
     'email_used' => 'Aquest email ja s\'està utilitzant en una altra compta.',
     'same_pass' => 'No és la  mateixa contrassenya.',
+    'del_profile_conf' => 'Estàs segur de que vols esborrar la compta?',
+    
     
     // Detalle video yt
     'video_error' => 'Si el video no funciona, és perque s\'ha eliminat el video de Youtube. T\'invitem a buscar-ne un de nou i descobrir més sobre aquest contingut.',

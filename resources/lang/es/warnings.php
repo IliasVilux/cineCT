@@ -21,8 +21,9 @@ return [
     'user_used' => 'Este nombre de usuario ya existe o tiene más de 15 carácteres.',
     'email_used' => 'Este email se está utilizando en otra cuenta.',
     'same_pass' => 'No es la misma contraseña.',
-
-      // Detalle video yt
-      'video_error' => 'Si el video no funciona, es porque se ha eliminado de Youtube. Te invitamos a buscar uno nuevo y descubrir más sobre este contenido.',
+    'del_profile_conf' => '¿Estás seguro de que quieres eliminar la cuenta?',
+    
+    // Detalle video yt
+    'video_error' => 'Si el video no funciona, es porque se ha eliminado de Youtube. Te invitamos a buscar uno nuevo y descubrir más sobre este contenido.',
 
 ];
