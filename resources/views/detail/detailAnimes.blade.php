@@ -83,6 +83,40 @@
             ?>
         </div>
     </article>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="dropdown">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+            Añadir a favoritos
+        </button>
+        <ul class="dropdown-menu">
+            <li><a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#myModal">Crear nueva lista</a></li>
+            <li><a class="dropdown-item" href="#">Link 2</a></li>
+            <li><a class="dropdown-item" href="#">Link 3</a></li>
+        </ul>
+    </div>
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog text-dark">
+            <div class="modal-content">
+
+            <form action="/detail/detailAnimes/{{$anime->id}}/addNewList">
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="text" id="newListName" name="newListName" class="form-control" placeholder="Nombre de la lista">
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button class="btn button-purple">Crear nueva lista</button>
+                    <a type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</a>
+                </div>
+            </form>
+
+            </div>
+        </div>
+    </div>
     <article>
         <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-share-alt"></i></button> -->
         <a type="button" class="btn btn-primary" href="#demo" data-bs-toggle="collapse"><i class="fas fa-share-alt"></i></a>

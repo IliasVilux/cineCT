@@ -8,6 +8,7 @@ use App\Models\Genre;
 use App\Models\Image;
 use App\Models\Review;
 use App\Models\FavoriteList;
+use App\Models\FavouriteLists;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
@@ -119,11 +120,47 @@ class AnimeController extends Controller
         if(!isset($lista[0])){
             $fav = FavoriteList::create([
                 'user_id' => $user,
-                'anime_id' => $id
+                'name' => $id
             ]);
             return redirect()->to('/detail/detailAnimes/' . $id)->with('AnimeAdded','Se ha añadido ' . $anime_name[0]->name . ' a tu lista de favoritos');
         }
         return redirect()->to('/detail/detailAnimes/' . $id);
+    }
+
+    public function addFavouriteNewList($idA, $list)
+    {
+        $user = Auth::user()->id;
+        $lista = FavoriteList::query()->where('user_id', $user)->where('anime_id', $idA)->where('list_id', $list->id)->get();
+        $anime_name = Anime::query()->where('id', $idA)->get();
+
+        if(!isset($lista[0])){
+            $fav = FavoriteList::create([
+                'user_id' => $user,
+                'anime_id' => $idA,
+                'list_id' => 1
+            ]);
+            return redirect()->to('/detail/detailAnimes/' . $idA)->with('AnimeAdded','Se ha añadido ' . $anime_name[0]->name . ' a tu lista de favoritos');
+        }
+        return redirect()->to('/detail/detailAnimes/' . $idA);
+    }
+
+    public function addNewList($idAnime, Request $request)
+    {
+        $user = Auth::user()->id;
+        $newListName = $request->input('newListName');
+
+        $request->validate([
+            'newListName' => 'required|string|min:2|max:255'
+        ]);
+
+        $newlist = FavouriteLists::create([
+            'name' => $newListName,
+            'user_id' => $user,
+        ]);
+
+        $idList = FavouriteLists::where('name', $newListName)->get('id')->max();
+
+        $this->addFavouriteNewList($idAnime, $idList);
     }
     
     public function ShareWidget()
