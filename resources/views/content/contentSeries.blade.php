@@ -102,7 +102,7 @@
     echo '<div class="content d-flex flex-wrap align-items-stretch justify-content-center">';
 
     foreach($series as $data) {
-        echo '<a href="/detail/detailFilms/'.$data->id.'" class="image-link col-3 col-sm-2 p-2">';
+        echo '<a href="/detail/detailSeries/'.$data->id.'" class="image-link col-3 col-sm-2 p-2">';
         if($data->poster_path === NULL) {
         echo '<img src="/img/NoImg.jpg" class="img-content col-12" alt="No Image">';
         } else {

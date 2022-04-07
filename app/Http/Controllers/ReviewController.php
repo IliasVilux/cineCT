@@ -7,6 +7,7 @@ use App\Models\Anime;
 use App\Models\Film;
 use App\Models\Review;
 use App\Models\Serie;
+use App\Models\User;
 use App\Providers\DateTimeFormatServiceProvider;
 use Response;
 use Illuminate\Http\Request;
