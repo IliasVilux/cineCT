@@ -11,7 +11,7 @@ class Actor extends Model
     protected $table = 'actors';
     
     public function film() {
-        return $this->hasMany(Film::class, 'film_id');
+        return $this->belongsTo(Film::class, 'film_id', 'id');
     }
 
 }

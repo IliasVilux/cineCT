@@ -15,15 +15,11 @@ class Film extends Model
     }
 
     public function actor() {
-        return $this->belongsTo(Actor::class);
+        return $this->hasMany(Actor::class, 'id', 'film_id');
     }
 
-    public function reviews(){
+    public function review(){
         return $this->hasMany(Review::class);
-    }
-
-    public function image() {
-        return $this->hasMany(Image::class);
     }
 
 }

@@ -30,4 +30,17 @@ main {
     border: 2px solid #5A3C97;
     color: white;
     background-color: #5A3C97;
-  }
+}
+
+.form-select {
+    width: 10%;
+}
+
+.search-content-info{
+    transition: transform .6s;
+}
+
+.search-content-info:hover{
+    transform: scale(1.1);
+    padding: 5px;
+}

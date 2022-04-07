@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anime;
+use App\Models\Film;
+use App\Models\Serie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -45,6 +48,63 @@ class UserController extends Controller
         }
         
         return view('list', compact(['userFavs', 'arrayAnimes', 'arraySeries', 'arrayFilms']));
+    }
+
+    public function searchContent(Request $request)
+    {
+
+        $search = $request->input('search');
+
+        $request->validate([
+            'search' => 'string|max:255|required',
+        ]);
+
+        $content = array(
+            'films' => array(),
+            'series' => array(),
+            'animes' => array(),
+        );
+
+        $films = Film::where('name', 'LIKE', '%' . $search . '%')->get();
+        $series = Serie::where('name', 'LIKE', '%' . $search . '%')->get();
+        $animes = Anime::where('name', 'LIKE', '%' . $search . '%')->get();
+
+        if (!is_null($search) || !empty($search) || $search != '') {
+
+            if (count($films) != 0 && !empty($films)) {
+                foreach ($films as $film) {
+                    array_push($content['films'], $film);
+                }
+            }
+
+            if (count($series) != 0 && !empty($series)) {
+                foreach ($series as $serie) {
+                    array_push($content['series'], $serie);
+                }
+            }
+
+            if (count($animes) != 0 && !empty($animes)) {
+                foreach ($animes as $anime) {
+                    array_push($content['animes'], $anime);
+                }
+            }
+        }
+
+        /*
+        $keys = array_keys($content);
+        for ($i = 0; $i < count($content); $i++) {
+            echo $keys[$i] . "{<br>";
+            foreach ($content[$keys[$i]] as $key => $value) {
+                //echo $key . " : " . $value . "<br>";
+                echo $value->{'poster_path'};
+            }
+            echo "}<br>";
+        }
+        */ 
+
+        //var_dump(empty($content['anime']));
+
+        return view('search', ['content' => $content, 'search' => $search]);
     }
 
     public function profileUpdate(Request $request)
