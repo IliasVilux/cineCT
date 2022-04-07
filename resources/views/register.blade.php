@@ -107,7 +107,7 @@
                                         <label for="password" class="form-label">{{trans('register.pass')}}</label>
                                         <div class="input-group">
                                             <input type="password" class="form-control" id="password" name="password" placeholder="Your password">
-                                            <input type="checkbox" onclick="switchPassword()" name="showPassword" id="showPassword" style="display:none;">
+                                            <input type="checkbox" onclick="switchPassword()" name="showPassword" id="showPassword" class="d-none">
                                             <label for="showPassword"><i id="icon-switch" class="fa fa-eye p-3"></i></label>
                                         </div>
 

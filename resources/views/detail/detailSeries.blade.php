@@ -41,12 +41,12 @@
 
     <article class="d-flex flex-column flex-sm-row flex-sm-wrap justify-content-between mt-4">
         @if($serie->poster_path == NULL)
-        <img src="/img/NoImg.jpg" class="img-thumbnail col-12 col-md-5 mb-4 mb-md-0" alt="">
+        <img src="/img/NoImg.jpg" class="img-thumbnail col-12 col-md-5 col-lg-4 mb-4 mb-md-0" alt="">
         @else
-        <img src="{{$serie->poster_path}}" class="img-thumbnail col-12 col-md-5 mb-4 mb-md-0" alt="Img {{$serie->name}}">
+        <img src="{{$serie->poster_path}}" class="img-thumbnail col-12 col-md-5 col-lg-4 mb-4 mb-md-0" alt="Img {{$serie->name}}">
         @endif
         <article class="col-12 col-md-6 more-info bg-dark p-3">
-            <div>
+            <div class="p-4">
                 <div class="d-flex nowrap">
                     <h5 class="pe-2"><b>Género:</b></h5>
                     <p>{{$serie->genre->name}}</p>
@@ -91,7 +91,7 @@
                     echo '<div class="alert alert-success">Rating recibido: <strong>'.$_GET['stars'].'</strong>.</div>';
                 }elseif ((isset($_GET['stars']) == ""))
                 ?>
-                 <div class="d-flex flex-row">
+                 <div class="d-flex flex-row my-2">
                     <a href="/detail/detailSeries/{{$serie->id}}/addFav"><button type="button"
                             class="btn button-purple btn-md">Añadir a favoritos</button></a>
                     <div class="social-media-links mx-2">
