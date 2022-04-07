@@ -106,6 +106,20 @@
         <p class="description pt-5">{{$anime->description}}</p>
     </article>
 
+    <article class="d-flex flex-column flex wrap align-items-center p-3">
+        <h3 class="text-uppercase pb-3">Tráiler</h3>
+        <!-- START TRAILER SECTION -->
+        @if($anime->trailer_link != null)
+        <iframe class="w-75" height="500" src="https://www.youtube.com/embed/{{$anime->trailer_link}}"
+            allowfullscreen></iframe>
+            <div class="alert alert-dark w-75 my-3" role="alert">
+                Si el vídeo da error es porque el link no funciona. Pero te invitamos a buscar el trailer en <a
+                href="https://www.youtube.com/results?search_query={{$anime->name}} trailer">Youtube</a> y descubrir más
+                sobre este anime.
+            </div>
+            @endif
+        <!-- END TRAILER SECTION -->
+    </article>
     <article class="pb-3">
         <form method="POST" action="" id="create-comment" class="create_comment">
             @csrf
@@ -113,20 +127,6 @@
                 placeholder="Escribe un comentario"></textarea>
             <button class="btn button-purple mt-3" type="submit" id="commentSubmit">Publicar</button>
         </form>
-    </article>
-    <article class="d-flex flex-column flex wrap align-items-center p-3">
-        <h3 class="text-uppercase pb-3">Tráiler</h3>
-        <!-- START TRAILER SECTION -->
-        @if($anime->trailer_link != null)
-        <iframe class="w-75" height="500" src="https://www.youtube.com/embed/{{$anime->trailer_link}}"
-            allowfullscreen></iframe>
-        <div class="alert alert-dark w-75 my-3" role="alert">
-            Si el vídeo da error es porque el link no funciona. Pero te invitamos a buscar el trailer en <a
-                href="https://www.youtube.com/results?search_query={{$anime->name}} trailer">Youtube</a> y descubrir más
-            sobre este anime.
-        </div>
-        @endif
-        <!-- END TRAILER SECTION -->
     </article>
 </section>
 
