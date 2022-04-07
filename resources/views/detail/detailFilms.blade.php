@@ -154,7 +154,6 @@
     <script type="text/javascript">
         $("#notify_user").css("display", "none");
 
-        var contador = 0;
         jQuery('#create-comment').submit(function(e) {
             e.preventDefault();
             $("#commentSubmit").attr("disabled", true); // deshabilitamos el boton de publicar
@@ -189,13 +188,12 @@
                         3900
                         ); // removemos el 'desabled 'para que el usuario pueda interactuar de nuevo con el botón
                     
-                    contador++;
                     let commentHtml =
                         `<div class="d-flex flex-start mb-4">
                         <div><img class="rounded-circle shadow-1-strong me-3" src="{{ $profile[0]->path }}" alt="13" width="65" height="65" /></div>
                         <div class="flex-grow-1 flex-shrink-1"><div>
                             <div class="d-flex justify-content-between align-items-center">
-                                <p class="mb-1">{{ Auth::user()->name }} <span class="text-muted" id="last-comment-${contador}">{{\DateTimeFormat::timeFilter($comments[0]->created_at)}}</span></p> 
+                                <p class="mb-1">{{ Auth::user()->name }} <span class="text-muted" id="last-comment">{{\DateTimeFormat::timeFilter($created_at)}}</span></p> 
                                 <a href="#!"><i class="fas fa-reply fa-xs"></i><span class="text-muted">reply</span></a> 
                             </div>
                             <p class="small mb-0 comment">${ response.comment['description'] }</p>
@@ -205,7 +203,6 @@
                     //console.log(response.comment);
 
                     jQuery('#comment-container').append(commentHtml);
-                   
                     jQuery('#character-counter').css("display", "none");
 
                 },
