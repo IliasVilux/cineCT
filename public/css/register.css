@@ -59,6 +59,7 @@ div.card {
 .btn-violet{
   color: #FFFFFF;
   border: 2px solid #5A3C97;
+  text-align: center;
   transition: color 1s, background-color 1s;
 }
 

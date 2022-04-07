@@ -63,39 +63,46 @@
 </section>
 <section class="d-flex flex-wrap justify-content-around align-items-center">
     <button class="button-category">
-        <p class="m-0">Acción / Aventura</p>
+        <p class="m-0">{{trans('titles.action')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Animación / Familia</p>
+        <p class="m-0">{{trans('titles.animation')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Comedia</p>
+        <p class="m-0">{{trans('titles.comedy')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Terror / Suspense</p>
+        <p class="m-0">{{trans('titles.terror')}}</p>
     </button>
 
     <button class="button-category">
-        <p class="m-0">Romance</p>
+        <p class="m-0">{{trans('titles.romance')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Ciencia ficción / Fantasía</p>
+        <p class="m-0">{{trans('titles.fiction')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Drama / Misterio</p>
+        <p class="m-0">{{trans('titles.drama')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Bélica / Crimen</p>
+        <p class="m-0">{{trans('titles.crime')}}</p>
     </button>
 </section>
-<section class="container py-4">
-    <h5>Series</h5>
+
+<section class="container py-5">
+    <div class="d-flex flex-row justify-content-between">
+        <h5 class="col-6 text-uppercase">{{trans('titles.series')}}</h5>
+        <div class="d-flex justify-content-center">
+            {{$series->links()}}
+        </div>
+    </div>
+
     <?php
     if(!empty($series)) {
     echo '<div class="content d-flex flex-wrap align-items-stretch justify-content-center">';
 
     foreach($series as $data) {
-        echo '<a href="/detail/detailFilms/'.$data->id.'" class="image-link col-3 col-sm-2 p-2">';
+        echo '<a href="/detail/detailSeries/'.$data->id.'" class="image-link col-3 col-sm-2 p-2">';
         if($data->poster_path === NULL) {
         echo '<img src="/img/NoImg.jpg" class="img-content col-12" alt="No Image">';
         } else {
@@ -113,6 +120,6 @@
 </section>
 {{-- Pagination --}}
 <div class="d-flex justify-content-center">
-{{$series->links()}}
+    {{$series->links()}}
 </div>
 @endsection

@@ -17,35 +17,35 @@
         <div class="carousel-inner">
             <div class="carousel-item full text-center active">
                 <a href="/detail/detailAnimes/1" class="link-img-carousel">
-                    <img src="{{$animes[0]->poster_path}}" class="img-carousel px-3" alt="Img {{$animes[0]->name}}">
+                    <img src="{{$allAnimes[0]->poster_path}}" class="img-carousel px-3" alt="Img {{$allAnimes[0]->name}}">
                 </a>
                 <a href="/detail/detailAnimes/2" class="link-img-carousel">
-                    <img src="{{$animes[1]->poster_path}}" class="img-carousel px-3" alt="Img {{$animes[1]->name}}">
+                    <img src="{{$allAnimes[1]->poster_path}}" class="img-carousel px-3" alt="Img {{$allAnimes[1]->name}}">
                 </a>
                 <a href="/detail/detailAnimes/3" class="link-img-carousel">
-                    <img src="{{$animes[2]->poster_path}}" class="img-carousel px-3" alt="Img {{$animes[2]->name}}">
+                    <img src="{{$allAnimes[2]->poster_path}}" class="img-carousel px-3" alt="Img {{$allAnimes[2]->name}}">
                 </a>
             </div>
             <div class="carousel-item full text-center">
                 <a href="/detail/detailAnimes/4" class="link-img-carousel">
-                    <img src="{{$animes[3]->poster_path}}" class="img-carousel px-3" alt="Img {{$animes[3]->name}}">
+                    <img src="{{$allAnimes[3]->poster_path}}" class="img-carousel px-3" alt="Img {{$allAnimes[3]->name}}">
                 </a>
                 <a href="/detail/detailAnimes/5" class="link-img-carousel">
-                    <img src="{{$animes[4]->poster_path}}" class="img-carousel px-3" alt="Img {{$animes[4]->name}}">
+                    <img src="{{$allAnimes[4]->poster_path}}" class="img-carousel px-3" alt="Img {{$allAnimes[4]->name}}">
                 </a>
                 <a href="/detail/detailAnimes/6" class="link-img-carousel">
-                    <img src="{{$animes[5]->poster_path}}" class="img-carousel px-3" alt="Img {{$animes[5]->name}}">
+                    <img src="{{$allAnimes[5]->poster_path}}" class="img-carousel px-3" alt="Img {{$allAnimes[5]->name}}">
                 </a>
             </div>
             <div class="carousel-item full text-center">
                 <a href="/detail/detailAnimes/7" class="link-img-carousel">
-                    <img src="{{$animes[6]->poster_path}}" class="img-carousel px-3" alt="Img {{$animes[6]->name}}">
+                    <img src="{{$allAnimes[6]->poster_path}}" class="img-carousel px-3" alt="Img {{$allAnimes[6]->name}}">
                 </a>
                 <a href="/detail/detailAnimes/8" class="link-img-carousel">
-                    <img src="{{$animes[7]->poster_path}}" class="img-carousel px-3" alt="Img {{$animes[7]->name}}">
+                    <img src="{{$allAnimes[7]->poster_path}}" class="img-carousel px-3" alt="Img {{$allAnimes[7]->name}}">
                 </a>
                 <a href="/detail/detailAnimes/9" class="link-img-carousel">
-                    <img src="{{$animes[8]->poster_path}}" class="img-carousel px-3" alt="Img {{$animes[8]->name}}">
+                    <img src="{{$allAnimes[8]->poster_path}}" class="img-carousel px-3" alt="Img {{$allAnimes[8]->name}}">
                 </a>
             </div>
         </div>
@@ -63,34 +63,37 @@
 </section>
 <section class="d-flex flex-wrap justify-content-around align-items-center">
     <button class="button-category">
-        <p class="m-0">Samurai</p>
+        <p class="m-0">{{trans('titles.samurai')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Shounen</p>
+        <p class="m-0">{{trans('titles.shounen')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Seinen</p>
+        <p class="m-0">{{trans('titles.seinen')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Shoujo</p>
+        <p class="m-0">{{trans('titles.shoujo')}}</p>
     </button>
 
     <button class="button-category">
-        <p class="m-0">Demons</p>
+        <p class="m-0">{{trans('titles.demons')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Sci-fi</p>
+        <p class="m-0">{{trans('titles.scifi')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Mecha</p>
+        <p class="m-0">{{trans('titles.mecha')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Josei</p>
+        <p class="m-0">{{trans('titles.josei')}}</p>
     </button>
 </section>
-<section class="container py-4">
-    <div class="d-flex justify-content-between py-3 px-5">
-        <h5 class="col-6">Animes</h5>
+<section class="container py-5">
+    <div class="d-flex flex-row justify-content-between">
+        <h5 class="col-6 text-uppercase">{{trans('titles.animes')}}</h5>
+        <div class="d-flex justify-content-center">
+            {{$animes->links()}}
+        </div>
     </div>
 
     <?php
@@ -98,9 +101,9 @@
     echo '<div class="content d-flex flex-wrap align-items-stretch justify-content-center">';
 
     foreach($animes as $data) {
-        echo '<a href="/detail/detailFilms/'.$data->id.'" class="image-link col-3 col-sm-2 p-2">';
+        echo '<a href="/detail/detailAnimes/'.$data->id.'" class="image-link col-3 col-sm-2 p-2">';
         if($data->poster_path === NULL) {
-        echo '<img src="{{url("/img/NoImg.jpg")}}" class="img-content col-12" alt="No Image">';
+        echo '<img src="/img/NoImg.jpg" class="img-content col-12" alt="No Image">';
         } else {
         echo '<img src="'.$data->poster_path.'" class="img-content col-12" alt="'.$data->name.'">
         </a>';
@@ -116,6 +119,6 @@
 </section>
 {{-- Pagination --}}
 <div class="d-flex justify-content-center">
-{{$animes->links()}}
+    {{$animes->links()}}
 </div>
 @endsection

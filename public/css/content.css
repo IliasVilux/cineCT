@@ -1,5 +1,6 @@
 main {
     background: #16181d;
+    padding: 0;
     margin: 0px;
 }
 
@@ -8,6 +9,18 @@ main {
     width: 24%;
     height: 80px;
     margin-top: 10px;
+    color: #FFFFFF;
+    background: linear-gradient(to bottom, black 25%, #9966ff 150%);;
+}
+
+.button-category a{
+    text-decoration: none;
+    
+}
+
+.button-category:hover{
+    transform: scale(0.9);
+    color: #FFFFFF;
     background: linear-gradient(to bottom, black 25%, #9966ff 150%);
     color: white;
 }
@@ -16,4 +29,31 @@ main {
 .img-content{
     width: 100%;
     height: 100%;
+}
+
+.page-item.disabled .page-link,
+.page-link {
+    
+    color: #FFFFFF;
+    border: 2px solid #5A3C97;
+    background-color: #16181d;
+}
+
+.page-item.active .page-link{
+    border: 2px solid #5A3C97;
+    color: white;
+    background-color: #5A3C97;
+}
+
+.form-select {
+    width: 10%;
+}
+
+.search-content-info{
+    transition: transform .6s;
+}
+
+.search-content-info:hover{
+    transform: scale(1.1);
+    padding: 5px;
 }

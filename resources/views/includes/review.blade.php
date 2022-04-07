@@ -1,4 +1,4 @@
-<div class="d-flex flex-start mb-4">
+    <div class="d-flex flex-start mb-4">
         <div>
             <img class="rounded-circle shadow-1-strong me-3" src="{{ $profile[0]->path }}" alt="13" width="65"
                 height="65" />
@@ -16,7 +16,7 @@
             <!----START REPLY COMMENT---->
             <div class="d-flex flex-start mt-4">
                 <a class="me-3" href="#"> <img class="rounded-circle shadow-1-strong me-3"
-                        src="{{ $profile[0]->path }}" alt="13" width="65" height="65" /></a>
+                        src="{{ $profile->path }}" alt="13" width="65" height="65" /></a>
                 <div class="flex-grow-1 flex-shrink-1">
                     <div>
                         <div class="d-flex justify-content-between align-items-center">

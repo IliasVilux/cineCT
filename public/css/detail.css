@@ -5,7 +5,7 @@ html{
 /* EXTRA INFO AT THE RIGHT */
 .more-info{
     float: right;
-    height: 410px;
+    height: 420px;
 }
 
 i.fas.fa-star {
@@ -21,6 +21,7 @@ p.description {
 .rating {
     font-size: 30px;
     overflow: hidden;
+    width: 270px;
 }
 
 .rating input {

@@ -13,26 +13,36 @@ return [
     |
     */
 
-    'films' => 'Pel·lícules',
+    // Menu
+    'menu' => 'Menu',
+    'home' => 'Home',
+    'films' => 'Films',
     'series' => 'Series',
     'animes' => 'Animes',
+    'top' => 'Top',
+    'search' => 'Search',
+    'lists' => 'Library',
+    'about' => 'About us',
+
+    // Other links
+    'profile' => 'Profile',    
 
     // Buttons
-    'action' => 'Acció / Aventura',
-    'animation' => 'Animació / Família',
-    'comedy' => 'Comedia',
-    'terror' => 'Terror / Suspense',
-    'romance' => 'Romanç',
-    'fiction' => 'Ciència ficció / Fantasía',
-    'drama' => 'Drama / Misteri',
-    'crime' => 'Bèl·lica / Crim',
+    'action' => 'Action / Adventure',
+    'animation' => 'Animation / Family',
+    'comedy' => 'Comedy',
+    'terror' => 'Terror / Thriller',
+    'romance' => 'Romance',
+    'fiction' => 'Sci-fi / Fantasy',
+    'drama' => 'Drama / Mistery',
+    'crime' => 'Warlike / Crime',
 
     'samurai' => 'Samurai',
     'shounen' => 'Shounen',
     'seinen' => 'Seinen',
     'shoujo' => 'Shoujo',
     'demons' => 'Demons',
-    'scifi' => 'Sci-fi',
+    'scifi' => 'Scifi',
     'mecha' => 'Mecha',
     'josei' => 'Josei',
 

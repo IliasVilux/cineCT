@@ -13,6 +13,9 @@ html, main, body {
   color: white;
   background-color: #5A3C97;
 }
+a {
+  text-decoration: none;
+}
 
 /* Img slider */
 .slider {

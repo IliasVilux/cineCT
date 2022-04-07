@@ -13,15 +13,17 @@ return [
     |
     */
 
-    'title_profile' => 'Mi perfil',
-    'username' => 'Nombre de usuario',
-    'name' => 'Nombre completo',
-    'language' => 'Idioma',
-    'change_pass' => 'Cambiar contraseña',
-    'change_img' => 'Cambiar imagen', 
-    'save' => 'Guardar cambios',
-    'delete_profile' => 'Borrar perfil',
-    'cancel' => 'Cancelar',
-    'delete' => 'Borrar',
+    'genre' => 'Género',
+    'launch_date' => 'Fecha de lanzamiento',
+    'seasons' => 'Temporadas',
+    'episodes' => 'Episodios',
+    'rating' => 'Puntuación',
+    'how_much' => '¿Cuánto te ha gustado?',
+    'send' => 'Enviar',
+
+    'write_comment' => 'Escribe un comentario',
+    'publish' => 'Publicar',
+    'trailer' => 'Tráiler',
+    'comments' => 'Comentarios',
 
 ];

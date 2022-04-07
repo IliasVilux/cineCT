@@ -64,7 +64,7 @@ class UserAuthController extends Controller
         $register_password = $request->input('register_password');
 
         $validate = $this->validate($request, [
-            'register_name' => 'required|string|max:255',
+            'register_name' => 'required|string|min:3|max:255',
             'register_surname' => 'required|string|max:255',
             'register_nick' => 'required|string|max:15', //unique:users-> ningun nick se repetirá
             'register_email' => 'required|string|email|unique:users,email',

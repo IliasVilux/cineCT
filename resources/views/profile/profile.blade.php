@@ -8,11 +8,11 @@
     <h1 class="mt-4">{{trans('profile.title_profile')}}</h1>
     <div class="d-flex justify-content-center">
         <a href="{{asset('/profileImg')}}">
-            <img class="img-carousel" src="{{asset('img/NoImg.jpg')}}" width="200px">
+            <img class="img-profile" src="{{asset('img/NoImg.jpg')}}">
         </a>
     </div>
     <a href="{{asset('/profileImg')}}" class="col-12 d-flex justify-content-center" >
-        <button class="btn btn-primary mt-3 col-3">{{trans('profile.change_img')}}</button>
+        <button class="btn button-purple mt-3 ccol-12 col-sm-6">{{trans('profile.change_img')}}</button>
     </a>
 
 
@@ -36,30 +36,30 @@
         </select>
         </div>
         <div class="col-12 col-sm-6 m-0 ps-2" style="padding-top: 25px;">
-            <a href="{{ route('change.password') }}" type="button" class="btn btn-light col-12 my-2">{{trans('profile.change_pass')}}</a>
+            <a href="{{ route('change.password') }}" type="button" class="btn button-purple col-12 my-2">{{trans('profile.change_pass')}}</a>
         </div>
-        <div class="col-12">
-            <a type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal">Eliminar Cuenta</a>
+        <div class="col-12 p-0">
+            <a type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal">{{trans('profile.delete_profile')}}</a>
         </div>
         <div class="modal fade text-dark" id="myModal">
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Eliminar cuenta</h4>
+                    <h4 class="modal-title">{{trans('profile.delete_profile')}}</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    Estás seguro de que quieres eilinar tu cuenta?
+                    {{trans('warnings.del_profile_conf')}}
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-info" data-bs-dismiss="modal">Cancelar</button>
-                    <a href="{{ route('delete.account') }}" type="button" class="btn btn-danger">Eliminar</a>
+                    <button type="button" class="btn btn-info" data-bs-dismiss="modal">{{trans('profile.cancel')}}</button>
+                    <a href="{{ route('delete.account') }}" type="button" class="btn btn-danger">{{trans('profile.delete')}}</a>
                 </div>
                 </div>
             </div>
         </div>
         <div class="col-12 px-4 d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary col-12 col-sm-6">Guardar</button>
+            <button type="submit" class="btn button-purple col-12 col-sm-6">{{trans('profile.save')}}</button>
         </div>
     </form>
 </section>

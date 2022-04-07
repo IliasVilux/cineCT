@@ -3,6 +3,7 @@
 
 <head>
     <link rel="stylesheet" href="{{asset('css/content.css')}}">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 </head>
 <section class="slider">
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -49,7 +50,7 @@
                 </a>
             </div>
         </div>
-        
+
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
             data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -64,33 +65,40 @@
 </section>
 <section class="d-flex flex-wrap justify-content-around align-items-center">
     <button class="button-category">
-        <p class="m-0">Acción / Aventura</p>
+        <p class="m-0">{{trans('titles.action')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Animación / Familia</p>
+        <p class="m-0">{{trans('titles.animation')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Comedia</p>
+        <p class="m-0">{{trans('titles.comedy')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Terror / Suspense</p>
+        <p class="m-0">{{trans('titles.terror')}}</p>
     </button>
 
     <button class="button-category">
-        <p class="m-0">Romance</p>
+        <p class="m-0">{{trans('titles.romance')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Ciencia ficción / Fantasía</p>
+        <p class="m-0">{{trans('titles.fiction')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Drama / Misterio</p>
+        <p class="m-0">{{trans('titles.drama')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Bélica / Crimen</p>
+        <p class="m-0">{{trans('titles.crime')}}</p>
     </button>
 </section>
-<section class="container py-4">
-    <h5>PELÍCULAS</h5>
+
+<section class="container py-5">
+    <div class="d-flex flex-row justify-content-between">
+        <h5 class="col-6 text-uppercase">{{trans('titles.films')}}</h5>
+        <div class="d-flex justify-content-center">
+            {{$films->links()}}
+        </div>
+    </div>
+
     <?php
     if(!empty($films)) {
     echo '<div class="content d-flex flex-wrap align-items-stretch justify-content-center">';
@@ -110,9 +118,15 @@
         echo '<h2 style="color: red;">No hi ha cap registre!!!</h2>';
     }
     ?>
+
 </section>
 {{-- Pagination --}}
 <div class="d-flex justify-content-center">
-{{$films->links()}}
+    {{$films->links()}}
 </div>
+
+<script>
+    
+
+</script>
 @endsection

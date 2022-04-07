@@ -11,19 +11,20 @@
     });
     </script>
     <style>
-        div#social-links {
-            margin: 0 auto;
-            max-width: 500px;
-        }
-        div#social-links ul li {
-            display: inline-block;
-        }          
-        div#social-links ul li a {
-            padding: 20px;
-            margin: 1px;
-            font-size: 30px;
-            color: #9966ff;
-        }
+    div#social-links {
+        margin: 0 auto;
+        max-width: 500px;
+    }
+
+    div#social-links ul li {
+        display: inline-block;
+    }
+
+    div#social-links ul li a {
+        padding: 18px;
+        font-size: 30px;
+        color: #9966ff;
+    }
     </style>
 </head>
 @if (Session::has('SerieAdded'))
@@ -38,63 +39,85 @@
 
     <h1 class="detail-title">{{$serie->name}}</h1>
 
-<article class="d-flex flex-column flex-sm-row flex-sm-wrap justify-content-between mt-4">
-    @if($serie->poster_path == NULL)
-    <img src="/img/NoImg.jpg" class="img-thumbnail col-12 col-sm-7 col-md-4" alt="">
-    @else
-    <img src="{{$serie->poster_path}}" class="img-thumbnail col-12 col-sm-7 col-md-4" alt="Img {{$serie->name}}">
-    @endif
-    <article class="col-12 col-md-6 more-info bg-dark p-3">
-        <div class="d-flex nowrap">
-            <h5 class="pe-2"><b>Género:</b></h5>
-            <p>{{$serie->genre_id}}</p>
-        </div>
-        <div class="d-flex nowrap">
-            <h5 class="pe-2"><b>Fecha de lanzamiento:</b></h5>
-            <p> {{$serie->release_date}}</p>
-        </div>
-        <div class="d-flex nowrap">
-            <h5 class="pe-2"><b>Puntuación:</b></h5>
-            <p><i class="fas fa-star"></i>
-            <p> {{$serie->puntuation}}</p>/10<p>
-        </div>
-        <div>
-            <h5 class="pe-2"><b>Cuánto te ha gustado?</b></h5>
-            <form method="GET" class="d-flex justify.content-start">
-                <div class="rating d-inline ">
-                    <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
-                    <input name="stars" id="e2" type="radio" value="9"><label for="e2">☆</label>
-                    <input name="stars" id="e3" type="radio" value="8"><label for="e3">☆</label>
-                    <input name="stars" id="e4" type="radio" value="7"><label for="e4">☆</label>
-                    <input name="stars" id="e5" type="radio" value="6"><label for="e5">☆</label>
-                    <input name="stars" id="e6" type="radio" value="5"><label for="e6">☆</label>
-                    <input name="stars" id="e7" type="radio" value="4"><label for="e7">☆</label>
-                    <input name="stars" id="e8" type="radio" value="3"><label for="e8">☆</label>
-                    <input name="stars" id="e9" type="radio" value="2"><label for="e9">☆</label>
-                    <input name="stars" id="e10" type="radio" value="1"><label for="e10">☆</label>
+    <article class="d-flex flex-column flex-sm-row flex-sm-wrap justify-content-between mt-4">
+        @if($serie->poster_path == NULL)
+        <img src="/img/NoImg.jpg" class="img-thumbnail col-12 col-md-5 mb-4 mb-md-0" alt="">
+        @else
+        <img src="{{$serie->poster_path}}" class="img-thumbnail col-12 col-md-5 mb-4 mb-md-0" alt="Img {{$serie->name}}">
+        @endif
+        <article class="col-12 col-md-6 more-info bg-dark p-3">
+            <div>
+                <div class="d-flex nowrap">
+                    <h5 class="pe-2"><b>Género:</b></h5>
+                    <p>{{$serie->genre->name}}</p>
                 </div>
-                <button type="submit" class="btn button-purple btn-sm">Enviar</button>
-            </form>
-            <a href="/detail/detailSeries/{{$serie->id}}/addFav"><button type="button" class="btn btn-primary btn-sm">Añadir a favoritos</button></a> 
-            <?php
-            if (isset($_GET['stars'])) {
-                echo '<div class="alert alert-success">Rating recibido: <strong>'.$_GET['stars'].'</strong>.</div>';
-            }elseif ((isset($_GET['stars']) == ""))
-            ?>
-        </div>
-        <div class="social-media-links my-2">
-            <a type="button" class="btn button-purple" href="#demo" data-bs-toggle="collapse"><i
-                    class="fas fa-share-alt"></i></a>
-            <div id="demo" class="collapse">{!! $shareComponent !!}</div>
-        </div>
+                <div class="d-flex nowrap">
+                    <h5 class="pe-2"><b>Fecha de lanzamiento:</b></h5>
+                    <p> {{$serie->release_date}}</p>
+                </div>
+                <div class="d-flex nowrap">
+                    <h5 class="pe-2"><b>Temporadas:</b></h5>
+                    <p> {{$serie->seasons}}</p>
+                </div>
+                <div class="d-flex nowrap">
+                    <h5 class="pe-2"><b>Episodios:</b></h5>
+                    <p> {{$serie->total_episodes}}</p>
+                </div>
+                <div class="d-flex nowrap">
+                    <h5 class="pe-2"><b>Puntuación:</b></h5>
+                    <p><i class="fas fa-star"></i>
+                    <p> {{$serie->puntuation}}</p>/10<p>
+                </div>
+                <div class="d-flex flex-column align-items-start">
+                    <h5 class="pe-2"><b>Cuánto te ha gustado?</b></h5>
+                    <form method="GET" class="d-flex flex-column flex-xl-row align-items-center">
+                        <div class="rating col-12 me-3">
+                            <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
+                            <input name="stars" id="e2" type="radio" value="9"><label for="e2">☆</label>
+                            <input name="stars" id="e3" type="radio" value="8"><label for="e3">☆</label>
+                            <input name="stars" id="e4" type="radio" value="7"><label for="e4">☆</label>
+                            <input name="stars" id="e5" type="radio" value="6"><label for="e5">☆</label>
+                            <input name="stars" id="e6" type="radio" value="5"><label for="e6">☆</label>
+                            <input name="stars" id="e7" type="radio" value="4"><label for="e7">☆</label>
+                            <input name="stars" id="e8" type="radio" value="3"><label for="e8">☆</label>
+                            <input name="stars" id="e9" type="radio" value="2"><label for="e9">☆</label>
+                            <input name="stars" id="e10" type="radio" value="1"><label for="e10">☆</label>
+                        </div>
+                        <button type="submit" class="btn button-purple btn-sm col-6 mb-2 mb-xl-0">Enviar</button>
+                    </form>
+                </div>
+                <?php
+                if (isset($_GET['stars'])) {
+                    echo '<div class="alert alert-success">Rating recibido: <strong>'.$_GET['stars'].'</strong>.</div>';
+                }elseif ((isset($_GET['stars']) == ""))
+                ?>
+                 <div class="d-flex flex-row">
+                    <a href="/detail/detailSeries/{{$serie->id}}/addFav"><button type="button"
+                            class="btn button-purple btn-md">Añadir a favoritos</button></a>
+                    <div class="social-media-links mx-2">
+                        <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button"
+                            aria-expanded="false" aria-controls="shareComponent">
+                            <i class="fas fa-share-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="collapse my-3" id="shareComponent">
+                    {!! $shareComponent !!}
+                </div>
+        </article>
+        <p class="description pt-5">{{$serie->description}}</p>
     </article>
-    <p class="description pt-5">{{$serie->description}}</p>
-</article>
 
-<!-- <h3><b>Creado:</b> {{$serie->created_at}}</h3>
-    <h3><b>Ultima actualización:</b> {{$serie->updated_at}}</h3> -->
-<a class="btn button-purple" class="add-comment" href="#create-comment">Añadir comentario</a>
+    <article class="pb-3">
+        <form method="POST" action="" id="create-comment" class="create_comment">
+            @csrf
+            <textarea name="description" id="description" cols="50" rows="3"
+                placeholder="Escribe un comentario"></textarea>
+            <button class="btn button-purple mt-3" type="submit" id="commentSubmit">Publicar</button>
+        </form>
+    </article>
 </section>
+
 
 <!-- START COMMMENT SECTION -->
 <section class="gradient-custom">
@@ -108,36 +131,30 @@
                         <div class="row">
                             <div class="col" id="comment-container">
                                 @foreach ($comments as $comment)
-                                    @if ($comment->serie_id == $serie->id && !empty($comment->description))
-                                        @include('includes.review', ['comment' => $comment])
-                                    @endif
+                                @if ($comment->serie_id == $serie->id && !empty($comment->description))
+                                @include('includes.review', ['comment' => $comment])
+                                @endif
                                 @endforeach
                             </div>
-                            </div>
-                            <div class="alert alert-success d-none" id="msg_div" role="alert">
+                        </div>
+                        <div class="alert alert-success d-none" id="msg_div" role="alert">
 
-                            </div>
                         </div>
                     </div>
-                    @if ($errors->has('description'))
-                        <div class="mt-2 alert alert-danger">
-                            No puedes publicar un comentario sin vacío!
-                        </div>
-                    @endif
-                    <div id="notify_user"></div>
-                    <div class="text-center pt-3 "><span id="character-counter"></span></div>
-                    <form method="POST" action="" id="create-comment" class="create_comment">
-                        @csrf
-                        <textarea name="description" id="description" cols="50" rows="3" placeholder="Escribe un comentario"></textarea>
-                        <button class="btn" type="submit" id="commentSubmit">Publicar</button>
-                    </form>
-
                 </div>
+                @if ($errors->has('description'))
+                <div class="mt-2 alert alert-danger">
+                    No puedes publicar un comentario sin vacío!
+                </div>
+                @endif
+                <div id="notify_user"></div>
+                <div class="text-center pt-3 "><span id="character-counter"></span></div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <script type="text/javascript">
+<script type="text/javascript">
         $("#notify_user").css("display", "none");
 
         jQuery('#create-comment').submit(function(e) {
@@ -176,18 +193,19 @@
 
                     let commentHtml =
                         `<div class="d-flex flex-start mb-4">
-                    <div><img class="rounded-circle shadow-1-strong me-3" src="{{ $profile[0]->path }}" alt="13" width="65" height="65" /></div>
-                    <div class="flex-grow-1 flex-shrink-1"><div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <p class="mb-1">{{ Auth::user()->name }} <span class="text-muted">- 2 hours ago</span></p> 
-                            <a href="#!"><i class="fas fa-reply fa-xs"></i><span class="text-muted">reply</span></a> 
+                        <div><img class="rounded-circle shadow-1-strong me-3" src="{{ $profile[0]->path }}" alt="13" width="65" height="65" /></div>
+                        <div class="flex-grow-1 flex-shrink-1"><div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="mb-1">{{ Auth::user()->name }} <span class="text-muted" id="last-comment">{{\DateTimeFormat::timeFilter($serie->created_at)}}</span></p> 
+                                <a href="#!"><i class="fas fa-reply fa-xs"></i><span class="text-muted">reply</span></a> 
+                            </div>
+                            <p class="small mb-0 comment">${ response.comment['description'] }</p>
+                            </div>
                         </div>
-                        <p class="small mb-0 comment">${ response.comment['description'] }</p>
-                        </div>
-                    </div>
-                </div>`
+                    </div>`
+                    //console.log(response.comment);
 
-                    jQuery('#comment-container').append(commentHtml);
+                    jQuery('#comment-container').append(commentHtml);                   
                     jQuery('#character-counter').css("display", "none");
 
                 },

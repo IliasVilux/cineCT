@@ -13,15 +13,20 @@ return [
     |
     */
 
-    'title_profile' => 'Mi perfil',
+    'log_in' => 'Iniciar sesión',
+    'sign_up' => 'Registrarse',
+
+    'login' => 'Acceder',
+    'method' => '¿Cómo quieres que te identifiquemos?',
+    'email' => 'Email',
     'username' => 'Nombre de usuario',
-    'name' => 'Nombre completo',
-    'language' => 'Idioma',
-    'change_pass' => 'Cambiar contraseña',
-    'change_img' => 'Cambiar imagen', 
-    'save' => 'Guardar cambios',
-    'delete_profile' => 'Borrar perfil',
-    'cancel' => 'Cancelar',
-    'delete' => 'Borrar',
+    'pass' => 'Contraseña',
+    'remember' => 'Recordar contraseña',
+    'forgot_pass' => '¿Olvidaste la contraseña?',
+
+    'register' => 'Registrar',
+    'name' => 'Nombre', 
+    'last_name' => 'Apellido',
+    'pass2' => 'Repetir contraseña',
 
 ];

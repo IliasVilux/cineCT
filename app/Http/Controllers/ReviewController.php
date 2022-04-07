@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\UploadTimeFormat;
 use App\Models\Anime;
 use App\Models\Film;
 use App\Models\Review;
 use App\Models\Serie;
+use App\Models\User;
+use App\Providers\DateTimeFormatServiceProvider;
 use Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -81,7 +84,7 @@ class ReviewController extends Controller
         $comment->anime_id = $id;
         
         $comment->save();
-
+        
         return ['msg' => 'Tu comentario se ha añadido!', 'comment' => $comment];
     }
 }

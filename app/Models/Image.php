@@ -15,17 +15,4 @@ class Image extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function film(){
-        return $this->belongsTo(Film::class);
-    }
-
-    public function serie(){
-        return $this->belongsTo(Serie::class);
-    }
-
-    public function anime(){
-        return $this->belongsTo(Anime::class);
-    }
-
-
 }

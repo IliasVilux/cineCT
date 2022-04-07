@@ -53,7 +53,7 @@
         </div>
         {{$cont++}}
     @endforeach
-    <a href="{{ url('/') }}" class="btn btn-primary" title="Home">
+    <a href="{{ url('/') }}" class="btn button-purple" title="Home">
         Home
     </a>
 
