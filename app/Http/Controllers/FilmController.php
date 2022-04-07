@@ -135,6 +135,7 @@ class FilmController extends Controller
         $films = Film::all();
 
         $filmGenres = ["Animation", "Family", "Science Fiction", "War", "Crime", "Action", "Adventure", "Comedy", "Drama", "Fantasy", "Horror", "Mystery", "Romance", "Suspense"];
+        
         $genres = Genre::whereIn('name', $filmGenres)->get();
 
        
@@ -174,7 +175,7 @@ class FilmController extends Controller
             $films = Film::select('films.*')
             ->join('genres', 'films.genre_id', '=', 'genres.id')
             ->whereIn('genres.name', $searchCondition)
-            ->orderBy('genres.name', 'asc')
+            ->orderBy('films.name', 'asc')
             ->get();
 
             
@@ -185,9 +186,6 @@ class FilmController extends Controller
             }else{
                 echo "No hay ningun resultado".'<br>';
             }
-            
-
-            
             
         }
         

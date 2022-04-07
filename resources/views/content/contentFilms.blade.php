@@ -42,7 +42,7 @@
 <section class="d-flex flex-wrap justify-content-around align-items-center">
         @foreach($genres as $genre)
         
-                <a class="btn button-category m-0" type="submit" id="{{$genre->id}}" href="{{route('film.all-films-filter', ['genre' => $genre->name])}}" 
+                <a class="btn button-category m-0" type="submit" id="{{$genre->id}}" href="{{route('film.all-films-filter', ['genre' => $genre->id])}}" 
                     value="{{$genre->name}}">{{$genre->name}}</a>
         {{--
         <a class="btn button-category m-0" type="submit" href="{{route('film.all-films-filter', ['genre' => $genre])}}" 
@@ -54,7 +54,7 @@
     <h5>PELÍCULAS</h5>
     @if(!empty($film))
     <div class="content d-flex flex-wrap align-items-streach justify-content-center">
-        @foreach($film->take(10) as $film)
+        @foreach($film as $film)
         <a href="/detail/detailFilms/{{$film->id}}" class="image-link col-2 p-2">
             @if($film->poster_path === NULL)
             <img src="/img/NoImg.jpg" alt="">
