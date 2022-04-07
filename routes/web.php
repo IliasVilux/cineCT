@@ -61,25 +61,26 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     //Return All Series
     Route::get('/content/contentSeries', function () {
 
-        $series = DB::table('series')->get();
-        
-        return view('/content/contentSeries', ['serie' => $series]);
+        $series = DB::table('series')->paginate(100);
+ 
+        return view('/content/contentSeries', ['series' => $series]);
     });
     
     //Return All Films
     Route::get('/content/contentFilms', function () {
-    
-        $films = DB::table('films')->get();
-    
-        return view('/content/contentFilms', ['film' => $films]);
+
+        $films = DB::table('films')->paginate(100);
+ 
+        return view('/content/contentFilms', ['films' => $films]);
     });
     
     //Return All animes
     Route::get('/content/contentAnimes', function () {
     
-        $animes = DB::table('animes')->get();
-    
-        return view('/content/contentAnimes', ['anime' => $animes]);
+        $animes = DB::table('animes')->paginate(10);
+        $allAnimes = DB::table('animes')->get();
+ 
+        return view('/content/contentAnimes', ['animes' => $animes, 'allAnimes' => $allAnimes]);
     });
 
     Route::get('/top', function () {
@@ -103,13 +104,20 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     Route::get('/detail/detailAnimes/{id}', [AnimeController::class,  'returnAnimes'])->name('anime.animes');
 
     //Save Reviews
-    Route::post('/film/comment/save/{id}', [ReviewController::class, 'postStoreFilmReview'])->name('comment.save');
+    Route::post('/film/comment/save/{id}', [ReviewController::class, 'postStoreFilmReview'])->name('comment.save.film');
     Route::post('/serie/comment/save/{id}', [ReviewController::class, 'postStoreSerieReview'])->name('comment.save.serie');
     Route::post('/anime/comment/save/{id}', [ReviewController::class, 'postStoreAnimeReview'])->name('comment.save.anime');
+
+
+    //Add favourites
+    Route::get('/detail/detailAnimes/{id}/addFav', [AnimeController::class,  'addFavourite'])->name('anime.fav');
+    Route::get('/detail/detailSeries/{id}/addFav', [SerieController::class,  'addFavourite'])->name('serie.fav');
+    Route::get('/detail/detailFilms/{id}/addFav', [FilmController::class,  'addFavourite'])->name('film.fav');
 
    //Route::get('/content/{search?}', [UserController::class, 'searchContent'])->name('search.content'); 
    //Route::get('/content/search', [UserController::class, 'searchContent'])->name('search-content'); 
    Route::get('/content/{search?}', [UserController::class, 'searchContent'])->name('search-content'); 
+
    
 });
 

@@ -29,12 +29,6 @@ div#container {
     width: 90%;
 }
 
-/* BUTTONS */
-.btn.btn-more {
-    background-image: linear-gradient(to top, black 25%, #9966ff 150%);
-    color: white;
-}
-
 /* Title each section */
 h5{
     margin: 20px 20px 5px 37px;

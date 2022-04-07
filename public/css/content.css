@@ -3,40 +3,34 @@ main {
     margin: 0px;
 }
 
-.slider {
-    height: 50%;
-}
-
-/* Img slider */
-.full-img {
-    width: 100%;
-    height: 500px;
-}
-
-.carousel-item.full {
-    height: 500px;
-}
-
+/* BUTTONS FILTER */
 .button-category {
     width: 24%;
     height: 80px;
     margin-top: 10px;
     background: linear-gradient(to bottom, black 25%, #9966ff 150%);
-    ;
     color: white;
 }
 
-a.image-link {
-    width: 172px;
-    height: 256px;
-}
-
-img {
+/* Content */
+.img-content{
     width: 100%;
     height: 100%;
 }
 
-/* Content */
+.page-item.disabled .page-link,
+.page-link {
+    
+    color: #FFFFFF;
+    border: 2px solid #5A3C97;
+    background-color: #16181d;
+}
+
+.page-item.active .page-link{
+    border: 2px solid #5A3C97;
+    color: white;
+    background-color: #5A3C97;
+}
 
 .form-select {
     width: 10%;

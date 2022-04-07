@@ -7,6 +7,7 @@ use App\Models\Film;
 use App\Models\Genre;
 use App\Models\Image;
 use App\Models\Review;
+use App\Models\FavoriteList;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
@@ -95,13 +96,24 @@ class FilmController extends Controller
         } else {
             return response('No encontrado', 404);
         }
-
-        /*foreach($films as $film) {
-            echo $film;
-        }
-
-        return view('detail', ['film' => $films]);*/
     }
+
+    public function addFavourite($id)
+    {
+        $user = Auth::user()->id;
+        $lista = FavoriteList::query()->where('user_id', $user)->where('film_id', $id)->get();
+        $film_name = Film::query()->where('id', $id)->get();
+
+        if(!isset($lista[0])){
+            $fav = FavoriteList::create([
+                'user_id' => $user,
+                'film_id' => $id
+            ]);
+            return redirect()->to('/detail/detailFilms/' . $id)->with('FilmAdded','Se ha añadido ' . $film_name[0]->name . ' a tu lista de favoritos');
+        }
+        return redirect()->to('/detail/detailFilms/' . $id);
+    }
+
     public function ShareWidget()
     {
         $url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
@@ -118,16 +130,5 @@ class FilmController extends Controller
         
         return $shareComponent;
     }
-    
-
-   /* public function returnFilmGenre($genre_id) {
-        $filmGenre = Genre::find($genre_id);
-  
-        if (!is_null($filmGenre)) {
-            return view('/content/contentFilms', ['filmGenre' => $filmGenre]);
-        } else {
-            return response('No encontrado', 404);
-        }
-    }*/
     
 }
