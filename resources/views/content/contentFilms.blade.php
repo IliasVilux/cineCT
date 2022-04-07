@@ -40,9 +40,9 @@
 </section>
 
 <section class="d-flex flex-wrap justify-content-around align-items-center">
+    <button type="submit">AA</button>
         @foreach($genres as $genre)
-        
-                <a class="btn button-category m-0" type="submit" id="{{$genre->id}}" href="{{route('film.all-films-filter', ['genre' => $genre->id])}}" 
+                <a class="btn button-category m-0" type="submit" id="{{$genre->id}}" href="{{route('film.all-films-filter', ['genre' => $genre->name])}}" 
                     value="{{$genre->name}}">{{$genre->name}}</a>
         {{--
         <a class="btn button-category m-0" type="submit" href="{{route('film.all-films-filter', ['genre' => $genre])}}" 
