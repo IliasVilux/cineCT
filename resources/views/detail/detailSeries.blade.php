@@ -49,7 +49,7 @@
             <div>
                 <div class="d-flex nowrap">
                     <h5 class="pe-2"><b>Género:</b></h5>
-                    <p>{{$serie->genre_id}}</p>
+                    <p>{{$film->genre->name}}</p>
                 </div>
                 <div class="d-flex nowrap">
                     <h5 class="pe-2"><b>Fecha de lanzamiento:</b></h5>
