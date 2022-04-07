@@ -82,7 +82,7 @@
                     <div class="offcanvas-body px-4">
                         <ul class="list-unstyled">
                             <li>
-                                <a href="{{ url('/') }}" class="footer-links text-light text-uppercase fs-3 m-0">
+                                <a href="{{ url('home') }}" class="footer-links text-light text-uppercase fs-3 m-0">
                                     <i class="fas fa-home pe-2"></i>{{trans('titles.home')}}
                                 </a>
                             </li>
