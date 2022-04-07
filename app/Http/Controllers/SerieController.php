@@ -95,12 +95,6 @@ class SerieController extends Controller
         } else {
             return response('No encontrado', 404);
         }
-
-        /*foreach($series as $serie) {
-            echo $serie;
-        }
-
-        return view('detail', ['serie' => $series]);*/
     }
 
     public function addFavourite($id)

@@ -8,7 +8,7 @@
     <h1 class="mt-4">{{trans('profile.title_profile')}}</h1>
     <div class="d-flex justify-content-center">
         <a href="{{asset('/profileImg')}}">
-            <img class="img-carousel" src="{{asset('img/NoImg.jpg')}}">
+            <img class="img-profile" src="{{asset('img/NoImg.jpg')}}">
         </a>
     </div>
     <a href="{{asset('/profileImg')}}" class="col-12 d-flex justify-content-center" >
