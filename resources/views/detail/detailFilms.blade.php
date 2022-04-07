@@ -111,20 +111,6 @@
             <button class="btn button-purple mt-3" type="submit" id="commentSubmit">Publicar</button>
         </form>
     </article>
-    <article class="d-flex flex-column flex wrap align-items-center p-3">
-        <h3 class="text-uppercase pb-3">Tráiler</h3>
-        <!-- START TRAILER SECTION -->
-        @if($film->trailer_link != null)
-        <iframe class="w-75" height="500" src="https://www.youtube.com/embed/{{$film->trailer_link}}"
-            allowfullscreen></iframe>
-        <div class="alert alert-dark w-75 my-3" role="alert">
-            Si el vídeo da error es porque el link no funciona. Pero te invitamos a buscar el trailer en <a
-                href="https://www.youtube.com/results?search_query={{$film->name}} trailer">Youtube</a> y descubrir más
-            sobre esta película.
-        </div>
-        @endif
-        <!-- END TRAILER SECTION -->
-    </article>
 </section>
 
 <!-- START COMMMENT SECTION -->
@@ -157,12 +143,6 @@
                 @endif
                 <div id="notify_user"></div>
                 <div class="text-center pt-3 "><span id="character-counter"></span></div>
-                <form method="POST" action="" id="create-comment" class="create_comment">
-                    @csrf
-                    <textarea name="description" id="description" cols="50" rows="3"
-                        placeholder="Escribe un comentario"></textarea>
-                    <button class="btn" type="submit" id="commentSubmit">Publicar</button>
-                </form>
 
             </div>
         </div>

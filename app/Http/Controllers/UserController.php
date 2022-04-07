@@ -8,9 +8,6 @@ use App\Models\Serie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use App\Models\Anime;
-use App\Models\Serie;
-use App\Models\Film;
 use App\Models\FavoriteList;
 
 class UserController extends Controller
