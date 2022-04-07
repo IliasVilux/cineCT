@@ -37,7 +37,65 @@
 
     <h1 class="detail-title">{{$anime->name}}</h1>
 
-    <article class="d-flex flex-column flex-sm-row flex-sm-wrap justify-content-between mt-4">
+            }
+            ?>
+        </div>
+    </article>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="dropdown">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+            Añadir a favoritos
+        </button>
+        <ul class="dropdown-menu">
+            <li><a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#myModal">Crear nueva lista</a></li>
+            @foreach ($userLists as $list)
+                <li><a class="dropdown-item" href="#">{{ $list->name }}</a></li>
+            @endforeach
+        </ul>
+    </div>
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog text-dark">
+            <div class="modal-content">
+
+            <form action="/detail/detailAnimes/{{$anime->id}}/addNewList">
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="text" id="newListName" name="newListName" class="form-control" placeholder="Nombre de la lista">
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button class="btn button-purple">Crear nueva lista</button>
+                    <a type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</a>
+                </div>
+            </form>
+
+            </div>
+        </div>
+    </div>
+    <article>
+        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-share-alt"></i></button> -->
+        <a type="button" class="btn btn-primary" href="#demo" data-bs-toggle="collapse"><i class="fas fa-share-alt"></i></a>
+        <!-- Modal -->
+        <!-- <div class="modal fade-scale" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    {!! $shareComponent !!}
+                </div>
+            </div>
+        </div> -->
+        <div id="demo" class="collapse">{!! $shareComponent !!}</div>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+            </div>
+        </div>
+    </article>
+
+    <article class="mt-4">
         @if($anime->poster_path == NULL)
         <img src="/img/NoImg.jpg" class="img-thumbnail col-12 col-md-5 mb-4 mb-md-0" alt="">
         @else
