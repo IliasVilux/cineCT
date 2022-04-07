@@ -30,11 +30,10 @@
                         <a href="/detail/detail{{ ucfirst(array_keys($content)[$data]) }}/{{ $value->id }}"
                             class="image-link col-2 p-2 search-content-info">
 
-
                             @if ($value->poster_path === null)
-                                <img src="/img/NoImg.jpg" alt="No image">
+                                <img src="/img/NoImg.jpg" class="img-content col-12" alt="No image">
                             @else
-                                <img src="{{ $value->poster_path }}" alt="{{ array_keys($content)[$data] }}">
+                                <img src="{{ $value->poster_path }}" class="img-content col-12" alt="{{ array_keys($content)[$data] }}">
                             @endif
 
                         </a>
