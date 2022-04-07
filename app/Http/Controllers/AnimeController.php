@@ -10,6 +10,8 @@ use App\Models\Review;
 use App\Models\FavoriteList;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class AnimeController extends Controller
 {
@@ -99,7 +101,8 @@ class AnimeController extends Controller
 
     public function returnAnimes($id) {
         $anime = Anime::find($id);
-        $profile = Image::all();
+        $profile_img_id = Auth::user()->image_id;
+        $profile = Image::find($profile_img_id);
         $comments = Review::where('anime_id' ,'=', $id)->get();
         $shareComponent = $this->ShareWidget();
 

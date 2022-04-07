@@ -14,7 +14,7 @@ class Anime extends Model
     use HasFactory;
     protected $table = 'animes';
 
-    public function reviews(){
+    public function review(){
         return $this->hasMany(Review::class);
     }
 
@@ -22,12 +22,15 @@ class Anime extends Model
         return $this->belongsTo(Genre::class);
     }
 
+    public function character(){
+        return $this->hasMany(Character::class);
+    }
+
+    /*
+    //Hay que rellenar la table 'episodes' y luego provar esta relación 
     public function episode(){
         return $this->hasMany(Episode::class);
     }
-
-    public function image() {
-        return $this->hasMany(Image::class);
-    }
+    */
 
 }
