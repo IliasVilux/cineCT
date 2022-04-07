@@ -64,9 +64,12 @@
     </div>
 </section>
 <section class="d-flex flex-wrap justify-content-around align-items-center">
+    @foreach($genres as $genre)
     <button class="button-category">
-        <p class="m-0">{{trans('titles.action')}}</p>
+        <a style="color:#FFFFFF;" href="{{route('film.films-filtered', ['genre' => $genre])}}&{{$genre}}"><p class="m-0">{{trans('titles.'.$genre.'')}}</p></a>
     </button>
+    @endforeach
+    {{--
     <button class="button-category">
         <p class="m-0">{{trans('titles.animation')}}</p>
     </button>
@@ -89,6 +92,7 @@
     <button class="button-category">
         <p class="m-0">{{trans('titles.crime')}}</p>
     </button>
+    --}}
 </section>
 
 <section class="container py-5">

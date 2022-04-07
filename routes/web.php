@@ -9,10 +9,6 @@ use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\ModelRelationshipTest;
-use App\Models\Genre;
-use App\Models\Serie;
-use App\Models\Films;
-use App\Models\Anime;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -67,15 +63,9 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     });
     
     //Return All Films
-    Route::get('/content/contentFilms', function () {
-
-        $films = DB::table('films')->paginate(100);
- 
-        return view('/content/contentFilms', ['films' => $films]);
-    })->name('film.all-films');
-
+    Route::get('/content/contentFilms', [FilmController::class,  'fetchAllFilms'])->name('film.all-films');
     //Filter Film
-    Route::get('/content/contentFilms/{genre}', [FilmController::class,  'filterContent'])->name('film.all-films-filter');
+    Route::get('/content/contentFilms/{genre}', [FilmController::class,  'filterContent'])->name('film.films-filtered');
     
     //Return All animes
     Route::get('/content/contentAnimes', function () {
