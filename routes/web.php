@@ -76,9 +76,10 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     //Return All animes
     Route::get('/content/contentAnimes', function () {
     
-        $animes = DB::table('animes')->paginate(100);
+        $animes = DB::table('animes')->paginate(10);
+        $allAnimes = DB::table('animes')->get();
  
-        return view('/content/contentAnimes', ['animes' => $animes]);
+        return view('/content/contentAnimes', ['animes' => $animes, 'allAnimes' => $allAnimes]);
     });
 
     Route::get('/top', function () {
