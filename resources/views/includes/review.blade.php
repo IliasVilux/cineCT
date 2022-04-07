@@ -6,7 +6,8 @@
         <div class="flex-grow-1 flex-shrink-1">
             <div>
                 <div class="d-flex justify-content-between align-items-center">
-                    <p class="mb-1">{{ $comment->user->name }} <span class="text-muted">- {{ \DateTimeFormat::timeFilter($comment->created_at) }}</span></p>
+                    <p class="mb-1">{{ $comment->user->name }} <span class="text-muted">- 2 hours
+                            ago</span></p>
                     <a href="#!"><i class="fas fa-reply fa-xs"></i><span class="text-muted">reply</span></a>
                 </div>
                 <p class="small mb-0 comment">{{ $comment->description }}</p>

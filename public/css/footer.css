@@ -1,4 +1,7 @@
-/* FOOTER */
+
+.footer {
+  background-image: linear-gradient(to bottom, black 25%, #9966ff 150%);
+}
 .btn-outline-light {
   border-color: transparent;
 }
@@ -10,4 +13,8 @@ a.footer-links {
 
 a.footer-links:hover {
   text-decoration: underline;
+}
+
+div.copyright {
+  background-color: black;
 }

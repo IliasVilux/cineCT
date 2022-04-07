@@ -38,7 +38,6 @@ div.card {
 
 .nav-pills a:hover{
   color: #212529;
-  font-weight: 600;
 }
 
 #icon-switch{ 
@@ -69,6 +68,9 @@ div.card {
   background-color: #5A3C97;
   animation: boxShadow 2s infinite;
 }
+.nav-link.active.selectId{
+  background: #5A3C97;
+}
 
 @keyframes boxShadow {
   50% {box-shadow: 0 5px 30px rgba(145, 92, 182, .4);}
@@ -86,3 +88,15 @@ div.card {
   }
 }
 
+/* BUTTONS */
+.button-purple{
+  border: 2px solid #FFFFFF;
+  color: white;
+  background-color: #5A3C97;
+  margin: 0;
+}
+.button-purple:hover{
+  color: #5A3C97;
+  background-color: white;
+  border: 2px solid #5A3C97;
+}

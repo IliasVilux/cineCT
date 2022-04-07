@@ -15,14 +15,38 @@
                 aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
-            <div class="carousel-item full active">
-                <img class="full-img" src="/img/SquidGame.jpg" alt="">
+            <div class="carousel-item full text-center active">
+                <a href="/detail/detailSeries/1" class="link-img-carousel">
+                    <img src="{{$series[0]->poster_path}}" class="img-carousel px-3" alt="Img {{$series[0]->name}}">
+                </a>
+                <a href="/detail/detailSeries/2" class="link-img-carousel">
+                    <img src="{{$series[1]->poster_path}}" class="img-carousel px-3" alt="Img {{$series[1]->name}}">
+                </a>
+                <a href="/detail/detailSeries/3" class="link-img-carousel">
+                    <img src="{{$series[2]->poster_path}}" class="img-carousel px-3" alt="Img {{$series[2]->name}}">
+                </a>
             </div>
-            <div class="carousel-item full">
-                <img class="full-img" src="/img/uncharted.jpg" alt="">
+            <div class="carousel-item full text-center">
+                <a href="/detail/detailSeries/4" class="link-img-carousel">
+                    <img src="{{$series[3]->poster_path}}" class="img-carousel px-3" alt="Img {{$series[3]->name}}">
+                </a>
+                <a href="/detail/detailSeries/6" class="link-img-carousel">
+                    <img src="{{$series[5]->poster_path}}" class="img-carousel px-3" alt="Img {{$series[5]->name}}">
+                </a>
+                <a href="/detail/detailSeries/7" class="link-img-carousel">
+                    <img src="{{$series[6]->poster_path}}" class="img-carousel px-3" alt="Img {{$series[6]->name}}">
+                </a>
             </div>
-            <div class="carousel-item full">
-                <img class="full-img" src="/img/Kimetsu.jpg" alt="">
+            <div class="carousel-item full text-center">
+                <a href="/detail/detailSeries/8" class="link-img-carousel">
+                    <img src="{{$series[7]->poster_path}}" class="img-carousel px-3" alt="Img {{$series[7]->name}}">
+                </a>
+                <a href="/detail/detailSeries/9" class="link-img-carousel">
+                    <img src="{{$series[8]->poster_path}}" class="img-carousel px-3" alt="Img {{$series[8]->name}}">
+                </a>
+                <a href="/detail/detailSeries/10" class="link-img-carousel">
+                    <img src="{{$series[9]->poster_path}}" class="img-carousel px-3" alt="Img {{$series[9]->name}}">
+                </a>
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -39,52 +63,63 @@
 </section>
 <section class="d-flex flex-wrap justify-content-around align-items-center">
     <button class="button-category">
-        <p class="m-0">Acción / Aventura</p>
+        <p class="m-0">{{trans('titles.action')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Animación / Familia</p>
+        <p class="m-0">{{trans('titles.animation')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Comedia</p>
+        <p class="m-0">{{trans('titles.comedy')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Terror / Suspense</p>
+        <p class="m-0">{{trans('titles.terror')}}</p>
     </button>
 
     <button class="button-category">
-        <p class="m-0">Romance</p>
+        <p class="m-0">{{trans('titles.romance')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Ciencia ficción / Fantasía</p>
+        <p class="m-0">{{trans('titles.fiction')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Drama / Misterio</p>
+        <p class="m-0">{{trans('titles.drama')}}</p>
     </button>
     <button class="button-category">
-        <p class="m-0">Bélica / Crimen</p>
+        <p class="m-0">{{trans('titles.crime')}}</p>
     </button>
 </section>
-<section class="container py-4">
-    <h5>Series</h5>
-    @if(!empty($serie))
-    <div class="content d-flex flex-wrap align-items-streach justify-content-center">
-        @foreach($serie as $serie)
-        <a href="/detail/detailSeries/{{$serie->id}}" class="image-link col-2 p-2">
-            @if($serie->poster_path === NULL)
-            <img src="/img/NoImg.jpg" alt="">
-            @else
-            <img src="{{$serie->poster_path}}" alt="">
-            @endif
-        </a>
-        @endforeach
+
+<section class="container py-5">
+    <div class="d-flex flex-row justify-content-between">
+        <h5 class="col-6 text-uppercase">{{trans('titles.series')}}</h5>
+        <div class="d-flex justify-content-center">
+            {{$series->links()}}
+        </div>
     </div>
-    @else
-    <h2 style="color: red;">No hi ha cap registre!!!</h2>
-    @endif
+
+    <?php
+    if(!empty($series)) {
+    echo '<div class="content d-flex flex-wrap align-items-stretch justify-content-center">';
+
+    foreach($series as $data) {
+        echo '<a href="/detail/detailSeries/'.$data->id.'" class="image-link col-3 col-sm-2 p-2">';
+        if($data->poster_path === NULL) {
+        echo '<img src="/img/NoImg.jpg" class="img-content col-12" alt="No Image">';
+        } else {
+        echo '<img src="'.$data->poster_path.'" class="img-content col-12" alt="'.$data->name.'">
+        </a>';
+    }
+}
+   echo' </div>';
+           
+    } else {
+        echo '<h2 style="color: red;">No hi ha cap registre!!!</h2>';
+    }
+    ?>
 
 </section>
 {{-- Pagination --}}
 <div class="d-flex justify-content-center">
-    <!-- $serie->links() -->
+    {{$series->links()}}
 </div>
 @endsection

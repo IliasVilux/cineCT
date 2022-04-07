@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Anime;
+use App\Models\Genre;
 use App\Models\Image;
 use App\Models\Review;
-use Illuminate\Support\Facades\Http;
+use App\Models\FavoriteList;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use App\Models\User;
 
 class AnimeController extends Controller
@@ -98,8 +100,9 @@ class AnimeController extends Controller
 
     public function returnAnimes($id) {
         $anime = Anime::find($id);
-        $profile_img_id = Auth::user()->image_id;
-        $profile = Image::find($profile_img_id);
+        /*$profile_img_id = Auth::user()->image_id;
+        $profile = Image::find($profile_img_id);*/
+        $profile = Image::all();
         $comments = Review::where('anime_id' ,'=', $id)->get();
         $shareComponent = $this->ShareWidget();
 
@@ -108,6 +111,22 @@ class AnimeController extends Controller
         } else {
             return response('No encontrado', 404);
         }
+    }
+
+    public function addFavourite($id)
+    {
+        $user = Auth::user()->id;
+        $lista = FavoriteList::query()->where('user_id', $user)->where('anime_id', $id)->get();
+        $anime_name = Anime::query()->where('id', $id)->get();
+
+        if(!isset($lista[0])){
+            $fav = FavoriteList::create([
+                'user_id' => $user,
+                'anime_id' => $id
+            ]);
+            return redirect()->to('/detail/detailAnimes/' . $id)->with('AnimeAdded','Se ha añadido ' . $anime_name[0]->name . ' a tu lista de favoritos');
+        }
+        return redirect()->to('/detail/detailAnimes/' . $id);
     }
     
     public function ShareWidget()
