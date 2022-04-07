@@ -90,8 +90,9 @@
         </button>
         <ul class="dropdown-menu">
             <li><a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#myModal">Crear nueva lista</a></li>
-            <li><a class="dropdown-item" href="#">Link 2</a></li>
-            <li><a class="dropdown-item" href="#">Link 3</a></li>
+            @foreach ($userLists as $list)
+                <li><a class="dropdown-item" href="#">{{ $list->name }}</a></li>
+            @endforeach
         </ul>
     </div>
     <!-- The Modal -->
