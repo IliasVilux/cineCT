@@ -104,48 +104,30 @@ class AnimeController extends Controller
 
         $anime = Anime::find($id);
         $userLists = FavouriteLists::query()->where('user_id', $user)->get();
+        $userTopList = FavouriteLists::query()->where('user_id', $user)->where('top_list', 1)->get();
         $profile = Image::all();
         $comments = Review::where('anime_id' ,'=', $id)->get();
         $shareComponent = $this->ShareWidget();
 
         if (!is_null($anime)) {
-            return view('/detail.detailAnimes', compact('anime', 'userLists', 'comments', 'profile', 'shareComponent'));
+            return view('/detail.detailAnimes', compact('anime', 'userLists', 'comments', 'profile', 'shareComponent', 'userTopList'));
         } else {
             return response('No encontrado', 404);
         }
     }
 
-    public function addFavourite($id)
+    public function addFavourite($idA, $list)
     {
         $user = Auth::user()->id;
-        $lista = FavoriteList::query()->where('user_id', $user)->where('anime_id', $id)->get();
-        $anime_name = Anime::query()->where('id', $id)->get();
-
-        if(!isset($lista[0])){
-            $fav = FavoriteList::create([
-                'user_id' => $user,
-                'name' => $id
-            ]);
-            return redirect()->to('/detail/detailAnimes/' . $id)->with('AnimeAdded','Se ha añadido ' . $anime_name[0]->name . ' a tu lista de favoritos');
-        }
-        return redirect()->to('/detail/detailAnimes/' . $id);
-    }
-
-    public function addFavouriteNewList($idA, $list)
-    {
-        $user = Auth::user()->id;
-        $lista = FavoriteList::query()->where('user_id', $user)->where('anime_id', $idA)->where('list_id', $list->id)->get();
+        $lista = FavoriteList::query()->where('user_id', $user)->where('anime_id', $idA)->where('list_id', $list)->get();
         $anime_name = Anime::query()->where('id', $idA)->get();
 
-        if(!isset($lista)){
-            $fav = FavoriteList::create([
-                'user_id' => $user,
-                'anime_id' => $idA,
-                'list_id' => $list->id
-            ]);
-            return redirect()->to('/detail/detailAnimes/' . $idA)->with('AnimeAdded','Se ha añadido ' . $anime_name[0]->name . ' a tu lista de favoritos');
-        }
-        return redirect()->to('/detail/detailAnimes/' . $idA);
+        $fav = FavoriteList::create([
+            'user_id' => $user,
+            'anime_id' => $idA,
+            'list_id' => $list
+        ]);
+        return redirect()->to('/detail/detailAnimes/' . $idA)->with('AnimeAdded','Se ha añadido ' . $anime_name[0]->name . ' a tu lista de favoritos');
     }
 
     public function addNewList($idAnime, Request $request)

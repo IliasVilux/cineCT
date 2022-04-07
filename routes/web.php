@@ -113,9 +113,13 @@ Route::group(['middleware' => 'authenticate.user'], function () {
 
 
     //Add favourites
-    Route::get('/detail/detailAnimes/{id}/addFav', [AnimeController::class,  'addFavourite'])->name('anime.fav');
-    Route::get('/detail/detailSeries/{id}/addFav', [SerieController::class,  'addFavourite'])->name('serie.fav');
-    Route::get('/detail/detailFilms/{id}/addFav', [FilmController::class,  'addFavourite'])->name('film.fav');
+    Route::get('/detail/detailAnimes/{id}/{flid}/addFav', [AnimeController::class,  'addFavourite'])->name('anime.fav');
+    Route::get('/detail/detailSeries/{id}/{flid}/addFav', [SerieController::class,  'addFavourite'])->name('serie.fav');
+    Route::get('/detail/detailFilms/{id}/{flid}/addFav', [FilmController::class,  'addFavourite'])->name('film.fav');
+
+    //Route::get('/content/{search?}', [UserController::class, 'searchContent'])->name('search.content'); 
+    //Route::get('/content/search', [UserController::class, 'searchContent'])->name('search-content'); 
+    Route::get('/content/{search?}', [UserController::class, 'searchContent'])->name('search-content'); 
 
     Route::get('/detail/detailAnimes/{id}/addNewList', [AnimeController::class,  'addNewList'])->name('anime.newList');
    
