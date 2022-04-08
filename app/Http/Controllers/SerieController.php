@@ -131,4 +131,13 @@ class SerieController extends Controller
         
         return $shareComponent;
     }
+
+    public function fetchAllSeries()
+    {
+        $series = Serie::paginate(100);
+        $allSeries = Serie::all();
+        
+
+        return view('content.contentSeries', ['series' => $series, 'allSeries' => $allSeries]);
+    }
 }

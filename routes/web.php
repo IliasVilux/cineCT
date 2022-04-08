@@ -59,12 +59,7 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     Route::get('/user/profile/delete-account', [UserController::class, 'deleteAccount'])->name('delete.account');
 
     //Return All Series
-    Route::get('/content/contentSeries', function () {
-
-        $series = DB::table('series')->paginate(100);
- 
-        return view('/content/contentSeries', ['series' => $series]);
-    });
+    Route::get('/content/contentSeries', [SerieController::class, 'fetchAllSeries']);
     
     //Return All Films
     Route::get('/content/contentFilms', [FilmController::class, 'fetchAllFilms'])->name('delete.account')->name('film.all-films');
@@ -73,13 +68,7 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     Route::get('/content/contentFilms/{genre}', [FilmController::class,  'filterContent'])->name('film.films-filtered');
     
     //Return All animes
-    Route::get('/content/contentAnimes', function () {
-    
-        $animes = DB::table('animes')->paginate(10);
-        $allAnimes = DB::table('animes')->get();
- 
-        return view('/content/contentAnimes', ['animes' => $animes, 'allAnimes' => $allAnimes]);
-    });
+    Route::get('/content/contentAnimes', [AnimeController::class, 'fetchAllAnimes']);
 
     Route::get('/top', function () {
         return view('top');

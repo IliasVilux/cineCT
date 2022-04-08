@@ -187,4 +187,12 @@ class AnimeController extends Controller
         
         return $shareComponent;
     }
+
+    public function fetchAllAnimes()
+    {
+        $animes = Anime::paginate(10);
+        $allAnimes = Anime::all();
+
+        return view('content.contentAnimes', ['animes' => $animes, 'allAnimes' => $allAnimes]);
+    }
 }
