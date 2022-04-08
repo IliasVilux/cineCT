@@ -158,7 +158,7 @@ class FilmController extends Controller
         $genres['scifi_fantasy'] = 'fiction';
         $genres['drama_mistery'] = 'drama';
         $genres['war_crime'] = 'crime';
-
+//jeowjf
        
         return view('content.contentFilms', ['films' => $films, 'genres' => $genres]);
     }
