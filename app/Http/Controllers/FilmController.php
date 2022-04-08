@@ -146,6 +146,7 @@ class FilmController extends Controller
     public function fetchAllFilms()
     {
         $films = Film::paginate(100);
+        $allFilms = Film::all();
 
         //$filmGenres = ["Animation", "Family", "Science Fiction", "War", "Crime", "Action", "Adventure", "Comedy", "Drama", "Fantasy", "Horror", "Mystery", "Romance", "Suspense"];
         
@@ -162,7 +163,7 @@ class FilmController extends Controller
         $genres['war_crime'] = 'crime';
 //jeowjf
        
-        return view('content.contentFilms', ['films' => $films, 'genres' => $genres]);
+        return view('content.contentFilms', ['films' => $films, 'genres' => $genres, 'allFilms' => $allFilms]);
     }
 
     public function filterContent($genre = null)
