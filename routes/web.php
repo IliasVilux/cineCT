@@ -67,15 +67,10 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     });
     
     //Return All Films
-    Route::get('/content/contentFilms', function () {
-
-        $films = DB::table('films')->paginate(100);
- 
-        return view('/content/contentFilms', ['films' => $films]);
-    })->name('film.all-films');
+    Route::get('/content/contentFilms', [FilmController::class, 'fetchAllFilms'])->name('delete.account')->name('film.all-films');
 
     //Filter Film
-    Route::get('/content/contentFilms/{genre}', [FilmController::class,  'filterContent'])->name('film.all-films-filter');
+    Route::get('/content/contentFilms/{genre}', [FilmController::class,  'filterContent'])->name('film.films-filtered');
     
     //Return All animes
     Route::get('/content/contentAnimes', function () {
