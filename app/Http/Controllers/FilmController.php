@@ -209,7 +209,7 @@ class FilmController extends Controller
             }
             */
 
-            dd($films);
+            
             return redirect()->back()->with(['films' => $films]);
 
             
