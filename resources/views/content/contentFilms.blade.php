@@ -66,7 +66,7 @@
 <section class="d-flex flex-wrap justify-content-around align-items-center">
     @foreach($genres as $genre)
         <button class="button-category" style="border:none;">
-            <a style="color:#FFFFFF;" href="{{route('film.films-filtered', ['genre' => $genre])}}">
+            <a style="color:#FFFFFF; font-size:20px;" href="{{route('film.films-filtered', ['genre' => $genre])}}">
                 <p class="m-0">{{trans('titles.'.$genre.'')}}</p>
             </a>
         </button>
