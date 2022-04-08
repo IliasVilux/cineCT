@@ -30,23 +30,23 @@
                 <a href="/detail/detailSeries/4" class="link-img-carousel">
                     <img src="{{$allSeries[3]->poster_path}}" class="img-carousel px-3" alt="Img {{$allSeries[3]->name}}">
                 </a>
-                <a href="/detail/detailSeries/5" class="link-img-carousel">
-                    <img src="{{$allSeries[4]->poster_path}}" class="img-carousel px-3" alt="Img {{$allSeries[4]->name}}">
-                </a>
                 <a href="/detail/detailSeries/6" class="link-img-carousel">
                     <img src="{{$allSeries[5]->poster_path}}" class="img-carousel px-3" alt="Img {{$allSeries[5]->name}}">
                 </a>
-            </div>
-            <div class="carousel-item full text-center">
                 <a href="/detail/detailSeries/7" class="link-img-carousel">
                     <img src="{{$allSeries[6]->poster_path}}" class="img-carousel px-3" 
                         alt="Img {{$allSeries[6]->name}}">
                 </a>
+            </div>
+            <div class="carousel-item full text-center">
                 <a href="/detail/detailSeries/8" class="link-img-carousel">
                     <img src="{{$allSeries[7]->poster_path}}" class="img-carousel px-3" alt="Img {{$allSeries[7]->name}}">
                 </a>
                 <a href="/detail/detailSeries/9" class="link-img-carousel">
                     <img src="{{$allSeries[8]->poster_path}}" class="img-carousel px-3" alt="Img {{$allSeries[8]->name}}">
+                </a>
+                <a href="/detail/detailSeries/10" class="link-img-carousel">
+                    <img src="{{$allSeries[9]->poster_path}}" class="img-carousel px-3" alt="Img {{$allSeries[9]->name}}">
                 </a>
             </div>
         </div>

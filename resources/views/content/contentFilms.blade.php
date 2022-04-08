@@ -34,19 +34,19 @@
                 <a href="/detail/detailFilms/5" class="link-img-carousel">
                     <img src="{{$allFilms[4]->poster_path}}" class="img-carousel px-3" alt="Img {{$allFilms[4]->name}}">
                 </a>
-                <a href="/detail/detailFilms/6" class="link-img-carousel">
-                    <img src="{{$allFilms[5]->poster_path}}" class="img-carousel px-3" alt="Img {{$allFilms[5]->name}}">
-                </a>
-            </div>
-            <div class="carousel-item full text-center">
                 <a href="/detail/detailFilms/7" class="link-img-carousel">
                     <img src="{{$allFilms[6]->poster_path}}" class="img-carousel px-3" alt="Img {{$allFilms[6]->name}}">
                 </a>
+            </div>
+            <div class="carousel-item full text-center">
                 <a href="/detail/detailFilms/8" class="link-img-carousel">
                     <img src="{{$allFilms[7]->poster_path}}" class="img-carousel px-3" alt="Img {{$allFilms[7]->name}}">
                 </a>
                 <a href="/detail/detailFilms/9" class="link-img-carousel">
                     <img src="{{$allFilms[8]->poster_path}}" class="img-carousel px-3" alt="Img {{$allFilms[8]->name}}">
+                </a>
+                <a href="/detail/detailFilms/10" class="link-img-carousel">
+                    <img src="{{$allFilms[9]->poster_path}}" class="img-carousel px-3" alt="Img {{$allFilms[9]->name}}">
                 </a>
             </div>
         </div>
