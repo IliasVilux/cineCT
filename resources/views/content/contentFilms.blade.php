@@ -65,9 +65,11 @@
 </section>
 <section class="d-flex flex-wrap justify-content-around align-items-center">
     @foreach($genres as $genre)
-    <button class="button-category">
-        <a style="color:#FFFFFF;" href="{{route('film.films-filtered', ['genre' => $genre])}}&{{$genre}}"><p class="m-0">{{trans('titles.'.$genre.'')}}</p></a>
-    </button>
+        <button class="button-category" style="border:none;">
+            <a style="color:#FFFFFF;" href="{{route('film.films-filtered', ['genre' => $genre])}}">
+                <p class="m-0" style="border:1px solid pink;">{{trans('titles.'.$genre.'')}}</p>
+            </a>
+        </button>
     @endforeach
     {{--
     <button class="button-category">
