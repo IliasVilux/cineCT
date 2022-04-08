@@ -67,7 +67,7 @@
     @foreach($genres as $genre)
         <button class="button-category" style="border:none;">
             <a style="color:#FFFFFF;" href="{{route('film.films-filtered', ['genre' => $genre])}}">
-                <p class="m-0" style="border:1px solid pink;">{{trans('titles.'.$genre.'')}}</p>
+                <p class="m-0">{{trans('titles.'.$genre.'')}}</p>
             </a>
         </button>
     @endforeach
