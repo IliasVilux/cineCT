@@ -67,15 +67,10 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     });
     
     //Return All Films
-    Route::get('/content/contentFilms', function () {
-
-        $films = DB::table('films')->paginate(100);
- 
-        return view('/content/contentFilms', ['films' => $films]);
-    })->name('film.all-films');
+    Route::get('/content/contentFilms', [FilmController::class, 'fetchAllFilms'])->name('delete.account')->name('film.all-films');
 
     //Filter Film
-    Route::get('/content/contentFilms/{genre}', [FilmController::class,  'filterContent'])->name('film.all-films-filter');
+    Route::get('/content/contentFilms/{genre}', [FilmController::class,  'filterContent'])->name('film.films-filtered');
     
     //Return All animes
     Route::get('/content/contentAnimes', function () {
@@ -113,9 +108,13 @@ Route::group(['middleware' => 'authenticate.user'], function () {
 
 
     //Add favourites
-    Route::get('/detail/detailAnimes/{id}/addFav', [AnimeController::class,  'addFavourite'])->name('anime.fav');
-    Route::get('/detail/detailSeries/{id}/addFav', [SerieController::class,  'addFavourite'])->name('serie.fav');
-    Route::get('/detail/detailFilms/{id}/addFav', [FilmController::class,  'addFavourite'])->name('film.fav');
+    Route::get('/detail/detailAnimes/{id}/{flid}/addFav', [AnimeController::class,  'addFavourite'])->name('anime.fav');
+    Route::get('/detail/detailSeries/{id}/{flid}/addFav', [SerieController::class,  'addFavourite'])->name('serie.fav');
+    Route::get('/detail/detailFilms/{id}/{flid}/addFav', [FilmController::class,  'addFavourite'])->name('film.fav');
+
+    //Route::get('/content/{search?}', [UserController::class, 'searchContent'])->name('search.content'); 
+    //Route::get('/content/search', [UserController::class, 'searchContent'])->name('search-content'); 
+    Route::get('/content/{search?}', [UserController::class, 'searchContent'])->name('search-content'); 
 
     Route::get('/detail/detailAnimes/{id}/addNewList', [AnimeController::class,  'addNewList'])->name('anime.newList');
    
