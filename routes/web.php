@@ -75,7 +75,7 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     })->name('film.all-films');
 
     //Filter Film
-    Route::get('/content/contentFilms/{genre}', [FilmController::class,  'filterContent'])->name('film.all-films-filter');
+    Route::get('/content/contentFilms/{genre}', [FilmController::class,  'filterContent'])->name('film.films-filter');
     
     //Return All animes
     Route::get('/content/contentAnimes', function () {

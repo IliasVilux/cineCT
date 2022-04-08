@@ -128,8 +128,10 @@
                             </div>
                         </div>
                     </div>
+                    @if (isset($userTopList[0]->name))
                     <a href="/detail/detailAnimes/{{$anime->id}}/{{$userTopList[0]->id}}/addFav"><button type="button"
                             class="btn button-purple btn-md">Añadir a {{ $userTopList[0]->name }}</button></a>
+                    @endif
                     <div class="social-media-links mx-2">
                         <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button"
                             aria-expanded="false" aria-controls="shareComponent">
