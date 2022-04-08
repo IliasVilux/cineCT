@@ -26,7 +26,7 @@
     <body>
         <div class="container mt-4">
             <h2 class="mb-5 text-center">Laravel Social Share Buttons Example</h2>
-            <div style="display: none;" id="link"></div>
+            <div class="d-none" id="link"></div>
             <!-- @php
                 $url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
             @endphp -->
