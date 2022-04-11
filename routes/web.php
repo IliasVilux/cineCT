@@ -65,7 +65,7 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     Route::get('/content/contentFilms', [FilmController::class, 'fetchAllFilms'])->name('delete.account')->name('film.all-films');
 
     //Filter Film
-    Route::get('/content/contentFilms/{genre}', [FilmController::class,  'filterContent'])->name('film.films-filtered');
+    Route::get('/content/films/{genre}', [FilmController::class,  'filterContent'])->name('film.films-filtered');
     
     //Return All animes
     Route::get('/content/contentAnimes', [AnimeController::class, 'fetchAllAnimes']);

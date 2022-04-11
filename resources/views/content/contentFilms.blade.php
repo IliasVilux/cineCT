@@ -63,43 +63,22 @@
         </button>
     </div>
 </section>
-<section class="d-flex flex-wrap justify-content-around align-items-center">
+
+<section class="d-flex flex-wrap justify-content-around align-items-center mt-3">
+    <!--EMPIEZAN: TODOS LOS BOTONES PARA BILTRAR-->
     @foreach($genres as $genre)
         <button class="button-category" style="border:none;">
-            <a style="color:#FFFFFF; font-size:20px;" href="{{route('film.films-filtered', ['genre' => $genre])}}">
+            <a href="{{route('film.films-filtered', ['genre' => $genre])}}">
                 <p class="m-0">{{trans('titles.'.$genre.'')}}</p>
             </a>
         </button>
     @endforeach
-    {{--
-    <button class="button-category">
-        <p class="m-0">{{trans('titles.animation')}}</p>
-    </button>
-    <button class="button-category">
-        <p class="m-0">{{trans('titles.comedy')}}</p>
-    </button>
-    <button class="button-category">
-        <p class="m-0">{{trans('titles.terror')}}</p>
-    </button>
-
-    <button class="button-category">
-        <p class="m-0">{{trans('titles.romance')}}</p>
-    </button>
-    <button class="button-category">
-        <p class="m-0">{{trans('titles.fiction')}}</p>
-    </button>
-    <button class="button-category">
-        <p class="m-0">{{trans('titles.drama')}}</p>
-    </button>
-    <button class="button-category">
-        <p class="m-0">{{trans('titles.crime')}}</p>
-    </button>
-    --}}
+    <!--ACABAN: TODOS LOS BOTONES PARA BILTRAR-->
 </section>
 
 <section class="container py-5">
     <div class="d-flex flex-row justify-content-between">
-        <h5 class="col-6 text-uppercase">{{trans('titles.films')}}</h5>
+        <h5 class="col-4 text-uppercase">{{trans('titles.films')}}</h5>
         <div class="d-flex justify-content-center">
             {{$films->links()}}
         </div>
@@ -127,7 +106,7 @@
 
 </section>
 {{-- Pagination --}}
-<div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center mb-4">
     {{$films->links()}}
 </div>
 

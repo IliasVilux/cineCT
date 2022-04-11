@@ -148,10 +148,6 @@ class FilmController extends Controller
         $films = Film::paginate(100);
         $allFilms = Film::all();
 
-        //$filmGenres = ["Animation", "Family", "Science Fiction", "War", "Crime", "Action", "Adventure", "Comedy", "Drama", "Fantasy", "Horror", "Mystery", "Romance", "Suspense"];
-        
-        //$genres = Genre::whereIn('name', $filmGenres)->get();
-
         $genres = [];
         $genres['action_adventure'] = 'action';
         $genres['animation_family'] = 'animation';
@@ -161,7 +157,6 @@ class FilmController extends Controller
         $genres['scifi_fantasy'] = 'fiction';
         $genres['drama_mistery'] = 'drama';
         $genres['war_crime'] = 'crime';
-//jeowjf
        
         return view('content.contentFilms', ['films' => $films, 'genres' => $genres, 'allFilms' => $allFilms]);
     }
@@ -202,19 +197,9 @@ class FilmController extends Controller
             ->orderBy('films.name', 'asc')
             ->get();
 
-            /*
-            if(count($films) > 0){
-                foreach($films as $film){
-                    echo '<b>'.$film->genre->name.'</b>: '.$film->name .'<br>';
-                }
-            }else{
-                echo "No hay ningun resultado".'<br>';
-            }
-            */
+            //dd(count($films) > 0);
 
-            
-            return redirect()->back()->with(['films' => $films]);
-
+            return view('content.filterFilm',['films' => $films, 'genre' => $genre]);
             
             
         }
