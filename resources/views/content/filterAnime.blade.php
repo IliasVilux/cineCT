@@ -10,7 +10,11 @@
 
         @if(!empty($animes) && count($animes) > 0)
             <div class="d-flex flex-row justify-content-between align-items-center">
+                @if($genre == 'sci-fi')
+                <h4 class="mt-2 mb-3">{{trans('titles.scifi')}}</h4>
+                @else
                 <h4 class="mt-2 mb-3">{{trans('titles.'.$genre.'')}}</h4>
+                @endif
                 <div class="d-flex justify-content-center">
                     <a href="{{ url('/content/contentAnimes') }}" class="btn button-purple my-4" title="Back">Back</a>
                 </div>
@@ -29,7 +33,11 @@
             </div>
         @else
             <div class="text-center">
+                @if($genre == 'sci-fi')
+                <h4 class="mt-2 mb-3">{{trans('titles.scifi')}}</h4>
+                @else
                 <h4 class="mt-2 mb-3">{{trans('titles.'.$genre.'')}}</h4>
+                @endif
                 <a href="{{ url('/content/contentAnimes') }}" class="btn button-purple my-4" title="Back">Back</a>
                 <h5 class="text-center">Todavía este genero no tiene ninguna anime</h5>
             </div>
