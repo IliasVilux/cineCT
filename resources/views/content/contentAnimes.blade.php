@@ -61,36 +61,20 @@
         </button>
     </div>
 </section>
-<section class="d-flex flex-wrap justify-content-around align-items-center">
-    <button class="button-category">
-        <p class="m-0">{{trans('titles.samurai')}}</p>
-    </button>
-    <button class="button-category">
-        <p class="m-0">{{trans('titles.shounen')}}</p>
-    </button>
-    <button class="button-category">
-        <p class="m-0">{{trans('titles.seinen')}}</p>
-    </button>
-    <button class="button-category">
-        <p class="m-0">{{trans('titles.shoujo')}}</p>
-    </button>
-
-    <button class="button-category">
-        <p class="m-0">{{trans('titles.demons')}}</p>
-    </button>
-    <button class="button-category">
-        <p class="m-0">{{trans('titles.scifi')}}</p>
-    </button>
-    <button class="button-category">
-        <p class="m-0">{{trans('titles.mecha')}}</p>
-    </button>
-    <button class="button-category">
-        <p class="m-0">{{trans('titles.josei')}}</p>
-    </button>
+<section class="d-flex flex-wrap justify-content-around align-items-center mt-3">
+    <!--EMPIEZAN: TODOS LOS BOTONES PARA BILTRAR-->
+    @foreach($genres as $genre)
+        <button class="button-category" style="border:none;">
+            <a href="{{route('anime.animes-filtered', ['genre' => $genre->name])}}">
+                <p class="m-0">{{trans('titles.'.$genre->name.'')}}</p>
+            </a>
+        </button>
+    @endforeach
+    <!--ACABAN: TODOS LOS BOTONES PARA BILTRAR-->
 </section>
 <section class="container py-5">
     <div class="d-flex flex-row justify-content-between">
-        <h5 class="col-6 text-uppercase">{{trans('titles.animes')}}</h5>
+        <h5 class="col-3 text-uppercase">{{trans('titles.animes')}}</h5>
         <div class="d-flex justify-content-center">
             {{$animes->links()}}
         </div>

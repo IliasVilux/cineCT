@@ -193,6 +193,35 @@ class AnimeController extends Controller
         $animes = Anime::paginate(10);
         $allAnimes = Anime::all();
 
-        return view('content.contentAnimes', ['animes' => $animes, 'allAnimes' => $allAnimes]);
+        $filterGenres = ["Samurai", "Shounen", "Seinen", "Shoujo", "Demons", "Sci-Fi", "Mecha", "Josei"];
+        $genres = Genre::whereIn('name', $filterGenres)->get();
+
+        foreach($genres as $genre){
+            //para que me pille las traducciones en el blade.php
+            $genre->name = strtolower($genre->name);
+            if($genre->name == 'sci-fi' || $genre->name == 'Sci-Fi'){
+                $genre->name = 'scifi';
+            }
+        }
+                
+        return view('content.contentAnimes', ['animes' => $animes, 'allAnimes' => $allAnimes, 'genres' => $genres]);
+    }
+
+    public function filterContent($genre = null)
+    {
+        if(isset($genre) && !is_null($genre) && !empty($genre)){
+
+            if($genre == 'scifi'){
+                $genre = 'sci-fi';
+            }
+
+            $animes = Anime::select('animes.*')
+            ->join('genres', 'animes.genre_id', '=', 'genres.id')
+            ->where('genres.name', '=', $genre)
+            ->orderBy('animes.name', 'asc')
+            ->get();
+
+            return view('content.filterAnime',['animes' => $animes, 'genre' => $genre]);
+        }
     }
 }

@@ -65,13 +65,16 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     Route::get('/content/series/{genre}', [SerieController::class, 'filterContent'])->name('serie.series-filtered');
 
     //Return All Films
-    Route::get('/content/contentFilms', [FilmController::class, 'fetchAllFilms'])->name('delete.account')->name('film.all-films');
+    Route::get('/content/contentFilms', [FilmController::class, 'fetchAllFilms'])->name('film.all-films');
 
-    //Filter Filtered Film
+    //Return Filtered Film
     Route::get('/content/films/{genre}', [FilmController::class,  'filterContent'])->name('film.films-filtered');
     
     //Return All animes
-    Route::get('/content/contentAnimes', [AnimeController::class, 'fetchAllAnimes']);
+    Route::get('/content/contentAnimes', [AnimeController::class, 'fetchAllAnimes'])->name('anime.all-animes');
+
+    //Return Filtered Animes
+    Route::get('/content/animes/{genre}', [AnimeController::class, 'filterContent'])->name('anime.animes-filtered');
 
     Route::get('/top', function () {
         return view('top');
