@@ -59,12 +59,15 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     Route::get('/user/profile/delete-account', [UserController::class, 'deleteAccount'])->name('delete.account');
 
     //Return All Series
-    Route::get('/content/contentSeries', [SerieController::class, 'fetchAllSeries']);
-    
+    Route::get('/content/contentSeries', [SerieController::class, 'fetchAllSeries'])->name('serie.all-series');
+
+    //Return Filtered Series
+    Route::get('/content/series/{genre}', [SerieController::class, 'filterContent'])->name('serie.series-filtered');
+
     //Return All Films
     Route::get('/content/contentFilms', [FilmController::class, 'fetchAllFilms'])->name('delete.account')->name('film.all-films');
 
-    //Filter Film
+    //Filter Filtered Film
     Route::get('/content/films/{genre}', [FilmController::class,  'filterContent'])->name('film.films-filtered');
     
     //Return All animes

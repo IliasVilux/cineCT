@@ -62,32 +62,16 @@
         </button>
     </div>
 </section>
-<section class="d-flex flex-wrap justify-content-around align-items-center">
-    <button class="button-category">
-        <p class="m-0">{{trans('titles.action')}}</p>
-    </button>
-    <button class="button-category">
-        <p class="m-0">{{trans('titles.animation')}}</p>
-    </button>
-    <button class="button-category">
-        <p class="m-0">{{trans('titles.comedy')}}</p>
-    </button>
-    <button class="button-category">
-        <p class="m-0">{{trans('titles.terror')}}</p>
-    </button>
-
-    <button class="button-category">
-        <p class="m-0">{{trans('titles.romance')}}</p>
-    </button>
-    <button class="button-category">
-        <p class="m-0">{{trans('titles.fiction')}}</p>
-    </button>
-    <button class="button-category">
-        <p class="m-0">{{trans('titles.drama')}}</p>
-    </button>
-    <button class="button-category">
-        <p class="m-0">{{trans('titles.crime')}}</p>
-    </button>
+<section class="d-flex flex-wrap justify-content-around align-items-center mt-3">
+    <!--EMPIEZAN: TODOS LOS BOTONES PARA BILTRAR-->
+    @foreach($genres as $genre)
+        <button class="button-category" style="border:none;">
+            <a href="{{route('serie.series-filtered', ['genre' => $genre])}}">
+                <p class="m-0">{{trans('titles.'.$genre.'')}}</p>
+            </a>
+        </button>
+    @endforeach
+    <!--ACABAN: TODOS LOS BOTONES PARA BILTRAR-->
 </section>
 
 <section class="container py-5">
