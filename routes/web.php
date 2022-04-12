@@ -8,6 +8,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ModelRelationshipTest;
 use App\Models\Genre;
 use App\Models\Serie;
@@ -112,6 +113,14 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     Route::get('/content/{search?}', [UserController::class, 'searchContent'])->name('search-content'); 
 
     Route::get('/detail/detailAnimes/{id}/addNewList', [AnimeController::class,  'addNewList'])->name('anime.newList');
+
+    Route::get('/user/activity', [UserController::class, 'activity'])->name('user.activity');
+
+    //Save LIKE
+    Route::post('/like/{review_id}', [LikeController::class, 'like'])->name('user.like');
+   
+    //Delete LIKE
+    Route::post('/dislike/{review_id}', [LikeController::class, 'dislike'])->name('user.dislike');
    
 });
 

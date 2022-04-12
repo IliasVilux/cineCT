@@ -287,15 +287,12 @@
 
                     jQuery('#comment-container').append(commentHtml);
                     jQuery('#character-counter').css("display", "none");
-                    jQuery('body,html').animate({scrollTop: $(document).height()}, 5);
                     
-                    /*
                     setTimeout(() => {
                         location.reload();
+                        jQuery('body,html').animate({scrollTop: $(document).height()}, 5);
                     },1000);
-                    */
                     
-
                 },
                 error: function(response) {
                     jQuery("#commentSubmit").removeClass("loagindEffect");

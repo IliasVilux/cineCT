@@ -60,6 +60,12 @@
                                     </a>
                                 </li>
                                 <li>
+                                    <a class="dropdown-item" href="{{route('user.activity')}}">
+                                        <i class="fas fa-bell"></i>
+                                        {{trans('titles.activity')}}
+                                    </a>
+                                </li>
+                                <li>
                                     <hr class="dropdown-divider">
                                 </li>
 

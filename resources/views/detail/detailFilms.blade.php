@@ -4,12 +4,13 @@
     <head>
         <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <script>
             /*
-            $(document).ready(function() {
-                $('input.star').rating();
-            });
-            */
+                    $(document).ready(function() {
+                        $('input.star').rating();
+                    });
+                    */
         </script>
         <style>
             div#social-links {
@@ -155,6 +156,7 @@
     <script type="text/javascript">
         $("#notify_user").css("display", "none");
 
+
         jQuery('#create-comment').submit(function(e) {
             e.preventDefault();
             $("#commentSubmit").attr("disabled", true); // deshabilitamos el boton de publicar
@@ -208,7 +210,14 @@
 
                     jQuery('#comment-container').append(commentHtml);
                     jQuery('#character-counter').css("display", "none");
-                    console.log("Actualizando")
+
+                    setTimeout(() => {
+                        location.reload();
+                        jQuery('body,html').animate({
+                            scrollTop: $(document).height()
+                        }, 5);
+                    }, 1000);
+
                 },
                 error: function(response) {
                     jQuery("#commentSubmit").removeClass("loagindEffect");
@@ -275,13 +284,28 @@
 
         characterLiveCount();
 
-        function like () {
-            jQuery('.like-btn').click(function(e){
-                $(".like").toggleClass("far fa-heart fas fa-heart");
+        function like() {
+            jQuery('.like-btn').click(function(e) {
+                e.preventDefault();
+                let comment_id = $(this).data('id');
+                let ruta = `/like/${comment_id}`;
+                console.log(ruta);
+                $.ajax({
+                    type: "POST",
+                    url: ruta,
+                    data: {
+                        '_token': $('input[name=_token]').val(),
+                        review_id: comment_id,
+                    },
+                    success: function(data) {
+                        console.log("Bien")
+                    }
+                });
+                //$('#commentId').toggleClass("far fa-heart fas fa-heart");
+
             })
         }
 
         like();
     </script>
 @endsection
-

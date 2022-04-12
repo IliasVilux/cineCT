@@ -13,7 +13,7 @@
             </div>
             <div class="like-container">
                 <span class="far fa-heart like-btn like" data-id="{{$comment->id}}"></span>
-                <span id="like-counter">10 likes</span>
+                <span id="like-counter">{{$comment->likes}}</span>
             </div>
             
             {{--
