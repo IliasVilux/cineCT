@@ -74,6 +74,29 @@ p.description {
     background-color: #5A3C97;
 }
 
+.like-container{
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.like{
+    font-size: 25px;
+    vertical-align: middle;
+    padding: 5px;
+    color: red;
+}
+
+
+.like:hover{
+    cursor: pointer;
+}
+
+.like:active{
+    transform: scale(0.9);
+}
+
+
 @keyframes boxShadow {
     50% {box-shadow: 0 5px 50px rgba(145, 92, 182, .4);}
 }

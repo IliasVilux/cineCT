@@ -4,6 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Like;
+use App\Models\Genre;
+use App\Models\Actor;
+use App\Models\Review;
 
 class Film extends Model
 {

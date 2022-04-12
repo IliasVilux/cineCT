@@ -5,8 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Review;
-use App\Models\Image;
-use App\Models\Episode;
+use App\Models\Like;
+use App\Models\Genre;
+use App\Models\Character;
 
 
 class Anime extends Model
@@ -25,6 +26,7 @@ class Anime extends Model
     public function character(){
         return $this->hasMany(Character::class);
     }
+
 
     /*
     //Hay que rellenar la table 'episodes' y luego provar esta relación 

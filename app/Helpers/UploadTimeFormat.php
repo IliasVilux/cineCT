@@ -16,11 +16,11 @@ class UploadTimeFormat
             return false;
         }
 
-        // no devuelve la diferencia de tiempo que hay entre dos mechas
+        // no devuelve la diferencia de tiempo que hay entre dos fechas
         $timeAgo = $fecha_inicio->diff(new DateTime(date("Y-m-d") . " " . date('H:i:s')));
 
         
-        //Obtenemos la diferencia del mes, el dia, la hora , el minuto y el segundo de la fecha de publicacion comparando con la fecha actual
+        //Accedemos a sus meses, dias, horas, minutos y segundos
         $month = $timeAgo->m; //mes = [01-12];
         $day = $timeAgo->d; //dias = [01-31]
         $hour = $timeAgo->h; //horas = [00-23];

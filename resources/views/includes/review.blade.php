@@ -6,12 +6,16 @@
         <div class="flex-grow-1 flex-shrink-1">
             <div>
                 <div class="d-flex justify-content-between align-items-center">
-                    <p class="mb-1">{{ $comment->user->name }} <span class="text-muted">- 2 hours
-                            ago</span></p>
+                    <p class="mb-1">{{ $comment->user->name }} <span class="text-muted ml-2">{{\DateTimeFormat::timeFilter($comment->created_at)}}</span></p>
                     <a href="#!"><i class="fas fa-reply fa-xs"></i><span class="text-muted">reply</span></a>
                 </div>
                 <p class="small mb-0 comment">{{ $comment->description }}</p>
             </div>
+            <div class="like-container">
+                <span class="far fa-heart like-btn like" data-id="{{$comment->id}}"></span>
+                <span id="like-counter">10 likes</span>
+            </div>
+            
             {{--
             <!----START REPLY COMMENT---->
             <div class="d-flex flex-start mt-4">
