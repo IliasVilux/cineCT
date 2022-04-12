@@ -6,7 +6,7 @@
 </head>
 
 @if (Session::has('welcomeUser'))
-<div class="alert alert-success" role="alert">
+<div class="alert alert-success" role="alert" id="welcomeMessage">
     <strong>{{ Session::get('welcomeUser') }}!</strong>
 </div>
 @endif
@@ -241,4 +241,11 @@
                 aria-hidden="true"></i></a>
     </div>
 </section>
+<script>
+    if(document.getElementById('welcomeMessage')){
+            setTimeout( () => {
+                document.getElementById('welcomeMessage').style.display = "none";
+            },5000);
+        }
+</script>
 @endsection

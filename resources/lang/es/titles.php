@@ -45,5 +45,6 @@ return [
     'scifi' => 'Ciencia ficción',
     'mecha' => 'Mecha',
     'josei' => 'Josei',
+    'unknown' => 'Desconocido'
 
 ];

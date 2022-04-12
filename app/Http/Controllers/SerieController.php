@@ -185,7 +185,7 @@ class SerieController extends Controller
             ->join('genres', 'series.genre_id', '=', 'genres.id')
             ->whereIn('genres.name', $searchCondition)
             ->orderBy('series.name', 'asc')
-            ->get();
+            ->paginate(25);
 
             
             //dd(count($films) > 0);

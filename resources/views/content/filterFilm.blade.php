@@ -35,7 +35,9 @@
             </div>
         @endif
     </section>
-
+    <div class="d-flex justify-content-center mb-4">
+        {{$films->links()}}
+    </div>
     <script></script>
 
 @endsection

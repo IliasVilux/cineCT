@@ -195,7 +195,7 @@ class FilmController extends Controller
             ->join('genres', 'films.genre_id', '=', 'genres.id')
             ->whereIn('genres.name', $searchCondition)
             ->orderBy('films.name', 'asc')
-            ->get();
+            ->paginate(25);
 
             //dd(count($films) > 0);
 
