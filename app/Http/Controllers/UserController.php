@@ -129,9 +129,9 @@ class UserController extends Controller
     public function activity(){
         $user = Auth::user();
         
-        $activity = Like::/*where('user_id', '!=' , $user->id)
+        $activity = Like::where('user_id', '!=' , $user->id)
         ->orderBy('created_at', 'desc')
-        ->*/get();
+        ->get();
         return view('activity.activity', ['activity' => $activity]);
     }
 }
