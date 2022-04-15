@@ -24,7 +24,7 @@
                 @if($user_like)
                     <span class="fas fa-heart like-review btn-dislike" id="btn-dislike" style="color:red;" data-id="{{$comment->id}}"></span>
                 @else
-                    <span class="far fa-heart like-review btn-like" id="btn-like" style="color:#ffffff;" data-id="{{$comment->id}}"></span>
+                    <span class="far fa-heart like-review btn-like" id="btn-like" data-id="{{$comment->id}}"></span>
                 @endif
                     <span id="like-counter">{{count($comment->like)}} likes</span>
             </div>

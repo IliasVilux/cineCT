@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
     </head>
 
-    <h2 class="text-center p-3 mb-4 mt-5">{{ trans('titles.activity') }}</h2>
+    <h2 class="text-center p-3 mb-4 mt-2">{{ trans('titles.activity') }}</h2>
 
     @foreach ($activity as $activity)
         <div class="user-activity mb-3">

@@ -287,6 +287,8 @@
         function like() {
             jQuery('.btn-like').unbind('click').click(function () {
                 $(this).addClass('btn-dislike').removeClass('btn-like');
+                $(this).addClass('fas').removeClass('far');
+                $(this).css("color", "red");
                 let comment_id = $(this).data('id');
                 let ruta = `/like/${comment_id}`;
                 //console.log(ruta);
@@ -298,8 +300,12 @@
                         review_id: comment_id,
                     },
                     success: function(data) {
-                        console.log(data.message)
-                        //$(this).removeClass('btn-like').addClass('btn-dislike');
+                        //console.log(data.message);
+                        if(data.like){
+                            console.log("Has dado like de forma correcta");
+                        }else {    
+                            console.log("Error al dar like");
+                        }   
                     }
                 });
                 dislike();
@@ -314,6 +320,8 @@
         {
             jQuery('.btn-dislike').unbind('click').click(function () {
                 $(this).addClass('btn-like').removeClass('btn-dislike');
+                $(this).addClass('far').removeClass('fas');
+                $(this).css("color", "#FFFFFF");
                 let comment_id = $(this).data('id');
                 let ruta = `/dislike/${comment_id}`;
                 $.ajax({
@@ -324,8 +332,11 @@
                         review_id: comment_id,
                     },
                     success: function(data){
-                        console.log(data.message);
-                        //$(this).addClass('btn-like').removeClass('btn-dislike');
+                        if (data.like) {
+                        console.log("Has dado dislike de forma correcta");
+                        } else {
+                            console.log("Error al dar dislike");
+                        }
                     }
                 });
                 like();
