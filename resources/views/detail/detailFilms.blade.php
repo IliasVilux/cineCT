@@ -202,7 +202,7 @@
                         <p class="small mb-0 comment">${ response.comment['description'] }</p>
                         </div>
                         <div class="like-container">
-                            <span class="far fa-heart like" data-id=""></span>
+                            <span class="far fa-heart like-review btn-like" id="btn-like" data-id="${ response.comment['id']}"></span>
                             <span id="like-counter">0</span>
                         </div>
                     </div>
