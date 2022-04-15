@@ -280,7 +280,7 @@
                             </div>
                             <div class="like-container">
                                 <span class="far fa-heart like-review btn-like" id="btn-like" data-id="${ response.comment['id']}"></span>
-                            <span id="like-counter">0</span>
+                                <span id="like-counter">0 likes</span>
                         </div>
                         </div>
                     </div>
