@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
         <link rel="stylesheet" href="{{ asset('css/general.css') }}">
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <script>
             /*
                             $(document).ready(function() {
@@ -360,11 +361,64 @@
         characterLiveCount();
 
         function like() {
-            jQuery('.like-btn').click(function(e) {
-                $(".like").toggleClass("far fa-heart fas fa-heart");
+            jQuery('.btn-like').unbind('click').click(function () {
+                $(this).addClass('btn-dislike').removeClass('btn-like');
+                $(this).addClass('fas').removeClass('far');
+                $(this).css("color", "red");
+                let comment_id = $(this).data('id');
+                let ruta = `/like/${comment_id}`;
+                //console.log(ruta);
+                $.ajax({
+                    type: "POST",
+                    url: ruta,
+                    data: {
+                        '_token': $('input[name=_token]').val(),
+                        review_id: comment_id,
+                    },
+                    success: function(data) {
+                        //console.log(data.message);
+                        if(data.like){
+                            console.log("Has dado like de forma correcta");
+                        }else {    
+                            console.log("Error al dar like");
+                        }   
+                    }
+                });
+                dislike();
+
             })
         }
 
         like();
+
+        
+        function dislike() 
+        {
+            jQuery('.btn-dislike').unbind('click').click(function () {
+                $(this).addClass('btn-like').removeClass('btn-dislike');
+                $(this).addClass('far').removeClass('fas');
+                $(this).css("color", "#FFFFFF");
+                let comment_id = $(this).data('id');
+                let ruta = `/dislike/${comment_id}`;
+                $.ajax({
+                    type: "POST",
+                    url: ruta,
+                    data: {
+                        '_token': $('input[name=_token]').val(),
+                        review_id: comment_id,
+                    },
+                    success: function(data){
+                        if (data.like) {
+                        console.log("Has dado dislike de forma correcta");
+                        } else {
+                            console.log("Error al dar dislike");
+                        }
+                    }
+                });
+                like();
+            })
+        }
+        
+        dislike();
     </script>
 @endsection
