@@ -9,7 +9,6 @@ use App\Models\Review;
 
 class Like extends Model
 {
-    use HasFactory;
     protected $table = 'likes';
 
     public function user() {

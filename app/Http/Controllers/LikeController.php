@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LikeController extends Controller
 {
+
     public function like($review_id)
     {
         $user = Auth::user();
@@ -19,17 +20,17 @@ class LikeController extends Controller
 
             $like->save();
 
-            return response()->json(['like' => $like]);
+            return response()->json(['message' => 'Has dado Like', 'like' => $like, 'status' => true]);
             
         }else{
 
-            return response()->json(['message' => 'Ya has dado like']);
+            return response()->json(['message' => 'Ya has dado like!', 'status' => 'already_exist']);
         }
         
 
     }
     
-    /*
+    
     public function dislike($review_id)
     {
         $user = Auth::user();
@@ -40,18 +41,21 @@ class LikeController extends Controller
 
             $like->delete();
 
-            return response()->json([
-                'like' => $like,
-                'message' => 'Has dado dislike'
-            ]);
+            return response()->json(['like' => $like, 'message' => 'Has dado dislike', 'status' => true ]);
     
         }else{
             
-            return response()->json([
-                'message' => 'No puedes dar dislike sin antes dar like',
-            ]);
+            return response()->json(['message' => 'No puedes dar dislike porque el like no existe', 'status' => false,]);
 
         }
     }
-    */
+
+    
+    public function likeCounter ($review_id)
+    {
+        $likeCounter = Like::where('review_id', '=', $review_id)->count();
+        return response()->json(['likes' => $likeCounter, 'status' => true]);
+    }
+    
+    
 }

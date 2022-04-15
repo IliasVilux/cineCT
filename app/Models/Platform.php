@@ -7,6 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Platform extends Model
 {
-    use HasFactory;
     protected $table = 'platforms';
 }

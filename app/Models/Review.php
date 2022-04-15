@@ -12,7 +12,6 @@ use App\Models\Like;
 
 class Review extends Model
 {
-    use HasFactory;
     protected $table = 'reviews';
     protected $fillable = ['description'];
 
@@ -32,7 +31,7 @@ class Review extends Model
         return $this->belongsTo(Anime::class);
     }
 
-    public function likes() {
+    public function like() {
         return $this->hasMany(Like::class);
     }
 

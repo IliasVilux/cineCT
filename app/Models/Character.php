@@ -8,7 +8,6 @@ use App\Models\Anime;
 
 class Character extends Model
 {
-    use HasFactory;
     protected $table = 'characters';
 
     public function anime(){

@@ -285,11 +285,11 @@
         characterLiveCount();
 
         function like() {
-            jQuery('.like-btn').click(function(e) {
-                e.preventDefault();
+            jQuery('.btn-like').unbind('click').click(function () {
+                $(this).addClass('btn-dislike').removeClass('btn-like');
                 let comment_id = $(this).data('id');
                 let ruta = `/like/${comment_id}`;
-                console.log(ruta);
+                //console.log(ruta);
                 $.ajax({
                     type: "POST",
                     url: ruta,
@@ -298,14 +298,43 @@
                         review_id: comment_id,
                     },
                     success: function(data) {
-                        console.log("Bien")
+                        console.log(data.message)
+                        //$(this).removeClass('btn-like').addClass('btn-dislike');
                     }
                 });
-                //$('#commentId').toggleClass("far fa-heart fas fa-heart");
+                dislike();
 
             })
         }
 
         like();
+
+        
+        function dislike() 
+        {
+            jQuery('.btn-dislike').unbind('click').click(function () {
+                $(this).addClass('btn-like').removeClass('btn-dislike');
+                let comment_id = $(this).data('id');
+                let ruta = `/dislike/${comment_id}`;
+                $.ajax({
+                    type: "POST",
+                    url: ruta,
+                    data: {
+                        '_token': $('input[name=_token]').val(),
+                        review_id: comment_id,
+                    },
+                    success: function(data){
+                        console.log(data.message);
+                        //$(this).addClass('btn-like').removeClass('btn-dislike');
+                    }
+                });
+                like();
+            })
+        }
+        
+        dislike();
+        
+        
+        
     </script>
 @endsection

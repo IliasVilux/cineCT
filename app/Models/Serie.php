@@ -11,7 +11,6 @@ use App\Models\Character;
 
 class Serie extends Model
 {
-    use HasFactory;
     protected $table = 'series';
 
     public function genre() {

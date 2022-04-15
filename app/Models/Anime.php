@@ -12,7 +12,6 @@ use App\Models\Character;
 
 class Anime extends Model
 {
-    use HasFactory;
     protected $table = 'animes';
 
     public function review(){

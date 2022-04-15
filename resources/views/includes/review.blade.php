@@ -12,8 +12,21 @@
                 <p class="small mb-0 comment">{{ $comment->description }}</p>
             </div>
             <div class="like-container">
-                <span class="far fa-heart like-btn like" data-id="{{$comment->id}}"></span>
-                <span id="like-counter">{{$comment->likes}}</span>
+
+                <!--CHECKING IF USER'S LIKE ALREADY EXISTS-->
+                <?php $user_like = false; ?>
+                @foreach($comment->like as $like)
+                    @if($like->user->id == Auth::user()->id)
+                        <?php $user_like = true;?>
+                    @endif
+                @endforeach
+
+                @if($user_like)
+                    <span class="fas fa-heart like-review btn-dislike" id="btn-dislike" style="color:red;" data-id="{{$comment->id}}"></span>
+                @else
+                    <span class="far fa-heart like-review btn-like" id="btn-like" style="color:#ffffff;" data-id="{{$comment->id}}"></span>
+                @endif
+                    <span id="like-counter">{{count($comment->like)}} likes</span>
             </div>
             
             {{--

@@ -8,7 +8,6 @@ use App\Models\Film;
 
 class Actor extends Model
 {
-    use HasFactory;
     protected $table = 'actors';
     
     public function film() {

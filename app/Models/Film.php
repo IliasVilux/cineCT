@@ -11,7 +11,6 @@ use App\Models\Review;
 
 class Film extends Model
 {
-    use HasFactory;
     protected $table = 'films';
 
     public function genre() {

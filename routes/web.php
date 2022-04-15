@@ -37,9 +37,9 @@ Route::get('/login', [UserAuthController::class, 'index']);
 Route::get('/register', [UserAuthController::class, 'index'])->name('user.create');
 Route::post('/register', [UserAuthController::class, 'userRegister'])->name('register.user');
 Route::post('/login', [UserAuthController::class, 'userLogin'])->name('login.user');
-Route::get('/logout', [UserAuthController::class, 'userSignOut'])->name('signout.user'); 
 
 Route::group(['middleware' => 'authenticate.user'], function () {
+    Route::get('/logout', [UserAuthController::class, 'userSignOut'])->name('signout.user'); 
     Route::get('/home', [HomeController::class,  'index'])->name('home');
     //User-Auth Actions
     Route::get('/user/profile', [UserController::class, 'userProfile'])->name('user.profile');
@@ -121,6 +121,8 @@ Route::group(['middleware' => 'authenticate.user'], function () {
    
     //Delete LIKE
     Route::post('/dislike/{review_id}', [LikeController::class, 'dislike'])->name('user.dislike');
+
+    //Like COUNTER
    
 });
 
