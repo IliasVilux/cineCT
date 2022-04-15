@@ -113,6 +113,11 @@ p.description {
     margin-top: 15px;
 }
 
+.user-activity__information p span{
+    display: block;
+    margin-top: 5px;
+}
+
 .user-activity:hover{
     cursor: pointer;
     border: 1px solid rgba(145, 92, 182, .4);
