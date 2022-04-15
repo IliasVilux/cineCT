@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <script src="js/jquery.rating.pack.js"></script>
+        <!--<script src="js/jquery.rating.pack.js"></script>-->
         <script>
             /*
             $(document).ready(function() {
@@ -215,6 +215,13 @@
 
                     jQuery('#comment-container').append(commentHtml);
                     jQuery('#character-counter').css("display", "none");
+
+                    setTimeout(() => {
+                        location.reload();
+                        jQuery('body,html').animate({
+                            scrollTop: $(document).height()
+                        }, 5);
+                    }, 1000);
 
                 },
                 error: function(response) {
