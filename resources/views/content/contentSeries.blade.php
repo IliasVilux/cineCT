@@ -63,7 +63,7 @@
     </div>
 </section>
 <section class="d-flex flex-wrap justify-content-around align-items-center mt-3">
-    <!--EMPIEZAN: TODOS LOS BOTONES PARA BILTRAR-->
+    <!--EMPIEZAN: TODOS LOS BOTONES PARA FILTRAR-->
     @foreach($genres as $genre)
         <button class="button-category" style="border:none;">
             <a href="{{route('serie.series-filtered', ['genre' => $genre])}}">
@@ -71,7 +71,7 @@
             </a>
         </button>
     @endforeach
-    <!--ACABAN: TODOS LOS BOTONES PARA BILTRAR-->
+    <!--ACABAN: TODOS LOS BOTONES PARA FILTRAR-->
 </section>
 
 <section class="container py-5">

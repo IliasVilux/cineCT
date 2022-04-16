@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\FavoriteList;
 use App\Models\Like;
+use App\Models\Review;
 
 class UserController extends Controller
 {
@@ -127,11 +128,22 @@ class UserController extends Controller
     }
 
     public function activity(){
+
         $user = Auth::user();
+
+        /*
+        $user_reviews = Review::where('user_id', '=', $user->id)->get();
+        $likes = Like::where('user_id' ,'!=', $user->id)->orderBy('created_at', 'desc')->paginate(10);
+        */
+
         
-        $activity = Like::where('user_id', '!=' , $user->id)
-        ->orderBy('created_at', 'desc')
-        ->get();
-        return view('activity.activity', ['activity' => $activity]);
+        $likes = Like::select('likes.*', 'reviews.*')
+        ->join('reviews', 'likes.review_id', 'reviews.id')
+        ->where('reviews.user_id', '=', $user->id)
+        ->where('likes.user_id' ,'!=', $user->id)
+        ->orderBy('likes.created_at', 'desc')
+        ->paginate(10);
+
+        return view('activity.activity', ['likes' => $likes]);
     }
 }

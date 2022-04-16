@@ -71,7 +71,7 @@
         </div>
     </section>
     <section class="d-flex flex-wrap justify-content-around align-items-center mt-3">
-        <!--EMPIEZAN: TODOS LOS BOTONES PARA BILTRAR-->
+        <!--EMPIEZAN: TODOS LOS BOTONES PARA FILTRAR-->
         @foreach ($genres as $genre)
             <button class="button-category" style="border:none;">
                 <a href="{{ route('anime.animes-filtered', ['genre' => $genre->name]) }}">
@@ -79,7 +79,7 @@
                 </a>
             </button>
         @endforeach
-        <!--ACABAN: TODOS LOS BOTONES PARA BILTRAR-->
+        <!--ACABAN: TODOS LOS BOTONES PARA FILTRAR-->
     </section>
 
     <div class="load-more-genres mt-5 text-center">
