@@ -30,7 +30,7 @@
                         </div>
                         <div>
                             <div class="user-activity__information">
-                                <p class="mb-1"><strong>{{ $like->user->nick }}</strong> liked your review: <span
+                                <p class="mb-1"><strong>{{ $like->user->nick }}</strong> liked your comment: <span
                                         class="text-secondary">{{ $like->review->description }}</span>
                                     <span
                                         class="d-block ml-2 opacity-75">{{ \DateTimeFormat::timeFilter($like->created_at) }}</span>
