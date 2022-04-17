@@ -121,8 +121,6 @@ Route::group(['middleware' => 'authenticate.user'], function () {
    
     //Delete LIKE
     Route::post('/dislike/{review_id}', [LikeController::class, 'dislike'])->name('user.dislike');
-
-    //Like COUNTER
    
 });
 
@@ -134,4 +132,4 @@ Route::get('/aboutUs', function () {
 
 
 
-Route::get('/testing/models', [ModelRelationshipTest::class, 'tests'])->name('model.testing');
+//Route::get('/testing/models', [ModelRelationshipTest::class, 'tests'])->name('model.testing');

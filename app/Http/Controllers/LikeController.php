@@ -49,13 +49,5 @@ class LikeController extends Controller
 
         }
     }
-
-    
-    public function likeCounter ($review_id)
-    {
-        $likeCounter = Like::where('review_id', '=', $review_id)->count();
-        return response()->json(['likes' => $likeCounter, 'status' => true]);
-    }
-    
     
 }
