@@ -101,7 +101,7 @@ p.description {
     padding: 10px;
     width: 350px;
     margin: auto;
-    transition: background-color .7s, border 1s;
+    transition: transform .7s;
 }
 
 .user-activity a{
@@ -120,8 +120,7 @@ p.description {
 
 .user-activity:hover{
     cursor: pointer;
-    border: 1px solid rgba(145, 92, 182, .4);
-    background-color: rgba(145, 92, 182, .8);
+    transform: scale(1.1);
 }
 
 .notification-alert{
