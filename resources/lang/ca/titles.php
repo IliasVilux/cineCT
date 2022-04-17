@@ -23,6 +23,7 @@ return [
     'search' => 'Buscador',
     'lists' => 'Biblioteca',
     'about' => 'Sobre nosaltres',
+    'activity' => 'Activitat',
 
     // Other links
     'profile' => 'Perfil',    

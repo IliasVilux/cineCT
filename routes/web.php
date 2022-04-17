@@ -8,6 +8,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ModelRelationshipTest;
 use App\Models\Genre;
 use App\Models\Serie;
@@ -36,9 +37,9 @@ Route::get('/login', [UserAuthController::class, 'index']);
 Route::get('/register', [UserAuthController::class, 'index'])->name('user.create');
 Route::post('/register', [UserAuthController::class, 'userRegister'])->name('register.user');
 Route::post('/login', [UserAuthController::class, 'userLogin'])->name('login.user');
-Route::get('/logout', [UserAuthController::class, 'userSignOut'])->name('signout.user'); 
 
 Route::group(['middleware' => 'authenticate.user'], function () {
+    Route::get('/logout', [UserAuthController::class, 'userSignOut'])->name('signout.user'); 
     Route::get('/home', [HomeController::class,  'index'])->name('home');
     //User-Auth Actions
     Route::get('/user/profile', [UserController::class, 'userProfile'])->name('user.profile');
@@ -112,6 +113,16 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     Route::get('/content/{search?}', [UserController::class, 'searchContent'])->name('search-content'); 
 
     Route::get('/detail/detailAnimes/{id}/addNewList', [AnimeController::class,  'addNewList'])->name('anime.newList');
+
+    Route::get('/user/activity', [UserController::class, 'activity'])->name('user.activity');
+
+    //Save LIKE
+    Route::post('/like/{review_id}', [LikeController::class, 'like'])->name('user.like');
+   
+    //Delete LIKE
+    Route::post('/dislike/{review_id}', [LikeController::class, 'dislike'])->name('user.dislike');
+
+    //Like COUNTER
    
 });
 

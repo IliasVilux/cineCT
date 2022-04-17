@@ -6,21 +6,25 @@ use App\Models\Actor;
 use App\Models\Anime;
 use App\Models\Character;
 use App\Models\Film;
+use App\Models\Like;
 use App\Models\Review;
 use App\Models\Serie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ModelRelationshipTest extends Controller
 {
     public function tests()
     {
 
+        $user = Auth::user();
         $films = Film::limit(5)->get();
         $series = Serie::limit(5)->get();
         $animes = Anime::limit(5)->get();
         $actors = Actor::limit(20)->get();
         $reviews = Review::get();
         $characters = Character::get();
+        $likes = Like::all();
 
         /*
         // GENRES: ELOQUENT-RELATIONSHIP TEST
@@ -67,10 +71,20 @@ class ModelRelationshipTest extends Controller
             echo 'El actor <b>'.$actor->name .'</b> ha pertenece a la pelicula <b>'.$actor->film->name.'</b><br>';
         }
     */
+    /*
     
         // CHARACTERS: ELOQUENT-RELATIONSHIP TEST
         foreach ($characters as $character) {
             echo 'El personaje <b>' . $character->name . '</b> ha pertenece al anime <b>' . $character->anime->name . '</b><br>';
+        }
+        */
+
+        foreach($reviews as $review)
+        {
+            foreach($review->like as $like){
+                echo $like->user_id;
+            }
+            
         }
     }
 }

@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Episode extends Model
 {
-    use HasFactory;
-
     protected $table = 'episodes';
 
     public function serie() {

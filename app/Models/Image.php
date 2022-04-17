@@ -8,7 +8,6 @@ use App\Models\User;
 
 class Image extends Model
 {
-    use HasFactory;
     protected $table = 'profile_images';
 
     public function user() {
