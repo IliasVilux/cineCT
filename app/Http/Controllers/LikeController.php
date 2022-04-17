@@ -45,7 +45,7 @@ class LikeController extends Controller
     
         }else{
             
-            return response()->json(['message' => 'No puedes dar dislike porque el like no existe', 'status' => false,]);
+            return response()->json(['message' => 'No puedes dar dislike porque el like no existe', 'status' => 'not_exist',]);
 
         }
     }

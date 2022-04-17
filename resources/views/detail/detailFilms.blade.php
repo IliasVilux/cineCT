@@ -142,9 +142,7 @@
                                     @endforeach
                                 </div>
                             </div>
-                            <div class="alert alert-success d-none" id="msg_div" role="alert">
-
-                            </div>
+                            <div class="alert alert-success d-none" id="msg_div" role="alert"></div>
                         </div>
                     </div>
 

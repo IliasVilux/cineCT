@@ -1,5 +1,6 @@
 html{
     scroll-behavior: smooth;
+    scroll-padding-top: 75px;
 }
 
 /* EXTRA INFO AT THE RIGHT */
@@ -157,7 +158,12 @@ p.description {
     width: 80px;
     height: 70px;
     object-fit: cover;
+}
 
+.review-content-img{
+    display: block;
+    margin: auto;
+    object-fit: cover;
 }
 
 @keyframes boxShadow {
@@ -174,7 +180,10 @@ p.description {
         margin: 25px auto;
     }
     .user-activity__information p{
-        width: 220px;
+        width: 190px;
+    }
+    .review-content-img{
+        width: 50px;
     }
     
 }
@@ -188,7 +197,10 @@ p.description {
         margin: 25px auto;
     }
     .user-activity__information p{
-        width: 400px;
+        width: 360px;
+    }
+    .review-content-img{
+        width: 75px;
     }
 }
 
@@ -202,5 +214,8 @@ p.description {
     }
     .user-activity__information p{
         width: 500px;
+    }
+    .review-content-img{
+        width: 75px;
     }
 }

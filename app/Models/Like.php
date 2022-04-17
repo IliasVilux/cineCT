@@ -12,11 +12,11 @@ class Like extends Model
     protected $table = 'likes';
 
     public function user() {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
 
     public function review() {
-        return $this->belongsTo(Review::class, 'review_id');
+        return $this->belongsTo(Review::class);
     }
 
 }

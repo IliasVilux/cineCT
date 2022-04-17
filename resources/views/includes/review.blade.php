@@ -1,4 +1,4 @@
-    <div class="d-flex flex-start mb-4">
+    <div class="d-flex flex-start mb-4" id="content_id-{{$comment->id}}" style="padding-top:20px;">
         <div>
             <img class="rounded-circle shadow-1-strong me-3" src="{{ $profile[0]->path }}" alt="13" width="65"
                 height="65" />

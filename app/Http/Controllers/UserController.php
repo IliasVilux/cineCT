@@ -131,18 +131,32 @@ class UserController extends Controller
 
         $user = Auth::user();
 
-        /*
-        $user_reviews = Review::where('user_id', '=', $user->id)->get();
-        $likes = Like::where('user_id' ,'!=', $user->id)->orderBy('created_at', 'desc')->paginate(10);
-        */
 
-        
-        $likes = Like::select('likes.*', 'reviews.*')
-        ->join('reviews', 'likes.review_id', 'reviews.id')
-        ->where('reviews.user_id', '=', $user->id)
+        $likes = Like::select('likes.*')
+        ->join('reviews', 'reviews.id', '=', 'likes.review_id')
         ->where('likes.user_id' ,'!=', $user->id)
-        ->orderBy('likes.created_at', 'desc')
-        ->paginate(10);
+        ->where('reviews.user_id', '=', $user->id)
+        //->get();
+        ->paginate();
+
+        /*
+        echo '<h1>Usuario identificado: <span style="color:red;">'.Auth::user()->name.'</span></h1>';
+
+        if(count($likes) !== 0)
+        {
+            foreach($likes as $like)
+            {
+                echo '<b>'. $like->user->nick. '</b> ha dado like al comentario de <b>'. $like->review->user->nick.'</b></p>' .$like->review->description .'</p><br>';
+            }
+
+        }else{
+            echo 'No hay ningun like';
+        }
+    
+
+        die();
+        */
+    
 
         return view('activity.activity', ['likes' => $likes]);
     }
