@@ -136,27 +136,8 @@ class UserController extends Controller
         ->join('reviews', 'reviews.id', '=', 'likes.review_id')
         ->where('likes.user_id' ,'!=', $user->id)
         ->where('reviews.user_id', '=', $user->id)
-        //->get();
-        ->paginate();
-
-        /*
-        echo '<h1>Usuario identificado: <span style="color:red;">'.Auth::user()->name.'</span></h1>';
-
-        if(count($likes) !== 0)
-        {
-            foreach($likes as $like)
-            {
-                echo '<b>'. $like->user->nick. '</b> ha dado like al comentario de <b>'. $like->review->user->nick.'</b></p>' .$like->review->description .'</p><br>';
-            }
-
-        }else{
-            echo 'No hay ningun like';
-        }
-    
-
-        die();
-        */
-    
+        ->orderBy('likes.created_at', 'desc')
+        ->paginate(10);  
 
         return view('activity.activity', ['likes' => $likes]);
     }
