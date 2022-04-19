@@ -45,7 +45,7 @@
         @else
         <img src="{{$serie->poster_path}}" class="img-thumbnail col-12 col-md-5 mb-4 mb-md-0" alt="Img {{$serie->name}}">
         @endif
-        <article class="col-12 col-md-6 more-info bg-dark p-3">
+        <article class="col-12 col-md-6 more-info bg-dark p-4">
             <div>
                 <div class="d-flex nowrap">
                     <h5 class="pe-2"><b>Género:</b></h5>
