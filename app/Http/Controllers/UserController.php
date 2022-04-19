@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\FavoriteList;
 use App\Models\Like;
 use App\Models\Review;
+use Illuminate\Support\Facades\App;
 
 class UserController extends Controller
 {
@@ -116,7 +117,11 @@ class UserController extends Controller
         $user->nick = $request['username'];
         $user->lang = $request['language'];
 
+        
         $user->save();
+        
+        $this->changeLanguages($request['language']);
+
         return view('profile.profile')->with('message','Profile Updated');
     }
     public function deleteAccount(){
@@ -141,4 +146,12 @@ class UserController extends Controller
 
         return view('activity.activity', ['likes' => $likes]);
     }
+    
+    public function changeLanguages($lang)
+    {
+        App::setLocale($lang);
+        session()->put('locale', $lang);
+    }
+
+
 }
