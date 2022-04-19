@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ModelRelationshipTest;
+use App\Http\Controllers\TopController;
 use App\Models\Genre;
 use App\Models\Serie;
 use App\Models\Films;
@@ -77,9 +78,8 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     //Return Filtered Animes
     Route::get('/content/animes/{genre}', [AnimeController::class, 'filterContent'])->name('anime.animes-filtered');
 
-    Route::get('/top', function () {
-        return view('top');
-    });
+    //TopContent
+    Route::get('/top', [TopController::class, 'fetchAllTopContent'])->name('top.top-content');
     
     Route::get('/search', function () {
         return view('search');
