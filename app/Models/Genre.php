@@ -10,7 +10,6 @@ use App\Models\Serie;
 
 class Genre extends Model
 {
-    use HasFactory;
     protected $table = 'genres';
 
     public function film() {

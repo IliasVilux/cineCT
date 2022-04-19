@@ -8,8 +8,10 @@ use App\Models\Genre;
 use App\Models\Image;
 use App\Models\Review;
 use App\Models\FavoriteList;
+use App\Models\FavouriteLists;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use App\Models\User;
 
 class SerieController extends Controller
 {
@@ -128,5 +130,70 @@ class SerieController extends Controller
         ->reddit();
         
         return $shareComponent;
+    }
+
+    public function fetchAllSeries()
+    {
+        $series = Serie::paginate(100);
+        $allSeries = Serie::all();
+
+        $genres = [];
+        $genres['action_adventure'] = 'action';
+        $genres['animation_family'] = 'animation';
+        $genres['comedy'] = 'comedy';
+        $genres['terror_thriller'] = 'terror';
+        $genres['romance'] = 'romance';
+        $genres['scifi_fantasy'] = 'fiction';
+        $genres['drama_mistery'] = 'drama';
+        $genres['war_crime'] = 'crime';
+        
+
+        return view('content.contentSeries', ['series' => $series, 'allSeries' => $allSeries, 'genres' => $genres]);
+    }
+
+    public function filterContent($genre = null)
+    {
+
+        if(isset($genre) && !is_null($genre) && !empty($genre)){
+
+            $genreInfo = Genre::where('name','=', $genre)->first();
+            
+            $searchCondition = array();
+            
+            if ($genreInfo){
+                if($genre == 'Action' || $genre == 'action'){
+                    array_push($searchCondition, "Action","Adventure"); 
+                }elseif ($genre == 'Animation' || $genre == 'animation'){
+                    array_push($searchCondition, "Animation","Family"); 
+                }elseif($genre == 'Comedy' || $genre == 'comedy'){
+                    array_push($searchCondition, "Comedy"); 
+                }elseif ($genre == 'Terror' || $genre == 'terror'){
+                    array_push($searchCondition, "Horror", "Thriller"); 
+                }elseif($genre == 'Romance' || $genre == 'omance'){
+                    array_push($searchCondition, "Romance"); 
+                }elseif ($genre == 'Fiction' || $genre == 'fiction'){
+                    array_push($searchCondition, "Sci-fi", "Fantasy");
+                }elseif ($genre == 'Drama' || $genre == 'drama'){
+                    array_push($searchCondition, "Drama", "Mystery");
+                }elseif ($genre == 'War' || $genre == 'war'){
+                    array_push($searchCondition, "War", "Crime");
+                }
+            }
+
+
+            $series = Serie::select('series.*')
+            ->join('genres', 'series.genre_id', '=', 'genres.id')
+            ->whereIn('genres.name', $searchCondition)
+            ->orderBy('series.name', 'asc')
+            ->paginate(25);
+
+            
+            //dd(count($films) > 0);
+
+            return view('content.filterSerie',['series' => $series, 'genre' => $genre]);
+            
+            
+        }
+        
     }
 }

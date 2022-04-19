@@ -23,6 +23,7 @@ return [
     'search' => 'Buscador',
     'lists' => 'Biblioteca',
     'about' => 'Sobre nosaltres',
+    'activity' => 'Activitat',
 
     // Other links
     'profile' => 'Perfil',    
@@ -45,5 +46,6 @@ return [
     'scifi' => 'Ciència ficció',
     'mecha' => 'Mecha',
     'josei' => 'Josei',
+    'unknown' => 'Desconegut'
 
 ];

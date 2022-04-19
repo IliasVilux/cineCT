@@ -23,6 +23,7 @@ return [
     'search' => 'Search',
     'lists' => 'Library',
     'about' => 'About us',
+    'activity' => 'Activity',
 
     // Other links
     'profile' => 'Profile',    
@@ -45,5 +46,5 @@ return [
     'scifi' => 'Scifi',
     'mecha' => 'Mecha',
     'josei' => 'Josei',
-
+    'unknown' => 'Unknown'
 ];
