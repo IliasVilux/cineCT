@@ -2,8 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthMiddleware
 {
@@ -18,7 +20,6 @@ class AuthMiddleware
     {
 
         if(auth()->check()){
-            
             return $next($request);
             
         }

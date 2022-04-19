@@ -2,9 +2,11 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 
 class Localization
 {
@@ -19,6 +21,10 @@ class Localization
     {
         if(session()->has('locale')) {
             App::setLocale(session()->get('locale'));
+        }else if(auth()->check()){
+            $userId = Auth::id();
+            $userLang = User::find($userId);
+            App::setLocale($userLang->lang);
         }
         return $next($request);
     }
