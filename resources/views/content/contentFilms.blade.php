@@ -64,24 +64,22 @@
     </div>
 </section>
 
-<section class="d-flex flex-wrap justify-content-around align-items-center mt-3">
+<section class="d-flex flex-wrap align-items-center mt-3">
     <!--EMPIEZAN: TODOS LOS BOTONES PARA FILTRAR-->
     @foreach($genres as $genre)
-        <button class="button-category" style="border:none;">
-            <a href="{{route('film.films-filtered', ['genre' => $genre])}}">
-                <p class="m-0">{{trans('titles.'.$genre.'')}}</p>
-            </a>
-        </button>
+    <button class="button-category col-lg col-3">
+        <a href="{{route('film.films-filtered', ['genre' => $genre])}}">
+            <p class="m-0">{{trans('titles.'.$genre.'')}}</p>
+        </a>
+    </button>
     @endforeach
     <!--ACABAN: TODOS LOS BOTONES PARA FILTRAR-->
 </section>
 
 <section class="container py-5">
-    <div class="d-flex flex-row justify-content-between">
-        <h5 class="col-4 text-uppercase">{{trans('titles.films')}}</h5>
-        <div class="d-flex justify-content-center">
-            {{$films->links()}}
-        </div>
+    <h5 class="col-3 text-uppercase">{{ trans('titles.films') }}</h5>
+    <div class="d-flex justify-content-center">
+        {{ $films->links() }}
     </div>
 
     <?php
