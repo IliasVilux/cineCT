@@ -24,6 +24,7 @@ return [
     'lists' => 'Biblioteca',
     'about' => 'Sobre nosaltres',
     'activity' => 'Activitat',
+    'logout' => 'Tancar sessió',
 
     // Other links
     'profile' => 'Perfil',    
