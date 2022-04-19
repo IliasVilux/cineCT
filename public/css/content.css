@@ -11,8 +11,7 @@ main {
 
 /* BUTTONS FILTER */
 .button-category {
-    width: 24%;
-    height: 80px;
+    height: 68px;
     margin-top: 10px;
     color: #FFFFFF;
     background: linear-gradient(to bottom, black 25%, #9966ff 150%);;
@@ -72,7 +71,14 @@ main {
     } 
     /*El area que va a ocupar la parque de 'click' */
     .button-category a p{
-        padding: 6px;
+        font-size: 11px;
+    }
+    ul.pagination {
+        font-size: 11px;
+    }
+    .page-link {
+        padding: 5px;
+        text-align: center;
     }
 }
 
@@ -87,7 +93,7 @@ main {
 }
 
 @media only screen and (min-width: 1200px) {
-    .button-category a p{
+    /*.button-category a p{
         padding: 20px;
-    }
+    }*/
 }

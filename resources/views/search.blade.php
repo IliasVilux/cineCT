@@ -22,7 +22,7 @@
 
     <section class="container py-4">
         @if (!empty($content['films']) || !empty($content['series']) || !empty($content['animes']))
-            <p style="text-align:start; margin-bottom:20px; padding-left:5px; border-left:3px solid #5A3C97">Resultados
+            <p class="" style="text-align:start; margin-bottom:20px; padding-left:5px; border-left:3px solid #5A3C97">Resultados
                 encontrados con: <strong>{{ $search }}</strong></p>
             <div class="content d-flex flex-wrap align-items-streach justify-content-center searchcontent">
                 @for ($data = 0; $data < count($content); $data++)

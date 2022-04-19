@@ -70,10 +70,10 @@
             </button>
         </div>
     </section>
-    <section class="d-flex flex-wrap justify-content-around align-items-center mt-3">
+    <section class="d-flex flex-wrap align-items-center mt-3">
         <!--EMPIEZAN: TODOS LOS BOTONES PARA FILTRAR-->
         @foreach ($genres as $genre)
-            <button class="button-category" style="border:none;">
+            <button class="button-category col-lg col-3">
                 <a href="{{ route('anime.animes-filtered', ['genre' => $genre->name]) }}">
                     <p class="m-0">{{ trans('titles.' . $genre->name . '') }}</p>
                 </a>
@@ -82,20 +82,32 @@
         <!--ACABAN: TODOS LOS BOTONES PARA FILTRAR-->
     </section>
 
+    <section class="d-none d-sm-flex flex-wrap align-items-center mt-3">
+            @foreach ($otherGenres as $genre)
+            <button class="button-category col-lg col-3">
+                    <a href="{{ route('anime.animes-filtered', ['genre' => $genre]) }}">
+                        <p class="m-0 p-2">{{ trans('titles.' . $genre . '') }}</p>
+                    </a>
+                </button>
+            @endforeach
+        </section>
+
+
     <div class="load-more-genres mt-5 text-center">
-        <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#more-genres"
+        <button class="btn btn-outline-secondary d-inline d-sm-none" type="button" data-bs-toggle="collapse" data-bs-target="#more-genres"
             aria-expanded="false" aria-controls="more-genres">
             <i class="fas fa-plus"></i>
         </button>
     </div>
 
+
     <div class="collapse" id="more-genres">
         <!--EMPIEZAN: TODOS LOS BOTONES DE OTROS GENEROS PARA FILTRAR-->
-        <section class="d-flex flex-wrap justify-content-around align-items-center mt-3">
+        <section class="d-flex flex-wrap align-items-center mt-3">
             @foreach ($otherGenres as $genre)
-                <button class="button-category" style="border:none;">
+            <button class="button-category col-lg col-3">
                     <a href="{{ route('anime.animes-filtered', ['genre' => $genre]) }}">
-                        <p class="m-0">{{ trans('titles.' . $genre . '') }}</p>
+                        <p class="m-0 p-2">{{ trans('titles.' . $genre . '') }}</p>
                     </a>
                 </button>
             @endforeach
@@ -105,11 +117,9 @@
 
 
     <section class="container py-5">
-        <div class="d-flex flex-row justify-content-between">
-            <h5 class="col-3 text-uppercase">{{ trans('titles.animes') }}</h5>
-            <div class="d-flex justify-content-center">
-                {{ $animes->links() }}
-            </div>
+        <h5 class="col-3 text-uppercase">{{ trans('titles.animes') }}</h5>
+        <div class="d-flex justify-content-center">
+            {{ $animes->links() }}
         </div>
 
         <?php
