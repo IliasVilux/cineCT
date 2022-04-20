@@ -1,30 +1,30 @@
 @extends('headerFooter')
 @section('content')
 
-<head>
-    <link rel="stylesheet" href="{{asset('css/general.css')}}">
-    <link rel="stylesheet" href="{{asset('css/content.css')}}">
-    <link rel="stylesheet" href="{{asset('css/top.css')}}">
-</head>
-<section class="container py-4">
-    <h4>TOP SERIES / PELÍCULAS / ANIMES</h4>
-    <h5>Series</h5>
-    @if(!empty($serie))
-    <div class="content d-flex flex-wrap align-items-streach justify-content-center">
-        @foreach($serie as $serie)
-        <a href="/detail/detailSeries/{{$serie->id}}" class="image-link col-2 p-2">
-            @if($serie->poster_path === NULL)
-            <img src="/img/NoImg.jpg" alt="">
-            @else
-            <img src="{{$serie->poster_path}}" alt="">
-            @endif
+    <head>
+        <link rel="stylesheet" href="{{ asset('css/general.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/content.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/top.css') }}">
+    </head>
+    <section class="top">
+        <div class="top-content--logo">
+            <div>
+                <img src="/img/CinectLogo.svg">
+                <span>TOP 10</span>
+            </div>
+        </div>
+        <section class="cinet_top-10--content">
+        <?php $contador = 1?>
+        @foreach ($films->take(10) as $film)
+        <a href="{{route('film.films', ['id' => $film->id])}}">
+            <div class="cinet_top-10--detail">
+                <span>{{$contador++}}</span>    
+                <div><img src="{{$film->poster_path}}" alt=""></div>
+            </div>
         </a>
         @endforeach
-    </div>
-    @else
-    <h2 style="color: red;">No hi ha cap registre!!!</h2>
-    @endif
+        </section>
 
-</section>
-<!-- END COMMENT SECTION -->
+    </section>
+    <!-- END COMMENT SECTION -->
 @endsection

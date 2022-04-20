@@ -13,44 +13,44 @@ class TopController extends Controller
 
     public function fetchAllTopContent()
     {
-        $topContent = [];
-        $topContent['films'] = $this->topFilms();
-        $topContent['series'] = $this->topSeries();
-        $topContent['animes'] = $this->topAnimes();
-        $films = $this->fetchApiTopContent();
+        $films = $this->topFilms();
+        $series = $this->topSeries();
+        $animes = $this->topAnimes();
 
-        foreach($films as $film){
-            echo $film->{'title'} .' - '. $film->{'popularity'}.'<br>';
+        foreach($films as $film)
+        {
+            $film->puntuation = str_replace ( ".", "", $film->puntuation);;
         }
 
         /*
-        foreach($topContent['films'] as $film)
+        foreach($films as $film)
         {
-            echo $film->original_id .'<br>';
+            echo $film->name .'<br>';
         }
 
+        
         echo '<br>----------------</br>';
 
-        foreach($topContent['series'] as $serie)
+        foreach($series as $serie)
         {
             echo $serie->original_id .'<br>';
         }
 
         echo '<br>----------------</br>';
 
-        foreach($topContent['animes'] as $anime)
+        foreach($animes as $anime)
         {
             echo $anime->original_id .'<br>';
         }
         
         echo '<br>----------------</br>';
         */
-        return view('top');
+        return view('top', ['films' => $films]);
     }
 
     public function topFilms() 
     {
-        $films = Film::all();
+        $films = Film::where('puntuation' , '>=', '7.5')->whereNotNull('poster_path')->orderBy('puntuation', 'desc')->get();
 
         return $films;
     }
@@ -69,32 +69,31 @@ class TopController extends Controller
         return $animes;
     }
 
-    public function filterTopContent(array $data)
-    {
-        $finalTopContent = [];
 
-    }
-
+    /*
     public function fetchApiTopContent()
     {
         $contador = 1;
-        $apiLinks = array();
-        $allFilms = array();
+        $allFilms = [];
+        
+        
+        $this->topFilms();
 
         do{
             $filmApi = Http::get('https://api.themoviedb.org/3/movie/' . $contador . '?api_key=9d981b068284aca44fb7530bdd218c30&language=en-US');
-            array_push($apiLinks, $filmApi);
-            $contador++;
-        }while($contador < 500);
-
-        foreach($apiLinks as $link){
-            $filmJson = json_decode($link);
-            if (isset($filmJson->{'id'}) && strlen($filmJson->{'popularity'}) >= 6){
-                array_push($allFilms, $filmJson);
+            $filmJson = json_decode($filmApi);
+            if (isset($filmJson->{'id'})){
+                foreach($this->topFilms() as $film){
+                    if($film->original_id == $filmJson->{'id'}){
+                        array_push($allFilms, $filmJson);
+                    }
+                }
             }
-        }
+            $contador++;
+        }while($contador < 10);      
 
         return $allFilms;
 
     }
+    */
 }
