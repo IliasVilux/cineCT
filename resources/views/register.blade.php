@@ -38,9 +38,9 @@
                     <div class="tab-pane fade show active" id="logIn">
                         <div class="card text-dark">
                             <div class="d-flex justify-content-center">
-                                <img class="my-5" src="/img/CinectLogoDark.svg" alt="LOGO" width="200px">
+                                <img class="mt-5 mb-4" src="/img/CinectLogoDark.svg" alt="LOGO" width="200px">
                             </div>
-                            <div class="card-body p-4 pt-0">
+                            <div class="card-body p- pt-0">
                                 <form class="row g-3 needs-validation d-flex flex-column align-items-center m-4 mt-0"
                                     method="POST" action="{{ route('login.user') }}">
                                     @if (Session::has('authErrorMsg'))
@@ -119,13 +119,13 @@
                                         </div>
 
                                     </div>
-                                    <div class="form-check d-flex justify-content-start my-4">
+                                    <div class="form-check d-flex justify-content-start my-lg-4">
                                         <input class="form-check-input" type="checkbox" id="rememberData" />
                                         <label class="form-check-label mx-2" value="1"
                                             for="rememberData">{{ trans('register.remember') }}</label>
                                     </div>
 
-                                    <button class="btn button-purple btn-lg btn-block mt-0" id="btn-login"
+                                    <button class="btn button-purple btn-md btn-block mt-0" id="btn-login"
                                         type="submit">{{ trans('register.login') }}</button>
 
                                     <hr class="my-4">
@@ -141,7 +141,7 @@
                             <div class="d-flex justify-content-center">
                                 <img class="my-5" src="/img/CinectLogoDark.svg" alt="LOGO" width="200px">
                             </div>
-                            <div class="card-body p-4 pt-0">
+                            <div class="card-body p- pt-0">
                                 <form method="POST" action="{{ route('register.user') }}"
                                     class="row g-3 needs-validation d-flex flex-column align-items-center m-4 mt-0">
                                     @csrf

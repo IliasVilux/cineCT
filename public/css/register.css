@@ -80,6 +80,13 @@ div.card {
   .session-card{
       width: 90%;
   }
+  body,
+  .form-control {
+    font-size: 0.7rem;
+  }
+  .input-group{
+    height: 46px;
+  }
 }
 
 @media (min-width: 601px) {
