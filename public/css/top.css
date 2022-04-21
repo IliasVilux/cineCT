@@ -19,7 +19,7 @@ h1{
 }
 
 .cinet_top--detail div img{
-    transition: transform .8s;
+    transition: transform .8s, opacity .5s;
 }
 
 .cinet_top--content a{
@@ -78,14 +78,14 @@ h1{
         object-fit: cover;
     }
 
-    .cinet_top--detail div img:hover{
-        transform: scale(1.1);
-    }
-
     .cinet_top--content a:hover p{
         bottom: 0.5rem;
         opacity: 1;
-        
+    }
+
+    .cinet_top--content a:hover .cinet_top--detail div img{
+        opacity: .6;
+        transform: scale(1.1);
     }
 
     .cinet_top--content p{

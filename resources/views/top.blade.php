@@ -2,8 +2,6 @@
 @section('content')
 
     <head>
-        <link rel="stylesheet" href="{{ asset('css/general.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/content.css') }}">
         <link rel="stylesheet" href="{{ asset('css/top.css') }}">
     </head>
     <section class="container top_content my-5">
