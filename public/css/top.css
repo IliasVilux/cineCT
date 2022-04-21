@@ -7,30 +7,12 @@ h1{
     margin-top: 20px;
 }
 
-
-
-.top-content--logo{
-    padding: 30px;
-    align-content: center;
+.cinet_top-10--content{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
 }
 
-.top-content--logo div{
-    width: 175px;
-    margin: 1rem auto;
-    align-content: center;
-}
-
-.top-content--logo img{
-    width: 100px;
-}
-
-.top-content--logo span{
-    margin-left: 10px;
-}
-
-.cinet_top-10--content a{
-    text-decoration: none;
-}
 
 @media (max-width: 600px) {
     
@@ -38,17 +20,13 @@ h1{
 }
 
 @media only screen and (min-device-width: 601px) and (max-device-width: 1023px) {
-    .top-content--img{
-        width: 300px;
-        height: 500px;
-        object-fit: cover;
+    .cinet_top-10--content .cinet_top-10--detail div img{
+        width: 200px;
     }
 }
 
 @media (min-width: 1024px) {
-    .top-content--img{
-        width: 300px;
-        height: 500px;
-        object-fit: cover;
+    .cinet_top-10--content .cinet_top-10--detail div img{
+        width: 200px;
     }
 }
