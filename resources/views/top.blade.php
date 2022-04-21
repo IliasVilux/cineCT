@@ -6,8 +6,12 @@
         <link rel="stylesheet" href="{{ asset('css/content.css') }}">
         <link rel="stylesheet" href="{{ asset('css/top.css') }}">
     </head>
-    <section class="container top-container my-5">
+    <section class="container top_content my-5">
         
+        <section class="top_content--banner">
+
+        </section>
+
         <h3 class="mb-3">Top {{ trans('titles.films') }}</h3>
         <section class="cinet_top--content">
         @foreach ($films->take(10) as $film)
