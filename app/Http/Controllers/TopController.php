@@ -22,30 +22,17 @@ class TopController extends Controller
             $film->puntuation = str_replace ( ".", "", $film->puntuation);;
         }
 
-        /*
-        foreach($films as $film)
-        {
-            echo $film->name .'<br>';
-        }
-
-        
-        echo '<br>----------------</br>';
-
         foreach($series as $serie)
         {
-            echo $serie->original_id .'<br>';
+            $serie->puntuation = str_replace ( ".", "", $serie->puntuation);;
         }
-
-        echo '<br>----------------</br>';
 
         foreach($animes as $anime)
         {
-            echo $anime->original_id .'<br>';
+            $anime->puntuation = str_replace ( ".", "", $anime->puntuation);;
         }
-        
-        echo '<br>----------------</br>';
-        */
-        return view('top', ['films' => $films]);
+
+        return view('top', ['films' => $films, 'series' => $series, 'animes' => $animes]);
     }
 
     public function topFilms() 
@@ -57,14 +44,14 @@ class TopController extends Controller
 
     public function topSeries()
     {
-        $series = Serie::all();
+        $series = Serie::where('puntuation' , '>=', '7.5')->whereNotNull('poster_path')->orderBy('puntuation', 'desc')->get();
 
         return $series;
     }
 
     public function topAnimes()
     {
-        $animes = Anime::all();
+        $animes = Anime::where('puntuation' , '>=', '7.5')->whereNotNull('poster_path')->orderBy('puntuation', 'desc')->get();
 
         return $animes;
     }
