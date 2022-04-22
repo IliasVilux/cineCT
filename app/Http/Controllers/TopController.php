@@ -19,6 +19,7 @@ class TopController extends Controller
         $animes = $this->topAnimes();
     
 
+        /*
         foreach($films as $film)
         {
             $film->puntuation = str_replace ( ".", "", $film->puntuation);;
@@ -33,6 +34,7 @@ class TopController extends Controller
         {
             $anime->puntuation = str_replace ( ".", "", $anime->puntuation);;
         }
+        */
 
         return view('top', ['films' => $films, 'series' => $series, 'animes' => $animes]);
     }

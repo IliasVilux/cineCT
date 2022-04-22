@@ -61,10 +61,10 @@ h1{
 }
 
 .cinect-carousel--container--content .accordion{
-    margin-bottom: 5rem;
     display: flex;
     justify-content: space-around;
     max-width: 2000px;
+    margin-bottom: 5rem;
     padding: 0;
 }
 
@@ -93,13 +93,14 @@ h1{
     background-color: #16181D;
 }
 
-.accordion-button{
+.accordion-header .accordion-button{
     padding: 0;
     text-align: center;
     background-color: #16181D;
     border: 0;
     border-radius: 0;
     overflow-anchor: none;
+    box-shadow: none;
     transition: color 1s ease-in-out, background-color 1s ease-in-out, box-shadow 1s ease-in-out !important;
 }
 
