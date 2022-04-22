@@ -33,7 +33,7 @@
                         </a>
                 </div>
                 <div class="col-3 d-flex flex-direction-row flex-nowrap justify-content-end align-items-center">
-                <a href="{{ url('/search') }}" class="footer-links text-light text-uppercase fs-3"><i class="fas fa-search text-light fs-4 p-0"></i></a>
+                <a href="{{ url('/search/search') }}" class="footer-links text-light text-uppercase fs-3"><i class="fas fa-search text-light fs-4 p-0"></i></a>
                     <div class="dropdown">
                         <button
                             class="btn text-light dropdown-toggle d-flex flex-direction-row flex-nowrap justify-content-end align-items-center"

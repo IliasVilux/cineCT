@@ -1,4 +1,4 @@
-@extends('noHeaderFooter')
+@extends('/general/noHeaderFooter')
 @section('content')
 
     <head>
