@@ -13,9 +13,11 @@ class TopController extends Controller
 
     public function fetchAllTopContent()
     {
+        
         $films = $this->topFilms();
         $series = $this->topSeries();
         $animes = $this->topAnimes();
+    
 
         foreach($films as $film)
         {
@@ -35,6 +37,7 @@ class TopController extends Controller
         return view('top', ['films' => $films, 'series' => $series, 'animes' => $animes]);
     }
 
+    
     public function topFilms() 
     {
         $films = Film::where('puntuation' , '>=', '7.5')->whereNotNull('poster_path')->orderBy('puntuation', 'desc')->get();
@@ -55,7 +58,7 @@ class TopController extends Controller
 
         return $animes;
     }
-
+    
 
     /*
     public function fetchApiTopContent()

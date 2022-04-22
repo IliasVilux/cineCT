@@ -52,6 +52,57 @@ h1{
     opacity: 0;
 }
 
+
+/*CINECT CUSTOM CAROUSEL STYLES :D*/
+
+.cinect-carousel--container--content{
+    background-color: #16181D;
+}
+
+.cinect-carousel--container--content .accordion{
+    margin-bottom: 5rem;
+    display: flex;
+    justify-content: space-around;
+    max-width: 2000px;
+    padding: 0;
+}
+
+.cinect-carousel--container--content .accordion .accordion-body{
+    color: #5A3C97;
+}
+
+.cinect-carousel--container--content .accordion .accordion-item{
+    display: flex;
+    border: none;
+}
+
+.accordion-button{
+    padding: 0;
+    text-align: center;
+    background-color: #16181D;
+    border: 0;
+    border-radius: 0;
+    overflow-anchor: none;
+    transition: color 1s ease-in-out, background-color 1s ease-in-out, box-shadow 1s ease-in-out !important;
+}
+
+.accordion-button .accordion-button--img img{
+    width: 40px;
+    height: 300px;
+    object-fit: cover;
+    opacity: .7;
+    transition: width .5s, opacity .2s;
+}
+
+.accordion-button:hover .accordion-button--img img{
+    width: 200px;
+    opacity: .9;
+}
+
+.accordion-button::after {
+    display: none;
+}
+
 @media (max-width: 600px) {
     
     
