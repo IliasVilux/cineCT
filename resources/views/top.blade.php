@@ -14,11 +14,11 @@
                         @foreach ($films->take(10) as $film)
                             <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingOne">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-film_{{$film->id}}" aria-expanded="false" aria-controls="flush-collapseOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-film_{{$film->original_id}}" aria-expanded="false" aria-controls="flush-collapseOne">
                                     <div class="accordion-button--img"><img src="{{$film->poster_path}}" alt=""></div>
                                 </button>
                             </h2>
-                            <div id="flush-film_{{$film->id}}" class="accordion-collapse collapse content-detail" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                            <div id="flush-film_{{$film->original_id}}" class="accordion-collapse collapse content-detail" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body">
                                     <p>{{$film->name}}</p>
                                 </div>
@@ -29,11 +29,11 @@
                         @foreach ($animes->take(10) as $anime)
                             <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingOne">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-film_{{$anime->id}}" aria-expanded="false" aria-controls="flush-collapseOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-film_{{$anime->original_id}}" aria-expanded="false" aria-controls="flush-collapseOne">
                                     <div class="accordion-button--img"><img src="{{$anime->poster_path}}" alt=""></div>
                                 </button>
                             </h2>
-                            <div id="flush-film_{{$anime->id}}" class="accordion-collapse collapse content-detail" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                            <div id="flush-film_{{$anime->original_id}}" class="accordion-collapse collapse content-detail" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body">
                                     <p>{{$anime->name}}</p>
                                 </div>
@@ -44,11 +44,11 @@
                         @foreach ($series->take(10) as $serie)
                             <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingOne">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-film_{{$serie->id}}" aria-expanded="false" aria-controls="flush-collapseOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-film_{{$serie->original_id}}" aria-expanded="false" aria-controls="flush-collapseOne">
                                 <div class="accordion-button--img"><img src="{{$serie->poster_path}}" alt=""></div>
                                 </button>
                             </h2>
-                            <div id="flush-film_{{$serie->id}}" class="accordion-collapse collapse content-detail" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                            <div id="flush-film_{{$serie->original_id}}" class="accordion-collapse collapse content-detail" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body">
                                     <p>{{$serie->name}}</p>
                                 </div>
