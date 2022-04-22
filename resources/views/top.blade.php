@@ -11,6 +11,7 @@
             <div class="cinect-carousel--container">
                 <div class="cinect-carousel--container--content">
                     <div class="accordion accordion-flush" id="accordionFlushExample">
+                        <?php $contador = 1 ?>
                         @foreach ($films->take(10) as $film)
                             <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingOne">
@@ -20,7 +21,8 @@
                             </h2>
                             <div id="flush-film_{{$film->original_id}}" class="accordion-collapse collapse content-detail" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body">
-                                    <p>{{$film->name}}</p>
+                                    <span><?=$contador++?></span>
+                                    <a href="{{route('film.films', ['id' => $film->id])}}">{{$film->name}}</a>
                                 </div>
                             </div>
                             </div>
@@ -35,7 +37,8 @@
                             </h2>
                             <div id="flush-film_{{$anime->original_id}}" class="accordion-collapse collapse content-detail" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body">
-                                    <p>{{$anime->name}}</p>
+                                    <span><?=$contador++?></span>
+                                    <a href="{{route('anime.animes', ['id' => $anime->id])}}">{{$anime->name}}</a>
                                 </div>
                             </div>
                             </div>
@@ -50,7 +53,8 @@
                             </h2>
                             <div id="flush-film_{{$serie->original_id}}" class="accordion-collapse collapse content-detail" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body">
-                                    <p>{{$serie->name}}</p>
+                                    <span><?=$contador++?></span>
+                                    <a href="{{route('serie.series', ['id' => $serie->id])}}">{{$serie->name}}</a>
                                 </div>
                             </div>
                             </div>

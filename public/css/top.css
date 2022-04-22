@@ -29,9 +29,11 @@ h1{
 .cinet_top--content a p{
     transition: opacity 1s, bottom .5s;
 }
+
 .cinet_top--content a p span{
     display: block;
 }
+
 .cinet_top--content a p span{
     width: 35px;
     margin: auto;
@@ -40,7 +42,6 @@ h1{
     text-shadow:none;
     background: radial-gradient(circle, rgba(174,238,190,1) 0%, rgba(148,233,148,1) 100%);
 }
-
 
 .cinet_top--content p{
     text-align: center;
@@ -53,7 +54,7 @@ h1{
 }
 
 
-/*CINECT CUSTOM CAROUSEL STYLES :D*/
+/*CINECT CUSTOM BANNER STYLES :D*/
 
 .cinect-carousel--container--content{
     background-color: #16181D;
@@ -69,11 +70,27 @@ h1{
 
 .cinect-carousel--container--content .accordion .accordion-body{
     color: #5A3C97;
+    margin-top: 60px;
+}
+
+.cinect-carousel--container--content .accordion .accordion-body span{
+    font-size: 50px;
+    text-shadow: 2px 0 0 #fff, -1px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+}
+
+.cinect-carousel--container--content .accordion .accordion-body a{
+    width: 100px;
+}
+
+.cinect-carousel--container--content .accordion .accordion-body span, .cinect-carousel--container--content .accordion .accordion-body a{
+    display: block;
+    text-align:center;
 }
 
 .cinect-carousel--container--content .accordion .accordion-item{
     display: flex;
     border: none;
+    background-color: #16181D;
 }
 
 .accordion-button{
@@ -94,6 +111,7 @@ h1{
     transition: width .5s, opacity .2s;
 }
 
+
 .accordion-button:hover .accordion-button--img img{
     width: 200px;
     opacity: .9;
@@ -102,6 +120,7 @@ h1{
 .accordion-button::after {
     display: none;
 }
+
 
 @media (max-width: 600px) {
     
