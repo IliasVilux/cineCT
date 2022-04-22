@@ -108,12 +108,12 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ url('/top') }}" class="footer-links text-light text-uppercase fs-3 m-0">
+                                <a href="{{ url('/top/top') }}" class="footer-links text-light text-uppercase fs-3 m-0">
                                     <i class="fas fa-sort-amount-up-alt pe-2"></i>{{trans('titles.top')}}
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ url('/search') }}" class="footer-links text-light text-uppercase fs-3 m-0">
+                                <a href="{{ url('/search/search') }}" class="footer-links text-light text-uppercase fs-3 m-0">
                                     <i class="fas fa-search pe-2"></i>{{trans('titles.search')}}
                                 </a>
                             </li>
@@ -123,7 +123,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ url('/aboutUs') }}" class="footer-links text-light text-uppercase fs-3 m-0">
+                                <a href="{{ url('/aboutUs/aboutUs') }}" class="footer-links text-light text-uppercase fs-3 m-0">
                                     <i class="fas fa-user pe-2"></i>{{trans('titles.about')}}
                                 </a>
                             </li>
@@ -154,10 +154,10 @@
                     <a href="{{ url('/content/contentFilms') }}" class="footer-links text-white fs-5">{{trans('titles.films')}}</a>
                     <a href="{{ url('/content/contentSeries') }}" class="footer-links text-white fs-5">{{trans('titles.series')}}</a>
                     <a href="{{ url('/content/contentAnimes') }}" class="footer-links text-white fs-5">{{trans('titles.animes')}}</a>
-                    <a href="{{ url('/top') }}" class="footer-links text-white fs-5">{{trans('titles.top')}}</a>
-                    <a href="{{ url('/search') }}" class="footer-links text-white fs-5">{{trans('titles.search')}}</a>
-                    <a href="{{ url('/list') }}" class="footer-links text-white fs-5">{{trans('titles.lists')}}</a>
-                    <a href="{{ url('/aboutUs') }}" class="footer-links text-white fs-5">{{trans('titles.about')}}</a>
+                    <a href="{{ url('/top/top') }}" class="footer-links text-white fs-5">{{trans('titles.top')}}</a>
+                    <a href="{{ url('/search/search') }}" class="footer-links text-white fs-5">{{trans('titles.search')}}</a>
+                    <a href="{{ url('/list/list') }}" class="footer-links text-white fs-5">{{trans('titles.lists')}}</a>
+                    <a href="{{ url('/aboutUs/aboutUs') }}" class="footer-links text-white fs-5">{{trans('titles.about')}}</a>
                 </div>
             </section>
             <!-- SECTION: LINKS -->
