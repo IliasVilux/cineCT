@@ -1,4 +1,4 @@
-@extends('headerFooter')
+@extends('/general/headerFooter')
 @section('content')
 <div class="container text-dark">
     <div class="row justify-content-center">
