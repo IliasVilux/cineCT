@@ -77,12 +77,12 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     //Return Filtered Animes
     Route::get('/content/animes/{genre}', [AnimeController::class, 'filterContent'])->name('anime.animes-filtered');
 
-    Route::get('/top', function () {
-        return view('top');
+    Route::get('/top/top', function () {
+        return view('/top/top');
     });
     
-    Route::get('/search', function () {
-        return view('search');
+    Route::get('/search/search', function () {
+        return view('/search/search');
     });
     
     Route::get('/profile/profileImg', function () {
@@ -125,9 +125,8 @@ Route::group(['middleware' => 'authenticate.user'], function () {
 });
 
 
-
-Route::get('/aboutUs', function () {
-    return view('aboutUs');
+Route::get('/aboutUs/aboutUs', function () {
+    return view('/aboutUs/aboutUs');
 });
 
 
