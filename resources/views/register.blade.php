@@ -36,7 +36,7 @@
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="logIn">
-                        <div class="card text-dark p-sm-3 p-lg-5">
+                        <div class="card text-dark p-2 p-sm-4 p-lg-5">
                             <div class="d-flex justify-content-center">
                                 <img class="logo mt-2" src="/img/CinectLogoDark.svg" alt="LOGO">
                             </div>
@@ -124,7 +124,7 @@
                                             for="rememberData">{{ trans('register.remember') }}</label>
                                     </div>
 
-                                    <button class="btn button-purple btn-sm btn-block mt-0" id="btn-login"
+                                    <button class="btn button-purple btn-sm btn-block mt-0 rounded-3" id="btn-login"
                                         type="submit">{{ trans('register.login') }}</button>
 
                                     <hr class="my-3">
@@ -136,7 +136,7 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="signUp">
-                        <div class="card text-dark p-sm-3 p-lg-5">
+                        <div class="card text-dark p-2 p-sm-4 p-lg-5">
                             <div class="d-flex justify-content-center">
                                 <img class="logo mt-2" src="/img/CinectLogoDark.svg" alt="LOGO">
                             </div>
@@ -179,21 +179,21 @@
                                     </div>
 
                                     <div class="row p-0">
-                                        <div class="col-12 col-md-6 mb-3 p-0 pe-sm-0 pe-md-3">
+                                        <div class="col-12 col-md-6 mb-2 mb-sm-3 p-0 pe-sm-0 pe-md-3">
                                             <label for="register_name"
                                                 class="form-label">{{ trans('register.name') }}</label>
                                             <input type="text" class="form-control" id="register_name"
                                                 name="register_name" placeholder="Mark"
                                                 value="{{ old('register_name') }}" autofocus>
                                         </div>
-                                        <div class="col-12 col-md-6 mb-3 p-0">
+                                        <div class="col-12 col-md-6 mb-2 mb-sm-3 p-0">
                                             <label for="register_surname"
                                                 class="form-label">{{ trans('register.last_name') }}</label>
                                             <input type="text" class="form-control" id="register_surname"
                                                 name="register_surname" placeholder="Ruffalo"
                                                 value="{{ old('register_surname') }}" autofocus>
                                         </div>
-                                        <div class="col-12 col-md-6 mb-3 p-0 pe-sm-0 pe-md-3">
+                                        <div class="col-12 col-md-6 mb-2 mb-sm-3 p-0 pe-sm-0 pe-md-3">
 
                                             <label for="nick"
                                                 class="form-label">{{ trans('register.username') }}</label>
@@ -201,14 +201,14 @@
                                                 name="register_nick" placeholder="mark20"
                                                 value="{{ old('register_nick') }}" autofocus>
                                         </div>
-                                        <div class="col-12 col-md-6 mb-3 p-0">
+                                        <div class="col-12 col-md-6 mb-2 mb-sm-3 p-0">
                                             <label for="register_email"
                                                 class="form-label">{{ trans('register.email') }}</label>
                                             <input type="email" class="form-control" id="register_email"
                                                 name="register_email" placeholder="youremail@gmail.com"
                                                 value="{{ old('register_email') }}" autofocus>
                                         </div>
-                                        <div class="col-12 col-md-6 p-0 mb-3 mb-md-0 pe-sm-0 pe-md-3">
+                                        <div class="col-12 col-md-6 p-0 mb-2 mb-sm-3 mb-md-0 pe-sm-0 pe-md-3">
                                             <label for="register_password"
                                                 class="form-label">{{ trans('register.pass') }}</label>
                                             <input type="password" class="form-control" id="register_password"
@@ -228,7 +228,7 @@
                                             for="rememberRegister">{{ trans('register.remember') }}</label>
                                     </div>
 
-                                    <button class="btn button-purple btn-sm btn-block m-0" id="btn-register"
+                                    <button class="btn button-purple btn-sm btn-block m-0 rounded-3" id="btn-register"
                                         type="submit">{{ trans('register.register') }}</button>
                                 </form>
                             </div>
