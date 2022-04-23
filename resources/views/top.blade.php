@@ -16,7 +16,10 @@
                             <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingOne">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-film_{{$film->original_id}}" aria-expanded="false" aria-controls="flush-collapseOne">
-                                    <div class="accordion-button--img"><img src="{{$film->poster_path}}" alt=""></div>
+                                    <div class="accordion-button--img">
+                                        <img src="{{$film->poster_path}}" alt="{{$film->name}}">
+                                        <span class="accordion-button--img__identifier"><?=$contador?></span>
+                                    </div>
                                 </button>
                             </h2>
                             <div id="flush-film_{{$film->original_id}}" class="accordion-collapse collapse content-detail" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
@@ -32,7 +35,10 @@
                             <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingOne">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-film_{{$anime->original_id}}" aria-expanded="false" aria-controls="flush-collapseOne">
-                                    <div class="accordion-button--img"><img src="{{$anime->poster_path}}" alt=""></div>
+                                    <div class="accordion-button--img">
+                                        <img src="{{$anime->poster_path}}" alt="{{$anime->name}}">
+                                        <span class="accordion-button--img__identifier"><?=$contador?></span>
+                                    </div>
                                 </button>
                             </h2>
                             <div id="flush-film_{{$anime->original_id}}" class="accordion-collapse collapse content-detail" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
@@ -48,7 +54,10 @@
                             <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingOne">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-film_{{$serie->original_id}}" aria-expanded="false" aria-controls="flush-collapseOne">
-                                <div class="accordion-button--img"><img src="{{$serie->poster_path}}" alt=""></div>
+                                <div class="accordion-button--img">
+                                    <img src="{{$serie->poster_path}}" alt="{{$serie->name}}">
+                                    <span class="accordion-button--img__identifier"><?=$contador?></span>
+                                </div>
                                 </button>
                             </h2>
                             <div id="flush-film_{{$serie->original_id}}" class="accordion-collapse collapse content-detail" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
@@ -75,7 +84,7 @@
                     <p>{{ $film->name }}<span>{{ $film->puntuation }}</span></p>
                 </a>
             @endforeach
-            <button class="btn btn-outline-primary mt-4" type="btn"> <a class="text-decoration-none"
+            <button class="btn btn-lg mt-4" type="btn"> <a class="text-decoration-none"
                     href="{{ route('film.all-films') }}">{{ trans('home.view_more') }}</a></button>
         </section>
 
@@ -107,6 +116,8 @@
                     href="{{ route('anime.all-animes') }}">{{ trans('home.view_more') }}</a></button>
         </section>
 
+        <h3 class="mb-3">Opiniones de usuarios</h3>
+                
     </section>
 
     <script type="text/javascript">
