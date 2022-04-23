@@ -132,7 +132,7 @@
                     <p>{{ $film->name }}<span>{{ $film->puntuation }}</span></p>
                 </a>
             @endforeach
-            <button class="btn btn-lg mt-4" type="btn"> <a class="text-decoration-none"
+            <button class="d-block btn-outline-primary btn mt-4 w-100" type="btn"> <a class="text-decoration-none"
                     href="{{ route('film.all-films') }}">{{ trans('home.view_more') }}</a></button>
         </section>
 

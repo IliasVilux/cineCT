@@ -145,9 +145,14 @@ h1{
     border: 1px solid #FFFFFF;
 }
 
+
 .cinect-banner .carousel-indicators .active{
     opacity: 1;
-    border: 1px solid red;
+}
+
+.cinect-banner .carousel-inner .carousel-item{
+    box-shadow: #000000 0px -100px 9px 9px inset;
+
 }
 
 .cinect-banner .carousel-inner .carousel-item img{
