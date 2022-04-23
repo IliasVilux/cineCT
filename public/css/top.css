@@ -1,5 +1,6 @@
 *{
     scroll-behavior: smooth;
+    box-sizing: border-box;
 }
 
 h1{
@@ -69,7 +70,6 @@ h1{
 .cinect-carousel--container--content .accordion{
     display: flex;
     justify-content: space-around;
-    max-width: 2000px;
     margin-bottom: 5rem;
     padding: 0;
 }
@@ -78,6 +78,7 @@ h1{
     color: #5A3C97;
     margin-top: 60px;
 }
+
 
 .cinect-carousel--container--content .accordion .accordion-body span{
     font-size: 50px;
@@ -139,11 +140,39 @@ h1{
     display: none;
 }
 
+.cinect-banner .carousel-indicators button{
+    background-color: #5A3C97;
+    border: 1px solid #FFFFFF;
+}
+
+.cinect-banner .carousel-indicators .active{
+    opacity: 1;
+    border: 1px solid red;
+}
+
+.cinect-banner .carousel-inner .carousel-item img{
+    width: auto;
+    height: 400px;
+    object-fit: cover;
+}
+
+.cinect-banner .carousel-inner .carousel-item .carousel-caption h5, .cinect-banner .carousel-inner .carousel-item .carousel-caption p{
+    color: #5A3C97;
+    text-align: center;
+    text-shadow: 2px 0 0 #fff, -1px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+}
+
 
 @media (max-width: 600px) {
     .cinect-carousel{
         display: none;
     }
+
+
+    .cinect-banner .carousel-inner .carousel-item img{
+        opacity: .7;
+    }
+
     .cinet_top--content .cinet_top--detail div img{
         flex-direction: column;
         width: 200px;
@@ -153,6 +182,13 @@ h1{
 }
 
 @media only screen and (min-device-width: 601px) and (max-device-width: 1023px) {
+    .cinect-carousel{
+        display: none;
+    }
+    .cinect-banner .carousel-inner .carousel-item img{
+        opacity: .6;
+    }
+
     .cinet_top--content .cinet_top--detail div img{
         width: 200px;
         height: 300px;
@@ -166,6 +202,14 @@ h1{
 }
 
 @media (min-width: 1024px) {
+    .cinect-banner{
+        display: none;
+    }
+    .cinect-carousel--container--content .accordion{
+        max-width: 2000px;
+        margin-left: auto;
+        margin-right: auto;
+    }
     .cinet_top--content{
         width: 85%;
         margin: auto;
