@@ -132,8 +132,8 @@
                     <p>{{ $film->name }}<span>{{ $film->puntuation }}</span></p>
                 </a>
             @endforeach
-            <button class="d-block btn-outline-primary btn mt-4 w-100" type="btn"> <a class="text-decoration-none"
-                    href="{{ route('film.all-films') }}">{{ trans('home.view_more') }}</a></button>
+            <a class="d-block btn btn-link mt-4 w-100 text-decoration-none border-0"
+                    href="{{ route('film.all-films') }}">{{ trans('home.view_more') }}</a>
         </section>
 
         <h3 class="mt-5">Top {{ trans('titles.series') }}</h3>
@@ -146,8 +146,8 @@
                     <p>{{ $serie->name }}<span>{{ $serie->puntuation }}</span></p>
                 </a>
             @endforeach
-            <button class="d-block btn btn-outline-primary mt-4 w-100" type="btn"> <a class="text-decoration-none"
-                    href="{{ route('serie.all-series') }}">{{ trans('home.view_more') }}</a></button>
+            <a class="d-block btn btn-link mt-4 w-100 text-decoration-none border-0"
+                    href="{{ route('serie.all-series') }}">{{ trans('home.view_more') }}</a>
         </section>
 
         <h3 class="mt-5">Top {{ trans('titles.animes') }}</h3>
@@ -160,8 +160,8 @@
                     <p>{{ $anime->name }}<span>{{ $anime->puntuation }}</span></p>
                 </a>
             @endforeach
-            <button class="d-block btn btn-outline-primary mt-4 w-100" type="btn"> <a class="text-decoration-none"
-                    href="{{ route('anime.all-animes') }}">{{ trans('home.view_more') }}</a></button>
+            <a class="d-block btn btn-link mt-4 w-100 text-decoration-none border-0" 
+                    href="{{ route('anime.all-animes') }}">{{ trans('home.view_more') }}</a>
         </section>
 
     </section>
