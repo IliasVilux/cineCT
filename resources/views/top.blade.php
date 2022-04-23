@@ -146,7 +146,7 @@
                     <p>{{ $serie->name }}<span>{{ $serie->puntuation }}</span></p>
                 </a>
             @endforeach
-            <button class="btn btn-outline-primary mt-4" type="btn"> <a class="text-decoration-none"
+            <button class="d-block btn btn-outline-primary mt-4 w-100" type="btn"> <a class="text-decoration-none"
                     href="{{ route('serie.all-series') }}">{{ trans('home.view_more') }}</a></button>
         </section>
 
@@ -160,7 +160,7 @@
                     <p>{{ $anime->name }}<span>{{ $anime->puntuation }}</span></p>
                 </a>
             @endforeach
-            <button class="btn btn-outline-primary mt-4" type="btn"> <a class="text-decoration-none"
+            <button class="d-block btn btn-outline-primary mt-4 w-100" type="btn"> <a class="text-decoration-none"
                     href="{{ route('anime.all-animes') }}">{{ trans('home.view_more') }}</a></button>
         </section>
 
