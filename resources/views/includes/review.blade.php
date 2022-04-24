@@ -33,6 +33,12 @@
                 @endif
                     <span id="like-counter">{{count($comment->like)}} likes</span>
             </div>
+
+            @if($comment->user_id == Auth::user()->id)
+            <div class="delete-content my-3">
+                <a style="font-size:15px;" class="btn btn-danger" href="{{-- route('delete-comment',['id' => $comment->id]) --}}" id="{{$comment->id}}">{{trans('titles.delete_review')}}</a>
+            </div>
+            @endif
             
             {{--
             <!----START REPLY COMMENT---->

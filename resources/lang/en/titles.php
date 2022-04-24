@@ -38,6 +38,7 @@ return [
     'fiction' => 'Sci-fi / Fantasy',
     'drama' => 'Drama / Mistery',
     'crime' => 'Warlike / Crime',
+    'delete_review' => 'Delete review',
 
     'samurai' => 'Samurai',
     'shounen' => 'Shounen',

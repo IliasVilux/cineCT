@@ -9,13 +9,7 @@ use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\LikeController;
-use App\Http\Controllers\ModelRelationshipTest;
 use App\Http\Controllers\TopController;
-use App\Models\Genre;
-use App\Models\Serie;
-use App\Models\Films;
-use App\Models\Anime;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -97,18 +91,21 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     Route::post('/serie/comment/save/{id}', [ReviewController::class, 'postStoreSerieReview'])->name('comment.save.serie');
     Route::post('/anime/comment/save/{id}', [ReviewController::class, 'postStoreAnimeReview'])->name('comment.save.anime');
 
+    //Delete reviews
+    Route::post('/dislike/{review_id}', [ReviewController::class, 'deleteReview'])->name('user.comment-like');
+
 
     //Add favourites
     Route::get('/detail/detailAnimes/{id}/{flid}/addFav', [AnimeController::class,  'addFavourite'])->name('anime.fav');
     Route::get('/detail/detailSeries/{id}/{flid}/addFav', [SerieController::class,  'addFavourite'])->name('serie.fav');
     Route::get('/detail/detailFilms/{id}/{flid}/addFav', [FilmController::class,  'addFavourite'])->name('film.fav');
 
-    //Route::get('/content/{search?}', [UserController::class, 'searchContent'])->name('search.content'); 
-    //Route::get('/content/search', [UserController::class, 'searchContent'])->name('search-content'); 
+    //Searcher
     Route::get('/content/{search?}', [UserController::class, 'searchContent'])->name('search-content'); 
 
     Route::get('/detail/detailAnimes/{id}/addNewList', [AnimeController::class,  'addNewList'])->name('anime.newList');
-
+    
+    //Show comments likes
     Route::get('/user/activity', [UserController::class, 'activity'])->name('user.activity');
 
     //Save LIKE

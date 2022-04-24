@@ -87,4 +87,10 @@ class ReviewController extends Controller
         
         return ['msg' => 'Tu comentario se ha añadido!', 'comment' => $comment];
     }
+
+    public function deleteReview($id)
+    {
+        return 'a';
+    }
+
 }
