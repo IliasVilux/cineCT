@@ -37,7 +37,7 @@
         </div>
     @endif
     <section class="container">
-        <a href="{{ url('/content/contentAnimes') }}" class="btn button-purple my-4" title="Back"> Back</a>
+        <a href="{{ url('/content/contentAnimes') }}" class="btn button-purple my-4" title="Back"> {{trans('home.back')}}</a>
 
         <h1 class="detail-title">{{ $anime->name }}</h1>
 
@@ -148,7 +148,7 @@
                                 <input name="stars" id="e9" type="radio" value="2"><label for="e9">☆</label>
                                 <input name="stars" id="e10" type="radio" value="1"><label for="e10">☆</label>
                             </div>
-                            <button type="submit" class="btn button-purple btn-sm col-6 mb-2 mb-xl-0">Enviar</button>
+                            <button type="submit" class="btn button-purple btn-sm col-6 mb-2 mb-xl-0">{{trans('content.send_rating')}}</button>
                         </form>
                     </div>
                     <?php
@@ -158,7 +158,7 @@
                     ?>
                     <div class="d-flex flex-row my-2">
                         <a href="/detail/detailAnimes/{{ $anime->id }}/addFav"><button type="button"
-                                class="btn button-purple btn-md">Añadir a favoritos</button></a>
+                                class="btn button-purple btn-md">{{trans('content.add_favourite')}}</button></a>
                         <div class="social-media-links mx-2">
                             <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button"
                                 aria-expanded="false" aria-controls="shareComponent">
@@ -270,7 +270,7 @@
 
                     let commentHtml =
                         `<div class="d-flex flex-start mb-4">
-                        <div><img class="rounded-circle shadow-1-strong me-3" src="{{ $profile[0]->path }}" alt="13" width="65" height="65" /></div>
+                        <div><img class="rounded-circle shadow-1-strong me-3" src="{{ Auth::user()->image->path }}" alt="13" width="65" height="65" /></div>
                         <div class="flex-grow-1 flex-shrink-1"><div>
                             <div class="d-flex justify-content-between align-items-center">
                                 <p class="mb-1">{{ Auth::user()->nick }} <span class="text-muted" id="last-comment"></span></p> 

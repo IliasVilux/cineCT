@@ -1,7 +1,12 @@
     <div class="d-flex flex-start mb-4" id="content_id-{{$comment->id}}" style="padding-top:20px;">
         <div>
-            <img class="rounded-circle shadow-1-strong me-3" src="{{ $profile[0]->path }}" alt="13" width="65"
-                height="65" />
+            @if(Auth::user()->image_id === null)
+            <i class="fas fa-user-circle fs-4 pe-1"></i>
+            @else
+            <img class="rounded-circle shadow-1-strong me-3" src="{{ Auth::user()->image->path }}" alt="{{Auth::user()->image->id}}" width="65"
+            height="65">
+            @endif
+            
         </div>
         <div class="flex-grow-1 flex-shrink-1">
             <div>

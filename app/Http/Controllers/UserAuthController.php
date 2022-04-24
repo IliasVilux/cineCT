@@ -63,11 +63,14 @@ class UserAuthController extends Controller
         $register_email = $request->input('register_email');
         $register_password = $request->input('register_password');
 
+        $user = Auth::user();
+        $userId = $user->id;
+
         $validate = $this->validate($request, [
             'register_name' => 'required|string|min:3|max:255',
             'register_surname' => 'required|string|max:255',
-            'register_nick' => 'required|string|max:15', //unique:users-> ningun nick se repetirá
-            'register_email' => 'required|string|email|unique:users,email',
+            'register_nick' => 'required|string|max:15|unique:users,nick,'.$userId, //unique:users-> ningun nick se repetirá
+            'register_email' => 'required|string|email|unique:users,email,'.$userId,
             'register_password' => 'required|min:6',
             'register_password_repeat' => 'required|min:6|same:register_password'
 
@@ -79,6 +82,7 @@ class UserAuthController extends Controller
             'email' => $register_email,
             'surname' => $register_surname,
             'nick' => $register_nick,
+            'image_id' => 18,
             'password' => $register_password
         ]);
 

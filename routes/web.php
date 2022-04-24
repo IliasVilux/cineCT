@@ -45,10 +45,6 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     //User-Auth Actions
     Route::get('/user/profile', [UserController::class, 'userProfile'])->name('user.profile');
     Route::get('/user/list', [UserController::class, 'userFavoriteList'])->name('user.favorite.list');
-
-    Route::get('/profile/profileImg', function () {
-        return view('/profile/profileImg');
-    });
     
     //User-Auth Actions
     Route::post('/user/profile', [UserController::class, 'profileUpdate'])->name('user.update');
@@ -85,10 +81,9 @@ Route::group(['middleware' => 'authenticate.user'], function () {
         return view('search');
     });
     
-    Route::get('/profile/profileImg', function () {
-        return view('/profile/profileImg');
-    });
-    
+    //Profile Images
+    Route::get('user/profile/image', [UserController::class, 'getUserProfileImg'])->name('user.profile-img');
+    Route::post('user/profile/image{id}', [UserController::class, 'postUserProfileImg'])->name('user.save-profile-img');
 
     Route::get('/detail/detailFilms/{id}', [FilmController::class,  'returnFilms'])->name('film.films');
     /* Route::get('/detail/detailFilms/{id}', 'SocialShareButtonsController@ShareWidget'); */

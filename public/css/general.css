@@ -44,9 +44,77 @@ a {
   color: transparent;
 }
 
+.img-profile{
+  width:200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.img-profile-navbar{
+  width:50px;
+  height: 50px;
+  object-fit: cover;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+
 #container {
   width: 90%;
 }
 .img-carousel{
   height: 500px;
+}
+
+.profile-images{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+
+.profile-images div {
+  padding: 20px;
+}
+
+.profile-images div a {
+  text-decoration: none;
+}
+
+.profile-images div:hover img{
+  cursor: pointer;
+  transform: scale(1.3);
+}
+
+
+.profile-images div img{
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 60%; 
+  transition: transform .6s;
+}
+
+.cinect-custom-alert{
+  width: 400px;
+  margin: 20px auto;
+  animation: opacityTransition 2s infinite;
+}
+
+@media (min-width: 1024px) {
+  .profile-images:hover div{
+    filter: blur(3px);
+  }
+  
+  .profile-images div{
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .profile-images div:hover{
+    filter: blur(0);
+  }
+}
+
+@keyframes opacityTransition {
+  50% {opacity: 0;}
 }

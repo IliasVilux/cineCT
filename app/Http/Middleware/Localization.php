@@ -23,8 +23,8 @@ class Localization
             App::setLocale(session()->get('locale'));
         }else if(auth()->check()){
             $userId = Auth::id();
-            $userLang = User::find($userId);
-            App::setLocale($userLang->lang);
+            $userFind = User::find($userId);
+            App::setLocale($userFind->lang);
         }
         return $next($request);
     }
