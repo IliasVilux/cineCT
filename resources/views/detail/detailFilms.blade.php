@@ -191,7 +191,7 @@
 
                     let commentHtml =
                         `<div class="d-flex flex-start mb-4">
-                    <div><img class="rounded-circle shadow-1-strong me-3" src="/img/NoImg.jpg" alt="13" width="65" height="65" /></div>
+                    <div><img class="rounded-circle shadow-1-strong me-3" src="{{ $comment->user->image->path }}" alt="{{ $comment->user->image->path }}" width="65"height="65"></div>
                     <div class="flex-grow-1 flex-shrink-1"><div>
                         <div class="d-flex justify-content-between align-items-center">
                             <p class="mb-1">{{ Auth::user()->nick }} <span class="text-muted" id="last-comment"></span></p> 
@@ -202,10 +202,10 @@
                         <div class="like-container">
                             <span class="far fa-heart like-review btn-like" id="btn-like" data-id="${ response.comment['id']}"></span>
                             <span id="like-counter">0 likes</span>
-                            <form method="POST" action="{{ route('user.comment-delete',['id' => $comment->id]) }}">
+                            <form class="mt-2" method="POST" action="{{ route('user.comment-delete',['id' => $comment->id]) }}">
                             @csrf
                                 <input type="hidden" id="${ response.comment['id']}" name="user-comment" value="${ response.comment['id']}">
-                                <button class="btn btn-danger delete-review" type="submit">{{trans('titles.delete_review')}}</button>
+                                <button class="btn btn-outline-primary" type="submit">{{trans('titles.delete_review')}}</button>
                             </form>
                         </div>
                     </div>
@@ -215,7 +215,7 @@
                     jQuery('#character-counter').css("display", "none");
 
                     setTimeout(() => {
-                        //location.reload();
+                        location.reload();
                         jQuery('body,html').animate({scrollTop: $(document).height()}, 5);
                     }, 1000);
 

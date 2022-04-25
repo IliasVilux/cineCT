@@ -3,8 +3,9 @@
             @if(Auth::user()->image_id === null)
             <i class="fas fa-user-circle fs-4 pe-1"></i>
             @else
-            <img class="rounded-circle shadow-1-strong me-3" src="{{ Auth::user()->image->path }}" alt="{{Auth::user()->image->id}}" width="65"
-            height="65">
+                @if($comment)
+                    <img class="rounded-circle shadow-1-strong me-3" src="{{ $comment->user->image->path }}" alt="a" width="65"height="65">
+                @endif
             @endif
             
         </div>
@@ -39,7 +40,7 @@
             <form class="mt-2" method="POST" action="{{ route('user.comment-delete',['id' => $comment->id]) }}">
                 @csrf
                     <input type="hidden" id="{{$comment->id}}" name="user-comment" value="{{$comment->id}}">
-                    <button style="font-size:15px;" class="btn btn-outline-primary" type="submit">{{trans('titles.delete_review')}}</button>
+                    <button class="btn btn-outline-primary" type="submit">{{trans('titles.delete_review')}}</button>
             </form>
             @endif
             
