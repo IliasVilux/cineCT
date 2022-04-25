@@ -95,7 +95,7 @@ class ReviewController extends Controller
         $user_review_isset = Review::where('user_id', $user->id)->where('id', $id)->first();
         $review_like_isset = Like::where('review_id', $id)->first();
 
-        if($user_review_isset){
+        if($user && ($user_review_isset)){
 
             //eliminem els likes
             if($review_like_isset){
