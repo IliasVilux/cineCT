@@ -34,11 +34,15 @@
                     <span id="like-counter">{{count($comment->like)}} likes</span>
             </div>
 
+            
             @if($comment->user_id == Auth::user()->id)
-            <div class="delete-content my-3">
-                <a style="font-size:15px;" class="btn btn-danger" href="{{-- route('delete-comment',['id' => $comment->id]) --}}" id="{{$comment->id}}">{{trans('titles.delete_review')}}</a>
-            </div>
+            <form class="mt-2" method="POST" action="{{ route('user.comment-delete',['id' => $comment->id]) }}">
+                @csrf
+                    <input type="hidden" id="{{$comment->id}}" name="user-comment" value="{{$comment->id}}">
+                    <button style="font-size:15px;" class="btn btn-outline-primary" type="submit">{{trans('titles.delete_review')}}</button>
+            </form>
             @endif
+            
             
             {{--
             <!----START REPLY COMMENT---->

@@ -3,6 +3,7 @@
 
     <head>
         <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/general.css') }}">
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <!--<script src="js/jquery.rating.pack.js"></script>-->
@@ -36,6 +37,11 @@
             <strong>{{ Session::get('SerieAdded') }}!</strong>
         </div>
     @endif
+    @if (Session::has('review_deleted'))
+            <div class="alert cinect-custom-alert text-center" role="alert" id="review_deleted">
+                <strong>{{ Session::get('review_deleted') }}!</strong>
+            </div>
+        @endif
     <section class="container">
         <a href="{{ url('/content/contentSeries') }}" class="btn button-purple my-4" title="Back">
             {{trans('home.back')}}
@@ -208,6 +214,11 @@
                             <div class="like-container">
                                 <span class="far fa-heart like-review btn-like" id="btn-like" data-id="${ response.comment['id']}"></span>
                                 <span id="like-counter">0 likes</span>
+                                <form method="POST" action="{{ route('user.comment-delete',['id' => $comment->id]) }}">
+                                    @csrf
+                                    <input type="hidden" id="${ response.comment['id']}" name="user-comment" value="${ response.comment['id']}">
+                                    <button class="btn btn-danger delete-review" type="submit">{{trans('titles.delete_review')}}</button>
+                                </form>
                             </div>
                         </div>
                     </div>`
@@ -217,10 +228,8 @@
                     jQuery('#character-counter').css("display", "none");
 
                     setTimeout(() => {
-                        location.reload();
-                        jQuery('body,html').animate({
-                            scrollTop: $(document).height()
-                        }, 5);
+                        //location.reload();
+                        jQuery('body,html').animate({scrollTop: $(document).height()}, 5);
                     }, 1000);
 
                 },

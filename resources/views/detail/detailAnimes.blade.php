@@ -281,6 +281,11 @@
                             <div class="like-container">
                                 <span class="far fa-heart like-review btn-like" id="btn-like" data-id="${ response.comment['id']}"></span>
                                 <span id="like-counter">0 likes</span>
+                                <form method="POST" action="{{ route('user.comment-delete',['id' => $comment->id]) }}">
+                                    @csrf
+                                    <input type="hidden" id="${ response.comment['id']}" name="user-comment" value="${ response.comment['id']}">
+                                    <button class="btn btn-danger delete-review" type="submit">{{trans('titles.delete_review')}}</button>
+                            </form>
                         </div>
                         </div>
                     </div>
@@ -290,7 +295,7 @@
                     jQuery('#character-counter').css("display", "none");
                     
                     setTimeout(() => {
-                        location.reload();
+                        //location.reload();
                         jQuery('body,html').animate({scrollTop: $(document).height()}, 5);
                     },1000);
                     

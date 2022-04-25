@@ -92,7 +92,7 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     Route::post('/anime/comment/save/{id}', [ReviewController::class, 'postStoreAnimeReview'])->name('comment.save.anime');
 
     //Delete reviews
-    Route::post('/dislike/{review_id}', [ReviewController::class, 'deleteReview'])->name('user.comment-like');
+    Route::post('/review/delete/{id}', [ReviewController::class, 'deleteReview'])->name('user.comment-delete');
 
 
     //Add favourites
