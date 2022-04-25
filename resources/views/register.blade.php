@@ -24,24 +24,24 @@
     @if (Auth::user())
         @include('includes.session')
     @else
-        <section class="section-signin-register d-flex flex-wrap justify-content-center h-100 p-4">
-            <div class="col-12 col-md-10 col-lg-9 col-xl-8 col-xxl-6 p-sm-5 p-sm-5">
+        <section class="section-signin-register d-flex flex-wrap justify-content-center h-100 p-4 pt-5">
+            <div class="col-12 col-md-10 col-lg-9">
                 <ul class="nav nav-tabs" id="myTab">
-                    <li class="nav-item">
-                        <a href="#logIn" class="nav-link active" data-bs-toggle="tab">{{ trans('register.log_in') }}</a>
+                    <li class="nav-item col-6">
+                        <a href="#logIn" class="nav-link active button_login_register" data-bs-toggle="tab">{{ trans('register.log_in') }}</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item col-6">
                         <a href="#signUp" class="nav-link" data-bs-toggle="tab">{{ trans('register.sign_up') }}</a>
                     </li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="logIn">
-                        <div class="card text-dark">
+                        <div class="card text-dark p-2 p-sm-4 p-lg-5">
                             <div class="d-flex justify-content-center">
-                                <img class="my-5" src="/img/CinectLogoDark.svg" alt="LOGO" width="200px">
+                                <img class="logo mt-2" src="/img/CinectLogoDark.svg" alt="LOGO">
                             </div>
-                            <div class="card-body p-4 pt-0">
-                                <form class="row g-3 needs-validation d-flex flex-column align-items-center m-4 mt-0"
+                            <div class="card-body p-0">
+                                <form class="row g-3 needs-validation d-flex flex-column align-items-center m-2"
                                     method="POST" action="{{ route('login.user') }}">
                                     @if (Session::has('authErrorMsg'))
                                         <div class="mt-2 alert alert-danger">{{ Session::get('authErrorMsg') }}</div>
@@ -114,21 +114,20 @@
                                                 placeholder="Your password">
                                             <input type="checkbox" onclick="switchPassword()" name="showPassword"
                                                 id="showPassword" class="d-none">
-                                            <label for="showPassword"><i id="icon-switch"
-                                                    class="fa fa-eye p-3"></i></label>
+                                            <label for="showPassword"><i class="fa fa-eye p-2 p-sm-3"></i></label>
                                         </div>
 
                                     </div>
-                                    <div class="form-check d-flex justify-content-start my-4">
+                                    <div class="form-check d-flex justify-content-start my-sm-4">
                                         <input class="form-check-input" type="checkbox" id="rememberData" />
                                         <label class="form-check-label mx-2" value="1"
                                             for="rememberData">{{ trans('register.remember') }}</label>
                                     </div>
 
-                                    <button class="btn button-purple btn-lg btn-block mt-0" id="btn-login"
+                                    <button class="btn button-purple btn-sm btn-block mt-0 rounded-3" id="btn-login"
                                         type="submit">{{ trans('register.login') }}</button>
 
-                                    <hr class="my-4">
+                                    <hr class="my-3">
 
                                     <p class="small m-0"><a class="text-dark-50"
                                             href="#!">{{ trans('register.forgot_pass') }}</a></p>
@@ -137,13 +136,13 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="signUp">
-                        <div class="card text-dark">
+                        <div class="card text-dark p-2 p-sm-4 p-lg-5">
                             <div class="d-flex justify-content-center">
-                                <img class="my-5" src="/img/CinectLogoDark.svg" alt="LOGO" width="200px">
+                                <img class="logo mt-2" src="/img/CinectLogoDark.svg" alt="LOGO">
                             </div>
-                            <div class="card-body p-4 pt-0">
+                            <div class="card-body p-0">
                                 <form method="POST" action="{{ route('register.user') }}"
-                                    class="row g-3 needs-validation d-flex flex-column align-items-center m-4 mt-0">
+                                    class="row g-3 needs-validation d-flex flex-column align-items-center m-2">
                                     @csrf
 
                                     <div class="register-erros">
@@ -180,21 +179,21 @@
                                     </div>
 
                                     <div class="row p-0">
-                                        <div class="col-12 col-md-6 mb-3 p-0 pe-sm-3">
+                                        <div class="col-12 col-md-6 mb-2 mb-sm-3 p-0 pe-sm-0 pe-md-3">
                                             <label for="register_name"
                                                 class="form-label">{{ trans('register.name') }}</label>
                                             <input type="text" class="form-control" id="register_name"
                                                 name="register_name" placeholder="Mark"
                                                 value="{{ old('register_name') }}" autofocus>
                                         </div>
-                                        <div class="col-12 col-md-6 mb-3 p-0 pe-sm-3">
+                                        <div class="col-12 col-md-6 mb-2 mb-sm-3 p-0">
                                             <label for="register_surname"
                                                 class="form-label">{{ trans('register.last_name') }}</label>
                                             <input type="text" class="form-control" id="register_surname"
                                                 name="register_surname" placeholder="Ruffalo"
                                                 value="{{ old('register_surname') }}" autofocus>
                                         </div>
-                                        <div class="col-12 col-md-6 mb-3 p-0 pe-sm-3">
+                                        <div class="col-12 col-md-6 mb-2 mb-sm-3 p-0 pe-sm-0 pe-md-3">
 
                                             <label for="nick"
                                                 class="form-label">{{ trans('register.username') }}</label>
@@ -202,20 +201,20 @@
                                                 name="register_nick" placeholder="mark20"
                                                 value="{{ old('register_nick') }}" autofocus>
                                         </div>
-                                        <div class="col-12 col-md-6 mb-3 p-0 pe-sm-3">
+                                        <div class="col-12 col-md-6 mb-2 mb-sm-3 p-0">
                                             <label for="register_email"
                                                 class="form-label">{{ trans('register.email') }}</label>
                                             <input type="email" class="form-control" id="register_email"
                                                 name="register_email" placeholder="youremail@gmail.com"
                                                 value="{{ old('register_email') }}" autofocus>
                                         </div>
-                                        <div class="col-12 col-md-6 mb-3 p-0 pe-sm-3">
+                                        <div class="col-12 col-md-6 p-0 mb-2 mb-sm-3 mb-md-0 pe-sm-0 pe-md-3">
                                             <label for="register_password"
                                                 class="form-label">{{ trans('register.pass') }}</label>
                                             <input type="password" class="form-control" id="register_password"
                                                 name="register_password" placeholder="New password" autofocus>
                                         </div>
-                                        <div class="col-12 col-md-6 p-0 pe-sm-3">
+                                        <div class="col-12 col-md-6 p-0">
                                             <label for="register_password_repeat"
                                                 class="form-label">{{ trans('register.pass2') }}</label>
                                             <input type="password" class="form-control" id="register_password_repeat"
@@ -223,13 +222,13 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-check d-flex justify-content-start my-4">
-                                        <input class="form-check-input" type="checkbox" value="" id="rememberRegister" />
+                                    <div class="form-check d-flex justify-content-start align-items-center my-2 my-sm-4">
+                                        <input class="form-check-input mb-1" type="checkbox" value="" id="rememberRegister" />
                                         <label class="form-check-label mx-2"
                                             for="rememberRegister">{{ trans('register.remember') }}</label>
                                     </div>
 
-                                    <button class="btn button-purple btn-lg btn-block m-0" id="btn-register"
+                                    <button class="btn button-purple btn-sm btn-block m-0 rounded-3" id="btn-register"
                                         type="submit">{{ trans('register.register') }}</button>
                                 </form>
                             </div>

@@ -17,36 +17,44 @@
         <div class="carousel-inner">
             <div class="carousel-item full text-center active">
                 <a href="/detail/detailSeries/1" class="link-img-carousel">
-                    <img src="{{$allSeries[0]->poster_path}}" class="img-carousel px-3" alt="Img {{$allSeries[0]->name}}">
+                    <img src="{{$allSeries[0]->poster_path}}" class="img-carousel px-3"
+                        alt="Img {{$allSeries[0]->name}}">
                 </a>
                 <a href="/detail/detailSeries/2" class="link-img-carousel">
-                    <img src="{{$allSeries[1]->poster_path}}" class="img-carousel px-3" alt="Img {{$allSeries[1]->name}}">
+                    <img src="{{$allSeries[1]->poster_path}}" class="img-carousel px-3"
+                        alt="Img {{$allSeries[1]->name}}">
                 </a>
                 <a href="/detail/detailSeries/3" class="link-img-carousel">
-                    <img src="{{$allSeries[2]->poster_path}}" class="img-carousel px-3" alt="Img {{$allSeries[2]->name}}">
+                    <img src="{{$allSeries[2]->poster_path}}" class="img-carousel px-3"
+                        alt="Img {{$allSeries[2]->name}}">
                 </a>
             </div>
             <div class="carousel-item full text-center">
                 <a href="/detail/detailSeries/4" class="link-img-carousel">
-                    <img src="{{$allSeries[3]->poster_path}}" class="img-carousel px-3" alt="Img {{$allSeries[3]->name}}">
+                    <img src="{{$allSeries[3]->poster_path}}" class="img-carousel px-3"
+                        alt="Img {{$allSeries[3]->name}}">
                 </a>
                 <a href="/detail/detailSeries/6" class="link-img-carousel">
-                    <img src="{{$allSeries[5]->poster_path}}" class="img-carousel px-3" alt="Img {{$allSeries[5]->name}}">
+                    <img src="{{$allSeries[5]->poster_path}}" class="img-carousel px-3"
+                        alt="Img {{$allSeries[5]->name}}">
                 </a>
                 <a href="/detail/detailSeries/7" class="link-img-carousel">
-                    <img src="{{$allSeries[6]->poster_path}}" class="img-carousel px-3" 
+                    <img src="{{$allSeries[6]->poster_path}}" class="img-carousel px-3"
                         alt="Img {{$allSeries[6]->name}}">
                 </a>
             </div>
             <div class="carousel-item full text-center">
                 <a href="/detail/detailSeries/8" class="link-img-carousel">
-                    <img src="{{$allSeries[7]->poster_path}}" class="img-carousel px-3" alt="Img {{$allSeries[7]->name}}">
+                    <img src="{{$allSeries[7]->poster_path}}" class="img-carousel px-3"
+                        alt="Img {{$allSeries[7]->name}}">
                 </a>
                 <a href="/detail/detailSeries/9" class="link-img-carousel">
-                    <img src="{{$allSeries[8]->poster_path}}" class="img-carousel px-3" alt="Img {{$allSeries[8]->name}}">
+                    <img src="{{$allSeries[8]->poster_path}}" class="img-carousel px-3"
+                        alt="Img {{$allSeries[8]->name}}">
                 </a>
                 <a href="/detail/detailSeries/10" class="link-img-carousel">
-                    <img src="{{$allSeries[9]->poster_path}}" class="img-carousel px-3" alt="Img {{$allSeries[9]->name}}">
+                    <img src="{{$allSeries[9]->poster_path}}" class="img-carousel px-3"
+                        alt="Img {{$allSeries[9]->name}}">
                 </a>
             </div>
         </div>
@@ -62,24 +70,22 @@
         </button>
     </div>
 </section>
-<section class="d-flex flex-wrap justify-content-around align-items-center mt-3">
+<section class="d-flex flex-wrap align-items-center mt-3">
     <!--EMPIEZAN: TODOS LOS BOTONES PARA FILTRAR-->
     @foreach($genres as $genre)
-        <button class="button-category" style="border:none;">
-            <a href="{{route('serie.series-filtered', ['genre' => $genre])}}">
-                <p class="m-0">{{trans('titles.'.$genre.'')}}</p>
-            </a>
-        </button>
+    <button class="button-category col-lg col-3">
+        <a href="{{route('serie.series-filtered', ['genre' => $genre])}}">
+            <p class="m-0">{{trans('titles.'.$genre.'')}}</p>
+        </a>
+    </button>
     @endforeach
     <!--ACABAN: TODOS LOS BOTONES PARA FILTRAR-->
 </section>
 
 <section class="container py-5">
-    <div class="d-flex flex-row justify-content-between">
-        <h5 class="col-4 text-uppercase">{{trans('titles.series')}}</h5>
-        <div class="d-flex justify-content-center">
-            {{$series->links()}}
-        </div>
+    <h5 class="col-3 text-uppercase">{{ trans('titles.series') }}</h5>
+    <div class="d-flex justify-content-center">
+        {{ $series->links() }}
     </div>
 
     <?php

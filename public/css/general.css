@@ -13,6 +13,20 @@ html, main, body {
   color: white;
   background-color: #5A3C97;
 }
+
+.btn-violet{
+  color: #FFFFFF;
+  border: 2px solid #5A3C97;
+  text-align: center;
+  transition: color 1s, background-color 1s;
+}
+
+.btn-violet:hover{
+  color: #FFFFFF;
+  background-color: #5A3C97;
+  animation: boxShadow 2s infinite;
+}
+
 a {
   text-decoration: none;
 }
