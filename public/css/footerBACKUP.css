@@ -1,9 +1,7 @@
 /* Footer */
 .footer {
   background-image: linear-gradient(to bottom, black 25%, #9966ff 150%);
-  font-size: 15px;
 }
-
 .btn-outline-light {
   border-color: transparent;
 }

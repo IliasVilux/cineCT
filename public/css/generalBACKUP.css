@@ -7,7 +7,6 @@ html, main, body {
   color: #FFFFFF;
   border: 2px solid #5A3C97;
   background-color: #16181d;
-  font-size: 10px;
 }
 .button-purple:hover{
   border: 2px solid #FFFFFF;
@@ -59,19 +58,13 @@ a {
   color: transparent;
 }
 
+#container {
+  width: 90%;
+}
 .img-carousel{
   height: 500px;
 }
 
 @keyframes boxShadow {
   50% {box-shadow: 0 5px 30px rgba(145, 92, 182, .4);}
-}
-
-@media screen and (min-width: 576px) {
-
-}
-
-
-@media screen and (min-width: 768px) {
-
 }

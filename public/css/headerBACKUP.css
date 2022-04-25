@@ -1,22 +1,13 @@
-/* HEADER */
-/* HEADER */
 header {
   background-image: linear-gradient(to bottom, black 25%, #9966ff 150%);
-}
-
-.navbar {
-  padding: 1px 0px;
 }
 
 .navbar-toggler {
   border: none;
 }
 
-/* Logo */
-
 img.logo {
   width: 75px;
-  height: 80%;
 }
 
 .user-profile-img{
@@ -32,10 +23,6 @@ img.logo {
 }
 
 /* MENU */
-.navbar-dark .navbar-toggler {
-  font-size: 16px;
-}
-
 .offcanvas-start {
   background-image: linear-gradient(to bottom, black 50%, #9966ff 150%);
 }
@@ -52,29 +39,8 @@ ul.list-unstyled li a i.fas {
   width: 45px;
 }
 
-/* Iconos */
-
-i.fas.fa-search,
-.fas.fa-user-circle {
-  font-size: 15px;
-}
-
 i.fas.fa-film,
 i.fas.fa-home  {
   font-size: 28px;
   padding: 0px 7px 0px 0px;
-}
-
-@media screen and (min-width: 576px) {
-  .navbar {
-    padding: 10px;
-  }
-  i.fas.fa-search {
-    font-size: 10px;
-  }
-}
-
-
-@media screen and (min-width: 768px) {
-
 }

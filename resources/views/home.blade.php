@@ -72,11 +72,11 @@
 
     <!-- PELÍCULAS -->
     <div class="container-fluid d-flex justify-content-between">
-        <h5 class="text-uppercase">{{trans('home.films')}}</h5>
-        <a href="{{asset('/content/contentFilms')}}"><button type="button" class="btn button-purple">{{trans('home.view_more')}}</button></a>
+        <h3 class="title text-uppercase">{{trans('home.films')}}</h3>
+        <a href="{{asset('/content/contentFilms')}}"><button type="button" class="btn button-purple btn-sm">{{trans('home.view_more')}}</button></a>
     </div>
     <div class="container-fluid d-flex flex-row align-items-center" id="container">
-        <a class="btn-floating" href="#films" data-bs-slide="prev"><i class="fa fa-chevron-left fa-2x"
+        <a class="btn-floating" href="#films" data-bs-slide="prev"><i class="fa fa-chevron-left"
                 aria-hidden="true"></i></a>
 
         <div id="films" class="carousel slide carousel-equal-heights my-4" data-bs-ride="carousel"
@@ -124,16 +124,16 @@
                 ?>
             </div>
         </div>
-        <a class="btn-floating" href="#films" data-bs-slide="next"><i class="fa fa-chevron-right fa-2x"
+        <a class="btn-floating" href="#films" data-bs-slide="next"><i class="fa fa-chevron-right"
                 aria-hidden="true"></i></a>
     </div>
     <!-- SERIES -->
     <div class="container-fluid d-flex justify-content-between">
-        <h5 class="text-uppercase">{{trans('home.series')}}</h5>
-        <a href="{{asset('/content/contentSeries')}}"><button type="button" class="btn button-purple">{{trans('home.view_more')}}</button></a>
+        <h3 class="title text-uppercase">{{trans('home.series')}}</h3>
+        <a href="{{asset('/content/contentSeries')}}"><button type="button" class="btn button-purple btn-sm">{{trans('home.view_more')}}</button></a>
     </div>
     <div class="container-fluid d-flex flex-row align-items-center" id="container">
-        <a class="btn-floating" href="#series" data-bs-slide="prev"><i class="fa fa-chevron-left fa-2x"
+        <a class="btn-floating" href="#series" data-bs-slide="prev"><i class="fa fa-chevron-left"
                 aria-hidden="true"></i></a>
 
         <div id="series" class="carousel slide carousel-equal-heights my-4" data-bs-ride="carousel"
@@ -180,17 +180,17 @@
                         ?>
             </div>
         </div>
-        <a class="btn-floating" href="#series" data-bs-slide="next"><i class="fa fa-chevron-right fa-2x"
+        <a class="btn-floating" href="#series" data-bs-slide="next"><i class="fa fa-chevron-right"
                 aria-hidden="true"></i></a>
     </div>
 
     <!-- ANIME -->
     <div class="container-fluid d-flex justify-content-between">
-        <h5 class="text-uppercase">{{trans('home.animes')}}</h5>
-        <a href="{{asset('/content/contentAnimes')}}"><button type="button" class="btn button-purple">{{trans('home.view_more')}}</button></a>
+        <h3 class="title text-uppercase">{{trans('home.animes')}}</h3>
+        <a href="{{asset('/content/contentAnimes')}}"><button type="button" class="btn button-purple btn-sm">{{trans('home.view_more')}}</button></a>
     </div>
     <div class="container-fluid d-flex flex-row align-items-center" id="container">
-        <a class="btn-floating" href="#animes" data-bs-slide="prev"><i class="fa fa-chevron-left fa-2x"
+        <a class="btn-floating" href="#animes" data-bs-slide="prev"><i class="fa fa-chevron-left"
                 aria-hidden="true"></i></a>
 
         <div id="animes" class="carousel slide carousel-equal-heights my-4" data-bs-ride="carousel"
@@ -237,7 +237,7 @@
                 ?>
             </div>
         </div>
-        <a class="btn-floating" href="#animes" data-bs-slide="next"><i class="fa fa-chevron-right fa-2x"
+        <a class="btn-floating" href="#animes" data-bs-slide="next"><i class="fa fa-chevron-right"
                 aria-hidden="true"></i></a>
     </div>
 </section>
