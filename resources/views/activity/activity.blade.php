@@ -28,7 +28,7 @@
                             <i class="fas fa-user-circle fs-4 pe-1"></i>
                             @else
                             <img class="rounded-circle shadow-1-strong me-3"
-                            src="{{ Auth::user()->image->path }}" alt="{{Auth::user()->image->id}}"
+                            src="{{ $like->user->image->path }}" alt="{{Auth::user()->image->id}}"
                                 width="65" height="65" />
                             @endif
 

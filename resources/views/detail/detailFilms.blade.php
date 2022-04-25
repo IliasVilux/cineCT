@@ -131,7 +131,11 @@
                 <div class="col-12">
                     <div class="card card-comment bg-dark">
                         <div class="card-body card-body-comment p-4">
+                            @if(count($comments) == 0)
+                            <h4 class="text-center mb-4 pb-2">Todavía no hay ningun comentario, sé el primero!</h4>
+                            @else
                             <h4 class="text-center mb-4 pb-2">Nested comments section</h4>
+                            @endif
 
                             <div class="row">
                                 <div class="col" id="comment-container">
@@ -189,9 +193,11 @@
                         3900
                     ); // removemos el 'desabled 'para que el usuario pueda interactuar de nuevo con el botón
 
+                    let commentID = response.comment['id'];
+
                     let commentHtml =
                         `<div class="d-flex flex-start mb-4">
-                    <div><img class="rounded-circle shadow-1-strong me-3" src="{{ $comment->user->image->path }}" alt="{{ $comment->user->image->path }}" width="65"height="65"></div>
+                    <div><img class="rounded-circle shadow-1-strong me-3" width="65"height="65"></div>
                     <div class="flex-grow-1 flex-shrink-1"><div>
                         <div class="d-flex justify-content-between align-items-center">
                             <p class="mb-1">{{ Auth::user()->nick }} <span class="text-muted" id="last-comment"></span></p> 
@@ -200,11 +206,11 @@
                         <p class="small mb-0 comment">${ response.comment['description'] }</p>
                         </div>
                         <div class="like-container">
-                            <span class="far fa-heart like-review btn-like" id="btn-like" data-id="${ response.comment['id']}"></span>
+                            <span class="far fa-heart like-review btn-like" id="btn-like" data-id="${ commentID }"></span>
                             <span id="like-counter">0 likes</span>
-                            <form class="mt-2" method="POST" action="{{ route('user.comment-delete',['id' => $comment->id]) }}">
+                            <form class="mt-2" method="POST" action="{{ route('user.comment-delete',['id' => $film->review->id]) }}">
                             @csrf
-                                <input type="hidden" id="${ response.comment['id']}" name="user-comment" value="${ response.comment['id']}">
+                                <input type="hidden" id="${ commentID }" name="user-comment" value="${ commentID }">
                                 <button class="btn btn-outline-primary" type="submit">{{trans('titles.delete_review')}}</button>
                             </form>
                         </div>
@@ -215,7 +221,7 @@
                     jQuery('#character-counter').css("display", "none");
 
                     setTimeout(() => {
-                        location.reload();
+                        //location.reload();
                         jQuery('body,html').animate({scrollTop: $(document).height()}, 5);
                     }, 1000);
 

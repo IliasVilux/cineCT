@@ -23,6 +23,7 @@ return [
     'same_pass' => 'No es la misma contraseña.',
     'del_profile_conf' => '¿Estás seguro de que quieres eliminar la cuenta?',
     'review_deleted' => 'Tu review se ha eliminado',
+    'content_not_found' => 'No se ha encontrado ningun resultador con ',
     
     // Detalle video yt
     'video_error' => 'Si el video no funciona, es porque se ha eliminado de Youtube. Te invitamos a buscar uno nuevo y descubrir más sobre este contenido.',
