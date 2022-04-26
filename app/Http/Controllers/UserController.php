@@ -41,11 +41,11 @@ class UserController extends Controller
                 array_push($data['animes'], $anime);
             }
             if($content->serie_id != null){
-                $serie = Anime::find($content->serie_id);
+                $serie = Serie::find($content->serie_id);
                 array_push($data['series'], $serie);
             }
             if($content->film_id != null){
-                $film = Anime::find($content->film_id);
+                $film = Film::find($content->film_id);
                 array_push($data['films'], $film);
             }
         }

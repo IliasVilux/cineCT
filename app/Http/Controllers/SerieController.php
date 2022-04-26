@@ -8,6 +8,7 @@ use App\Models\Genre;
 use App\Models\Image;
 use App\Models\Review;
 use App\Models\FavoriteList;
+use App\Models\FavouriteLists;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
@@ -85,19 +86,23 @@ class SerieController extends Controller
     }
 
     public function returnSeries($id) {
+        $user = Auth::user()->id;
+
         $serie = Serie::find($id);
+        $userLists = FavouriteLists::query()->where('user_id', $user)->get();
+        $userTopList = FavouriteLists::query()->where('user_id', $user)->where('top_list', 1)->get();
         $profile = Image::all();
         $comments = Review::where('serie_id' ,'=', $id)->get();
         $shareComponent = $this->ShareWidget();
 
         if (!is_null($serie)) {
-            return view('/detail/detailSeries', compact('serie', 'comments', 'profile', 'shareComponent'));
+            return view('/detail/detailSeries', compact('serie', 'userLists', 'comments', 'profile', 'shareComponent', 'userTopList'));
         } else {
             return response('No encontrado', 404);
         }
     }
 
-    public function addFavourite($id)
+    public function addFavourite($id, $list)
     {
         $user = Auth::user()->id;
         $lista = FavoriteList::query()->where('user_id', $user)->where('serie_id', $id)->get();
@@ -106,7 +111,8 @@ class SerieController extends Controller
         if(!isset($lista[0])){
             $fav = FavoriteList::create([
                 'user_id' => $user,
-                'serie_id' => $id
+                'serie_id' => $id,
+                'list_id' => $list
             ]);
             return redirect()->to('/detail/detailSeries/' . $id)->with('SerieAdded','Se ha añadido ' . $serie_name[0]->name . ' a tu lista de favoritos');
         }

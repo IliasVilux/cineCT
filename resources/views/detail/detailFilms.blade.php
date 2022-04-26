@@ -86,9 +86,45 @@
                     echo '<div class="alert alert-success">Rating recibido: <strong>'.$_GET['stars'].'</strong>.</div>';
                 }elseif ((isset($_GET['stars']) == ""))
                 ?>
-                 <div class="d-flex flex-row">
-                    <a href="/detail/detailFilms/{{$film->id}}/addFav"><button type="button"
-                            class="btn button-purple btn-md">Añadir a favoritos</button></a>
+                <div class="d-flex flex-row">
+                    <div class="dropdown">
+                        <button type="button" class="btn button-purple btn-md dropdown-toggle" data-bs-toggle="dropdown">
+                            Añadir a favoritos
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#myModal">Crear nueva lista</a></li>
+                            @foreach ($userLists as $list)
+                                <li><a class="dropdown-item" href="/detail/detailFilms/{{$film->id}}/{{$list->id}}/addFav">{{ $list->name }}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <!-- The Modal -->
+                    <div class="modal fade" id="myModal">
+                        <div class="modal-dialog text-dark">
+                            <div class="modal-content">
+
+                            <form action="/detail/detailFilms/{{$film->id}}/addNewList">
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <input type="text" id="newListName" name="newListName" class="form-control" placeholder="Nombre de la lista">
+                                    </div>
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button class="btn button-purple">Crear nueva lista</button>
+                                    <a type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</a>
+                                </div>
+                            </form>
+
+                            </div>
+                        </div>
+                    </div>
+                    @if (isset($userTopList[0]->name))
+                    <a href="/detail/detailFilms/{{$film->id}}/{{$userTopList[0]->id}}/addFav"><button type="button"
+                            class="btn button-purple btn-md">Añadir a {{ $userTopList[0]->name }}</button></a>
+                    @endif
                     <div class="social-media-links mx-2">
                         <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button"
                             aria-expanded="false" aria-controls="shareComponent">

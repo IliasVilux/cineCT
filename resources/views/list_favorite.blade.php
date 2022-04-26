@@ -37,7 +37,7 @@
         </a>
     @endforeach
     @foreach($data['films'] as $film)
-        <a href="/detail/detailfilms/{{$film->id}}" class="image-link col-3 col-sm-2 p-2">
+        <a href="/detail/detailFilms/{{$film->id}}" class="image-link col-3 col-sm-2 p-2">
             @if($film->poster_path === NULL)
             <img class="img-content col-12" src="/img/NoImg.jpg" alt="">
             @else
