@@ -47,5 +47,8 @@ return [
     'scifi' => 'Scifi',
     'mecha' => 'Mecha',
     'josei' => 'Josei',
-    'unknown' => 'Unknown'
+    'unknown' => 'Unknown',
+
+    // Comments
+    'commentSection' => 'Comments section',
 ];

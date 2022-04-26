@@ -47,6 +47,9 @@ return [
     'scifi' => 'Ciència ficció',
     'mecha' => 'Mecha',
     'josei' => 'Josei',
-    'unknown' => 'Desconegut'
+    'unknown' => 'Desconegut',
+
+    // Comments
+    'commentSection' => 'Secció de comentaris',
 
 ];
