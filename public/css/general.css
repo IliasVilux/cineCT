@@ -95,18 +95,9 @@ a {
   text-decoration: none;
 }
 
-.profile-images div:hover img{
-  cursor: pointer;
-  transform: scale(1.3);
-}
-
 
 .profile-images div img{
-  width: 150px;
-  height: 150px;
   object-fit: cover;
-  border-radius: 60%; 
-  transition: transform .6s;
 }
 
 .cinect-custom-alert{
@@ -115,7 +106,21 @@ a {
   animation: opacityTransition 2s infinite;
 }
 
+@media only screen and (max-width: 1022px){
+  .profile-images div img{
+    width: 100px;
+    border-radius: 100px; 
+  }
+
+}
+
 @media (min-width: 1024px) {
+
+  .profile-images div:hover img{
+    cursor: pointer;
+    transform: scale(1.3);
+  }
+
   .profile-images:hover div{
     filter: blur(3px);
   }
@@ -126,6 +131,12 @@ a {
   
   .profile-images div:hover{
     filter: blur(0);
+  }
+  .profile-images div img{
+    width: 150px;
+    height: 150px;
+    border-radius: 60%; 
+    transition: transform .6s;
   }
 }
 
