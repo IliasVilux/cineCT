@@ -268,36 +268,36 @@
                         3900
                     );
 
+                    let commentID = response.comment['id'];
+                    let commentDescription = response.comment['description'];
                     let commentHtml =
-                        `<div class="d-flex flex-start mb-4">
-                        <div><img class="rounded-circle shadow-1-strong me-3" src="{{ $comment->user->image->path }}" alt="{{ $comment->user->image->path }}" width="65" height="65" /></div>
+                    `<div class="d-flex flex-start mb-4">
+                        <div><img class="rounded-circle shadow-1-strong me-3" src="{{Auth::user()->image->path}}" width="65"height="65"></div>
                         <div class="flex-grow-1 flex-shrink-1"><div>
                             <div class="d-flex justify-content-between align-items-center">
                                 <p class="mb-1">{{ Auth::user()->nick }} <span class="text-muted" id="last-comment"></span></p> 
                                 <a href="#!"><i class="fas fa-reply fa-xs"></i><span class="text-muted">reply</span></a> 
                             </div>
-                            <p class="small mb-0 comment">${ response.comment['description'] }</p>
+                            <p class="small mb-0 comment">${ commentDescription }</p>
                             </div>
                             <div class="like-container">
-                                <span class="far fa-heart like-review btn-like" id="btn-like" data-id="${ response.comment['id']}"></span>
+                                <span class="far fa-heart like-review btn-like" id="btn-like" data-id="${ commentID }"></span>
                                 <span id="like-counter">0 likes</span>
-                                <form class="mt-2" method="POST" action="{{ route('user.comment-delete',['id' => $comment->id]) }}">
+                                <form class="mt-2" method="POST" action="/review/delete/${commentID}">
                                     @csrf
-                                    <input type="hidden" id="${ response.comment['id']}" name="user-comment" value="${ response.comment['id']}">
+                                    <input type="hidden" id="${ commentID }" name="user-comment" value="${ commentID }">
                                     <button class="btn btn-outline-primary" type="submit">{{trans('titles.delete_review')}}</button>
-                            </form>
+                                </form>
+                            </div>
                         </div>
-                        </div>
-                    </div>
-                </div>`
+                    </div>`
 
                     jQuery('#comment-container').append(commentHtml);
                     jQuery('#character-counter').css("display", "none");
                     
                     setTimeout(() => {
-                        location.reload();
                         jQuery('body,html').animate({scrollTop: $(document).height()}, 5);
-                    },1000);
+                    },500);
                     
                 },
                 error: function(response) {

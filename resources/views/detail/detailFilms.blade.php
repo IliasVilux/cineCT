@@ -131,7 +131,7 @@
                 <div class="col-12">
                     <div class="card card-comment bg-dark">
                         <div class="card-body card-body-comment p-4">
-                            @if(count($comments) == 0)
+                            @if(count($comments) === 0)
                             <h4 class="text-center mb-4 pb-2">Todavía no hay ningun comentario, sé el primero!</h4>
                             @else
                             <h4 class="text-center mb-4 pb-2">Nested comments section</h4>
@@ -158,16 +158,12 @@
     <script type="text/javascript">
         $("#notify_user").css("display", "none");
 
-
         jQuery('#create-comment').submit(function(e) {
             e.preventDefault();
-            $("#commentSubmit").attr("disabled", true); // deshabilitamos el boton de publicar
+            $("#commentSubmit").attr("disabled", true);
             var url = '{{ route('comment.save.film', ['id' => $film->id]) }}';
-            var data = jQuery('#create-comment')
-                .serialize(); // serializamos los datos para trabajr con ellos en el backend
-            jQuery('#commentSubmit').html(
-                '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>'
-            ); //agregamos un spinner al boton al darle click, mientras no complete la peticion se seguirá mostrando el spinner
+            var data = jQuery('#create-comment').serialize(); 
+            jQuery('#commentSubmit').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>'); 
 
             $('#commentSubmit').addClass('loagindEffect');
 
@@ -177,53 +173,50 @@
                 type: 'POST',
                 success: function(response) {
                     jQuery("#commentSubmit").removeClass("loagindEffect");
-                    jQuery('#notify_user').html(
-                        `<div class="alert alert-success" role="alert"><i class="fas fa-check-circle"></i>${response.msg}</div>`
-                    ); //el msg hace referencia al 'msg' en el return en el controlador (en este caso al ReviewController)
+                    jQuery('#notify_user').html(`<div class="alert alert-success" role="alert"><i class="fas fa-check-circle"></i>${response.msg}</div>`);
                     jQuery('#notify_user').fadeIn("slow");
-                    jQuery('#create-comment')[0]
-                        .reset(); // una vez la peticion se complete , el textarea se reiniciarà :D
-                    jQuery('.spinner-border')
-                        .remove(); // una vez haya echo la petición y lo haya guardado en la bases de datos, el spiner lo elimanos
+                    jQuery('#create-comment')[0].reset();
+                    jQuery('.spinner-border').remove(); 
                     jQuery('#commentSubmit').html('Publicar');
                     jQuery('#notify_user').fadeOut(3000);
+
                     setTimeout(() => {
                             jQuery('#commentSubmit').attr('disabled', false);
                         },
                         3900
-                    ); // removemos el 'desabled 'para que el usuario pueda interactuar de nuevo con el botón
+                    ); 
 
                     let commentID = response.comment['id'];
-
+                    let commentDescription = response.comment['description'];
                     let commentHtml =
-                        `<div class="d-flex flex-start mb-4">
-                    <div><img class="rounded-circle shadow-1-strong me-3" src="{{Auth::user()->image->path}}" width="65"height="65"></div>
-                    <div class="flex-grow-1 flex-shrink-1"><div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <p class="mb-1">{{ Auth::user()->nick }} <span class="text-muted" id="last-comment"></span></p> 
-                            <a href="#!"><i class="fas fa-reply fa-xs"></i><span class="text-muted">reply</span></a> 
+                    `<div class="d-flex flex-start mb-4">
+                        <div><img class="rounded-circle shadow-1-strong me-3" src="{{Auth::user()->image->path}}" width="65"height="65"></div>
+                        <div class="flex-grow-1 flex-shrink-1"><div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="mb-1">{{ Auth::user()->nick }} <span class="text-muted" id="last-comment"></span></p> 
+                                <a href="#!"><i class="fas fa-reply fa-xs"></i><span class="text-muted">reply</span></a> 
+                            </div>
+                            <p class="small mb-0 comment">${ commentDescription }</p>
+                            </div>
+                            <div class="like-container">
+                                <span class="far fa-heart like-review btn-like" id="btn-like" data-id="${ commentID }"></span>
+                                <span id="like-counter">0 likes</span>
+                                <form class="mt-2" method="POST" action="/review/delete/${commentID}">
+                                    @csrf
+                                    <input type="hidden" id="${ commentID }" name="user-comment" value="${ commentID }">
+                                    <button class="btn btn-outline-primary" type="submit">{{trans('titles.delete_review')}}</button>
+                                </form>
+                            </div>
                         </div>
-                        <p class="small mb-0 comment">${ response.comment['description'] }</p>
-                        </div>
-                        <div class="like-container">
-                            <span class="far fa-heart like-review btn-like" id="btn-like" data-id="${ commentID }"></span>
-                            <span id="like-counter">0 likes</span>
-                            <form class="mt-2" method="POST" action="{{ route('user.comment-delete',['id' => Auth::user()->film->review->id]) }}">
-                            @csrf
-                                <input type="hidden" id="${ commentID }" name="user-comment" value="${ commentID }">
-                                <button class="btn btn-outline-primary" type="submit">{{trans('titles.delete_review')}}</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>`
+                    </div>`
+
 
                     jQuery('#comment-container').append(commentHtml);
                     jQuery('#character-counter').css("display", "none");
 
                     setTimeout(() => {
-                        //location.reload();
                         jQuery('body,html').animate({scrollTop: $(document).height()}, 5);
-                    }, 1000);
+                    }, 500);
 
                 },
                 error: function(response) {

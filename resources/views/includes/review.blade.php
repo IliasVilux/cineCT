@@ -1,7 +1,7 @@
     <div class="d-flex flex-start mb-4" id="content_id-{{$comment->id}}" style="padding-top:20px;">
         <div>
             @if(Auth::user()->image_id === null)
-            <i class="fas fa-user-circle fs-4 pe-1"></i>
+                <i class="fas fa-user-circle fs-4 pe-1"></i>
             @else
                 @if($comment)
                     <img class="rounded-circle shadow-1-strong me-3" src="{{ $comment->user->image->path }}" alt="a" width="65"height="65">
