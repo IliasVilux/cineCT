@@ -131,12 +131,7 @@
                 <div class="col-12">
                     <div class="card card-comment bg-dark">
                         <div class="card-body card-body-comment p-4">
-                            @if(count($comments) === 0)
-                            <h4 class="text-center mb-4 pb-2">Todavía no hay ningun comentario, sé el primero!</h4>
-                            @else
                             <h4 class="text-center mb-4 pb-2">Nested comments section</h4>
-                            @endif
-
                             <div class="row">
                                 <div class="col" id="comment-container">
                                     @foreach ($comments as $comment)
