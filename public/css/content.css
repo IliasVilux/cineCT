@@ -40,12 +40,12 @@ main {
 .page-link {
     
     color: #FFFFFF;
-    border: 2px solid #5A3C97;
+    border: 1.5px solid #5A3C97;
     background-color: #16181d;
 }
 
 .page-item.active .page-link{
-    border: 2px solid #5A3C97;
+    border: 1.5px solid #5A3C97;
     color: white;
     background-color: #5A3C97;
 }

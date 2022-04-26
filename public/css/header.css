@@ -15,7 +15,7 @@ header {
 
 img.logo {
   width: 75px;
-  height: 80%;
+  height: 75%;
 }
 
 .user-profile-img{
@@ -53,7 +53,10 @@ ul.list-unstyled li a i.fas {
 
 /* Iconos */
 
-i.fas.fa-search,
+i.fas.fa-search {
+  font-size: 14px;
+}
+
 .fas.fa-user-circle {
   font-size: 15px;
 }
@@ -65,19 +68,44 @@ i.fas.fa-home  {
 }
 
 @media screen and (min-width: 576px) {
-  .navbar {
-    padding: 15px;
+  html, main, body {
+    background: #16181d;
+    color: #FFFFFF;
+    font-size: 15px;
   }
-  i.fas.fa-search,
+  .navbar-dark .navbar-toggler {
+    font-size: 20px;
+  }
+  .navbar {
+    padding: 5px;
+  }
+  i.fas.fa-search {
+    font-size: 19px;
+  }
+  
   .fas.fa-user-circle {
     font-size: 20px;
+  }
+  img.logo {
+    width: 130px;
+    height: 75%;
   }
 }
 
 
 @media screen and (min-width: 768px) {
-
-  i.fas.fa-search,
+  html, main, body {
+    background: #16181d;
+    color: #FFFFFF;
+    font-size: 15px;
+  }
+  .navbar-dark .navbar-toggler {
+    font-size: 25px;
+  }
+  i.fas.fa-search {
+    font-size: 24px;
+  }
+  
   .fas.fa-user-circle {
     font-size: 25px;
   }

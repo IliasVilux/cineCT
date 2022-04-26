@@ -70,7 +70,7 @@
         </button>
     </div>
 </section>
-<section class="d-flex flex-wrap align-items-center mt-3">
+<section class="d-flex flex-wrap align-items-center mt-md-2">
     <!--EMPIEZAN: TODOS LOS BOTONES PARA FILTRAR-->
     @foreach ($genres as $genre)
     <button class="button-category col-lg col-3">
@@ -82,7 +82,7 @@
     <!--ACABAN: TODOS LOS BOTONES PARA FILTRAR-->
 </section>
 
-<section class="d-none d-lg-flex flex-wrap align-items-center mt-3">
+<section class="d-none d-lg-flex flex-wrap align-items-center">
     @foreach ($otherGenres as $genre)
     <button class="button-category col-lg col-3">
         <a href="{{ route('anime.animes-filtered', ['genre' => $genre]) }}">
@@ -103,7 +103,7 @@
 
 <div class="collapse" id="more-genres">
     <!--EMPIEZAN: TODOS LOS BOTONES DE OTROS GENEROS PARA FILTRAR-->
-    <section class="d-flex flex-wrap align-items-center mt-3">
+    <section class="d-flex flex-wrap align-items-center">
         @foreach ($otherGenres as $genre)
         <button class="button-category col-lg col-3">
             <a href="{{ route('anime.animes-filtered', ['genre' => $genre]) }}">

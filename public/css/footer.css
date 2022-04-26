@@ -1,7 +1,6 @@
 /* Footer */
-.footer {
+footer.footer {
   background-image: linear-gradient(to bottom, black 25%, #9966ff 150%);
-  font-size: 15px;
 }
 
 .btn-outline-light {
@@ -22,14 +21,18 @@ div.copyright {
 }
 
 @media screen and (min-width: 576px) {
-  footer.footer {
+  html, main, body {
+    background: #16181d;
+    color: #FFFFFF;
     font-size: 15px;
   }
 }
 
 
 @media screen and (min-width: 768px) {
-  footer.footer {
+  html, main, body {
+    background: #16181d;
+    color: #FFFFFF;
     font-size: 20px;
   }
 }

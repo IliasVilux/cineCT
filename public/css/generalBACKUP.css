@@ -4,8 +4,8 @@ html, main, body {
 }
 
 .button-purple{
-  color: #FFFFFF;
-  border: 2px solid #5A3C97;
+  color: 1FFFFFF;
+  border: 1.5px solid #5A3C97;
   background-color: #16181d;
 }
 .button-purple:hover{
@@ -16,7 +16,7 @@ html, main, body {
 
 .btn-violet{
   color: #FFFFFF;
-  border: 2px solid #5A3C97;
+  border: 1.5px solid #5A3C97;
   text-align: center;
   transition: color 1s, background-color 1s;
 }

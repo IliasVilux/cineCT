@@ -64,7 +64,7 @@
     </div>
 </section>
 
-<section class="d-flex flex-wrap align-items-center mt-3">
+<section class="d-flex flex-wrap align-items-center mt-md-2">
     <!--EMPIEZAN: TODOS LOS BOTONES PARA FILTRAR-->
     @foreach($genres as $genre)
     <button class="button-category col-lg col-3">

@@ -29,11 +29,11 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                         <a class="navbar-brand me-0" href="{{ url('home') }}">
-                            <img src="/img/CinectLogo.svg" class="logo">
+                            <img src="/img/CinectLogo.svg" class="logo mt-1 pt-sm-0">
                         </a>
                 </div>
                 <div class="d-flex flex-direction-row flex-nowrap justify-content-end align-items-center col-3">
-                <a href="{{ url('/search/search') }}" class="footer-links text-light text-uppercase"><i class="fas fa-search text-light p-0"></i></a>
+                <a href="{{ url('/search/search') }}" class="footer-links text-light text-uppercase"><i class="fas fa-search text-light p-0 pt-1"></i></a>
                     <div class="dropdown">
                         <button class="btn text-light dropdown-toggle d-flex flex-direction-row flex-nowrap justify-content-end align-items-center p-0 px-sm-3"
                             type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true">
@@ -48,19 +48,19 @@
                             @if (auth()->check())
                                 <li>
                                     <a class="dropdown-item" href="{{ route('user.profile') }}">
-                                        <i class="fas fa-user-circle"></i>
+                                        <i class="fas fa-user-circle pe-sm-1"></i>
                                         {{trans('titles.profile')}}
                                     </a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item" href="{{route('user.favorite.list')}}">
-                                        <i class="fas fa-list"></i>
+                                        <i class="fas fa-list px-1"></i>
                                         {{trans('titles.lists')}}
                                     </a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item" href="{{route('user.activity')}}">
-                                        <i class="fas fa-bell"></i>
+                                        <i class="fas fa-bell px-1"></i>
                                         {{trans('titles.activity')}}
                                     </a>
                                 </li>
@@ -69,7 +69,7 @@
                                 </li>
 
                                 <li><a class="dropdown-item" href="{{ route('signout.user') }}"><i
-                                            class="fas fa-sign-out-alt"></i>Cerrar sessión</a>
+                                            class="fas fa-sign-out-alt px-1"></i>Cerrar sessión</a>
                                 </li>
                             @else
                                 <li><a class="dropdown-item" href="{{ route('user.create') }}"><i class="fas fa-user-circle"></i>Iniciar Session</a></li>
@@ -146,8 +146,8 @@
         <div class="container-fluid">
 
             <!-- SECTION: LINKS -->
-            <section class="pt-3 pb-1">
-                <h5 class="text-uppercase">Links</h5>
+            <section class="pt-4 pb-1">
+                <h3 class="text-uppercase">Links</h3>
                 <div class="d-flex flex-row flex-wrap justify-content-center">
                     <a href="{{ url('/') }}" class="footer-links text-white">{{trans('titles.home')}}</a>
                     <a href="{{ url('/content/contentFilms') }}" class="footer-links text-white">{{trans('titles.films')}}</a>
@@ -191,7 +191,7 @@
 
         <!-- COPYRIGHT -->
         <div class="copyright text-center p-3">
-            <p>© 2022 Copyright:
+            <p class="m-0">© 2022 Copyright:
             <a class="text-white" href="/home">Cinect</a></p>
         </div>
         <!-- COPYRIGHT -->
