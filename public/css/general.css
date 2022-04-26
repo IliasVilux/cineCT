@@ -39,16 +39,16 @@ a {
 }
 
 .img-carousel{
-  height: 250px;
+  height: 225px;
 }
 
 .full-img {
   width: 100%;
-  height: 250px;
+  height: 225px;
 }
 
 .carousel-item.full {
-  height: 250px;
+  height: 225px;
 }
 
 .section-content {

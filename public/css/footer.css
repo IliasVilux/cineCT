@@ -9,6 +9,7 @@ footer.footer {
 
 a.footer-links {
   margin: 7px 10px;
+  font-size: 12px;
   text-decoration: none;
 }
 
@@ -26,6 +27,11 @@ div.copyright {
     color: #FFFFFF;
     font-size: 15px;
   }
+  a.footer-links {
+    margin: 7px 10px;
+    font-size: 20px;
+    text-decoration: none;
+  }
 }
 
 
@@ -34,5 +40,10 @@ div.copyright {
     background: #16181d;
     color: #FFFFFF;
     font-size: 20px;
+  }
+  a.footer-links {
+    margin: 7px 10px;
+    font-size: 25px;
+    text-decoration: none;
   }
 }
