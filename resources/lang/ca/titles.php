@@ -70,7 +70,7 @@ return [
     'trailer' => 'Tràiler',
 
     // Time
-    'second' => 'segons',
+    'second' => 'segon',
     'seconds' => 'segons',
     'min' => 'minut',
     'mins' => 'minuts',

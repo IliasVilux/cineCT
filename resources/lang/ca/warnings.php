@@ -26,7 +26,6 @@ return [
     'review_deleted' => 'El teu comentari s\'ha esborrat',
     'content_not_found' => 'No s\'ha trobat cap resultat amb ',
     
-    
     // Detalle video yt
     'video_error' => 'Si el video no funciona, és perque s\'ha eliminat el video de Youtube. T\'invitem a buscar-ne un de nou i descobrir més sobre aquest contingut a ',
 

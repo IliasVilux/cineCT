@@ -26,6 +26,9 @@ return [
     'content_not_found' => 'No results found with ',
       
     // Detalle video yt
-    'video_error' => 'If the video is not working, is because the video was deleted from Youtube. We invite you to search a new trailer to know more about this content.',
+    'video_error' => 'If the video is not working, is because the video was deleted from Youtube. We invite you to search a new trailer to know more about this content on ',
+
+    // Detail
+    'empty_msg' => 'You can\'t publish an empty message!!',
 
 ];
