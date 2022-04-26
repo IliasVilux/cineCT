@@ -6,13 +6,6 @@
         <link rel="stylesheet" href="{{ asset('css/general.css') }}">
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <script>
-            /*
-                            $(document).ready(function() {
-                                $('input.star').rating();
-                            });
-                            */
-        </script>
         <style>
             div#social-links {
                 margin: 0 auto;
@@ -28,7 +21,6 @@
                 font-size: 30px;
                 color: #9966ff;
             }
-
         </style>
     </head>
     @if (Session::has('AnimeAdded'))
@@ -37,22 +29,19 @@
         </div>
     @endif
     <section class="container">
-        <a href="{{ url('/content/contentAnimes') }}" class="btn button-purple my-4" title="Back"> Back</a>
+        <a href="{{ url('/content/contentAnimes') }}" class="btn button-purple my-4" title="Back">{{ trans('titles.back') }}</a>
 
         <h1 class="detail-title">{{ $anime->name }}</h1>
 
-        }
-        ?>
         </div>
         </article>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <div class="dropdown">
             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
-                Añadir a favoritos
+                {{ trans('titles.add_favs') }}
             </button>
             <ul class="dropdown-menu">
-                <li><a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#myModal">Crear nueva
-                        lista</a></li>
+                <li><a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#myModal">{{ trans('titles.new_list') }}</a></li>
                 @foreach ($userLists as $list)
                     <li><a class="dropdown-item" href="#">{{ $list->name }}</a></li>
                 @endforeach
@@ -74,8 +63,8 @@
 
                         <!-- Modal footer -->
                         <div class="modal-footer">
-                            <button class="btn button-purple">Crear nueva lista</button>
-                            <a type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</a>
+                            <button class="btn button-purple">{{ trans('titles.new_list') }}</button>
+                            <a type="button" class="btn btn-danger" data-bs-dismiss="modal">{{ trans('titles.close') }}</a>
                         </div>
                     </form>
 
@@ -95,12 +84,6 @@
                         </div>
                     </div> -->
             <div id="demo" class="collapse">{!! $shareComponent !!}</div>
-            <div class="collapse" id="collapseExample">
-                <div class="card card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil
-                    anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                </div>
-            </div>
         </article>
 
         <article class="mt-4">
@@ -211,7 +194,7 @@
                 <div class="col-12">
                     <div class="card card-comment bg-dark">
                         <div class="card-body card-body-comment p-4">
-                            <h4 class="text-center mb-4 pb-2">Nested comments section</h4>
+                            <h4 class="text-center mb-4 pb-2">{{ trans('titles.commentSection') }}</h4>
 
                             <div class="row">
                                 <div class="col" id="comment-container">

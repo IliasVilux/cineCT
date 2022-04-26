@@ -5,13 +5,6 @@
         <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <script>
-            /*
-                    $(document).ready(function() {
-                        $('input.star').rating();
-                    });
-                    */
-        </script>
         <style>
             div#social-links {
                 margin: 0 auto;
@@ -27,7 +20,6 @@
                 font-size: 30px;
                 color: #9966ff;
             }
-
         </style>
     </head>
     @if (Session::has('FilmAdded'))
@@ -37,7 +29,7 @@
     @endif
     <section class="container">
         <a href="{{ url('/content/contentFilms') }}" class="btn button-purple my-4" title="Back">
-            Back
+            {{ trans('titles.back') }}
         </a>
 
         <h1 class="detail-title">{{ $film->name }}</h1>
@@ -52,24 +44,24 @@
             <article class="col-12 col-md-6 more-info bg-dark p-3">
                 <div class="p-4">
                     <div class="d-flex nowrap">
-                        <h5 class="pe-2"><b>Género:</b></h5>
+                        <h5 class="pe-2"><b>{{ trans('titles.genre') }}:</b></h5>
                         <p>{{ $film->genre->name }}</p>
                     </div>
                     <div class="d-flex nowrap">
-                        <h5 class="pe-2"><b>Fecha de lanzamiento:</b></h5>
+                        <h5 class="pe-2"><b>{{ trans('titles.release') }}:</b></h5>
                         <p> {{ $film->release_date }}</p>
                     </div>
                     <div class="d-flex nowrap">
-                        <h5 class="pe-2"><b>Duración:</b></h5>
+                        <h5 class="pe-2"><b>{{ trans('titles.duration') }}:</b></h5>
                         <p> {{ $film->duration }} min</p>
                     </div>
                     <div class="d-flex nowrap">
-                        <h5 class="pe-2"><b>Puntuación:</b></h5>
+                        <h5 class="pe-2"><b>{{ trans('titles.rating') }}:</b></h5>
                         <p><i class="fas fa-star"></i>
                         <p> {{ $film->puntuation }}</p>/10<p>
                     </div>
                     <div class="d-flex flex-column align-items-start">
-                        <h5 class="pe-2"><b>Cuánto te ha gustado?</b></h5>
+                        <h5 class="pe-2"><b>{{ trans('titles.how_much') }}</b></h5>
                         <form method="GET" class="d-flex flex-column flex-xl-row align-items-center">
                             <div class="rating col-12 me-3">
                                 <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
@@ -83,7 +75,7 @@
                                 <input name="stars" id="e9" type="radio" value="2"><label for="e9">☆</label>
                                 <input name="stars" id="e10" type="radio" value="1"><label for="e10">☆</label>
                             </div>
-                            <button type="submit" class="btn button-purple btn-sm col-6 mb-2 mb-xl-0">Enviar</button>
+                            <button type="submit" class="btn button-purple btn-sm col-6 mb-2 mb-xl-0">{{ trans('titles.send') }}</button>
                         </form>
                     </div>
                     <?php
@@ -93,7 +85,7 @@
                     ?>
                     <div class="d-flex flex-row my-2">
                         <a href="/detail/detailFilms/{{ $film->id }}/addFav"><button type="button"
-                                class="btn button-purple btn-md">Añadir a favoritos</button></a>
+                                class="btn button-purple btn-md">{{ trans('titles.add_favs') }}</button></a>
                         <div class="social-media-links mx-2">
                             <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button"
                                 aria-expanded="false" aria-controls="shareComponent">
@@ -113,12 +105,12 @@
             <form method="POST" action="" id="create-comment" class="create_comment">
                 @csrf
                 <textarea name="description" id="description" cols="50" rows="3" placeholder="Escribe un comentario"></textarea>
-                <button class="btn button-purple mt-3" type="submit" id="commentSubmit">Publicar</button>
+                <button class="btn button-purple mt-3" type="submit" id="commentSubmit">{{ trans('titles.publish') }}</button>
             </form>
             <div id="notify_user"></div>
             @if ($errors->has('description'))
                 <div class="mt-2 alert alert-danger">
-                    No puedes publicar un comentario sin vacío!
+                    {{ trans('warnings.empty_msg') }}
                 </div>
             @endif
         </article>
@@ -131,7 +123,7 @@
                 <div class="col-12">
                     <div class="card card-comment bg-dark">
                         <div class="card-body card-body-comment p-4">
-                            <h4 class="text-center mb-4 pb-2">Nested comments section</h4>
+                            <h4 class="text-center mb-4 pb-2">{{ trans('titles.commentSection') }}</h4>
 
                             <div class="row">
                                 <div class="col" id="comment-container">

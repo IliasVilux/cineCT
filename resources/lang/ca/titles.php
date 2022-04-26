@@ -52,4 +52,34 @@ return [
     // Comments
     'commentSection' => 'Secció de comentaris',
 
+    // Other
+    'back' => 'Enrere',
+    'close' => 'Tancar',
+    'genre' => 'Gènere',
+    'release' => 'Data de publicació',
+    'duration' => 'Duració',
+    'seasons' => 'Temporades',
+    'total_episodes' => 'Capítols totals',
+    'rating' => 'Puntuació',
+    'how_much' => 'Quant t\'ha agradat?',
+    'send' => 'Enviar',
+    'add_favs' => 'Afegir a preferits',
+    'publish' => 'Publicar',
+    'new_list' => 'Crear nova llista',
+
+    // Time
+    'second' => 'segons',
+    'seconds' => 'segons',
+    'min' => 'minut',
+    'mins' => 'minuts',
+    'hour' => 'hora',
+    'hours' => 'hores',
+    'day' => 'dia',
+    'days' => 'díes',
+    'month' => 'mes',
+    'months' => 'mesos',
+    'ago' => 'Fa',
+
+
+
 ];

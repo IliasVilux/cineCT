@@ -27,12 +27,12 @@ class UploadTimeFormat
         $minute = $timeAgo->i;//minutos = [00-59]
         $second = $timeAgo->s; //segundos = [00-59];
         
-        $monthKeys = ['mes', 'meses'];
-        $dayKeys = ['dia', 'dias'];
-        $hourKeys = ['hora', 'horas'];
-        $minuteKeys = ['minuto', 'minutos'];
-        $secondKeys = ['segundo', 'segundos'];
-        
+        $monthKeys = [trans('titles.month'), trans('titles.months')];
+        $dayKeys = [trans('titles.day'), trans('titles.days')];
+        $hourKeys = [trans('titles.hour'), trans('titles.hours')];
+        $minuteKeys = [trans('titles.min'), trans('titles.mins')];
+        $secondKeys = [trans('titles.second'), trans('titles.seconds')];
+
         if($month == 00){
             $msj = $month .' '. $monthKeys[1];
             if($day == 00){
@@ -80,8 +80,9 @@ class UploadTimeFormat
             }
         }
 
-        return 'Hace ' .$msj;
-       
+        // Que haya un if detectando el idioma y que si el idioma es inglés que se ponga así:
+        // return $msj . " " . trans('titles.ago');
 
+        return trans('titles.ago'). " " .$msj;    
     }
 }
