@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\FavoriteList;
+use App\Models\FavouriteLists;
 
 class UserController extends Controller
 {
@@ -21,30 +22,51 @@ class UserController extends Controller
     public function userFavoriteList()
     {
         $userIdList = Auth::User()->id;
-        $userFavs['animes'] = FavoriteList::where('user_id', $userIdList)->whereNotNull('anime_id')->get();
-        $userFavs['series'] = FavoriteList::where('user_id', $userIdList)->whereNotNull('serie_id')->get();
-        $userFavs['films'] = FavoriteList::where('user_id', $userIdList)->whereNotNull('film_id')->get();
-        $arrayAnimes = array();
-        $arraySeries = array();
-        $arrayFilms = array();
+        $userFavs = FavouriteLists::where('user_id', $userIdList)->get();
 
-        foreach ($userFavs['animes'] as $anime)
-        {
-            $animeFind = Anime::where('id', $anime->anime_id)->get();
-            array_push($arrayAnimes, $animeFind);
+        return view('list', compact(['userFavs']));
+    }
+
+    public function specificFavoriteList($id){
+        $userIdList = Auth::User()->id;
+        $lista = FavoriteList::where('user_id', $userIdList)->where('list_id', $id)->get();
+        $data['list'] = FavouriteLists::find($id);
+        $data['animes'] = array();
+        $data['series'] = array();
+        $data['films'] = array();
+
+        foreach($lista as $content){
+            if($content->anime_id != null){
+                $anime = Anime::find($content->anime_id);
+                array_push($data['animes'], $anime);
+            }
+            if($content->serie_id != null){
+                $serie = Anime::find($content->serie_id);
+                array_push($data['series'], $serie);
+            }
+            if($content->film_id != null){
+                $film = Anime::find($content->film_id);
+                array_push($data['films'], $film);
+            }
         }
-        foreach ($userFavs['series'] as $serie)
-        {
-            $serieFind = Serie::where('id', $serie->serie_id)->get();
-            array_push($arraySeries, $serieFind);
-        }
-        foreach ($userFavs['films'] as $film)
-        {
-            $filmFind = Serie::where('id', $film->film_id)->get();
-            array_push($arrayFilms, $filmFind);
-        }
-        
-        return view('list', compact(['userFavs', 'arrayAnimes', 'arraySeries', 'arrayFilms']));
+
+        return view('list_favorite', compact(['data']));
+    }
+
+    public function setFavoriteList($id){
+        FavouriteLists::where('top_list', 1)->update(['top_list' => 0]);
+        $currentFav = FavouriteLists::where('top_list', 1)->get();
+
+        $userIdList = Auth::User()->id;
+        FavouriteLists::where('user_id', $userIdList)->where('id', $id)->update(['top_list' => 1]);
+
+        return redirect()->back();
+    }
+    public function unsetFavoriteList($id){
+        $userIdList = Auth::User()->id;
+        FavouriteLists::where('top_list', 1)->where('id', $id)->where('user_id', $userIdList)->update(['top_list' => 0]);
+
+        return redirect()->back();
     }
 
     public function searchContent(Request $request)

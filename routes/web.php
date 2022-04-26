@@ -52,6 +52,9 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     Route::post('/user/profile', [UserController::class, 'profileUpdate'])->name('user.update');
     
     Route::get('/user/list', [UserController::class, 'userFavoriteList'])->name('user.favorite.list');
+    Route::get('/user/lista-fav/{id}', [UserController::class, 'specificFavoriteList'])->name('user.specific-favorite.list');
+    Route::get('/user/lista-fav/{id}/addFavorite', [UserController::class, 'setFavoriteList'])->name('user.specific-favorite-add-top.list');
+    Route::get('/user/lista-fav/{id}/deleteFavorite', [UserController::class, 'unsetFavoriteList'])->name('user.specific-favorite-delete-top.list');
 
     Route::get('/user/profile/change-password', [ChangePasswordController::class, 'index'])->name('change.password');
     Route::post('/user/profile/change-password', [ChangePasswordController::class, 'store'])->name('change.password.post');

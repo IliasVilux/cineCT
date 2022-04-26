@@ -127,7 +127,7 @@ class AnimeController extends Controller
             $fav = FavoriteList::create([
                 'user_id' => $user,
                 'anime_id' => $idA,
-                'list_id' => $list->id
+                'list_id' => $list
             ]);
             return redirect()->to('/detail/detailAnimes/' . $idA)->with('AnimeAdded','Se ha añadido ' . $anime_name[0]->name . ' a tu lista de favoritos');
         } else { return redirect()->to('/detail/detailAnimes/' . $idA); }
@@ -137,7 +137,7 @@ class AnimeController extends Controller
     {
         $user = Auth::user()->id;
         $newListName = $request->input('newListName');
-        $listUser = FavouriteLists::where('name', $newListName)->get('id')->max();
+        $listUser = FavouriteLists::where('name', $newListName)->where('user_id', $user)->get('id')->max();
 
         $request->validate([
             'newListName' => 'required|string|min:2|max:255'
@@ -152,8 +152,6 @@ class AnimeController extends Controller
             $idList = FavouriteLists::where('name', $newListName)->get('id')->max();
             $this->addFavourite($idAnime, $idList);
         } else { return redirect()->to('/detail/detailAnimes/' . $idAnime); }
-
-
     }
     
     public function ShareWidget()

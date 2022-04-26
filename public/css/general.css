@@ -13,6 +13,16 @@ html, main, body {
   color: white;
   background-color: #5A3C97;
 }
+.button-gold{
+  color: #FFFFFF;
+  border: 2px solid #d4b91f;
+  background-color: #16181d;
+}
+.button-gold:hover{
+  border: 2px solid #FFFFFF;
+  color: white;
+  background-color: #ffdd1c;
+}
 a {
   text-decoration: none;
 }

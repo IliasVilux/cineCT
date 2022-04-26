@@ -3,6 +3,11 @@
 
 <head>
     <link rel="stylesheet" href="{{asset('css/detail.css')}}">
+    <style>
+        .cursor{
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <section class="container">
@@ -12,47 +17,26 @@
 @else
     <h1>MIS LISTAS</h1>
     <p class="d-none">{{$cont = 0}}</p>
-    @foreach($userFavs['animes'] as $anime)
-        <div class="d-flex">
-            <a href="/detail/detailAnimes/{{$anime->anime_id}}" class="link-img-carousel">
-                <img src="{{$arrayAnimes[$cont][0]->poster_path}}" class="img-carousel px-3" alt="Img {{$arrayAnimes[$cont][0]->name}}">
-            </a>
-            <h1></h1>
-            {{$anime}}
+    @foreach($userFavs as $favList)
+        <div>
+            @if($favList->top_list == 1)
+                <a href="lista-fav/{{$favList->id}}">
+                    <div class="mt-4 p-5 w-100 bg-dark text-white rounded button-gold cursor">
+                        <h1>{{$favList->name}}</h1>
+                    </div>  
+                </a>
+            @else
+                <a href="lista-fav/{{$favList->id}}">
+                    <div class="mt-4 p-5 w-100 bg-dark text-white rounded button-purple cursor">
+                        <h1>{{$favList->name}}</h1>
+                    </div>
+                </a>
+            @endif
             <br>
         </div>
-        {{$cont++}}
+        <p class="d-none">{{$cont++}}</p>
     @endforeach
 
-    <br><br>
-
-    <p class="d-none">{{$cont = 0}}</p>
-    @foreach($userFavs['films'] as $film)
-        <div class="d-flex">
-            <a href="/detail/detailFilms/{{$film->film_id}}" class="link-img-carousel">
-                <img src="{{$arrayFilms[$cont][0]->poster_path}}" class="img-carousel px-3" alt="Img {{$arrayFilms[$cont][0]->name}}">
-            </a>
-            <h1></h1>
-            {{$film}}
-            <br>
-        </div>
-        {{$cont++}}
-    @endforeach
-
-    <br><br>
-
-    <p class="d-none">{{$cont = 0}}</p>
-    @foreach($userFavs['series'] as $serie)
-        <div class="d-flex">
-            <a href="/detail/detailSeries/{{$serie->serie_id}}" class="link-img-carousel">
-                <img src="{{$arraySeries[$cont][0]->poster_path}}" class="img-carousel px-3" alt="Img {{$arraySeries[$cont][0]->name}}">
-            </a>
-            <h1></h1>
-            {{$serie}}
-            <br>
-        </div>
-        {{$cont++}}
-    @endforeach
     <a href="{{ url('/') }}" class="btn button-purple" title="Home">
         Home
     </a>

@@ -112,6 +112,26 @@ class SerieController extends Controller
         }
         return redirect()->to('/detail/detailSeries/' . $id);
     }
+    public function addNewList($idSerie, Request $request)
+    {
+        $user = Auth::user()->id;
+        $newListName = $request->input('newListName');
+        $listUser = FavouriteLists::where('name', $newListName)->where('user_id', $user)->get('id')->max();
+
+        $request->validate([
+            'newListName' => 'required|string|min:2|max:255'
+        ]);
+
+        if(empty($listUser))
+        {
+            $newlist = FavouriteLists::create([
+                'name' => $newListName,
+                'user_id' => $user,
+            ]);
+            $idList = FavouriteLists::where('name', $newListName)->get('id')->max();
+            $this->addFavourite($idSerie, $idList);
+        } else { return redirect()->to('/detail/detailSeries/' . $idSerie); }
+    }
 
     public function ShareWidget()
     {
