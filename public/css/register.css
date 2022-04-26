@@ -12,9 +12,11 @@ button {
 }
 
 /* Botones register-login*/
-.nav-link,
-.nav-link:hover  {
+.nav-link{
   color: white;
+}
+.nav-link:hover  {
+  color: #5A3C97;
 }
 .nav-tabs {
   border-bottom: none;

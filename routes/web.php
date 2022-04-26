@@ -115,7 +115,7 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     Route::post('/dislike/{review_id}', [LikeController::class, 'dislike'])->name('user.dislike');
 
     //Order by LIKES
-    Route::post('/order/film/comments/{id}', [ReviewController::class, 'orderCo'])
+    //Route::post('/order/film/comments/{id}', [ReviewController::class, 'orderCo'])
    
 });
 

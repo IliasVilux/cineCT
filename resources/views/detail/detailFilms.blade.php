@@ -126,12 +126,13 @@
                             <h4 class="text-center mb-4 pb-2">{{ trans('titles.commentSection') }}</h4>
                             <div class="row">
                                 <div class="col" id="comment-container">
-                                    <div class="d-flex justify-content-end">
-                                    <a class="btn btn-order" style="border:1px solid #5A3C97;" id="{{$film->id}}" href="">
-                                        <i style="color:#ffffff; font-size:20px;" class="fas fa-sort-alpha-down"></i>
-                                        <i style="color:red; font-size:20px;" class="fas fa-heart"></i>
-                                    </a>
-                                    </div>
+                                    @if(count($comments) !== 0)
+                                        <div class="d-flex justify-content-end">
+                                            <a class="btn btn-order" style="border:1px solid #5A3C97; color:#ffffff;" id="{{$film->id}}" href="">
+                                                {{trans('content.order_review')}}
+                                            </a>
+                                        </div>
+                                    @endif
                                     @foreach ($comments as $comment)
                                         @if ($comment->film_id == $film->id && !empty($comment->description))
                                             @include('includes.review', ['comment' => $comment])
