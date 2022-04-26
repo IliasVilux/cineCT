@@ -28,7 +28,7 @@ return [
     
     
     // Detalle video yt
-    'video_error' => 'Si el video no funciona, és perque s\'ha eliminat el video de Youtube. T\'invitem a buscar-ne un de nou i descobrir més sobre aquest contingut.',
+    'video_error' => 'Si el video no funciona, és perque s\'ha eliminat el video de Youtube. T\'invitem a buscar-ne un de nou i descobrir més sobre aquest contingut a ',
 
     // Detail
     'empty_msg' => 'No pots  publicar un comentari buit!',
