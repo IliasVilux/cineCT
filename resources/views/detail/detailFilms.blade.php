@@ -197,7 +197,7 @@
 
                     let commentHtml =
                         `<div class="d-flex flex-start mb-4">
-                    <div><img class="rounded-circle shadow-1-strong me-3" width="65"height="65"></div>
+                    <div><img class="rounded-circle shadow-1-strong me-3" src="{{Auth::user()->image->path}}" width="65"height="65"></div>
                     <div class="flex-grow-1 flex-shrink-1"><div>
                         <div class="d-flex justify-content-between align-items-center">
                             <p class="mb-1">{{ Auth::user()->nick }} <span class="text-muted" id="last-comment"></span></p> 
@@ -208,7 +208,7 @@
                         <div class="like-container">
                             <span class="far fa-heart like-review btn-like" id="btn-like" data-id="${ commentID }"></span>
                             <span id="like-counter">0 likes</span>
-                            <form class="mt-2" method="POST" action="{{ route('user.comment-delete',['id' => $film->review->id]) }}">
+                            <form class="mt-2" method="POST" action="{{ route('user.comment-delete',['id' => Auth::user()->film->review->id]) }}">
                             @csrf
                                 <input type="hidden" id="${ commentID }" name="user-comment" value="${ commentID }">
                                 <button class="btn btn-outline-primary" type="submit">{{trans('titles.delete_review')}}</button>
