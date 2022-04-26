@@ -52,4 +52,6 @@ return [
 
     // Comments
     'commentSection' => 'Comments section',
+
+    'ago' => 'ago',
 ];

@@ -3,6 +3,7 @@
 namespace App\Helpers;
 
 use DateTime;
+use Illuminate\Support\Facades\App;
 
 class UploadTimeFormat
 {
@@ -79,10 +80,15 @@ class UploadTimeFormat
                 $msj = $month .' '. $monthKeys[1];
             }
         }
+        
+        
+        $currentUserActiveLang = session()->get('locale');
+        if($currentUserActiveLang === 'en'){
+            $translation = $msj . " " . trans('titles.ago');
+        }else{
+            $translation = trans('titles.ago') . " " . $msj;
+        }
 
-        // Que haya un if detectando el idioma y que si el idioma es inglés que se ponga así:
-        // return $msj . " " . trans('titles.ago');
-
-        return trans('titles.ago'). " " .$msj;    
+        return $translation;
     }
 }

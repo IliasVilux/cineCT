@@ -53,4 +53,6 @@ return [
     // Comments
     'commentSection' => 'Sección de comentarios',
 
+    'ago' => 'Hace',
+
 ];
