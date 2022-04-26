@@ -24,7 +24,7 @@
         <!-- START NAVBAR -->
         <nav class="navbar navbar-expand-xs">
             <div class="container-fluid">
-                <div class="col-8 col-sm-7 d-flex flex-row justify-content-between">
+                <div class="d-flex flex-row justify-content-between">
                     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -191,8 +191,8 @@
 
         <!-- COPYRIGHT -->
         <div class="copyright text-center p-3">
-            © 2022 Copyright:
-            <a class="text-white" href="/">Cinect</a>
+            <p>© 2022 Copyright:
+            <a class="text-white" href="/home">Cinect</a></p>
         </div>
         <!-- COPYRIGHT -->
     </footer>

@@ -20,3 +20,16 @@ a.footer-links:hover {
 div.copyright {
   background-color: black;
 }
+
+@media screen and (min-width: 576px) {
+  footer.footer {
+    font-size: 15px;
+  }
+}
+
+
+@media screen and (min-width: 768px) {
+  footer.footer {
+    font-size: 20px;
+  }
+}
