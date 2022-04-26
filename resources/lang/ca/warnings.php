@@ -23,6 +23,8 @@ return [
     'email_used' => 'Aquest email ja s\'està utilitzant en una altra compta.',
     'same_pass' => 'No és la  mateixa contrassenya.',
     'del_profile_conf' => 'Estàs segur de que vols esborrar la compta?',
+    'review_deleted' => 'El teu comentari s\'ha esborrat',
+    'content_not_found' => 'No s\'ha trobat cap resultat amb ',
     
     
     // Detalle video yt

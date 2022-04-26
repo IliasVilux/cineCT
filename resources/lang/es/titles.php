@@ -38,6 +38,7 @@ return [
     'fiction' => 'Ciencia ficción / Fantasía',
     'drama' => 'Drama / Misterio',
     'crime' => 'Bélico / Crimen',
+    'delete_review' => 'Eliminar comentario',
 
     'samurai' => 'Samurái',
     'shounen' => 'Shounen',

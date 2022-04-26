@@ -89,12 +89,12 @@ class FilmController extends Controller
 
     public function returnFilms($id) {
         $film = Film::find($id);
-        $profile = Image::all();
         $comments = Review::where('film_id' ,'=', $id)->get();
         $shareComponent = $this->ShareWidget();
-        
+    
+
         if (!is_null($film)) {
-            return view('detail.detailFilms', compact('film', 'comments', 'profile', 'shareComponent'));
+            return view('detail.detailFilms', compact('film', 'comments', 'shareComponent'));
         } else {
             return response('No encontrado', 404);
         }

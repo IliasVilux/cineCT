@@ -22,6 +22,8 @@ return [
     'email_used' => 'This email is being used in another account.',
     'same_pass' => 'The password is not the same.',
     'del_profile_conf' => 'Are you sure you want to delete the account?',
+    'review_deleted' => 'Your comment has been deleted',
+    'content_not_found' => 'No results found with ',
       
     // Detalle video yt
     'video_error' => 'If the video is not working, is because the video was deleted from Youtube. We invite you to search a new trailer to know more about this content.',

@@ -38,8 +38,8 @@
                 @else
                 <h4 class="mt-2 mb-3">{{trans('titles.'.$genre.'')}}</h4>
                 @endif
-                <a href="{{ url('/content/contentAnimes') }}" class="btn button-purple my-4" title="Back">Back</a>
-                <h5 class="text-center">Todavía este genero no tiene ninguna anime</h5>
+                <a href="{{ url('/content/contentAnimes') }}" class="btn button-purple my-4" title="Back">{{trans('home.back')}}</a>
+                <h5 class="text-center">{{trans('content.serie_genre_not_have_content')}}</h5>
             </div>
         @endif
     </section>

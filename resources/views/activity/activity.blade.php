@@ -7,9 +7,9 @@
 
     @if (count($likes) === 0)
         <div class="notification-alert">
-            <h4>Recent activity</h4>
+            <h4>{{trans('profile.recent_activity')}}</h4>
             <div><i class="fab fa-gratipay"></i></div>
-            <p>When someone likes on your reviews, you'll see it here</p>
+            <p>{{trans('profile.no_activity')}}</p>
         </div>
     @else
         <h2 class="text-center p-3 mb-4 mt-2">{{ trans('titles.activity') }}</h2>
@@ -24,13 +24,18 @@
                 @endif
                     <div class="d-flex align-items-center mb-2">
                         <div>
+                            @if(Auth::user()->image_id === null)
+                            <i class="fas fa-user-circle fs-4 pe-1"></i>
+                            @else
                             <img class="rounded-circle shadow-1-strong me-3"
-                                src="https://i.pinimg.com/originals/bf/a5/3b/bfa53b2488eb224410ac1edfbecb2a34.png" alt="13"
+                            src="{{ $like->user->image->path }}" alt="{{Auth::user()->image->id}}"
                                 width="65" height="65" />
+                            @endif
+
                         </div>
                         <div>
                             <div class="user-activity__information">
-                                <p class="mb-1"><strong>{{ $like->user->nick }}</strong> liked your comment: <span
+                                <p class="mb-1"><strong>{{ $like->user->nick }}</strong> {{ trans('profile.comment_like') }}: <span
                                         class="text-secondary">{{ $like->review->description }}</span>
                                     <span
                                         class="d-block ml-2 opacity-75">{{ \DateTimeFormat::timeFilter($like->created_at) }}</span>

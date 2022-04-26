@@ -1,7 +1,13 @@
     <div class="d-flex flex-start mb-4" id="content_id-{{$comment->id}}" style="padding-top:20px;">
         <div>
-            <img class="rounded-circle shadow-1-strong me-3" src="{{ $profile[0]->path }}" alt="13" width="65"
-                height="65" />
+            @if(Auth::user()->image_id === null)
+                <i class="fas fa-user-circle fs-4 pe-1"></i>
+            @else
+                @if($comment)
+                    <img class="rounded-circle shadow-1-strong me-3" src="{{ $comment->user->image->path }}" alt="a" width="65"height="65">
+                @endif
+            @endif
+            
         </div>
         <div class="flex-grow-1 flex-shrink-1">
             <div>
@@ -28,6 +34,16 @@
                 @endif
                     <span id="like-counter">{{count($comment->like)}} likes</span>
             </div>
+
+            
+            @if($comment->user_id == Auth::user()->id)
+            <form class="mt-2" method="POST" action="{{ route('user.comment-delete',['id' => $comment->id]) }}">
+                @csrf
+                    <input type="hidden" id="{{$comment->id}}" name="user-comment" value="{{$comment->id}}">
+                    <button class="btn btn-outline-primary" type="submit">{{trans('titles.delete_review')}}</button>
+            </form>
+            @endif
+            
             
             {{--
             <!----START REPLY COMMENT---->

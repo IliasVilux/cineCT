@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\FavoriteList;
+use App\Models\Image;
 use App\Models\Like;
 use App\Models\Review;
 use Illuminate\Support\Facades\App;
@@ -109,8 +110,11 @@ class UserController extends Controller
 
     public function profileUpdate(Request $request)
     {
+        $user = Auth::user();
+        $userId = $user->id;
+
         $request->validate([
-            'username' =>'required|min:4|string|max:255',
+            'username' =>'required|min:4|string|max:255|unique:users,nick,'.$userId,
             'language' => 'required',
         ]);
         $user = Auth::user();
@@ -152,6 +156,30 @@ class UserController extends Controller
         App::setLocale($lang);
         session()->put('locale', $lang);
     }
+
+    public function getUserProfileImg()
+    {
+        $images = Image::get();
+        return view ('profile.profileImg', ['images' => $images]);
+    }
+
+    public function postUserProfileImg($id = null)
+    {
+        if(isset($id) && !is_null($id) && !empty($id)){
+            
+            $authUser = Auth::user();
+
+            $user = User::find($authUser->id);
+            $user->image_id = $id;
+            $user->save();
+
+            return redirect()->to(route('user.profile'))->with('profileImageUpdated', trans('profile.img_updated'));
+            
+        }else{
+            return view('profile.profile');
+        }
+    }
+
 
 
 }

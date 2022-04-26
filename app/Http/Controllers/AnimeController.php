@@ -154,12 +154,11 @@ class AnimeController extends Controller
 
         $anime = Anime::find($id);
         $userLists = FavouriteLists::query()->where('user_id', $user)->get();
-        $profile = Image::all();
         $comments = Review::where('anime_id', '=', $id)->get();
         $shareComponent = $this->ShareWidget();
 
         if (!is_null($anime)) {
-            return view('/detail.detailAnimes', compact('anime', 'userLists', 'comments', 'profile', 'shareComponent'));
+            return view('/detail.detailAnimes', compact('anime', 'userLists', 'comments', 'shareComponent'));
         } else {
             return response('No encontrado', 404);
         }
