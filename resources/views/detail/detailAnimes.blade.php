@@ -36,9 +36,6 @@
     <a href="{{ url('/content/contentAnimes') }}" class="btn button-purple my-4" title="Back"> Back</a>
 
     <h1 class="detail-title">{{$anime->name}}</h1>
-
-        </div>
-    </article>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <article class="mt-4">

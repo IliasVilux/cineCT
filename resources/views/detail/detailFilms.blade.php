@@ -3,6 +3,7 @@
 
 <head>
     <link rel="stylesheet" href="{{asset('css/detail.css')}}">
+    <link rel="stylesheet" href="{{asset('css/general.css')}}">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script>
     $(document).ready(function() {
@@ -32,11 +33,10 @@
 </div>
 @endif
 <section class="container">
-    <a href="{{ url('/content/contentFilms') }}" class="btn button-purple my-4" title="Back">
-        Back
-    </a>
+    <a href="{{ url('/content/contentFilms') }}" class="btn button-purple my-4" title="Back"> Back</a>
 
     <h1 class="detail-title">{{$film->name}}</h1>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <article class="d-flex flex-column flex-sm-row flex-sm-wrap justify-content-between mt-4">
         @if($film->poster_path == NULL)
