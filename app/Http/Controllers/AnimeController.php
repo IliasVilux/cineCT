@@ -15,54 +15,103 @@ use App\Models\User;
 
 class AnimeController extends Controller
 {
-    public static function store(){
+    public static function store()
+    {
         $contador = 1;
         $apiLinks = array();
         $allAnimes = array();
 
-        do{
+        do {
             $animeApi = Http::get('https://api.jikan.moe/v4/anime/' . $contador);
             array_push($apiLinks, $animeApi);
             $contador++;
             sleep(4);
-        }while($contador < 12);
+        } while ($contador < 12);
 
-        foreach($apiLinks as $link) {
+        foreach ($apiLinks as $link) {
             $animeJson = json_decode($link);
-            if (isset($animeJson->{'data'}->{'mal_id'}) && $animeJson->{'data'}->{'type'} == 'TV'){
+            if (isset($animeJson->{'data'}->{'mal_id'}) && $animeJson->{'data'}->{'type'} == 'TV') {
                 $animeJson->{'data'}->{'duration'} = substr($animeJson->{'data'}->{'duration'}, 0, 2);
-                if (!empty($animeJson->{'data'}->{'themes'})){
+                if (!empty($animeJson->{'data'}->{'themes'})) {
                     $themeName = $animeJson->{'data'}->{'themes'}[0]->{'name'};
-                    switch ($themeName){
-                        case "Sci-Fi": $animeJson->{'data'}->{'themes'}[0]->{'name'} = 9; break;
-                        case "Demons": $animeJson->{'data'}->{'themes'}[0]->{'name'} = 11; break;
-                        case "Mecha": $animeJson->{'data'}->{'themes'}[0]->{'name'} = 12; break;
-                        case "Samurai": $animeJson->{'data'}->{'themes'}[0]->{'name'} = 13; break;
-                        case "Josei": $animeJson->{'data'}->{'themes'}[0]->{'name'} = 14; break;
-                        case "Seinen": $animeJson->{'data'}->{'themes'}[0]->{'name'} = 15; break;
-                        case "Shoujo": $animeJson->{'data'}->{'themes'}[0]->{'name'} = 16; break;
-                        case "Shounen": $animeJson->{'data'}->{'themes'}[0]->{'name'} = 17; break;
-                        default: $animeJson->{'data'}->{'themes'}[0]->{'name'} = 23; break;
+                    switch ($themeName) {
+                        case "Sci-Fi":
+                            $animeJson->{'data'}->{'themes'}[0]->{'name'} = 9;
+                            break;
+                        case "Demons":
+                            $animeJson->{'data'}->{'themes'}[0]->{'name'} = 11;
+                            break;
+                        case "Mecha":
+                            $animeJson->{'data'}->{'themes'}[0]->{'name'} = 12;
+                            break;
+                        case "Samurai":
+                            $animeJson->{'data'}->{'themes'}[0]->{'name'} = 13;
+                            break;
+                        case "Josei":
+                            $animeJson->{'data'}->{'themes'}[0]->{'name'} = 14;
+                            break;
+                        case "Seinen":
+                            $animeJson->{'data'}->{'themes'}[0]->{'name'} = 15;
+                            break;
+                        case "Shoujo":
+                            $animeJson->{'data'}->{'themes'}[0]->{'name'} = 16;
+                            break;
+                        case "Shounen":
+                            $animeJson->{'data'}->{'themes'}[0]->{'name'} = 17;
+                            break;
+                        default:
+                            $animeJson->{'data'}->{'themes'}[0]->{'name'} = 23;
+                            break;
                     }
                     array_push($allAnimes, $animeJson);
-                } else if (!empty($animeJson->{'data'}->{'genres'})){
+                } else if (!empty($animeJson->{'data'}->{'genres'})) {
                     $genreName = $animeJson->{'data'}->{'genres'}[0]->{'name'};
-                    switch ($genreName){
-                        case "Action": $animeJson->{'data'}->{'genres'}[0]->{'name'} = 1; break;
-                        case "Adventure": $animeJson->{'data'}->{'genres'}[0]->{'name'} = 2; break;
-                        case "Comedy": $animeJson->{'data'}->{'genres'}[0]->{'name'} = 3; break;
-                        case "Drama": $animeJson->{'data'}->{'genres'}[0]->{'name'} = 4; break;
-                        case "Fantasy": $animeJson->{'data'}->{'genres'}[0]->{'name'} = 5; break;
-                        case "Horror": $animeJson->{'data'}->{'genres'}[0]->{'name'} = 6; break;
-                        case "Mystery": $animeJson->{'data'}->{'genres'}[0]->{'name'} = 7; break;
-                        case "Romance": $animeJson->{'data'}->{'genres'}[0]->{'name'} = 8; break;
-                        case "Suspense": $animeJson->{'data'}->{'genres'}[0]->{'name'} = 10; break;
-                        case "Animation": $animeJson->{'data'}->{'genres'}[0]->{'name'} = 18; break;
-                        case "Crime": $animeJson->{'data'}->{'genres'}[0]->{'name'} = 19; break;
-                        case "Family": $animeJson->{'data'}->{'genres'}[0]->{'name'} = 20; break;
-                        case "Science Fiction": $animeJson->{'data'}->{'genres'}[0]->{'name'} = 21; break;
-                        case "War": $animeJson->{'data'}->{'genres'}[0]->{'name'} = 22; break;
-                        default: $animeJson->{'data'}->{'themes'}[0]->{'name'} = 23; break;
+                    switch ($genreName) {
+                        case "Action":
+                            $animeJson->{'data'}->{'genres'}[0]->{'name'} = 1;
+                            break;
+                        case "Adventure":
+                            $animeJson->{'data'}->{'genres'}[0]->{'name'} = 2;
+                            break;
+                        case "Comedy":
+                            $animeJson->{'data'}->{'genres'}[0]->{'name'} = 3;
+                            break;
+                        case "Drama":
+                            $animeJson->{'data'}->{'genres'}[0]->{'name'} = 4;
+                            break;
+                        case "Fantasy":
+                            $animeJson->{'data'}->{'genres'}[0]->{'name'} = 5;
+                            break;
+                        case "Horror":
+                            $animeJson->{'data'}->{'genres'}[0]->{'name'} = 6;
+                            break;
+                        case "Mystery":
+                            $animeJson->{'data'}->{'genres'}[0]->{'name'} = 7;
+                            break;
+                        case "Romance":
+                            $animeJson->{'data'}->{'genres'}[0]->{'name'} = 8;
+                            break;
+                        case "Suspense":
+                            $animeJson->{'data'}->{'genres'}[0]->{'name'} = 10;
+                            break;
+                        case "Animation":
+                            $animeJson->{'data'}->{'genres'}[0]->{'name'} = 18;
+                            break;
+                        case "Crime":
+                            $animeJson->{'data'}->{'genres'}[0]->{'name'} = 19;
+                            break;
+                        case "Family":
+                            $animeJson->{'data'}->{'genres'}[0]->{'name'} = 20;
+                            break;
+                        case "Science Fiction":
+                            $animeJson->{'data'}->{'genres'}[0]->{'name'} = 21;
+                            break;
+                        case "War":
+                            $animeJson->{'data'}->{'genres'}[0]->{'name'} = 22;
+                            break;
+                        default:
+                            $animeJson->{'data'}->{'themes'}[0]->{'name'} = 23;
+                            break;
                     }
                     array_push($allAnimes, $animeJson);
                 }
@@ -77,15 +126,15 @@ class AnimeController extends Controller
             }
         } */
         echo "<section style='display: flex;'>";
-        foreach ($allAnimes as $asd){
+        foreach ($allAnimes as $asd) {
             echo "<div style='width: 30%'>";
             echo "<img src='" . $asd->{'data'}->{'images'}->{'webp'}->{'large_image_url'} . "'><br>";
             echo $asd->{'data'}->{'title'} . "<br>";
             echo $asd->{'data'}->{'duration'} . "<br>";
             echo $asd->{'data'}->{'synopsis'} . "<br>";
-            if (isset($tmp2->{'data'}->{'themes'}[0]->{'name'})){
+            if (isset($tmp2->{'data'}->{'themes'}[0]->{'name'})) {
                 echo $asd->{'data'}->{'themes'}[0]->{'name'} . "<br>";
-            } else if (isset($tmp2->{'data'}->{'genres'}[0]->{'name'})){
+            } else if (isset($tmp2->{'data'}->{'genres'}[0]->{'name'})) {
                 echo $asd->{'data'}->{'genres'}[0]->{'name'} . "<br>";
             }
             echo $asd->{'data'}->{'year'} . "<br>";
@@ -95,11 +144,12 @@ class AnimeController extends Controller
         }
         echo "</section>";
         die();
-        
+
         return $allAnimes;
     }
 
-    public function returnAnimes($id) {
+    public function returnAnimes($id)
+    {
         $user = Auth::user()->id;
 
         $anime = Anime::find($id);
@@ -143,8 +193,7 @@ class AnimeController extends Controller
             'newListName' => 'required|string|min:2|max:255'
         ]);
 
-        if(empty($listUser))
-        {
+        if (empty($listUser)) {
             $newlist = FavouriteLists::create([
                 'name' => $newListName,
                 'user_id' => $user,
@@ -153,7 +202,7 @@ class AnimeController extends Controller
             $this->addFavourite($idAnime, $idList);
         } else { return redirect()->to('/detail/detailAnimes/' . $idAnime); }
     }
-    
+
     public function ShareWidget()
     {
         $url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
@@ -161,13 +210,67 @@ class AnimeController extends Controller
             $url, // Link que se comparte
             '', // Texto de compartir
         )
-        ->facebook()
-        ->twitter()
-        ->linkedin()
-        ->telegram()
-        ->whatsapp()
-        ->reddit();
-        
+            ->facebook()
+            ->twitter()
+            ->linkedin()
+            ->telegram()
+            ->whatsapp()
+            ->reddit();
+
         return $shareComponent;
+    }
+
+    public function fetchAllAnimes()
+    {
+        $animes = Anime::paginate(10);
+        $allAnimes = Anime::all();
+
+        $filterGenres = ["Samurai", "Shounen", "Seinen", "Shoujo", "Demons", "Sci-Fi", "Mecha", "Josei"];
+        $genres = Genre::whereIn('name', $filterGenres)->get();
+
+        foreach ($genres as $genre) {
+            $genre->name = strtolower($genre->name); //para que me pille las traducciones en el blade.php
+            if ($genre->name == 'sci-fi' || $genre->name == 'Sci-Fi') {
+                $genre->name = 'scifi';
+            }
+        }
+        $otherGenres = [];
+        $otherGenres['action_adventure'] = 'action';
+        //$otherGenres['animation_family'] = 'animation';
+        $otherGenres['comedy'] = 'comedy';
+        $otherGenres['terror_thriller'] = 'terror';
+        $otherGenres['romance'] = 'romance';
+        $otherGenres['scifi_fantasy'] = 'fiction';
+        $otherGenres['drama_mistery'] = 'drama';
+        $otherGenres['war_crime'] = 'crime';
+        $otherGenres['unknown'] = 'unknown';
+
+        return view(
+            'content.contentAnimes',
+            [
+                'animes' => $animes,
+                'allAnimes' => $allAnimes,
+                'genres' => $genres,
+                'otherGenres' => $otherGenres
+            ]
+        );
+    }
+
+    public function filterContent($genre = null)
+    {
+        if (isset($genre) && !is_null($genre) && !empty($genre)) {
+
+            if ($genre == 'scifi') {
+                $genre = 'sci-fi';
+            }
+
+            $animes = Anime::select('animes.*')
+                ->join('genres', 'animes.genre_id', '=', 'genres.id')
+                ->where('genres.name', '=', $genre)
+                ->orderBy('animes.name', 'asc')
+                ->paginate(25);
+
+            return view('content.filterAnime', ['animes' => $animes, 'genre' => $genre]);
+        }
     }
 }

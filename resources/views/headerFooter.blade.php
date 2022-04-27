@@ -6,11 +6,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/1f7457abdb.js"></script>
     <title>Cinect</title>
@@ -38,8 +37,13 @@
                     <div class="dropdown">
                         <button
                             class="btn text-light dropdown-toggle d-flex flex-direction-row flex-nowrap justify-content-end align-items-center"
-                            type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true">
+                            
+                            @if(Auth::user()->image_id === null)
                             <i class="fas fa-user-circle fs-4 pe-1"></i>
+                            @else
+                            <img class="img-profile-navbar" src="{{ Auth::user()->image->path }}" alt="{{Auth::user()->image->id}}">
+                            @endif
 
                             @if (Auth::check())
                                 <p class="d-none d-sm-flex m-0">{{ Auth::user()->nick }}</p>
@@ -61,11 +65,17 @@
                                     </a>
                                 </li>
                                 <li>
+                                    <a class="dropdown-item" href="{{route('user.activity')}}">
+                                        <i class="fas fa-bell"></i>
+                                        {{trans('titles.activity')}}
+                                    </a>
+                                </li>
+                                <li>
                                     <hr class="dropdown-divider">
                                 </li>
 
                                 <li><a class="dropdown-item" href="{{ route('signout.user') }}"><i
-                                            class="fas fa-sign-out-alt"></i>Cerrar sessión</a>
+                                            class="fas fa-sign-out-alt"></i>{{trans('titles.logout')}}</a>
                                 </li>
                             @else
                                 <li><a class="dropdown-item" href="{{ route('user.create') }}"><i class="fas fa-user-circle"></i>Iniciar Session</a></li>

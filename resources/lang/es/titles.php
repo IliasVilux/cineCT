@@ -23,6 +23,8 @@ return [
     'search' => 'Buscador',
     'lists' => 'Biblioteca',
     'about' => 'Sobre nosotros',
+    'activity' => 'Actividad',
+    'logout' => 'Cerrar sesión',
 
     // Other links
     'profile' => 'Perfil',    
@@ -36,6 +38,7 @@ return [
     'fiction' => 'Ciencia ficción / Fantasía',
     'drama' => 'Drama / Misterio',
     'crime' => 'Bélico / Crimen',
+    'delete_review' => 'Eliminar comentario',
 
     'samurai' => 'Samurái',
     'shounen' => 'Shounen',
@@ -45,5 +48,37 @@ return [
     'scifi' => 'Ciencia ficción',
     'mecha' => 'Mecha',
     'josei' => 'Josei',
+    'unknown' => 'Desconocido',
 
+    // Comments
+    'commentSection' => 'Sección de comentarios',
+
+    // Other
+    'back' => 'Atrás',
+    'close' => 'Cerrar',
+    'genre' => 'Género',
+    'release' => 'Fecha de publicación',
+    'duration' => 'Duración',
+    'seasons' => 'Temporadas',
+    'total_episodes' => 'Capítulos totales',
+    'rating' => 'Puntuación',
+    'how_much' => '¿Cuánto te ha gustado?',
+    'send' => 'Enviar',
+    'add_favs' => 'Añadir a favoritos',
+    'publish' => 'Publicar',
+    'new_list' => 'Crear nueva lista',
+    'trailer' => 'Tráiler',
+
+    // Time
+    'second' => 'segundo',
+    'seconds' => 'segundos',
+    'min' => 'minuto',
+    'mins' => 'minutos',
+    'hour' => 'hora',
+    'hours' => 'horas',
+    'day' => 'día',
+    'days' => 'días',
+    'month' => 'mes',
+    'months' => 'meses',
+    'ago' => 'Hace',
 ];

@@ -131,72 +131,65 @@
                             <i class="fas fa-share-alt"></i>
                         </a>
                     </div>
-                </div>
-                <div class="collapse my-3" id="shareComponent">
-                    {!! $shareComponent !!}
-                </div>
+                    <div class="collapse my-3" id="shareComponent">
+                        {!! $shareComponent !!}
+                    </div>
+            </article>
+            <p class="description pt-5">{{ $film->description }}</p>
         </article>
-        <p class="description pt-5">{{$film->description}}</p>
-    </article>
 
-    <article class="pb-3">
-        <form method="POST" action="" id="create-comment" class="create_comment">
-            @csrf
-            <textarea name="description" id="description" cols="50" rows="3"
-                placeholder="Escribe un comentario"></textarea>
-            <button class="btn button-purple mt-3" type="submit" id="commentSubmit">Publicar</button>
-        </form>
-    </article>
-</section>
+        <article class="pb-3">
+            <div class="text-center pt-3 "><span id="character-counter"></span></div>
+            <form method="POST" action="" id="create-comment" class="create_comment">
+                @csrf
+                <textarea name="description" id="description" cols="50" rows="3" placeholder="Escribe un comentario"></textarea>
+                <button class="btn button-purple mt-3" type="submit" id="commentSubmit">{{ trans('titles.publish') }}</button>
+            </form>
+            <div id="notify_user"></div>
+            @if ($errors->has('description'))
+                <div class="mt-2 alert alert-danger">
+                    {{ trans('warnings.empty_msg') }}
+                </div>
+            @endif
+        </article>
+    </section>
 
-<!-- START COMMMENT SECTION -->
-<section class="gradient-custom">
-    <div class="container my-5 py-5">
-        <div class="row d-flex justify-content-center">
-            <div class="col-12">
-                <div class="card card-comment bg-dark">
-                    <div class="card-body card-body-comment p-4">
-                        <h4 class="text-center mb-4 pb-2">Nested comments section</h4>
+    <!-- START COMMMENT SECTION -->
+    <section class="gradient-custom">
+        <div class="container my-5 py-5">
+            <div class="row d-flex justify-content-center">
+                <div class="col-12">
+                    <div class="card card-comment bg-dark">
+                        <div class="card-body card-body-comment p-4">
+                            <h4 class="text-center mb-4 pb-2">{{ trans('titles.commentSection') }}</h4>
 
-                        <div class="row">
-                            <div class="col" id="comment-container">
-                                @foreach ($comments as $comment)
-                                @if ($comment->film_id == $film->id && !empty($comment->description))
-                                @include('includes.review', ['comment' => $comment])
-                                @endif
-                                @endforeach
+                            <div class="row">
+                                <div class="col" id="comment-container">
+                                    @foreach ($comments as $comment)
+                                        @if ($comment->film_id == $film->id && !empty($comment->description))
+                                            @include('includes.review', ['comment' => $comment])
+                                        @endif
+                                    @endforeach
+                                </div>
                             </div>
-                        </div>
-                        <div class="alert alert-success d-none" id="msg_div" role="alert">
-
+                            <div class="alert alert-success d-none" id="msg_div" role="alert"></div>
                         </div>
                     </div>
-                </div>
-                @if ($errors->has('description'))
-                <div class="mt-2 alert alert-danger">
-                    No puedes publicar un comentario sin vacío!
-                </div>
-                @endif
-                <div id="notify_user"></div>
-                <div class="text-center pt-3 "><span id="character-counter"></span></div>
 
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<script type="text/javascript">
+    <script type="text/javascript">
         $("#notify_user").css("display", "none");
 
         jQuery('#create-comment').submit(function(e) {
             e.preventDefault();
-            $("#commentSubmit").attr("disabled", true); // deshabilitamos el boton de publicar
+            $("#commentSubmit").attr("disabled", true);
             var url = '{{ route('comment.save.film', ['id' => $film->id]) }}';
-            var data = jQuery('#create-comment')
-                .serialize(); // serializamos los datos para trabajr con ellos en el backend
-            jQuery('#commentSubmit').html(
-                '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>'
-            ); //agregamos un spinner al boton al darle click, mientras no complete la peticion se seguirá mostrando el spinner
+            var data = jQuery('#create-comment').serialize(); 
+            jQuery('#commentSubmit').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>'); 
 
             $('#commentSubmit').addClass('loagindEffect');
 
@@ -206,37 +199,50 @@
                 type: 'POST',
                 success: function(response) {
                     jQuery("#commentSubmit").removeClass("loagindEffect");
-                    jQuery('#notify_user').html(
-                        `<div class="alert alert-success" role="alert"><i class="fas fa-check-circle"></i>${response.msg}</div>`
-                    ); //el msg hace referencia al 'msg' en el return en el controlador (en este caso al ReviewController)
+                    jQuery('#notify_user').html(`<div class="alert alert-success" role="alert"><i class="fas fa-check-circle"></i>${response.msg}</div>`);
                     jQuery('#notify_user').fadeIn("slow");
-                    jQuery('#create-comment')[0]
-                        .reset(); // una vez la peticion se complete , el textarea se reiniciarà :D
-                    jQuery('.spinner-border')
-                        .remove(); // una vez haya echo la petición y lo haya guardado en la bases de datos, el spiner lo elimanos
+                    jQuery('#create-comment')[0].reset();
+                    jQuery('.spinner-border').remove(); 
                     jQuery('#commentSubmit').html('Publicar');
                     jQuery('#notify_user').fadeOut(3000);
+
                     setTimeout(() => {
                             jQuery('#commentSubmit').attr('disabled', false);
                         },
                         3900
-                        ); // removemos el 'desabled 'para que el usuario pueda interactuar de nuevo con el botón
+                    ); 
 
+                    let commentID = response.comment['id'];
+                    let commentDescription = response.comment['description'];
                     let commentHtml =
-                        `<div class="d-flex flex-start mb-4">
-                    <div><img class="rounded-circle shadow-1-strong me-3" src="{{ $profile[0]->path }}" alt="13" width="65" height="65" /></div>
-                    <div class="flex-grow-1 flex-shrink-1"><div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <p class="mb-1">{{ Auth::user()->name }} <span class="text-muted">- 2 hours ago</span></p> 
-                            <a href="#!"><i class="fas fa-reply fa-xs"></i><span class="text-muted">reply</span></a> 
+                    `<div class="d-flex flex-start mb-4">
+                        <div><img class="rounded-circle shadow-1-strong me-3" src="{{Auth::user()->image->path}}" width="65"height="65"></div>
+                        <div class="flex-grow-1 flex-shrink-1"><div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="mb-1">{{ Auth::user()->nick }} <span class="text-muted" id="last-comment"></span></p> 
+                                <a href="#!"><i class="fas fa-reply fa-xs"></i><span class="text-muted">reply</span></a> 
+                            </div>
+                            <p class="small mb-0 comment">${ commentDescription }</p>
+                            </div>
+                            <div class="like-container">
+                                <span class="far fa-heart like-review btn-like" id="btn-like" data-id="${ commentID }"></span>
+                                <span id="like-counter">0 likes</span>
+                                <form class="mt-2" method="POST" action="/review/delete/${commentID}">
+                                    @csrf
+                                    <input type="hidden" id="${ commentID }" name="user-comment" value="${ commentID }">
+                                    <button class="btn btn-outline-primary" type="submit">{{trans('titles.delete_review')}}</button>
+                                </form>
+                            </div>
                         </div>
-                        <p class="small mb-0 comment">${ response.comment['description'] }</p>
-                        </div>
-                    </div>
-                </div>`
+                    </div>`
+
 
                     jQuery('#comment-container').append(commentHtml);
                     jQuery('#character-counter').css("display", "none");
+
+                    setTimeout(() => {
+                        jQuery('body,html').animate({scrollTop: $(document).height()}, 5);
+                    }, 500);
 
                 },
                 error: function(response) {
@@ -303,5 +309,69 @@
         }
 
         characterLiveCount();
+
+        function like() {
+            jQuery('.btn-like').unbind('click').click(function () {
+                $(this).addClass('btn-dislike').removeClass('btn-like');
+                $(this).addClass('fas').removeClass('far');
+                $(this).css("color", "red");
+                let comment_id = $(this).data('id');
+                let ruta = `/like/${comment_id}`;
+                //console.log(ruta);
+                $.ajax({
+                    type: "POST",
+                    url: ruta,
+                    data: {
+                        '_token': $('input[name=_token]').val(),
+                        review_id: comment_id,
+                    },
+                    success: function(data) {
+                        //console.log(data.message);
+                        if(data.like){
+                            console.log("Has dado like de forma correcta");
+                        }else {    
+                            console.log("Error al dar like");
+                        }   
+                    }
+                });
+                dislike();
+
+            })
+        }
+
+        like();
+
+        
+        function dislike() 
+        {
+            jQuery('.btn-dislike').unbind('click').click(function () {
+                $(this).addClass('btn-like').removeClass('btn-dislike');
+                $(this).addClass('far').removeClass('fas');
+                $(this).css("color", "#FFFFFF");
+                let comment_id = $(this).data('id');
+                let ruta = `/dislike/${comment_id}`;
+                $.ajax({
+                    type: "POST",
+                    url: ruta,
+                    data: {
+                        '_token': $('input[name=_token]').val(),
+                        review_id: comment_id,
+                    },
+                    success: function(data){
+                        if (data.like) {
+                        console.log("Has dado dislike de forma correcta");
+                        } else {
+                            console.log("Error al dar dislike");
+                        }
+                    }
+                });
+                like();
+            })
+        }
+        
+        dislike();
+        
+        
+        
     </script>
 @endsection

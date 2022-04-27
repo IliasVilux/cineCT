@@ -22,7 +22,7 @@
 
     <section class="container py-4">
         @if (!empty($content['films']) || !empty($content['series']) || !empty($content['animes']))
-            <p style="text-align:start; margin-bottom:20px; padding-left:5px; border-left:3px solid #5A3C97">Resultados
+            <p class="" style="text-align:start; margin-bottom:20px; padding-left:5px; border-left:3px solid #5A3C97">Resultados
                 encontrados con: <strong>{{ $search }}</strong></p>
             <div class="content d-flex flex-wrap align-items-streach justify-content-center searchcontent">
                 @for ($data = 0; $data < count($content); $data++)
@@ -30,11 +30,10 @@
                         <a href="/detail/detail{{ ucfirst(array_keys($content)[$data]) }}/{{ $value->id }}"
                             class="image-link col-2 p-2 search-content-info">
 
-
                             @if ($value->poster_path === null)
-                                <img src="/img/NoImg.jpg" alt="No image">
+                                <img src="/img/NoImg.jpg" class="img-content col-12" alt="No image">
                             @else
-                                <img src="{{ $value->poster_path }}" alt="{{ array_keys($content)[$data] }}">
+                                <img src="{{ $value->poster_path }}" class="img-content col-12" alt="{{ array_keys($content)[$data] }}">
                             @endif
 
                         </a>
@@ -44,7 +43,7 @@
         @else
            
             @if (isset($search))
-                <h5 class="text-center">No se ha encontrado ningun resultador con <span
+                <h5 class="text-center">{{trans('warnings.content_not_found')}} <span
                         style="opacity:0.8;">{{ $search }}</span></h5>
             @endif
         @endif

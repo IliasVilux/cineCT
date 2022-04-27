@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\UploadTimeFormat;
 use App\Models\Anime;
 use App\Models\Film;
+use App\Models\Like;
 use App\Models\Review;
 use App\Models\Serie;
-use App\Models\User;
-use App\Providers\DateTimeFormatServiceProvider;
-use Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -85,6 +82,34 @@ class ReviewController extends Controller
         
         $comment->save();
         
+        
         return ['msg' => 'Tu comentario se ha añadido!', 'comment' => $comment];
     }
+
+    public function deleteReview(Request $request, $id = null)
+    {
+        $id = $request->input('user-comment');
+
+        $user = Auth::user();
+
+        $user_review_isset = Review::where('user_id', $user->id)->where('id', $id)->first();
+        $review_like_isset = Like::where('review_id', $id)->first();
+
+        if($user && ($user_review_isset)){
+
+            //eliminem els likes
+            if($review_like_isset){
+                $review_likes = Like::where('review_id', $id)->get();
+                foreach($review_likes as $like){
+                    $like->delete();
+                }
+            }
+
+            //i finalment eliminem la review
+            $user_review_isset->delete();
+        }
+
+        return redirect()->back()->with('review_deleted', trans('warnings.review_deleted'));   
+    }
+
 }

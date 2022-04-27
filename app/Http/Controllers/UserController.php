@@ -128,15 +128,22 @@ class UserController extends Controller
 
     public function profileUpdate(Request $request)
     {
+        $user = Auth::user();
+        $userId = $user->id;
+
         $request->validate([
-            'username' =>'required|min:4|string|max:255',
+            'username' =>'required|min:4|string|max:255|unique:users,nick,'.$userId,
             'language' => 'required',
         ]);
         $user = Auth::user();
         $user->nick = $request['username'];
         $user->lang = $request['language'];
 
+        
         $user->save();
+        
+        $this->changeLanguages($request['language']);
+
         return view('profile.profile')->with('message','Profile Updated');
     }
     public function deleteAccount(){
@@ -146,4 +153,51 @@ class UserController extends Controller
         Auth::logout();
         return redirect()->to('register')->with('signOut', 'Cuenta eliminada!');
     }
+
+    public function activity(){
+
+        $user = Auth::user();
+
+
+        $likes = Like::select('likes.*')
+        ->join('reviews', 'reviews.id', '=', 'likes.review_id')
+        ->where('likes.user_id' ,'!=', $user->id)
+        ->where('reviews.user_id', '=', $user->id)
+        ->orderBy('likes.created_at', 'desc')
+        ->paginate(10);  
+
+        return view('activity.activity', ['likes' => $likes]);
+    }
+    
+    public function changeLanguages($lang)
+    {
+        App::setLocale($lang);
+        session()->put('locale', $lang);
+    }
+
+    public function getUserProfileImg()
+    {
+        $images = Image::get();
+        return view ('profile.profileImg', ['images' => $images]);
+    }
+
+    public function postUserProfileImg($id = null)
+    {
+        if(isset($id) && !is_null($id) && !empty($id)){
+            
+            $authUser = Auth::user();
+
+            $user = User::find($authUser->id);
+            $user->image_id = $id;
+            $user->save();
+
+            return redirect()->to(route('user.profile'))->with('profileImageUpdated', trans('profile.img_updated'));
+            
+        }else{
+            return view('profile.profile');
+        }
+    }
+
+
+
 }

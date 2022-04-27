@@ -11,6 +11,7 @@ use App\Models\FavoriteList;
 use App\Models\FavouriteLists;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use App\Models\User;
 
 class FilmController extends Controller
 {
@@ -95,7 +96,8 @@ class FilmController extends Controller
         $profile = Image::all();
         $comments = Review::where('film_id' ,'=', $id)->get();
         $shareComponent = $this->ShareWidget();
-        
+    
+
         if (!is_null($film)) {
             return view('detail.detailFilms', compact('film', 'userLists', 'comments', 'profile', 'shareComponent', 'userTopList'));
         } else {
@@ -168,14 +170,20 @@ class FilmController extends Controller
 
     public function fetchAllFilms()
     {
-        $films = Film::all();
+        $films = Film::paginate(100);
+        $allFilms = Film::all();
 
-        $filmGenres = ["Animation", "Family", "Science Fiction", "War", "Crime", "Action", "Adventure", "Comedy", "Drama", "Fantasy", "Horror", "Mystery", "Romance", "Suspense"];
-        
-        $genres = Genre::whereIn('name', $filmGenres)->get();
-
+        $genres = [];
+        $genres['action_adventure'] = 'action';
+        $genres['animation_family'] = 'animation';
+        $genres['comedy'] = 'comedy';
+        $genres['terror_thriller'] = 'terror';
+        $genres['romance'] = 'romance';
+        $genres['scifi_fantasy'] = 'fiction';
+        $genres['drama_mistery'] = 'drama';
+        $genres['war_crime'] = 'crime';
        
-        return view('content.contentFilms', ['film' => $films, 'genres' => $genres]);
+        return view('content.contentFilms', ['films' => $films, 'genres' => $genres, 'allFilms' => $allFilms]);
     }
 
     public function filterContent($genre = null)
@@ -188,21 +196,21 @@ class FilmController extends Controller
             $searchCondition = array();
             
             if ($genreInfo){
-                if($genre == 'Action' || $genre == 'Adventure'){
+                if($genre == 'Action' || $genre == 'action'){
                     array_push($searchCondition, "Action","Adventure"); 
-                }elseif ($genre == 'Animation' || $genre == 'Family'){
+                }elseif ($genre == 'Animation' || $genre == 'animation'){
                     array_push($searchCondition, "Animation","Family"); 
-                }elseif($genre == 'Comedy'){
+                }elseif($genre == 'Comedy' || $genre == 'comedy'){
                     array_push($searchCondition, "Comedy"); 
-                }elseif ($genre == 'Horror' || $genre == 'Thriller'){
+                }elseif ($genre == 'Terror' || $genre == 'terror'){
                     array_push($searchCondition, "Horror", "Thriller"); 
-                }elseif($genre == 'Romance'){
+                }elseif($genre == 'Romance' || $genre == 'omance'){
                     array_push($searchCondition, "Romance"); 
-                }elseif ($genre == 'Sci-fi' || $genre == 'Fantasy'){
+                }elseif ($genre == 'Fiction' || $genre == 'fiction'){
                     array_push($searchCondition, "Sci-fi", "Fantasy");
-                }elseif ($genre == 'Drama' || $genre == 'Mystery'){
+                }elseif ($genre == 'Drama' || $genre == 'drama'){
                     array_push($searchCondition, "Drama", "Mystery");
-                }elseif ($genre == 'War' || $genre == 'Crime'){
+                }elseif ($genre == 'War' || $genre == 'war'){
                     array_push($searchCondition, "War", "Crime");
                 }
             }
@@ -212,16 +220,12 @@ class FilmController extends Controller
             ->join('genres', 'films.genre_id', '=', 'genres.id')
             ->whereIn('genres.name', $searchCondition)
             ->orderBy('films.name', 'asc')
-            ->get();
+            ->paginate(25);
 
+            //dd(count($films) > 0);
+
+            return view('content.filterFilm',['films' => $films, 'genre' => $genre]);
             
-            if(count($films) > 0){
-                foreach($films as $film){
-                    echo '<b>'.$film->genre->name.'</b>: '.$film->name .'<br>';
-                }
-            }else{
-                echo "No hay ningun resultado".'<br>';
-            }
             
         }
         

@@ -16,23 +16,23 @@ class UploadTimeFormat
             return false;
         }
 
-        // no devuelve la diferencia de tiempo que hay entre dos mechas
+        // no devuelve la diferencia de tiempo que hay entre dos fechas
         $timeAgo = $fecha_inicio->diff(new DateTime(date("Y-m-d") . " " . date('H:i:s')));
 
         
-        //Obtenemos la diferencia del mes, el dia, la hora , el minuto y el segundo de la fecha de publicacion comparando con la fecha actual
+        //Accedemos a sus meses, dias, horas, minutos y segundos
         $month = $timeAgo->m; //mes = [01-12];
         $day = $timeAgo->d; //dias = [01-31]
         $hour = $timeAgo->h; //horas = [00-23];
         $minute = $timeAgo->i;//minutos = [00-59]
         $second = $timeAgo->s; //segundos = [00-59];
         
-        $monthKeys = ['mes', 'meses'];
-        $dayKeys = ['dia', 'dias'];
-        $hourKeys = ['hora', 'horas'];
-        $minuteKeys = ['minuto', 'minutos'];
-        $secondKeys = ['segundo', 'segundos'];
-        
+        $monthKeys = [trans('titles.month'), trans('titles.months')];
+        $dayKeys = [trans('titles.day'), trans('titles.days')];
+        $hourKeys = [trans('titles.hour'), trans('titles.hours')];
+        $minuteKeys = [trans('titles.min'), trans('titles.mins')];
+        $secondKeys = [trans('titles.second'), trans('titles.seconds')];
+
         if($month == 00){
             $msj = $month .' '. $monthKeys[1];
             if($day == 00){
@@ -80,8 +80,9 @@ class UploadTimeFormat
             }
         }
 
-        return 'Hace ' .$msj;
-       
+        // Que haya un if detectando el idioma y que si el idioma es inglés que se ponga así:
+        // return $msj . " " . trans('titles.ago');
 
+        return trans('titles.ago'). " " .$msj;    
     }
 }
