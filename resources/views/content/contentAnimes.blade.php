@@ -116,7 +116,7 @@
 </div>
 
 
-<section class="container py-5">
+<section class="container p-5">
     <h5 class="col-3 text-uppercase">{{ trans('titles.animes') }}</h5>
     <div class="d-flex justify-content-center">
         {{ $animes->links() }}

@@ -49,8 +49,7 @@
                 <img src="{{ $film->poster_path }}" class="img-thumbnail col-12 col-md-5 col-lg-4 mb-4 mb-md-0"
                     alt="Img {{ $film->name }}">
             @endif
-            <article class="col-12 col-md-6 more-info bg-dark p-3">
-                <div class="p-4">
+            <article class="col-12 col-md-6 more-info bg-dark p-4">
                     <div class="d-flex nowrap">
                         <h5 class="pe-2"><b>Género:</b></h5>
                         <p>{{ $film->genre->name }}</p>

@@ -76,10 +76,6 @@ a {
     font-size: 15px;
   }
 
-  .img-carousel{
-    height: 350px;
-  }
-  
   .full-img {
     width: 100%;
     height: 350px;
@@ -99,6 +95,10 @@ a {
   }
   .button-purple{
     font-size: 17px;
+  }
+
+  .img-carousel{
+    height: 350px;
   }
 
   .carousel-item.full {

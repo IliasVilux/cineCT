@@ -82,7 +82,7 @@
     <!--ACABAN: TODOS LOS BOTONES PARA FILTRAR-->
 </section>
 
-<section class="container py-5">
+<section class="container p-5">
     <h5 class="col-3 text-uppercase">{{ trans('titles.series') }}</h5>
     <div class="d-flex justify-content-center">
         {{ $series->links() }}

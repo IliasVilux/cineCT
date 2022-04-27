@@ -76,7 +76,7 @@
     <!--ACABAN: TODOS LOS BOTONES PARA FILTRAR-->
 </section>
 
-<section class="container py-5">
+<section class="container p-5">
     <h5 class="col-3 text-uppercase">{{ trans('titles.films') }}</h5>
     <div class="d-flex justify-content-center">
         {{ $films->links() }}
