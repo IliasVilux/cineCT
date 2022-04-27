@@ -60,9 +60,18 @@ i.fa.fa-chevron-left {
    h3.title {
     font-size: 20px;
    }
+   i.fa.fa-chevron-right, 
+    i.fa.fa-chevron-left {
+    color: white;
+    font-size: 17px;
+    }
 }
 
 
 @media screen and (min-width: 768px) {
-
+    i.fa.fa-chevron-right, 
+    i.fa.fa-chevron-left {
+    color: white;
+    font-size: 25px;
+}
 }

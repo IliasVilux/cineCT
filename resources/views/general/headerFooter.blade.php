@@ -149,14 +149,14 @@
             <section class="pt-4 pb-1">
                 <h3 class="text-uppercase">Links</h3>
                 <div class="d-flex flex-row flex-wrap justify-content-center">
-                    <a href="{{ url('/') }}" class="footer-links text-white">{{trans('titles.home')}}</a>
-                    <a href="{{ url('/content/contentFilms') }}" class="footer-links text-white">{{trans('titles.films')}}</a>
-                    <a href="{{ url('/content/contentSeries') }}" class="footer-links text-white">{{trans('titles.series')}}</a>
-                    <a href="{{ url('/content/contentAnimes') }}" class="footer-links text-white">{{trans('titles.animes')}}</a>
-                    <a href="{{ url('/top/top') }}" class="footer-links text-white">{{trans('titles.top')}}</a>
-                    <a href="{{ url('/search/search') }}" class="footer-links text-white">{{trans('titles.search')}}</a>
-                    <a href="{{ url('/list/list') }}" class="footer-links text-white">{{trans('titles.lists')}}</a>
-                    <a href="{{ url('/aboutUs/aboutUs') }}" class="footer-links text-white">{{trans('titles.about')}}</a>
+                    <a href="{{ url('/') }}" class="footer-links text-white px-md-1">{{trans('titles.home')}}</a>
+                    <a href="{{ url('/content/contentFilms') }}" class="footer-links text-white px-md-1">{{trans('titles.films')}}</a>
+                    <a href="{{ url('/content/contentSeries') }}" class="footer-links text-white px-md-1">{{trans('titles.series')}}</a>
+                    <a href="{{ url('/content/contentAnimes') }}" class="footer-links text-white px-md-1">{{trans('titles.animes')}}</a>
+                    <a href="{{ url('/top/top') }}" class="footer-links text-white px-md-1">{{trans('titles.top')}}</a>
+                    <a href="{{ url('/search/search') }}" class="footer-links text-white px-md-1">{{trans('titles.search')}}</a>
+                    <a href="{{ url('/list/list') }}" class="footer-links text-white px-md-1">{{trans('titles.lists')}}</a>
+                    <a href="{{ url('/aboutUs/aboutUs') }}" class="footer-links text-white px-md-1">{{trans('titles.about')}}</a>
                 </div>
             </section>
             <!-- SECTION: LINKS -->

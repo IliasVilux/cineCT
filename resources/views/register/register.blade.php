@@ -118,7 +118,7 @@
                                         </div>
 
                                     </div>
-                                    <div class="form-check d-flex justify-content-start my-sm-4">
+                                    <div class="form-check d-flex justify-content-start my-sm-3">
                                         <input class="form-check-input" type="checkbox" id="rememberData" />
                                         <label class="form-check-label mx-2" value="1"
                                             for="rememberData">{{ trans('register.remember') }}</label>

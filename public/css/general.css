@@ -6,12 +6,12 @@ html, main, body {
 
 .button-purple{
   color: #FFFFFF;
-  border: 1.5px solid #5A3C97;
+  border: 1px solid #5A3C97;
   background-color: #16181d;
   font-size: 10px;
 }
 .button-purple:hover{
-  border: 2px solid #FFFFFF;
+  border: 1px solid #FFFFFF;
   color: white;
   background-color: #5A3C97;
 }
@@ -85,8 +85,8 @@ a {
     height: 350px;
   }
   
-  .carousel-item.full {
-    height: 350px;
+  .button-purple{
+    font-size: 13px;
   }
 }
 
@@ -95,6 +95,13 @@ a {
   html, main, body {
     background: #16181d;
     color: #FFFFFF;
-    font-size: 20px;
+    font-size: 17px;
+  }
+  .button-purple{
+    font-size: 17px;
+  }
+
+  .carousel-item.full {
+    height: 350px;
   }
 }

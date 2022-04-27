@@ -5,6 +5,7 @@ header {
 
 .navbar {
   padding: 1px 0px;
+  max-height: 100%;
 }
 
 .navbar-toggler {
@@ -72,6 +73,9 @@ i.fas.fa-home  {
     background: #16181d;
     color: #FFFFFF;
     font-size: 15px;
+  }
+  header {
+    height: 75px;
   }
   .navbar-dark .navbar-toggler {
     font-size: 20px;

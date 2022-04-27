@@ -62,7 +62,7 @@ div.card {
   border-radius: 0px 4px 4px 0px;
 }
 input.form-control {
-  height: 29px;
+  height: 22px;
 }
 
 /* BUTTONS */
@@ -108,7 +108,7 @@ input.form-control {
 
   input.form-control,
   .button-purple  {
-    height: 55px;
-    font-size: 1.3rem;
+    height: 53px;
+    font-size: 17px;
   }
 }
