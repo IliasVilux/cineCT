@@ -112,17 +112,5 @@ class ReviewController extends Controller
         return redirect()->back()->with('review_deleted', trans('warnings.review_deleted'));   
     }
 
-    public function orderCommentsByLike()
-    {
-        $film_id = '';
-        $serie_id = '';
-        $anime_id = '';
-
-        $review_id = '';
-
-        $filmReviews = Review::where('film_id', $film_id);
-        $serieReviews = Review::where('serie_id', $serie_id);
-        $animeReviews = Review::where('anime_id', $anime_id);
-    }
 
 }

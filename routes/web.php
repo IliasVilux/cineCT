@@ -113,9 +113,6 @@ Route::group(['middleware' => 'authenticate.user'], function () {
    
     //Delete LIKE
     Route::post('/dislike/{review_id}', [LikeController::class, 'dislike'])->name('user.dislike');
-
-    //Order by LIKES
-    //Route::post('/order/film/comments/{id}', [ReviewController::class, 'orderCo'])
    
 });
 
