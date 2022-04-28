@@ -162,9 +162,15 @@
                     <div class="card card-comment bg-dark">
                         <div class="card-body card-body-comment p-4">
                             <h4 class="text-center mb-4 pb-2">{{ trans('titles.commentSection') }}</h4>
-
                             <div class="row">
                                 <div class="col" id="comment-container">
+                                    @if(count($comments) !== 0)
+                                        <div class="d-flex justify-content-end">
+                                            <a class="btn btn-order" style="border:1px solid #5A3C97; color:#ffffff;" id="{{$film->id}}" href="">
+                                                {{trans('content.order_review')}}
+                                            </a>
+                                        </div>
+                                    @endif
                                     @foreach ($comments as $comment)
                                         @if ($comment->film_id == $film->id && !empty($comment->description))
                                             @include('includes.review', ['comment' => $comment])
