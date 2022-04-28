@@ -43,4 +43,6 @@ return [
     'serie_genre_not_have_content' => 'Todavía este género no tiene ninguna serie',
     'anime_genre_not_have_content' => 'Todavía este género no tiene ningún anime',
 
+    'order_review' => 'Ordenar por likes',
+
 ];

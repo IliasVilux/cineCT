@@ -112,4 +112,5 @@ class ReviewController extends Controller
         return redirect()->back()->with('review_deleted', trans('warnings.review_deleted'));   
     }
 
+
 }

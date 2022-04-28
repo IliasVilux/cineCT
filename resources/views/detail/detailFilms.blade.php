@@ -75,7 +75,7 @@
                                 <input name="stars" id="e9" type="radio" value="2"><label for="e9">☆</label>
                                 <input name="stars" id="e10" type="radio" value="1"><label for="e10">☆</label>
                             </div>
-                            <button type="submit" class="btn button-purple btn-sm col-6 mb-2 mb-xl-0">{{ trans('titles.send') }}</button>
+                            <button type="submit" class="btn button-purple btn-sm col-6 mb-2 mb-xl-0">{{trans('content.send_rating')}}</button>
                         </form>
                     </div>
                     <?php
@@ -85,7 +85,7 @@
                     ?>
                     <div class="d-flex flex-row my-2">
                         <a href="/detail/detailFilms/{{ $film->id }}/addFav"><button type="button"
-                                class="btn button-purple btn-md">{{ trans('titles.add_favs') }}</button></a>
+                                class="btn button-purple btn-md">{{trans('content.add_favourite')}}</button></a>
                         <div class="social-media-links mx-2">
                             <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button"
                                 aria-expanded="false" aria-controls="shareComponent">
@@ -124,9 +124,15 @@
                     <div class="card card-comment bg-dark">
                         <div class="card-body card-body-comment p-4">
                             <h4 class="text-center mb-4 pb-2">{{ trans('titles.commentSection') }}</h4>
-
                             <div class="row">
                                 <div class="col" id="comment-container">
+                                    @if(count($comments) !== 0)
+                                        <div class="d-flex justify-content-end">
+                                            <a class="btn btn-order" style="border:1px solid #5A3C97; color:#ffffff;" id="{{$film->id}}" href="">
+                                                {{trans('content.order_review')}}
+                                            </a>
+                                        </div>
+                                    @endif
                                     @foreach ($comments as $comment)
                                         @if ($comment->film_id == $film->id && !empty($comment->description))
                                             @include('includes.review', ['comment' => $comment])

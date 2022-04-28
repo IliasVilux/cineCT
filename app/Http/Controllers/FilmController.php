@@ -9,6 +9,7 @@ use App\Models\Image;
 use App\Models\Review;
 use App\Models\FavoriteList;
 use App\Models\FavouriteLists;
+use App\Models\Like;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use App\Models\User;
@@ -91,7 +92,6 @@ class FilmController extends Controller
         $film = Film::find($id);
         $comments = Review::where('film_id' ,'=', $id)->get();
         $shareComponent = $this->ShareWidget();
-    
 
         if (!is_null($film)) {
             return view('detail.detailFilms', compact('film', 'comments', 'shareComponent'));
