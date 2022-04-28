@@ -78,6 +78,7 @@ class DatabaseSeeder extends Seeder
                 'total_episodes' => $tmp2->{'data'}->{'episodes'},
                 'puntuation' => $tmp2->{'data'}->{'score'},
                 'genre_id' => $genreValidation,
+                'original_id' => $tmp2->{'data'}->{'mal_id'},
                 'created_at' => now(),
                 'updated_at' => now()
             ]);

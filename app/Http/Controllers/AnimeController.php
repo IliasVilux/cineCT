@@ -17,7 +17,7 @@ class AnimeController extends Controller
 {
     public static function store()
     {
-        $contador = 1;
+        $contador = 201;
         $apiLinks = array();
         $allAnimes = array();
 
@@ -26,12 +26,16 @@ class AnimeController extends Controller
             array_push($apiLinks, $animeApi);
             $contador++;
             sleep(4);
-        } while ($contador < 12);
+        } while ($contador < 400);
 
         foreach ($apiLinks as $link) {
             $animeJson = json_decode($link);
             if (isset($animeJson->{'data'}->{'mal_id'}) && $animeJson->{'data'}->{'type'} == 'TV') {
                 $animeJson->{'data'}->{'duration'} = substr($animeJson->{'data'}->{'duration'}, 0, 2);
+                if($animeJson->{'data'}->{'episodes'} == null)
+                {
+                    $animeJson->{'data'}->{'episodes'} = 0;
+                }
                 if (!empty($animeJson->{'data'}->{'themes'})) {
                     $themeName = $animeJson->{'data'}->{'themes'}[0]->{'name'};
                     switch ($themeName) {
@@ -125,7 +129,7 @@ class AnimeController extends Controller
                 echo $asd->{'data'}->{'genres'}[0]->{'name'};
             }
         } */
-        echo "<section style='display: flex;'>";
+        /* echo "<section style='display: flex;'>";
         foreach ($allAnimes as $asd) {
             echo "<div style='width: 30%'>";
             echo "<img src='" . $asd->{'data'}->{'images'}->{'webp'}->{'large_image_url'} . "'><br>";
@@ -143,7 +147,7 @@ class AnimeController extends Controller
             echo "</div>";
         }
         echo "</section>";
-        die();
+        die(); */
 
         return $allAnimes;
     }

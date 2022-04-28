@@ -114,7 +114,6 @@
                                 <i class="fas fa-share-alt"></i>
                             </a>
                         </div>
-<<<<<<< HEAD
                         <button type="submit" class="btn button-purple btn-sm col-6 mb-2 mb-xl-0">Enviar</button>
                     </form>
                 </div>
@@ -167,8 +166,6 @@
                             aria-expanded="false" aria-controls="shareComponent">
                             <i class="fas fa-share-alt"></i>
                         </a>
-=======
->>>>>>> main
                     </div>
                     <div class="collapse my-3" id="shareComponent">
                         {!! $shareComponent !!}

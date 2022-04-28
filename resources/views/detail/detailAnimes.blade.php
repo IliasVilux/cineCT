@@ -193,9 +193,9 @@
         </article>
 
         <article class="d-flex flex-column flex wrap align-items-center p-3">
-            <h3 class="text-uppercase pb-3">Tráiler</h3>
             <!-- START TRAILER SECTION -->
             @if ($anime->trailer_link != null)
+            <h3 class="text-uppercase pb-3">Tráiler</h3>
                 <iframe class="w-75" height="500"
                     src="https://www.youtube.com/embed/{{ $anime->trailer_link }}" allowfullscreen></iframe>
                 <div class="alert alert-dark w-75 my-3" role="alert">

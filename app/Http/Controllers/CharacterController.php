@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Http;
 class CharacterController extends Controller
 {
     public static function store(){
-        $contador = 1;
+        $contador = 101;
         $apiLinks = array();
         $allCharacters = array();
 
@@ -17,7 +17,7 @@ class CharacterController extends Controller
             array_push($apiLinks, $chracterApi);
             $contador++;
             sleep(4);
-        } while($contador < 6);
+        } while($contador < 400);
 
         foreach($apiLinks as $link){
             $characterJson = json_decode($link);
