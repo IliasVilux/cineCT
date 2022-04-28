@@ -4,7 +4,7 @@ header {
 }
 
 .navbar {
-  padding: 5px;
+  padding: 0px 5px;
   max-height: 100%;
 }
 
@@ -16,7 +16,11 @@ header {
 
 img.logo {
   width: 75px;
-  height: 75%;
+  height: 65%;
+}
+.navbar-brand{
+  width: 50px;
+  height: 35px;
 }
 
 .user-profile-img{
@@ -33,7 +37,7 @@ img.logo {
 
 /* MENU */
 .navbar-dark .navbar-toggler {
-  font-size: 16px;
+  font-size: 10px;
 }
 
 .offcanvas-start {
@@ -55,11 +59,11 @@ ul.list-unstyled li a i.fas {
 /* Iconos */
 
 i.fas.fa-search {
-  font-size: 14px;
+  font-size: 10px;
 }
 
 .fas.fa-user-circle {
-  font-size: 15px;
+  font-size: 10px;
 }
 
 i.fas.fa-film,
@@ -102,9 +106,6 @@ i.fas.fa-home  {
   }
   header {
     height: 65px;
-  }
-  .navbar {
-    padding: 0px 5px;
   }
   .navbar-dark .navbar-toggler {
     font-size: 25px;

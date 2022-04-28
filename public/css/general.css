@@ -34,21 +34,39 @@ a {
 }
 
 /* Img slider */
-.slider {
-  height: 50%;
-}
-
-.img-carousel{
-  height: 225px;
-}
-
-.full-img {
-  width: 100%;
-  height: 225px;
-}
 
 .carousel-item.full {
   height: 225px;
+  overflow: hidden;
+}
+
+.full-img {
+  max-width: 100%;
+  height: 100%;
+  border-radius: 20px;
+}
+
+.section-content {
+  width: 90%;
+  padding: 2em 0em;
+}
+
+.carousel.slide.carousel-equal-heights {
+  width: 100%;
+}
+
+a.link-img-carousel {
+  color: transparent;
+}
+
+.img-carousel {
+  max-width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.carousel-inner {
+  overflow: visible;
 }
 
 .section-content {
