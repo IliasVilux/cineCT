@@ -12,7 +12,7 @@
                 <div class="cinect-carousel--container--content">
                     <div class="accordion accordion-flush" id="accordionFlushExample">
                         <?php $contador = 1; ?>
-                        @foreach ($films->take(10) as $film)
+                        @foreach ($films->take(3) as $film)
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingOne">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -35,7 +35,7 @@
                             </div>
                         @endforeach
 
-                        @foreach ($animes->take(10) as $anime)
+                        @foreach ($animes->take(3) as $anime)
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingOne">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -59,7 +59,7 @@
                             </div>
                         @endforeach
 
-                        @foreach ($series->take(10) as $serie)
+                        @foreach ($series->take(4) as $serie)
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingOne">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"

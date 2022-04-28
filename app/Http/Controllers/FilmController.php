@@ -13,6 +13,7 @@ use App\Models\Like;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class FilmController extends Controller
 {
@@ -92,6 +93,26 @@ class FilmController extends Controller
         $film = Film::find($id);
         $comments = Review::where('film_id' ,'=', $id)->get();
         $shareComponent = $this->ShareWidget();
+
+        $allLikes = [];
+
+        echo 'Pelicula: <b>'. $comments[0]->film->name . '</b> con id '. $comments[0]->film->id .'<br><br>';
+        echo "A continuación solo se mostrarán reviews con likes<br><br>";
+        foreach($comments as $comment){
+            //SELECT user_id , count(review_id) as "Total likes" FROM likes GROUP BY user_id;
+            $allLikes = Like::where('review_id', $comment->id)->get();
+
+            $count = count($allLikes);
+            foreach($allLikes as $like)
+            {
+                echo $like->user->nick .' ha dado like a la review : <b>'. $like->review->description .'(con id '. $like->review->id.')</b> (esta review pertenece a <b>'. $like->review->user->nick .'</b> y tiene '. $count .' likes)<br>';
+                echo "<hr><br>";
+            }
+
+            
+
+        }
+        die();
 
         if (!is_null($film)) {
             return view('detail.detailFilms', compact('film', 'comments', 'shareComponent'));
