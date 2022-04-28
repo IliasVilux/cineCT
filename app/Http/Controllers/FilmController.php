@@ -93,17 +93,6 @@ class FilmController extends Controller
         $comments = Review::where('film_id' ,'=', $id)->get();
         $shareComponent = $this->ShareWidget();
 
-        
-        foreach($comments as $comment){
-            $review_id = $comment->id;
-            $likes = Like::where('review_id','=' ,$review_id)->get();
-            foreach($likes as $like){
-                echo $comment->user->nick. ': <b>'. $comment->description. '</b><br> ---Likes: '. count($comment->like) . '<br>';
-            }
-        }
-        die();
-
-
         if (!is_null($film)) {
             return view('detail.detailFilms', compact('film', 'comments', 'shareComponent'));
         } else {
