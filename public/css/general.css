@@ -41,7 +41,7 @@ a {
 }
 
 .full-img {
-  max-width: 100%;
+  width: 170px;
   height: 100%;
   border-radius: 20px;
 }
@@ -124,8 +124,13 @@ a.link-img-carousel {
     font-size: 17px;
   }
 
-  .img-carousel{
+  .full-img {
+    width: 25%;
     height: 350px;
+  }
+
+  .img-carousel{
+    height: 215px;
   }
 
   .carousel-item.full {
