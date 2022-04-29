@@ -41,7 +41,7 @@ a {
 }
 
 .full-img {
-  width: 170px;
+  width: 160px;
   height: 100%;
   border-radius: 20px;
 }
@@ -130,7 +130,7 @@ a.link-img-carousel {
   }
 
   .img-carousel{
-    height: 215px;
+    height: 200px;
   }
 
   .carousel-item.full {
