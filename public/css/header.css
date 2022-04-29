@@ -59,7 +59,7 @@ ul.list-unstyled li a i.fas {
 /* Iconos */
 
 i.fas.fa-search {
-  font-size: 10px;
+  font-size: 9px;
 }
 
 .fas.fa-user-circle {
@@ -78,8 +78,10 @@ i.fas.fa-home  {
     color: #FFFFFF;
     font-size: 15px;
   }
-  header {
-    height: 75px;
+  .navbar {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    max-height: 100%;
   }
   .navbar-dark .navbar-toggler {
     font-size: 20px;
@@ -93,7 +95,7 @@ i.fas.fa-home  {
   }
   img.logo {
     width: 130px;
-    height: 75%;
+    height: 35px;
   }
 }
 

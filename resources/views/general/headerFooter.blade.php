@@ -34,7 +34,7 @@
                 </div>
                 <div class="d-flex flex-direction-row flex-nowrap justify-content-end align-items-center col-3">
                 <a href="{{ url('/search/search') }}" class="footer-links text-light text-uppercase"><i class="fas fa-search text-light p-0 pt-1"></i></a>
-                    <div class="dropdown pe-3">
+                    <div class="dropdown">
                         <button class="btn text-light dropdown-toggle d-flex flex-direction-row flex-nowrap justify-content-end align-items-center p-0 px-sm-3"
                             type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true">
                             <i class="fas fa-user-circle pe-1"></i>
