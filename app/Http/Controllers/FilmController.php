@@ -100,16 +100,23 @@ class FilmController extends Controller
         echo "A continuación solo se mostrarán reviews con likes<br><br>";
         foreach($comments as $comment){
             //SELECT user_id , count(review_id) as "Total likes" FROM likes GROUP BY user_id;
+            //$allLikes = Like::where('review_id', $comment->id)->orderBy('created_at', 'desc')->get();
             $allLikes = Like::where('review_id', $comment->id)->get();
-
+            
+            /*var_dump($allLikes);
+            die();
+            //*/
             $count = count($allLikes);
+            $temp = null;
             foreach($allLikes as $like)
             {
+                //var_dump($like);
+                $temp[$like->id] = $count;
                 echo $like->user->nick .' ha dado like a la review : <b>'. $like->review->description .'(con id '. $like->review->id.')</b> (esta review pertenece a <b>'. $like->review->user->nick .'</b> y tiene '. $count .' likes)<br>';
                 echo "<hr><br>";
             }
-
-            
+            $temp[$like->id] = $count;
+            var_dump($temp);
 
         }
         die();
