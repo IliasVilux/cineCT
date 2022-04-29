@@ -19,8 +19,8 @@
     <h1>{{$data['list']->name}}</h1>
 
     <section class="container top_content my-5">
-    @foreach($data['animes'] as $anime)
         <section class="cinet_top--content">
+            @foreach($data['animes'] as $anime)
             <a class="p-2" href="{{ route('anime.animes', ['id' => $anime->id]) }}">
                 <div class="cinet_top--detail">
                     <div>
@@ -33,10 +33,8 @@
                 </div>
                 <p>{{ $anime->name }}<span>{{ $anime->puntuation }}</span></p>
             </a>
-        </section>
-    @endforeach
-    @foreach($data['series'] as $serie)
-        <section class="cinet_top--content">
+            @endforeach
+            @foreach($data['series'] as $serie)
             <a class="p-2" href="{{ route('serie.series', ['id' => $serie->id]) }}">
                 <div class="cinet_top--detail">
                     <div>
@@ -49,10 +47,8 @@
                 </div>
                 <p>{{ $serie->name }}<span>{{ $serie->puntuation }}</span></p>
             </a>
-        </section>
-    @endforeach
-    @foreach($data['films'] as $film)
-        <section class="cinet_top--content">
+            @endforeach
+            @foreach($data['films'] as $film)
             <a class="p-2" href="{{ route('film.films', ['id' => $film->id]) }}">
                 <div class="cinet_top--detail">
                     <div>
@@ -65,8 +61,8 @@
                 </div>
                 <p>{{ $film->name }}<span>{{ $film->puntuation }}</span></p>
             </a>
+            @endforeach
         </section>
-    @endforeach
     </div>
 
     <a href="{{ url('/') }}" class="btn button-purple" title="Home">
