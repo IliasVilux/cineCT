@@ -94,6 +94,7 @@ class FilmController extends Controller
         $comments = Review::where('film_id' ,'=', $id)->get();
         $shareComponent = $this->ShareWidget();
 
+        /*
         $allLikes = [];
 
         echo 'Pelicula: <b>'. $comments[0]->film->name . '</b> con id '. $comments[0]->film->id .'<br><br>';
@@ -103,9 +104,9 @@ class FilmController extends Controller
             //$allLikes = Like::where('review_id', $comment->id)->orderBy('created_at', 'desc')->get();
             $allLikes = Like::where('review_id', $comment->id)->get();
             
-            /*var_dump($allLikes);
-            die();
-            //*/
+            //var_dump($allLikes);
+            //die();
+            
             $count = count($allLikes);
             $temp = null;
             foreach($allLikes as $like)
@@ -120,6 +121,8 @@ class FilmController extends Controller
 
         }
         die();
+
+        */
 
         if (!is_null($film)) {
             return view('detail.detailFilms', compact('film', 'comments', 'shareComponent'));
