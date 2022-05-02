@@ -3,6 +3,9 @@
 section.slider {
     height: 50%;
 }
+.container-fluid {
+    padding: 0;
+}
 
 /* POR ORDENAR */
 
