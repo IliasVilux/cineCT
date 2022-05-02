@@ -23,15 +23,19 @@ class FilmController extends Controller
         $apiLinks = array();
         $allFilms = array();
 
+        
+
         do{
-            $filmApi = Http::get('https://api.themoviedb.org/3/movie/' . $contador . '?api_key=9d981b068284aca44fb7530bdd218c30&language=en-US');
+            //$filmApi = Http::get('https://api.themoviedb.org/3/movie/' . $contador . '?api_key=9d981b068284aca44fb7530bdd218c30&language=en-US');
+            $filmApi = Http::get('https://api.themoviedb.org/'.$contador.'/discover/movie?api_key=9d981b068284aca44fb7530bdd218c30&with_genres=27');
             array_push($apiLinks, $filmApi);
             $contador++;
-        }while($contador < 20);
+        }while($contador < 10);
         
         foreach($apiLinks as $link) {
             $filmJson = json_decode($link);
-            if (isset($filmJson->{'id'})){
+            /*
+            if (isset($filmJson->{'id'}) && isset($filmJson->{'genres'}[0]->{'name'})){
                 $genreName = $filmJson->{'genres'}[0]->{'name'};
                 if($genreName == "Action") {
                     $filmJson->{'genres'}[0]->{'name'} = 1;
@@ -80,10 +84,43 @@ class FilmController extends Controller
                 }else{
                     $filmJson->{'genres'}[0]->{'name'} = 23;
                 }
+                
                 $filmJson->{'release_date'} = (int)substr($filmJson->{'release_date'}, 0, -5);
+
+                if(isset($filmJson->{'genres'}[0]->{'name'}) && ($filmJson->{'genres'}[0]->{'name'} === 'Terror' || $filmJson->{'genres'}[0]->{'name'} === 'Thriller'))
+                {
+                    array_push($allFilms, $filmJson);
+                }
+            }
+            */
+            
+            if(isset($filmJson->{'results'}))
+            {
                 array_push($allFilms, $filmJson);
             }
+                        
         }
+
+        
+        if(count($allFilms) != 0)
+        {
+            foreach($allFilms as $filmContent)
+            {
+                
+                //$contador = count($filmContent->{'genres'});
+                //echo $filmContent->{'id'}. ' - ' .$filmContent->{'genres'}[0]->{'name'} . '<br>';
+                $count = count($filmContent->{'results'});
+                for ($i=0; $i < $count; $i++) { 
+                    echo 'Nombre; '.$filmContent->{'results'}[$i]->{'original_title'} .'<br>' . 'Genre_id: '. $filmContent->{'results'}[$i]->{'genre_ids'}[0]. '<br>'. 'poster_path: '. $filmContent->{'results'}[$i]->{'backdrop_path'}. '<br><br>';
+                }
+                
+            }
+            
+        }else{
+            echo "No té contingut";
+        }
+        die();
+        
 
         return $allFilms;
 
