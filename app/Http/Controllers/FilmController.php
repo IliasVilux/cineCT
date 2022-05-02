@@ -23,8 +23,6 @@ class FilmController extends Controller
         $apiLinks = array();
         $allFilms = array();
 
-        
-
         do{
             //$filmApi = Http::get('https://api.themoviedb.org/3/movie/' . $contador . '?api_key=9d981b068284aca44fb7530bdd218c30&language=en-US');
             $filmApi = Http::get('https://api.themoviedb.org/'.$contador.'/discover/movie?api_key=9d981b068284aca44fb7530bdd218c30&with_genres=27');
@@ -111,7 +109,7 @@ class FilmController extends Controller
                 //echo $filmContent->{'id'}. ' - ' .$filmContent->{'genres'}[0]->{'name'} . '<br>';
                 $count = count($filmContent->{'results'});
                 for ($i=0; $i < $count; $i++) { 
-                    echo 'Nombre; '.$filmContent->{'results'}[$i]->{'original_title'} .'<br>' . 'Genre_id: '. $filmContent->{'results'}[$i]->{'genre_ids'}[0]. '<br>'. 'poster_path: '. $filmContent->{'results'}[$i]->{'backdrop_path'}. '<br><br>';
+                    echo 'Nombre; '.$filmContent->{'results'}[$i]->{'title'} .'<br>' . 'Genre_id: '. $filmContent->{'results'}[$i]->{'genre_ids'}[0]. '<br>'. 'poster_path: https://image.tmdb.org/t/p/w500'. $filmContent->{'results'}[$i]->{'backdrop_path'}. '<br>description: '. $filmContent->{'results'}[$i]->{'overview'}. '<br> release_date: '. $filmContent->{'results'}[$i]->{'release_date'}. '<br><br>';
                 }
                 
             }
@@ -119,7 +117,7 @@ class FilmController extends Controller
         }else{
             echo "No té contingut";
         }
-        die();
+        //die();
         
 
         return $allFilms;
