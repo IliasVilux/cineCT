@@ -75,11 +75,11 @@
         <h3 class="title text-uppercase">{{trans('home.films')}}</h3>
         <a href="{{asset('/content/contentFilms')}}"><button type="button" class="btn button-purple btn-sm">{{trans('home.view_more')}}</button></a>
     </div>
-    <div class="container-fluid d-flex flex-row align-items-center" id="container">
+    <div class="container-fluid d-flex flex-row align-items-center p-0" id="container">
         <a class="btn-floating me-0" href="#films" data-bs-slide="prev"><i class="fa fa-chevron-left"
                 aria-hidden="true"></i></a>
 
-        <div id="films" class="carousel slide carousel-equal-heights my-4" data-bs-ride="carousel"
+        <div id="films" class="carousel slide carousel-fade carousel-equal-heights my-4" data-bs-ride="carousel"
             data-bs-interval="false">
 
             <div class="carousel-inner" role="listbox">
@@ -175,11 +175,11 @@
         <h3 class="title text-uppercase">{{trans('home.series')}}</h3>
         <a href="{{asset('/content/contentSeries')}}"><button type="button" class="btn button-purple btn-sm">{{trans('home.view_more')}}</button></a>
     </div>
-    <div class="container-fluid d-flex flex-row align-items-center" id="container">
+    <div class="container-fluid d-flex flex-row align-items-center p-0" id="container">
         <a class="btn-floating me-0" href="#series" data-bs-slide="prev"><i class="fa fa-chevron-left"
                 aria-hidden="true"></i></a>
 
-        <div id="series" class="carousel slide carousel-equal-heights my-4" data-bs-ride="carousel"
+        <div id="series" class="carousel slide carousel-fade carousel-equal-heights my-4" data-bs-ride="carousel"
             data-bs-interval="false">
 
             <div class="carousel-inner" role="listbox">
@@ -275,11 +275,11 @@
         <h3 class="title text-uppercase">{{trans('home.animes')}}</h3>
         <a href="{{asset('/content/contentAnimes')}}"><button type="button" class="btn button-purple btn-sm">{{trans('home.view_more')}}</button></a>
     </div>
-    <div class="container-fluid d-flex flex-row align-items-center" id="container">
+    <div class="container-fluid d-flex flex-row align-items-center p-0" id="container">
         <a class="btn-floating me-0" href="#animes" data-bs-slide="prev"><i class="fa fa-chevron-left"
                 aria-hidden="true"></i></a>
 
-        <div id="animes" class="carousel slide carousel-equal-heights my-4" data-bs-ride="carousel"
+        <div id="animes" class="carousel slide carousel-fade carousel-equal-heights my-4" data-bs-ride="carousel"
             data-bs-interval="false">
 
             <div class="carousel-inner" role="listbox">
