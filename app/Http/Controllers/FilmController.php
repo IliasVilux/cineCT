@@ -129,52 +129,49 @@ class FilmController extends Controller
         $comments = Review::where('film_id' ,'=', $id)->get();
         $shareComponent = $this->ShareWidget();
 
-        $commentsOrderByLikes = [];
-
+        
         echo '<b>Pelicula: '. $film->name. '</b><br><br>';
-
+        
+        
+        $allComments = array(
+            'comments' => array(),
+            'likes' => array(),
+        );
         if(count($comments) !== 0){
 
             foreach($comments as $comment){
     
                 // ens retorna tots els likes que te la review
-                $currentCommentTotalLikes = Like::where('review_id', $comment->id)->count();
-
-                /*
+                $currentCommentTotalLikes = Like::where('review_id', $comment->id)->get();
+                //$currentCommentTotalLikes = Like::withcount('review')->orderByDesc('review_count')->get();
+                //dump($currentCommentTotalLikes);
+                
                 if($currentCommentTotalLikes !== 0)
                 {
+                    echo 'ID del comentario: '. $comment->id. '<br>';
                     echo 'Autor: '.$comment->user->nick .'<br>'; 
                     echo 'Comentario: '.$comment->description .'<br>'; 
-                    echo 'Total Likes: '.$currentCommentTotalLikes .'<br>'; 
+                    echo 'Total Likes: <b>'.count($currentCommentTotalLikes).'</b><br>'; 
                     echo '<br>----------------------------------';
                     echo '<br><br>';
                 }
-                */
-
-                $commentsOrderByLikes[$comment->id] = $comment;
+                
+                //array_push($allComments['comments'], $comment);
+                //array_push($allComments['likes'], $currentCommentTotalLikes);
+                
             }
         }else{
             echo 'Esta pelicula no tiene ningun comnetario/review';
         }
 
-
-        foreach($commentsOrderByLikes as $likesOrderList) {
-             echo 'Autor: '.$likesOrderList->user->nick .'<br>'; 
-             echo 'Comentario: '.$likesOrderList->description .'<br>'; 
-             echo 'Total Likes: '.count($likesOrderList->like) .'<br>'; 
-             echo '<br>----------------------------------';
-             echo '<br><br>';
-        }
-
         die();
-
         
-
         if (!is_null($film)) {
             return view('detail.detailFilms', compact('film', 'comments', 'shareComponent'));
         } else {
             return response('No encontrado', 404);
         }
+
     }
 
     public function addFavourite($id)
