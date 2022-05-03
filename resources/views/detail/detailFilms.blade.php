@@ -323,6 +323,7 @@
                 $(this).css("color", "#FFFFFF");
                 let comment_id = $(this).data('id');
                 let ruta = `/dislike/${comment_id}`;
+                console.log(comment_id);
                 $.ajax({
                     type: "POST",
                     url: ruta,
@@ -332,11 +333,11 @@
                     },
                     success: function(data){
                         if (data.like) {
-                        console.log("Has dado dislike de forma correcta");
+                            console.log("Has dado dislike de forma correcta");
                         } else {
                             console.log("Error al dar dislike");
                         }
-                    }
+                    },
                 });
                 like();
             })

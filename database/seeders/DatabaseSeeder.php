@@ -65,22 +65,22 @@ class DatabaseSeeder extends Seeder
         //Peliculas segun su genero (api : https://api.themoviedb.org/'.$contador.'/discover/movie?api_key=9d981b068284aca44fb7530bdd218c30&with_genres=27)
         $tmp = FilmController::store();
         foreach ($tmp as $tmp2){
-            $filmCount = count($tmp2->{'results'});
-            for ($i=0; $i < $filmCount;) { 
+            $count = count($tmp2->{'results'});
+            for ($i=0; $i < $count; $i++) { 
                 
                 DB::table('films')->insert([
                     'original_id' => $tmp2->{'results'}[$i]->{'id'},
                     'name' => $tmp2->{'results'}[$i]->{'title'},
-                    'genre_id' => 6,
+                    'genre_id' => '6',
                     'description' => $tmp2->{'results'}[$i]->{'overview'},
-                    'poster_path' => 'https://image.tmdb.org/t/p/w500'.$tmp2->{'results'}[$i]->{'backdrop_path'},
-                    'duration' => $tmp2->{'results'}[$i], 
+                    'poster_path' => $tmp2->{'results'}[$i]->{'backdrop_path'},
+                    'duration' => '0', 
                     'release_date' => $tmp2->{'results'}[$i]->{'release_date'},
                     'puntuation' => $tmp2->{'results'}[$i]->{'vote_average'},
                     'created_at' => now(),
                     'updated_at' => now()
                 ]);
-                $i++;
+
             }
         }  
 

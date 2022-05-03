@@ -109,7 +109,21 @@ class FilmController extends Controller
                 //echo $filmContent->{'id'}. ' - ' .$filmContent->{'genres'}[0]->{'name'} . '<br>';
                 $count = count($filmContent->{'results'});
                 for ($i=0; $i < $count; $i++) { 
-                    echo 'Nombre; '.$filmContent->{'results'}[$i]->{'title'} .'<br>' . 'Genre_id: '. $filmContent->{'results'}[$i]->{'genre_ids'}[0]. '<br>'. 'poster_path: https://image.tmdb.org/t/p/w500'. $filmContent->{'results'}[$i]->{'backdrop_path'}. '<br>description: '. $filmContent->{'results'}[$i]->{'overview'}. '<br> release_date: '. $filmContent->{'results'}[$i]->{'release_date'}. '<br><br>';
+
+                    $filmContent->{'results'}[$i]->{'release_date'} = substr($filmContent->{'results'}[$i]->{'release_date'}, 0, 4);
+                    $filmContent->{'results'}[$i]->{'backdrop_path'} = 'https://image.tmdb.org/t/p/w500'.$filmContent->{'results'}[$i]->{'backdrop_path'};
+
+                    
+                    /*
+                    echo 'Nombre; '.$filmContent->{'results'}[$i]->{'title'} .'<br>';
+                    echo 'Genre_id: '. $filmContent->{'results'}[$i]->{'genre_ids'}[0]. '<br>';
+                    echo 'description: '. $filmContent->{'results'}[$i]->{'overview'}. '<br>';
+                    echo 'duration: 0 <br>';
+                    echo 'poster_path: '. $filmContent->{'results'}[$i]->{'backdrop_path'} .'<br>';
+                    echo 'puntuation:'. $filmContent->{'results'}[$i]->{'vote_average'}.'<br>';
+                    echo 'release_date: '. $filmContent->{'results'}[$i]->{'release_date'}. '<br><br>';
+                    */
+                    
                 }
                 
             }
@@ -130,38 +144,53 @@ class FilmController extends Controller
         $shareComponent = $this->ShareWidget();
 
         
+        /*
         echo '<b>Pelicula: '. $film->name. '</b><br><br>';
-        
-        
-        $allComments = [];
+        SELECT review_id,
+        COUNT(user_id)
+        FROM likes
+        GROUP BY  review_id
+        ORDER BY COUNT(user_id) DESC ;
+
+        //QUERY AVANZADA-----
+        SELECT reviews.id, count(likes.user_id) AS 'TOTAL LIKES'
+        FROM reviews 
+        LEFT JOIN likes on reviews.id = likes.review_id
+        GROUP BY likes.review_id
+        ORDER BY 'TOTAL LIKES' DESC;
+        */
+
+        $allTemporalCommentsOrderByLikes = [];
         if(count($comments) !== 0){
 
             foreach($comments as $comment){
     
-                //$currentCommentTotalLikes = Like::where('review_id', $comment->id)->count();
+                $currentCommentTotalLikes = Like::where('review_id', $comment->id)->count();
                 
-                $currentCommentTotalLikes = Like::where('review_id', $comment->id)->orderBy('created_at', 'desc')->get();
-                
-                if(count($currentCommentTotalLikes) !== 0)
+                if($currentCommentTotalLikes !== 0)
                 {
                     echo 'ID del comentario: '. $comment->id. '<br>';
                     echo 'Autor: '.$comment->user->nick .'<br>'; 
                     echo 'Comentario: '.$comment->description .'<br>'; 
-                    echo 'Total Likes: <b>'.count($currentCommentTotalLikes).'</b><br>'; 
+                    echo 'Total Likes: <b>'.$currentCommentTotalLikes.'</b><br>'; 
                     echo '<br>----------------------------------';
                     echo '<br><br>';
                 }
 
-                $allComments[$comment->id] = count($currentCommentTotalLikes);
+
+                $allTemporalCommentsOrderByLikes['like_'.$comment->id] = $currentCommentTotalLikes;
+                $allTemporalCommentsOrderByLikes['comment_'.$comment->id] = $comment;
                 
             }
         }else{
             echo 'Esta pelicula no tiene ningun comnetario/review';
         }
-        arsort($allComments);
-        dump($allComments);
+
+        
+        dump($allTemporalCommentsOrderByLikes);
 
         die();
+        
         
         if (!is_null($film)) {
             return view('detail.detailFilms', compact('film', 'comments', 'shareComponent'));
