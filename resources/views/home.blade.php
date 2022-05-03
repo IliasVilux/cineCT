@@ -171,6 +171,7 @@
                 aria-hidden="true"></i></a>
     </div>
     <!-- SERIES -->
+    <!-- SERIES -->
     <div class="container-fluid d-flex justify-content-between">
         <h3 class="title text-uppercase">{{trans('home.series')}}</h3>
         <a href="{{asset('/content/contentSeries')}}"><button type="button" class="btn button-purple btn-sm">{{trans('home.view_more')}}</button></a>
