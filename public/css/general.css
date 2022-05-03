@@ -87,6 +87,8 @@ a.link-img-carousel {
   50% {box-shadow: 0 5px 30px rgba(145, 92, 182, .4);}
 }
 
+
+/* MEDIA QUERIES */
 @media screen and (min-width: 350px) {
   .img-carousel {
     width: 88px;
@@ -101,7 +103,7 @@ a.link-img-carousel {
     font-size: 15px;
   }
   header {
-    height: 58px;
+    height: 65px;
   }
 
   .full-img {
@@ -154,5 +156,9 @@ a.link-img-carousel {
   .img-carousel{
     height: 160px;
     width: 120px;
+  }
+  #container,
+  #title-button {
+    width: 1200px;
   }
 }

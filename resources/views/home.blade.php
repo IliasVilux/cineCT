@@ -71,7 +71,7 @@
 <section class="section-content container-fluid">
 
     <!-- PELÍCULAS -->
-    <div class="container-fluid d-flex justify-content-between">
+    <div class="container-fluid d-flex justify-content-between" id="title-button">
         <h3 class="title text-uppercase">{{trans('home.films')}}</h3>
         <a href="{{asset('/content/contentFilms')}}"><button type="button" class="btn button-purple btn-sm">{{trans('home.view_more')}}</button></a>
     </div>
@@ -171,8 +171,7 @@
                 aria-hidden="true"></i></a>
     </div>
     <!-- SERIES -->
-    <!-- SERIES -->
-    <div class="container-fluid d-flex justify-content-between">
+    <div class="container-fluid d-flex justify-content-between" id="title-button">
         <h3 class="title text-uppercase">{{trans('home.series')}}</h3>
         <a href="{{asset('/content/contentSeries')}}"><button type="button" class="btn button-purple btn-sm">{{trans('home.view_more')}}</button></a>
     </div>
@@ -272,7 +271,7 @@
     </div>
 
     <!-- ANIME -->
-    <div class="container-fluid d-flex justify-content-between">
+    <div class="container-fluid d-flex justify-content-between" id="title-button">
         <h3 class="title text-uppercase">{{trans('home.animes')}}</h3>
         <a href="{{asset('/content/contentAnimes')}}"><button type="button" class="btn button-purple btn-sm">{{trans('home.view_more')}}</button></a>
     </div>
