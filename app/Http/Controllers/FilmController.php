@@ -129,35 +129,46 @@ class FilmController extends Controller
         $comments = Review::where('film_id' ,'=', $id)->get();
         $shareComponent = $this->ShareWidget();
 
-        /*
-        $allLikes = [];
+        $commentsOrderByLikes = [];
 
-        echo 'Pelicula: <b>'. $comments[0]->film->name . '</b> con id '. $comments[0]->film->id .'<br><br>';
-        echo "A continuación solo se mostrarán reviews con likes<br><br>";
-        foreach($comments as $comment){
-            //SELECT user_id , count(review_id) as "Total likes" FROM likes GROUP BY user_id;
-            //$allLikes = Like::where('review_id', $comment->id)->orderBy('created_at', 'desc')->get();
-            $allLikes = Like::where('review_id', $comment->id)->get();
-            
-            //var_dump($allLikes);
-            //die();
-            
-            $count = count($allLikes);
-            $temp = null;
-            foreach($allLikes as $like)
-            {
-                //var_dump($like);
-                $temp[$like->id] = $count;
-                echo $like->user->nick .' ha dado like a la review : <b>'. $like->review->description .'(con id '. $like->review->id.')</b> (esta review pertenece a <b>'. $like->review->user->nick .'</b> y tiene '. $count .' likes)<br>';
-                echo "<hr><br>";
+        echo '<b>Pelicula: '. $film->name. '</b><br><br>';
+
+        if(count($comments) !== 0){
+
+            foreach($comments as $comment){
+    
+                // ens retorna tots els likes que te la review
+                $currentCommentTotalLikes = Like::where('review_id', $comment->id)->count();
+
+                /*
+                if($currentCommentTotalLikes !== 0)
+                {
+                    echo 'Autor: '.$comment->user->nick .'<br>'; 
+                    echo 'Comentario: '.$comment->description .'<br>'; 
+                    echo 'Total Likes: '.$currentCommentTotalLikes .'<br>'; 
+                    echo '<br>----------------------------------';
+                    echo '<br><br>';
+                }
+                */
+
+                $commentsOrderByLikes[$comment->id] = $comment;
             }
-            $temp[$like->id] = $count;
-            var_dump($temp);
-
+        }else{
+            echo 'Esta pelicula no tiene ningun comnetario/review';
         }
+
+
+        foreach($commentsOrderByLikes as $likesOrderList) {
+             echo 'Autor: '.$likesOrderList->user->nick .'<br>'; 
+             echo 'Comentario: '.$likesOrderList->description .'<br>'; 
+             echo 'Total Likes: '.count($likesOrderList->like) .'<br>'; 
+             echo '<br>----------------------------------';
+             echo '<br><br>';
+        }
+
         die();
 
-        */
+        
 
         if (!is_null($film)) {
             return view('detail.detailFilms', compact('film', 'comments', 'shareComponent'));
