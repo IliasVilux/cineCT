@@ -133,20 +133,16 @@ class FilmController extends Controller
         echo '<b>Pelicula: '. $film->name. '</b><br><br>';
         
         
-        $allComments = array(
-            'comments' => array(),
-            'likes' => array(),
-        );
+        $allComments = [];
         if(count($comments) !== 0){
 
             foreach($comments as $comment){
     
-                // ens retorna tots els likes que te la review
-                $currentCommentTotalLikes = Like::where('review_id', $comment->id)->get();
-                //$currentCommentTotalLikes = Like::withcount('review')->orderByDesc('review_count')->get();
-                //dump($currentCommentTotalLikes);
+                //$currentCommentTotalLikes = Like::where('review_id', $comment->id)->count();
                 
-                if($currentCommentTotalLikes !== 0)
+                $currentCommentTotalLikes = Like::where('review_id', $comment->id)->orderBy('created_at', 'desc')->get();
+                
+                if(count($currentCommentTotalLikes) !== 0)
                 {
                     echo 'ID del comentario: '. $comment->id. '<br>';
                     echo 'Autor: '.$comment->user->nick .'<br>'; 
@@ -155,14 +151,15 @@ class FilmController extends Controller
                     echo '<br>----------------------------------';
                     echo '<br><br>';
                 }
-                
-                //array_push($allComments['comments'], $comment);
-                //array_push($allComments['likes'], $currentCommentTotalLikes);
+
+                $allComments[$comment->id] = count($currentCommentTotalLikes);
                 
             }
         }else{
             echo 'Esta pelicula no tiene ningun comnetario/review';
         }
+        arsort($allComments);
+        dump($allComments);
 
         die();
         
