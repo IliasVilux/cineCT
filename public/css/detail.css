@@ -17,12 +17,39 @@ p.description {
     text-align: justify;
 }
 
+.alert-success {
+    font-size: 6px;
+    padding: 3px;
+}
+
+/* SHARE */
+
+div#social-links {
+    margin: 0 auto;
+    max-width: 500px;
+}
+
+div#social-links ul {
+    padding: 0;
+}
+
+div#social-links ul li {
+    display: inline-block;
+}
+
+div#social-links ul li a {
+    padding: 2px;
+    font-size: 12px;
+    color: #9966ff;
+}
+
+
 /* STAR */
 
 .rating {
     font-size: 30px;
     overflow: hidden;
-    width: 270px;
+    width: 95px;
 }
 
 .rating input {
@@ -39,6 +66,7 @@ p.description {
     -moz-transition: color .4s;
     -o-transition: color .4s;
     transition: color .4s;
+    font-size: 10px;
 }
 
 .rating label:hover~label,
@@ -49,6 +77,7 @@ p.description {
 }
 
 /* COMMENTS */
+
 .create_comment{
     display: flex;
     flex-direction: column;
@@ -75,6 +104,11 @@ p.description {
     background-color: #5A3C97;
 }
 
+.img-review {
+    width: 35px;
+    height: 35px;
+}
+
 .like-review-container{
     display: inline-block;
     margin-top: 10px;
@@ -82,12 +116,10 @@ p.description {
 }
 
 .like-review{
-    font-size: 25px;
+    font-size: 15px;
     vertical-align: middle;
-    padding: 5px;
-    /*color: red;*/
+    padding: 5px 5px 5px 0px;
 }
-
 
 .like-review:hover{
     cursor: pointer;

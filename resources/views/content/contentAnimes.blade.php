@@ -17,43 +17,43 @@
         <div class="carousel-inner">
             <div class="carousel-item full text-center active">
                 <a href="/detail/detailAnimes/1" class="link-img-carousel">
-                    <img src="{{ $allAnimes[0]->poster_path }}" class="img-carousel px-3"
+                    <img src="{{ $allAnimes[0]->poster_path }}" class="full-img px-2 px-sm-1"
                         alt="Img {{ $allAnimes[0]->name }}">
                 </a>
                 <a href="/detail/detailAnimes/2" class="link-img-carousel">
-                    <img src="{{ $allAnimes[1]->poster_path }}" class="img-carousel px-3"
+                    <img src="{{ $allAnimes[1]->poster_path }}" class="full-img px-2 px-sm-1"
                         alt="Img {{ $allAnimes[1]->name }}">
                 </a>
                 <a href="/detail/detailAnimes/3" class="link-img-carousel">
-                    <img src="{{ $allAnimes[2]->poster_path }}" class="img-carousel px-3"
+                    <img src="{{ $allAnimes[2]->poster_path }}" class="full-img px-2 px-sm-1"
                         alt="Img {{ $allAnimes[2]->name }}">
                 </a>
             </div>
             <div class="carousel-item full text-center">
                 <a href="/detail/detailAnimes/4" class="link-img-carousel">
-                    <img src="{{ $allAnimes[3]->poster_path }}" class="img-carousel px-3"
+                    <img src="{{ $allAnimes[3]->poster_path }}" class="full-img px-2 px-sm-1"
                         alt="Img {{ $allAnimes[3]->name }}">
                 </a>
                 <a href="/detail/detailAnimes/5" class="link-img-carousel">
-                    <img src="{{ $allAnimes[4]->poster_path }}" class="img-carousel px-3"
+                    <img src="{{ $allAnimes[4]->poster_path }}" class="full-img px-2 px-sm-1"
                         alt="Img {{ $allAnimes[4]->name }}">
                 </a>
                 <a href="/detail/detailAnimes/6" class="link-img-carousel">
-                    <img src="{{ $allAnimes[5]->poster_path }}" class="img-carousel px-3"
+                    <img src="{{ $allAnimes[5]->poster_path }}" class="full-img px-2 px-sm-1"
                         alt="Img {{ $allAnimes[5]->name }}">
                 </a>
             </div>
             <div class="carousel-item full text-center">
                 <a href="/detail/detailAnimes/7" class="link-img-carousel">
-                    <img src="{{ $allAnimes[6]->poster_path }}" class="img-carousel px-3"
+                    <img src="{{ $allAnimes[6]->poster_path }}" class="full-img px-2 px-sm-1"
                         alt="Img {{ $allAnimes[6]->name }}">
                 </a>
                 <a href="/detail/detailAnimes/8" class="link-img-carousel">
-                    <img src="{{ $allAnimes[7]->poster_path }}" class="img-carousel px-3"
+                    <img src="{{ $allAnimes[7]->poster_path }}" class="full-img px-2 px-sm-1"
                         alt="Img {{ $allAnimes[7]->name }}">
                 </a>
                 <a href="/detail/detailAnimes/9" class="link-img-carousel">
-                    <img src="{{ $allAnimes[8]->poster_path }}" class="img-carousel px-3"
+                    <img src="{{ $allAnimes[8]->poster_path }}" class="full-img px-2 px-sm-1"
                         alt="Img {{ $allAnimes[8]->name }}">
                 </a>
             </div>
