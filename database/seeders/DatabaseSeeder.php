@@ -71,7 +71,7 @@ class DatabaseSeeder extends Seeder
                 DB::table('films')->insert([
                     'original_id' => $tmp2->{'results'}[$i]->{'id'},
                     'name' => $tmp2->{'results'}[$i]->{'title'},
-                    'genre_id' => '6',
+                    'genre_id' => '5',
                     'description' => $tmp2->{'results'}[$i]->{'overview'},
                     'poster_path' => $tmp2->{'results'}[$i]->{'backdrop_path'},
                     'duration' => '0', 
@@ -82,6 +82,7 @@ class DatabaseSeeder extends Seeder
                 ]);
 
             }
+            break;
         }  
 
         /* $tmp = AnimeController::store();

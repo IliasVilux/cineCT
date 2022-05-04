@@ -25,7 +25,8 @@ class FilmController extends Controller
 
         do{
             //$filmApi = Http::get('https://api.themoviedb.org/3/movie/' . $contador . '?api_key=9d981b068284aca44fb7530bdd218c30&language=en-US');
-            $filmApi = Http::get('https://api.themoviedb.org/'.$contador.'/discover/movie?api_key=9d981b068284aca44fb7530bdd218c30&with_genres=27');
+            $filmApi = Http::get('https://api.themoviedb.org/'.$contador.'/discover/movie?api_key=9d981b068284aca44fb7530bdd218c30&with_genres=878');
+            //genres //https://api.themoviedb.org/3/genre/movie/list?api_key=9d981b068284aca44fb7530bdd218c30&language=en-US
             array_push($apiLinks, $filmApi);
             $contador++;
         }while($contador < 10);
@@ -100,20 +101,15 @@ class FilmController extends Controller
         }
 
         
-        if(count($allFilms) != 0)
-        {
             foreach($allFilms as $filmContent)
             {
                 
-                //$contador = count($filmContent->{'genres'});
-                //echo $filmContent->{'id'}. ' - ' .$filmContent->{'genres'}[0]->{'name'} . '<br>';
                 $count = count($filmContent->{'results'});
                 for ($i=0; $i < $count; $i++) { 
 
                     $filmContent->{'results'}[$i]->{'release_date'} = substr($filmContent->{'results'}[$i]->{'release_date'}, 0, 4);
                     $filmContent->{'results'}[$i]->{'backdrop_path'} = 'https://image.tmdb.org/t/p/w500'.$filmContent->{'results'}[$i]->{'backdrop_path'};
 
-                    
                     /*
                     echo 'Nombre; '.$filmContent->{'results'}[$i]->{'title'} .'<br>';
                     echo 'Genre_id: '. $filmContent->{'results'}[$i]->{'genre_ids'}[0]. '<br>';
@@ -125,12 +121,11 @@ class FilmController extends Controller
                     */
                     
                 }
+                break;
                 
             }
             
-        }else{
-            echo "No té contingut";
-        }
+        
         //die();
         
 
@@ -280,7 +275,7 @@ class FilmController extends Controller
                     array_push($searchCondition, "Comedy"); 
                 }elseif ($genre == 'Terror' || $genre == 'terror'){
                     array_push($searchCondition, "Horror", "Thriller"); 
-                }elseif($genre == 'Romance' || $genre == 'omance'){
+                }elseif($genre == 'Romance' || $genre == 'romance'){
                     array_push($searchCondition, "Romance"); 
                 }elseif ($genre == 'Fiction' || $genre == 'fiction'){
                     array_push($searchCondition, "Sci-fi", "Fantasy");
