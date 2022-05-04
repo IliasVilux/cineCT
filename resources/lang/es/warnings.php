@@ -26,6 +26,11 @@ return [
     'content_not_found' => 'No se ha encontrado ningun resultador con ',
     
     // Detalle video yt
-    'video_error' => 'Si el video no funciona, es porque se ha eliminado de Youtube. Te invitamos a buscar uno nuevo y descubrir más sobre este contenido.',
+    'video_error' => 'Si el video no funciona, es porque se ha eliminado de Youtube. Te invitamos a buscar uno nuevo y descubrir más sobre este contenido en ',
+
+    // Detail
+    'empty_msg' => 'No puedes publicar un mensaje vacío!!',
+
+
 
 ];

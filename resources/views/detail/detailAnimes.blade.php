@@ -96,28 +96,28 @@
             <article class="col-12 col-md-6 more-info bg-dark p-3">
                 <div class="p-4">
                     <div class="d-flex nowrap">
-                        <h5 class="pe-2"><b>Género:</b></h5>
+                        <h5 class="pe-2"><b>{{ trans('titles.genre') }}:</b></h5>
                         <p>{{ $anime->genre->name }}</p>
                     </div>
                     <div class="d-flex nowrap">
-                        <h5 class="pe-2"><b>Fecha de lanzamiento:</b></h5>
+                        <h5 class="pe-2"><b>{{ trans('titles.release') }}:</b></h5>
                         <p> {{ $anime->release_date }}</p>
                     </div>
                     <div class="d-flex nowrap">
-                        <h5 class="pe-2"><b>Duración:</b></h5>
+                        <h5 class="pe-2"><b>{{ trans('titles.duration') }}:</b></h5>
                         <p> {{ $anime->duration }} min</p>
                     </div>
                     <div class="d-flex nowrap">
-                        <h5 class="pe-2"><b>Episodios:</b></h5>
+                        <h5 class="pe-2"><b>{{ trans('titles.total_episodes') }}:</b></h5>
                         <p> {{ $anime->total_episodes }}</p>
                     </div>
                     <div class="d-flex nowrap">
-                        <h5 class="pe-2"><b>Puntuación:</b></h5>
+                        <h5 class="pe-2"><b>{{ trans('titles.rating') }}:</b></h5>
                         <p><i class="fas fa-star"></i>
                         <p> {{ $anime->puntuation }}</p>/10<p>
                     </div>
                     <div class="d-flex flex-column align-items-start">
-                        <h5 class="pe-2"><b>Cuánto te ha gustado?</b></h5>
+                        <h5 class="pe-2"><b>{{ trans('titles.how_much') }}</b></h5>
                         <form method="GET" class="d-flex flex-column flex-xl-row align-items-center">
                             <div class="rating col-12 me-3">
                                 <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
@@ -163,10 +163,8 @@
                 <iframe class="w-75" height="500"
                     src="https://www.youtube.com/embed/{{ $anime->trailer_link }}" allowfullscreen></iframe>
                 <div class="alert alert-dark w-75 my-3" role="alert">
-                    Si el vídeo da error es porque el link no funciona. Pero te invitamos a buscar el trailer en <a
-                        href="https://www.youtube.com/results?search_query={{ $anime->name }} trailer">Youtube</a> y
-                    descubrir más
-                    sobre este anime.
+                    {{trans('warnings.video_error')}}
+                    <a href="https://www.youtube.com/results?search_query={{ $anime->name }} trailer">Youtube</a>.
                 </div>
             @endif
             <!-- END TRAILER SECTION -->
@@ -176,12 +174,12 @@
             <form method="POST" action="" id="create-comment" class="create_comment">
                 @csrf
                 <textarea name="description" id="description" cols="50" rows="3" placeholder="Escribe un comentario"></textarea>
-                <button class="btn button-purple mt-3" type="submit" id="commentSubmit">Publicar</button>
+                <button class="btn button-purple mt-3" type="submit" id="commentSubmit">{{ trans('titles.publish') }}</button>
             </form>
             <div id="notify_user"></div>
             @if ($errors->has('description'))
                 <div class="mt-2 alert alert-danger">
-                    No puedes publicar un comentario sin vacío!
+                    {{ trans('warnings.empty_msg') }}
                 </div>
             @endif
         </article>

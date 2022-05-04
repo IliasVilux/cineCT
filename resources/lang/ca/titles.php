@@ -67,9 +67,10 @@ return [
     'add_favs' => 'Afegir a preferits',
     'publish' => 'Publicar',
     'new_list' => 'Crear nova llista',
+    'trailer' => 'Tràiler',
 
     // Time
-    'second' => 'segons',
+    'second' => 'segon',
     'seconds' => 'segons',
     'min' => 'minut',
     'mins' => 'minuts',
