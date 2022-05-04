@@ -15,6 +15,9 @@ html, main, body {
   color: white;
   background-color: #5A3C97;
 }
+.btn.btn-danger {
+  font-size: 6px;
+}
 
 .btn-violet{
   color: #FFFFFF;
@@ -121,7 +124,8 @@ a.link-img-carousel {
     border-radius: 10px;
   }
   
-  .button-purple{
+  .button-purple,
+  .btn.btn-danger{
     font-size: 13px;
   }
 }
@@ -133,7 +137,8 @@ a.link-img-carousel {
     color: #FFFFFF;
     font-size: 17px;
   }
-  .button-purple{
+  .button-purple,
+  .btn.btn-danger{
     font-size: 17px;
   }
 
