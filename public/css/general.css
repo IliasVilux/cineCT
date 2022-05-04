@@ -101,7 +101,7 @@ a {
 }
 
 .cinect-custom-alert{
-  width: 400px;
+  width: 100%;
   margin: 20px auto;
   animation: opacityTransition 2s infinite;
 }
