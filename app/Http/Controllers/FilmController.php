@@ -19,13 +19,13 @@ class FilmController extends Controller
 {
     public static function store(){
         
-        $contador = 1;
+        $contador = 0;
         $apiLinks = array();
         $allFilms = array();
 
         do{
             //$filmApi = Http::get('https://api.themoviedb.org/3/movie/' . $contador . '?api_key=9d981b068284aca44fb7530bdd218c30&language=en-US');
-            $filmApi = Http::get('https://api.themoviedb.org/'.$contador.'/discover/movie?api_key=9d981b068284aca44fb7530bdd218c30&with_genres=27');
+            $filmApi = Http::get('https://api.themoviedb.org/'.$contador.'/discover/movie?api_key=9d981b068284aca44fb7530bdd218c30&with_genres=10749'); //romance
             array_push($apiLinks, $filmApi);
             $contador++;
         }while($contador < 10);
@@ -100,40 +100,38 @@ class FilmController extends Controller
         }
 
         
+        
         if(count($allFilms) != 0)
         {
             foreach($allFilms as $filmContent)
             {
-                
-                //$contador = count($filmContent->{'genres'});
-                //echo $filmContent->{'id'}. ' - ' .$filmContent->{'genres'}[0]->{'name'} . '<br>';
-                $count = count($filmContent->{'results'});
-                for ($i=0; $i < $count; $i++) { 
+                for ($i=0; $i < count($filmContent->{'results'}); $i++) { 
 
                     $filmContent->{'results'}[$i]->{'release_date'} = substr($filmContent->{'results'}[$i]->{'release_date'}, 0, 4);
                     $filmContent->{'results'}[$i]->{'backdrop_path'} = 'https://image.tmdb.org/t/p/w500'.$filmContent->{'results'}[$i]->{'backdrop_path'};
-
                     
-                    /*
-                    echo 'Nombre; '.$filmContent->{'results'}[$i]->{'title'} .'<br>';
-                    echo 'Genre_id: '. $filmContent->{'results'}[$i]->{'genre_ids'}[0]. '<br>';
+                    
+                    echo 'Nombre: '.$filmContent->{'results'}[$i]->{'title'} .'<br>';
+                    echo 'original_id:'. $filmContent->{'results'}[$i]->{'id'}. '<br>';
+                    echo 'Genre_id: 8<br>';
                     echo 'description: '. $filmContent->{'results'}[$i]->{'overview'}. '<br>';
                     echo 'duration: 0 <br>';
                     echo 'poster_path: '. $filmContent->{'results'}[$i]->{'backdrop_path'} .'<br>';
                     echo 'puntuation:'. $filmContent->{'results'}[$i]->{'vote_average'}.'<br>';
                     echo 'release_date: '. $filmContent->{'results'}[$i]->{'release_date'}. '<br><br>';
-                    */
                     
                 }
+                
                 
             }
             
         }else{
             echo "No té contingut";
         }
-        //die();
         
-
+        die();
+        
+        
         return $allFilms;
 
     }
