@@ -158,7 +158,7 @@ class FilmController extends Controller
         LEFT JOIN likes on reviews.id = likes.review_id
         GROUP BY likes.review_id
         ORDER BY 'TOTAL LIKES' DESC;
-        */
+        
 
         $allTemporalCommentsOrderByLikes = [];
         if(count($comments) !== 0){
@@ -190,6 +190,7 @@ class FilmController extends Controller
         dump($allTemporalCommentsOrderByLikes);
 
         die();
+        */
         
         
         if (!is_null($film)) {
