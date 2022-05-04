@@ -15,11 +15,11 @@
     </head>
 
     @if (Session::has('signOut'))
-        <div class="alert alert-success" role="alert" id="signOut">
+        <div class="alert alert-success cinect-custom-alert text-center" role="alert" id="signOut">
             <strong>{{ Session::get('signOut') }}</strong>
         </div>
     @endif
-
+    
 
     @if (Auth::user())
         @include('includes.session')
@@ -144,6 +144,12 @@
                                 <form method="POST" action="{{ route('register.user') }}"
                                     class="row g-3 needs-validation d-flex flex-column align-items-center m-2">
                                     @csrf
+
+                                    @if (Session::has('userExist'))
+                                        <div class="alert alert-danger text-center" role="alert" id="userExist">
+                                            <strong>{{ Session::get('userExist') }}</strong>
+                                        </div>
+                                    @endif
 
                                     <div class="register-erros">
                                         @if ($errors->has('register_name'))
@@ -270,11 +276,13 @@
             }
         }
 
+        
         if(document.getElementById('signOut')){
             setTimeout( () => {
                 document.getElementById('signOut').style.display = "none";
             },3900);
         }
+        
 
     </script>
 @endsection

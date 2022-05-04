@@ -6,7 +6,7 @@
 </head>
 
 @if (Session::has('welcomeUser'))
-<div class="alert alert-success" role="alert" id="welcomeMessage">
+<div class="alert cinect-custom-alert" role="alert" id="welcomeMessage">
     <strong>{{ Session::get('welcomeUser') }}!</strong>
 </div>
 @endif
