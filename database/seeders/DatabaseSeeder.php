@@ -68,15 +68,15 @@ class DatabaseSeeder extends Seeder
             $count = count($tmp2->{'results'});
             for ($i=0; $i < $count; $i++) { 
 
-                if($tmp2->{'results'}[$i]->{'genre_ids'}[0] == 878) {
+                if($tmp2->{'results'}[$i]->{'genre_ids'}[0] == 10751) {
                 
                     DB::table('films')->insert([
                         'original_id' => $tmp2->{'results'}[$i]->{'id'},
                         'name' => $tmp2->{'results'}[$i]->{'title'},
-                        'genre_id' => '21',
+                        'genre_id' => '20',
                         'description' => $tmp2->{'results'}[$i]->{'overview'},
                         'poster_path' => $tmp2->{'results'}[$i]->{'poster_path'},
-                        'duration' => rand(90, 240), 
+                        'duration' => rand(90, 115), 
                         'release_date' => $tmp2->{'results'}[$i]->{'release_date'},
                         'puntuation' => $tmp2->{'results'}[$i]->{'vote_average'},
                         'created_at' => now(),
