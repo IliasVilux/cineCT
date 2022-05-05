@@ -34,7 +34,7 @@ class UserController extends Controller
         $data['animes'] = array();
         $data['series'] = array();
         $data['films'] = array();
-
+        
         foreach($lista as $content){
             if($content->anime_id != null){
                 $anime = Anime::find($content->anime_id);
@@ -49,8 +49,13 @@ class UserController extends Controller
                 array_push($data['films'], $film);
             }
         }
-
+        
         return view('list_favorite', compact(['data']));
+    }
+
+    public function removeFavContent($id)
+    {
+        dd(2, $id);
     }
 
     public function setFavoriteList($id){

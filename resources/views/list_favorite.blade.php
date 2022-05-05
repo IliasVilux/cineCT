@@ -17,14 +17,17 @@
 @if(!Auth::user())
     <h3>Para crear tu lista de favoritos necessitas estar logueado, <a href="{{route('register.user')}}">INICIA SESSIÓN</a></h3>
 @else
+    <p id="idList" style="display: none;">{{ $data['list']->id }}</p>
     <h1>{{$data['list']->name}}</h1>
 
     <section class="container top_content my-5">
         <section class="cinet_top--content">
+            <p style="display: none;">{{ $cont = 0 }}</p>
+            <p style="display: none;">{{ $cont2 = 0 }}</p>
+            <p style="display: none;">{{ $cont3 = 0 }}</p>
             @foreach($data['animes'] as $anime)
             <div class="content--card">
-                <div class="heart like" style="z-index: 10;"></div>
-                <div class="heart2 like" style="z-index: 0; opacity: 0;"></div>
+                <div data-id="{{ $cont }}" class="heart2 like" style="z-index: 5;"></div>
                 <a class="p-1" href="{{ route('anime.animes',  ['id' => $anime->id]) }}">
                     <div class="cinet_top--detail">
                         <div>
@@ -38,10 +41,11 @@
                     <p>{{ $anime->name }}<span>{{ $anime->puntuation }}</span></p>
                 </a>
             </div>
+            <p style="display: none;">{{ $cont++ }}</p>
             @endforeach
             @foreach($data['series'] as $serie)
             <div class="content--card">
-                <div class="heart like" style="z-index: 10;"></div>
+                <div data-id="{{ $cont2 }}" class="heart2 like" style="z-index: 10;"></div>
                 <a class="p-1" href="{{ route('serie.series',  ['id' => $serie->id]) }}">
                     <div class="cinet_top--detail">
                         <div>
@@ -55,10 +59,11 @@
                     <p>{{ $serie->name }}<span>{{ $serie->puntuation }}</span></p>
                 </a>
             </div>
+            <p style="display: none;">{{ $cont2++ }}</p>
             @endforeach
             @foreach($data['films'] as $film)
             <div class="content--card">
-                <div class="heart like" style="z-index: 10;"></div>
+                <div data-id="{{ $cont3 }}" class="heart2 like" style="z-index: 10;"></div>
                 <a class="p-1" href="{{ route('film.films',  ['id' => $film->id]) }}">
                     <div class="cinet_top--detail">
                         <div>
@@ -72,6 +77,7 @@
                     <p>{{ $film->name }}<span>{{ $film->puntuation }}</span></p>
                 </a>
             </div>
+            <p style="display: none;">{{ $cont3++ }}</p>
             @endforeach
         </section>
     </div>
@@ -91,26 +97,36 @@
 @endif
 <script>
     $(function() {
-        $(".heart").on("click", function() {
-            $(this).toggleClass("is-active");
+        $(".heart2").on("click", function() {
+            $(this).toggleClass("animation");
             setTimeout(function(){
-                $('.heart').css('opacity', '0');
-                $('.heart2').css('opacity', '1');
-                $('.heart2').css('z-index', '10');
+                console.log($('#idList').val())
+                id = 0;
+                /* $.ajax({
+                    type: "GET",
+                    url: '/user/lista-fav/removeFav1' + id,
+                    data: {
+                        '_token': $('input[name=_token]').val(),
+                        like_id: $(this).data('id'),
+                    }
+                }); */
             }, 1000);
         });
     });
-
     $(function() {
         $(".heart2").on("click", function() {
-            $(this).toggleClass("asd");
+            $(this).toggleClass("animation");
             setTimeout(function(){
-                $('.heart2').css('opacity', '0');
-                $('.heart').css('opacity', '1');
-                $('.heart').css('z-index', '10');
-                $('.heart').removeClass('is-active');
-                $('.heart').removeClass('heart');
-                $('.heart').addClass('heart');
+                console.log($('#idList').val())
+                id = 0;
+                $.ajax({
+                    type: "GET",
+                    url: '/user/lista-fav/removeFav2' + id,
+                    data: {
+                        '_token': $('input[name=_token]').val(),
+                        like_id: $(this).data('id'),
+                    }
+                });
             }, 1000);
         });
     });

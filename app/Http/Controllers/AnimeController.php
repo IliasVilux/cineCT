@@ -17,7 +17,7 @@ class AnimeController extends Controller
 {
     public static function store()
     {
-        $contador = 201;
+        $contador = 11;
         $apiLinks = array();
         $allAnimes = array();
 
@@ -36,7 +36,39 @@ class AnimeController extends Controller
                 {
                     $animeJson->{'data'}->{'episodes'} = 0;
                 }
-                if (!empty($animeJson->{'data'}->{'themes'})) {
+                if (!empty($animeJson->{'data'}->{'demographics'})) {
+                    $themeName = $animeJson->{'data'}->{'demographics'}[0]->{'name'};
+                    switch ($themeName) {
+                        case "Sci-Fi":
+                            $animeJson->{'data'}->{'demographics'}[0]->{'name'} = 9;
+                            break;
+                        case "Demons":
+                            $animeJson->{'data'}->{'demographics'}[0]->{'name'} = 11;
+                            break;
+                        case "Mecha":
+                            $animeJson->{'data'}->{'demographics'}[0]->{'name'} = 12;
+                            break;
+                        case "Samurai":
+                            $animeJson->{'data'}->{'demographics'}[0]->{'name'} = 13;
+                            break;
+                        case "Josei":
+                            $animeJson->{'data'}->{'demographics'}[0]->{'name'} = 14;
+                            break;
+                        case "Seinen":
+                            $animeJson->{'data'}->{'demographics'}[0]->{'name'} = 15;
+                            break;
+                        case "Shoujo":
+                            $animeJson->{'data'}->{'demographics'}[0]->{'name'} = 16;
+                            break;
+                        case "Shounen":
+                            $animeJson->{'data'}->{'demographics'}[0]->{'name'} = 17;
+                            break;
+                        default:
+                            $animeJson->{'data'}->{'demographics'}[0]->{'name'} = 23;
+                            break;
+                    }
+                    array_push($allAnimes, $animeJson);
+                } else if(!empty($animeJson->{'data'}->{'themes'})){
                     $themeName = $animeJson->{'data'}->{'themes'}[0]->{'name'};
                     switch ($themeName) {
                         case "Sci-Fi":
@@ -68,6 +100,7 @@ class AnimeController extends Controller
                             break;
                     }
                     array_push($allAnimes, $animeJson);
+
                 } else if (!empty($animeJson->{'data'}->{'genres'})) {
                     $genreName = $animeJson->{'data'}->{'genres'}[0]->{'name'};
                     switch ($genreName) {
@@ -114,7 +147,7 @@ class AnimeController extends Controller
                             $animeJson->{'data'}->{'genres'}[0]->{'name'} = 22;
                             break;
                         default:
-                            $animeJson->{'data'}->{'themes'}[0]->{'name'} = 23;
+                            $animeJson->{'data'}->{'genres'}[0]->{'name'} = 23;
                             break;
                     }
                     array_push($allAnimes, $animeJson);

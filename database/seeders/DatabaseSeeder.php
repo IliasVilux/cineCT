@@ -63,7 +63,7 @@ class DatabaseSeeder extends Seeder
         }  */
 
         //Peliculas segun su genero (api : https://api.themoviedb.org/'.$contador.'/discover/movie?api_key=9d981b068284aca44fb7530bdd218c30&with_genres=27)
-        $tmp = FilmController::store();
+        /* $tmp = FilmController::store();
         
         foreach ($tmp as $tmp2){
             
@@ -84,11 +84,13 @@ class DatabaseSeeder extends Seeder
 
             }
             
-        }  
+        }   */
 
-        /* $tmp = AnimeController::store();
+        $tmp = AnimeController::store();
         foreach ($tmp as $tmp2){
-            if (isset($tmp2->{'data'}->{'themes'}[0]->{'name'})){
+            if (isset($tmp2->{'data'}->{'demographics'}[0]->{'name'})){
+                $genreValidation = $tmp2->{'data'}->{'demographics'}[0]->{'name'};
+            } else if (isset($tmp2->{'data'}->{'themes'}[0]->{'name'})){
                 $genreValidation = $tmp2->{'data'}->{'themes'}[0]->{'name'};
             } else if (isset($tmp2->{'data'}->{'genres'}[0]->{'name'})){
                 $genreValidation = $tmp2->{'data'}->{'genres'}[0]->{'name'};
@@ -107,7 +109,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now()
             ]);
-        } */
+        }
 
         /*
         $tmp = CharacterController::store();
