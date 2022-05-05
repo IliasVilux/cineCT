@@ -93,7 +93,7 @@
                             </li>
                             <li>
                                 <a href="{{ url('/content/contentFilms') }}" class="footer-links text-light text-uppercase m-0">
-                                    <i class="fas fa-film pe-2 fa-2x"></i>{{trans('titles.films')}}
+                                    <i class="fas fa-film pe-2"></i>{{trans('titles.films')}}
                                 </a>
                             </li>
                             <li>

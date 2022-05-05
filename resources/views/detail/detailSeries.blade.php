@@ -5,31 +5,6 @@
         <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <!--<script src="js/jquery.rating.pack.js"></script>-->
-        <script>
-            /*
-            $(document).ready(function() {
-                $('input.star').rating();
-            });
-            */
-        </script>
-        <style>
-            div#social-links {
-                margin: 0 auto;
-                max-width: 500px;
-            }
-
-            div#social-links ul li {
-                display: inline-block;
-            }
-
-            div#social-links ul li a {
-                padding: 18px;
-                font-size: 30px;
-                color: #9966ff;
-            }
-
-        </style>
     </head>
     @if (Session::has('SerieAdded'))
         <div class="alert alert-success" role="alert">
@@ -37,43 +12,44 @@
         </div>
     @endif
     <section class="container">
-        <a href="{{ url('/content/contentSeries') }}" class="btn button-purple my-4" title="Back">
-            Back
-        </a>
-
-        <h1 class="detail-title">{{ $serie->name }}</h1>
-
-        <article class="d-flex flex-column flex-sm-row flex-sm-wrap justify-content-between mt-4">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+            <h1 class="detail-title">{{ $serie->name }}</h1>
+            <a href="{{ url('/content/contentSeries') }}" class="btn button-purple my-4" title="Back">
+                Back
+            </a>
+        </div>
+        
+    <article class="d-flex flex-row flex-sm-wrap justify-content-between">
             @if ($serie->poster_path == null)
-                <img src="/img/NoImg.jpg" class="img-thumbnail col-12 col-md-5 col-lg-4 mb-4 mb-md-0" alt="">
+                <img src="/img/NoImg.jpg" class="img-thumbnail col-6 col-md-5 col-lg-4 mb-md-0" alt="">
             @else
-                <img src="{{ $serie->poster_path }}" class="img-thumbnail col-12 col-md-5 col-lg-4 mb-4 mb-md-0"
+                <img src="{{ $serie->poster_path }}" class="img-thumbnail col-6 col-md-5 col-lg-4 mb-md-0"
                     alt="Img {{ $serie->name }}">
             @endif
-            <article class="col-12 col-md-6 more-info bg-dark p-4">
-                    <div class="d-flex nowrap">
-                        <h5 class="pe-2"><b>Género:</b></h5>
+            <article class="col-6 more-info bg-dark p-3" id="datasheet">
+                    <div class="d-none d-sm-flex nowrap">
+                        <h6 class="pe-2"><b>Género:</b></h6>
                         <p>{{ $serie->genre->name }}</p>
                     </div>
-                    <div class="d-flex nowrap">
-                        <h5 class="pe-2"><b>Fecha de lanzamiento:</b></h5>
+                    <div class="d-none d-sm-flex nowrap">
+                        <h6 class="pe-2"><b>Fecha de lanzamiento:</b></h6>
                         <p> {{ $serie->release_date }}</p>
                     </div>
-                    <div class="d-flex nowrap">
-                        <h5 class="pe-2"><b>Temporadas:</b></h5>
+                    <div class="d-none d-sm-flex nowrap">
+                        <h6 class="pe-2"><b>Temporadas:</b></h6>
                         <p> {{ $serie->seasons }}</p>
                     </div>
-                    <div class="d-flex nowrap">
-                        <h5 class="pe-2"><b>Episodios:</b></h5>
+                    <div class="d-none d-sm-flex nowrap">
+                        <h6 class="pe-2"><b>Episodios:</b></h6>
                         <p> {{ $serie->total_episodes }}</p>
                     </div>
-                    <div class="d-flex nowrap">
-                        <h5 class="pe-2"><b>Puntuación:</b></h5>
+                    <div class="d-none d-sm-flex nowrap">
+                        <h6 class="pe-2"><b>Puntuación:</b></h6>
                         <p><i class="fas fa-star"></i>
                         <p> {{ $serie->puntuation }}</p>/10<p>
                     </div>
                     <div class="d-flex flex-column align-items-start">
-                        <h5 class="pe-2"><b>Cuánto te ha gustado?</b></h5>
+                        <h6 class="pe-2"><b>Cuánto te ha gustado?</b></h6>
                         <form method="GET" class="d-flex flex-column flex-xl-row align-items-center">
                             <div class="rating col-12 me-3">
                                 <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
@@ -95,22 +71,45 @@
                         echo '<div class="alert alert-success">Rating recibido: <strong>' . $_GET['stars'] . '</strong>.</div>';
                     } elseif (isset($_GET['stars']) == '');
                     ?>
-                    <div class="d-flex flex-row my-2">
-                        <a href="/detail/detailSeries/{{ $serie->id }}/addFav"><button type="button"
-                                class="btn button-purple btn-md">Añadir a favoritos</button></a>
-                        <div class="social-media-links mx-2">
-                            <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button"
-                                aria-expanded="false" aria-controls="shareComponent">
-                                <i class="fas fa-share-alt"></i>
-                            </a>
+                    <div class="d-flex flex-row justify-content-center my-2">
+                            <a href="/detail/detailSeries/{{ $serie->id }}/addFav"><button type="button"
+                                    class="btn button-purple btn-md">Añadir a favoritos</button></a>
+                            <div class="social-media-links mx-2">
+                                <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button"
+                                    aria-expanded="false" aria-controls="shareComponent">
+                                    <i class="fas fa-share-alt"></i>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="collapse my-3" id="shareComponent">
-                        {!! $shareComponent !!}
-                    </div>
+                        <div class="collapse text-center" id="shareComponent">
+                            {!! $shareComponent !!}
+                        </div>
+                    </article>
             </article>
-            <p class="description pt-5">{{ $serie->description }}</p>
-        </article>
+
+            <div class="px-2">
+                <h5 class="pt-4"><b>Resumen</b></h5>
+                <p class="description col-12 d-flex">{{ $serie->description }}</p>
+
+                <article class="d-sm-none">
+                    <div class="d-flex flex-column">
+                        <h5 class="pe-2"><b>Género:</b></h5>
+                        <p>{{ $serie->genre->name }}</p>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <h5 class="pe-2"><b>Fecha de lanzamiento:</b></h5>
+                        <p> {{ $serie->release_date }}</p>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <h5 class="pe-2"><b>Duración:</b></h5>
+                        <p> {{ $serie->duration }} min</p>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <h5 class="pe-2"><b>Puntuación:</b></h5>
+                        <p><i class="fas fa-star"></i> {{ $serie->puntuation }}/10<p>
+                    </div>
+                </article>
+            </div>   
 
         <article class="pb-3">
             <div class="text-center pt-3 "><span id="character-counter"></span></div>
@@ -131,7 +130,7 @@
 
     <!-- START COMMMENT SECTION -->
     <section class="gradient-custom">
-        <div class="container my-5 py-5">
+        <div class="container my-0 py-0 py-sm-3">
             <div class="row d-flex justify-content-center">
                 <div class="col-12">
                     <div class="card card-comment bg-dark">

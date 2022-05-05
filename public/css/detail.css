@@ -4,6 +4,9 @@ html{
 }
 
 /* EXTRA INFO AT THE RIGHT */
+#datasheet {
+    font-size: 18px;
+}
 .more-info{
     float: right;
     max-height: 100%;
@@ -47,7 +50,6 @@ div#social-links ul li a {
 /* STAR */
 
 .rating {
-    font-size: 30px;
     overflow: hidden;
     width: 95px;
 }
@@ -202,6 +204,44 @@ div#social-links ul li a {
     50% {box-shadow: 0 5px 50px rgba(145, 92, 182, .4);}
 }
 
+
+@media screen and (min-width: 576px) {
+    .rating {
+        overflow: hidden;
+        width: 270px;
+    }
+    .rating label {
+        float: right;
+        color: #aaa;
+        text-decoration: none;
+        -webkit-transition: color .4s;
+        -moz-transition: color .4s;
+        -o-transition: color .4s;
+        transition: color .4s;
+        font-size: 30px;
+    }
+    .img-review {
+        width: 70px;
+        height: 70px;
+    }
+    .like-review{
+        font-size: 30px;
+        vertical-align: middle;
+        padding: 5px 5px 5px 0px;
+    }
+    #datasheet div p{
+        margin: 0;
+    }
+    div#social-links ul li a {
+        font-size: 25px;
+        padding: 10px;
+    }
+    .alert-success {
+        font-size: 15px;
+        padding: 8px;
+    }
+    
+}
 
 @media (max-width: 600px) {
     .comment{

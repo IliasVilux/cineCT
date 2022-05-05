@@ -5,7 +5,7 @@
         <div class="flex-grow-1 flex-shrink-1">
             <div class="d-flex flex-wrap flex-column align-items-start">
                 <div class="col-12">
-                    <p class="mb-1">{{ $comment->user->nick }} <span class="text-muted ml-2">{{\DateTimeFormat::timeFilter($comment->created_at)}}</span></p>
+                    <p class="mb-1">{{ $comment->user->nick }} <span class="text-muted ms-2">{{\DateTimeFormat::timeFilter($comment->created_at)}}</span></p>
                 </div>
                 <p class="text-break">{{ $comment->description }}</p>
             </div>

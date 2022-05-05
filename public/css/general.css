@@ -36,6 +36,17 @@ a {
   text-decoration: none;
 }
 
+h3.title{
+  font-size: 13px;
+  margin: 0;
+}
+
+h1.detail-title {
+  margin: 0;
+}
+
+
+
 /* Img slider */
 
 .carousel-item.full {
@@ -127,6 +138,10 @@ a.link-img-carousel {
   .button-purple,
   .btn.btn-danger{
     font-size: 13px;
+  }
+
+  .button-purple{
+    height: 40px;
   }
 }
 

@@ -6,10 +6,7 @@ section.slider {
 /* POR ORDENAR */
 
 /* Title each section */
-h3.title{
-    font-size: 13px;
-    /*margin: 20px 20px 5px 37px;*/
-}
+
 
 .row>* {
     padding-right: 0;

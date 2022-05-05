@@ -53,7 +53,7 @@ img.logo {
 }
 
 ul.list-unstyled li a i.fas {
-  width: 45px;
+  width: 23px;
 }
 
 /* Iconos */
@@ -64,12 +64,6 @@ i.fas.fa-search {
 
 .fas.fa-user-circle {
   font-size: 10px;
-}
-
-i.fas.fa-film,
-i.fas.fa-home  {
-  font-size: 28px;
-  padding: 0px 7px 0px 0px;
 }
 
 @media screen and (min-width: 576px) {
@@ -93,6 +87,10 @@ i.fas.fa-home  {
   .fas.fa-user-circle {
     font-size: 20px;
   }
+  ul.list-unstyled li a i.fas {
+    width: 45px;
+  }
+  
   img.logo {
     width: 130px;
     height: 35px;
