@@ -44,6 +44,8 @@
                     <img src="{{$serie[38]->poster_path}}" class="img-carousel px-3" alt="Img {{$serie[38]->name}}">
                 </a>
             </div>
+            
+            {{-- 
             <div class="carousel-item full text-center">
                 <a href="/detail/detailAnimes/37" class="link-img-carousel">
                     <img src="{{$anime[36]->poster_path}}" class="img-carousel px-3" alt="Img {{$anime[36]->name}}">
@@ -55,6 +57,8 @@
                     <img src="{{$anime[38]->poster_path}}" class="img-carousel px-3" alt="Img {{$anime[38]->name}}">
                 </a>
             </div>
+            --}}
+
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
             data-bs-slide="prev">
@@ -184,6 +188,7 @@
                 aria-hidden="true"></i></a>
     </div>
 
+     {{-- 
     <!-- ANIME -->
     <div class="container-fluid d-flex justify-content-between">
         <h5 class="text-uppercase">{{trans('home.animes')}}</h5>
@@ -240,6 +245,7 @@
         <a class="btn-floating" href="#animes" data-bs-slide="next"><i class="fa fa-chevron-right fa-2x"
                 aria-hidden="true"></i></a>
     </div>
+    --}}
 </section>
 <script>
     if(document.getElementById('welcomeMessage')){

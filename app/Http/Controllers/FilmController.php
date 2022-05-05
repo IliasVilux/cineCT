@@ -25,7 +25,7 @@ class FilmController extends Controller
 
         do{
             //$filmApi = Http::get('https://api.themoviedb.org/3/movie/' . $contador . '?api_key=9d981b068284aca44fb7530bdd218c30&language=en-US');
-            $filmApi = Http::get('https://api.themoviedb.org/'.$contador.'/discover/movie?api_key=9d981b068284aca44fb7530bdd218c30&with_genres=878');
+            $filmApi = Http::get('https://api.themoviedb.org/'.$contador.'/discover/movie?api_key=9d981b068284aca44fb7530bdd218c30&with_genres=80');
             //genres //https://api.themoviedb.org/3/genre/movie/list?api_key=9d981b068284aca44fb7530bdd218c30&language=en-US
             array_push($apiLinks, $filmApi);
             $contador++;
@@ -108,7 +108,7 @@ class FilmController extends Controller
                 for ($i=0; $i < $count; $i++) { 
 
                     $filmContent->{'results'}[$i]->{'release_date'} = substr($filmContent->{'results'}[$i]->{'release_date'}, 0, 4);
-                    $filmContent->{'results'}[$i]->{'backdrop_path'} = 'https://image.tmdb.org/t/p/w500'.$filmContent->{'results'}[$i]->{'backdrop_path'};
+                    $filmContent->{'results'}[$i]->{'poster_path'} = 'https://image.tmdb.org/t/p/w500'.$filmContent->{'results'}[$i]->{'poster_path'};
 
                     /*
                     echo 'Nombre; '.$filmContent->{'results'}[$i]->{'title'} .'<br>';
@@ -262,29 +262,31 @@ class FilmController extends Controller
 
         if(isset($genre) && !is_null($genre) && !empty($genre)){
 
-            $genreInfo = Genre::where('name','=', $genre)->first();
+            //$genreInfo = Genre::where('name','=', $genre)->first();
             
             $searchCondition = array();
             
-            if ($genreInfo){
-                if($genre == 'Action' || $genre == 'action'){
-                    array_push($searchCondition, "Action","Adventure"); 
-                }elseif ($genre == 'Animation' || $genre == 'animation'){
-                    array_push($searchCondition, "Animation","Family"); 
-                }elseif($genre == 'Comedy' || $genre == 'comedy'){
-                    array_push($searchCondition, "Comedy"); 
-                }elseif ($genre == 'Terror' || $genre == 'terror'){
-                    array_push($searchCondition, "Horror", "Thriller"); 
-                }elseif($genre == 'Romance' || $genre == 'romance'){
-                    array_push($searchCondition, "Romance"); 
-                }elseif ($genre == 'Fiction' || $genre == 'fiction'){
-                    array_push($searchCondition, "Sci-fi", "Fantasy");
-                }elseif ($genre == 'Drama' || $genre == 'drama'){
-                    array_push($searchCondition, "Drama", "Mystery");
-                }elseif ($genre == 'War' || $genre == 'war'){
-                    array_push($searchCondition, "War", "Crime");
-                }
+            if($genre == 'Action' || $genre == 'action'){
+                array_push($searchCondition, "Action","Adventure"); 
+            }elseif ($genre == 'Animation' || $genre == 'animation'){
+                array_push($searchCondition, "Animation","Family"); 
+            }elseif($genre == 'Comedy' || $genre == 'comedy'){
+                array_push($searchCondition, "Comedy"); 
+            }elseif ($genre == 'Terror' || $genre == 'terror'){
+                array_push($searchCondition, "Horror", "Thriller"); 
+            }elseif($genre == 'Romance' || $genre == 'romance'){
+                array_push($searchCondition, "Romance"); 
+            }elseif ($genre == 'Fiction' || $genre == 'fiction'){
+                array_push($searchCondition, "Sci-fi", "Fantasy");
+            }elseif ($genre == 'Drama' || $genre == 'drama' || $genre == 'Mystery' || $genre == 'mystery'){
+                array_push($searchCondition, "Drama", "Mystery");
+            }elseif ($genre == 'War' || $genre == 'war' || $genre == 'Crime' || $genre == 'crime'){
+                array_push($searchCondition, "War", "Crime");
             }
+            /*
+            if ($genreInfo){
+            }
+            */
 
 
             $films = Film::select('films.*')
