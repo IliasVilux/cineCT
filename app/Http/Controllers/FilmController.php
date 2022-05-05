@@ -290,7 +290,7 @@ class FilmController extends Controller
             $films = Film::select('films.*')
                 ->join('genres', 'films.genre_id', '=', 'genres.id')
                 ->whereIn('genres.name', $searchCondition)
-                ->orderBy('films.name', 'asc')
+                ->orderBy('films.release_date', 'DESC')
                 ->paginate(25);
 
             //dd(count($films) > 0);
