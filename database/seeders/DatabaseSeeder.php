@@ -67,19 +67,22 @@ class DatabaseSeeder extends Seeder
         foreach ($tmp as $tmp2){
             $count = count($tmp2->{'results'});
             for ($i=0; $i < $count; $i++) { 
+
+                if($tmp2->{'results'}[$i]->{'genre_ids'}[0] == 878) {
                 
-                DB::table('films')->insert([
-                    'original_id' => $tmp2->{'results'}[$i]->{'id'},
-                    'name' => $tmp2->{'results'}[$i]->{'title'},
-                    'genre_id' => '19',
-                    'description' => $tmp2->{'results'}[$i]->{'overview'},
-                    'poster_path' => $tmp2->{'results'}[$i]->{'poster_path'},
-                    'duration' => rand(90, 200), 
-                    'release_date' => $tmp2->{'results'}[$i]->{'release_date'},
-                    'puntuation' => $tmp2->{'results'}[$i]->{'vote_average'},
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ]);
+                    DB::table('films')->insert([
+                        'original_id' => $tmp2->{'results'}[$i]->{'id'},
+                        'name' => $tmp2->{'results'}[$i]->{'title'},
+                        'genre_id' => '21',
+                        'description' => $tmp2->{'results'}[$i]->{'overview'},
+                        'poster_path' => $tmp2->{'results'}[$i]->{'poster_path'},
+                        'duration' => rand(90, 240), 
+                        'release_date' => $tmp2->{'results'}[$i]->{'release_date'},
+                        'puntuation' => $tmp2->{'results'}[$i]->{'vote_average'},
+                        'created_at' => now(),
+                        'updated_at' => now()
+                    ]);
+                }
 
             }
             break;
