@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="{{asset('css/detail.css')}}">
     <link rel="stylesheet" href="{{asset('css/content.css')}}">
     <link rel="stylesheet" href="{{ asset('css/top.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/like.css') }}">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <style>
         .cursor{
@@ -21,46 +22,56 @@
     <section class="container top_content my-5">
         <section class="cinet_top--content">
             @foreach($data['animes'] as $anime)
-            <a class="p-2" href="{{ route('anime.animes', ['id' => $anime->id]) }}">
-                <div class="cinet_top--detail">
-                    <div>
-                        @if($anime->poster_path === NULL)
-                        <img src="/img/NoImg.jpg" alt="">
-                        @else
-                        <img src="{{ $anime->poster_path }}" alt="">
-                        @endif
+            <div class="content--card">
+                <div class="heart like" style="z-index: 10;"></div>
+                <div class="heart2 like" style="z-index: 0; opacity: 0;"></div>
+                <a class="p-1" href="{{ route('anime.animes',  ['id' => $anime->id]) }}">
+                    <div class="cinet_top--detail">
+                        <div>
+                            @if($anime->poster_path === NULL)
+                            <img src="/img/NoImg.jpg" alt="">
+                            @else
+                            <img src="{{ $anime->poster_path }}" alt="">
+                            @endif
+                        </div>
                     </div>
-                </div>
-                <p>{{ $anime->name }}<span>{{ $anime->puntuation }}</span></p>
-            </a>
+                    <p>{{ $anime->name }}<span>{{ $anime->puntuation }}</span></p>
+                </a>
+            </div>
             @endforeach
             @foreach($data['series'] as $serie)
-            <a class="p-2" href="{{ route('serie.series', ['id' => $serie->id]) }}">
-                <div class="cinet_top--detail">
-                    <div>
-                        @if($serie->poster_path === NULL)
-                        <img src="/img/NoImg.jpg" alt="">
-                        @else
-                        <img src="{{ $serie->poster_path }}" alt="">
-                        @endif
+            <div class="content--card">
+                <div class="heart like" style="z-index: 10;"></div>
+                <a class="p-1" href="{{ route('serie.series',  ['id' => $serie->id]) }}">
+                    <div class="cinet_top--detail">
+                        <div>
+                            @if($serie->poster_path === NULL)
+                            <img src="/img/NoImg.jpg" alt="">
+                            @else
+                            <img src="{{ $serie->poster_path }}" alt="">
+                            @endif
+                        </div>
                     </div>
-                </div>
-                <p>{{ $serie->name }}<span>{{ $serie->puntuation }}</span></p>
-            </a>
+                    <p>{{ $serie->name }}<span>{{ $serie->puntuation }}</span></p>
+                </a>
+            </div>
             @endforeach
             @foreach($data['films'] as $film)
-            <a class="p-2" href="{{ route('film.films', ['id' => $film->id]) }}">
-                <div class="cinet_top--detail">
-                    <div>
-                        @if($film->poster_path === NULL)
-                        <img src="/img/NoImg.jpg" alt="">
-                        @else
-                        <img src="{{ $film->poster_path }}" alt="">
-                        @endif
+            <div class="content--card">
+                <div class="heart like" style="z-index: 10;"></div>
+                <a class="p-1" href="{{ route('film.films',  ['id' => $film->id]) }}">
+                    <div class="cinet_top--detail">
+                        <div>
+                            @if($film->poster_path === NULL)
+                            <img src="/img/NoImg.jpg" alt="">
+                            @else
+                            <img src="{{ $film->poster_path }}" alt="">
+                            @endif
+                        </div>
                     </div>
-                </div>
-                <p>{{ $film->name }}<span>{{ $film->puntuation }}</span></p>
-            </a>
+                    <p>{{ $film->name }}<span>{{ $film->puntuation }}</span></p>
+                </a>
+            </div>
             @endforeach
         </section>
     </div>
@@ -78,5 +89,31 @@
         </a>
     @endif
 @endif
+<script>
+    $(function() {
+        $(".heart").on("click", function() {
+            $(this).toggleClass("is-active");
+            setTimeout(function(){
+                $('.heart').css('opacity', '0');
+                $('.heart2').css('opacity', '1');
+                $('.heart2').css('z-index', '10');
+            }, 1000);
+        });
+    });
+
+    $(function() {
+        $(".heart2").on("click", function() {
+            $(this).toggleClass("asd");
+            setTimeout(function(){
+                $('.heart2').css('opacity', '0');
+                $('.heart').css('opacity', '1');
+                $('.heart').css('z-index', '10');
+                $('.heart').removeClass('is-active');
+                $('.heart').removeClass('heart');
+                $('.heart').addClass('heart');
+            }, 1000);
+        });
+    });
+</script>
 <!-- END COMMENT SECTION -->
 @endsection

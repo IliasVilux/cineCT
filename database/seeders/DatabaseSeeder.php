@@ -46,11 +46,12 @@ class DatabaseSeeder extends Seeder
             ]);
         } */
 
-        /* $tmp = FilmController::store();
+        /*
+        $tmp = FilmController::store();
         foreach ($tmp as $tmp2){
             DB::table('films')->insert([
                 'image_api_id' => $tmp2->{'id'},
-                'name' => $tmp2->{'original_title'},
+                'name' => $tmp2->{'title'},
                 'duration' => $tmp2->{'runtime'}, 
                 'description' => $tmp2->{'overview'},
                 'genre_id' => $tmp2->{'genres'}[0]->{'name'},
@@ -60,6 +61,30 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => now()
             ]);
         }  */
+
+        //Peliculas segun su genero (api : https://api.themoviedb.org/'.$contador.'/discover/movie?api_key=9d981b068284aca44fb7530bdd218c30&with_genres=27)
+        $tmp = FilmController::store();
+        
+        foreach ($tmp as $tmp2){
+            
+            for ($i=0; $i < count($tmp2->{'results'}); $i++) { 
+                
+                DB::table('films')->insert([
+                    'original_id' => $tmp2->{'results'}[$i]->{'id'},
+                    'name' => $tmp2->{'results'}[$i]->{'title'},
+                    'genre_id' => '8',
+                    'description' => $tmp2->{'results'}[$i]->{'overview'},
+                    'poster_path' => $tmp2->{'results'}[$i]->{'backdrop_path'},
+                    'duration' => '0', 
+                    'release_date' => $tmp2->{'results'}[$i]->{'release_date'},
+                    'puntuation' => $tmp2->{'results'}[$i]->{'vote_average'},
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]);
+
+            }
+            
+        }  
 
         /* $tmp = AnimeController::store();
         foreach ($tmp as $tmp2){
@@ -84,6 +109,7 @@ class DatabaseSeeder extends Seeder
             ]);
         } */
 
+        /*
         $tmp = CharacterController::store();
         foreach ($tmp as $tmp2){
             if (!empty($tmp2->{'data'}->{'nicknames'}) && isset($tmp2->{'data'}->{'nicknames'}[0])){
@@ -97,5 +123,6 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => now()
             ]);
         }
+        */
     }
 }
