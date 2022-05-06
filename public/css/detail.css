@@ -51,7 +51,7 @@ div#social-links ul li a {
 
 .rating {
     overflow: hidden;
-    width: 95px;
+    width: 100%;
 }
 
 .rating input {
@@ -68,7 +68,7 @@ div#social-links ul li a {
     -moz-transition: color .4s;
     -o-transition: color .4s;
     transition: color .4s;
-    font-size: 10px;
+    font-size: 12px;
 }
 
 .rating label:hover~label,
@@ -206,10 +206,7 @@ div#social-links ul li a {
 
 
 @media screen and (min-width: 576px) {
-    .rating {
-        overflow: hidden;
-        width: 270px;
-    }
+
     .rating label {
         float: right;
         color: #aaa;
@@ -218,7 +215,7 @@ div#social-links ul li a {
         -moz-transition: color .4s;
         -o-transition: color .4s;
         transition: color .4s;
-        font-size: 30px;
+        font-size: 25px;
     }
     .img-review {
         width: 70px;
@@ -231,6 +228,7 @@ div#social-links ul li a {
     }
     #datasheet div p{
         margin: 0;
+        font-size: 15px;
     }
     div#social-links ul li a {
         font-size: 25px;
@@ -243,7 +241,16 @@ div#social-links ul li a {
     
 }
 
-@media (max-width: 600px) {
+@media screen and (min-width: 768px){
+    #datasheet div p{
+        font-size: 20px;
+    }
+    .rating label {
+        font-size: 43px;
+    }
+}
+
+/*@media (max-width: 600px) {
     .comment{
         width: 200px;
     }
@@ -290,4 +297,4 @@ div#social-links ul li a {
     .review-content-img{
         width: 75px;
     }
-}
+}*/

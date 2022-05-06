@@ -37,7 +37,7 @@
             <a href="{{ route('change.password') }}" type="button" class="btn button-purple col-12 my-sm-3">{{trans('profile.change_pass')}}</a>
         </div>
         <div class="col-12 p-2 p-sm-0 ms-sm-2">
-            <a type="button" class="btn btn-danger col-12 col-sm-3" data-bs-toggle="modal" data-bs-target="#myModal">{{trans('profile.delete_profile')}}</a>
+            <a type="button" class="btn btn-danger col-12 col-sm-3 col-md-2" data-bs-toggle="modal" data-bs-target="#myModal">{{trans('profile.delete_profile')}}</a>
         </div>
         <div class="modal fade text-dark" id="myModal">
             <div class="modal-dialog">

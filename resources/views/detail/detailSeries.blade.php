@@ -14,7 +14,7 @@
     <section class="container">
     <div class="container-fluid d-flex justify-content-between align-items-center">
             <h1 class="detail-title">{{ $serie->name }}</h1>
-            <a href="{{ url('/content/contentSeries') }}" class="btn button-purple my-4" title="Back">
+            <a href="{{ url('/content/contentSeries') }}" class="btn button-purple btn-sm my-4" title="Back">
                 Back
             </a>
         </div>
@@ -46,12 +46,12 @@
                     <div class="d-none d-sm-flex nowrap">
                         <h6 class="pe-2"><b>Puntuación:</b></h6>
                         <p><i class="fas fa-star"></i>
-                        <p> {{ $serie->puntuation }}</p>/10<p>
+                        <p> {{ $serie->puntuation }}/10<p>
                     </div>
                     <div class="d-flex flex-column align-items-start">
                         <h6 class="pe-2"><b>Cuánto te ha gustado?</b></h6>
-                        <form method="GET" class="d-flex flex-column flex-xl-row align-items-center">
-                            <div class="rating col-12 me-3">
+                        <form method="GET" class="d-flex flex-column align-items-center col-12 mb-xl-2">
+                            <div class="rating col-12 d-flex justify-content-center">
                                 <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
                                 <input name="stars" id="e2" type="radio" value="9"><label for="e2">☆</label>
                                 <input name="stars" id="e3" type="radio" value="8"><label for="e3">☆</label>
@@ -71,11 +71,11 @@
                         echo '<div class="alert alert-success">Rating recibido: <strong>' . $_GET['stars'] . '</strong>.</div>';
                     } elseif (isset($_GET['stars']) == '');
                     ?>
-                    <div class="d-flex flex-row justify-content-center my-2">
+                    <div class="d-flex flex-row justify-content-center">
                             <a href="/detail/detailSeries/{{ $serie->id }}/addFav"><button type="button"
-                                    class="btn button-purple btn-md">Añadir a favoritos</button></a>
+                                    class="btn button-purple btn-sm">Añadir a favoritos</button></a>
                             <div class="social-media-links mx-2">
-                                <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button"
+                                <a class="btn button-purple btn-sm" data-bs-toggle="collapse" href="#shareComponent" role="button"
                                     aria-expanded="false" aria-controls="shareComponent">
                                     <i class="fas fa-share-alt"></i>
                                 </a>
@@ -109,7 +109,8 @@
                         <p><i class="fas fa-star"></i> {{ $serie->puntuation }}/10<p>
                     </div>
                 </article>
-            </div>   
+            </div>        
+
 
         <article class="pb-3">
             <div class="text-center pt-3 "><span id="character-counter"></span></div>

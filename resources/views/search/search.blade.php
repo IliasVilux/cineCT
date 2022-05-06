@@ -8,9 +8,6 @@
     </head>
     <section class="container">
         <h1 class="pt-2 pb-2">BUSCADOR</h1>
-        <a href="{{ url('home') }}" class="btn btn-primary mb-3" title="Home">
-            Home
-        </a>
         <form action="{{ route('search-content') }}" method="GET">
             <div class="input-group align-items-center">
                 <label id="clear-input"><i class="fas fa-times p-2"></i></label>

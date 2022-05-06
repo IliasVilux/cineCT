@@ -6,30 +6,6 @@
         <link rel="stylesheet" href="{{ asset('css/general.css') }}">
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <script>
-            /*
-                            $(document).ready(function() {
-                                $('input.star').rating();
-                            });
-                            */
-        </script>
-        <style>
-            div#social-links {
-                margin: 0 auto;
-                max-width: 500px;
-            }
-
-            div#social-links ul li {
-                display: inline-block;
-            }
-
-            div#social-links ul li a {
-                padding: 18px;
-                font-size: 30px;
-                color: #9966ff;
-            }
-
-        </style>
     </head>
     @if (Session::has('AnimeAdded'))
         <div class="alert alert-success" role="alert">
@@ -37,105 +13,48 @@
         </div>
     @endif
     <section class="container">
-        <a href="{{ url('/content/contentAnimes') }}" class="btn button-purple my-4" title="Back"> Back</a>
-
-        <h1 class="detail-title">{{ $anime->name }}</h1>
-
-        }
-        ?>
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+            <h1 class="detail-title">{{ $anime->name }}</h1>
+            <a href="{{ url('/content/contentAnimes') }}" class="btn button-purple btn-sm my-4" title="Back">
+                Back
+            </a>
         </div>
-        </article>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <div class="dropdown">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
-                Añadir a favoritos
-            </button>
-            <ul class="dropdown-menu">
-                <li><a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#myModal">Crear nueva
-                        lista</a></li>
-                @foreach ($userLists as $list)
-                    <li><a class="dropdown-item" href="#">{{ $list->name }}</a></li>
-                @endforeach
-            </ul>
-        </div>
-        <!-- The Modal -->
-        <div class="modal fade" id="myModal">
-            <div class="modal-dialog text-dark">
-                <div class="modal-content">
-
-                    <form action="/detail/detailAnimes/{{ $anime->id }}/addNewList">
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <input type="text" id="newListName" name="newListName" class="form-control"
-                                    placeholder="Nombre de la lista">
-                            </div>
-                        </div>
-
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                            <button class="btn button-purple">Crear nueva lista</button>
-                            <a type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</a>
-                        </div>
-                    </form>
-
-                </div>
-            </div>
-        </div>
-        <article>
-            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-share-alt"></i></button> -->
-            <a type="button" class="btn btn-primary" href="#demo" data-bs-toggle="collapse"><i
-                    class="fas fa-share-alt"></i></a>
-            <!-- Modal -->
-            <!-- <div class="modal fade-scale" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                {!! $shareComponent !!}
-                            </div>
-                        </div>
-                    </div> -->
-            <div id="demo" class="collapse">{!! $shareComponent !!}</div>
-            <div class="collapse" id="collapseExample">
-                <div class="card card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil
-                    anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                </div>
-            </div>
-        </article>
-
-        <article class="mt-4">
+        
+    <article class="d-flex flex-row flex-sm-wrap justify-content-between">
             @if ($anime->poster_path == null)
-                <img src="/img/NoImg.jpg" class="img-thumbnail col-12 col-md-5 col-lg-4 mb-4 mb-md-0" alt="">
+                <img src="/img/NoImg.jpg" class="img-thumbnail col-6 col-md-5 col-lg-4 mb-md-0" alt="">
             @else
-                <img src="{{ $anime->poster_path }}" class="img-thumbnail col-12 col-md-5 col-lg-4 mb-4 mb-md-0"
+                <img src="{{ $anime->poster_path }}" class="img-thumbnail col-6 col-md-5 col-lg-4 mb-md-0"
                     alt="Img {{ $anime->name }}">
             @endif
-            <article class="col-12 col-md-6 more-info bg-dark p-4">
-                    <div class="d-flex nowrap">
-                        <h5 class="pe-2"><b>Género:</b></h5>
+            <article class="col-6 more-info bg-dark p-3" id="datasheet">
+
+                    <div class="d-none d-sm-flex nowrap">
+                        <h6 class="pe-2"><b>Género:</b></h6>
                         <p>{{ $anime->genre->name }}</p>
                     </div>
-                    <div class="d-flex nowrap">
-                        <h5 class="pe-2"><b>Fecha de lanzamiento:</b></h5>
+                    <div class="d-none d-sm-flex nowrap">
+                        <h6 class="pe-2"><b>Fecha de lanzamiento:</b></h6>
                         <p> {{ $anime->release_date }}</p>
                     </div>
-                    <div class="d-flex nowrap">
-                        <h5 class="pe-2"><b>Duración:</b></h5>
+                    <div class="d-none d-sm-flex nowrap">
+                        <h6 class="pe-2"><b>Duración:</b></h6>
                         <p> {{ $anime->duration }} min</p>
                     </div>
-                    <div class="d-flex nowrap">
-                        <h5 class="pe-2"><b>Episodios:</b></h5>
+                    <div class="d-none d-sm-flex nowrap">
+                        <h6 class="pe-2"><b>Episodios:</b></h6>
                         <p> {{ $anime->total_episodes }}</p>
                     </div>
-                    <div class="d-flex nowrap">
-                        <h5 class="pe-2"><b>Puntuación:</b></h5>
+                    <div class="d-none d-sm-flex nowrap">
+                        <h6 class="pe-2"><b>Puntuación:</b></h6>
                         <p><i class="fas fa-star"></i>
                         <p> {{ $anime->puntuation }}</p>/10<p>
                     </div>
+
                     <div class="d-flex flex-column align-items-start">
-                        <h5 class="pe-2"><b>Cuánto te ha gustado?</b></h5>
-                        <form method="GET" class="d-flex flex-column flex-xl-row align-items-center">
-                            <div class="rating col-12 me-3">
+                        <h6 class="pe-2"><b>Cuánto te ha gustado?</b></h6>
+                        <form method="GET" class="d-flex flex-column align-items-center col-12 mb-xl-2">
+                            <div class="rating col-12 d-flex justify-content-center">
                                 <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
                                 <input name="stars" id="e2" type="radio" value="9"><label for="e2">☆</label>
                                 <input name="stars" id="e3" type="radio" value="8"><label for="e3">☆</label>
@@ -155,22 +74,46 @@
                         echo '<div class="alert alert-success">Rating recibido: <strong>' . $_GET['stars'] . '</strong>.</div>';
                     } elseif (isset($_GET['stars']) == '');
                     ?>
-                    <div class="d-flex flex-row my-2">
-                        <a href="/detail/detailAnimes/{{ $anime->id }}/addFav"><button type="button"
-                                class="btn button-purple btn-md">Añadir a favoritos</button></a>
-                        <div class="social-media-links mx-2">
-                            <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button"
-                                aria-expanded="false" aria-controls="shareComponent">
-                                <i class="fas fa-share-alt"></i>
-                            </a>
+                    <div class="d-flex flex-row justify-content-center">
+                            <a href="/detail/detailAnimes/{{ $anime->id }}/addFav"><button type="button"
+                                    class="btn button-purple btn-sm">Añadir a favoritos</button></a>
+                            <div class="social-media-links mx-2">
+                                <a class="btn button-purple btn-sm" data-bs-toggle="collapse" href="#shareComponent" role="button"
+                                    aria-expanded="false" aria-controls="shareComponent">
+                                    <i class="fas fa-share-alt"></i>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="collapse my-3" id="shareComponent">
-                        {!! $shareComponent !!}
-                    </div>
+                        <div class="collapse text-center" id="shareComponent">
+                            {!! $shareComponent !!}
+                        </div>
+                    </article>
             </article>
-            <p class="description pt-5">{{ $anime->description }}</p>
-        </article>
+
+            <div class="px-2">
+                <h5 class="pt-4"><b>Resumen</b></h5>
+                <p class="description col-12 d-flex">{{ $anime->description }}</p>
+
+                <article class="d-sm-none">
+                    <div class="d-flex flex-column">
+                        <h5 class="pe-2"><b>Género:</b></h5>
+                        <p>{{ $anime->genre->name }}</p>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <h5 class="pe-2"><b>Fecha de lanzamiento:</b></h5>
+                        <p> {{ $anime->release_date }}</p>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <h5 class="pe-2"><b>Duración:</b></h5>
+                        <p> {{ $anime->duration }} min</p>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <h5 class="pe-2"><b>Puntuación:</b></h5>
+                        <p><i class="fas fa-star"></i> {{ $anime->puntuation }}/10<p>
+                    </div>
+                </article>
+            </div>        
+
 
         <article class="d-flex flex-column flex wrap align-items-center p-3">
             <h3 class="text-uppercase pb-3">Tráiler</h3>
