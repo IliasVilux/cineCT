@@ -46,6 +46,34 @@ class DatabaseSeeder extends Seeder
             ]);
         } */
 
+        $tmp = SerieController::store();
+        foreach ($tmp as $tmp2){
+            $count = count($tmp2->{'results'});
+            for ($i=0; $i < $count; $i++) { 
+
+                if($tmp2->{'results'}[$i]->{'origin_country'}[0] !== 'JP') {
+                
+                    DB::table('series')->insert([
+                        'original_id' => $tmp2->{'results'}[$i]->{'id'},
+                        'genre_id' => rand(1,2),
+                        'season_id' => null,
+                        'name' => $tmp2->{'results'}[$i]->{'name'},
+                        'description' => $tmp2->{'results'}[$i]->{'overview'},
+                        'poster_path' => $tmp2->{'results'}[$i]->{'poster_path'},
+                        'seasons' => null,
+                        'total_episodes' => null,
+                        'release_date' => $tmp2->{'results'}[$i]->{'first_air_date'},
+                        'puntuation' => $tmp2->{'results'}[$i]->{'vote_average'},
+                        'duration' => null, 
+                        'created_at' => now(),
+                        'updated_at' => now()
+                    ]);
+                }
+
+            }
+            break;
+        } 
+
         /*
         $tmp = FilmController::store();
         foreach ($tmp as $tmp2){
@@ -63,6 +91,7 @@ class DatabaseSeeder extends Seeder
         }  */
 
         //Peliculas segun su genero (api : https://api.themoviedb.org/'.$contador.'/discover/movie?api_key=9d981b068284aca44fb7530bdd218c30&with_genres=27)
+        /*
         $tmp = FilmController::store();
         foreach ($tmp as $tmp2){
             $count = count($tmp2->{'results'});
@@ -87,6 +116,7 @@ class DatabaseSeeder extends Seeder
             }
             break;
         }  
+        */
 
         /* $tmp = AnimeController::store();
         foreach ($tmp as $tmp2){

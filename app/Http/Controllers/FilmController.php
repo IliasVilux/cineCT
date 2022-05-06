@@ -23,7 +23,6 @@ class FilmController extends Controller
         $contador = 1;
         $apiLinks = array();
         $allFilms = array();
-        $OurDbFilms = Film::all();
 
         do {
             //$filmApi = Http::get('https://api.themoviedb.org/3/movie/' . $contador . '?api_key=9d981b068284aca44fb7530bdd218c30&language=en-US');
@@ -281,19 +280,12 @@ class FilmController extends Controller
             } elseif ($genre == 'War' || $genre == 'war' || $genre == 'Crime' || $genre == 'crime') {
                 array_push($searchCondition, "War", "Crime");
             }
-            /*
-            if ($genreInfo){
-            }
-            */
-
-
+           
             $films = Film::select('films.*')
                 ->join('genres', 'films.genre_id', '=', 'genres.id')
                 ->whereIn('genres.name', $searchCondition)
                 ->orderBy('films.release_date', 'DESC')
                 ->paginate(25);
-
-            //dd(count($films) > 0);
 
             return view('content.filterFilm', ['films' => $films, 'genre' => $genre]);
         }

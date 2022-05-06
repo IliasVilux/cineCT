@@ -123,8 +123,8 @@ Route::get('/aboutUs', function () {
 });
 
 
-//Testejos amb les apis
-
+//Test con apis
 Route::get('/api/films', [FilmController::class, 'store']);
+Route::get('/api/series', [SerieController::class, 'store']);
 
 //Route::get('/testing/models', [ModelRelationshipTest::class, 'tests'])->name('model.testing');
