@@ -120,7 +120,6 @@ class FilmController extends Controller
                     echo 'puntuation:' . $filmContent->{'results'}[$i]->{'vote_average'} . '<br>';
                     echo 'release_date: ' . $filmContent->{'results'}[$i]->{'release_date'} . '<br><br>';
                     
-                    
                 }
             }
             break;
@@ -132,68 +131,25 @@ class FilmController extends Controller
         return $allFilms;
     }
 
-    public function returnFilms($id, $orderBylikes = false)
+    public function returnFilms($id)
     {
         $film = Film::find($id);
         $comments = Review::where('film_id', '=', $id)->get();
-        
-
         $shareComponent = $this->ShareWidget();
+        $commentsOrderByLikes = [];
 
-
-        /*
-        
-        echo '<b>Pelicula: '. $film->name. '</b><br><br>';
-        SELECT review_id,
-        COUNT(user_id)
-        FROM likes
-        GROUP BY  review_id
-        ORDER BY COUNT(user_id) DESC ;
-
-        //QUERY AVANZADA-----
-        SELECT reviews.id, count(likes.user_id) AS 'TOTAL LIKES'
-        FROM reviews 
-        LEFT JOIN likes on reviews.id = likes.review_id
-        GROUP BY likes.review_id
-        ORDER BY 'TOTAL LIKES' DESC;
-        */
-        
-        if($_POST['short_by_likes']) {
-            
-        }
-
-        $allTemporalCommentsOrderByLikes = [];
         if(count($comments) !== 0){
-
             foreach($comments as $comment){
-    
-                $currentCommentTotalLikes = Like::where('review_id', $comment->id)->count();
-                
-                if($currentCommentTotalLikes !== 0)
-                {
-                    // echo 'ID del comentario: '. $comment->id. '<br>';
-                    // echo 'Autor: '.$comment->user->nick .'<br>'; 
-                    // echo 'Comentario: '.$comment->description .'<br>'; 
-                    // echo 'Total Likes: <b>'.$currentCommentTotalLikes.'</b><br>'; 
-                    // echo '<br>----------------------------------';
-                    // echo '<br><br>';
-                }
-
-
-                
-                $allTemporalCommentsOrderByLikes[$comment->id]['likes'] = $currentCommentTotalLikes;
-                $allTemporalCommentsOrderByLikes[$comment->id]['comments'] = $comment;
-                
+                $currentCommentTotalLikes = Like::where('review_id', $comment->id)->count();               
+                $commentsOrderByLikes[$comment->id]['likes'] = $currentCommentTotalLikes;
+                $commentsOrderByLikes[$comment->id]['comments'] = $comment;
             }
-        }else{
-            echo 'Esta pelicula no tiene ningun comnetario/review';
         }
-
-        arsort($allTemporalCommentsOrderByLikes);
-        
+        arsort($commentsOrderByLikes);
+        //return view('detail.detailFilms', compact('film', 'comments', 'shareComponent','commentsOrderByLikes')); 
 
         if (!is_null($film)) {
-            return view('detail.detailFilms', compact('film', 'comments', 'shareComponent','allTemporalCommentsOrderByLikes'));
+            return view('detail.detailFilms', compact('film', 'comments', 'shareComponent','commentsOrderByLikes'));
         } else {
             return response('No encontrado', 404);
         }
