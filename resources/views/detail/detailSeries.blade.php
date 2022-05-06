@@ -195,7 +195,7 @@
                     let commentID = response.comment['id'];
                     let commentDescription = response.comment['description'];
                     let commentHtml =
-                    `<div class="d-flex flex-start mb-4">
+                    `<div class="d-flex flex-start mb-4" id="content_id-${commentID}">
                         <div><img class="rounded-circle shadow-1-strong me-3" src="{{Auth::user()->image->path}}" width="65"height="65"></div>
                         <div class="flex-grow-1 flex-shrink-1"><div>
                             <div class="d-flex justify-content-between align-items-center">

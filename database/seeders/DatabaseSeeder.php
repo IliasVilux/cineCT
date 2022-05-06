@@ -47,15 +47,20 @@ class DatabaseSeeder extends Seeder
         } */
 
         $tmp = SerieController::store();
-        foreach ($tmp as $tmp2){
+        foreach ($tmp as $tmp2) {
             $count = count($tmp2->{'results'});
-            for ($i=0; $i < $count; $i++) { 
+            for ($i = 0; $i < $count; $i++) {
 
-                if($tmp2->{'results'}[$i]->{'origin_country'}[0] !== 'JP') {
-                
+                if (
+                    $tmp2->{'results'}[$i]->{'name'} === "Loki"
+                    || $tmp2->{'results'}[$i]->{'name'} === "WandaVision"
+                    || $tmp2->{'results'}[$i]->{'name'} === "Superman & Lois"
+                    || $tmp2->{'results'}[$i]->{'name'} === "The Flash"
+                ) {
+
                     DB::table('series')->insert([
                         'original_id' => $tmp2->{'results'}[$i]->{'id'},
-                        'genre_id' => rand(1,2),
+                        'genre_id' => '21',
                         'season_id' => null,
                         'name' => $tmp2->{'results'}[$i]->{'name'},
                         'description' => $tmp2->{'results'}[$i]->{'overview'},
@@ -64,15 +69,15 @@ class DatabaseSeeder extends Seeder
                         'total_episodes' => null,
                         'release_date' => $tmp2->{'results'}[$i]->{'first_air_date'},
                         'puntuation' => $tmp2->{'results'}[$i]->{'vote_average'},
-                        'duration' => null, 
+                        'duration' => null,
                         'created_at' => now(),
                         'updated_at' => now()
                     ]);
                 }
-
             }
             break;
-        } 
+        }
+
 
         /*
         $tmp = FilmController::store();
