@@ -3,6 +3,7 @@
 
     <head>
         <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <style>
@@ -126,9 +127,15 @@
                             <h4 class="text-center mb-4 pb-2">{{ trans('titles.commentSection') }}</h4>
                             <div class="row">
                                 <div class="col" id="comment-container">
+                                    
+                                    @foreach ($allTemporalCommentsOrderByLikes as $commentLikes)
+                                        <?php echo $commentLikes['comments']->description .'<br>';?>                                      
+                                    @endforeach
+
+                                    
                                     @if(count($comments) !== 0)
-                                        <div class="d-flex justify-content-end comment-container__sort-container">
-                                            <a class="btn btn-order" style="border:1px solid #5A3C97; color:#ffffff;" id="{{$film->id}}" data-bs-toggle="popover" title="Popover title" data-bs-content="HOLA TIO!" href="#">
+                                        <div class="d-flex justify-content-end comment-container__sort-container" id="short_by_likes">
+                                            <a class="btn btn-order" style="border:1px solid #5A3C97; color:#ffffff;" id="{{$film->id}}" href="#">
                                                 <span class="comment-container__sort-icon">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-filter-left" viewBox="0 0 16 16">
                                                         <path d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
