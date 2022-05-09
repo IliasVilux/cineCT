@@ -3,12 +3,24 @@ header {
   background-image: linear-gradient(to bottom, black 25%, #9966ff 150%);
 }
 
+.navbar {
+  padding: 0px 5px;
+  max-height: 100%;
+}
+
 .navbar-toggler {
   border: none;
 }
 
+/* Logo */
+
 img.logo {
   width: 75px;
+  height: 65%;
+}
+.navbar-brand{
+  width: 50px;
+  height: 35px;
 }
 
 .user-profile-img{
@@ -24,6 +36,10 @@ img.logo {
 }
 
 /* MENU */
+.navbar-dark .navbar-toggler {
+  font-size: 10px;
+}
+
 .offcanvas-start {
   background-image: linear-gradient(to bottom, black 50%, #9966ff 150%);
 }
@@ -37,11 +53,68 @@ img.logo {
 }
 
 ul.list-unstyled li a i.fas {
-  width: 45px;
+  width: 23px;
 }
 
-i.fas.fa-film,
-i.fas.fa-home  {
-  font-size: 28px;
-  padding: 0px 7px 0px 0px;
+/* Iconos */
+
+i.fas.fa-search {
+  font-size: 9px;
+}
+
+.fas.fa-user-circle {
+  font-size: 10px;
+}
+
+@media screen and (min-width: 576px) {
+  html, main, body {
+    background: #16181d;
+    color: #FFFFFF;
+    font-size: 15px;
+  }
+  .navbar {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    max-height: 100%;
+  }
+  .navbar-dark .navbar-toggler {
+    font-size: 20px;
+  }
+  i.fas.fa-search {
+    font-size: 19px;
+  }
+  
+  .fas.fa-user-circle {
+    font-size: 20px;
+  }
+  ul.list-unstyled li a i.fas {
+    width: 45px;
+  }
+  
+  img.logo {
+    width: 130px;
+    height: 35px;
+  }
+}
+
+
+@media screen and (min-width: 768px) {
+  html, main, body {
+    background: #16181d;
+    color: #FFFFFF;
+    font-size: 15px;
+  }
+  header {
+    height: 70px;
+  }
+  .navbar-dark .navbar-toggler {
+    font-size: 25px;
+  }
+  i.fas.fa-search {
+    font-size: 24px;
+  }
+  
+  .fas.fa-user-circle {
+    font-size: 25px;
+  }
 }

@@ -1,4 +1,4 @@
-    <div class="d-flex flex-start mb-4" id="content_id-{{$comment->id}}" style="padding-top:20px;">
+    <div class="d-flex flex-start mb-3" id="content_id-{{$comment->id}}">
         <div>
             @if(Auth::user()->image_id === null)
                 <i class="fas fa-user-circle fs-4 pe-1"></i>
@@ -10,12 +10,11 @@
             
         </div>
         <div class="flex-grow-1 flex-shrink-1">
-            <div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <p class="mb-1">{{ $comment->user->nick }} <span class="text-muted ml-2">{{\DateTimeFormat::timeFilter($comment->created_at)}}</span></p>
-                    <a href="#!"><i class="fas fa-reply fa-xs"></i><span class="text-muted">reply</span></a>
+            <div class="d-flex flex-wrap flex-column align-items-start">
+                <div class="col-12">
+                    <p class="mb-1">{{ $comment->user->nick }} <span class="text-muted ms-2">{{\DateTimeFormat::timeFilter($comment->created_at)}}</span></p>
                 </div>
-                <p class="small mb-0 comment">{{ $comment->description }}</p>
+                <p class="text-break">{{ $comment->description }}</p>
             </div>
             <div class="like-container">
 
@@ -47,7 +46,7 @@
             
             {{--
             <!----START REPLY COMMENT---->
-            <div class="d-flex flex-start mt-4">
+            <!-- <div class="d-flex flex-start mt-4">
                 <a class="me-3" href="#"> <img class="rounded-circle shadow-1-strong me-3"
                         src="{{ $profile->path }}" alt="13" width="65" height="65" /></a>
                 <div class="flex-grow-1 flex-shrink-1">
@@ -63,7 +62,7 @@
                         </p>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!----END REPLY COMMENT---->
             ---}}
         </div>
