@@ -393,19 +393,21 @@
                             let allComments = response.commentsOrderByLikes;
                             let jsonResponse = [JSON.stringify(allComments)];
                             let commmentsContent = [];
-                            let ObjKeys = [];
                             
                             for (let k in allComments) {
                                 commmentsContent.push(allComments[k]);
                             }
 
-                            //console.log(commmentsContent);
-
+                            let contador = 0;
+                            let allLikes = [];
                             commmentsContent.forEach(function(comment, index) {
-                                console.log(comment['comments']);
-                                let commentId = comment['comments'].id;
-                                jQuery('#comment-container').append(commentId);
+                                index = Object.keys(allComments)[contador]
+                                console.log("============");
+                                allLikes.push(comment.likes);
+                                contador++;
                             })
+                            metodoBurbuja();
+                            console.log(allLikes);
                         }
                     },
                 });
@@ -419,6 +421,19 @@
             let dataBaseContentLang = 'en';
             alert(currentActiveLang);
 
+        }
+
+        function metodoBurbuja(items) {
+            var length = items.length;  
+            for (var i = 0; i < length; i++) { 
+                for (var j = 0; j < (length - i - 1); j++) { 
+                    if(items[j] > items[j+1]) {
+                    var tmp = items[j]; 
+                    items[j] = items[j+1]; 
+                    items[j+1] = tmp; 
+                    }
+                }        
+            }
         }
 
         
