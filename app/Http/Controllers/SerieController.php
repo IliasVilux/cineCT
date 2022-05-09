@@ -91,13 +91,24 @@ class SerieController extends Controller
 
         $serie = Serie::find($id);
         $userLists = FavouriteLists::query()->where('user_id', $user)->get();
+        $userListsWhereSerie = [];
+        $userSeriesInLists = FavoriteList::where('user_id', $user)->where('serie_id', $id)->get();
+        foreach($userSeriesInLists as $SerieInLists)
+        {
+            foreach($userLists as $list)
+            {
+                if($list->id == $SerieInLists->list_id){
+                    array_push($userListsWhereSerie, $list);
+                }
+            }
+        }
         $userTopList = FavouriteLists::query()->where('user_id', $user)->where('top_list', 1)->get();
         $profile = Image::all();
         $comments = Review::where('serie_id' ,'=', $id)->get();
         $shareComponent = $this->ShareWidget();
 
         if (!is_null($serie)) {
-            return view('/detail/detailSeries', compact('serie', 'userLists', 'comments', 'profile', 'shareComponent', 'userTopList'));
+            return view('/detail/detailSeries', compact('serie', 'userLists', 'userListsWhereSerie', 'comments', 'profile', 'shareComponent', 'userTopList'));
         } else {
             return response('No encontrado', 404);
         }
@@ -119,11 +130,24 @@ class SerieController extends Controller
         }
         return redirect()->to('/detail/detailSeries/' . $id);
     }
+
+    public function delFavourite($idS, $list)
+    {
+        $user = Auth::user()->id;
+        $lista = FavoriteList::where('user_id', $user)->where('serie_id', $idS)->where('list_id', $list)->first();
+        $lista->delete();
+        $serie_name = Serie::query()->where('id', $idS)->get();
+
+        return redirect()->to('/detail/detailSeries/' . $idS)->with('SerieDeleted','Se ha eliminado ' . $serie_name[0]->name . ' de tu lista de favoritos');
+    }
+
     public function addNewList($idSerie, Request $request)
     {
         $user = Auth::user()->id;
         $newListName = $request->input('newListName');
         $listUser = FavouriteLists::where('name', $newListName)->where('user_id', $user)->get('id')->max();
+
+        $serie_name = Serie::query()->where('id', $idSerie)->get();
 
         $request->validate([
             'newListName' => 'required|string|min:2|max:255'
@@ -136,7 +160,8 @@ class SerieController extends Controller
                 'user_id' => $user,
             ]);
             $idList = FavouriteLists::where('name', $newListName)->get('id')->max();
-            $this->addFavourite($idSerie, $idList);
+            $this->addFavourite($idSerie, $idList->id);
+            return redirect()->to('/detail/detailSeries/' . $idSerie)->with('SerieAdded','Se ha añadido ' . $serie_name[0]->name . ' a tu lista de favoritos');
         } else { return redirect()->to('/detail/detailSeries/' . $idSerie); }
     }
 
@@ -213,7 +238,7 @@ class SerieController extends Controller
             ->paginate(25);
 
             
-            //dd(count($films) > 0);
+            //dd(count($Films) > 0);
 
             return view('content.filterSerie',['series' => $series, 'genre' => $genre]);
             

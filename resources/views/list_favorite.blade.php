@@ -22,12 +22,8 @@
 
     <section class="container top_content my-5">
         <section class="cinet_top--content">
-            <p style="display: none;">{{ $cont = 0 }}</p>
-            <p style="display: none;">{{ $cont2 = 0 }}</p>
-            <p style="display: none;">{{ $cont3 = 0 }}</p>
             @foreach($data['animes'] as $anime)
             <div class="content--card">
-                <div data-id="{{ $cont }}" class="heart2 like" style="z-index: 5;"></div>
                 <a class="p-1" href="{{ route('anime.animes',  ['id' => $anime->id]) }}">
                     <div class="cinet_top--detail">
                         <div>
@@ -41,11 +37,9 @@
                     <p>{{ $anime->name }}<span>{{ $anime->puntuation }}</span></p>
                 </a>
             </div>
-            <p style="display: none;">{{ $cont++ }}</p>
             @endforeach
             @foreach($data['series'] as $serie)
             <div class="content--card">
-                <div data-id="{{ $cont2 }}" class="heart2 like" style="z-index: 10;"></div>
                 <a class="p-1" href="{{ route('serie.series',  ['id' => $serie->id]) }}">
                     <div class="cinet_top--detail">
                         <div>
@@ -59,11 +53,9 @@
                     <p>{{ $serie->name }}<span>{{ $serie->puntuation }}</span></p>
                 </a>
             </div>
-            <p style="display: none;">{{ $cont2++ }}</p>
             @endforeach
             @foreach($data['films'] as $film)
             <div class="content--card">
-                <div data-id="{{ $cont3 }}" class="heart2 like" style="z-index: 10;"></div>
                 <a class="p-1" href="{{ route('film.films',  ['id' => $film->id]) }}">
                     <div class="cinet_top--detail">
                         <div>
@@ -77,7 +69,6 @@
                     <p>{{ $film->name }}<span>{{ $film->puntuation }}</span></p>
                 </a>
             </div>
-            <p style="display: none;">{{ $cont3++ }}</p>
             @endforeach
         </section>
     </div>
@@ -95,41 +86,5 @@
         </a>
     @endif
 @endif
-<script>
-    $(function() {
-        $(".heart2").on("click", function() {
-            $(this).toggleClass("animation");
-            setTimeout(function(){
-                console.log($('#idList').val())
-                id = 0;
-                /* $.ajax({
-                    type: "GET",
-                    url: '/user/lista-fav/removeFav1' + id,
-                    data: {
-                        '_token': $('input[name=_token]').val(),
-                        like_id: $(this).data('id'),
-                    }
-                }); */
-            }, 1000);
-        });
-    });
-    $(function() {
-        $(".heart2").on("click", function() {
-            $(this).toggleClass("animation");
-            setTimeout(function(){
-                console.log($('#idList').val())
-                id = 0;
-                $.ajax({
-                    type: "GET",
-                    url: '/user/lista-fav/removeFav2' + id,
-                    data: {
-                        '_token': $('input[name=_token]').val(),
-                        like_id: $(this).data('id'),
-                    }
-                });
-            }, 1000);
-        });
-    });
-</script>
 <!-- END COMMENT SECTION -->
 @endsection

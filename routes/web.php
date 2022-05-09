@@ -104,10 +104,17 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     Route::get('/detail/detailSeries/{id}/{flid}/addFav', [SerieController::class,  'addFavourite'])->name('serie.fav');
     Route::get('/detail/detailFilms/{id}/{flid}/addFav', [FilmController::class,  'addFavourite'])->name('film.fav');
 
+    //Delete favourites
+    Route::get('/detail/detailAnimes/{id}/{flid}/delFav', [AnimeController::class,  'delFavourite'])->name('anime.del-fav');
+    Route::get('/detail/detailSeries/{id}/{flid}/delFav', [SerieController::class,  'delFavourite'])->name('serie.del-fav');
+    Route::get('/detail/detailFilms/{id}/{flid}/delFav', [FilmController::class,  'delFavourite'])->name('film.del-fav');
+
     //Searcher
     Route::get('/content/{search?}', [UserController::class, 'searchContent'])->name('search-content'); 
 
     Route::get('/detail/detailAnimes/{id}/addNewList', [AnimeController::class,  'addNewList'])->name('anime.newList');
+    Route::get('/detail/detailFilms/{id}/addNewList', [FilmController::class,  'addNewList'])->name('anime.newList');
+    Route::get('/detail/detailSeries/{id}/addNewList', [SerieController::class,  'addNewList'])->name('anime.newList');
     
     //Show comments likes
     Route::get('/user/activity', [UserController::class, 'activity'])->name('user.activity');

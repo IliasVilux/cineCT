@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{asset('css/general.css')}}">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="js/jquery.rating.pack.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
     $(document).ready(function() {
         $('input.star').rating();
@@ -31,6 +32,11 @@
 @if (Session::has('SerieAdded'))
 <div class="alert alert-success" role="alert">
     <strong>{{ Session::get('SerieAdded') }}!</strong>
+</div>
+@endif
+@if (Session::has('SerieDeleted'))
+<div class="alert alert-success" role="alert">
+    <strong>{{ Session::get('SerieDeleted') }}!</strong>
 </div>
 @endif
 <section class="container">
@@ -160,6 +166,18 @@
                     @if (isset($userTopList[0]->name))
                     <a href="/detail/detailSeries/{{$serie->id}}/{{$userTopList[0]->id}}/addFav"><button type="button"
                             class="btn button-purple btn-md">Añadir a {{ $userTopList[0]->name }}</button></a>
+                    @endif
+                    @if(!empty($userListsWhereSerie))
+                        <div class="dropdown">
+                            <button type="button" class="btn button-purple btn-md dropdown-toggle" data-bs-toggle="dropdown">
+                                Eliminar de favoritos
+                            </button>
+                            <ul class="dropdown-menu">
+                                @foreach ($userListsWhereSerie as $list)
+                                    <li><a class="dropdown-item" href="/detail/detailSeries/{{$serie->id}}/{{$list->id}}/delFav">{{ $list->name }}</a></li>
+                                @endforeach
+                            </ul>
+                        </div>
                     @endif
                     <div class="social-media-links mx-2">
                         <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button"
