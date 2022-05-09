@@ -122,5 +122,8 @@ Route::get('/aboutUs/aboutUs', function () {
 });
 
 
+//Testejos amb les apis
+
+Route::get('/api/films', [FilmController::class, 'store']);
 
 //Route::get('/testing/models', [ModelRelationshipTest::class, 'tests'])->name('model.testing');

@@ -105,6 +105,11 @@ a.link-img-carousel {
   50% {box-shadow: 0 5px 30px rgba(145, 92, 182, .4);}
 }
 
+.cinect-custom-alert{
+  width: 100%;
+  margin: 20px auto;
+  animation: opacityTransition 2s infinite;
+}
 
 /* MEDIA QUERIES */
 @media screen and (min-width: 350px) {

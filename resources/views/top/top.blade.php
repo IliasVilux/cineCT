@@ -12,7 +12,7 @@
                 <div class="cinect-carousel--container--content">
                     <div class="accordion accordion-flush" id="accordionFlushExample">
                         <?php $contador = 1; ?>
-                        @foreach ($films->take(10) as $film)
+                        @foreach ($films->take(3) as $film)
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingOne">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -35,7 +35,7 @@
                             </div>
                         @endforeach
 
-                        @foreach ($animes->take(10) as $anime)
+                        @foreach ($animes->take(3) as $anime)
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingOne">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -59,7 +59,7 @@
                             </div>
                         @endforeach
 
-                        @foreach ($series->take(10) as $serie)
+                        @foreach ($series->take(4) as $serie)
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingOne">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -122,7 +122,7 @@
         </div>
 
 
-        <h3 class="mb-3">Top {{ trans('titles.films') }}</h3>
+        <h3 class="mb-3 content-title">Top {{ trans('titles.films') }}</h3>
         <section class="cinet_top--content">
             @foreach ($films->take(10) as $film)
                 <a class="p-2" href="{{ route('film.films', ['id' => $film->id]) }}">
@@ -136,7 +136,7 @@
                     href="{{ route('film.all-films') }}">{{ trans('home.view_more') }}</a>
         </section>
 
-        <h3 class="mt-5">Top {{ trans('titles.series') }}</h3>
+        <h3 class="mt-5 content-title">Top {{ trans('titles.series') }}</h3>
         <section class="cinet_top--content">
             @foreach ($series->take(10) as $serie)
                 <a class="p-2" href="{{ route('serie.series', ['id' => $serie->id]) }}">
@@ -150,7 +150,7 @@
                     href="{{ route('serie.all-series') }}">{{ trans('home.view_more') }}</a>
         </section>
 
-        <h3 class="mt-5">Top {{ trans('titles.animes') }}</h3>
+        <h3 class="mt-5 content-title">Top {{ trans('titles.animes') }}</h3>
         <section class="cinet_top--content">
             @foreach ($animes->take(10) as $anime)
                 <a class="p-2" href="{{ route('anime.animes', ['id' => $anime->id]) }}">

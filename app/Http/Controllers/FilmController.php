@@ -13,24 +13,27 @@ use App\Models\Like;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class FilmController extends Controller
 {
     public static function store(){
         
-        $contador = 1;
+        $contador = 0;
         $apiLinks = array();
         $allFilms = array();
 
         do{
-            $filmApi = Http::get('https://api.themoviedb.org/3/movie/' . $contador . '?api_key=9d981b068284aca44fb7530bdd218c30&language=en-US');
+            //$filmApi = Http::get('https://api.themoviedb.org/3/movie/' . $contador . '?api_key=9d981b068284aca44fb7530bdd218c30&language=en-US');
+            $filmApi = Http::get('https://api.themoviedb.org/'.$contador.'/discover/movie?api_key=9d981b068284aca44fb7530bdd218c30&with_genres=10749'); //romance
             array_push($apiLinks, $filmApi);
             $contador++;
-        }while($contador < 20);
+        }while($contador < 10);
         
         foreach($apiLinks as $link) {
             $filmJson = json_decode($link);
-            if (isset($filmJson->{'id'})){
+            /*
+            if (isset($filmJson->{'id'}) && isset($filmJson->{'genres'}[0]->{'name'})){
                 $genreName = $filmJson->{'genres'}[0]->{'name'};
                 if($genreName == "Action") {
                     $filmJson->{'genres'}[0]->{'name'} = 1;
@@ -79,11 +82,56 @@ class FilmController extends Controller
                 }else{
                     $filmJson->{'genres'}[0]->{'name'} = 23;
                 }
+                
                 $filmJson->{'release_date'} = (int)substr($filmJson->{'release_date'}, 0, -5);
+
+                if(isset($filmJson->{'genres'}[0]->{'name'}) && ($filmJson->{'genres'}[0]->{'name'} === 'Terror' || $filmJson->{'genres'}[0]->{'name'} === 'Thriller'))
+                {
+                    array_push($allFilms, $filmJson);
+                }
+            }
+            */
+            
+            if(isset($filmJson->{'results'}))
+            {
                 array_push($allFilms, $filmJson);
             }
+                        
         }
 
+        
+        
+        if(count($allFilms) != 0)
+        {
+            foreach($allFilms as $filmContent)
+            {
+                for ($i=0; $i < count($filmContent->{'results'}); $i++) { 
+
+                    $filmContent->{'results'}[$i]->{'release_date'} = substr($filmContent->{'results'}[$i]->{'release_date'}, 0, 4);
+                    $filmContent->{'results'}[$i]->{'backdrop_path'} = 'https://image.tmdb.org/t/p/w500'.$filmContent->{'results'}[$i]->{'backdrop_path'};
+                    
+                    
+                    echo 'Nombre: '.$filmContent->{'results'}[$i]->{'title'} .'<br>';
+                    echo 'original_id:'. $filmContent->{'results'}[$i]->{'id'}. '<br>';
+                    echo 'Genre_id: 8<br>';
+                    echo 'description: '. $filmContent->{'results'}[$i]->{'overview'}. '<br>';
+                    echo 'duration: 0 <br>';
+                    echo 'poster_path: '. $filmContent->{'results'}[$i]->{'backdrop_path'} .'<br>';
+                    echo 'puntuation:'. $filmContent->{'results'}[$i]->{'vote_average'}.'<br>';
+                    echo 'release_date: '. $filmContent->{'results'}[$i]->{'release_date'}. '<br><br>';
+                    
+                }
+                
+                
+            }
+            
+        }else{
+            echo "No té contingut";
+        }
+        
+        die();
+        
+        
         return $allFilms;
 
     }
@@ -93,11 +141,62 @@ class FilmController extends Controller
         $comments = Review::where('film_id' ,'=', $id)->get();
         $shareComponent = $this->ShareWidget();
 
+        
+        /*
+        echo '<b>Pelicula: '. $film->name. '</b><br><br>';
+        SELECT review_id,
+        COUNT(user_id)
+        FROM likes
+        GROUP BY  review_id
+        ORDER BY COUNT(user_id) DESC ;
+
+        //QUERY AVANZADA-----
+        SELECT reviews.id, count(likes.user_id) AS 'TOTAL LIKES'
+        FROM reviews 
+        LEFT JOIN likes on reviews.id = likes.review_id
+        GROUP BY likes.review_id
+        ORDER BY 'TOTAL LIKES' DESC;
+        
+
+        $allTemporalCommentsOrderByLikes = [];
+        if(count($comments) !== 0){
+
+            foreach($comments as $comment){
+    
+                $currentCommentTotalLikes = Like::where('review_id', $comment->id)->count();
+                
+                if($currentCommentTotalLikes !== 0)
+                {
+                    echo 'ID del comentario: '. $comment->id. '<br>';
+                    echo 'Autor: '.$comment->user->nick .'<br>'; 
+                    echo 'Comentario: '.$comment->description .'<br>'; 
+                    echo 'Total Likes: <b>'.$currentCommentTotalLikes.'</b><br>'; 
+                    echo '<br>----------------------------------';
+                    echo '<br><br>';
+                }
+
+
+                $allTemporalCommentsOrderByLikes['like_'.$comment->id] = $currentCommentTotalLikes;
+                $allTemporalCommentsOrderByLikes['comment_'.$comment->id] = $comment;
+                
+            }
+        }else{
+            echo 'Esta pelicula no tiene ningun comnetario/review';
+        }
+
+        
+        dump($allTemporalCommentsOrderByLikes);
+
+        die();
+        */
+        
+        
         if (!is_null($film)) {
             return view('detail.detailFilms', compact('film', 'comments', 'shareComponent'));
         } else {
             return response('No encontrado', 404);
         }
+
     }
 
     public function addFavourite($id)

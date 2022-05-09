@@ -19,6 +19,24 @@ class TopController extends Controller
         $animes = $this->topAnimes();
         $content = $this->fetchMixTopContent();
 
+        foreach($films as $film){
+            if($film->puntuation === '10.0' || $film->puntuation === '10.00'){
+                $film->puntuation = '10';
+            }
+        }
+
+        foreach($series as $serie){
+            if($serie->puntuation === '10.0' || $serie->puntuation === '10.00'){
+                $serie->puntuation = '10';
+            }
+        }
+
+        foreach($animes as $anime){
+            if($anime->puntuation === '10.0' || $anime->puntuation === '10.00'){
+                $anime->puntuation = '10';
+            }
+        }
+
         return view('top', [
             'films' => $films,
             'series' => $series,

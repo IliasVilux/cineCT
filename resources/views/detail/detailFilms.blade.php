@@ -137,9 +137,14 @@
                             <div class="row">
                                 <div class="col" id="comment-container">
                                     @if(count($comments) !== 0)
-                                        <div class="d-flex justify-content-end">
-                                            <a class="btn btn-order" style="border:1px solid #5A3C97; color:#ffffff;" id="{{$film->id}}" href="">
-                                                {{trans('content.order_review')}}
+                                        <div class="d-flex justify-content-end comment-container__sort-container">
+                                            <a class="btn btn-order" style="border:1px solid #5A3C97; color:#ffffff;" id="{{$film->id}}" data-bs-toggle="popover" title="Popover title" data-bs-content="HOLA TIO!" href="#">
+                                                <span class="comment-container__sort-icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-filter-left" viewBox="0 0 16 16">
+                                                        <path d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                                                  </svg>
+                                                </span>
+                                                  {{trans('content.order_review')}}
                                             </a>
                                         </div>
                                     @endif
@@ -328,6 +333,7 @@
                 $(this).css("color", "#FFFFFF");
                 let comment_id = $(this).data('id');
                 let ruta = `/dislike/${comment_id}`;
+                console.log(comment_id);
                 $.ajax({
                     type: "POST",
                     url: ruta,
@@ -337,11 +343,11 @@
                     },
                     success: function(data){
                         if (data.like) {
-                        console.log("Has dado dislike de forma correcta");
+                            console.log("Has dado dislike de forma correcta");
                         } else {
                             console.log("Error al dar dislike");
                         }
-                    }
+                    },
                 });
                 like();
             })
