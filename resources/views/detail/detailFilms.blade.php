@@ -147,19 +147,19 @@
                                 @endif
                                 <div class="col" id="comment-container">
 
+                                    
                                     {{-- 
                                     @foreach ($commentsOrderByLikes as $commentsOrder)
                                         <?php $comment = $commentsOrder['comments'];?>
                                             @include('includes.review', ['comment' => $comment])
                                     @endforeach
-                                     --}}
-                                    
+                                    --}}
+                                     
                                     @foreach ($comments as $comment)
                                         @if ($comment->film_id == $film->id && !empty($comment->description))
                                             @include('includes.review', ['comment' => $comment])
                                         @endif
                                     @endforeach
-
                                 </div>
                             </div>
                             <div class="alert alert-success d-none" id="msg_div" role="alert"></div>
@@ -399,15 +399,24 @@
                             }
 
                             let contador = 0;
-                            let allLikes = [];
+                            let allCommentsJson = [];
                             commmentsContent.forEach(function(comment, index) {
-                                index = Object.keys(allComments)[contador]
-                                console.log("============");
-                                allLikes.push(comment.likes);
+                                index = Object.keys(allComments)[contador];
+                                //console.log(allComments[index]);
+                                allCommentsJson.push(allComments[index]);
                                 contador++;
                             })
-                            metodoBurbuja();
-                            console.log(allLikes);
+
+                            allCommentsJson.forEach(function(commentJson, index) {
+                                //metodoBurbuja(allCommentsJson[index])
+                            })
+
+                            sortReponse(allCommentsJson);
+
+                            console.table(allCommentsJson);
+                            //metodoBurbuja(allCommentsJson);
+                            //console.log(commmentsContent);
+                            jQuery("#comment-container").html(jsonResponse)
                         }
                     },
                 });
@@ -423,17 +432,20 @@
 
         }
 
-        function metodoBurbuja(items) {
-            var length = items.length;  
-            for (var i = 0; i < length; i++) { 
-                for (var j = 0; j < (length - i - 1); j++) { 
-                    if(items[j] > items[j+1]) {
-                    var tmp = items[j]; 
-                    items[j] = items[j+1]; 
-                    items[j+1] = tmp; 
-                    }
-                }        
-            }
+        function sortReponse(data)
+        {
+            var sorted = [];
+            $(data).each(function(k, v) {
+                for(var key in v) {
+                    sorted.push({key: key, value: v[key]})
+                }
+            });
+
+            return sorted.sort(function(a, b){
+                if (a.value < b.value) return -1;
+                if (a.value > b.value) return 1;
+                return 0;
+            });
         }
 
         
