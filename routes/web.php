@@ -79,7 +79,7 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     Route::get('user/profile/image', [UserController::class, 'getUserProfileImg'])->name('user.profile-img');
     Route::get('user/profile/image{id}', [UserController::class, 'postUserProfileImg'])->name('user.save-profile-img');
 
-    Route::get('/detail/detailFilms/{id}', [FilmController::class,  'returnFilms'])->name('film.films');
+    Route::get('/detail/detailFilms/{id}/{orderByLikes?}', [FilmController::class,  'returnFilms'])->name('film.films');
     /* Route::get('/detail/detailFilms/{id}', 'SocialShareButtonsController@ShareWidget'); */
 
     Route::get('/detail/detailSeries/{id}', [SerieController::class,  'returnSeries'])->name('serie.series');

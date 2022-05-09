@@ -101,8 +101,8 @@
                     </div>
             </article>
             <p class="description pt-5" id="film-description">{{ $film->description }}</p>
-            <button class="btn btn-violet" onclick="translateDatabaseInfo()">{{ trans('home.show_translate') }}</button>
         </article>
+        <button class="btn btn-violet" onclick="translateDatabaseInfo()">{{ trans('home.show_translate') }}</button>
 
         <article class="pb-3">
             <div class="text-center pt-3 "><span id="character-counter"></span></div>
@@ -130,24 +130,22 @@
                         <div class="card-body card-body-comment p-4">
                             <h4 class="text-center mb-4 pb-2">{{ trans('titles.commentSection') }}</h4>
                             <div class="row">
+                                @if (count($comments) !== 0)
+                                    <div class="d-flex justify-content-end comment-container__sort-container mb-3" id="short_by_likes">
+                                        <a class="btn btn-order" style="border:1px solid #5A3C97; color:#ffffff;"
+                                            id="{{ $film->id }}">
+                                            <span class="comment-container__sort-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                                    fill="currentColor" class="bi bi-filter-left" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                                                </svg>
+                                            </span>
+                                            {{ trans('content.order_review') }}
+                                        </a>
+                                    </div>
+                                @endif
                                 <div class="col" id="comment-container">
-
-                                    @if (count($comments) !== 0)
-                                        <div class="d-flex justify-content-end comment-container__sort-container"
-                                            id="short_by_likes">
-                                            <a class="btn btn-order" style="border:1px solid #5A3C97; color:#ffffff;"
-                                                id="{{ $film->id }}">
-                                                <span class="comment-container__sort-icon">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                                                        fill="currentColor" class="bi bi-filter-left" viewBox="0 0 16 16">
-                                                        <path
-                                                            d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
-                                                    </svg>
-                                                </span>
-                                                {{ trans('content.order_review') }}
-                                            </a>
-                                        </div>
-                                    @endif
 
                                     {{-- 
                                     @foreach ($commentsOrderByLikes as $commentsOrder)
@@ -155,12 +153,13 @@
                                             @include('includes.review', ['comment' => $comment])
                                     @endforeach
                                      --}}
-
+                                    
                                     @foreach ($comments as $comment)
                                         @if ($comment->film_id == $film->id && !empty($comment->description))
                                             @include('includes.review', ['comment' => $comment])
                                         @endif
                                     @endforeach
+
                                 </div>
                             </div>
                             <div class="alert alert-success d-none" id="msg_div" role="alert"></div>
@@ -174,6 +173,10 @@
 
     <script type="text/javascript">
         $("#notify_user").css("display", "none");
+
+        if(jQuery('.loading-comments-order-by-likes')) {
+            jQuery('.loading-comments-order-by-likes').remove();
+        }
 
         jQuery('#create-comment').submit(function(e) {
             e.preventDefault();
@@ -367,6 +370,48 @@
 
         dislike();
 
+
+        //Short by likes with ajax
+        jQuery('#short_by_likes').click(function() {
+            let orderByLikes = 'order';
+            jQuery('#comment-container').html(
+                `<div class="text-center loading-comments-order-by-likes">
+                    <div class="spinner-border text-light" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>`);
+            $.ajax({
+                    type: "GET",
+                    url: `/detail/detailFilms/{{$film->id}}/${orderByLikes}`,
+                    data: {
+                        '_token': $('input[name=_token]').val(),
+                        orderByLikes: orderByLikes,
+                    },
+                    success: function(response) {
+                        if(response.status) {
+                            jQuery('.loading-comments-order-by-likes').remove();
+                            let allComments = response.commentsOrderByLikes;
+                            let jsonResponse = [JSON.stringify(allComments)];
+                            let commmentsContent = [];
+                            let ObjKeys = [];
+                            
+                            for (let k in allComments) {
+                                commmentsContent.push(allComments[k]);
+                            }
+
+                            //console.log(commmentsContent);
+
+                            commmentsContent.forEach(function(comment, index) {
+                                console.log(comment['comments']);
+                                let commentId = comment['comments'].id;
+                                jQuery('#comment-container').append(commentId);
+                            })
+                        }
+                    },
+                });
+
+        });
+
         function translateDatabaseInfo() {
             let currentActiveLang = '<?= app()->getLocale() ?>';
             let contentDescription = document.getElementById("film-description");
@@ -375,5 +420,9 @@
             alert(currentActiveLang);
 
         }
+
+        
+
+        
     </script>
 @endsection

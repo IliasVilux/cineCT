@@ -131,25 +131,28 @@ class FilmController extends Controller
         return $allFilms;
     }
 
-    public function returnFilms($id)
+    public function returnFilms($id, $orderByLikes = null)
     {
         $film = Film::find($id);
         $comments = Review::where('film_id', '=', $id)->get();
         $shareComponent = $this->ShareWidget();
         $commentsOrderByLikes = [];
 
-        if(count($comments) !== 0){
-            foreach($comments as $comment){
-                $currentCommentTotalLikes = Like::where('review_id', $comment->id)->count();               
-                $commentsOrderByLikes[$comment->id]['likes'] = $currentCommentTotalLikes;
-                $commentsOrderByLikes[$comment->id]['comments'] = $comment;
-            }
-        }
-        arsort($commentsOrderByLikes);
-        //return view('detail.detailFilms', compact('film', 'comments', 'shareComponent','commentsOrderByLikes')); 
-
         if (!is_null($film)) {
-            return view('detail.detailFilms', compact('film', 'comments', 'shareComponent','commentsOrderByLikes'));
+            if(isset($orderByLikes) && !is_null($orderByLikes) && $orderByLikes === 'order') {
+                if(count($comments) !== 0){
+                    foreach($comments as $comment){
+                        $currentCommentTotalLikes = Like::where('review_id', $comment->id)->count();               
+                        $commentsOrderByLikes[$comment->id]['likes'] = $currentCommentTotalLikes;
+                        $commentsOrderByLikes[$comment->id]['comments'] = $comment;
+                    }
+                }   
+                arsort($commentsOrderByLikes);
+                //dd($orderByLikes, $commentsOrderByLikes);
+                return response()->json(['commentsOrderByLikes' => $commentsOrderByLikes, 'status' => true]);
+                //return view('detail.detailFilms', compact('film', 'comments', 'shareComponent', 'commentsOrderByLikes'));
+            }
+            return view('detail.detailFilms', compact('film', 'comments', 'shareComponent'));
         } else {
             return response('No encontrado', 404);
         }
@@ -187,16 +190,6 @@ class FilmController extends Controller
 
         return $shareComponent;
     }
-
-
-    /* public function returnFilmGenre($genre_id) {
-  
-        if (!is_null($filmGenre)) {
-            return view('/content/contentFilms', ['filmGenre' => $filmGenre]);
-        } else {
-            return response('No encontrado', 404);
-        }
-    }*/
 
     public function fetchAllFilms()
     {
@@ -250,4 +243,6 @@ class FilmController extends Controller
             return view('content.filterFilm', ['films' => $films, 'genre' => $genre]);
         }
     }
+
+    
 }
