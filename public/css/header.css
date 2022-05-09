@@ -67,11 +67,6 @@ i.fas.fa-search {
 }
 
 @media screen and (min-width: 576px) {
-  html, main, body {
-    background: #16181d;
-    color: #FFFFFF;
-    font-size: 15px;
-  }
   .navbar {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
@@ -99,14 +94,6 @@ i.fas.fa-search {
 
 
 @media screen and (min-width: 768px) {
-  html, main, body {
-    background: #16181d;
-    color: #FFFFFF;
-    font-size: 15px;
-  }
-  header {
-    height: 70px;
-  }
   .navbar-dark .navbar-toggler {
     font-size: 25px;
   }

@@ -16,7 +16,7 @@
 
     <div class="container-fluid d-flex justify-content-between align-items-center">
             <h1 class="detail-title">{{ $film->name }}</h1>
-            <a href="{{ url('/content/contentFilms') }}" class="btn button-purple btn-sm my-4" title="Back">
+            <a href="{{ url('/content/contentFilms') }}" class="btn button-purple my-4" title="Back">
             {{ trans('titles.back') }}
             </a>
         </div>
@@ -62,7 +62,7 @@
                                 <input name="stars" id="e10" type="radio" value="1"><label for="e10">☆</label>
                             </div>
                             <button type="submit"
-                                class="btn button-purple btn-sm col-6 mb-2 mb-xl-0">{{ trans('content.send_rating') }}</button>
+                                class="btn button-purple col-6 mb-2 mb-xl-0">{{ trans('content.send_rating') }}</button>
                         </form>
                     </div>
                     <?php
@@ -72,9 +72,9 @@
                     ?>
                     <div class="d-flex flex-row justify-content-center">
                             <a href="/detail/detailFilms/{{ $film->id }}/addFav"><button type="button"
-                                    class="btn button-purple btn-sm">{{trans('content.add_favourite')}}</button></a>
+                                    class="btn button-purple">{{trans('content.add_favourite')}}</button></a>
                             <div class="social-media-links mx-2">
-                                <a class="btn button-purple btn-sm" data-bs-toggle="collapse" href="#shareComponent" role="button"
+                                <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button"
                                     aria-expanded="false" aria-controls="shareComponent">
                                     <i class="fas fa-share-alt"></i>
                                 </a>

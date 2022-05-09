@@ -115,7 +115,7 @@
                                 <input name="stars" id="e9" type="radio" value="2"><label for="e9">☆</label>
                                 <input name="stars" id="e10" type="radio" value="1"><label for="e10">☆</label>
                             </div>
-                            <button type="submit" class="btn button-purple btn-sm col-6 mb-2 mb-xl-0">{{trans('content.send_rating')}}</button>
+                            <button type="submit" class="btn button-purple col-6 mb-2 mb-xl-0">{{trans('content.send_rating')}}</button>
                         </form>
                     </div>
                     <?php
@@ -125,9 +125,9 @@
                     ?>
                     <div class="d-flex flex-row justify-content-center">
                             <a href="/detail/detailAnimes/{{ $anime->id }}/addFav"><button type="button"
-                                    class="btn button-purple btn-sm">{{trans('content.add_favourite')}}</button></a>
+                                    class="btn button-purple">{{trans('content.add_favourite')}}</button></a>
                             <div class="social-media-links mx-2">
-                                <a class="btn button-purple btn-sm" data-bs-toggle="collapse" href="#shareComponent" role="button"
+                                <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button"
                                     aria-expanded="false" aria-controls="shareComponent">
                                     <i class="fas fa-share-alt"></i>
                                 </a>

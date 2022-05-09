@@ -69,7 +69,7 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     Route::get('/content/animes/{genre}', [AnimeController::class, 'filterContent'])->name('anime.animes-filtered');
 
     //TopContent
-    Route::get('/top', [TopController::class, 'fetchAllTopContent'])->name('top.top-content');
+    Route::get('/top/top', [TopController::class, 'fetchAllTopContent'])->name('top.top-content');
     
     Route::get('/search/search', function () {
         return view('/search/search');
