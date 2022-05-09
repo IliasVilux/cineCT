@@ -17,6 +17,7 @@ return [
     'series' => 'Series',
     'animes' => 'Animes',
     'view_more' => 'Ver más',
-    'back' => 'Volver'
+    'back' => 'Volver',
+    'show_translate' => 'Mostrar traducción',
 
 ];

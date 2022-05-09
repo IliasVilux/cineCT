@@ -129,8 +129,30 @@ class UserController extends Controller
         return view('profile.profile')->with('message','Profile Updated');
     }
     public function deleteAccount(){
+
         $user = Auth::user();
-        $user->delete();
+        $id = $user->id;
+            
+        $isset_reviews = Review::where('user_id', $id)->first();
+        $isset_likes = Like::where('user_id', $id)->first();
+        
+        if($isset_likes) {
+            $likes = Like::where('user_id', $id)->get();
+            foreach($likes as $like) {
+                $like->where('user_id', $user->id)->delete();
+            }
+        }
+        
+        if($isset_reviews) {
+            $reviews = Review::where('user_id', $id);
+            foreach($reviews as $review) {
+                $review->where('user_id', $id)->delete();
+            }
+        }
+
+
+        $userToDelete = User::findOrFail($id);
+        $userToDelete->delete();
 
         Auth::logout();
         return redirect()->to('register')->with('signOut', 'Cuenta eliminada!');

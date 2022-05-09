@@ -50,8 +50,7 @@ class UserAuthController extends Controller
             }
         }
 
-
-        return redirect("register")->with('authErrorMsg','Los datos que has introducido no pertenece a ninguna cuenta. Comprueba los datos y vuelve a intentarlo.');
+        return redirect("register")->with('authErrorMsg','Los datos que has introducido no pertenece a ninguna cuenta.');
         
     }
 
@@ -63,19 +62,23 @@ class UserAuthController extends Controller
         $register_email = $request->input('register_email');
         $register_password = $request->input('register_password');
 
-        $user = Auth::user();
-        $userId = $user->id;
+        
 
         $validate = $this->validate($request, [
             'register_name' => 'required|string|min:3|max:255',
             'register_surname' => 'required|string|max:255',
-            'register_nick' => 'required|string|max:15|unique:users,nick,'.$userId, //unique:users-> ningun nick se repetirá
-            'register_email' => 'required|string|email|unique:users,email,'.$userId,
+            'register_nick' => 'required|string|max:15|',
+            'register_email' => 'required|string|email|',
             'register_password' => 'required|min:6',
             'register_password_repeat' => 'required|min:6|same:register_password'
 
         ]);
 
+        $userExist = User::where('email', '=', $register_email)->orWhere('nick', '=', $register_nick)->first();
+
+        if($userExist) {
+            return redirect("register")->with('userExist','Ya existe un usuario con este nick o email');
+        }
 
         $user = User::create([
             'name' => $register_name,
@@ -83,6 +86,8 @@ class UserAuthController extends Controller
             'surname' => $register_surname,
             'nick' => $register_nick,
             'image_id' => 18,
+            'lang' => 'en',
+            'locale' => 'en',
             'password' => $register_password
         ]);
 

@@ -22,13 +22,16 @@ class SerieController extends Controller
         $allSeries = array();
 
         do{
-            $serieApi = Http::get('https://api.themoviedb.org/3/tv/' .$contador. '?api_key=9d981b068284aca44fb7530bdd218c30&language=en-EN');
+            //$serieApi = Http::get('https://api.themoviedb.org/3/tv/' .$contador. '?api_key=9d981b068284aca44fb7530bdd218c30&language=en-EN');
+            $serieApi = Http::get('https://api.themoviedb.org/' . $contador . '/discover/tv?api_key=9d981b068284aca44fb7530bdd218c30&with_genres=10765');
+            //genres //https://api.themoviedb.org/3/genre/tv/list?api_key=9d981b068284aca44fb7530bdd218c30&language=en-US
             array_push($apiLinks, $serieApi);
             $contador++;
         }while($contador < 20);
         
         foreach($apiLinks as $link) {
             $serieJson = json_decode($link);
+            /*
             if (!empty($serieJson->{'genres'})){
                 $genreName = $serieJson->{'genres'}[0]->{'name'};
                 if($genreName == "Action") {
@@ -78,10 +81,43 @@ class SerieController extends Controller
                 }else{
                     $serieJson->{'genres'}[0]->{'name'} = 23;
                 }
+            }
+            */
+            if (isset($serieJson->{'results'})) {
                 array_push($allSeries, $serieJson);
             }
+            
         }
 
+        foreach ($allSeries as $serieContent) {
+
+            $count = count($serieContent->{'results'});
+
+            for ($i = 0; $i < $count; $i++) {
+
+                if($serieContent->{'results'}[$i]->{'name'} === "Loki" 
+                || $serieContent->{'results'}[$i]->{'name'} === "WandaVision" 
+                || $serieContent->{'results'}[$i]->{'name'} === "Superman & Lois"
+                || $serieContent->{'results'}[$i]->{'name'} === "The Flash"
+                ) {
+
+                    $serieContent->{'results'}[$i]->{'first_air_date'} = substr($serieContent->{'results'}[$i]->{'first_air_date'}, 0, 4);
+                    $serieContent->{'results'}[$i]->{'poster_path'} = 'https://image.tmdb.org/t/p/w500' . $serieContent->{'results'}[$i]->{'poster_path'};
+
+                    /*
+                    echo 'Nombre; ' . $serieContent->{'results'}[$i]->{'name'} . '<br>';
+                    echo 'description: ' . $serieContent->{'results'}[$i]->{'overview'} . '<br>';
+                    echo "poster_path: <a href='" . $serieContent->{'results'}[$i]->{'poster_path'} . "' target='blank_'>Foto</a><br>";
+                    echo 'puntuation:' . $serieContent->{'results'}[$i]->{'vote_average'} . '<br>';
+                    echo 'release_date: ' . $serieContent->{'results'}[$i]->{'first_air_date'} . '<br><br>';
+                    */
+                    
+                }
+            }
+            break;
+        }
+
+        //die();
         return $allSeries;
 
     }
@@ -133,7 +169,7 @@ class SerieController extends Controller
 
     public function fetchAllSeries()
     {
-        $series = Serie::paginate(100);
+        $series = Serie::orderBy('release_date', 'DESC')->paginate(100);
         $allSeries = Serie::all();
 
         $genres = [];
@@ -154,36 +190,31 @@ class SerieController extends Controller
     {
 
         if(isset($genre) && !is_null($genre) && !empty($genre)){
-
-            $genreInfo = Genre::where('name','=', $genre)->first();
             
             $searchCondition = array();
             
-            if ($genreInfo){
-                if($genre == 'Action' || $genre == 'action'){
-                    array_push($searchCondition, "Action","Adventure"); 
-                }elseif ($genre == 'Animation' || $genre == 'animation'){
-                    array_push($searchCondition, "Animation","Family"); 
-                }elseif($genre == 'Comedy' || $genre == 'comedy'){
-                    array_push($searchCondition, "Comedy"); 
-                }elseif ($genre == 'Terror' || $genre == 'terror'){
-                    array_push($searchCondition, "Horror", "Thriller"); 
-                }elseif($genre == 'Romance' || $genre == 'omance'){
-                    array_push($searchCondition, "Romance"); 
-                }elseif ($genre == 'Fiction' || $genre == 'fiction'){
-                    array_push($searchCondition, "Sci-fi", "Fantasy");
-                }elseif ($genre == 'Drama' || $genre == 'drama'){
-                    array_push($searchCondition, "Drama", "Mystery");
-                }elseif ($genre == 'War' || $genre == 'war'){
-                    array_push($searchCondition, "War", "Crime");
-                }
+            if($genre == 'Action' || $genre == 'action'){
+                array_push($searchCondition, "Action","Adventure"); 
+            }elseif ($genre == 'Animation' || $genre == 'animation'){
+                array_push($searchCondition, "Animation","Family"); 
+            }elseif($genre == 'Comedy' || $genre == 'comedy'){
+                array_push($searchCondition, "Comedy"); 
+            }elseif ($genre == 'Terror' || $genre == 'terror'){
+                array_push($searchCondition, "Horror", "Thriller"); 
+            }elseif($genre == 'Romance' || $genre == 'romance'){
+                array_push($searchCondition, "Romance"); 
+            }elseif ($genre == 'Fiction' || $genre == 'fiction'){
+                array_push($searchCondition, "Sci-fi", "Fantasy", "Science Fiction");
+            }elseif ($genre == 'Drama' || $genre == 'drama'){
+                array_push($searchCondition, "Drama", "Mystery");
+            }elseif ($genre == 'War' || $genre == 'war' || $genre == 'Crime' || $genre == 'crime'){
+                array_push($searchCondition, "War", "Crime");
             }
-
 
             $series = Serie::select('series.*')
             ->join('genres', 'series.genre_id', '=', 'genres.id')
             ->whereIn('genres.name', $searchCondition)
-            ->orderBy('series.name', 'asc')
+            ->orderBy('series.release_date', 'DESC')
             ->paginate(25);
 
             

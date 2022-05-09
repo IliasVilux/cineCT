@@ -3,6 +3,7 @@
 
     <head>
         <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
+        <script type="text/javascript" src="http://www.google.com/jsapi"></script>
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
@@ -60,7 +61,8 @@
                                 <input name="stars" id="e9" type="radio" value="2"><label for="e9">☆</label>
                                 <input name="stars" id="e10" type="radio" value="1"><label for="e10">☆</label>
                             </div>
-                            <button type="submit" class="btn button-purple btn-sm col-6 mb-2 mb-xl-0">{{trans('content.send_rating')}}</button>
+                            <button type="submit"
+                                class="btn button-purple btn-sm col-6 mb-2 mb-xl-0">{{ trans('content.send_rating') }}</button>
                         </form>
                     </div>
                     <?php
@@ -115,7 +117,8 @@
             <form method="POST" action="" id="create-comment" class="create_comment">
                 @csrf
                 <textarea name="description" id="description" cols="50" rows="3" placeholder="Escribe un comentario"></textarea>
-                <button class="btn button-purple mt-3" type="submit" id="commentSubmit">{{ trans('titles.publish') }}</button>
+                <button class="btn button-purple mt-3" type="submit"
+                    id="commentSubmit">{{ trans('titles.publish') }}</button>
             </form>
             <div id="notify_user"></div>
             @if ($errors->has('description'))
@@ -135,24 +138,36 @@
                         <div class="card-body card-body-comment p-4">
                             <h4 class="text-center mb-4 pb-2">{{ trans('titles.commentSection') }}</h4>
                             <div class="row">
+                                @if (count($comments) !== 0)
+                                    <div class="d-flex justify-content-end comment-container__sort-container mb-3" id="short_by_likes">
+                                        <a class="btn btn-order" style="border:1px solid #5A3C97; color:#ffffff;"
+                                            id="{{ $film->id }}">
+                                            <span class="comment-container__sort-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                                    fill="currentColor" class="bi bi-filter-left" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                                                </svg>
+                                            </span>
+                                            {{ trans('content.order_review') }}
+                                        </a>
+                                    </div>
+                                @endif
                                 <div class="col" id="comment-container">
-                                    @if(count($comments) !== 0)
-                                        <div class="d-flex justify-content-end comment-container__sort-container">
-                                            <a class="btn btn-order" style="border:1px solid #5A3C97; color:#ffffff;" id="{{$film->id}}" data-bs-toggle="popover" title="Popover title" data-bs-content="HOLA TIO!" href="#">
-                                                <span class="comment-container__sort-icon">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-filter-left" viewBox="0 0 16 16">
-                                                        <path d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
-                                                  </svg>
-                                                </span>
-                                                  {{trans('content.order_review')}}
-                                            </a>
-                                        </div>
-                                    @endif
+
+                                    {{-- 
+                                    @foreach ($commentsOrderByLikes as $commentsOrder)
+                                        <?php $comment = $commentsOrder['comments'];?>
+                                            @include('includes.review', ['comment' => $comment])
+                                    @endforeach
+                                     --}}
+                                    
                                     @foreach ($comments as $comment)
                                         @if ($comment->film_id == $film->id && !empty($comment->description))
                                             @include('includes.review', ['comment' => $comment])
                                         @endif
                                     @endforeach
+
                                 </div>
                             </div>
                             <div class="alert alert-success d-none" id="msg_div" role="alert"></div>
@@ -167,12 +182,17 @@
     <script type="text/javascript">
         $("#notify_user").css("display", "none");
 
+        if(jQuery('.loading-comments-order-by-likes')) {
+            jQuery('.loading-comments-order-by-likes').remove();
+        }
+
         jQuery('#create-comment').submit(function(e) {
             e.preventDefault();
             $("#commentSubmit").attr("disabled", true);
             var url = '{{ route('comment.save.film', ['id' => $film->id]) }}';
-            var data = jQuery('#create-comment').serialize(); 
-            jQuery('#commentSubmit').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>'); 
+            var data = jQuery('#create-comment').serialize();
+            jQuery('#commentSubmit').html(
+                '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>');
 
             $('#commentSubmit').addClass('loagindEffect');
 
@@ -182,10 +202,12 @@
                 type: 'POST',
                 success: function(response) {
                     jQuery("#commentSubmit").removeClass("loagindEffect");
-                    jQuery('#notify_user').html(`<div class="alert alert-success" role="alert"><i class="fas fa-check-circle"></i>${response.msg}</div>`);
+                    jQuery('#notify_user').html(
+                        `<div class="alert alert-success" role="alert"><i class="fas fa-check-circle"></i>${response.msg}</div>`
+                        );
                     jQuery('#notify_user').fadeIn("slow");
                     jQuery('#create-comment')[0].reset();
-                    jQuery('.spinner-border').remove(); 
+                    jQuery('.spinner-border').remove();
                     jQuery('#commentSubmit').html('Publicar');
                     jQuery('#notify_user').fadeOut(3000);
 
@@ -193,13 +215,13 @@
                             jQuery('#commentSubmit').attr('disabled', false);
                         },
                         3900
-                    ); 
+                    );
 
                     let commentID = response.comment['id'];
                     let commentDescription = response.comment['description'];
                     let commentHtml =
-                    `<div class="d-flex flex-start mb-4">
-                        <div><img class="rounded-circle shadow-1-strong me-3" src="{{Auth::user()->image->path}}" width="65"height="65"></div>
+                        `<div class="d-flex flex-start mb-4" id="content_id-${commentID}">
+                        <div><img class="rounded-circle shadow-1-strong me-3" src="{{ Auth::user()->image->path }}" width="65"height="65"></div>
                         <div class="flex-grow-1 flex-shrink-1"><div>
                             <div class="d-flex justify-content-between align-items-center">
                                 <p class="mb-1">{{ Auth::user()->nick }} <span class="text-muted" id="last-comment"></span></p> 
@@ -213,7 +235,7 @@
                                 <form class="mt-2" method="POST" action="/review/delete/${commentID}">
                                     @csrf
                                     <input type="hidden" id="${ commentID }" name="user-comment" value="${ commentID }">
-                                    <button class="btn btn-outline-primary" type="submit">{{trans('titles.delete_review')}}</button>
+                                    <button class="btn btn-outline-primary" type="submit">{{ trans('titles.delete_review') }}</button>
                                 </form>
                             </div>
                         </div>
@@ -224,7 +246,9 @@
                     jQuery('#character-counter').css("display", "none");
 
                     setTimeout(() => {
-                        jQuery('body,html').animate({scrollTop: $(document).height()}, 5);
+                        jQuery('body,html').animate({
+                            scrollTop: $(document).height()
+                        }, 5);
                     }, 500);
 
                 },
@@ -294,7 +318,7 @@
         characterLiveCount();
 
         function like() {
-            jQuery('.btn-like').unbind('click').click(function () {
+            jQuery('.btn-like').unbind('click').click(function() {
                 $(this).addClass('btn-dislike').removeClass('btn-like');
                 $(this).addClass('fas').removeClass('far');
                 $(this).css("color", "red");
@@ -310,11 +334,11 @@
                     },
                     success: function(data) {
                         //console.log(data.message);
-                        if(data.like){
+                        if (data.like) {
                             console.log("Has dado like de forma correcta");
-                        }else {    
+                        } else {
                             console.log("Error al dar like");
-                        }   
+                        }
                     }
                 });
                 dislike();
@@ -324,10 +348,9 @@
 
         like();
 
-        
-        function dislike() 
-        {
-            jQuery('.btn-dislike').unbind('click').click(function () {
+
+        function dislike() {
+            jQuery('.btn-dislike').unbind('click').click(function() {
                 $(this).addClass('btn-like').removeClass('btn-dislike');
                 $(this).addClass('far').removeClass('fas');
                 $(this).css("color", "#FFFFFF");
@@ -341,7 +364,7 @@
                         '_token': $('input[name=_token]').val(),
                         review_id: comment_id,
                     },
-                    success: function(data){
+                    success: function(data) {
                         if (data.like) {
                             console.log("Has dado dislike de forma correcta");
                         } else {
@@ -352,10 +375,77 @@
                 like();
             })
         }
-        
+
         dislike();
+
+
+        //Short by likes with ajax
+        jQuery('#short_by_likes').click(function() {
+            let orderByLikes = 'order';
+            jQuery('#comment-container').html(
+                `<div class="text-center loading-comments-order-by-likes">
+                    <div class="spinner-border text-light" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>`);
+            $.ajax({
+                    type: "GET",
+                    url: `/detail/detailFilms/{{$film->id}}/${orderByLikes}`,
+                    data: {
+                        '_token': $('input[name=_token]').val(),
+                        orderByLikes: orderByLikes,
+                    },
+                    success: function(response) {
+                        if(response.status) {
+                            jQuery('.loading-comments-order-by-likes').remove();
+                            let allComments = response.commentsOrderByLikes;
+                            let jsonResponse = [JSON.stringify(allComments)];
+                            let commmentsContent = [];
+                            
+                            for (let k in allComments) {
+                                commmentsContent.push(allComments[k]);
+                            }
+
+                            let contador = 0;
+                            let allLikes = [];
+                            commmentsContent.forEach(function(comment, index) {
+                                index = Object.keys(allComments)[contador]
+                                console.log("============");
+                                allLikes.push(comment.likes);
+                                contador++;
+                            })
+                            metodoBurbuja();
+                            console.log(allLikes);
+                        }
+                    },
+                });
+
+        });
+
+        function translateDatabaseInfo() {
+            let currentActiveLang = '<?= app()->getLocale() ?>';
+            let contentDescription = document.getElementById("film-description");
+            let contentGenre = document.getElementById("film-genre");
+            let dataBaseContentLang = 'en';
+            alert(currentActiveLang);
+
+        }
+
+        function metodoBurbuja(items) {
+            var length = items.length;  
+            for (var i = 0; i < length; i++) { 
+                for (var j = 0; j < (length - i - 1); j++) { 
+                    if(items[j] > items[j+1]) {
+                    var tmp = items[j]; 
+                    items[j] = items[j+1]; 
+                    items[j+1] = tmp; 
+                    }
+                }        
+            }
+        }
+
         
-        
+
         
     </script>
 @endsection
