@@ -51,7 +51,7 @@
                 <div class="p-4">
                     <div class="d-flex nowrap">
                         <h5 class="pe-2"><b>{{ trans('titles.genre') }}:</b></h5>
-                        <p>{{ $serie->genre->name }}</p>
+                        <p>{{ \ContentGenre::TranslateGenre($serie->genre->name) }}</p>
                     </div>
                     <div class="d-flex nowrap">
                         <h5 class="pe-2"><b>{{ trans('titles.release') }}:</b></h5>

@@ -81,4 +81,19 @@ return [
     'month' => 'month',
     'months' => 'months',
     'ago' => 'ago',
+
+    //DB translate
+    'db_action' => 'Action',
+    'db_adventure' => 'Adventure',
+    'db_drama' => 'Drama',
+    'db_fantasy' => 'Fantasy',
+    'db_horror' => 'Horror',
+    'db_mystery' => 'Mistery' ,
+    'db_suspense' => 'Suspense' ,
+    'db_animation' => 'Animation',
+    'db_crime' => 'Crime' ,
+    'db_family' => 'Family' ,
+    'db_science_fiction' => 'Science Fiction' ,
+    'db_sci_fi' => 'Science Fiction' ,
+    'db_war' => 'War',
 ];

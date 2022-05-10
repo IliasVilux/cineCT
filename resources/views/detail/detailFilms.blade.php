@@ -47,7 +47,7 @@
                 <div class="p-4">
                     <div class="d-flex nowrap">
                         <h5 class="pe-2"><b>{{ trans('titles.genre') }}:</b></h5>
-                        <p id="film-genre">{{ $film->genre->name }}</p>
+                        <p id="film-genre">{{ \ContentGenre::TranslateGenre($film->genre->name) }}</p>
                     </div>
                     <div class="d-flex nowrap">
                         <h5 class="pe-2"><b>{{ trans('titles.release') }}:</b></h5>
@@ -411,7 +411,7 @@
                                 //metodoBurbuja(allCommentsJson[index])
                             })
 
-                            sortReponse(allCommentsJson);
+                            //sortReponse(allCommentsJson);
 
                             console.table(allCommentsJson);
                             //metodoBurbuja(allCommentsJson);
