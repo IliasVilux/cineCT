@@ -22,7 +22,6 @@ return [
     'top' => 'Top',
     'search' => 'Search',
     'lists' => 'Library',
-    'about' => 'About us',
     'activity' => 'Activity',
 
     // Other links

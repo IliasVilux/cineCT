@@ -15,7 +15,7 @@
     <section class="container">
     <div class="container-fluid d-flex justify-content-between align-items-center">
             <h1 class="detail-title">{{ $anime->name }}</h1>
-            <a href="{{ url('/content/contentAnimes') }}" class="btn button-purple btn-sm my-4" title="Back">
+            <a href="{{ url('/content/contentAnimes') }}" class="btn button-purple my-4" title="Back">
                 Back
             </a>
         </div>
@@ -27,7 +27,7 @@
                 <img src="{{ $anime->poster_path }}" class="img-thumbnail col-6 col-md-5 col-lg-4 mb-md-0"
                     alt="Img {{ $anime->name }}">
             @endif
-            <article class="col-6 more-info bg-dark p-3" id="datasheet">
+            <article class="col-6 more-info bg-dark p-3 ms-1" id="datasheet">
 
                     <div class="d-none d-sm-flex nowrap">
                         <h6 class="pe-2"><b>Género:</b></h6>
@@ -66,7 +66,7 @@
                                 <input name="stars" id="e9" type="radio" value="2"><label for="e9">☆</label>
                                 <input name="stars" id="e10" type="radio" value="1"><label for="e10">☆</label>
                             </div>
-                            <button type="submit" class="btn button-purple btn-sm col-6 mb-2 mb-xl-0">Enviar</button>
+                            <button type="submit" class="btn button-purple col-6 mb-2 mb-xl-0">Enviar</button>
                         </form>
                     </div>
                     <?php
@@ -76,9 +76,9 @@
                     ?>
                     <div class="d-flex flex-row justify-content-center">
                             <a href="/detail/detailAnimes/{{ $anime->id }}/addFav"><button type="button"
-                                    class="btn button-purple btn-sm">Añadir a favoritos</button></a>
+                                    class="btn button-purple">Añadir a favoritos</button></a>
                             <div class="social-media-links mx-2">
-                                <a class="btn button-purple btn-sm" data-bs-toggle="collapse" href="#shareComponent" role="button"
+                                <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button"
                                     aria-expanded="false" aria-controls="shareComponent">
                                     <i class="fas fa-share-alt"></i>
                                 </a>
@@ -119,9 +119,10 @@
             <h3 class="text-uppercase pb-3">Tráiler</h3>
             <!-- START TRAILER SECTION -->
             @if ($anime->trailer_link != null)
-                <iframe class="w-75" height="500"
-                    src="https://www.youtube.com/embed/{{ $anime->trailer_link }}" allowfullscreen></iframe>
-                <div class="alert alert-dark w-75 my-3" role="alert">
+                <div class="p-3">
+                    <iframe src="https://www.youtube.com/embed/{{ $anime->trailer_link }}" allowfullscreen></iframe>
+                </div>
+                <div class="alert alert-dark my-3" role="alert">
                     Si el vídeo da error es porque el link no funciona. Pero te invitamos a buscar el trailer en <a
                         href="https://www.youtube.com/results?search_query={{ $anime->name }} trailer">Youtube</a> y
                     descubrir más
@@ -148,9 +149,9 @@
 
     <!-- START COMMMENT SECTION -->
     <section class="gradient-custom">
-        <div class="container my-5 py-5">
+        <div class="container my-0 py-0 py-sm-3">
             <div class="row d-flex justify-content-center">
-                <div class="col-12">
+                <div class="col-12 p-0 p-sm-2">
                     <div class="card card-comment bg-dark">
                         <div class="card-body card-body-comment p-4">
                             <h4 class="text-center mb-4 pb-2">Nested comments section</h4>

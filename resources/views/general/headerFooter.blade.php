@@ -35,7 +35,7 @@
                 <div class="d-flex flex-direction-row flex-nowrap justify-content-end align-items-center col-3">
                 <a href="{{ url('/search/search') }}" class="footer-links text-light text-uppercase"><i class="fas fa-search text-light p-0 pt-1"></i></a>
                     <div class="dropdown">
-                        <button class="btn text-light dropdown-toggle d-flex flex-direction-row flex-nowrap justify-content-end align-items-center p-0 px-sm-3"
+                        <button class="btn text-light dropdown-toggle d-flex flex-direction-row flex-nowrap justify-content-end align-items-center p-0 px-sm-2"
                             type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true">
                             <i class="fas fa-user-circle pe-1"></i>
 
@@ -121,11 +121,6 @@
                                     <i class="fas fa-th-list pe-2"></i>{{trans('titles.lists')}}
                                 </a>
                             </li>
-                            <li>
-                                <a href="{{ url('/aboutUs/aboutUs') }}" class="footer-links text-light text-uppercase m-0">
-                                    <i class="fas fa-user pe-2"></i>{{trans('titles.about')}}
-                                </a>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -156,7 +151,6 @@
                     <a href="{{ url('/top/top') }}" class="footer-links text-white px-md-1">{{trans('titles.top')}}</a>
                     <a href="{{ url('/search/search') }}" class="footer-links text-white px-md-1">{{trans('titles.search')}}</a>
                     <a href="{{ url('/list/list') }}" class="footer-links text-white px-md-1">{{trans('titles.lists')}}</a>
-                    <a href="{{ url('/aboutUs/aboutUs') }}" class="footer-links text-white px-md-1">{{trans('titles.about')}}</a>
                 </div>
             </section>
             <!-- SECTION: LINKS -->

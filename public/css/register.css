@@ -61,9 +61,7 @@ div.card {
   border: 1px solid rgb(206, 212, 218);
   border-radius: 0px 4px 4px 0px;
 }
-input.form-control {
-  height: 22px;
-}
+
 
 /* BUTTONS */
 .button-purple{

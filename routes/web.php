@@ -125,10 +125,4 @@ Route::group(['middleware' => 'authenticate.user'], function () {
 });
 
 
-Route::get('/aboutUs/aboutUs', function () {
-    return view('/aboutUs/aboutUs');
-});
-
-
-
 //Route::get('/testing/models', [ModelRelationshipTest::class, 'tests'])->name('model.testing');
