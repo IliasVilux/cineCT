@@ -97,8 +97,7 @@
         if($data->poster_path === NULL) {
         echo '<img src="/img/NoImg.jpg" class="img-content col-12" alt="No Image">';
         } else {
-        echo '<img src="'.$data->poster_path.'" class="img-content col-12" alt="'.$data->name.'">
-        </a>';
+        echo '<img src="'.$data->poster_path.'" class="img-content col-12" alt="'.$data->name.'"></a>';
     }
 }
    echo' </div>';
@@ -110,7 +109,9 @@
 
 </section>
 {{-- Pagination --}}
+
 <div class="d-flex justify-content-center">
     {{$series->links()}}
 </div>
+
 @endsection

@@ -402,21 +402,30 @@
                             let allCommentsJson = [];
                             commmentsContent.forEach(function(comment, index) {
                                 index = Object.keys(allComments)[contador];
-                                //console.log(allComments[index]);
+                                
                                 allCommentsJson.push(allComments[index]);
+                                //console.log(allComments[index])
                                 contador++;
                             })
 
-                            allCommentsJson.forEach(function(commentJson, index) {
-                                //metodoBurbuja(allCommentsJson[index])
+                            console.log(allCommentsJson);
+                            
+                            //allCommentsJson.likes.sort(function(a, b) {return b - a});
+
+                            jsonOrder(allCommentsJson, 'likes');
+
+                            jQuery("#comment-container").html("")
+                            allCommentsJson.forEach(function(commentJson, index) { 
+                                let allLikesJson = commentJson.likes
+                                //console.log(allLikesJson);
+                                //console.log(allLikesJson)
+                                //jQuery("#comment-container").append(`<span class="d-block p-2 bg-primary text-white">${commentJson.comments.description}</span>`)
                             })
 
-                            //sortReponse(allCommentsJson);
 
-                            console.table(allCommentsJson);
+                            //console.table(allCommentsJson);
                             //metodoBurbuja(allCommentsJson);
                             //console.log(commmentsContent);
-                            jQuery("#comment-container").html(jsonResponse)
                         }
                     },
                 });
@@ -432,24 +441,12 @@
 
         }
 
-        function sortReponse(data)
-        {
-            var sorted = [];
-            $(data).each(function(k, v) {
-                for(var key in v) {
-                    sorted.push({key: key, value: v[key]})
-                }
-            });
-
-            return sorted.sort(function(a, b){
-                if (a.value < b.value) return -1;
-                if (a.value > b.value) return 1;
-                return 0;
+        function jsonOrder(p_array_json, p_key) {
+            let i = Object.keys(allComments)[contador];
+            p_array_json.sort(function (a, b) {
+                return b[i].likes - a[i].likes;
             });
         }
 
-        
-
-        
     </script>
 @endsection
