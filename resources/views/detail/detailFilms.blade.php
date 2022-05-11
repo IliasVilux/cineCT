@@ -131,7 +131,8 @@
                             <h4 class="text-center mb-4 pb-2">{{ trans('titles.commentSection') }}</h4>
                             <div class="row">
                                 @if (count($comments) !== 0)
-                                    <div class="d-flex justify-content-end comment-container__sort-container mb-3" id="short_by_likes">
+                                    <div class="d-flex justify-content-end comment-container__sort-container mb-3"
+                                        id="short_by_likes">
                                         <a class="btn btn-order" style="border:1px solid #5A3C97; color:#ffffff;"
                                             id="{{ $film->id }}">
                                             <span class="comment-container__sort-icon">
@@ -147,14 +148,12 @@
                                 @endif
                                 <div class="col" id="comment-container">
 
-                                    
-                                    {{-- 
-                                    @foreach ($commentsOrderByLikes as $commentsOrder)
-                                        <?php $comment = $commentsOrder['comments'];?>
+
+                                    {{-- @foreach ($commentsOrderByLikes as $commentsOrder)
+                                        <?php $comment = $commentsOrder['comments']; ?>
                                             @include('includes.review', ['comment' => $comment])
-                                    @endforeach
-                                    --}}
-                                     
+                                    @endforeach --}}
+
                                     @foreach ($comments as $comment)
                                         @if ($comment->film_id == $film->id && !empty($comment->description))
                                             @include('includes.review', ['comment' => $comment])
@@ -174,7 +173,7 @@
     <script type="text/javascript">
         $("#notify_user").css("display", "none");
 
-        if(jQuery('.loading-comments-order-by-likes')) {
+        if (jQuery('.loading-comments-order-by-likes')) {
             jQuery('.loading-comments-order-by-likes').remove();
         }
 
@@ -196,7 +195,7 @@
                     jQuery("#commentSubmit").removeClass("loagindEffect");
                     jQuery('#notify_user').html(
                         `<div class="alert alert-success" role="alert"><i class="fas fa-check-circle"></i>${response.msg}</div>`
-                        );
+                    );
                     jQuery('#notify_user').fadeIn("slow");
                     jQuery('#create-comment')[0].reset();
                     jQuery('.spinner-border').remove();
@@ -381,54 +380,100 @@
                     </div>
                 </div>`);
             $.ajax({
-                    type: "GET",
-                    url: `/detail/detailFilms/{{$film->id}}/${orderByLikes}`,
-                    data: {
-                        '_token': $('input[name=_token]').val(),
-                        orderByLikes: orderByLikes,
-                    },
-                    success: function(response) {
-                        if(response.status) {
-                            jQuery('.loading-comments-order-by-likes').remove();
-                            let allComments = response.commentsOrderByLikes;
-                            let jsonResponse = [JSON.stringify(allComments)];
-                            let commmentsContent = [];
-                            
-                            for (let k in allComments) {
-                                commmentsContent.push(allComments[k]);
-                            }
+                type: "GET",
+                url: `/detail/detailFilms/{{ $film->id }}/${orderByLikes}`,
+                data: {
+                    '_token': $('input[name=_token]').val(),
+                    orderByLikes: orderByLikes,
+                },
+                success: function(response) {
+                    if (response.status) {
+                        jQuery('.loading-comments-order-by-likes').remove();
+                        let allComments = response.commentsOrderByLikes;
+                        let jsonResponse = [JSON.stringify(allComments)];
+                        let commmentsContent = [];
 
-                            let contador = 0;
-                            let allCommentsJson = [];
-                            commmentsContent.forEach(function(comment, index) {
-                                index = Object.keys(allComments)[contador];
-                                
-                                allCommentsJson.push(allComments[index]);
-                                //console.log(allComments[index])
-                                contador++;
-                            })
-
-                            console.log(allCommentsJson);
-                            
-                            //allCommentsJson.likes.sort(function(a, b) {return b - a});
-
-                            jsonOrder(allCommentsJson, 'likes');
-
-                            jQuery("#comment-container").html("")
-                            allCommentsJson.forEach(function(commentJson, index) { 
-                                let allLikesJson = commentJson.likes
-                                //console.log(allLikesJson);
-                                //console.log(allLikesJson)
-                                //jQuery("#comment-container").append(`<span class="d-block p-2 bg-primary text-white">${commentJson.comments.description}</span>`)
-                            })
-
-
-                            //console.table(allCommentsJson);
-                            //metodoBurbuja(allCommentsJson);
-                            //console.log(commmentsContent);
+                        for (let k in allComments) {
+                            commmentsContent.push(allComments[k]);
                         }
-                    },
-                });
+
+                        let contador = 0;
+                        let allCommentsJson = [];
+                        commmentsContent.forEach(function(comment, index) {
+                            index = Object.keys(allComments)[contador];
+
+                            allCommentsJson.push(allComments[index]);
+                            //console.log(allComments[index])
+                            contador++;
+                        })
+
+                        console.log(allCommentsJson);
+
+                        
+
+                        jQuery("#comment-container").html("")
+                        allCommentsJson.forEach(function(commentJson, index) {
+                            let allLikesJson = commentJson.likes
+                            let allCommentsJson = commentJson.comments
+                                                        
+                            jQuery("#comment-container").append(
+                                `
+                                <div class="d-flex flex-start mb-4" id="content_id-${allCommentsJson.id}" style="padding-top:20px;">
+                                    <div>
+                                        @if(Auth::user()->image_id === null)
+                                            <i class="fas fa-user-circle fs-4 pe-1"></i>
+                                        @else
+                                            @if($comment)
+                                                <img class="rounded-circle shadow-1-strong me-3" src="{{ $comment->user->image->path }}" alt="a" width="65"height="65">
+                                            @endif
+                                        @endif
+                                        
+                                    </div>
+                                    <div class="flex-grow-1 flex-shrink-1">
+                                        <div>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <p class="mb-1">{{ $comment->user->nick }} <span class="text-muted ml-2">{{\DateTimeFormat::timeFilter($comment->created_at)}}</span></p>
+                                                <a href="#!"><i class="fas fa-reply fa-xs"></i><span class="text-muted">reply</span></a>
+                                            </div>
+                                            <p class="small mb-0 comment">${allCommentsJson.description}</p>
+                                        </div>
+                                        <div class="like-container">
+
+                                            <!--CHECKING IF USER'S LIKE ALREADY EXISTS-->
+                                            <?php $user_like = false; ?>
+                                            @foreach($comment->like as $like)
+                                                @if($like->user->id == Auth::user()->id)
+                                                    <?php $user_like = true;?>
+                                                @endif
+                                            @endforeach
+
+                                            @if($user_like)
+                                                <span class="fas fa-heart like-review btn-dislike" id="btn-dislike" style="color:red;" data-id="{{$comment->id}}"></span>
+                                            @else
+                                                <span class="far fa-heart like-review btn-like" id="btn-like" data-id="{{$comment->id}}"></span>
+                                            @endif
+                                                <span id="like-counter">${allLikesJson} likes</span>
+                                        </div>
+
+                                        
+                                        @if($comment->user_id == Auth::user()->id)
+                                        <form class="mt-2" method="POST" action="/review/delete/${allCommentsJson.id}">
+                                            @csrf
+                                            <input type="hidden" id="${ allCommentsJson.id }" name="user-comment" value="${ allCommentsJson.id }">
+                                            <button class="btn btn-outline-primary" type="submit">{{ trans('titles.delete_review') }}</button>
+                                        </form>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                `
+                            )
+                        })
+
+                        //console.table(allCommentsJson);
+                    }
+                },
+            });
 
         });
 
@@ -441,12 +486,6 @@
 
         }
 
-        function jsonOrder(p_array_json, p_key) {
-            let i = Object.keys(allComments)[contador];
-            p_array_json.sort(function (a, b) {
-                return b[i].likes - a[i].likes;
-            });
-        }
-
+        
     </script>
 @endsection
