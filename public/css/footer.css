@@ -22,11 +22,6 @@ div.copyright {
 }
 
 @media screen and (min-width: 576px) {
-  html, main, body {
-    background: #16181d;
-    color: #FFFFFF;
-    font-size: 15px;
-  }
   a.footer-links {
     margin: 7px 10px;
     font-size: 20px;
@@ -36,11 +31,6 @@ div.copyright {
 
 
 @media screen and (min-width: 768px) {
-  html, main, body {
-    background: #16181d;
-    color: #FFFFFF;
-    font-size: 20px;
-  }
   a.footer-links {
     font-size: 25px;
     text-decoration: none;
