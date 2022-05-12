@@ -1,4 +1,4 @@
-@extends('/general/headerFooter')
+@extends('general.headerFooter')
 @section('content')
 
     <head>

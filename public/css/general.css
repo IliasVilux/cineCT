@@ -127,12 +127,11 @@ a.link-img-carousel {
   transform: scale(1.3);
 }
 
-
 .profile-images div img{
   width: 150px;
   height: 150px;
   object-fit: cover;
-  border-radius: 60%; 
+  border-radius: 500px; 
   transition: transform .6s;
 }
 
@@ -142,6 +141,11 @@ a.link-img-carousel {
   animation: opacityTransition 2s infinite;
 }
 
+.img-profile{
+  width: 200px;
+  margin: auto;
+  border-radius: 500px;
+}
 
 /*CINECT CUSTOM MODAL SEARCH ON HEADEFOOTER VIEW*/
 .cinect-custom-search-modal .modal-content{
