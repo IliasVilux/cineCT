@@ -52,15 +52,7 @@
         var searchInput = document.getElementById("search-content");
         var clearInput = document.getElementById("clear-input");
 
-        /*
-        if (document.getElementById('cinect-searchBtn-modal') {
-                $('#cinect-searchBtn-modal').remove();
-                alert("existe");
-        })
-        */
-
-
-        $("#clear-input").css("display", "none");
+        $(clearInput).css("display", "none");
         $("#submitSearch").attr("disabled", true);
 
         searchInput.addEventListener("input", () => {

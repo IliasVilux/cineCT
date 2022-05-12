@@ -105,7 +105,7 @@ class UserController extends Controller
 
         //var_dump(empty($content['anime']));
 
-        return view('/search/search', ['content' => $content, 'search' => $search]);
+        return view('search.search', ['content' => $content, 'search' => $search]);
     }
 
     public function profileUpdate(Request $request)
