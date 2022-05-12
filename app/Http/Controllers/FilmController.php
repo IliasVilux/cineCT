@@ -133,9 +133,26 @@ class FilmController extends Controller
 
     public function returnFilms($id, $orderByLikes = null)
     {
+        $user = Auth::user()->id;
+
         $film = Film::find($id);
+        $userLists = FavouriteLists::query()->where('user_id', $user)->get();
+        $userTopList = FavouriteLists::query()->where('user_id', $user)->where('top_list', 1)->get();
         $comments = Review::where('film_id', '=', $id)->get();
         $shareComponent = $this->ShareWidget();
+        $userListsWhereFilm = [];
+        $userFilmsInLists = FavoriteList::where('user_id', $user)->where('film_id', $id)->get();
+
+        foreach($userFilmsInLists as $filmInLists)
+        {
+            foreach($userLists as $list)
+            {
+                if($list->id == $filmInLists->list_id){
+                    array_push($userListsWhereFilm, $list);
+                }
+            }
+        }
+
         $commentsOrderByLikes = [];
 
         if (!is_null($film)) {
@@ -152,13 +169,13 @@ class FilmController extends Controller
                 return response()->json(['commentsOrderByLikes' => $commentsOrderByLikes, 'status' => true]);
                 //return view('detail.detailFilms', compact('film', 'comments', 'shareComponent', 'commentsOrderByLikes'));
             }
-            return view('detail.detailFilms', compact('film', 'comments', 'shareComponent'));
+            return view('detail.detailFilms', compact('film', 'userLists', 'userListsWhereFilm', 'comments', 'shareComponent', 'userTopList'));
         } else {
             return response('No encontrado', 404);
         }
     }
 
-    public function addFavourite($id)
+    public function addFavourite($id, $list)
     {
         $user = Auth::user()->id;
         $lista = FavoriteList::query()->where('user_id', $user)->where('film_id', $id)->get();
@@ -167,11 +184,45 @@ class FilmController extends Controller
         if (!isset($lista[0])) {
             $fav = FavoriteList::create([
                 'user_id' => $user,
-                'film_id' => $id
+                'film_id' => $id,
+                'list_id' => $list
             ]);
             return redirect()->to('/detail/detailFilms/' . $id)->with('FilmAdded', 'Se ha añadido ' . $film_name[0]->name . ' a tu lista de favoritos');
         }
         return redirect()->to('/detail/detailFilms/' . $id);
+    }
+
+    public function delFavourite($idF, $list)
+    {
+        $user = Auth::user()->id;
+        $lista = FavoriteList::where('user_id', $user)->where('film_id', $idF)->where('list_id', $list)->first();
+        $lista->delete();
+        $film_name = Film::query()->where('id', $idF)->get();
+
+        return redirect()->to('/detail/detailFilms/' . $idF)->with('FilmDeleted','Se ha eliminado ' . $film_name[0]->name . ' de tu lista de favoritos');
+    }
+
+    public function addNewList($idFilm, Request $request)
+    {
+        $user = Auth::user()->id;
+        $newListName = $request->input('newListName');
+        $listUser = FavouriteLists::where('name', $newListName)->where('user_id', $user)->get('id')->max();
+        $film_name = Film::query()->where('id', $idFilm)->get();
+
+        $request->validate([
+            'newListName' => 'required|string|min:2|max:255'
+        ]);
+
+        if(empty($listUser))
+        {
+            $newlist = FavouriteLists::create([
+                'name' => $newListName,
+                'user_id' => $user,
+            ]);
+            $idList = FavouriteLists::where('name', $newListName)->get('id')->max();
+            $this->addFavourite($idFilm, $idList->id);
+            return redirect()->to('/detail/detailFilms/' . $idFilm)->with('FilmAdded','Se ha añadido ' . $film_name[0]->name . ' a tu lista de favoritos');
+        } else { return redirect()->to('/detail/detailFilms/' . $idFilm); }
     }
 
     public function ShareWidget()

@@ -123,18 +123,34 @@ class SerieController extends Controller
     }
 
     public function returnSeries($id) {
+        $user = Auth::user()->id;
+
         $serie = Serie::find($id);
+        $userLists = FavouriteLists::query()->where('user_id', $user)->get();
+        $userListsWhereSerie = [];
+        $userSeriesInLists = FavoriteList::where('user_id', $user)->where('serie_id', $id)->get();
+        foreach($userSeriesInLists as $SerieInLists)
+        {
+            foreach($userLists as $list)
+            {
+                if($list->id == $SerieInLists->list_id){
+                    array_push($userListsWhereSerie, $list);
+                }
+            }
+        }
+        $userTopList = FavouriteLists::query()->where('user_id', $user)->where('top_list', 1)->get();
+
         $comments = Review::where('serie_id' ,'=', $id)->get();
         $shareComponent = $this->ShareWidget();
 
         if (!is_null($serie)) {
-            return view('/detail/detailSeries', compact('serie', 'comments', 'shareComponent'));
+            return view('/detail/detailSeries', compact('serie', 'userLists', 'userListsWhereSerie', 'userTopList', 'comments', 'shareComponent'));
         } else {
             return response('No encontrado', 404);
         }
     }
 
-    public function addFavourite($id)
+    public function addFavourite($id, $list)
     {
         $user = Auth::user()->id;
         $lista = FavoriteList::query()->where('user_id', $user)->where('serie_id', $id)->get();
@@ -143,11 +159,46 @@ class SerieController extends Controller
         if(!isset($lista[0])){
             $fav = FavoriteList::create([
                 'user_id' => $user,
-                'serie_id' => $id
+                'serie_id' => $id,
+                'list_id' => $list,
             ]);
             return redirect()->to('/detail/detailSeries/' . $id)->with('SerieAdded','Se ha añadido ' . $serie_name[0]->name . ' a tu lista de favoritos');
         }
         return redirect()->to('/detail/detailSeries/' . $id);
+    }
+
+    public function delFavourite($idS, $list)
+    {
+        $user = Auth::user()->id;
+        $lista = FavoriteList::where('user_id', $user)->where('serie_id', $idS)->where('list_id', $list)->first();
+        $lista->delete();
+        $serie_name = Serie::query()->where('id', $idS)->get();
+
+        return redirect()->to('/detail/detailSeries/' . $idS)->with('SerieDeleted','Se ha eliminado ' . $serie_name[0]->name . ' de tu lista de favoritos');
+    }
+
+    public function addNewList($idSerie, Request $request)
+    {
+        $user = Auth::user()->id;
+        $newListName = $request->input('newListName');
+        $listUser = FavouriteLists::where('name', $newListName)->where('user_id', $user)->get('id')->max();
+
+        $serie_name = Serie::query()->where('id', $idSerie)->get();
+
+        $request->validate([
+            'newListName' => 'required|string|min:2|max:255'
+        ]);
+
+        if(empty($listUser))
+        {
+            $newlist = FavouriteLists::create([
+                'name' => $newListName,
+                'user_id' => $user,
+            ]);
+            $idList = FavouriteLists::where('name', $newListName)->get('id')->max();
+            $this->addFavourite($idSerie, $idList->id);
+            return redirect()->to('/detail/detailSeries/' . $idSerie)->with('SerieAdded','Se ha añadido ' . $serie_name[0]->name . ' a tu lista de favoritos');
+        } else { return redirect()->to('/detail/detailSeries/' . $idSerie); }
     }
 
     public function ShareWidget()
