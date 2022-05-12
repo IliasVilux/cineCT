@@ -48,7 +48,7 @@ class UserController extends Controller
             array_push($arrayFilms, $filmFind);
         }
         
-        return view('list', compact(['userFavs', 'arrayAnimes', 'arraySeries', 'arrayFilms']));
+        return view('/list/list', compact(['userFavs', 'arrayAnimes', 'arraySeries', 'arrayFilms']));
     }
 
     public function searchContent(Request $request)
@@ -105,7 +105,7 @@ class UserController extends Controller
 
         //var_dump(empty($content['anime']));
 
-        return view('search', ['content' => $content, 'search' => $search]);
+        return view('/search/search', ['content' => $content, 'search' => $search]);
     }
 
     public function profileUpdate(Request $request)

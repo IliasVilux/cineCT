@@ -238,7 +238,7 @@ class AnimeController extends Controller
 
     public function fetchAllAnimes()
     {
-        $animes = Anime::paginate(10);
+        $animes = Anime::paginate(100);
         $allAnimes = Anime::all();
 
         $filterGenres = ["Samurai", "Shounen", "Seinen", "Shoujo", "Demons", "Sci-Fi", "Mecha", "Josei"];
