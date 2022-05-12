@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('css/general.css') }}">
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
     <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
+    
 </head>
 
 <body>
@@ -33,7 +34,14 @@
                         </a>
                 </div>
                 <div class="d-flex flex-direction-row flex-nowrap justify-content-end align-items-center col-3">
-                <a href="{{ url('/search/search') }}" class="footer-links text-light text-uppercase"><i class="fas fa-search text-light p-0 pt-1"></i></a>
+
+                    @if(Request::url() !== route('search-content'))
+                        <button class="btn cinect-searchBtn-modal" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <i class="fas fa-search text-light p-0 pt-1"></i>
+                        </button>
+                    @endif
+            
+                    
                     <div class="dropdown">
                         <button class="btn text-light dropdown-toggle d-flex flex-direction-row flex-nowrap justify-content-end align-items-center p-0 px-sm-3"
                             type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true">
@@ -139,6 +147,22 @@
         <!-- END NAVBAR -->
     </header>
 
+    <!-- SEARCH MODAL -->
+    <div class="modal fade cinect-custom-search-modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <form action="{{ route('search-content') }}" method="GET">
+                <div class="input-group align-items-center">
+                    <label id="clear-input"><i class="fas fa-times p-2"></i></label>
+                    <input type="text" class="form-control" id="search-content" name="search" placeholder="Dragon ball">
+                    <button class="btn btn-outline-light" type="submit" id="submitSearch"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+            <button type="button" class="btn-close cinect-modal-btn" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+        </div>
+      </div>
+
     <!-- END HEADER -->
     <!-- START MAIN -->
     <main>
@@ -202,6 +226,7 @@
         <!-- COPYRIGHT -->
     </footer>
     <!-- END FOOTER -->
+    
 </body>
 
 </html>

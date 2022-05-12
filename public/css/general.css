@@ -142,6 +142,19 @@ a.link-img-carousel {
   animation: opacityTransition 2s infinite;
 }
 
+
+/*CINECT CUSTOM MODAL SEARCH ON HEADEFOOTER VIEW*/
+.cinect-custom-search-modal .modal-content{
+  border: 2px solid #5A3C97;
+  background-color: #5A3C97;
+}
+
+.cinect-custom-search-modal .modal-content .cinect-modal-btn{
+  display: block;
+  margin: 20px auto;
+}
+
+
 @media (min-width: 1024px) {
   .profile-images:hover div{
     filter: blur(3px);
