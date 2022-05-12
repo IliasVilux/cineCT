@@ -120,12 +120,12 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ url('/top/top') }}" class="footer-links text-light text-uppercase m-0">
+                                <a href="{{ route('top.top-content') }}" class="footer-links text-light text-uppercase m-0">
                                     <i class="fas fa-sort-amount-up-alt pe-2"></i>{{trans('titles.top')}}
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ url('/search/search') }}" class="footer-links text-light text-uppercase m-0">
+                                <a href="{{ route('search-content') }}" class="footer-links text-light text-uppercase m-0">
                                     <i class="fas fa-search pe-2"></i>{{trans('titles.search')}}
                                 </a>
                             </li>
@@ -182,7 +182,7 @@
                     <a href="{{ url('/content/contentFilms') }}" class="footer-links text-white px-md-1">{{trans('titles.films')}}</a>
                     <a href="{{ url('/content/contentSeries') }}" class="footer-links text-white px-md-1">{{trans('titles.series')}}</a>
                     <a href="{{ url('/content/contentAnimes') }}" class="footer-links text-white px-md-1">{{trans('titles.animes')}}</a>
-                    <a href="{{ url('/top/top') }}" class="footer-links text-white px-md-1">{{trans('titles.top')}}</a>
+                    <a href="{{ route('top.top-content') }}" class="footer-links text-white px-md-1">{{trans('titles.top')}}</a>
                     <a href="{{ url('/search/search') }}" class="footer-links text-white px-md-1">{{trans('titles.search')}}</a>
                     <a href="{{ url('/list/list') }}" class="footer-links text-white px-md-1">{{trans('titles.lists')}}</a>
                     <a href="{{ url('/aboutUs/aboutUs') }}" class="footer-links text-white px-md-1">{{trans('titles.about')}}</a>

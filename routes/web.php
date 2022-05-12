@@ -108,7 +108,7 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     Route::get('/detail/detailSeries/{id}/addNewList', [SerieController::class,  'addNewList'])->name('serie.newList');
 
     //Searcher
-    Route::get('/content/{search?}', [UserController::class, 'searchContent'])->name('search-content'); 
+    Route::get('/search/content/{search?}', [UserController::class, 'searchContent'])->name('search-content'); 
 
     
     //Show comments likes
