@@ -54,6 +54,7 @@ class UserController extends Controller
     public function searchContent(Request $request)
     {
 
+        
         $search = $request->input('search');
 
         $request->validate([
@@ -104,8 +105,11 @@ class UserController extends Controller
         */ 
 
         //var_dump(empty($content['anime']));
-
         return view('search.search', ['content' => $content, 'search' => $search]);
+    }
+
+    public function searchEmpty() {
+        return view('search.search');
     }
 
     public function profileUpdate(Request $request)

@@ -108,6 +108,7 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     Route::get('/detail/detailSeries/{id}/addNewList', [SerieController::class,  'addNewList'])->name('serie.newList');
 
     //Searcher
+    Route::get('/search/search', [UserController::class, 'searchEmpty'])->name('search.view');
     Route::get('/search/content/{search?}', [UserController::class, 'searchContent'])->name('search-content'); 
 
     

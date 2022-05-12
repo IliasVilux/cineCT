@@ -47,7 +47,6 @@
             @endif
         @endif
     </section>
-
     <script type="text/javascript">
         var searchInput = document.getElementById("search-content");
         var clearInput = document.getElementById("clear-input");
@@ -77,4 +76,5 @@
             }
         }
     </script>
+
 @endsection

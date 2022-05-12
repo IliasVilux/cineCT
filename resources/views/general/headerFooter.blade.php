@@ -125,7 +125,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('search-content') }}" class="footer-links text-light text-uppercase m-0">
+                                <a href="{{ route('search.view') }}" class="footer-links text-light text-uppercase m-0">
                                     <i class="fas fa-search pe-2"></i>{{trans('titles.search')}}
                                 </a>
                             </li>
@@ -159,7 +159,7 @@
                 </div>
             </form>
             <button class="cinect-modal-btn" data-bs-dismiss="modal" aria-label="Close">
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
                     <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
                   </svg>
@@ -183,12 +183,12 @@
             <section class="pt-4 pb-1">
                 <h3 class="text-uppercase">Links</h3>
                 <div class="d-flex flex-row flex-wrap justify-content-center">
-                    <a href="{{ url('/') }}" class="footer-links text-white px-md-1">{{trans('titles.home')}}</a>
+                    <a href="{{ url('/home') }}" class="footer-links text-white px-md-1">{{trans('titles.home')}}</a>
                     <a href="{{ url('/content/contentFilms') }}" class="footer-links text-white px-md-1">{{trans('titles.films')}}</a>
                     <a href="{{ url('/content/contentSeries') }}" class="footer-links text-white px-md-1">{{trans('titles.series')}}</a>
                     <a href="{{ url('/content/contentAnimes') }}" class="footer-links text-white px-md-1">{{trans('titles.animes')}}</a>
                     <a href="{{ route('top.top-content') }}" class="footer-links text-white px-md-1">{{trans('titles.top')}}</a>
-                    <a href="{{ url('/search/search') }}" class="footer-links text-white px-md-1">{{trans('titles.search')}}</a>
+                    <a href="{{ route('search.view') }}" class="footer-links text-white px-md-1">{{trans('titles.search')}}</a>
                     <a href="{{ url('/list/list') }}" class="footer-links text-white px-md-1">{{trans('titles.lists')}}</a>
                     <a href="{{ url('/aboutUs/aboutUs') }}" class="footer-links text-white px-md-1">{{trans('titles.about')}}</a>
                 </div>
