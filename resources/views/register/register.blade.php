@@ -1,4 +1,4 @@
-@extends('noHeaderFooter')
+@extends('/general/noHeaderFooter')
 @section('content')
 
     <head>
@@ -15,17 +15,17 @@
     </head>
 
     @if (Session::has('signOut'))
-        <div class="alert alert-success" role="alert" id="signOut">
+        <div class="alert alert-success cinect-custom-alert text-center" role="alert" id="signOut">
             <strong>{{ Session::get('signOut') }}</strong>
         </div>
     @endif
-
+    
 
     @if (Auth::user())
         @include('includes.session')
     @else
         <section class="section-signin-register d-flex flex-wrap justify-content-center h-100 p-4 pt-5">
-            <div class="col-12 col-md-10 col-lg-9">
+            <div class="col-12 col-md-10 col-xl-6">
                 <ul class="nav nav-tabs" id="myTab">
                     <li class="nav-item col-6">
                         <a href="#logIn" class="nav-link active button_login_register" data-bs-toggle="tab">{{ trans('register.log_in') }}</a>
@@ -118,7 +118,7 @@
                                         </div>
 
                                     </div>
-                                    <div class="form-check d-flex justify-content-start my-sm-4">
+                                    <div class="form-check d-flex justify-content-start my-sm-3">
                                         <input class="form-check-input" type="checkbox" id="rememberData" />
                                         <label class="form-check-label mx-2" value="1"
                                             for="rememberData">{{ trans('register.remember') }}</label>
@@ -144,6 +144,12 @@
                                 <form method="POST" action="{{ route('register.user') }}"
                                     class="row g-3 needs-validation d-flex flex-column align-items-center m-2">
                                     @csrf
+
+                                    @if (Session::has('userExist'))
+                                        <div class="alert alert-danger text-center" role="alert" id="userExist">
+                                            <strong>{{ Session::get('userExist') }}</strong>
+                                        </div>
+                                    @endif
 
                                     <div class="register-erros">
                                         @if ($errors->has('register_name'))
@@ -270,11 +276,13 @@
             }
         }
 
+        
         if(document.getElementById('signOut')){
             setTimeout( () => {
                 document.getElementById('signOut').style.display = "none";
             },3900);
         }
+        
 
     </script>
 @endsection

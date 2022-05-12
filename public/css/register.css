@@ -15,9 +15,14 @@ button {
 .nav-link{
   color: white;
 }
-.nav-link:hover  {
-  color: #5A3C97;
+
+.nav-link.selectId:hover {
+  color: #5a3c97;
 }
+.nav-link.selectId.active.show:hover {
+  color: white;
+}
+
 .nav-tabs {
   border-bottom: none;
 }
@@ -56,7 +61,7 @@ div.card {
   border-radius: 0px 4px 4px 0px;
 }
 input.form-control {
-  height: 30px;
+  height: 22px;
 }
 
 /* BUTTONS */
@@ -69,7 +74,7 @@ input.form-control {
 .button-purple:hover{
   color: #5A3C97;
   background-color: white;
-  border: 2px solid #5A3C97;
+  border: 1.5px solid #5A3C97;
 }
 
 @media screen and (min-width: 576px) {
@@ -102,7 +107,7 @@ input.form-control {
 
   input.form-control,
   .button-purple  {
-    height: 55px;
-    font-size: 1.3rem;
+    height: 53px;
+    font-size: 17px;
   }
 }

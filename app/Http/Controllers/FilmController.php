@@ -17,20 +17,22 @@ use Illuminate\Support\Facades\DB;
 
 class FilmController extends Controller
 {
-    public static function store(){
-        
-        $contador = 0;
+    public static function store()
+    {
+
+        $contador = 1;
         $apiLinks = array();
         $allFilms = array();
 
-        do{
+        do {
             //$filmApi = Http::get('https://api.themoviedb.org/3/movie/' . $contador . '?api_key=9d981b068284aca44fb7530bdd218c30&language=en-US');
-            $filmApi = Http::get('https://api.themoviedb.org/'.$contador.'/discover/movie?api_key=9d981b068284aca44fb7530bdd218c30&with_genres=10749'); //romance
+            $filmApi = Http::get('https://api.themoviedb.org/' . $contador . '/discover/movie?api_key=9d981b068284aca44fb7530bdd218c30&with_genres=10751');
+            //genres //https://api.themoviedb.org/3/genre/movie/list?api_key=9d981b068284aca44fb7530bdd218c30&language=en-US
             array_push($apiLinks, $filmApi);
             $contador++;
-        }while($contador < 10);
-        
-        foreach($apiLinks as $link) {
+        } while ($contador < 10);
+
+        foreach ($apiLinks as $link) {
             $filmJson = json_decode($link);
             /*
             if (isset($filmJson->{'id'}) && isset($filmJson->{'genres'}[0]->{'name'})){
@@ -91,63 +93,56 @@ class FilmController extends Controller
                 }
             }
             */
-            
-            if(isset($filmJson->{'results'}))
-            {
+
+            if (isset($filmJson->{'results'})) {
                 array_push($allFilms, $filmJson);
             }
-                        
         }
+        
+        
+        foreach ($allFilms as $filmContent) {
 
-        
-        
-        if(count($allFilms) != 0)
-        {
-            foreach($allFilms as $filmContent)
-            {
-                for ($i=0; $i < count($filmContent->{'results'}); $i++) { 
+            $count = count($filmContent->{'results'});
+
+            for ($i = 0; $i < $count; $i++) {
+
+                if($filmContent->{'results'}[$i]->{'genre_ids'}[0] == 10751) {
 
                     $filmContent->{'results'}[$i]->{'release_date'} = substr($filmContent->{'results'}[$i]->{'release_date'}, 0, 4);
-                    $filmContent->{'results'}[$i]->{'backdrop_path'} = 'https://image.tmdb.org/t/p/w500'.$filmContent->{'results'}[$i]->{'backdrop_path'};
+                    $filmContent->{'results'}[$i]->{'poster_path'} = 'https://image.tmdb.org/t/p/w500' . $filmContent->{'results'}[$i]->{'poster_path'};
+
                     
-                    
-                    echo 'Nombre: '.$filmContent->{'results'}[$i]->{'title'} .'<br>';
-                    echo 'original_id:'. $filmContent->{'results'}[$i]->{'id'}. '<br>';
-                    echo 'Genre_id: 8<br>';
-                    echo 'description: '. $filmContent->{'results'}[$i]->{'overview'}. '<br>';
+                    echo 'Nombre; ' . $filmContent->{'results'}[$i]->{'title'} . '<br>';
+                    echo 'Genre_id: ' . $filmContent->{'results'}[$i]->{'genre_ids'}[0] . '<br>';
+                    echo 'description: ' . $filmContent->{'results'}[$i]->{'overview'} . '<br>';
                     echo 'duration: 0 <br>';
-                    echo 'poster_path: '. $filmContent->{'results'}[$i]->{'backdrop_path'} .'<br>';
-                    echo 'puntuation:'. $filmContent->{'results'}[$i]->{'vote_average'}.'<br>';
-                    echo 'release_date: '. $filmContent->{'results'}[$i]->{'release_date'}. '<br><br>';
+                    echo 'poster_path: ' . $filmContent->{'results'}[$i]->{'backdrop_path'} . '<br>';
+                    echo 'puntuation:' . $filmContent->{'results'}[$i]->{'vote_average'} . '<br>';
+                    echo 'release_date: ' . $filmContent->{'results'}[$i]->{'release_date'} . '<br><br>';
                     
                 }
-                
-                
             }
-            
-        }else{
-            echo "No té contingut";
+            break;
         }
-        
-        die();
-        
-        
-        return $allFilms;
 
+
+        //die();
+
+        return $allFilms;
     }
 
-    public function returnFilms($id) {
+    public function returnFilms($id, $orderByLikes = null)
+    {
         $user = Auth::user()->id;
 
         $film = Film::find($id);
         $userLists = FavouriteLists::query()->where('user_id', $user)->get();
         $userTopList = FavouriteLists::query()->where('user_id', $user)->where('top_list', 1)->get();
-        $profile = Image::all();
-        $comments = Review::where('film_id' ,'=', $id)->get();
+        $comments = Review::where('film_id', '=', $id)->get();
         $shareComponent = $this->ShareWidget();
-
         $userListsWhereFilm = [];
         $userFilmsInLists = FavoriteList::where('user_id', $user)->where('film_id', $id)->get();
+
         foreach($userFilmsInLists as $filmInLists)
         {
             foreach($userLists as $list)
@@ -158,80 +153,45 @@ class FilmController extends Controller
             }
         }
 
-        
-        /*
-        echo '<b>Pelicula: '. $film->name. '</b><br><br>';
-        SELECT review_id,
-        COUNT(user_id)
-        FROM likes
-        GROUP BY  review_id
-        ORDER BY COUNT(user_id) DESC ;
+        $commentsOrderByLikes = [];
 
-        //QUERY AVANZADA-----
-        SELECT reviews.id, count(likes.user_id) AS 'TOTAL LIKES'
-        FROM reviews 
-        LEFT JOIN likes on reviews.id = likes.review_id
-        GROUP BY likes.review_id
-        ORDER BY 'TOTAL LIKES' DESC;
-        
-
-        $allTemporalCommentsOrderByLikes = [];
-        if(count($comments) !== 0){
-
-            foreach($comments as $comment){
-    
-                $currentCommentTotalLikes = Like::where('review_id', $comment->id)->count();
-                
-                if($currentCommentTotalLikes !== 0)
-                {
-                    echo 'ID del comentario: '. $comment->id. '<br>';
-                    echo 'Autor: '.$comment->user->nick .'<br>'; 
-                    echo 'Comentario: '.$comment->description .'<br>'; 
-                    echo 'Total Likes: <b>'.$currentCommentTotalLikes.'</b><br>'; 
-                    echo '<br>----------------------------------';
-                    echo '<br><br>';
-                }
-
-
-                $allTemporalCommentsOrderByLikes['like_'.$comment->id] = $currentCommentTotalLikes;
-                $allTemporalCommentsOrderByLikes['comment_'.$comment->id] = $comment;
-                
-            }
-        }else{
-            echo 'Esta pelicula no tiene ningun comnetario/review';
-        }
-
-        
-        dump($allTemporalCommentsOrderByLikes);
-
-        die();
-        */
-        
-        
         if (!is_null($film)) {
-            return view('detail.detailFilms', compact('film', 'userLists', 'userListsWhereFilm', 'comments', 'profile', 'shareComponent', 'userTopList'));
+            if(isset($orderByLikes) && !is_null($orderByLikes) && $orderByLikes === 'order') {
+                if(count($comments) !== 0){
+                    foreach($comments as $comment){
+                        $currentCommentTotalLikes = Like::where('review_id', $comment->id)->count();               
+                        $commentsOrderByLikes[$comment->id]['likes'] = $currentCommentTotalLikes;
+                        $commentsOrderByLikes[$comment->id]['comments'] = $comment;
+                    }
+                }   
+                arsort($commentsOrderByLikes);
+                //dd($orderByLikes, $commentsOrderByLikes);
+                return response()->json(['commentsOrderByLikes' => $commentsOrderByLikes, 'status' => true]);
+                //return view('detail.detailFilms', compact('film', 'comments', 'shareComponent', 'commentsOrderByLikes'));
+            }
+            return view('detail.detailFilms', compact('film', 'userLists', 'userListsWhereFilm', 'comments', 'shareComponent', 'userTopList'));
         } else {
             return response('No encontrado', 404);
         }
-
     }
 
-    public function addFavourite($idF, $list)
+    public function addFavourite($id, $list)
     {
         $user = Auth::user()->id;
-        $lista = FavoriteList::query()->where('user_id', $user)->where('film_id', $idF)->get();
-        $film_name = Film::query()->where('id', $idF)->get();
-        
-        if(!isset($lista[0])){
+        $lista = FavoriteList::query()->where('user_id', $user)->where('film_id', $id)->get();
+        $film_name = Film::query()->where('id', $id)->get();
+
+        if (!isset($lista[0])) {
             $fav = FavoriteList::create([
                 'user_id' => $user,
-                'film_id' => $idF,
+                'film_id' => $id,
                 'list_id' => $list
             ]);
-            return redirect()->to('/detail/detailFilms/' . $idF)->with('FilmAdded','Se ha añadido ' . $film_name[0]->name . ' a tu lista de favoritos');
-        } else { return redirect()->to('/detail/detailFilms/' . $idF); }
+            return redirect()->to('/detail/detailFilms/' . $id)->with('FilmAdded', 'Se ha añadido ' . $film_name[0]->name . ' a tu lista de favoritos');
+        }
+        return redirect()->to('/detail/detailFilms/' . $id);
     }
-    
+
     public function delFavourite($idF, $list)
     {
         $user = Auth::user()->id;
@@ -272,29 +232,19 @@ class FilmController extends Controller
             $url, // Link que se comparte
             '', // Texto de compartir
         )
-        ->facebook()
-        ->twitter()
-        ->linkedin()
-        ->telegram()
-        ->whatsapp()
-        ->reddit();
-        
+            ->facebook()
+            ->twitter()
+            ->linkedin()
+            ->telegram()
+            ->whatsapp()
+            ->reddit();
+
         return $shareComponent;
     }
-    
-
-   /* public function returnFilmGenre($genre_id) {
-  
-        if (!is_null($filmGenre)) {
-            return view('/content/contentFilms', ['filmGenre' => $filmGenre]);
-        } else {
-            return response('No encontrado', 404);
-        }
-    }*/
 
     public function fetchAllFilms()
     {
-        $films = Film::paginate(100);
+        $films = Film::orderBy('release_date', 'DESC')->paginate(100);
         $allFilms = Film::all();
 
         $genres = [];
@@ -306,53 +256,44 @@ class FilmController extends Controller
         $genres['scifi_fantasy'] = 'fiction';
         $genres['drama_mistery'] = 'drama';
         $genres['war_crime'] = 'crime';
-       
+
         return view('content.contentFilms', ['films' => $films, 'genres' => $genres, 'allFilms' => $allFilms]);
     }
 
     public function filterContent($genre = null)
     {
 
-        if(isset($genre) && !is_null($genre) && !empty($genre)){
+        if (isset($genre) && !is_null($genre) && !empty($genre)) {
 
-            $genreInfo = Genre::where('name','=', $genre)->first();
-            
             $searchCondition = array();
-            
-            if ($genreInfo){
-                if($genre == 'Action' || $genre == 'action'){
-                    array_push($searchCondition, "Action","Adventure"); 
-                }elseif ($genre == 'Animation' || $genre == 'animation'){
-                    array_push($searchCondition, "Animation","Family"); 
-                }elseif($genre == 'Comedy' || $genre == 'comedy'){
-                    array_push($searchCondition, "Comedy"); 
-                }elseif ($genre == 'Terror' || $genre == 'terror'){
-                    array_push($searchCondition, "Horror", "Thriller"); 
-                }elseif($genre == 'Romance' || $genre == 'omance'){
-                    array_push($searchCondition, "Romance"); 
-                }elseif ($genre == 'Fiction' || $genre == 'fiction'){
-                    array_push($searchCondition, "Sci-fi", "Fantasy");
-                }elseif ($genre == 'Drama' || $genre == 'drama'){
-                    array_push($searchCondition, "Drama", "Mystery");
-                }elseif ($genre == 'War' || $genre == 'war'){
-                    array_push($searchCondition, "War", "Crime");
-                }
+
+            if ($genre == 'Action' || $genre == 'action') {
+                array_push($searchCondition, "Action", "Adventure");
+            } elseif ($genre == 'Animation' || $genre == 'animation') {
+                array_push($searchCondition, "Animation", "Family");
+            } elseif ($genre == 'Comedy' || $genre == 'comedy') {
+                array_push($searchCondition, "Comedy");
+            } elseif ($genre == 'Terror' || $genre == 'terror') {
+                array_push($searchCondition, "Horror", "Thriller", "Suspense");
+            } elseif ($genre == 'Romance' || $genre == 'romance') {
+                array_push($searchCondition, "Romance");
+            } elseif ($genre == 'Fiction' || $genre == 'fiction') {
+                array_push($searchCondition, "Science Fiction", "Fantasy");
+            } elseif ($genre == 'Drama' || $genre == 'drama' || $genre == 'Mystery' || $genre == 'mystery') {
+                array_push($searchCondition, "Drama", "Mystery");
+            } elseif ($genre == 'War' || $genre == 'war' || $genre == 'Crime' || $genre == 'crime') {
+                array_push($searchCondition, "War", "Crime");
             }
-
-
+           
             $films = Film::select('films.*')
-            ->join('genres', 'films.genre_id', '=', 'genres.id')
-            ->whereIn('genres.name', $searchCondition)
-            ->orderBy('films.name', 'asc')
-            ->paginate(25);
+                ->join('genres', 'films.genre_id', '=', 'genres.id')
+                ->whereIn('genres.name', $searchCondition)
+                ->orderBy('films.release_date', 'DESC')
+                ->paginate(25);
 
-            //dd(count($films) > 0);
-
-            return view('content.filterFilm',['films' => $films, 'genre' => $genre]);
-            
-            
+            return view('content.filterFilm', ['films' => $films, 'genre' => $genre]);
         }
-        
     }
+
     
 }

@@ -11,7 +11,7 @@ main {
 
 /* BUTTONS FILTER */
 .button-category {
-    height: 68px;
+    height: 35px;
     margin-top: 10px;
     color: #FFFFFF;
     background: linear-gradient(to bottom, black 25%, #9966ff 150%);;
@@ -21,6 +21,10 @@ main {
     text-decoration: none;
     color:#FFFFFF; 
     font-weight: 450;
+}
+
+.button-category a p{
+    font-size: 8px;
 }
 
 .button-category:hover{
@@ -40,12 +44,12 @@ main {
 .page-link {
     
     color: #FFFFFF;
-    border: 2px solid #5A3C97;
+    border: 1.5px solid #5A3C97;
     background-color: #16181d;
 }
 
 .page-item.active .page-link{
-    border: 2px solid #5A3C97;
+    border: 1.5px solid #5A3C97;
     color: white;
     background-color: #5A3C97;
 }
@@ -65,13 +69,14 @@ main {
 
 
 /*MOBILE*/
-@media only screen and (max-width: 600px) {
+
+@media only screen and (min-width: 576px) {
     .button-category a{
         font-size: 15px;
     } 
     /*El area que va a ocupar la parque de 'click' */
     .button-category a p{
-        font-size: 11px;
+        font-size: 10px;
     }
     ul.pagination {
         font-size: 11px;
@@ -83,17 +88,22 @@ main {
 }
 
 /*DESKTOP*/
-@media only screen and (min-width: 601px) {
+@media only screen and (min-width: 768px) {
+    .button-category {
+        height: 50px;
+    }
     .button-category a{
         font-size: 17px;
     } 
     .button-category a p{
-        padding: 9px;
+        font-size: 14px;
     }
-}
-
-@media only screen and (min-width: 1200px) {
-    /*.button-category a p{
-        padding: 20px;
-    }*/
+    ul.pagination {
+        font-size: 18px;
+    }
+    .page-link {
+        width: 40px;
+        height: 40px;
+        text-align: center;
+    }
 }

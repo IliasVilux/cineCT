@@ -202,30 +202,31 @@ class AnimeController extends Controller
                 }
             }
         }
-
+        //dd($userListsWhereAnime);
         $userTopList = FavouriteLists::query()->where('user_id', $user)->where('top_list', 1)->get();
-        $profile = Image::all();
-        $comments = Review::where('anime_id' ,'=', $id)->get();
+        $comments = Review::where('anime_id', '=', $id)->get();
         $shareComponent = $this->ShareWidget();
+        
 
         if (!is_null($anime)) {
-            return view('/detail.detailAnimes', compact('anime', 'userLists', 'userListsWhereAnime', 'comments', 'profile', 'shareComponent', 'userTopList'));
+            return view('/detail.detailAnimes', compact('anime', 'userLists', 'userListsWhereAnime', 'comments', 'shareComponent', 'userTopList'));
+            //return view('/detail.detailAnimes', compact('anime', 'userLists', 'comments', 'shareComponent'));
         } else {
             return response('No encontrado', 404);
         }
     }
 
-    public function addFavourite($idA, $list)
+    public function addFavourite($id, $list)
     {
         $user = Auth::user()->id;
-        $lista = FavoriteList::query()->where('user_id', $user)->where('anime_id', $idA)->where('list_id', $list)->get();
-        $anime_name = Anime::query()->where('id', $idA)->get();
+        $lista = FavoriteList::query()->where('user_id', $user)->where('anime_id', $id)->where('list_id', $list)->get();
+        $anime_name = Anime::query()->where('id', $id)->get();
 
         if(!isset($lista[0]))
         {
             $fav = FavoriteList::create([
                 'user_id' => $user,
-                'anime_id' => $idA,
+                'anime_id' => $id,
                 'list_id' => $list
             ]);
             return redirect()->to('/detail/detailAnimes/' . $idA)->with('AnimeAdded','Se ha añadido ' . $anime_name[0]->name . ' a tu lista de favoritos');
@@ -283,7 +284,7 @@ class AnimeController extends Controller
 
     public function fetchAllAnimes()
     {
-        $animes = Anime::paginate(10);
+        $animes = Anime::paginate(100);
         $allAnimes = Anime::all();
 
         $filterGenres = ["Samurai", "Shounen", "Seinen", "Shoujo", "Demons", "Sci-Fi", "Mecha", "Josei"];

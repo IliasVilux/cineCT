@@ -1,82 +1,66 @@
-@extends('headerFooter')
+@extends('/general/headerFooter')
 @section('content')
 
-<head>
-    <link rel="stylesheet" href="{{asset('css/detail.css')}}">
-    <link rel="stylesheet" href="{{asset('css/general.css')}}">
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-    $(document).ready(function() {
-        $('input.star').rating();
-    });
-    </script>
-    <style>
-    div#social-links {
-        margin: 0 auto;
-        max-width: 500px;
-    }
+    <head>
+        <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/general.css') }}">
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+    </head>
+    @if (Session::has('AnimeAdded'))
+        <div class="alert alert-success" role="alert">
+            <strong>{{ Session::get('AnimeAdded') }}!</strong>
+        </div>
+    @endif
+    @if (Session::has('AnimeDeleted'))
+        <div class="alert alert-success" role="alert">
+            <strong>{{ Session::get('AnimeDeleted') }}!</strong>
+        </div>
+    @endif
+    <section class="container">
+        <a href="{{ url('/content/contentAnimes') }}" class="btn button-purple my-4" title="Back">
+            {{ trans('home.back') }}</a>
 
-    div#social-links ul li {
-        display: inline-block;
-    }
+        <h1 class="detail-title">{{ $anime->name }}</h1>
 
-    div#social-links ul li a {
-        padding: 18px;
-        font-size: 30px;
-        color: #9966ff;
-    }
-    </style>
-</head>
-@if (Session::has('AnimeAdded'))
-<div class="alert alert-success" role="alert">
-    <strong>{{ Session::get('AnimeAdded') }}!</strong>
-</div>
-@endif
-@if (Session::has('AnimeDeleted'))
-<div class="alert alert-success" role="alert">
-    <strong>{{ Session::get('AnimeDeleted') }}!</strong>
-</div>
-@endif
-<section class="container">
-    <a href="{{ url('/content/contentAnimes') }}" class="btn button-purple my-4" title="Back"> Back</a>
+        </div>
 
-    <h1 class="detail-title">{{$anime->name}}</h1>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <article class="mt-4">
-        @if($anime->poster_path == NULL)
-        <img src="/img/NoImg.jpg" class="img-thumbnail col-12 col-md-5 mb-4 mb-md-0" alt="">
-        @else
-        <img src="{{$anime->poster_path}}" class="img-thumbnail col-12 col-md-5 mb-4 mb-md-0" alt="Img {{$anime->name}}">
-        @endif
-        <article class="col-12 col-md-6 more-info bg-dark p-3">
-            <div>
-                <div class="d-flex nowrap">
-                    <h5 class="pe-2"><b>Género:</b></h5>
-                    <p>{{$anime->genre->name}}</p>
+        <article class="mt-4">
+            @if ($anime->poster_path == null)
+                <img src="/img/NoImg.jpg" class="img-thumbnail col-6 col-md-5 col-lg-4 mb-md-0" alt="">
+            @else
+                <img src="{{ $anime->poster_path }}" class="img-thumbnail col-6 col-md-5 col-lg-4 mb-md-0"
+                    alt="Img {{ $anime->name }}">
+            @endif
+            <article class="col-6 more-info bg-dark p-3" id="datasheet">
+
+                <div class="d-none d-sm-flex nowrap">
+                    <h6 class="pe-2"><b>{{ trans('titles.genre') }}:</b></h6>
+                    <p>{{ $anime->genre->name }}</p>
                 </div>
-                <div class="d-flex nowrap">
-                    <h5 class="pe-2"><b>Fecha de lanzamiento:</b></h5>
-                    <p> {{$anime->release_date}}</p>
+                <div class="d-none d-sm-flex nowrap">
+                    <h6 class="pe-2"><b>{{ trans('titles.release') }}:</b></h6>
+                    <p> {{ $anime->release_date }}</p>
                 </div>
-                <div class="d-flex nowrap">
-                    <h5 class="pe-2"><b>Duración:</b></h5>
-                    <p> {{$anime->duration}} min</p>
+                <div class="d-none d-sm-flex nowrap">
+                    <h6 class="pe-2"><b>{{ trans('titles.duration') }}:</b></h6>
+                    <p> {{ $anime->duration }} min</p>
                 </div>
-                <div class="d-flex nowrap">
-                    <h5 class="pe-2"><b>Episodios:</b></h5>
-                    <p> {{$anime->total_episodes}}</p>
+                <div class="d-none d-sm-flex nowrap">
+                    <h6 class="pe-2"><b>{{ trans('titles.total_episodes') }}:</b></h6>
+                    <p> {{ $anime->total_episodes }}</p>
                 </div>
-                <div class="d-flex nowrap">
-                    <h5 class="pe-2"><b>Puntuación:</b></h5>
+                <div class="d-none d-sm-flex nowrap">
+                    <h6 class="pe-2"><b>{{ trans('titles.rating') }}:</b></h6>
                     <p><i class="fas fa-star"></i>
-                    <p> {{$anime->puntuation}}</p>/10<p>
+                    <p> {{ $anime->puntuation }}</p>/10<p>
                 </div>
+
                 <div class="d-flex flex-column align-items-start">
-                    <h5 class="pe-2"><b>Cuánto te ha gustado?</b></h5>
-                    <form method="GET" class="d-flex flex-column flex-xl-row align-items-center">
-                        <div class="rating col-12 me-3">
+                    <h6 class="pe-2"><b>{{ trans('titles.how_much') }}</b></h6>
+                    <form method="GET" class="d-flex flex-column align-items-center col-12 mb-xl-2">
+                        <div class="rating col-12 d-flex justify-content-center">
                             <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
                             <input name="stars" id="e2" type="radio" value="9"><label for="e2">☆</label>
                             <input name="stars" id="e3" type="radio" value="8"><label for="e3">☆</label>
@@ -88,18 +72,19 @@
                             <input name="stars" id="e9" type="radio" value="2"><label for="e9">☆</label>
                             <input name="stars" id="e10" type="radio" value="1"><label for="e10">☆</label>
                         </div>
-                        <button type="submit" class="btn button-purple btn-sm col-6 mb-2 mb-xl-0">Enviar</button>
+                        <button type="submit"
+                            class="btn button-purple col-6 mb-2 mb-xl-0">{{ trans('content.send_rating') }}</button>
                     </form>
                 </div>
                 <?php
                 if (isset($_GET['stars'])) {
-                    echo '<div class="alert alert-success">Rating recibido: <strong>'.$_GET['stars'].'</strong>.</div>';
-                }elseif ((isset($_GET['stars']) == ""))
+                    echo '<div class="alert alert-success">Rating recibido: <strong>' . $_GET['stars'] . '</strong>.</div>';
+                } elseif (isset($_GET['stars']) == '');
                 ?>
-                <div class="d-flex flex-row">
+                <div class="d-flex flex-row justify-content-center">
                     <div class="dropdown">
-                        <button type="button" class="btn button-purple btn-md dropdown-toggle" data-bs-toggle="dropdown">
-                            Añadir a favoritos
+                        <button type="button" class="btn button-purple dropdown-toggle" data-bs-toggle="dropdown">
+                            {{ trans('titles.add_favs') }}
                         </button>
                         <ul class="dropdown-menu">
                             <li><a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#myModal">Crear nueva lista</a></li>
@@ -113,30 +98,34 @@
                         <div class="modal-dialog text-dark">
                             <div class="modal-content">
 
-                            <form action="/detail/detailAnimes/{{$anime->id}}/addNewList">
-                                <!-- Modal body -->
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <input type="text" id="newListName" name="newListName" class="form-control" placeholder="Nombre de la lista">
+                                <form action="/detail/detailAnimes/{{ $anime->id }}/addNewList">
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <input type="text" id="newListName" name="newListName" class="form-control"
+                                                placeholder="Nombre de la lista">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <!-- Modal footer -->
-                                <div class="modal-footer">
-                                    <button class="btn button-purple">Crear nueva lista</button>
-                                    <a type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</a>
-                                </div>
-                            </form>
-
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button class="btn button-purple">{{ trans('titles.new_list') }}</button>
+                                        <a type="button" class="btn btn-danger"
+                                            data-bs-dismiss="modal">{{ trans('titles.close') }}</a>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
+
                     @if (isset($userTopList[0]->name))
-                    <a href="/detail/detailAnimes/{{$anime->id}}/{{$userTopList[0]->id}}/addFav"><button type="button"
-                            class="btn button-purple btn-md">Añadir a {{ $userTopList[0]->name }}</button></a>
+                        <a href="/detail/detailAnimes/{{ $anime->id }}/{{ $userTopList[0]->id }}/addFav"><button
+                                type="button" class="btn button-purple btn-md">Añadir a
+                                {{ $userTopList[0]->name }}</button></a>
                     @endif
+
                     @if(!empty($userListsWhereAnime))
-                        <div class="dropdown">
+                        <div class="dropdown mx-2">
                             <button type="button" class="btn button-purple btn-md dropdown-toggle" data-bs-toggle="dropdown">
                                 Eliminar de favoritos
                             </button>
@@ -147,68 +136,48 @@
                             </ul>
                         </div>
                     @endif
+                    @if (empty($userListsWhereAnime))
                     <div class="social-media-links mx-2">
+                    @else
+                    <div class="social-media-links">
+                    @endif
                         <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button"
                             aria-expanded="false" aria-controls="shareComponent">
                             <i class="fas fa-share-alt"></i>
                         </a>
                     </div>
-                    <div class="d-flex nowrap">
-                        <h5 class="pe-2"><b>{{ trans('titles.release') }}:</b></h5>
-                        <p> {{ $anime->release_date }}</p>
-                    </div>
-                    <div class="d-flex nowrap">
-                        <h5 class="pe-2"><b>{{ trans('titles.duration') }}:</b></h5>
-                        <p> {{ $anime->duration }} min</p>
-                    </div>
-                    <div class="d-flex nowrap">
-                        <h5 class="pe-2"><b>{{ trans('titles.total_episodes') }}:</b></h5>
-                        <p> {{ $anime->total_episodes }}</p>
-                    </div>
-                    <div class="d-flex nowrap">
-                        <h5 class="pe-2"><b>{{ trans('titles.rating') }}:</b></h5>
-                        <p><i class="fas fa-star"></i>
-                        <p> {{ $anime->puntuation }}</p>/10<p>
-                    </div>
-                    <div class="d-flex flex-column align-items-start">
-                        <h5 class="pe-2"><b>{{ trans('titles.how_much') }}</b></h5>
-                        <form method="GET" class="d-flex flex-column flex-xl-row align-items-center">
-                            <div class="rating col-12 me-3">
-                                <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
-                                <input name="stars" id="e2" type="radio" value="9"><label for="e2">☆</label>
-                                <input name="stars" id="e3" type="radio" value="8"><label for="e3">☆</label>
-                                <input name="stars" id="e4" type="radio" value="7"><label for="e4">☆</label>
-                                <input name="stars" id="e5" type="radio" value="6"><label for="e5">☆</label>
-                                <input name="stars" id="e6" type="radio" value="5"><label for="e6">☆</label>
-                                <input name="stars" id="e7" type="radio" value="4"><label for="e7">☆</label>
-                                <input name="stars" id="e8" type="radio" value="3"><label for="e8">☆</label>
-                                <input name="stars" id="e9" type="radio" value="2"><label for="e9">☆</label>
-                                <input name="stars" id="e10" type="radio" value="1"><label for="e10">☆</label>
-                            </div>
-                            <button type="submit" class="btn button-purple btn-sm col-6 mb-2 mb-xl-0">{{trans('content.send_rating')}}</button>
-                        </form>
-                    </div>
-                    <?php
-                    if (isset($_GET['stars'])) {
-                        echo '<div class="alert alert-success">Rating recibido: <strong>' . $_GET['stars'] . '</strong>.</div>';
-                    } elseif (isset($_GET['stars']) == '');
-                    ?>
-                    <div class="d-flex flex-row my-2">
-                        <a href="/detail/detailAnimes/{{ $anime->id }}/addFav"><button type="button"
-                                class="btn button-purple btn-md">{{trans('content.add_favourite')}}</button></a>
-                        <div class="social-media-links mx-2">
-                            <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button"
-                                aria-expanded="false" aria-controls="shareComponent">
-                                <i class="fas fa-share-alt"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="collapse my-3" id="shareComponent">
-                        {!! $shareComponent !!}
-                    </div>
+                </div>
+                <div class="collapse text-center" id="shareComponent">
+                    {!! $shareComponent !!}
+                </div>
             </article>
-            <p class="description pt-5">{{ $anime->description }}</p>
         </article>
+
+        <div class="px-2">
+            <h5 class="pt-4"><b>Resumen</b></h5>
+            <p class="description col-12 d-flex">{{ $anime->description }}</p>
+
+            <article class="d-sm-none">
+                <div class="d-flex flex-column">
+                    <h5 class="pe-2"><b>Género:</b></h5>
+                    <p>{{ $anime->genre->name }}</p>
+                </div>
+                <div class="d-flex flex-column">
+                    <h5 class="pe-2"><b>Fecha de lanzamiento:</b></h5>
+                    <p> {{ $anime->release_date }}</p>
+                </div>
+                <div class="d-flex flex-column">
+                    <h5 class="pe-2"><b>Duración:</b></h5>
+                    <p> {{ $anime->duration }} min</p>
+                </div>
+                <div class="d-flex flex-column">
+                    <h5 class="pe-2"><b>Puntuación:</b></h5>
+                    <p><i class="fas fa-star"></i> {{ $anime->puntuation }}/10
+                    <p>
+                </div>
+            </article>
+        </div>
+
 
         <article class="d-flex flex-column flex wrap align-items-center p-3">
             <!-- START TRAILER SECTION -->
@@ -217,7 +186,7 @@
                 <iframe class="w-75" height="500"
                     src="https://www.youtube.com/embed/{{ $anime->trailer_link }}" allowfullscreen></iframe>
                 <div class="alert alert-dark w-75 my-3" role="alert">
-                    {{trans('warnings.video_error')}}
+                    {{ trans('warnings.video_error') }}
                     <a href="https://www.youtube.com/results?search_query={{ $anime->name }} trailer">Youtube</a>.
                 </div>
             @endif
@@ -228,7 +197,8 @@
             <form method="POST" action="" id="create-comment" class="create_comment">
                 @csrf
                 <textarea name="description" id="description" cols="50" rows="3" placeholder="Escribe un comentario"></textarea>
-                <button class="btn button-purple mt-3" type="submit" id="commentSubmit">{{ trans('titles.publish') }}</button>
+                <button class="btn button-purple mt-3" type="submit"
+                    id="commentSubmit">{{ trans('titles.publish') }}</button>
             </form>
             <div id="notify_user"></div>
             @if ($errors->has('description'))
@@ -306,8 +276,8 @@
                     let commentID = response.comment['id'];
                     let commentDescription = response.comment['description'];
                     let commentHtml =
-                    `<div class="d-flex flex-start mb-4">
-                        <div><img class="rounded-circle shadow-1-strong me-3" src="{{Auth::user()->image->path}}" width="65"height="65"></div>
+                        `<div class="d-flex flex-start mb-4" id="content_id-${commentID}">
+                        <div><img class="rounded-circle shadow-1-strong me-3" src="{{ Auth::user()->image->path }}" width="65"height="65"></div>
                         <div class="flex-grow-1 flex-shrink-1"><div>
                             <div class="d-flex justify-content-between align-items-center">
                                 <p class="mb-1">{{ Auth::user()->nick }} <span class="text-muted" id="last-comment"></span></p> 
@@ -321,7 +291,7 @@
                                 <form class="mt-2" method="POST" action="/review/delete/${commentID}">
                                     @csrf
                                     <input type="hidden" id="${ commentID }" name="user-comment" value="${ commentID }">
-                                    <button class="btn btn-outline-primary" type="submit">{{trans('titles.delete_review')}}</button>
+                                    <button class="btn btn-outline-primary" type="submit">{{ trans('titles.delete_review') }}</button>
                                 </form>
                             </div>
                         </div>
@@ -329,11 +299,13 @@
 
                     jQuery('#comment-container').append(commentHtml);
                     jQuery('#character-counter').css("display", "none");
-                    
+
                     setTimeout(() => {
-                        jQuery('body,html').animate({scrollTop: $(document).height()}, 5);
-                    },500);
-                    
+                        jQuery('body,html').animate({
+                            scrollTop: $(document).height()
+                        }, 5);
+                    }, 500);
+
                 },
                 error: function(response) {
                     jQuery("#commentSubmit").removeClass("loagindEffect");
@@ -401,7 +373,7 @@
         characterLiveCount();
 
         function like() {
-            jQuery('.btn-like').unbind('click').click(function () {
+            jQuery('.btn-like').unbind('click').click(function() {
                 $(this).addClass('btn-dislike').removeClass('btn-like');
                 $(this).addClass('fas').removeClass('far');
                 $(this).css("color", "red");
@@ -417,11 +389,11 @@
                     },
                     success: function(data) {
                         //console.log(data.message);
-                        if(data.like){
+                        if (data.like) {
                             console.log("Has dado like de forma correcta");
-                        }else {    
+                        } else {
                             console.log("Error al dar like");
-                        }   
+                        }
                     }
                 });
                 dislike();
@@ -431,10 +403,9 @@
 
         like();
 
-        
-        function dislike() 
-        {
-            jQuery('.btn-dislike').unbind('click').click(function () {
+
+        function dislike() {
+            jQuery('.btn-dislike').unbind('click').click(function() {
                 $(this).addClass('btn-like').removeClass('btn-dislike');
                 $(this).addClass('far').removeClass('fas');
                 $(this).css("color", "#FFFFFF");
@@ -447,9 +418,9 @@
                         '_token': $('input[name=_token]').val(),
                         review_id: comment_id,
                     },
-                    success: function(data){
+                    success: function(data) {
                         if (data.like) {
-                        console.log("Has dado dislike de forma correcta");
+                            console.log("Has dado dislike de forma correcta");
                         } else {
                             console.log("Error al dar dislike");
                         }
@@ -458,7 +429,7 @@
                 like();
             })
         }
-        
+
         dislike();
     </script>
 @endsection

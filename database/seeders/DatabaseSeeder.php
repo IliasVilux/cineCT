@@ -46,6 +46,39 @@ class DatabaseSeeder extends Seeder
             ]);
         } */
 
+        $tmp = SerieController::store();
+        foreach ($tmp as $tmp2) {
+            $count = count($tmp2->{'results'});
+            for ($i = 0; $i < $count; $i++) {
+
+                if (
+                    $tmp2->{'results'}[$i]->{'name'} === "Loki"
+                    || $tmp2->{'results'}[$i]->{'name'} === "WandaVision"
+                    || $tmp2->{'results'}[$i]->{'name'} === "Superman & Lois"
+                    || $tmp2->{'results'}[$i]->{'name'} === "The Flash"
+                ) {
+
+                    DB::table('series')->insert([
+                        'original_id' => $tmp2->{'results'}[$i]->{'id'},
+                        'genre_id' => '21',
+                        'season_id' => null,
+                        'name' => $tmp2->{'results'}[$i]->{'name'},
+                        'description' => $tmp2->{'results'}[$i]->{'overview'},
+                        'poster_path' => $tmp2->{'results'}[$i]->{'poster_path'},
+                        'seasons' => null,
+                        'total_episodes' => null,
+                        'release_date' => $tmp2->{'results'}[$i]->{'first_air_date'},
+                        'puntuation' => $tmp2->{'results'}[$i]->{'vote_average'},
+                        'duration' => null,
+                        'created_at' => now(),
+                        'updated_at' => now()
+                    ]);
+                }
+            }
+            break;
+        }
+
+
         /*
         $tmp = FilmController::store();
         foreach ($tmp as $tmp2){
@@ -63,7 +96,8 @@ class DatabaseSeeder extends Seeder
         }  */
 
         //Peliculas segun su genero (api : https://api.themoviedb.org/'.$contador.'/discover/movie?api_key=9d981b068284aca44fb7530bdd218c30&with_genres=27)
-        /* $tmp = FilmController::store();
+        /*
+        $tmp = FilmController::store();
         
         foreach ($tmp as $tmp2){
             
@@ -84,7 +118,29 @@ class DatabaseSeeder extends Seeder
 
             }
             
-        }   */
+            $count = count($tmp2->{'results'});
+            for ($i=0; $i < $count; $i++) { 
+
+                if($tmp2->{'results'}[$i]->{'genre_ids'}[0] == 10751) {
+                
+                    DB::table('films')->insert([
+                        'original_id' => $tmp2->{'results'}[$i]->{'id'},
+                        'name' => $tmp2->{'results'}[$i]->{'title'},
+                        'genre_id' => '20',
+                        'description' => $tmp2->{'results'}[$i]->{'overview'},
+                        'poster_path' => $tmp2->{'results'}[$i]->{'poster_path'},
+                        'duration' => rand(90, 115), 
+                        'release_date' => $tmp2->{'results'}[$i]->{'release_date'},
+                        'puntuation' => $tmp2->{'results'}[$i]->{'vote_average'},
+                        'created_at' => now(),
+                        'updated_at' => now()
+                    ]);
+                }
+
+            }
+            break;
+        }  
+        */
 
         $tmp = AnimeController::store();
         foreach ($tmp as $tmp2){

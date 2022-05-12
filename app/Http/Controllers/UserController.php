@@ -50,28 +50,7 @@ class UserController extends Controller
             }
         }
         
-        return view('list_favorite', compact(['data']));
-    }
-
-    public function removeFavContent($id)
-    {
-        dd(2, $id);
-    }
-
-    public function setFavoriteList($id){
-        FavouriteLists::where('top_list', 1)->update(['top_list' => 0]);
-        $currentFav = FavouriteLists::where('top_list', 1)->get();
-
-        $userIdList = Auth::User()->id;
-        FavouriteLists::where('user_id', $userIdList)->where('id', $id)->update(['top_list' => 1]);
-
-        return redirect()->back();
-    }
-    public function unsetFavoriteList($id){
-        $userIdList = Auth::User()->id;
-        FavouriteLists::where('top_list', 1)->where('id', $id)->where('user_id', $userIdList)->update(['top_list' => 0]);
-
-        return redirect()->back();
+        return view('/list/list', compact(['userFavs', 'arrayAnimes', 'arraySeries', 'arrayFilms']));
     }
 
     public function searchContent(Request $request)
@@ -128,7 +107,7 @@ class UserController extends Controller
 
         //var_dump(empty($content['anime']));
 
-        return view('search', ['content' => $content, 'search' => $search]);
+        return view('/search/search', ['content' => $content, 'search' => $search]);
     }
 
     public function profileUpdate(Request $request)
@@ -152,8 +131,30 @@ class UserController extends Controller
         return view('profile.profile')->with('message','Profile Updated');
     }
     public function deleteAccount(){
+
         $user = Auth::user();
-        $user->delete();
+        $id = $user->id;
+            
+        $isset_reviews = Review::where('user_id', $id)->first();
+        $isset_likes = Like::where('user_id', $id)->first();
+        
+        if($isset_likes) {
+            $likes = Like::where('user_id', $id)->get();
+            foreach($likes as $like) {
+                $like->where('user_id', $user->id)->delete();
+            }
+        }
+        
+        if($isset_reviews) {
+            $reviews = Review::where('user_id', $id);
+            foreach($reviews as $review) {
+                $review->where('user_id', $id)->delete();
+            }
+        }
+
+
+        $userToDelete = User::findOrFail($id);
+        $userToDelete->delete();
 
         Auth::logout();
         return redirect()->to('register')->with('signOut', 'Cuenta eliminada!');
