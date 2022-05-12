@@ -163,8 +163,6 @@ div#social-links ul li a {
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    border: 1.5px solid #5A3C97;
-    border-radius: 20px;
     /*transition: 1s all;*/
 }
 
