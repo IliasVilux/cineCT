@@ -154,11 +154,16 @@
             <form action="{{ route('search-content') }}" method="GET">
                 <div class="input-group align-items-center">
                     <label id="clear-input"><i class="fas fa-times p-2"></i></label>
-                    <input type="text" class="form-control" id="search-content" name="search" placeholder="Dragon ball">
-                    <button class="btn btn-outline-light" type="submit" id="submitSearch"><i class="fas fa-search"></i></button>
+                    <input type="text" class="form-control" id="search-content" name="search" placeholder="{{trans('home.search_cinect')}}">
+                    <button class="btn" style="color: #5A3C97;" type="submit" id="submitSearch"><i class="fas fa-search"></i></button>
                 </div>
             </form>
-            <button type="button" class="btn-close cinect-modal-btn" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button class="cinect-modal-btn" data-bs-dismiss="modal" aria-label="Close">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                    <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                  </svg>
+            </button>
           </div>
         </div>
       </div>

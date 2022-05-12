@@ -147,15 +147,30 @@ a.link-img-carousel {
   border-radius: 500px;
 }
 
-/*CINECT CUSTOM MODAL SEARCH ON HEADEFOOTER VIEW*/
+/*CINECT CUSTOM MODAL SEARCH*/
 .cinect-custom-search-modal .modal-content{
-  border: 2px solid #5A3C97;
-  background-color: #5A3C97;
+  background-color: #16181d;
+}
+
+.cinect-custom-search-modal .modal-content div{
+  margin-top: 20px;
+}
+
+.cinect-custom-search-modal .modal-content input{
+  border: none;
+  border-bottom: 1px solid #5A3C97;
+  background-color: #16181d;
+  color: #FFFFFF;
 }
 
 .cinect-custom-search-modal .modal-content .cinect-modal-btn{
   display: block;
   margin: 20px auto;
+  background-color: #16181d;
+  border: none;
+  outline: none;
+  color: #5A3C97;
+  font-weight: 600;
 }
 
 

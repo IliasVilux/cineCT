@@ -12,7 +12,7 @@
         <form action="{{ route('search-content') }}" method="GET">
             <div class="input-group align-items-center">
                 <label id="clear-input"><i class="fas fa-times p-2"></i></label>
-                <input type="text" class="form-control" id="search-content" name="search" placeholder="Dragon ball">
+                <input type="text" class="form-control" id="search-content" name="search" placeholder="{{trans('home.search_cinect')}}">
                 <button class="btn btn-outline-light" type="submit" id="submitSearch"><i class="fas fa-search"></i></button>
             </div>
         </form>
