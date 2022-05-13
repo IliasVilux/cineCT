@@ -139,27 +139,44 @@ class UserController extends Controller
             
         $isset_reviews = Review::where('user_id', $id)->first();
         $isset_likes = Like::where('user_id', $id)->first();
-        
-        if($isset_likes) {
-            $likes = Like::where('user_id', $id)->get();
-            foreach($likes as $like) {
-                $like->where('user_id', $user->id)->delete();
-            }
-        }
-        
+        $user_likes = Like::where('user_id', $id)->get(); 
+        $user_reviews = Review::where('user_id', $id)->get();
+        $allLikes = Like::all();
+
+        /*
+        un usuario puede dar likes a otras reviews, pero a la vez otros 
+        usuarios pueden dar likes a las reviews de este usuario,
+        primero debemos eliminar los likes que ha dado el usuario y
+        luego eliminar todos los likes que los otros usuarios han dado a las reviews de este usuario
+        */
+
+        //Eliminamos todos likes que le han dado al ususario
         if($isset_reviews) {
-            $reviews = Review::where('user_id', $id);
-            foreach($reviews as $review) {
-                $review->where('user_id', $id)->delete();
+            foreach($user_reviews as $review) {
+                foreach($allLikes as $like) {
+                    $like->where('review_id', $review->id)->delete();
+                }
             }
         }
 
+        if($user && $isset_likes) {
+            foreach($user_likes as $like) {
+                $like->delete();
+            }
+        }
+
+
+        if($user && $isset_reviews) {
+            foreach($user_reviews as $review) {
+                $review->delete();
+            }
+        }
 
         $userToDelete = User::findOrFail($id);
         $userToDelete->delete();
 
         Auth::logout();
-        return redirect()->to('register')->with('signOut', 'Cuenta eliminada!');
+        return redirect()->to('register')->with('accountDeleted', 'Cuenta eliminada!');
     }
 
     public function activity(){
