@@ -140,19 +140,13 @@ class UserController extends Controller
             
         $isset_reviews = Review::where('user_id', $id)->first();
         $isset_likes = Like::where('user_id', $id)->first();
+        $userFavorites = FavoriteList::where('user_id', $id)->first();
+        $userFavoritesLists = FavouriteLists::where('user_id', $id)->first();
         $user_likes = Like::where('user_id', $id)->get(); 
         $user_reviews = Review::where('user_id', $id)->get();
         $allLikes = Like::all();
-        $userFavorites = FavoriteList::where('user_id', $id)->first();
         $userAllFavorites = FavoriteList::where('user_id', $id)->get();
-        $userFavoritesLists = FavouriteLists::where('user_id', $id)->first();
         $userAllFavoritesLists = FavouriteLists::where('user_id', $id)->get();
-        /*
-        un usuario puede dar likes a otras reviews, pero a la vez otros 
-        usuarios pueden dar likes a las reviews de este usuario,
-        primero debemos eliminar los likes que ha dado el usuario y
-        luego eliminar todos los likes que los otros usuarios han dado a las reviews de este usuario
-        */
 
         //Eliminamos todos likes que le han dado al ususario
         if($isset_reviews) {
@@ -170,6 +164,13 @@ class UserController extends Controller
             }
         }
 
+        //Eliminamos todas sus reviews
+        if($user && $isset_reviews) {
+            foreach($user_reviews as $review) {
+                $review->delete();
+            }
+        }
+
 
         //Eliminamos todos sus series/pelis/animes añadidos a favoritos
         if($user && $userFavorites) {
@@ -182,14 +183,6 @@ class UserController extends Controller
         if($user && $userFavoritesLists) {
             foreach($userAllFavoritesLists as $favList) {
                 $favList->delete();
-            }
-        }
-
-
-        //Eliminamos todas sus reviews
-        if($user && $isset_reviews) {
-            foreach($user_reviews as $review) {
-                $review->delete();
             }
         }
 
