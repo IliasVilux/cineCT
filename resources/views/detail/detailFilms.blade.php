@@ -44,10 +44,6 @@
                         <p> {{ $film->release_date }}</p>
                     </div>
                     <div class="d-none d-sm-flex nowrap">
-                        <h6 class="pe-2"><b>{{ trans('titles.duration') }}:</b></h6>
-                        <p> {{ $film->duration }} min</p>
-                    </div>
-                    <div class="d-none d-sm-flex nowrap">
                         <h6 class="pe-2"><b>{{ trans('titles.rating') }}:</b></h6>
                         <p><i class="fas fa-star"></i>
                         <p> {{ $film->puntuation }}/10<p>
@@ -157,10 +153,6 @@
                     <div class="d-flex flex-column">
                         <h5 class="pe-2"><b>Fecha de lanzamiento:</b></h5>
                         <p> {{ $film->release_date }}</p>
-                    </div>
-                    <div class="d-flex flex-column">
-                        <h5 class="pe-2"><b>Duración:</b></h5>
-                        <p> {{ $film->duration }} min</p>
                     </div>
                     <div class="d-flex flex-column">
                         <h5 class="pe-2"><b>Puntuación:</b></h5>
