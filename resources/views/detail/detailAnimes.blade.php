@@ -3,7 +3,6 @@
 
     <head>
         <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/general.css') }}">
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
@@ -18,15 +17,16 @@
         </div>
     @endif
     <section class="container">
-        <a href="{{ url('/content/contentAnimes') }}" class="btn button-purple my-4" title="Back">
-            {{ trans('home.back') }}</a>
-
-        <h1 class="detail-title">{{ $anime->name }}</h1>
-
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <h1 class="detail-title">{{ $anime->name }}</h1>
+            <a href="{{ url('/content/contentAnimes') }}" class="btn button-purple my-4" title="Back">
+            {{ trans('titles.back') }}
+            </a>
         </div>
 
 
-        <article class="mt-4">
+
+        <article class="d-flex flex-row flex-sm-wrap justify-content-between">
             @if ($anime->poster_path == null)
                 <img src="/img/NoImg.jpg" class="img-thumbnail col-6 col-md-5 col-lg-4 mb-md-0" alt="">
             @else
@@ -57,8 +57,8 @@
                     <p> {{ $anime->puntuation }}</p>/10<p>
                 </div>
 
-                <div class="d-flex flex-column align-items-start">
-                    <h6 class="pe-2"><b>{{ trans('titles.how_much') }}</b></h6>
+                <div class="d-flex flex-column align-items-start mt-2">
+                    <h6><b>{{ trans('titles.how_much') }}</b></h6>
                     <form method="GET" class="d-flex flex-column align-items-center col-12 mb-xl-2">
                     <div class="rating col-12 d-flex flex-row-reverse justify-content-center">
                             <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
