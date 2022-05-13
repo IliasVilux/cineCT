@@ -33,7 +33,7 @@
                 <img src="{{ $anime->poster_path }}" class="img-thumbnail col-6 col-md-5 col-lg-4 mb-md-0"
                     alt="Img {{ $anime->name }}">
             @endif
-            <article class="col-6 more-info bg-dark p-3" id="datasheet">
+            <article class="col-6 more-info bg-dark p-3 ms-1" id="datasheet">
 
                 <div class="d-none d-sm-flex nowrap">
                     <h6 class="pe-2"><b>{{ trans('titles.genre') }}:</b></h6>
@@ -211,9 +211,9 @@
 
     <!-- START COMMMENT SECTION -->
     <section class="gradient-custom">
-        <div class="container my-5 py-5">
+        <div class="container my-0 py-0 py-sm-3">
             <div class="row d-flex justify-content-center">
-                <div class="col-12">
+                <div class="col-12 p-0 p-sm-2">
                     <div class="card card-comment bg-dark">
                         <div class="card-body card-body-comment p-4">
                             <h4 class="text-center mb-4 pb-2">{{ trans('titles.commentSection') }}</h4>

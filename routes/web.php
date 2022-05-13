@@ -127,13 +127,4 @@ Route::group(['middleware' => 'authenticate.user'], function () {
 });
 
 
-Route::get('/aboutUs/aboutUs', function () {
-    return view('/aboutUs/aboutUs');
-});
-
-
-//Test con apis
-Route::get('/api/films', [FilmController::class, 'store']);
-Route::get('/api/series', [SerieController::class, 'store']);
-
 //Route::get('/testing/models', [ModelRelationshipTest::class, 'tests'])->name('model.testing');
