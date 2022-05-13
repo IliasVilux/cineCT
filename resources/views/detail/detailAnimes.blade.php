@@ -36,29 +36,29 @@
             <article class="col-6 more-info bg-dark p-3 ms-1" id="datasheet">
 
                 <div class="d-none d-sm-flex nowrap">
-                    <h6 class="pe-2"><b>{{ trans('titles.genre') }}:</b></h6>
-                    <p>{{ $anime->genre->name }}</p>
+                    <h6 class="pe-2 fw-bold">{{ trans('titles.genre') }}:</h6>
+                    {{ $anime->genre->name }}
                 </div>
                 <div class="d-none d-sm-flex nowrap">
-                    <h6 class="pe-2"><b>{{ trans('titles.release') }}:</b></h6>
-                    <p> {{ $anime->release_date }}</p>
+                    <h6 class="pe-2 fw-bold">{{ trans('titles.release') }}:</h6>
+                     {{ $anime->release_date }}
                 </div>
                 <div class="d-none d-sm-flex nowrap">
-                    <h6 class="pe-2"><b>{{ trans('titles.duration') }}:</b></h6>
-                    <p> {{ $anime->duration }} min</p>
+                    <h6 class="pe-2 fw-bold">{{ trans('titles.duration') }}:</h6>
+                     {{ $anime->duration }} min
                 </div>
                 <div class="d-none d-sm-flex nowrap">
-                    <h6 class="pe-2"><b>{{ trans('titles.total_episodes') }}:</b></h6>
-                    <p> {{ $anime->total_episodes }}</p>
+                    <h6 class="pe-2 fw-bold">{{ trans('titles.total_episodes') }}:</h6>
+                     {{ $anime->total_episodes }}
                 </div>
                 <div class="d-none d-sm-flex nowrap">
-                    <h6 class="pe-2"><b>{{ trans('titles.rating') }}:</b></h6>
-                    <p><i class="fas fa-star"></i>
-                    <p> {{ $anime->puntuation }}</p>/10<p>
+                    <h6 class="pe-2 fw-bold">{{ trans('titles.rating') }}:</h6>
+                    <i class="fas fa-star m-1"></i>
+                     {{ $anime->puntuation }}/10
                 </div>
 
                 <div class="d-flex flex-column align-items-start mt-2">
-                    <h6><b>{{ trans('titles.how_much') }}</b></h6>
+                    <h6 class="fw-bold">{{ trans('titles.how_much') }}</h6>
                     <form method="GET" class="d-flex flex-column align-items-center col-12 mb-xl-2">
                     <div class="rating col-12 d-flex flex-row-reverse justify-content-center">
                             <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>

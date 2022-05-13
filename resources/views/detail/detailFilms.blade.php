@@ -35,21 +35,21 @@
                     alt="Img {{ $film->name }}">
             @endif
             <article class="col-6 more-info bg-dark p-3 ms-1" id="datasheet">
-                    <div class="d-none d-sm-flex nowrap">
-                        <h6 class="pe-2"><b>{{ trans('titles.genre') }}:</b></h6>
-                        <p>{{ $film->genre->name }}</p>
+                    <div class="d-none align-content-center flex-wrap d-sm-flex">
+                        <h6 class="pe-2 fw-bold">{{ trans('titles.genre') }}:</h6>
+                        {{ $film->genre->name }}
                     </div>
-                    <div class="d-none d-sm-flex nowrap">
-                        <h6 class="pe-2"><b>{{ trans('titles.release') }}:</b></h6>
-                        <p> {{ $film->release_date }}</p>
+                    <div class="d-none align-content-center flex-wrap d-sm-flex">
+                        <h6 class="pe-2 fw-bold">{{ trans('titles.release') }}:</h6>
+                         {{ $film->release_date }}
                     </div>
-                    <div class="d-none d-sm-flex nowrap">
-                        <h6 class="pe-2"><b>{{ trans('titles.rating') }}:</b></h6>
-                        <p><i class="fas fa-star"></i>
-                        <p> {{ $film->puntuation }}/10<p>
+                    <div class="d-none align-content-center flex-wrap d-sm-flex">
+                        <h6 class="pe-2 fw-bold">{{ trans('titles.rating') }}:</h6>
+                        <i class="fas fa-star m-1"></i>
+                         {{ $film->puntuation }}/10
                     </div>
                     <div class="d-flex flex-column align-items-start mt-2">
-                        <h6><b>{{ trans('titles.how_much') }}</b></h6>
+                        <h6 class="fw-bold">{{ trans('titles.how_much') }}</h6>
                         <form method="GET" class="d-flex flex-column align-items-center col-12 mb-xl-2">
                             <div class="rating col-12 d-flex flex-row-reverse justify-content-center">
                                 <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>

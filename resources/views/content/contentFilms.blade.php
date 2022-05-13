@@ -67,11 +67,11 @@
 <section class="d-flex flex-wrap align-items-center mt-md-2">
     <!--EMPIEZAN: TODOS LOS BOTONES PARA FILTRAR-->
     @foreach($genres as $genre)
-    <button class="button-category col-lg col-3">
-        <a href="{{route('film.films-filtered', ['genre' => $genre])}}">
+    <a href="{{route('film.films-filtered', ['genre' => $genre])}}" class="col-lg col-3">
+    <button class="button-category col-12">
             <p class="m-0">{{trans('titles.'.$genre.'')}}</p>
-        </a>
-    </button>
+        </button>
+    </a>
     @endforeach
     <!--ACABAN: TODOS LOS BOTONES PARA FILTRAR-->
 </section>
@@ -86,12 +86,12 @@
     if(!empty($films)) {
     echo '<div class="content d-flex flex-wrap align-items-stretch justify-content-center">';
 
-    foreach($films as $data) {
-        echo '<a href="/detail/detailFilms/'.$data->id.'" class="image-link col-3 col-sm-2 p-2">';
-        if($data->poster_path === NULL) {
+    foreach($films as $film) {
+        echo '<a href="/detail/detailFilms/'.$film->id.'" class="image-link col-3 col-sm-2 p-2">';
+        if($film->poster_path === NULL) {
         echo '<img src="/img/NoImg.jpg" class="img-content col-12" alt="No Image">';
         } else {
-        echo '<img src="'.$data->poster_path.'" class="img-content col-12" alt="'.$data->name.'">
+        echo '<img src="'.$film->poster_path.'" class="img-content col-12" alt="'.$film->name.'">
         </a>';
     }
 }

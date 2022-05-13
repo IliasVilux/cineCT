@@ -28,7 +28,7 @@
                     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                        <a class="navbar-brand me-0 d-flex align-content-center ms-3" href="{{ url('home') }}">
+                        <a class="navbar-brand me-0 d-flex align-content-center ms-2 ms-sm-3" href="{{ url('home') }}">
                             <img src="/img/CinectLogo.svg" class="logo">
                         </a>
                 </div>
@@ -41,7 +41,7 @@
                             @if(Auth::user()->image_id === null)
                             <i class="fas fa-user-circle fs-4 pe-1"></i>
                             @else
-                            <img class="img-profile-navbar" src="{{ Auth::user()->image->path }}" alt="{{Auth::user()->image->id}}">
+                            <img class="img-profile-navbar me-sm-2" src="{{ Auth::user()->image->path }}" alt="{{Auth::user()->image->id}}">
                             @endif
 
                             @if (Auth::check())

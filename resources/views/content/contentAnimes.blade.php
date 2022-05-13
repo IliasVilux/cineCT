@@ -73,22 +73,22 @@
 <section class="d-flex flex-wrap align-items-center mt-md-2">
     <!--EMPIEZAN: TODOS LOS BOTONES PARA FILTRAR-->
     @foreach ($genres as $genre)
-    <button class="button-category col-lg col-3">
-        <a href="{{ route('anime.animes-filtered', ['genre' => $genre->name]) }}">
-            <p class="m-0">{{ trans('titles.' . $genre->name . '') }}</p>
+        <a href="{{route('anime.animes-filtered', ['genre' => $genre]) }}" class="col-lg col-3">
+            <button class="button-category col-12">
+                <p class="m-0">{{ trans('titles.' . $genre->name . '') }}</p>
+            </button>
         </a>
-    </button>
     @endforeach
     <!--ACABAN: TODOS LOS BOTONES PARA FILTRAR-->
 </section>
 
 <section class="d-none d-lg-flex flex-wrap align-items-center">
     @foreach ($otherGenres as $genre)
-    <button class="button-category col-lg col-3">
-        <a href="{{ route('anime.animes-filtered', ['genre' => $genre]) }}">
-            <p class="m-0 p-2">{{ trans('titles.' . $genre . '') }}</p>
+        <a href="{{route('anime.animes-filtered', ['genre' => $genre]) }}" class="col-lg col-3">
+            <button class="button-category col-12">
+                <p class="m-0">{{trans('titles.'.$genre.'')}}</p>
+            </button>
         </a>
-    </button>
     @endforeach
 </section>
 
@@ -105,11 +105,11 @@
     <!--EMPIEZAN: TODOS LOS BOTONES DE OTROS GENEROS PARA FILTRAR-->
     <section class="d-flex flex-wrap align-items-center">
         @foreach ($otherGenres as $genre)
-        <button class="button-category col-lg col-3">
-            <a href="{{ route('anime.animes-filtered', ['genre' => $genre]) }}">
-                <p class="m-0 p-2">{{ trans('titles.' . $genre . '') }}</p>
-            </a>
-        </button>
+        <a href="{{route('anime.animes-filtered', ['genre' => $genre]) }}" class="col-lg col-3">
+            <button class="button-category col-12">
+                <p class="m-0">{{trans('titles.'.$genre.'')}}</p>
+            </button>
+        </a>
         @endforeach
     </section>
     <!--ACABAN: TODOS LOS BOTONES DE OTROS GENEROS PARA FILTRAR-->
@@ -126,15 +126,15 @@
         if (!empty($animes)) {
             echo '<div class="content d-flex flex-wrap align-items-stretch justify-content-center">';
         
-            foreach ($animes as $data) {
-                echo '<a href="/detail/detailAnimes/' . $data->id . '" class="image-link col-3 col-sm-2 p-2">';
-                if ($data->poster_path === null) {
+            foreach ($animes as $anime) {
+                echo '<a href="/detail/detailAnimes/' . $anime->id . '" class="image-link col-3 col-sm-2 p-2">';
+                if ($anime->poster_path === null) {
                     echo '<img src="/img/NoImg.jpg" class="img-content col-12" alt="No Image">';
                 } else {
                     echo '<img src="' .
-                        $data->poster_path .
+                        $anime->poster_path .
                         '" class="img-content col-12" alt="' .
-                        $data->name .
+                        $anime->name .
                         '">
                 </a>';
                 }
