@@ -29,8 +29,21 @@ return [
     'video_error' => 'Si el video no funciona, es porque se ha eliminado de Youtube. Te invitamos a buscar uno nuevo y descubrir más sobre este contenido en ',
 
     // Detail
-    'empty_msg' => 'No puedes publicar un mensaje vacío!!',
+    'rating_recieved' => 'Puntuación recibida: ',
 
+    // Comments
+    'empty_msg' => 'No puedes publicar un mensaje vacío!',
+    'too_long_msg' => 'Tu comentario es demasiado largo!',
+    'error_ocurred' => 'Ha habido un error al publicar tu comentario!',
+
+    // Session modal
+    'hi' => 'Holaa',
+    'open_session' => 'tienes tu sesión abierta, qué quieres hacer?',
+    'back' => 'Volver',
+    'close_session' => 'Cerrar sesión',
+
+    // Search
+    'found_results' => 'Resultados encontrados con',
 
 
 ];

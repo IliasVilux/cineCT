@@ -6,7 +6,6 @@
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     </head>
     <section class="container top_content my-5">
-
         <div class="cinect-carousel">
             <div class="cinect-carousel--container">
                 <div class="cinect-carousel--container--content">
@@ -15,18 +14,14 @@
                         @foreach ($films->take(3) as $film)
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingOne">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-film_{{ $film->original_id }}" aria-expanded="false"
-                                        aria-controls="flush-collapseOne">
+                                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#flush-film_{{ $film->original_id }}" aria-expanded="false" aria-controls="flush-collapseOne">
                                         <div class="accordion-button--img">
                                             <img src="{{ $film->poster_path }}" alt="{{ $film->name }}">
                                             <span class="accordion-button--img__identifier"><?= $contador ?></span>
                                         </div>
                                     </button>
                                 </h2>
-                                <div id="flush-film_{{ $film->original_id }}"
-                                    class="accordion-collapse collapse content-detail" aria-labelledby="flush-headingOne"
-                                    data-bs-parent="#accordionFlushExample">
+                                <div id="flush-film_{{ $film->original_id }}" class="accordion-collapse collapse content-detail" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body">
                                         <span><?= $contador++ ?></span>
                                         <a href="{{ route('film.films', ['id' => $film->id]) }}">{{ $film->name }}</a>
@@ -38,22 +33,17 @@
                         @foreach ($animes->take(3) as $anime)
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingOne">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-film_{{ $anime->original_id }}" aria-expanded="false"
-                                        aria-controls="flush-collapseOne">
+                                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#flush-film_{{ $anime->original_id }}" aria-expanded="false" aria-controls="flush-collapseOne">
                                         <div class="accordion-button--img">
                                             <img src="{{ $anime->poster_path }}" alt="{{ $anime->name }}">
                                             <span class="accordion-button--img__identifier"><?= $contador ?></span>
                                         </div>
                                     </button>
                                 </h2>
-                                <div id="flush-film_{{ $anime->original_id }}"
-                                    class="accordion-collapse collapse content-detail" aria-labelledby="flush-headingOne"
-                                    data-bs-parent="#accordionFlushExample">
+                                <div id="flush-film_{{ $anime->original_id }}" class="accordion-collapse collapse content-detail" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body">
                                         <span><?= $contador++ ?></span>
-                                        <a
-                                            href="{{ route('anime.animes', ['id' => $anime->id]) }}">{{ $anime->name }}</a>
+                                        <a href="{{ route('anime.animes', ['id' => $anime->id]) }}">{{ $anime->name }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -62,27 +52,21 @@
                         @foreach ($series->take(4) as $serie)
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingOne">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-film_{{ $serie->original_id }}" aria-expanded="false"
-                                        aria-controls="flush-collapseOne">
+                                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#flush-film_{{ $serie->original_id }}" aria-expanded="false" aria-controls="flush-collapseOne">
                                         <div class="accordion-button--img">
                                             <img src="{{ $serie->poster_path }}" alt="{{ $serie->name }}">
                                             <span class="accordion-button--img__identifier"><?= $contador ?></span>
                                         </div>
                                     </button>
                                 </h2>
-                                <div id="flush-film_{{ $serie->original_id }}"
-                                    class="accordion-collapse collapse content-detail" aria-labelledby="flush-headingOne"
-                                    data-bs-parent="#accordionFlushExample">
+                                <div id="flush-film_{{ $serie->original_id }}" class="accordion-collapse collapse content-detail" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body">
                                         <span><?= $contador++ ?></span>
-                                        <a
-                                            href="{{ route('serie.series', ['id' => $serie->id]) }}">{{ $serie->name }}</a>
+                                        <a href="{{ route('serie.series', ['id' => $serie->id]) }}">{{ $serie->name }}</a>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
-
                     </div>
                 </div>
             </div>
@@ -94,10 +78,10 @@
                     <?php $ariaCurrent = true; $slide_to=0; $aria_label =1;  ?>
                         @foreach(array_slice($contents, 0, 6) as $content)
                             @if($ariaCurrent)
-                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="<?=$slide_to++?>"class="active" aria-current="true" aria-label="Slide <?=$aria_label++?>"></button>
+                                <button data-bs-target="#carouselExampleCaptions" data-bs-slide-to="<?=$slide_to++?>"class="active" aria-current="true" aria-label="Slide <?=$aria_label++?>"></button>
                                 <?= $ariaCurrent = false?>
                             @else
-                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="<?=$slide_to++?>" aria-label="Slide <?=$aria_label++?>"></button>
+                                <button data-bs-target="#carouselExampleCaptions" data-bs-slide-to="<?=$slide_to++?>" aria-label="Slide <?=$aria_label++?>"></button>
                             @endif
                     @endforeach
                 </div>
@@ -121,53 +105,49 @@
             </div>
         </div>
 
-
-        <h3 class="mb-3 content-title">Top {{ trans('titles.films') }}</h3>
+        <h3 class="mb-3 text-center content-title">Top {{ trans('titles.films') }}</h3>
         <section class="cinet_top--content">
             @foreach ($films->take(10) as $film)
                 <a class="p-2" href="{{ route('film.films', ['id' => $film->id]) }}">
                     <div class="cinet_top--detail">
-                        <div><img src="{{ $film->poster_path }}" alt=""></div>
+                        <img src="{{ $film->poster_path }}">
+                        <p>{{ $film->name }}<span>{{ $film->puntuation }}</span></p>
                     </div>
-                    <p>{{ $film->name }}<span>{{ $film->puntuation }}</span></p>
                 </a>
             @endforeach
-            <a class="d-block btn btn-link mt-4 w-100 text-decoration-none border-0"
-                    href="{{ route('film.all-films') }}">{{ trans('home.view_more') }}</a>
         </section>
+        <div class="d-flex justify-content-center mt-2">
+            <a class="btn button-purple col-2" href="{{ route('film.all-films') }}">{{ trans('home.view_more') }}</a>
+        </div>
 
-        <h3 class="mt-5 content-title">Top {{ trans('titles.series') }}</h3>
+        <h3 class="mt-5 text-center content-title">Top {{ trans('titles.series') }}</h3>
         <section class="cinet_top--content">
             @foreach ($series->take(10) as $serie)
                 <a class="p-2" href="{{ route('serie.series', ['id' => $serie->id]) }}">
                     <div class="cinet_top--detail">
-                        <div><img src="{{ $serie->poster_path }}" alt=""></div>
+                        <img src="{{ $serie->poster_path }}">
+                        <p>{{ $serie->name }}<span>{{ $serie->puntuation }}</span></p>
                     </div>
-                    <p>{{ $serie->name }}<span>{{ $serie->puntuation }}</span></p>
                 </a>
             @endforeach
-            <a class="d-block btn btn-link mt-4 w-100 text-decoration-none border-0"
-                    href="{{ route('serie.all-series') }}">{{ trans('home.view_more') }}</a>
         </section>
-
-        <h3 class="mt-5 content-title">Top {{ trans('titles.animes') }}</h3>
+        <div class="d-flex justify-content-center mt-2">
+            <a class="btn button-purple col-2" href="{{ route('serie.all-series') }}">{{ trans('home.view_more') }}</a>
+        </div>
+        <h3 class="mt-5 text-center content-title">Top {{ trans('titles.animes') }}</h3>
         <section class="cinet_top--content">
             @foreach ($animes->take(10) as $anime)
                 <a class="p-2" href="{{ route('anime.animes', ['id' => $anime->id]) }}">
                     <div class="cinet_top--detail">
-                        <div><img src="{{ $anime->poster_path }}" alt=""></div>
+                        <img src="{{ $anime->poster_path }}">
+                        <p>{{ $anime->name }}<span>{{ $anime->puntuation }}</span></p>
                     </div>
-                    <p>{{ $anime->name }}<span>{{ $anime->puntuation }}</span></p>
                 </a>
             @endforeach
-            <a class="d-block btn btn-link mt-4 w-100 text-decoration-none border-0" 
-                    href="{{ route('anime.all-animes') }}">{{ trans('home.view_more') }}</a>
         </section>
-
+        <div class="d-flex justify-content-center mt-2">
+            <a class="btn button-purple col-2"  href="{{ route('anime.all-animes') }}">{{ trans('home.view_more') }}</a>
+        </div>
     </section>
-
-    <script type="text/javascript">
-
-    </script>
-
+    <script type="text/javascript"></script>
 @endsection

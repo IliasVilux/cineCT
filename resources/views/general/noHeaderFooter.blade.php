@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -25,13 +24,9 @@ function showPasswd() {
     }
 }
 </script>
-
 <body>
-
     <main>
         @yield('content')
     </main>
-
 </body>
-
 </html>

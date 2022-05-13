@@ -1,9 +1,14 @@
 html{
     scroll-behavior: smooth;
-    scroll-padding-top: 70px;
+    scroll-padding-top: 60px;
 }
 
 /* EXTRA INFO AT THE RIGHT */
+
+h5 {
+    font-size: 10px;
+}
+
 #datasheet {
     font-size: 18px;
 }
@@ -77,6 +82,13 @@ div#social-links ul li a {
     color: orange;
     cursor: pointer;
 }
+
+/* TRAILER */
+iframe {
+    width: 200px;
+    height: 100px;
+}
+
 
 /* COMMENTS */
 
@@ -163,8 +175,6 @@ div#social-links ul li a {
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    border: 1.5px solid #5A3C97;
-    border-radius: 20px;
     /*transition: 1s all;*/
 }
 
@@ -199,14 +209,9 @@ div#social-links ul li a {
     margin: auto;
     object-fit: cover;
 }
-
-.comment-container__sort-container a{
-    transition: background-color 1s;
-}
-
-.comment-container__sort-container a:hover{
-    background-color: #5A3C97;
-
+.img-profile {
+    width: 40px;
+    height: 40px;
 }
 
 
@@ -216,7 +221,6 @@ div#social-links ul li a {
 
 
 @media screen and (min-width: 576px) {
-
     .rating label {
         float: right;
         color: #aaa;
@@ -248,17 +252,32 @@ div#social-links ul li a {
         font-size: 15px;
         padding: 8px;
     }
-    
+    iframe {
+        width: 600px;
+        height: 300px;
+    }
+    .img-profile {
+        width: 65px;
+        height: 65px;
+    }  
 }
 
 @media screen and (min-width: 768px){
+    h5 {
+        font-size: 20px;
+    }
     #datasheet div p{
         font-size: 20px;
     }
     .rating label {
         font-size: 43px;
+    }   
+    iframe {
+        width: 660px;
+        height: 380px;
     }
 }
+
 
 /*@media (max-width: 600px) {
     .comment{

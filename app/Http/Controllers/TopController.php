@@ -37,7 +37,7 @@ class TopController extends Controller
             }
         }
 
-        return view('top/top', [
+        return view('top.top', [
             'films' => $films,
             'series' => $series,
             'animes' => $animes,

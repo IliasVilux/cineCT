@@ -2,61 +2,70 @@
 @section('content')
 
     <head>
-        <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
         <link rel="stylesheet" href="{{ asset('css/general.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
+
     @if (Session::has('AnimeAdded'))
         <div class="alert alert-success" role="alert">
             <strong>{{ Session::get('AnimeAdded') }}!</strong>
         </div>
     @endif
+
     @if (Session::has('AnimeDeleted'))
         <div class="alert alert-success" role="alert">
             <strong>{{ Session::get('AnimeDeleted') }}!</strong>
         </div>
     @endif
+
+    @if (Session::has('review_deleted'))
+        <div class="alert cinect-custom-alert text-center" role="alert" id="review_deleted">
+            <strong>{{ Session::get('review_deleted') }}!</strong>
+        </div>
+    @endif
+
     <section class="container">
-        <a href="{{ url('/content/contentAnimes') }}" class="btn button-purple my-4" title="Back">
-            {{ trans('home.back') }}</a>
-
-        <h1 class="detail-title">{{ $anime->name }}</h1>
-
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <h1 class="detail-title">{{ $anime->name }}</h1>
+            <a href="{{ url('/content/contentAnimes') }}" class="btn button-purple my-4" title="Back">
+            {{ trans('titles.back') }}
+            </a>
         </div>
 
-
-        <article class="mt-4">
+        <article class="d-flex flex-row flex-sm-wrap justify-content-between">
             @if ($anime->poster_path == null)
-                <img src="/img/NoImg.jpg" class="img-thumbnail col-6 col-md-5 col-lg-4 mb-md-0" alt="">
+                <img src="/img/NoImg.jpg" class="img-thumbnail col-6 col-md-5 col-lg-4 mb-md-0">
             @else
-                <img src="{{ $anime->poster_path }}" class="img-thumbnail col-6 col-md-5 col-lg-4 mb-md-0"
-                    alt="Img {{ $anime->name }}">
+                <img src="{{ $anime->poster_path }}" class="img-thumbnail col-6 col-md-5 col-lg-4 mb-md-0" alt="Img {{ $anime->name }}">
             @endif
-            <article class="col-6 more-info bg-dark p-3" id="datasheet">
-
-                <div class="d-none d-sm-flex nowrap">
-                    <h6 class="pe-2"><b>{{ trans('titles.genre') }}:</b></h6>
-                    <p>{{ $anime->genre->name }}</p>
+            <article class="col-6 more-info bg-dark p-3 ms-1 ms-sm-0" id="datasheet">
+                <div class="d-none align-content-center flex-wrap d-sm-flex">
+                    <h5 class="pe-2 fw-bold">{{ trans('detail.genre') }}:</h5>
+                    <p>{{ \ContentGenre::TranslateGenre($anime->genre->name) }}</p>
                 </div>
-                <div class="d-none d-sm-flex nowrap">
-                    <h6 class="pe-2"><b>{{ trans('titles.release') }}:</b></h6>
-                    <p> {{ $anime->release_date }}</p>
+                <div class="d-none align-content-center flex-wrap d-sm-flex">
+                    <h5 class="pe-2 fw-bold">{{ trans('detail.release') }}:</h5>
+                    <p>{{ $anime->release_date }}</p>
                 </div>
-                <div class="d-none d-sm-flex nowrap">
-                    <h6 class="pe-2"><b>{{ trans('titles.total_episodes') }}:</b></h6>
-                    <p> {{ $anime->total_episodes }}</p>
+                <div class="d-none align-content-center flex-wrap d-sm-flex">
+                    <h5 class="pe-2 fw-bold">{{ trans('detail.duration') }}:</h5>
+                    <p>{{ $anime->duration }}min</p> 
                 </div>
-                <div class="d-none d-sm-flex nowrap">
-                    <h6 class="pe-2"><b>{{ trans('titles.rating') }}:</b></h6>
-                    <p><i class="fas fa-star"></i>
-                    <p> {{ $anime->puntuation }}</p>/10<p>
+                <div class="d-none align-content-center flex-wrap d-sm-flex">
+                    <h5 class="pe-2 fw-bold">{{ trans('detail.total_episodes') }}:</h5>
+                    <p>{{ $anime->total_episodes }}</p>
                 </div>
-
-                <div class="d-flex flex-column align-items-start">
-                    <h6 class="pe-2"><b>{{ trans('titles.how_much') }}</b></h6>
+                <div class="d-none align-content-center flex-wrap d-sm-flex">
+                    <h5 class="pe-2 fw-bold">{{ trans('detail.rating') }}:</h5>
+                    <i class="fas fa-star m-1"></i>
+                    <p>{{ $anime->puntuation }}/10</p>
+                </div>
+                <div class="d-flex flex-column align-items-start mt-2">
+                    <h5 class="fw-bold">{{ trans('detail.how_much') }}</h5>
                     <form method="GET" class="d-flex flex-column align-items-center col-12 mb-xl-2">
-                        <div class="rating col-12 d-flex justify-content-center">
+                    <div class="rating col-12 d-flex flex-row-reverse justify-content-center">
                             <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
                             <input name="stars" id="e2" type="radio" value="9"><label for="e2">☆</label>
                             <input name="stars" id="e3" type="radio" value="8"><label for="e3">☆</label>
@@ -68,77 +77,73 @@
                             <input name="stars" id="e9" type="radio" value="2"><label for="e9">☆</label>
                             <input name="stars" id="e10" type="radio" value="1"><label for="e10">☆</label>
                         </div>
-                        <button type="submit"
-                            class="btn button-purple col-6 mb-2 mb-xl-0">{{ trans('content.send_rating') }}</button>
+                        <button type="submit" class="btn button-purple col-6 mb-2 mb-xl-0">{{ trans('detail.send') }}</button>
                     </form>
                 </div>
                 <?php
-                if (isset($_GET['stars'])) {
-                    echo '<div class="alert alert-success">Rating recibido: <strong>' . $_GET['stars'] . '</strong>.</div>';
-                } elseif (isset($_GET['stars']) == '');
+                    if (isset($_GET['stars'])) {
+                        echo '<div class="alert alert-success">'.trans("warnings.rating_recieved").'<strong>' . $_GET['stars'] . '</strong>.</div>';
+                    } elseif (isset($_GET['stars']) == '');
                 ?>
-                <div class="d-flex flex-row justify-content-center">
-                    <div class="dropdown">
+                <div class="d-flex flex-row flex-wrap justify-content-center">
+                    <div class="dropdown my-sm-2">
                         <button type="button" class="btn button-purple dropdown-toggle" data-bs-toggle="dropdown">
-                            {{ trans('titles.add_favs') }}
+                            {{trans('detail.add_favs')}}
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#myModal">Crear nueva lista</a></li>
+                            <li>
+                                <a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#myModal">{{trans('detail.list_name')}}</a>
+                            </li>
                             @foreach ($userLists as $list)
-                                <li><a class="dropdown-item" href="/detail/detailAnimes/{{$anime->id}}/{{$list->id}}/addFav">{{ $list->name }}</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="/detail/detailAnimes/{{$anime->id}}/{{$list->id}}/addFav">{{ $list->name }}</a>
+                                </li>
                             @endforeach
                         </ul>
                     </div>
-                    <!-- The Modal -->
+                    <!-- Modal new list -->
                     <div class="modal fade" id="myModal">
                         <div class="modal-dialog text-dark">
                             <div class="modal-content">
-
                                 <form action="/detail/detailAnimes/{{ $anime->id }}/addNewList">
-                                    <!-- Modal body -->
                                     <div class="modal-body">
                                         <div class="form-group">
-                                            <input type="text" id="newListName" name="newListName" class="form-control"
-                                                placeholder="Nombre de la lista">
+                                            <input type="text" id="newListName" name="newListName" class="form-control" placeholder="{{trans('detail.new_list')}}">
                                         </div>
                                     </div>
-
-                                    <!-- Modal footer -->
                                     <div class="modal-footer">
-                                        <button class="btn button-purple">{{ trans('titles.new_list') }}</button>
-                                        <a type="button" class="btn btn-danger"
-                                            data-bs-dismiss="modal">{{ trans('titles.close') }}</a>
+                                        <button class="btn btn-violet">{{ trans('detail.new_list') }}</button>
+                                        <button class="btn btn-outline-danger" data-bs-dismiss="modal">{{ trans('titles.close') }}</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-
                     @if (isset($userTopList[0]->name))
-                        <a href="/detail/detailAnimes/{{ $anime->id }}/{{ $userTopList[0]->id }}/addFav"><button
-                                type="button" class="btn button-purple btn-md">Añadir a
-                                {{ $userTopList[0]->name }}</button></a>
+                        <a href="/detail/detailAnimes/{{ $anime->id }}/{{ $userTopList[0]->id }}/addFav">
+                            <button class="btn button-purple">{{ trans('detail.add_to') }} {{ $userTopList[0]->name }}</button>
+                        </a>
                     @endif
-
                     @if(!empty($userListsWhereAnime))
-                        <div class="dropdown mx-2">
-                            <button type="button" class="btn button-purple btn-md dropdown-toggle" data-bs-toggle="dropdown">
-                                Eliminar de favoritos
+                        <div class="dropdown mx-2 my-sm-2">
+                            <button class="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown">
+                                {{ trans('detail.delete_favourite') }}
                             </button>
                             <ul class="dropdown-menu">
                                 @foreach ($userListsWhereAnime as $list)
-                                    <li><a class="dropdown-item" href="/detail/detailAnimes/{{$anime->id}}/{{$list->id}}/delFav">{{ $list->name }}</a></li>
+                                    <li>
+                                        <a class="dropdown-item" href="/detail/detailAnimes/{{$anime->id}}/{{$list->id}}/delFav">{{ $list->name }}</a>
+                                    </li>
                                 @endforeach
                             </ul>
                         </div>
                     @endif
                     @if (empty($userListsWhereAnime))
-                    <div class="social-media-links mx-2">
+                    <div class="social-media-links mx-2 my-sm-2">
                     @else
-                    <div class="social-media-links">
+                    <div class="social-media-links my-sm-2">
                     @endif
-                        <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button"
-                            aria-expanded="false" aria-controls="shareComponent">
+                        <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button" aria-expanded="false" aria-controls="shareComponent">
                             <i class="fas fa-share-alt"></i>
                         </a>
                     </div>
@@ -150,47 +155,52 @@
         </article>
 
         <div class="px-2">
-            <h5 class="pt-4"><b>Resumen</b></h5>
+            <h5 class="pt-4"><b>{{ trans('detail.summary') }}</b></h5>
             <p class="description col-12 d-flex">{{ $anime->description }}</p>
 
             <article class="d-sm-none">
                 <div class="d-flex flex-column">
-                    <h5 class="pe-2"><b>Género:</b></h5>
+                    <h5 class="pe-2 fw-bold">{{ trans('detail.genre') }}:</h5>
                     <p>{{ $anime->genre->name }}</p>
                 </div>
                 <div class="d-flex flex-column">
-                    <h5 class="pe-2"><b>Fecha de lanzamiento:</b></h5>
-                    <p> {{ $anime->release_date }}</p>
+                    <h5 class="pe-2 fw-bold">{{ trans('detail.release') }}:</h5>
+                    <p>{{ $anime->release_date }}</p>
                 </div>
                 <div class="d-flex flex-column">
-                    <h5 class="pe-2"><b>Puntuación:</b></h5>
-                    <p><i class="fas fa-star"></i> {{ $anime->puntuation }}/10
-                    <p>
+                    <h5 class="pe-2 fw-bold">{{ trans('detail.duration') }}:</h5>
+                    <p>{{ $anime->duration }}min</p> 
+                </div>
+                <div class="d-flex flex-column">
+                    <h5 class="pe-2 fw-bold">{{ trans('detail.total_episodes') }}:</h5>
+                    <p>{{ $anime->total_episodes }}</p>
+                </div>
+                <div class="d-flex flex-column">
+                    <h5 class="pe-2 fw-bold">{{ trans('detail.rating') }}:</h5>
+                    <i class="fas fa-star m-1"></i>
+                    <p>{{ $anime->puntuation }}/10</p>
                 </div>
             </article>
         </div>
-
-
+        <!-- START TRAILER SECTION -->
         <article class="d-flex flex-column flex wrap align-items-center p-3">
-            <h3 class="text-uppercase pb-3">Tráiler</h3>
-            <!-- START TRAILER SECTION -->
+            <h3 class="text-uppercase pb-3">{{ trans('detail.trailer') }}</h3>
             @if ($anime->trailer_link != null)
-                <iframe class="w-75" height="500"
-                    src="https://www.youtube.com/embed/{{ $anime->trailer_link }}" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/{{ $anime->trailer_link }}" allowfullscreen></iframe>
                 <div class="alert alert-dark w-75 my-3" role="alert">
                     {{ trans('warnings.video_error') }}
                     <a href="https://www.youtube.com/results?search_query={{ $anime->name }} trailer">Youtube</a>.
                 </div>
             @endif
-            <!-- END TRAILER SECTION -->
         </article>
+        <!-- END TRAILER SECTION -->
+
         <article class="pb-3">
             <div class="text-center pt-3 "><span id="character-counter"></span></div>
             <form method="POST" action="" id="create-comment" class="create_comment">
                 @csrf
-                <textarea name="description" id="description" cols="50" rows="3" placeholder="Escribe un comentario"></textarea>
-                <button class="btn button-purple mt-3" type="submit"
-                    id="commentSubmit">{{ trans('titles.publish') }}</button>
+                <textarea name="description" id="description" cols="50" rows="3" placeholder="{{trans('detail.write_comment')}}"></textarea>
+                <button class="btn button-purple mt-3" type="submit" id="commentSubmit">{{ trans('detail.publish') }}</button>
             </form>
             <div id="notify_user"></div>
             @if ($errors->has('description'))
@@ -203,12 +213,12 @@
 
     <!-- START COMMMENT SECTION -->
     <section class="gradient-custom">
-        <div class="container my-5 py-5">
+        <div class="container my-0 py-0 py-sm-3">
             <div class="row d-flex justify-content-center">
-                <div class="col-12">
+                <div class="col-12 p-0 p-sm-2">
                     <div class="card card-comment bg-dark">
                         <div class="card-body card-body-comment p-4">
-                            <h4 class="text-center mb-4 pb-2">{{ trans('titles.commentSection') }}</h4>
+                            <h4 class="text-center mb-4 pb-2">{{ trans('detail.commentSection') }}</h4>
 
                             <div class="row">
                                 <div class="col" id="comment-container">
@@ -219,13 +229,13 @@
                                     @endforeach
                                 </div>
                             </div>
-                            <div class="alert alert-success d-none" id="msg_div" role="alert">
-
-                            </div>
+                            <div class="alert alert-success d-none" id="msg_div" role="alert"></div>
                         </div>
                     </div>
+
                 </div>
             </div>
+        </div>
     </section>
     <!-- END COMMENT SECTION -->
     <script type="text/javascript">
@@ -269,11 +279,10 @@
                     let commentDescription = response.comment['description'];
                     let commentHtml =
                         `<div class="d-flex flex-start mb-4" id="content_id-${commentID}">
-                        <div><img class="rounded-circle shadow-1-strong me-3" src="{{ Auth::user()->image->path }}" width="65"height="65"></div>
+                        <div><img class="img-profile rounded-circle shadow-1-strong me-3" src="{{ Auth::user()->image->path }}"></div>
                         <div class="flex-grow-1 flex-shrink-1"><div>
                             <div class="d-flex justify-content-between align-items-center">
                                 <p class="mb-1">{{ Auth::user()->nick }} <span class="text-muted" id="last-comment"></span></p> 
-                                <a href="#!"><i class="fas fa-reply fa-xs"></i><span class="text-muted">reply</span></a> 
                             </div>
                             <p class="small mb-0 comment">${ commentDescription }</p>
                             </div>
@@ -283,7 +292,7 @@
                                 <form class="mt-2" method="POST" action="/review/delete/${commentID}">
                                     @csrf
                                     <input type="hidden" id="${ commentID }" name="user-comment" value="${ commentID }">
-                                    <button class="btn btn-outline-primary" type="submit">{{ trans('titles.delete_review') }}</button>
+                                    <button class="btn btn-outline-danger" type="submit">{{ trans('detail.delete_review') }}</button>
                                 </form>
                             </div>
                         </div>
@@ -322,15 +331,15 @@
 
             if (description == '') {
                 jQuery('#notify_user').html(
-                    `<div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-circle"></i>Tu comentario esta vacío.</div>`
+                    `<div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-circle"></i>{{ trans('warnings.empty_msg') }}</div>`
                 );
             } else if (description.length > 255) {
                 jQuery('#notify_user').html(
-                    `<div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-circle"></i>Tu comentario es demasiado largo.</div>`
+                    `<div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-circle"></i>{{ trans('warnings.too_long_msg') }}</div>`
                 );
             } else {
                 jQuery('#notify_user').html(
-                    `<div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-circle"></i>Ha ocurrido un error al publicar tu comentario.</div>`
+                    `<div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-circle"></i>{{ trans('warnings.error_ocurred') }}</div>`
                 );
 
                 //location.reload();
@@ -389,12 +398,9 @@
                     }
                 });
                 dislike();
-
             })
         }
-
         like();
-
 
         function dislike() {
             jQuery('.btn-dislike').unbind('click').click(function() {
@@ -421,7 +427,6 @@
                 like();
             })
         }
-
         dislike();
     </script>
 @endsection

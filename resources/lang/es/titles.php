@@ -21,8 +21,7 @@ return [
     'animes' => 'Animes',
     'top' => 'Top',
     'search' => 'Buscador',
-    'lists' => 'Biblioteca',
-    'about' => 'Sobre nosotros',
+    'lists' => 'Biblioteca', 
     'activity' => 'Actividad',
     'logout' => 'Cerrar sesión',
 
@@ -38,7 +37,6 @@ return [
     'fiction' => 'Ciencia ficción / Fantasía',
     'drama' => 'Drama / Misterio',
     'crime' => 'Bélico / Crimen',
-    'delete_review' => 'Eliminar comentario',
 
     'samurai' => 'Samurái',
     'shounen' => 'Shounen',
@@ -50,24 +48,9 @@ return [
     'josei' => 'Josei',
     'unknown' => 'Desconocido',
 
-    // Comments
-    'commentSection' => 'Sección de comentarios',
-
     // Other
     'back' => 'Atrás',
     'close' => 'Cerrar',
-    'genre' => 'Género',
-    'release' => 'Fecha de publicación',
-    'duration' => 'Duración',
-    'seasons' => 'Temporadas',
-    'total_episodes' => 'Capítulos totales',
-    'rating' => 'Puntuación',
-    'how_much' => '¿Cuánto te ha gustado?',
-    'send' => 'Enviar',
-    'add_favs' => 'Añadir a favoritos',
-    'publish' => 'Publicar',
-    'new_list' => 'Crear nueva lista',
-    'trailer' => 'Tráiler',
 
     // Time
     'second' => 'segundo',
@@ -81,4 +64,20 @@ return [
     'month' => 'mes',
     'months' => 'meses',
     'ago' => 'Hace',
+
+    
+    //DB translate
+    'db_action' => 'Acción',
+    'db_adventure' => 'Aventura',
+    'db_drama' => 'Drama',
+    'db_fantasy' => 'Fantasía',
+    'db_horror' => 'Terror',
+    'db_mystery' => 'Misterio' ,
+    'db_suspense' => 'Suspense' ,
+    'db_animation' => 'Animación',
+    'db_crime' => 'Crimen' ,
+    'db_family' => 'Família' ,
+    'db_science_fiction' => 'Ciencia ficción' ,
+    'db_sci_fi' => 'Ciencia ficción' ,
+    'db_war' => 'Guerra',
 ];

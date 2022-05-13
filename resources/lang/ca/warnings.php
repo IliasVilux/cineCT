@@ -30,5 +30,19 @@ return [
     'video_error' => 'Si el video no funciona, és perque s\'ha eliminat el video de Youtube. T\'invitem a buscar-ne un de nou i descobrir més sobre aquest contingut a ',
 
     // Detail
+    'rating_recieved' => 'Puntuació rebuda: ',
+
+    // Comments
     'empty_msg' => 'No pots  publicar un comentari buit!',
+    'too_long_msg' => 'El teu comentari és massa llarg!',
+    'error_ocurred' => 'Ha hagut un error al publicar el teu comentari!',
+
+    // Session modal
+    'hi' => 'Holaa',
+    'open_session' => 'tens la sessió oberta, què vols fer?',
+    'back' => 'Tornar',
+    'close_session' => 'Tancar sessió',
+
+    // Search
+    'found_results' => 'Resultats trobats per',
 ];

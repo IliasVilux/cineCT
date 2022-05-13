@@ -1,6 +1,7 @@
 <?php
 
 use App\Helpers\UploadTimeFormat;
+use App\Helpers\GenreTranslate;
 use App\Providers\DateTimeFormatServiceProvider;
 
 return [
@@ -181,6 +182,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\DateTimeFormatServiceProvider::class,
+        App\Providers\GenreTanslateServiceProvider::class,
+        
 
     ],
 
@@ -238,6 +241,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Share' => Jorenvh\Share\ShareFacade::class,
         'DateTimeFormat' => UploadTimeFormat::class,
+        'ContentGenre' => GenreTranslate::class,
 
     ],
 

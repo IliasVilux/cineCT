@@ -4,20 +4,18 @@
                 <i class="fas fa-user-circle fs-4 pe-1"></i>
             @else
                 @if($comment)
-                    <img class="rounded-circle shadow-1-strong me-3" src="{{ $comment->user->image->path }}" alt="a" width="65"height="65">
+                    <img class="img-profile rounded-circle shadow-1-strong me-3" src="{{ $comment->user->image->path }}" alt="a">
                 @endif
             @endif
-            
         </div>
         <div class="flex-grow-1 flex-shrink-1">
             <div class="d-flex flex-wrap flex-column align-items-start">
                 <div class="col-12">
                     <p class="mb-1">{{ $comment->user->nick }} <span class="text-muted ms-2">{{\DateTimeFormat::timeFilter($comment->created_at)}}</span></p>
                 </div>
-                <p class="text-break">{{ $comment->description }}</p>
+                <p class="text-break m-0">{{ $comment->description }}</p>
             </div>
             <div class="like-container">
-
                 <!--CHECKING IF USER'S LIKE ALREADY EXISTS-->
                 <?php $user_like = false; ?>
                 @foreach($comment->like as $like)
@@ -33,16 +31,14 @@
                 @endif
                     <span id="like-counter">{{count($comment->like)}} likes</span>
             </div>
-
             
             @if($comment->user_id == Auth::user()->id)
             <form class="mt-2" method="POST" action="{{ route('user.comment-delete',['id' => $comment->id]) }}">
                 @csrf
-                    <input type="hidden" id="{{$comment->id}}" name="user-comment" value="{{$comment->id}}">
-                    <button class="btn btn-outline-primary" type="submit">{{trans('titles.delete_review')}}</button>
+                <input type="hidden" id="{{$comment->id}}" name="user-comment" value="{{$comment->id}}">
+                <button class="btn btn-outline-danger" type="submit">{{trans('titles.delete_review')}}</button>
             </form>
             @endif
-            
             
             {{--
             <!----START REPLY COMMENT---->

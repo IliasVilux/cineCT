@@ -4,14 +4,42 @@ html, main, body {
   font-size: 10px;
 }
 
+#btn-back-to-top {
+  color: white;
+  border: 1px solid #5A3C97;
+  background-color: #5A3C97;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+}
+
+#btn-back-to-top:hover {
+  color: white;
+  border: 1px solid #5A3C97;
+  background-color: #5A3C97;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+}
+
+
+.button-purple,
+.btn-outline-danger,
+.btn-violet{
+  font-size: 7px;
+  height: 20px;
+}
+
 .button-purple{
   color: #FFFFFF;
   border: 1px solid #5A3C97;
   background-color: #16181d;
-  font-size: 6px;
 }
+
 .button-purple:hover{
-  border: 1px solid #FFFFFF;
+  border: 1px solid #5A3C97;
   color: white;
   background-color: #5A3C97;
 }
@@ -44,16 +72,14 @@ html, main, body {
 }
 
 .btn-violet{
-  color: #FFFFFF;
+  color: #5A3C97;
   border: 1.5px solid #5A3C97;
   text-align: center;
-  transition: color 1s, background-color 1s;
 }
 
 .btn-violet:hover{
   color: #FFFFFF;
   background-color: #5A3C97;
-  animation: boxShadow 2s infinite;
 }
 
 a {
@@ -68,8 +94,6 @@ h3.title{
 h1.detail-title {
   margin: 0;
 }
-
-
 
 /* Img slider */
 
@@ -98,9 +122,14 @@ a.link-img-carousel {
 }
 
 .img-carousel {
+  transition: transform .8s ease;
   width: 60px;
   height: 100%;
   border-radius: 10px;
+}
+
+.img-carousel:hover {
+  transform: scale(1.2);
 }
 
 .carousel-inner {
@@ -124,12 +153,94 @@ a.link-img-carousel {
   border-radius: 10px;
 }
 
-.img-profile-navbar{
-  width:50px;
-  height: 50px;
+.img-profile-navbar {
+  height: 15px;
   object-fit: cover;
-  padding: 5px;
   border-radius: 50%;
+}
+
+.profile-images{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+
+.profile-images div {
+  padding: 20px;
+}
+
+.profile-images div a {
+  text-decoration: none;
+}
+
+.profile-images div:hover img{
+  cursor: pointer;
+  transform: scale(1.3);
+}
+
+.profile-images div img{
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 500px; 
+  transition: transform .6s;
+}
+
+.cinect-custom-alert{
+  width: 400px;
+  margin: 20px auto;
+  animation: opacityTransition 2s infinite;
+}
+
+.img-profile{
+  width: 200px;
+  margin: auto;
+  border-radius: 500px;
+}
+
+/*CINECT CUSTOM MODAL SEARCH*/
+.cinect-custom-search-modal .modal-content{
+  background-color: #16181d;
+}
+
+.cinect-custom-search-modal .modal-content div{
+  margin-top: 20px;
+}
+
+.cinect-custom-search-modal .modal-content input{
+  border: none;
+  border-bottom: 1px solid #5A3C97;
+  background-color: #16181d;
+  color: #FFFFFF; 
+}
+
+.cinect-custom-search-modal .modal-content .cinect-modal-btn{
+  display: block;
+  margin: 20px auto;
+  background-color: #16181d;
+  border: none;
+  outline: none;
+  color: #5A3C97;
+  font-weight: 600;
+}
+
+
+@media (min-width: 1024px) {
+  .profile-images:hover div{
+    filter: blur(3px);
+  }
+  
+  .profile-images div{
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .profile-images div:hover{
+    filter: blur(0);
+  }
+}
+
+@keyframes opacityTransition {
+  50% {opacity: 0;}
 }
 
 
@@ -155,9 +266,17 @@ a.link-img-carousel {
   html, main, body {
     font-size: 15px;
   }
+
   header {
-    height: 70px;
+    height: 55px;
   }
+
+  .img-profile-navbar {
+    height: 35px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
 
   .full-img {
     width: 25%;
@@ -171,11 +290,9 @@ a.link-img-carousel {
   }
   
   .button-purple,
-  .btn.btn-danger{
+  .btn.btn-outline-danger,
+  .btn-violet{
     font-size: 13px;
-  }
-
-  .button-purple{
     height: 29px;
   }
 }
@@ -183,16 +300,24 @@ a.link-img-carousel {
 
 @media screen and (min-width: 768px) {
   html, main, body {
-    font-size: 17px;
+    background: #16181d;
+    color: #FFFFFF;
+    font-size: 20px;
   }
+
+  header {
+    height: 70px;
+  }
+  
   .button-purple,
-  .btn.btn-danger{
+  .btn.btn-outline-danger,
+  .btn-violet{
     font-size: 17px;
-    height: 35px;
+    height: 45px;
   }
 
   .full-img {
-    width: 25%;
+    width: 22%;
     height: 300px;
   }
 
@@ -210,8 +335,11 @@ a.link-img-carousel {
   html, main, body {
     font-size: 20px;
   }
+  .carousel-item.full {
+    height: 395px;
+  }
   .full-img {
-    width: 18%;
+    width: 20%;
     height: 350px;
   }
   .img-carousel{
@@ -221,8 +349,5 @@ a.link-img-carousel {
   #container,
   #title-button {
     width: 1200px;
-  }
-  .button-purple{
-    height: 43px;
   }
 }

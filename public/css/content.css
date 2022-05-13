@@ -17,13 +17,13 @@ main {
     background: linear-gradient(to bottom, black 25%, #9966ff 150%);;
 }
 
-.button-category a{
+a .button-category{
     text-decoration: none;
     color:#FFFFFF; 
     font-weight: 450;
 }
 
-.button-category a p{
+a .button-category p{
     font-size: 8px;
 }
 
@@ -38,6 +38,10 @@ main {
 .img-content{
     width: 100%;
     height: 100%;
+    transition: transform .8s ease;
+}
+.img-content:hover {
+    transform: scale(1.2);
 }
 
 .page-item.disabled .page-link,
@@ -71,11 +75,11 @@ main {
 /*MOBILE*/
 
 @media only screen and (min-width: 576px) {
-    .button-category a{
+    a .button-category{
         font-size: 15px;
     } 
     /*El area que va a ocupar la parque de 'click' */
-    .button-category a p{
+    a .button-category p{
         font-size: 10px;
     }
     ul.pagination {
@@ -92,10 +96,10 @@ main {
     .button-category {
         height: 50px;
     }
-    .button-category a{
+    a .button-category{
         font-size: 17px;
     } 
-    .button-category a p{
+    a .button-category p{
         font-size: 14px;
     }
     ul.pagination {

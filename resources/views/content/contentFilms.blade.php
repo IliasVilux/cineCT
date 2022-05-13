@@ -6,14 +6,11 @@
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 </head>
 <section class="slider">
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide carousel-fade " data-bs-ride="carousel">
         <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
+            <button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
             <div class="carousel-item full text-center active">
@@ -51,13 +48,11 @@
             </div>
         </div>
 
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="prev">
+        <button class="carousel-control-prev" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="next">
+        <button class="carousel-control-next" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
@@ -67,11 +62,11 @@
 <section class="d-flex flex-wrap align-items-center mt-md-2">
     <!--EMPIEZAN: TODOS LOS BOTONES PARA FILTRAR-->
     @foreach($genres as $genre)
-    <button class="button-category col-lg col-3">
-        <a href="{{route('film.films-filtered', ['genre' => $genre])}}">
+    <a href="{{route('film.films-filtered', ['genre' => $genre])}}" class="col-lg col-3">
+        <button class="button-category col-12">
             <p class="m-0">{{trans('titles.'.$genre.'')}}</p>
-        </a>
-    </button>
+        </button>
+    </a>
     @endforeach
     <!--ACABAN: TODOS LOS BOTONES PARA FILTRAR-->
 </section>
@@ -81,35 +76,27 @@
     <div class="d-flex justify-content-center">
         {{ $films->links() }}
     </div>
-
     <?php
-    if(!empty($films)) {
-    echo '<div class="content d-flex flex-wrap align-items-stretch justify-content-center">';
+        if(!empty($films)) {
+        echo '<div class="content d-flex flex-wrap align-items-stretch justify-content-center">';
 
-    foreach($films as $data) {
-        echo '<a href="/detail/detailFilms/'.$data->id.'" class="image-link col-3 col-sm-2 p-2">';
-        if($data->poster_path === NULL) {
-        echo '<img src="/img/NoImg.jpg" class="img-content col-12" alt="No Image">';
+        foreach($films as $film) {
+            echo '<a href="/detail/detailFilms/'.$film->id.'" class="image-link col-3 col-sm-2 p-2">';
+            if($film->poster_path === NULL) {
+            echo '<img src="/img/NoImg.jpg" class="img-content col-12" alt="No Image">';
+            } else {
+            echo '<img src="'.$film->poster_path.'" class="img-content col-12" alt="'.$film->name.'">
+            </a>';
+            }
+        }
+            echo' </div>';
         } else {
-        echo '<img src="'.$data->poster_path.'" class="img-content col-12" alt="'.$data->name.'">
-        </a>';
-    }
-}
-   echo' </div>';
-           
-    } else {
-        echo '<h2 style="color: red;">No hi ha cap registre!!!</h2>';
-    }
+            echo '<h2 style="color: red;">No hi ha cap registre!!!</h2>';
+        }
     ?>
-
 </section>
 {{-- Pagination --}}
 <div class="d-flex justify-content-center mb-4">
     {{$films->links()}}
 </div>
-
-<script>
-
-
-</script>
 @endsection

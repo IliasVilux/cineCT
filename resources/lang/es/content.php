@@ -26,8 +26,6 @@ return [
     'fiction' => 'Ciencia ficción / Fantasía',
     'drama' => 'Drama / Misterio',
     'crime' => 'Bélica / Crimen',
-    'send_rating' => 'Enviar',
-    'add_favourite' => 'Añadir a favoritos',
 
     'samurai' => 'Samurái',
     'shounen' => 'Shounen',
