@@ -35,7 +35,7 @@
                 </div>
                 <div class="d-flex flex-direction-row flex-nowrap justify-content-end align-items-center col-3">
 
-                    @if(Request::url() !== route('search-content'))
+                    @if(Request::url() !== url('/search/search'))
                         <button class="btn cinect-searchBtn-modal" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                             <i class="fas fa-search text-light p-0 pt-1"></i>
                         </button>
