@@ -78,9 +78,9 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     Route::get('/detail/detailFilms/{id}/{orderByLikes?}', [FilmController::class,  'returnFilms'])->name('film.films');
     /* Route::get('/detail/detailFilms/{id}', 'SocialShareButtonsController@ShareWidget'); */
 
-    Route::get('/detail/detailSeries/{id}', [SerieController::class,  'returnSeries'])->name('serie.series');
+    Route::get('/detail/detailSeries/{id}/{orderByLikes?}', [SerieController::class,  'returnSeries'])->name('serie.series');
 
-    Route::get('/detail/detailAnimes/{id}', [AnimeController::class,  'returnAnimes'])->name('anime.animes');
+    Route::get('/detail/detailAnimes/{id}/{orderByLikes?}', [AnimeController::class,  'returnAnimes'])->name('anime.animes');
 
     //Save Reviews
     Route::post('/film/comment/save/{id}', [ReviewController::class, 'postStoreFilmReview'])->name('comment.save.film');
