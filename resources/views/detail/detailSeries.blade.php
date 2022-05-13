@@ -57,7 +57,7 @@
                     <div class="d-flex flex-column align-items-start">
                         <h6 class="pe-2"><b>{{ trans('titles.how_much') }}</b></h6>
                         <form method="GET" class="d-flex flex-column align-items-center col-12 mb-xl-2">
-                            <div class="rating col-12 d-flex justify-content-center">
+                            <div class="rating col-12 d-flex flex-row-reverse justify-content-center">
                                 <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
                                 <input name="stars" id="e2" type="radio" value="9"><label for="e2">☆</label>
                                 <input name="stars" id="e3" type="radio" value="8"><label for="e3">☆</label>
@@ -139,10 +139,10 @@
     <section class="gradient-custom">
         <div class="container my-0 py-0 py-sm-3">
             <div class="row d-flex justify-content-center">
-                <div class="col-12">
+                <div class="col-12 p-0 p-sm-2">
                     <div class="card card-comment bg-dark">
                         <div class="card-body card-body-comment p-4">
-                            <h4 class="text-center mb-4 pb-2">{{ trans('titles.commentSection') }}</h4>
+                            <h4 class="text-center mb-4 pb-2">Nested comments section</h4>
 
                             <div class="row">
                                 <div class="col" id="comment-container">
@@ -153,11 +153,10 @@
                                     @endforeach
                                 </div>
                             </div>
-                            <div class="alert alert-success d-none" id="msg_div" role="alert">
-
-                            </div>
+                            <div class="alert alert-success d-none" id="msg_div" role="alert"></div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

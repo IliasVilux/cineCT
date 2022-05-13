@@ -1,6 +1,6 @@
 html{
     scroll-behavior: smooth;
-    scroll-padding-top: 70px;
+    scroll-padding-top: 60px;
 }
 
 /* EXTRA INFO AT THE RIGHT */
@@ -77,6 +77,13 @@ div#social-links ul li a {
     color: orange;
     cursor: pointer;
 }
+
+/* TRAILER */
+iframe {
+    width: 200px;
+    height: 100px;
+}
+
 
 /* COMMENTS */
 
@@ -200,16 +207,6 @@ div#social-links ul li a {
     object-fit: cover;
 }
 
-.comment-container__sort-container a{
-    transition: background-color 1s;
-}
-
-.comment-container__sort-container a:hover{
-    background-color: #5A3C97;
-
-}
-
-
 @keyframes boxShadow {
     50% {box-shadow: 0 5px 50px rgba(145, 92, 182, .4);}
 }
@@ -248,6 +245,10 @@ div#social-links ul li a {
         font-size: 15px;
         padding: 8px;
     }
+    iframe {
+        width: 600px;
+        height: 300px;
+    }
     
 }
 
@@ -257,8 +258,9 @@ div#social-links ul li a {
     }
     .rating label {
         font-size: 43px;
-    }
+    }    
 }
+
 
 /*@media (max-width: 600px) {
     .comment{

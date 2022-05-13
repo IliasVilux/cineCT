@@ -49,7 +49,7 @@
                     <div class="d-flex flex-column align-items-start">
                         <h6 class="pe-2"><b>{{ trans('titles.how_much') }}</b></h6>
                         <form method="GET" class="d-flex flex-column align-items-center col-12 mb-xl-2">
-                            <div class="rating col-12 d-flex justify-content-center">
+                            <div class="rating col-12 d-flex flex-row-reverse justify-content-center">
                                 <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
                                 <input name="stars" id="e2" type="radio" value="9"><label for="e2">☆</label>
                                 <input name="stars" id="e3" type="radio" value="8"><label for="e3">☆</label>
