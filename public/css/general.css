@@ -15,6 +15,30 @@ html, main, body {
   color: white;
   background-color: #5A3C97;
 }
+
+.button-list{
+  color: #FFFFFF;
+  border: 1px solid #5A3C97;
+  background-color: #16181d;
+  font-size: 6px;
+}
+.button-list:hover{
+  border: 1px solid #FFFFFF;
+  color: white;
+  background-color: #5A3C97;
+}
+
+.button-gold{
+  color: #FFFFFF;
+  border: 2px solid #d4b91f;
+  background-color: #16181d;
+}
+.button-gold:hover{
+  border: 2px solid #FFFFFF;
+  color: white;
+  background-color: #ffdd1c;
+}
+
 .btn.btn-danger {
   font-size: 6px;
 }

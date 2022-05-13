@@ -175,10 +175,6 @@
                     <p> {{ $serie->release_date }}</p>
                 </div>
                 <div class="d-flex flex-column">
-                    <h5 class="pe-2"><b>Duración:</b></h5>
-                    <p> {{ $serie->duration }} min</p>
-                </div>
-                <div class="d-flex flex-column">
                     <h5 class="pe-2"><b>Puntuación:</b></h5>
                     <p><i class="fas fa-star"></i> {{ $serie->puntuation }}/10
                     <p>

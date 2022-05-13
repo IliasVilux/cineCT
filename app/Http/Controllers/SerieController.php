@@ -182,7 +182,6 @@ class SerieController extends Controller
         $user = Auth::user()->id;
         $newListName = $request->input('newListName');
         $listUser = FavouriteLists::where('name', $newListName)->where('user_id', $user)->get('id')->max();
-
         $serie_name = Serie::query()->where('id', $idSerie)->get();
 
         $request->validate([

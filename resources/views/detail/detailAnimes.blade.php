@@ -44,10 +44,6 @@
                     <p> {{ $anime->release_date }}</p>
                 </div>
                 <div class="d-none d-sm-flex nowrap">
-                    <h6 class="pe-2"><b>{{ trans('titles.duration') }}:</b></h6>
-                    <p> {{ $anime->duration }} min</p>
-                </div>
-                <div class="d-none d-sm-flex nowrap">
                     <h6 class="pe-2"><b>{{ trans('titles.total_episodes') }}:</b></h6>
                     <p> {{ $anime->total_episodes }}</p>
                 </div>
@@ -165,10 +161,6 @@
                 <div class="d-flex flex-column">
                     <h5 class="pe-2"><b>Fecha de lanzamiento:</b></h5>
                     <p> {{ $anime->release_date }}</p>
-                </div>
-                <div class="d-flex flex-column">
-                    <h5 class="pe-2"><b>Duración:</b></h5>
-                    <p> {{ $anime->duration }} min</p>
                 </div>
                 <div class="d-flex flex-column">
                     <h5 class="pe-2"><b>Puntuación:</b></h5>
