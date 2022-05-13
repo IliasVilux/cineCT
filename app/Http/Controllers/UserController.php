@@ -50,7 +50,7 @@ class UserController extends Controller
             }
         }
         
-        return view('/list/list', compact(['userFavs', 'arrayAnimes', 'arraySeries', 'arrayFilms']));
+        return view('list_favorite', compact(['data']));
     }
 
     public function searchContent(Request $request)

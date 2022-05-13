@@ -138,13 +138,6 @@
                                 <i class="fas fa-share-alt"></i>
                             </a>
                         </div>
-                    @endif
-                    <div class="social-media-links mx-2">
-                        <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button"
-                            aria-expanded="false" aria-controls="shareComponent">
-                            <i class="fas fa-share-alt"></i>
-                        </a>
-                    </div>
                     <div class="collapse text-center" id="shareComponent">
                         {!! $shareComponent !!}
                     </div>
