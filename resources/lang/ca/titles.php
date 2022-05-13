@@ -21,8 +21,7 @@ return [
     'animes' => 'Animes',
     'top' => 'Top',
     'search' => 'Buscador',
-    'lists' => 'Biblioteca',
-    'about' => 'Sobre nosaltres',
+    'lists' => 'Biblioteca', 
     'activity' => 'Activitat',
     'logout' => 'Tancar sessió',
 

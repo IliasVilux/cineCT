@@ -12,13 +12,19 @@
             <strong>{{ Session::get('FilmAdded') }}!</strong>
         </div>
     @endif
-    <section class="container">
 
-    <div class="container-fluid d-flex justify-content-between align-items-center">
-            <h1 class="detail-title">{{ $film->name }}</h1>
-            <a href="{{ url('/content/contentFilms') }}" class="btn button-purple my-4" title="Back">
-            {{ trans('titles.back') }}
-            </a>
+    @if (Session::has('FilmDeleted'))
+        <div class="alert alert-success" role="alert">
+            <strong>{{ Session::get('FilmDeleted') }}!</strong>
+        </div>
+    @endif
+
+    <section class="container">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+                <h1 class="detail-title">{{ $film->name }}</h1>
+                <a href="{{ url('/content/contentFilms') }}" class="btn button-purple my-4" title="Back">
+                {{ trans('titles.back') }}
+                </a>
         </div>
         
     <article class="d-flex flex-row flex-sm-wrap justify-content-between">
@@ -28,7 +34,7 @@
                 <img src="{{ $film->poster_path }}" class="img-thumbnail col-6 col-md-5 col-lg-4 mb-md-0"
                     alt="Img {{ $film->name }}">
             @endif
-            <article class="col-6 more-info bg-dark p-3" id="datasheet">
+            <article class="col-6 more-info bg-dark p-3 ms-1" id="datasheet">
                     <div class="d-none d-sm-flex nowrap">
                         <h6 class="pe-2"><b>{{ trans('titles.genre') }}:</b></h6>
                         <p>{{ $film->genre->name }}</p>
@@ -36,10 +42,6 @@
                     <div class="d-none d-sm-flex nowrap">
                         <h6 class="pe-2"><b>{{ trans('titles.release') }}:</b></h6>
                         <p> {{ $film->release_date }}</p>
-                    </div>
-                    <div class="d-none d-sm-flex nowrap">
-                        <h6 class="pe-2"><b>{{ trans('titles.duration') }}:</b></h6>
-                        <p> {{ $film->duration }} min</p>
                     </div>
                     <div class="d-none d-sm-flex nowrap">
                         <h6 class="pe-2"><b>{{ trans('titles.rating') }}:</b></h6>
@@ -71,18 +73,71 @@
                     } elseif (isset($_GET['stars']) == '');
                     ?>
                     <div class="d-flex flex-row justify-content-center">
-                            <a href="/detail/detailFilms/{{ $film->id }}/addFav"><button type="button"
-                                    class="btn button-purple">{{trans('content.add_favourite')}}</button></a>
-                            <div class="social-media-links mx-2">
-                                <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button"
-                                    aria-expanded="false" aria-controls="shareComponent">
-                                    <i class="fas fa-share-alt"></i>
-                                </a>
+                        <div class="dropdown">
+                            <button type="button" class="btn button-purple btn-md dropdown-toggle" data-bs-toggle="dropdown">
+                                {{trans('content.add_favourite')}}
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#myModal">Crear nueva lista</a></li>
+                                @foreach ($userLists as $list)
+                                    <li><a class="dropdown-item" href="/detail/detailFilms/{{$film->id}}/{{$list->id}}/addFav">{{ $list->name }}</a></li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <!-- The Modal -->
+                        <div class="modal fade" id="myModal">
+                            <div class="modal-dialog text-dark">
+                                <div class="modal-content">
+
+                                    <form action="/detail/detailFilms/{{ $film->id }}/addNewList">
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <input type="text" id="newListName" name="newListName" class="form-control" placeholder="Nombre de la lista">
+                                            </div>
+                                        </div>
+    
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button class="btn button-purple">{{ trans('titles.new_list') }}</button>
+                                            <a type="button" class="btn btn-danger"
+                                                data-bs-dismiss="modal">{{ trans('titles.close') }}</a>
+                                        </div>
+                                    </form>
+
+                                </div>
                             </div>
                         </div>
-                        <div class="collapse text-center" id="shareComponent">
-                            {!! $shareComponent !!}
+                        @if (isset($userTopList[0]->name))
+                        <a href="/detail/detailFilms/{{$film->id}}/{{$userTopList[0]->id}}/addFav"><button type="button"
+                                class="btn button-purple btn-md">Añadir a {{ $userTopList[0]->name }}</button></a>
+                        @endif
+                        @if(!empty($userListsWhereFilm))
+                            <div class="dropdown mx-2">
+                                <button type="button" class="btn button-purple btn-md dropdown-toggle" data-bs-toggle="dropdown">
+                                    Eliminar de favoritos
+                                </button>
+                                <ul class="dropdown-menu">
+                                    @foreach ($userListsWhereFilm as $list)
+                                        <li><a class="dropdown-item" href="/detail/detailFilms/{{$film->id}}/{{$list->id}}/delFav">{{ $list->name }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        @if (empty($userListsWhereAnime))
+                        <div class="social-media-links mx-2">
+                        @else
+                        <div class="social-media-links">
+                        @endif
+                            <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button"
+                                aria-expanded="false" aria-controls="shareComponent">
+                                <i class="fas fa-share-alt"></i>
+                            </a>
                         </div>
+                    </div>
+                    <div class="collapse text-center" id="shareComponent">
+                        {!! $shareComponent !!}
+                    </div>
                     </article>
             </article>
 
@@ -98,10 +153,6 @@
                     <div class="d-flex flex-column">
                         <h5 class="pe-2"><b>Fecha de lanzamiento:</b></h5>
                         <p> {{ $film->release_date }}</p>
-                    </div>
-                    <div class="d-flex flex-column">
-                        <h5 class="pe-2"><b>Duración:</b></h5>
-                        <p> {{ $film->duration }} min</p>
                     </div>
                     <div class="d-flex flex-column">
                         <h5 class="pe-2"><b>Puntuación:</b></h5>

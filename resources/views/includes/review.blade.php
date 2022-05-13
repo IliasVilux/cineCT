@@ -14,7 +14,7 @@
                 <div class="col-12">
                     <p class="mb-1">{{ $comment->user->nick }} <span class="text-muted ms-2">{{\DateTimeFormat::timeFilter($comment->created_at)}}</span></p>
                 </div>
-                <p class="text-break">{{ $comment->description }}</p>
+                <p class="text-break m-0">{{ $comment->description }}</p>
             </div>
             <div class="like-container">
 

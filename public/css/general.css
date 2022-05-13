@@ -8,15 +8,13 @@ html, main, body {
   color: #FFFFFF;
   border: 1px solid #5A3C97;
   background-color: #16181d;
-  font-size: 6px;
+  font-size: 7px;
 }
+
 .button-purple:hover{
   border: 1px solid #FFFFFF;
   color: white;
   background-color: #5A3C97;
-}
-.btn.btn-danger {
-  font-size: 6px;
 }
 
 .btn-violet{
@@ -44,8 +42,6 @@ h3.title{
 h1.detail-title {
   margin: 0;
 }
-
-
 
 /* Img slider */
 
@@ -159,12 +155,14 @@ a.link-img-carousel {
 
 @media screen and (min-width: 768px) {
   html, main, body {
-    font-size: 17px;
+    background: #16181d;
+    color: #FFFFFF;
+    font-size: 20px;
   }
   .button-purple,
   .btn.btn-danger{
     font-size: 17px;
-    height: 35px;
+    height: 45px;
   }
 
   .full-img {

@@ -21,8 +21,7 @@ return [
     'animes' => 'Animes',
     'top' => 'Top',
     'search' => 'Search',
-    'lists' => 'Library',
-    'about' => 'About us',
+    'lists' => 'Library', 
     'activity' => 'Activity',
     'logout' => 'Logout',
 

@@ -28,14 +28,14 @@
                     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                        <a class="navbar-brand me-0 d-flex align-items-center" href="{{ url('home') }}">
+                        <a class="navbar-brand me-0 d-flex align-content-center ms-3" href="{{ url('home') }}">
                             <img src="/img/CinectLogo.svg" class="logo">
                         </a>
                 </div>
                 <div class="d-flex flex-direction-row flex-nowrap justify-content-end align-items-center col-3">
                 <a href="{{ url('/search/search') }}" class="footer-links text-light text-uppercase"><i class="fas fa-search text-light p-0 pt-1"></i></a>
                     <div class="dropdown">
-                        <button class="btn text-light dropdown-toggle d-flex flex-direction-row flex-nowrap justify-content-end align-items-center p-0 px-sm-3"
+                        <button class="btn text-light dropdown-toggle d-flex flex-direction-row flex-nowrap justify-content-end align-items-center p-0 px-sm-2"
                             type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true">
                             
                             @if(Auth::user()->image_id === null)

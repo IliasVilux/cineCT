@@ -79,7 +79,8 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     Route::get('user/profile/image', [UserController::class, 'getUserProfileImg'])->name('user.profile-img');
     Route::get('user/profile/image{id}', [UserController::class, 'postUserProfileImg'])->name('user.save-profile-img');
 
-    Route::get('/detail/detailFilms/{id}/{orderByLikes?}', [FilmController::class,  'returnFilms'])->name('film.films');
+    /* Route::get('/detail/detailFilms/{id}/{orderByLikes?}', [FilmController::class,  'returnFilms'])->name('film.films'); */
+    Route::get('/detail/detailFilms/{id}', [FilmController::class,  'returnFilms'])->name('film.films');
     /* Route::get('/detail/detailFilms/{id}', 'SocialShareButtonsController@ShareWidget'); */
 
     Route::get('/detail/detailSeries/{id}', [SerieController::class,  'returnSeries'])->name('serie.series');
@@ -100,10 +101,19 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     Route::get('/detail/detailSeries/{id}/{flid}/addFav', [SerieController::class,  'addFavourite'])->name('serie.fav');
     Route::get('/detail/detailFilms/{id}/{flid}/addFav', [FilmController::class,  'addFavourite'])->name('film.fav');
 
+    //Delete favourites
+    Route::get('/detail/detailAnimes/{id}/{flid}/delFav', [AnimeController::class,  'delFavourite'])->name('anime.del-fav');
+    Route::get('/detail/detailSeries/{id}/{flid}/delFav', [SerieController::class,  'delFavourite'])->name('serie.del-fav');
+    Route::get('/detail/detailFilms/{id}/{flid}/delFav', [FilmController::class,  'delFavourite'])->name('film.del-fav');
+
+    //Add new List
+    Route::get('/detail/detailAnimes/{id}/addNewList', [AnimeController::class,  'addNewList'])->name('anime.newList');
+    Route::get('/detail/detailFilms/{id}/addNewList', [FilmController::class,  'addNewList'])->name('film.newList');
+    Route::get('/detail/detailSeries/{id}/addNewList', [SerieController::class,  'addNewList'])->name('serie.newList');
+
     //Searcher
     Route::get('/content/{search?}', [UserController::class, 'searchContent'])->name('search-content'); 
 
-    Route::get('/detail/detailAnimes/{id}/addNewList', [AnimeController::class,  'addNewList'])->name('anime.newList');
     
     //Show comments likes
     Route::get('/user/activity', [UserController::class, 'activity'])->name('user.activity');
@@ -116,14 +126,5 @@ Route::group(['middleware' => 'authenticate.user'], function () {
    
 });
 
-
-Route::get('/aboutUs/aboutUs', function () {
-    return view('/aboutUs/aboutUs');
-});
-
-
-//Test con apis
-Route::get('/api/films', [FilmController::class, 'store']);
-Route::get('/api/series', [SerieController::class, 'store']);
 
 //Route::get('/testing/models', [ModelRelationshipTest::class, 'tests'])->name('model.testing');
