@@ -96,11 +96,24 @@ a.link-img-carousel {
   border-radius: 10px;
 }
 
+.img-profile-navbar{
+  width:50px;
+  height: 50px;
+  object-fit: cover;
+  padding: 5px;
+  border-radius: 50%;
+}
+
 
 @keyframes boxShadow {
   50% {box-shadow: 0 5px 30px rgba(145, 92, 182, .4);}
 }
 
+.cinect-custom-alert{
+  width: 100%;
+  margin: 20px auto;
+  animation: opacityTransition 2s infinite;
+}
 
 /* MEDIA QUERIES */
 @media screen and (min-width: 350px) {
@@ -112,8 +125,6 @@ a.link-img-carousel {
 
 @media screen and (min-width: 576px) {
   html, main, body {
-    background: #16181d;
-    color: #FFFFFF;
     font-size: 15px;
   }
   header {
@@ -170,6 +181,9 @@ a.link-img-carousel {
 }
 
 @media screen and (min-width: 1200px) {
+  html, main, body {
+    font-size: 20px;
+  }
   .full-img {
     width: 18%;
     height: 350px;

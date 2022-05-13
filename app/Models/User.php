@@ -25,6 +25,9 @@ class User extends Authenticatable
         'surname',
         'email',
         'nick',
+        'image_id',
+        'lang',
+        'locale',
         'password',
     ];
 
@@ -55,6 +58,11 @@ class User extends Authenticatable
 
     public function review() {
         return $this->hasMany(Review::class);
+    }
+
+    public function image()
+    {
+        return $this->belongsTo(Image::class, 'image_id');
     }
     
 }

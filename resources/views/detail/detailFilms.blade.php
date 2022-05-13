@@ -3,6 +3,7 @@
 
     <head>
         <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
+        <script type="text/javascript" src="http://www.google.com/jsapi"></script>
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
@@ -11,13 +12,19 @@
             <strong>{{ Session::get('FilmAdded') }}!</strong>
         </div>
     @endif
-    <section class="container">
 
-    <div class="container-fluid d-flex justify-content-between align-items-center">
-            <h1 class="detail-title">{{ $film->name }}</h1>
-            <a href="{{ url('/content/contentFilms') }}" class="btn button-purple my-4" title="Back">
-                Back
-            </a>
+    @if (Session::has('FilmDeleted'))
+        <div class="alert alert-success" role="alert">
+            <strong>{{ Session::get('FilmDeleted') }}!</strong>
+        </div>
+    @endif
+
+    <section class="container">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+                <h1 class="detail-title">{{ $film->name }}</h1>
+                <a href="{{ url('/content/contentFilms') }}" class="btn button-purple my-4" title="Back">
+                {{ trans('titles.back') }}
+                </a>
         </div>
         
     <article class="d-flex flex-row flex-sm-wrap justify-content-between">
@@ -29,24 +36,20 @@
             @endif
             <article class="col-6 more-info bg-dark p-3 ms-1" id="datasheet">
                     <div class="d-none d-sm-flex nowrap">
-                        <h6 class="pe-2"><b>Género:</b></h6>
+                        <h6 class="pe-2"><b>{{ trans('titles.genre') }}:</b></h6>
                         <p>{{ $film->genre->name }}</p>
                     </div>
                     <div class="d-none d-sm-flex nowrap">
-                        <h6 class="pe-2"><b>Fecha de lanzamiento:</b></h6>
+                        <h6 class="pe-2"><b>{{ trans('titles.release') }}:</b></h6>
                         <p> {{ $film->release_date }}</p>
                     </div>
                     <div class="d-none d-sm-flex nowrap">
-                        <h6 class="pe-2"><b>Duración:</b></h6>
-                        <p> {{ $film->duration }} min</p>
-                    </div>
-                    <div class="d-none d-sm-flex nowrap">
-                        <h6 class="pe-2"><b>Puntuación:</b></h6>
+                        <h6 class="pe-2"><b>{{ trans('titles.rating') }}:</b></h6>
                         <p><i class="fas fa-star"></i>
                         <p> {{ $film->puntuation }}/10<p>
                     </div>
                     <div class="d-flex flex-column align-items-start">
-                        <h6 class="pe-2"><b>Cuánto te ha gustado?</b></h6>
+                        <h6 class="pe-2"><b>{{ trans('titles.how_much') }}</b></h6>
                         <form method="GET" class="d-flex flex-column align-items-center col-12 mb-xl-2">
                             <div class="rating col-12 d-flex justify-content-center">
                                 <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
@@ -60,7 +63,8 @@
                                 <input name="stars" id="e9" type="radio" value="2"><label for="e9">☆</label>
                                 <input name="stars" id="e10" type="radio" value="1"><label for="e10">☆</label>
                             </div>
-                            <button type="submit" class="btn button-purple col-6 mb-2 mb-xl-0">Enviar</button>
+                            <button type="submit"
+                                class="btn button-purple col-6 mb-2 mb-xl-0">{{ trans('content.send_rating') }}</button>
                         </form>
                     </div>
                     <?php
@@ -69,18 +73,71 @@
                     } elseif (isset($_GET['stars']) == '');
                     ?>
                     <div class="d-flex flex-row justify-content-center">
-                            <a href="/detail/detailFilms/{{ $film->id }}/addFav"><button type="button"
-                                    class="btn button-purple">Añadir a favoritos</button></a>
-                            <div class="social-media-links mx-2">
-                                <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button"
-                                    aria-expanded="false" aria-controls="shareComponent">
-                                    <i class="fas fa-share-alt"></i>
-                                </a>
+                        <div class="dropdown">
+                            <button type="button" class="btn button-purple btn-md dropdown-toggle" data-bs-toggle="dropdown">
+                                {{trans('content.add_favourite')}}
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#myModal">Crear nueva lista</a></li>
+                                @foreach ($userLists as $list)
+                                    <li><a class="dropdown-item" href="/detail/detailFilms/{{$film->id}}/{{$list->id}}/addFav">{{ $list->name }}</a></li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <!-- The Modal -->
+                        <div class="modal fade" id="myModal">
+                            <div class="modal-dialog text-dark">
+                                <div class="modal-content">
+
+                                    <form action="/detail/detailFilms/{{ $film->id }}/addNewList">
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <input type="text" id="newListName" name="newListName" class="form-control" placeholder="Nombre de la lista">
+                                            </div>
+                                        </div>
+    
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button class="btn button-purple">{{ trans('titles.new_list') }}</button>
+                                            <a type="button" class="btn btn-danger"
+                                                data-bs-dismiss="modal">{{ trans('titles.close') }}</a>
+                                        </div>
+                                    </form>
+
+                                </div>
                             </div>
                         </div>
-                        <div class="collapse text-center" id="shareComponent">
-                            {!! $shareComponent !!}
+                        @if (isset($userTopList[0]->name))
+                        <a href="/detail/detailFilms/{{$film->id}}/{{$userTopList[0]->id}}/addFav"><button type="button"
+                                class="btn button-purple btn-md">Añadir a {{ $userTopList[0]->name }}</button></a>
+                        @endif
+                        @if(!empty($userListsWhereFilm))
+                            <div class="dropdown mx-2">
+                                <button type="button" class="btn button-purple btn-md dropdown-toggle" data-bs-toggle="dropdown">
+                                    Eliminar de favoritos
+                                </button>
+                                <ul class="dropdown-menu">
+                                    @foreach ($userListsWhereFilm as $list)
+                                        <li><a class="dropdown-item" href="/detail/detailFilms/{{$film->id}}/{{$list->id}}/delFav">{{ $list->name }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        @if (empty($userListsWhereAnime))
+                        <div class="social-media-links mx-2">
+                        @else
+                        <div class="social-media-links">
+                        @endif
+                            <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button"
+                                aria-expanded="false" aria-controls="shareComponent">
+                                <i class="fas fa-share-alt"></i>
+                            </a>
                         </div>
+                    </div>
+                    <div class="collapse text-center" id="shareComponent">
+                        {!! $shareComponent !!}
+                    </div>
                     </article>
             </article>
 
@@ -98,10 +155,6 @@
                         <p> {{ $film->release_date }}</p>
                     </div>
                     <div class="d-flex flex-column">
-                        <h5 class="pe-2"><b>Duración:</b></h5>
-                        <p> {{ $film->duration }} min</p>
-                    </div>
-                    <div class="d-flex flex-column">
                         <h5 class="pe-2"><b>Puntuación:</b></h5>
                         <p><i class="fas fa-star"></i> {{ $film->puntuation }}/10<p>
                     </div>
@@ -115,12 +168,13 @@
             <form method="POST" action="" id="create-comment" class="create_comment">
                 @csrf
                 <textarea name="description" id="description" cols="50" rows="3" placeholder="Escribe un comentario"></textarea>
-                <button class="btn button-purple mt-3" type="submit" id="commentSubmit">Publicar</button>
+                <button class="btn button-purple mt-3" type="submit"
+                    id="commentSubmit">{{ trans('titles.publish') }}</button>
             </form>
             <div id="notify_user"></div>
             @if ($errors->has('description'))
                 <div class="mt-2 alert alert-danger">
-                    No puedes publicar un comentario sin vacío!
+                    {{ trans('warnings.empty_msg') }}
                 </div>
             @endif
         </article>
@@ -133,15 +187,38 @@
                 <div class="col-12 p-0 p-sm-2">
                     <div class="card card-comment bg-dark">
                         <div class="card-body card-body-comment p-4">
-                            <h4 class="text-center mb-4 pb-2">Nested comments section</h4>
-
+                            <h4 class="text-center mb-4 pb-2">{{ trans('titles.commentSection') }}</h4>
                             <div class="row">
+                                @if (count($comments) !== 0)
+                                    <div class="d-flex justify-content-end comment-container__sort-container mb-3" id="short_by_likes">
+                                        <a class="btn btn-order" style="border:1px solid #5A3C97; color:#ffffff;"
+                                            id="{{ $film->id }}">
+                                            <span class="comment-container__sort-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                                    fill="currentColor" class="bi bi-filter-left" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                                                </svg>
+                                            </span>
+                                            {{ trans('content.order_review') }}
+                                        </a>
+                                    </div>
+                                @endif
                                 <div class="col" id="comment-container">
+
+                                    {{-- 
+                                    @foreach ($commentsOrderByLikes as $commentsOrder)
+                                        <?php $comment = $commentsOrder['comments'];?>
+                                            @include('includes.review', ['comment' => $comment])
+                                    @endforeach
+                                     --}}
+                                    
                                     @foreach ($comments as $comment)
                                         @if ($comment->film_id == $film->id && !empty($comment->description))
                                             @include('includes.review', ['comment' => $comment])
                                         @endif
                                     @endforeach
+
                                 </div>
                             </div>
                             <div class="alert alert-success d-none" id="msg_div" role="alert"></div>
@@ -156,16 +233,17 @@
     <script type="text/javascript">
         $("#notify_user").css("display", "none");
 
+        if(jQuery('.loading-comments-order-by-likes')) {
+            jQuery('.loading-comments-order-by-likes').remove();
+        }
 
         jQuery('#create-comment').submit(function(e) {
             e.preventDefault();
-            $("#commentSubmit").attr("disabled", true); // deshabilitamos el boton de publicar
+            $("#commentSubmit").attr("disabled", true);
             var url = '{{ route('comment.save.film', ['id' => $film->id]) }}';
-            var data = jQuery('#create-comment')
-                .serialize(); // serializamos los datos para trabajr con ellos en el backend
+            var data = jQuery('#create-comment').serialize();
             jQuery('#commentSubmit').html(
-                '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>'
-            ); //agregamos un spinner al boton al darle click, mientras no complete la peticion se seguirá mostrando el spinner
+                '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>');
 
             $('#commentSubmit').addClass('loagindEffect');
 
@@ -177,45 +255,52 @@
                     jQuery("#commentSubmit").removeClass("loagindEffect");
                     jQuery('#notify_user').html(
                         `<div class="alert alert-success" role="alert"><i class="fas fa-check-circle"></i>${response.msg}</div>`
-                    ); //el msg hace referencia al 'msg' en el return en el controlador (en este caso al ReviewController)
+                        );
                     jQuery('#notify_user').fadeIn("slow");
-                    jQuery('#create-comment')[0]
-                        .reset(); // una vez la peticion se complete , el textarea se reiniciarà :D
-                    jQuery('.spinner-border')
-                        .remove(); // una vez haya echo la petición y lo haya guardado en la bases de datos, el spiner lo elimanos
+                    jQuery('#create-comment')[0].reset();
+                    jQuery('.spinner-border').remove();
                     jQuery('#commentSubmit').html('Publicar');
                     jQuery('#notify_user').fadeOut(3000);
+
                     setTimeout(() => {
                             jQuery('#commentSubmit').attr('disabled', false);
                         },
                         3900
-                    ); // removemos el 'desabled 'para que el usuario pueda interactuar de nuevo con el botón
+                    );
 
+                    let commentID = response.comment['id'];
+                    let commentDescription = response.comment['description'];
                     let commentHtml =
-                        `<div class="d-flex flex-start mb-4">
-                    <div><img class="rounded-circle shadow-1-strong me-3" src="{{ $profile[0]->path }}" alt="13" width="65" height="65" /></div>
-                    <div class="flex-grow-1 flex-shrink-1"><div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <p class="mb-1">{{ Auth::user()->nick }} <span class="text-muted" id="last-comment"></span></p> 
+                        `<div class="d-flex flex-start mb-4" id="content_id-${commentID}">
+                        <div><img class="rounded-circle shadow-1-strong me-3" src="{{ Auth::user()->image->path }}" width="65"height="65"></div>
+                        <div class="flex-grow-1 flex-shrink-1"><div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="mb-1">{{ Auth::user()->nick }} <span class="text-muted" id="last-comment"></span></p> 
+                                <a href="#!"><i class="fas fa-reply fa-xs"></i><span class="text-muted">reply</span></a> 
+                            </div>
+                            <p class="small mb-0 comment">${ commentDescription }</p>
+                            </div>
+                            <div class="like-container">
+                                <span class="far fa-heart like-review btn-like" id="btn-like" data-id="${ commentID }"></span>
+                                <span id="like-counter">0 likes</span>
+                                <form class="mt-2" method="POST" action="/review/delete/${commentID}">
+                                    @csrf
+                                    <input type="hidden" id="${ commentID }" name="user-comment" value="${ commentID }">
+                                    <button class="btn btn-outline-primary" type="submit">{{ trans('titles.delete_review') }}</button>
+                                </form>
+                            </div>
                         </div>
-                        <p class="small mb-0 comment">${ response.comment['description'] }</p>
-                        </div>
-                        <div class="like-container">
-                            <span class="far fa-heart like-review btn-like" id="btn-like" data-id="${ response.comment['id']}"></span>
-                            <span id="like-counter">0 likes</span>
-                        </div>
-                    </div>
-                </div>`
+                    </div>`
+
 
                     jQuery('#comment-container').append(commentHtml);
                     jQuery('#character-counter').css("display", "none");
 
                     setTimeout(() => {
-                        location.reload();
                         jQuery('body,html').animate({
                             scrollTop: $(document).height()
                         }, 5);
-                    }, 1000);
+                    }, 500);
 
                 },
                 error: function(response) {
@@ -284,7 +369,7 @@
         characterLiveCount();
 
         function like() {
-            jQuery('.btn-like').unbind('click').click(function () {
+            jQuery('.btn-like').unbind('click').click(function() {
                 $(this).addClass('btn-dislike').removeClass('btn-like');
                 $(this).addClass('fas').removeClass('far');
                 $(this).css("color", "red");
@@ -300,11 +385,11 @@
                     },
                     success: function(data) {
                         //console.log(data.message);
-                        if(data.like){
+                        if (data.like) {
                             console.log("Has dado like de forma correcta");
-                        }else {    
+                        } else {
                             console.log("Error al dar like");
-                        }   
+                        }
                     }
                 });
                 dislike();
@@ -314,15 +399,15 @@
 
         like();
 
-        
-        function dislike() 
-        {
-            jQuery('.btn-dislike').unbind('click').click(function () {
+
+        function dislike() {
+            jQuery('.btn-dislike').unbind('click').click(function() {
                 $(this).addClass('btn-like').removeClass('btn-dislike');
                 $(this).addClass('far').removeClass('fas');
                 $(this).css("color", "#FFFFFF");
                 let comment_id = $(this).data('id');
                 let ruta = `/dislike/${comment_id}`;
+                console.log(comment_id);
                 $.ajax({
                     type: "POST",
                     url: ruta,
@@ -330,21 +415,88 @@
                         '_token': $('input[name=_token]').val(),
                         review_id: comment_id,
                     },
-                    success: function(data){
+                    success: function(data) {
                         if (data.like) {
-                        console.log("Has dado dislike de forma correcta");
+                            console.log("Has dado dislike de forma correcta");
                         } else {
                             console.log("Error al dar dislike");
                         }
-                    }
+                    },
                 });
                 like();
             })
         }
-        
+
         dislike();
+
+
+        //Short by likes with ajax
+        jQuery('#short_by_likes').click(function() {
+            let orderByLikes = 'order';
+            jQuery('#comment-container').html(
+                `<div class="text-center loading-comments-order-by-likes">
+                    <div class="spinner-border text-light" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>`);
+            $.ajax({
+                    type: "GET",
+                    url: `/detail/detailFilms/{{$film->id}}/${orderByLikes}`,
+                    data: {
+                        '_token': $('input[name=_token]').val(),
+                        orderByLikes: orderByLikes,
+                    },
+                    success: function(response) {
+                        if(response.status) {
+                            jQuery('.loading-comments-order-by-likes').remove();
+                            let allComments = response.commentsOrderByLikes;
+                            let jsonResponse = [JSON.stringify(allComments)];
+                            let commmentsContent = [];
+                            
+                            for (let k in allComments) {
+                                commmentsContent.push(allComments[k]);
+                            }
+
+                            let contador = 0;
+                            let allLikes = [];
+                            commmentsContent.forEach(function(comment, index) {
+                                index = Object.keys(allComments)[contador]
+                                console.log("============");
+                                allLikes.push(comment.likes);
+                                contador++;
+                            })
+                            metodoBurbuja();
+                            console.log(allLikes);
+                        }
+                    },
+                });
+
+        });
+
+        function translateDatabaseInfo() {
+            let currentActiveLang = '<?= app()->getLocale() ?>';
+            let contentDescription = document.getElementById("film-description");
+            let contentGenre = document.getElementById("film-genre");
+            let dataBaseContentLang = 'en';
+            alert(currentActiveLang);
+
+        }
+
+        function metodoBurbuja(items) {
+            var length = items.length;  
+            for (var i = 0; i < length; i++) { 
+                for (var j = 0; j < (length - i - 1); j++) { 
+                    if(items[j] > items[j+1]) {
+                    var tmp = items[j]; 
+                    items[j] = items[j+1]; 
+                    items[j+1] = tmp; 
+                    }
+                }        
+            }
+        }
+
         
-        
+
         
     </script>
 @endsection

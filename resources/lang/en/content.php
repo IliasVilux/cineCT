@@ -26,6 +26,8 @@ return [
     'fiction' => 'Sci-fi / Fantasy',
     'drama' => 'Drama / Mistery',
     'crime' => 'Warlike / Crime',
+    'send_rating' => 'Send',
+    'add_favourite' => 'Add to favorites',
 
     'samurai' => 'Samurai',
     'shounen' => 'Shounen',
@@ -35,5 +37,12 @@ return [
     'scifi' => 'Scifi',
     'mecha' => 'Mecha',
     'josei' => 'Josei',
+
+    //CONTENT NOT AVAILABLE
+    'film_genre_not_have_content' => 'Still this genre does not have any movies',
+    'serie_genre_not_have_content' => 'Still this genre does not have any series',
+    'anime_genre_not_have_content' => 'Still this genre does not have any animes',
+
+    'order_review' => 'Order by likes',
 
 ];

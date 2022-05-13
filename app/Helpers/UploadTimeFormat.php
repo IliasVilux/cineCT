@@ -3,6 +3,7 @@
 namespace App\Helpers;
 
 use DateTime;
+use Illuminate\Support\Facades\App;
 
 class UploadTimeFormat
 {
@@ -27,12 +28,12 @@ class UploadTimeFormat
         $minute = $timeAgo->i;//minutos = [00-59]
         $second = $timeAgo->s; //segundos = [00-59];
         
-        $monthKeys = ['mes', 'meses'];
-        $dayKeys = ['dia', 'dias'];
-        $hourKeys = ['hora', 'horas'];
-        $minuteKeys = ['minuto', 'minutos'];
-        $secondKeys = ['segundo', 'segundos'];
-        
+        $monthKeys = [trans('titles.month'), trans('titles.months')];
+        $dayKeys = [trans('titles.day'), trans('titles.days')];
+        $hourKeys = [trans('titles.hour'), trans('titles.hours')];
+        $minuteKeys = [trans('titles.min'), trans('titles.mins')];
+        $secondKeys = [trans('titles.second'), trans('titles.seconds')];
+
         if($month == 00){
             $msj = $month .' '. $monthKeys[1];
             if($day == 00){
@@ -79,9 +80,15 @@ class UploadTimeFormat
                 $msj = $month .' '. $monthKeys[1];
             }
         }
+        
+        
+        $currentUserActiveLang = session()->get('locale');
+        if($currentUserActiveLang === 'en'){
+            $translation = $msj . " " . trans('titles.ago');
+        }else{
+            $translation = trans('titles.ago') . " " . $msj;
+        }
 
-        return 'Hace ' .$msj;
-       
-
+        return $translation;
     }
 }

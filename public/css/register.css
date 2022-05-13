@@ -12,8 +12,7 @@ button {
 }
 
 /* Botones register-login*/
-.nav-link,
-.nav-link:hover  {
+.nav-link{
   color: white;
 }
 

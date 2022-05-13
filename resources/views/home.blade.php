@@ -6,7 +6,7 @@
 </head>
 
 @if (Session::has('welcomeUser'))
-<div class="alert alert-success" role="alert" id="welcomeMessage">
+<div class="alert cinect-custom-alert" role="alert" id="welcomeMessage">
     <strong>{{ Session::get('welcomeUser') }}!</strong>
 </div>
 @endif
@@ -44,6 +44,8 @@
                     <img src="{{$serie[38]->poster_path}}" class="full-img px-2 px-sm-1" alt="Img {{$serie[38]->name}}">
                 </a>
             </div>
+            
+            
             <div class="carousel-item full text-center">
                 <a href="/detail/detailAnimes/37" class="link-img-carousel">
                     <img src="{{$anime[36]->poster_path}}" class="full-img px-2 px-sm-1" alt="Img {{$anime[36]->name}}">
@@ -55,16 +57,16 @@
                     <img src="{{$anime[38]->poster_path}}" class="full-img px-2 px-sm-1" alt="Img {{$anime[38]->name}}">
                 </a>
             </div>
+            
+
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
             data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
             data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
         </button>
     </div>
 </section>
@@ -270,6 +272,7 @@
                 aria-hidden="true"></i></a>
     </div>
 
+    
     <!-- ANIME -->
     <div class="container-fluid d-flex justify-content-between align-items-center" id="title-button">
         <h3 class="title text-uppercase">{{trans('home.animes')}}</h3>
@@ -369,6 +372,7 @@
         <a class="btn-floating" href="#animes" data-bs-slide="next"><i class="fa fa-chevron-right"
                 aria-hidden="true"></i></a>
     </div>
+    
 </section>
 <script>
     if(document.getElementById('welcomeMessage')){

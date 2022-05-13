@@ -40,7 +40,7 @@
         @else
            
             @if (isset($search))
-                <h5 class="text-center">No se ha encontrado ningun resultador con <span
+                <h5 class="text-center">{{trans('warnings.content_not_found')}} <span
                         style="opacity:0.8;">{{ $search }}</span></h5>
             @endif
         @endif

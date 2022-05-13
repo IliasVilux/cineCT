@@ -26,6 +26,8 @@ return [
     'fiction' => 'Ciència ficció / Fantasía',
     'drama' => 'Drama / Misteri',
     'crime' => 'Bèl·lica / Crim',
+    'send_rating' => 'Enviar',
+    'add_favourite' => 'Afegir a favorits',
 
     'samurai' => 'Samurai',
     'shounen' => 'Shounen',
@@ -35,5 +37,12 @@ return [
     'scifi' => 'Sci-fi',
     'mecha' => 'Mecha',
     'josei' => 'Josei',
+
+    //CONTENT NOT AVAILABLE
+    'film_genre_not_have_content' => 'Encara aquest gènere no té cap pel·lícula',
+    'serie_genre_not_have_content' => 'Encara aquest gènere no té cap sèrie',
+    'anime_genre_not_have_content' => 'Encara aquest gènere no té cap anime',
+
+    'order_review' => 'Ordenar per likes',
 
 ];

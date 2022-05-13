@@ -37,7 +37,12 @@
                     <div class="dropdown">
                         <button class="btn text-light dropdown-toggle d-flex flex-direction-row flex-nowrap justify-content-end align-items-center p-0 px-sm-2"
                             type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true">
-                            <i class="fas fa-user-circle pe-1"></i>
+                            
+                            @if(Auth::user()->image_id === null)
+                            <i class="fas fa-user-circle fs-4 pe-1"></i>
+                            @else
+                            <img class="img-profile-navbar" src="{{ Auth::user()->image->path }}" alt="{{Auth::user()->image->id}}">
+                            @endif
 
                             @if (Auth::check())
                                 <p class="d-none d-sm-flex m-0">{{ Auth::user()->nick }}</p>
@@ -69,7 +74,7 @@
                                 </li>
 
                                 <li><a class="dropdown-item" href="{{ route('signout.user') }}"><i
-                                            class="fas fa-sign-out-alt px-1"></i>Cerrar sessión</a>
+                                            class="fas fa-sign-out-alt px-1"></i>{{trans('titles.logout')}}</a>
                                 </li>
                             @else
                                 <li><a class="dropdown-item" href="{{ route('user.create') }}"><i class="fas fa-user-circle"></i>Iniciar Session</a></li>
