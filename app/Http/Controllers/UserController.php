@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\FavoriteList;
+use App\Models\FavouriteLists;
 use App\Models\Image;
 use App\Models\Like;
 use App\Models\Review;
@@ -142,7 +143,10 @@ class UserController extends Controller
         $user_likes = Like::where('user_id', $id)->get(); 
         $user_reviews = Review::where('user_id', $id)->get();
         $allLikes = Like::all();
-
+        $userFavorites = FavoriteList::where('user_id', $id)->first();
+        $userAllFavorites = FavoriteList::where('user_id', $id)->get();
+        $userFavoritesLists = FavouriteLists::where('user_id', $id)->first();
+        $userAllFavoritesLists = FavouriteLists::where('user_id', $id)->get();
         /*
         un usuario puede dar likes a otras reviews, pero a la vez otros 
         usuarios pueden dar likes a las reviews de este usuario,
@@ -159,6 +163,7 @@ class UserController extends Controller
             }
         }
 
+        //Eliminamos todos sus likes
         if($user && $isset_likes) {
             foreach($user_likes as $like) {
                 $like->delete();
@@ -166,6 +171,22 @@ class UserController extends Controller
         }
 
 
+        //Eliminamos todos sus series/pelis/animes añadidos a favoritos
+        if($user && $userFavorites) {
+            foreach($userAllFavorites as $fav) {
+                $fav->delete();
+            } 
+        }
+
+        //Eliminamos todas sus listas de favoritos
+        if($user && $userFavoritesLists) {
+            foreach($userAllFavoritesLists as $favList) {
+                $favList->delete();
+            }
+        }
+
+
+        //Eliminamos todas sus reviews
         if($user && $isset_reviews) {
             foreach($user_reviews as $review) {
                 $review->delete();
