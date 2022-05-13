@@ -133,32 +133,38 @@
                                 @if (count($comments) !== 0)
                                     <div class="d-flex justify-content-end comment-container__sort-container mb-3"
                                         id="short_by_likes">
-                                        <a class="btn btn-order" style="border:1px solid #5A3C97; color:#ffffff;"
-                                            id="{{ $film->id }}">
-                                            <span class="comment-container__sort-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                                                    fill="currentColor" class="bi bi-filter-left" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
-                                                </svg>
-                                            </span>
-                                            {{ trans('content.order_review') }}
-                                        </a>
+                                        @if(Request::url() !== route('film.films', ['id' => $film->id , 'orderByLikes' => 'order']))
+                                            <a class="btn btn-order" type="submit" style="border:1px solid #5A3C97; color:#ffffff;"
+                                                id="{{ $film->id }}" href="{{route('film.films', ['id' => $film->id , 'orderByLikes' => 'order'])}}">
+                                                <span class="comment-container__sort-icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                                        fill="currentColor" class="bi bi-filter-left" viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                                                    </svg>
+                                                </span>
+                                                {{ trans('content.order_review') }}
+                                            </a>
+                                        @endif
                                     </div>
                                 @endif
                                 <div class="col" id="comment-container">
 
-
-                                    {{-- @foreach ($commentsOrderByLikes as $commentsOrder)
-                                        <?php $comment = $commentsOrder['comments']; ?>
+                                    @if(Request::url() === route('film.films', ['id' => $film->id , 'orderByLikes' => 'order']))
+                                        @foreach ($commentsOrderByLikes as $commentsOrder)
+                                            <?php $comment = $commentsOrder['comments']; ?>
                                             @include('includes.review', ['comment' => $comment])
-                                    @endforeach --}}
+                                        @endforeach
+                                    
+                                    @else
 
-                                    @foreach ($comments as $comment)
-                                        @if ($comment->film_id == $film->id && !empty($comment->description))
-                                            @include('includes.review', ['comment' => $comment])
-                                        @endif
-                                    @endforeach
+                                        @foreach ($comments as $comment)
+                                            @if ($comment->film_id == $film->id && !empty($comment->description))
+                                                @include('includes.review', ['comment' => $comment])
+                                            @endif
+                                        @endforeach
+                                    
+                                    @endif
                                 </div>
                             </div>
                             <div class="alert alert-success d-none" id="msg_div" role="alert"></div>
@@ -369,66 +375,6 @@
 
         dislike();
 
-
-        //Short by likes with ajax
-        jQuery('#short_by_likes').click(function() {
-            let orderByLikes = 'order';
-            jQuery('#comment-container').html(
-                `<div class="text-center loading-comments-order-by-likes">
-                    <div class="spinner-border text-light" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                </div>`);
-            $.ajax({
-                type: "GET",
-                url: `/detail/detailFilms/{{ $film->id }}/${orderByLikes}`,
-                data: {
-                    '_token': $('input[name=_token]').val(),
-                    orderByLikes: orderByLikes,
-                },
-                success: function(response) {
-                    if (response.status) {
-                        jQuery('.loading-comments-order-by-likes').remove();
-                        let allComments = response.commentsOrderByLikes;
-                        let jsonResponse = [JSON.stringify(allComments)];
-                        let commmentsContent = [];
-
-                        for (let k in allComments) {
-                            commmentsContent.push(allComments[k]);
-                        }
-
-                        let contador = 0;
-                        let allCommentsJson = [];
-                        commmentsContent.forEach(function(comment, index) {
-                            index = Object.keys(allComments)[contador];
-
-                            allCommentsJson.push(allComments[index]);
-                            //console.log(allComments[index])
-                            contador++;
-                        })
-
-                        console.log(allCommentsJson);
-
-                        
-
-                        jQuery("#comment-container").html("")
-                        allCommentsJson.forEach(function(commentJson, index) {
-                            let allLikesJson = commentJson.likes
-                            let allCommentsJson = commentJson.comments
-                                                        
-                            jQuery("#comment-container").append(
-                                `
-                                ${allCommentsJson.description}
-                                `
-                            )
-                        })
-
-                        //console.table(allCommentsJson);
-                    }
-                },
-            });
-
-        });
 
         function translateDatabaseInfo() {
             let currentActiveLang = '<?= app()->getLocale() ?>';
