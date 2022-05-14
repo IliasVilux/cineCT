@@ -3,7 +3,6 @@
 
     <head>
         <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/general.css') }}">
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
@@ -18,49 +17,50 @@
         </div>
     @endif
     <section class="container">
-        <a href="{{ url('/content/contentAnimes') }}" class="btn button-purple my-4" title="Back">
-            {{ trans('home.back') }}</a>
-
-        <h1 class="detail-title">{{ $anime->name }}</h1>
-
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <h1 class="detail-title">{{ $anime->name }}</h1>
+            <a href="{{ url('/content/contentAnimes') }}" class="btn button-purple my-4" title="Back">
+            {{ trans('titles.back') }}
+            </a>
         </div>
 
 
-        <article class="mt-4">
+
+        <article class="d-flex flex-row flex-sm-wrap justify-content-between">
             @if ($anime->poster_path == null)
                 <img src="/img/NoImg.jpg" class="img-thumbnail col-6 col-md-5 col-lg-4 mb-md-0" alt="">
             @else
                 <img src="{{ $anime->poster_path }}" class="img-thumbnail col-6 col-md-5 col-lg-4 mb-md-0"
                     alt="Img {{ $anime->name }}">
             @endif
-            <article class="col-6 more-info bg-dark p-3" id="datasheet">
+            <article class="col-6 more-info bg-dark p-3 ms-1" id="datasheet">
 
                 <div class="d-none d-sm-flex nowrap">
-                    <h6 class="pe-2"><b>{{ trans('titles.genre') }}:</b></h6>
-                    <p>{{ $anime->genre->name }}</p>
+                    <h6 class="pe-2 fw-bold">{{ trans('titles.genre') }}:</h6>
+                    {{ $anime->genre->name }}
                 </div>
                 <div class="d-none d-sm-flex nowrap">
-                    <h6 class="pe-2"><b>{{ trans('titles.release') }}:</b></h6>
-                    <p> {{ $anime->release_date }}</p>
+                    <h6 class="pe-2 fw-bold">{{ trans('titles.release') }}:</h6>
+                     {{ $anime->release_date }}
                 </div>
                 <div class="d-none d-sm-flex nowrap">
-                    <h6 class="pe-2"><b>{{ trans('titles.duration') }}:</b></h6>
-                    <p> {{ $anime->duration }} min</p>
+                    <h6 class="pe-2 fw-bold">{{ trans('titles.duration') }}:</h6>
+                     {{ $anime->duration }} min
                 </div>
                 <div class="d-none d-sm-flex nowrap">
-                    <h6 class="pe-2"><b>{{ trans('titles.total_episodes') }}:</b></h6>
-                    <p> {{ $anime->total_episodes }}</p>
+                    <h6 class="pe-2 fw-bold">{{ trans('titles.total_episodes') }}:</h6>
+                     {{ $anime->total_episodes }}
                 </div>
                 <div class="d-none d-sm-flex nowrap">
-                    <h6 class="pe-2"><b>{{ trans('titles.rating') }}:</b></h6>
-                    <p><i class="fas fa-star"></i>
-                    <p> {{ $anime->puntuation }}</p>/10<p>
+                    <h6 class="pe-2 fw-bold">{{ trans('titles.rating') }}:</h6>
+                    <i class="fas fa-star m-1"></i>
+                     {{ $anime->puntuation }}/10
                 </div>
 
-                <div class="d-flex flex-column align-items-start">
-                    <h6 class="pe-2"><b>{{ trans('titles.how_much') }}</b></h6>
+                <div class="d-flex flex-column align-items-start mt-2">
+                    <h6 class="fw-bold">{{ trans('titles.how_much') }}</h6>
                     <form method="GET" class="d-flex flex-column align-items-center col-12 mb-xl-2">
-                        <div class="rating col-12 d-flex justify-content-center">
+                    <div class="rating col-12 d-flex flex-row-reverse justify-content-center">
                             <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
                             <input name="stars" id="e2" type="radio" value="9"><label for="e2">☆</label>
                             <input name="stars" id="e3" type="radio" value="8"><label for="e3">☆</label>
@@ -211,12 +211,12 @@
 
     <!-- START COMMMENT SECTION -->
     <section class="gradient-custom">
-        <div class="container my-5 py-5">
+        <div class="container my-0 py-0 py-sm-3">
             <div class="row d-flex justify-content-center">
-                <div class="col-12">
+                <div class="col-12 p-0 p-sm-2">
                     <div class="card card-comment bg-dark">
                         <div class="card-body card-body-comment p-4">
-                            <h4 class="text-center mb-4 pb-2">{{ trans('titles.commentSection') }}</h4>
+                            <h4 class="text-center mb-4 pb-2">Nested comments section</h4>
 
                             <div class="row">
                                 <div class="col" id="comment-container">
@@ -227,13 +227,13 @@
                                     @endforeach
                                 </div>
                             </div>
-                            <div class="alert alert-success d-none" id="msg_div" role="alert">
-
-                            </div>
+                            <div class="alert alert-success d-none" id="msg_div" role="alert"></div>
                         </div>
                     </div>
+
                 </div>
             </div>
+        </div>
     </section>
     <!-- END COMMENT SECTION -->
     <script type="text/javascript">

@@ -4,19 +4,22 @@ html, main, body {
   font-size: 10px;
 }
 
+.button-purple,
+.btn.btn-outline-danger{
+  font-size: 7px;
+  height: 18px;
+}
+
 .button-purple{
   color: #FFFFFF;
   border: 1px solid #5A3C97;
   background-color: #16181d;
-  font-size: 6px;
 }
+
 .button-purple:hover{
-  border: 1px solid #FFFFFF;
+  border: 1px solid #5A3C97;
   color: white;
   background-color: #5A3C97;
-}
-.btn.btn-danger {
-  font-size: 6px;
 }
 
 .btn-violet{
@@ -45,8 +48,6 @@ h1.detail-title {
   margin: 0;
 }
 
-
-
 /* Img slider */
 
 .carousel-item.full {
@@ -73,10 +74,22 @@ a.link-img-carousel {
   color: transparent;
 }
 
+a.link-img-detail {
+  overflow: hidden;
+  height: 160px;
+  width: 120px;
+  border-radius: 10px;
+}
+
 .img-carousel {
+  transition: transform .8s ease;
   width: 60px;
   height: 100%;
   border-radius: 10px;
+}
+
+.img-carousel:hover {
+  transform: scale(1.2);
 }
 
 .carousel-inner {
@@ -100,11 +113,9 @@ a.link-img-carousel {
   border-radius: 10px;
 }
 
-.img-profile-navbar{
-  width:50px;
-  height: 50px;
+.img-profile-navbar {
+  height: 15px;
   object-fit: cover;
-  padding: 5px;
   border-radius: 50%;
 }
 
@@ -215,9 +226,17 @@ a.link-img-carousel {
   html, main, body {
     font-size: 15px;
   }
+
   header {
     height: 70px;
   }
+
+  .img-profile-navbar {
+    height: 35px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
 
   .full-img {
     width: 25%;
@@ -231,7 +250,7 @@ a.link-img-carousel {
   }
   
   .button-purple,
-  .btn.btn-danger{
+  .btn.btn-outline-danger{
     font-size: 13px;
   }
 
@@ -243,12 +262,14 @@ a.link-img-carousel {
 
 @media screen and (min-width: 768px) {
   html, main, body {
-    font-size: 17px;
+    background: #16181d;
+    color: #FFFFFF;
+    font-size: 20px;
   }
   .button-purple,
-  .btn.btn-danger{
+  .btn.btn-outline-danger{
     font-size: 17px;
-    height: 35px;
+    height: 45px;
   }
 
   .full-img {

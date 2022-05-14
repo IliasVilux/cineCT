@@ -100,9 +100,28 @@
                         {!! $shareComponent !!}
                     </div>
             </article>
-            <p class="description pt-5" id="film-description">{{ $film->description }}</p>
-        </article>
-        <button class="btn btn-violet" onclick="translateDatabaseInfo()">{{ trans('home.show_translate') }}</button>
+
+            <div class="px-2">
+                <h5 class="pt-4"><b>Resumen</b></h5>
+                <p class="description col-12 d-flex">{{ $film->description }}</p>
+
+                <article class="d-sm-none">
+                    <div class="d-flex flex-column">
+                        <h5 class="pe-2"><b>Género:</b></h5>
+                        <p>{{ $film->genre->name }}</p>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <h5 class="pe-2"><b>Fecha de lanzamiento:</b></h5>
+                        <p> {{ $film->release_date }}</p>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <h5 class="pe-2"><b>Puntuación:</b></h5>
+                        <p><i class="fas fa-star"></i> {{ $film->puntuation }}/10<p>
+                    </div>
+                </article>
+            </div>        
+
+        
 
         <article class="pb-3">
             <div class="text-center pt-3 "><span id="character-counter"></span></div>

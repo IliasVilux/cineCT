@@ -27,7 +27,7 @@
                 @for ($data = 0; $data < count($content); $data++)
                     @foreach ($content[array_keys($content)[$data]] as $key => $value)
                         <a href="/detail/detail{{ ucfirst(array_keys($content)[$data]) }}/{{ $value->id }}"
-                            class="image-link col-2 p-2 search-content-info">
+                            class="image-link col-4 col-md-3 col-lg-2 p-2 search-content-info">
 
                             @if ($value->poster_path === null)
                                 <img src="/img/NoImg.jpg" class="img-content col-12" alt="No image">

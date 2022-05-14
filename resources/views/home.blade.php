@@ -92,7 +92,7 @@
                     <div class="row">';
                     for($j=0; $j < 3; $j++) {
                         echo '<div class="col d-flex justify-content-center p-1">
-                            <a href="/detail/detailFilms/'.$film[$k]->id.'">';
+                            <a href="/detail/detailFilms/'.$film[$k]->id.'" class="link-img-detail">';
                             if($film[$k]->poster_path == NULL)
                             echo '<img src="/img/NoImg.jpg" class="img-carousel" alt="">';
                             else
@@ -103,7 +103,7 @@
                     }
                     for($j=$j; $j < 5; $j++) {
                         echo '<div class="col d-none d-sm-flex justify-content-center p-1">
-                            <a href="/detail/detailFilms/'.$film[$k]->id.'">';
+                            <a href="/detail/detailFilms/'.$film[$k]->id.'" class="link-img-detail">';
                             if($film[$k]->poster_path == NULL)
                             echo '<img src="/img/NoImg.jpg" class="img-carousel" alt="">';
                             else
@@ -114,7 +114,7 @@
                     }
                     for($j=$j; $j < 7; $j++) {
                         echo '<div class="col d-none d-md-flex justify-content-center p-1">
-                            <a href="/detail/detailFilms/'.$film[$k]->id.'">';
+                            <a href="/detail/detailFilms/'.$film[$k]->id.'" class="link-img-detail">';
                             if($film[$k]->poster_path == NULL)
                             echo '<img src="/img/NoImg.jpg" class="img-carousel" alt="">';
                             else
@@ -131,7 +131,7 @@
                         <div class="row">';
                         for($j=0; $j < 3; $j++) {
                             echo '<div class="col d-flex justify-content-center p-1">
-                                <a href="/detail/detailFilms/'.$film[$k]->id.'">';
+                                <a href="/detail/detailFilms/'.$film[$k]->id.' class="link-img-detail">';
                                 if($film[$k]->poster_path == NULL)
                                 echo '<img src="/img/NoImg.jpg" class="img-carousel" alt="">';
                                 else
@@ -142,7 +142,7 @@
                         }
                         for($j=$j; $j < 5; $j++) {
                             echo '<div class="col d-none d-sm-flex justify-content-center p-1">
-                                <a href="/detail/detailFilms/'.$film[$k]->id.'">';
+                                <a href="/detail/detailFilms/'.$film[$k]->id.' class="link-img-detail">';
                                 if($film[$k]->poster_path == NULL)
                                 echo '<img src="/img/NoImg.jpg" class="img-carousel" alt="">';
                                 else
@@ -153,7 +153,7 @@
                         }
                         for($j=$j; $j < 7; $j++) {
                             echo '<div class="col d-none d-md-flex justify-content-center p-1">
-                                <a href="/detail/detailFilms/'.$film[$k]->id.'">';
+                                <a href="/detail/detailFilms/'.$film[$k]->id.' class="link-img-detail">';
                                 if($film[$k]->poster_path == NULL)
                                 echo '<img src="/img/NoImg.jpg" class="img-carousel" alt="">';
                                 else
@@ -192,7 +192,7 @@
                         <div class="row">';
                         for($j=0; $j < 3; $j++) {
                             echo '<div class="col d-flex justify-content-center p-1">
-                                <a href="/detail/detailSeries/'.$serie[$k]->id.'">';
+                                <a href="/detail/detailSeries/'.$serie[$k]->id.' class="link-img-detail">';
                                 if($serie[$k]->poster_path == NULL)
                                 echo '<img src="/img/NoImg.jpg" class="img-carousel" alt="">';
                                 else
@@ -203,7 +203,7 @@
                         }
                         for($j=$j; $j < 5; $j++) {
                             echo '<div class="col d-none d-sm-flex justify-content-center p-1">
-                                <a href="/detail/detailSeries/'.$serie[$k]->id.'">';
+                                <a href="/detail/detailSeries/'.$serie[$k]->id.' class="link-img-detail">';
                                 if($serie[$k]->poster_path == NULL)
                                 echo '<img src="/img/NoImg.jpg" class="img-carousel" alt="">';
                                 else
@@ -214,7 +214,7 @@
                         }
                         for($j=$j; $j < 7; $j++) {
                             echo '<div class="col d-none d-md-flex justify-content-center p-1">
-                                <a href="/detail/detailSeries/'.$serie[$k]->id.'">';
+                                <a href="/detail/detailSeries/'.$serie[$k]->id.' class="link-img-detail">';
                                 if($serie[$k]->poster_path == NULL)
                                 echo '<img src="/img/NoImg.jpg" class="img-carousel" alt="">';
                                 else
@@ -230,7 +230,7 @@
                             <div class="row">';
                             for($j=0; $j < 3; $j++) {
                                 echo '<div class="col d-flex justify-content-center p-1">
-                                    <a href="/detail/detailSeries/'.$serie[$k]->id.'">';
+                                    <a href="/detail/detailSeries/'.$serie[$k]->id.' class="link-img-detail">';
                                     if($serie[$k]->poster_path == NULL)
                                     echo '<img src="/img/NoImg.jpg" class="img-carousel" alt="">';
                                     else
@@ -241,7 +241,7 @@
                             }
                             for($j=$j; $j < 5; $j++) {
                                 echo '<div class="col d-none d-sm-flex justify-content-center p-1">
-                                    <a href="/detail/detailSeries/'.$serie[$k]->id.'">';
+                                    <a href="/detail/detailSeries/'.$serie[$k]->id.' class="link-img-detail">';
                                     if($serie[$k]->poster_path == NULL)
                                     echo '<img src="/img/NoImg.jpg" class="img-carousel" alt="">';
                                     else
@@ -252,7 +252,7 @@
                             }
                             for($j=$j; $j < 7; $j++) {
                                 echo '<div class="col d-none d-md-flex justify-content-center p-1">
-                                    <a href="/detail/detailSeries/'.$serie[$k]->id.'">';
+                                    <a href="/detail/detailSeries/'.$serie[$k]->id.' class="link-img-detail">';
                                     if($serie[$k]->poster_path == NULL)
                                     echo '<img src="/img/NoImg.jpg" class="img-carousel" alt="">';
                                     else
@@ -293,7 +293,7 @@
                 <div class="row">';
                 for($j=0; $j < 3; $j++) {
                     echo '<div class="col d-flex justify-content-center p-1">
-                        <a href="/detail/detailAnimes/'.$anime[$k]->id.'">';
+                        <a href="/detail/detailAnimes/'.$anime[$k]->id.' class="link-img-detail">';
                         if($anime[$k]->poster_path == NULL)
                         echo '<img src="/img/NoImg.jpg" class="img-carousel" alt="">';
                         else
@@ -304,7 +304,7 @@
                 }
                 for($j=$j; $j < 5; $j++) {
                     echo '<div class="col d-none d-sm-flex justify-content-center p-1">
-                        <a href="/detail/detailAnimes/'.$anime[$k]->id.'">';
+                        <a href="/detail/detailAnimes/'.$anime[$k]->id.' class="link-img-detail">';
                         if($anime[$k]->poster_path == NULL)
                         echo '<img src="/img/NoImg.jpg" class="img-carousel" alt="">';
                         else
@@ -315,7 +315,7 @@
                 }
                 for($j=$j; $j < 7; $j++) {
                     echo '<div class="col d-none d-md-flex justify-content-center p-1">
-                        <a href="/detail/detailAnimes/'.$anime[$k]->id.'">';
+                        <a href="/detail/detailAnimes/'.$anime[$k]->id.' class="link-img-detail">';
                         if($anime[$k]->poster_path == NULL)
                         echo '<img src="/img/NoImg.jpg" class="img-carousel" alt="">';
                         else
@@ -331,7 +331,7 @@
                     <div class="row">';
                     for($j=0; $j < 3; $j++) {
                         echo '<div class="col d-flex justify-content-center p-1">
-                            <a href="/detail/detailAnimes/'.$anime[$k]->id.'">';
+                            <a href="/detail/detailAnimes/'.$anime[$k]->id.' class="link-img-detail">';
                             if($anime[$k]->poster_path == NULL)
                             echo '<img src="/img/NoImg.jpg" class="img-carousel" alt="">';
                             else
@@ -342,7 +342,7 @@
                     }
                     for($j=$j; $j < 5; $j++) {
                         echo '<div class="col d-none d-sm-flex justify-content-center p-1">
-                            <a href="/detail/detailAnimes/'.$anime[$k]->id.'">';
+                            <a href="/detail/detailAnimes/'.$anime[$k]->id.' class="link-img-detail">';
                             if($anime[$k]->poster_path == NULL)
                             echo '<img src="/img/NoImg.jpg" class="img-carousel" alt="">';
                             else
@@ -353,7 +353,7 @@
                     }
                     for($j=$j; $j < 7; $j++) {
                         echo '<div class="col d-none d-md-flex justify-content-center p-1">
-                            <a href="/detail/detailAnimes/'.$anime[$k]->id.'">';
+                            <a href="/detail/detailAnimes/'.$anime[$k]->id.' class="link-img-detail">';
                             if($anime[$k]->poster_path == NULL)
                             echo '<img src="/img/NoImg.jpg" class="img-carousel" alt="">';
                             else

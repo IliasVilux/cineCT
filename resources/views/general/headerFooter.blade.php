@@ -29,7 +29,7 @@
                     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                        <a class="navbar-brand me-0 d-flex align-items-center" href="{{ url('home') }}">
+                        <a class="navbar-brand me-0 d-flex align-content-center ms-2 ms-sm-3" href="{{ url('home') }}">
                             <img src="/img/CinectLogo.svg" class="logo">
                         </a>
                 </div>
@@ -43,13 +43,13 @@
             
                     
                     <div class="dropdown">
-                        <button class="btn text-light dropdown-toggle d-flex flex-direction-row flex-nowrap justify-content-end align-items-center p-0 px-sm-3"
+                        <button class="btn text-light dropdown-toggle d-flex flex-direction-row flex-nowrap justify-content-end align-items-center p-0 px-sm-2"
                             type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true">
                             
                             @if(Auth::user()->image_id === null)
                             <i class="fas fa-user-circle fs-4 pe-1"></i>
                             @else
-                            <img class="img-profile-navbar" src="{{ Auth::user()->image->path }}" alt="{{Auth::user()->image->id}}">
+                            <img class="img-profile-navbar me-sm-2" src="{{ Auth::user()->image->path }}" alt="{{Auth::user()->image->id}}">
                             @endif
 
                             @if (Auth::check())
@@ -134,11 +134,6 @@
                                     <i class="fas fa-th-list pe-2"></i>{{trans('titles.lists')}}
                                 </a>
                             </li>
-                            <li>
-                                <a href="{{ url('/aboutUs/aboutUs') }}" class="footer-links text-light text-uppercase m-0">
-                                    <i class="fas fa-user pe-2"></i>{{trans('titles.about')}}
-                                </a>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -190,7 +185,6 @@
                     <a href="{{ route('top.top-content') }}" class="footer-links text-white px-md-1">{{trans('titles.top')}}</a>
                     <a href="{{ route('search.view') }}" class="footer-links text-white px-md-1">{{trans('titles.search')}}</a>
                     <a href="{{ url('/list/list') }}" class="footer-links text-white px-md-1">{{trans('titles.lists')}}</a>
-                    <a href="{{ url('/aboutUs/aboutUs') }}" class="footer-links text-white px-md-1">{{trans('titles.about')}}</a>
                 </div>
             </section>
             <!-- SECTION: LINKS -->
