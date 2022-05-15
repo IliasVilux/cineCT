@@ -85,8 +85,8 @@
                         echo '<div class="alert alert-success">'.trans("warnings.rating_recieved").'<strong>' . $_GET['stars'] . '</strong>.</div>';
                     } elseif (isset($_GET['stars']) == '');
                 ?>
-                <div class="d-flex flex-row justify-content-center">
-                    <div class="dropdown">
+                <div class="d-flex flex-row flex-wrap justify-content-center">
+                    <div class="dropdown my-sm-2">
                         <button type="button" class="btn button-purple dropdown-toggle" data-bs-toggle="dropdown">
                             {{trans('detail.add_favs')}}
                         </button>
@@ -125,7 +125,7 @@
                         </a>
                     @endif
                     @if(!empty($userListsWhereAnime))
-                        <div class="dropdown mx-2">
+                        <div class="dropdown mx-2 my-sm-2">
                             <button class="btn button-purple btn-sm dropdown-toggle" data-bs-toggle="dropdown">
                                 {{ trans('detail.delete_favourite') }}
                             </button>
@@ -139,9 +139,9 @@
                         </div>
                     @endif
                     @if (empty($userListsWhereAnime))
-                    <div class="social-media-links mx-2">
+                    <div class="social-media-links mx-2 my-sm-2">
                     @else
-                    <div class="social-media-links">
+                    <div class="social-media-links my-sm-2">
                     @endif
                         <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button" aria-expanded="false" aria-controls="shareComponent">
                             <i class="fas fa-share-alt"></i>
@@ -155,7 +155,7 @@
         </article>
 
         <div class="px-2">
-            <h5 class="pt-4"><b>Resumen</b></h5>
+            <h5 class="pt-4"><b>{{ trans('detail.summary') }}</b></h5>
             <p class="description col-12 d-flex">{{ $anime->description }}</p>
 
             <article class="d-sm-none">
@@ -184,7 +184,7 @@
         </div>
         <!-- START TRAILER SECTION -->
         <article class="d-flex flex-column flex wrap align-items-center p-3">
-            <h3 class="text-uppercase pb-3">Tráiler</h3>
+            <h3 class="text-uppercase pb-3">{{ trans('detail.trailer') }}</h3>
             @if ($anime->trailer_link != null)
                 <iframe src="https://www.youtube.com/embed/{{ $anime->trailer_link }}" allowfullscreen></iframe>
                 <div class="alert alert-dark w-75 my-3" role="alert">

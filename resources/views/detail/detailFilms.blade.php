@@ -53,126 +53,126 @@
             @endif
 
             <article class="col-6 more-info bg-dark p-3 ms-1" id="datasheet">
-                    <div class="d-none align-content-center flex-wrap d-sm-flex">
-                        <h5 class="pe-2 fw-bold">{{ trans('titles.genre') }}:</h5>
-                        <p id="film-genre">{{ \ContentGenre::TranslateGenre($film->genre->name) }}</p>
+                <div class="d-none align-content-center flex-wrap d-sm-flex">
+                    <h5 class="pe-2 fw-bold">{{ trans('detail.genre') }}:</h5>
+                    <p id="film-genre">{{ \ContentGenre::TranslateGenre($film->genre->name) }}</p>
+                </div>
+                <div class="d-none align-content-center flex-wrap d-sm-flex">
+                    <h5 class="pe-2 fw-bold">{{ trans('detail.release') }}:</h5>
+                        <p>{{ $film->release_date }}</p>
+                </div>
+                <div class="d-none align-content-center flex-wrap d-sm-flex">
+                    <h5 class="pe-2 fw-bold">{{ trans('detail.rating') }}:</h5>
+                    <i class="fas fa-star m-1"></i>
+                    <p>{{ $film->puntuation }}/10</p>
+                </div>
+                <div class="d-flex flex-column align-items-start mt-2">
+                    <h5 class="fw-bold">{{ trans('detail.how_much') }}</h5>
+                    <form method="GET" class="d-flex flex-column align-items-center col-12 mb-xl-2">
+                        <div class="rating col-12 d-flex flex-row-reverse justify-content-center">
+                            <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
+                            <input name="stars" id="e2" type="radio" value="9"><label for="e2">☆</label>
+                            <input name="stars" id="e3" type="radio" value="8"><label for="e3">☆</label>
+                            <input name="stars" id="e4" type="radio" value="7"><label for="e4">☆</label>
+                            <input name="stars" id="e5" type="radio" value="6"><label for="e5">☆</label>
+                            <input name="stars" id="e6" type="radio" value="5"><label for="e6">☆</label>
+                            <input name="stars" id="e7" type="radio" value="4"><label for="e7">☆</label>
+                            <input name="stars" id="e8" type="radio" value="3"><label for="e8">☆</label>
+                            <input name="stars" id="e9" type="radio" value="2"><label for="e9">☆</label>
+                            <input name="stars" id="e10" type="radio" value="1"><label for="e10">☆</label>
+                        </div>
+                        <button type="submit" class="btn button-purple col-6 mb-2 mb-xl-0">{{ trans('detail.send') }}</button>
+                    </form>
+                </div>
+                <?php
+                    if (isset($_GET['stars'])) {
+                        echo '<div class="alert alert-success">'.trans("warnings.rating_recieved").'<strong>' . $_GET['stars'] . '</strong>.</div>';
+                    } elseif (isset($_GET['stars']) == '');
+                ?>
+                <div class="d-flex flex-row flex-wrap justify-content-center">
+                    <div class="dropdown">
+                        <button type="button" class="btn button-purple btn-md dropdown-toggle" data-bs-toggle="dropdown">
+                            {{trans('detail.add_favs')}}
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#myModal">{{trans('detail.list_name')}}</a>
+                            </li>
+                            @foreach ($userLists as $list)
+                                <li>
+                                    <a class="dropdown-item" href="/detail/detailFilms/{{$film->id}}/{{$list->id}}/addFav">{{ $list->name }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
                     </div>
-                    <div class="d-none align-content-center flex-wrap d-sm-flex">
-                        <h5 class="pe-2 fw-bold">{{ trans('titles.release') }}:</h5>
-                         <p>{{ $film->release_date }}</p>
-                    </div>
-                    <div class="d-none align-content-center flex-wrap d-sm-flex">
-                        <h5 class="pe-2 fw-bold">{{ trans('titles.rating') }}:</h5>
-                        <i class="fas fa-star m-1"></i>
-                        <p>{{ $film->puntuation }}/10</p>
-                    </div>
-                    <div class="d-flex flex-column align-items-start mt-2">
-                        <h5 class="fw-bold">{{ trans('titles.how_much') }}</h5>
-                        <form method="GET" class="d-flex flex-column align-items-center col-12 mb-xl-2">
-                            <div class="rating col-12 d-flex flex-row-reverse justify-content-center">
-                                <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
-                                <input name="stars" id="e2" type="radio" value="9"><label for="e2">☆</label>
-                                <input name="stars" id="e3" type="radio" value="8"><label for="e3">☆</label>
-                                <input name="stars" id="e4" type="radio" value="7"><label for="e4">☆</label>
-                                <input name="stars" id="e5" type="radio" value="6"><label for="e5">☆</label>
-                                <input name="stars" id="e6" type="radio" value="5"><label for="e6">☆</label>
-                                <input name="stars" id="e7" type="radio" value="4"><label for="e7">☆</label>
-                                <input name="stars" id="e8" type="radio" value="3"><label for="e8">☆</label>
-                                <input name="stars" id="e9" type="radio" value="2"><label for="e9">☆</label>
-                                <input name="stars" id="e10" type="radio" value="1"><label for="e10">☆</label>
+                    <!-- Modal new list -->
+                    <div class="modal fade" id="myModal">
+                        <div class="modal-dialog text-dark">
+                            <div class="modal-content">
+                                <form action="/detail/detailFilms/{{ $film->id }}/addNewList">
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <input type="text" id="newListName" name="newListName" class="form-control" placeholder="{{trans('detail.new_list')}}">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-violet">{{ trans('detail.new_list') }}</button>
+                                        <button class="btn btn-outline-danger" data-bs-dismiss="modal">{{ trans('titles.close') }}</button>
+                                    </div>
+                                </form>
                             </div>
-                            <button type="submit" class="btn button-purple col-6 mb-2 mb-xl-0">{{ trans('content.send_rating') }}</button>
-                        </form>
+                        </div>
                     </div>
-                    <?php
-                        if (isset($_GET['stars'])) {
-                            echo '<div class="alert alert-success">'.trans("warnings.rating_recieved").'<strong>' . $_GET['stars'] . '</strong>.</div>';
-                        } elseif (isset($_GET['stars']) == '');
-                    ?>
-                    <div class="d-flex flex-row justify-content-center">
-                        <div class="dropdown">
-                            <button type="button" class="btn button-purple btn-md dropdown-toggle" data-bs-toggle="dropdown">
-                                {{trans('detail.add_favourite')}}
+                    @if (isset($userTopList[0]->name))
+                    <a href="/detail/detailFilms/{{$film->id}}/{{$userTopList[0]->id}}/addFav">
+                        <button class="btn button-purple btn-sm">{{ trans('detail.add_to') }} {{ $userTopList[0]->name }}</button>
+                    </a>
+                    @endif
+                    @if(!empty($userListsWhereFilm))
+                        <div class="dropdown mx-2 mt-sm-2 mt-lg-0">
+                            <button type="button" class="btn btn-outline-danger btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+                                {{ trans('detail.delete_favourite') }}
                             </button>
                             <ul class="dropdown-menu">
-                                <li>
-                                    <a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#myModal">{{trans('detail.create_new_list')}}</a>
-                                </li>
-                                @foreach ($userLists as $list)
+                                @foreach ($userListsWhereFilm as $list)
                                     <li>
-                                        <a class="dropdown-item" href="/detail/detailFilms/{{$film->id}}/{{$list->id}}/addFav">{{ $list->name }}</a>
+                                        <a class="dropdown-item" href="/detail/detailFilms/{{$film->id}}/{{$list->id}}/delFav">{{ $list->name }}</a>
                                     </li>
                                 @endforeach
                             </ul>
                         </div>
-                        <!-- Modal new list -->
-                        <div class="modal fade" id="myModal">
-                            <div class="modal-dialog text-dark">
-                                <div class="modal-content">
-                                    <form action="/detail/detailFilms/{{ $film->id }}/addNewList">
-                                        <div class="modal-body">
-                                            <div class="form-group">
-                                                <input type="text" id="newListName" name="newListName" class="form-control" placeholder="{{trans('detail.new_list')}}">
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button class="btn btn-violet">{{ trans('titles.new_list') }}</button>
-                                            <button class="btn btn-outline-danger" data-bs-dismiss="modal">{{ trans('titles.close') }}</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        @if (isset($userTopList[0]->name))
-                        <a href="/detail/detailFilms/{{$film->id}}/{{$userTopList[0]->id}}/addFav">
-                            <button class="btn button-purple btn-sm">{{ trans('detail.add_to') }} {{ $userTopList[0]->name }}</button>
+                    @endif
+                    @if (empty($userListsWhereAnime))
+                    <div class="social-media-links mx-2 mt-sm-2 mt-xl-0">
+                    @else
+                    <div class="social-media-links">
+                    @endif
+                        <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button" aria-expanded="false" aria-controls="shareComponent">
+                            <i class="fas fa-share-alt"></i>
                         </a>
-                        @endif
-                        @if(!empty($userListsWhereFilm))
-                            <div class="dropdown mx-2">
-                                <button type="button" class="btn button-purple btn-sm dropdown-toggle" data-bs-toggle="dropdown">
-                                    {{ trans('detail.delete_favourite') }}
-                                </button>
-                                <ul class="dropdown-menu">
-                                    @foreach ($userListsWhereFilm as $list)
-                                        <li>
-                                            <a class="dropdown-item" href="/detail/detailFilms/{{$film->id}}/{{$list->id}}/delFav">{{ $list->name }}</a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-                        @if (empty($userListsWhereAnime))
-                        <div class="social-media-links mx-2">
-                        @else
-                        <div class="social-media-links">
-                        @endif
-                            <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button" aria-expanded="false" aria-controls="shareComponent">
-                                <i class="fas fa-share-alt"></i>
-                            </a>
-                        </div>
                     </div>
-                    <div class="collapse my-3" id="shareComponent">
-                        {!! $shareComponent !!}
-                    </div>
+                </div>
+                <div class="collapse text-center" id="shareComponent">
+                    {!! $shareComponent !!}
+                </div>
             </article>
         </article>
 
         <div class="px-2">
-            <h5 class="pt-4"><b>{{ trans('titles.summary') }}:</b></h5>
+            <h5 class="pt-4"><b>{{ trans('detail.summary') }}</b></h5>
             <p class="description col-12 d-flex">{{ $film->description }}</p>
 
             <article class="d-sm-none">
                 <div class="d-flex flex-column">
-                    <h5 class="pe-2"><b>{{ trans('titles.genre') }}:</b></h5>
+                    <h5 class="pe-2"><b>{{ trans('detail.genre') }}:</b></h5>
                     <p>{{ $film->genre->name }}</p>
                 </div>
                 <div class="d-flex flex-column">
-                    <h5 class="pe-2"><b>{{ trans('titles.release') }}:</b></h5>
+                    <h5 class="pe-2"><b>{{ trans('detail.release') }}:</b></h5>
                     <p> {{ $film->release_date }}</p>
                 </div>
                 <div class="d-flex flex-column">
-                    <h5 class="pe-2"><b>{{ trans('titles.rating') }}:</b></h5>
+                    <h5 class="pe-2"><b>{{ trans('detail.rating') }}:</b></h5>
                     <p><i class="fas fa-star"></i> {{ $film->puntuation }}/10<p>
                 </div>
             </article>
@@ -183,7 +183,7 @@
             <form method="POST" id="create-comment" class="create_comment">
                 @csrf
                 <textarea name="description" id="description" cols="50" rows="3" placeholder="{{trans('detail.write_comment')}}"></textarea>
-                <button class="btn button-purple mt-3" type="submit" id="commentSubmit">{{ trans('titles.publish') }}</button>
+                <button class="btn button-purple mt-3" type="submit" id="commentSubmit">{{ trans('detail.publish') }}</button>
             </form>
             <div id="notify_user"></div>
             @if ($errors->has('description'))
@@ -201,7 +201,7 @@
                 <div class="col-12">
                     <div class="card card-comment bg-dark">
                         <div class="card-body card-body-comment p-4">
-                            <h4 class="text-center mb-4 pb-2">{{ trans('titles.commentSection') }}</h4>
+                            <h4 class="text-center mb-4 pb-2">{{ trans('detail.commentSection') }}</h4>
                             
                             <div class="row">
                                 
@@ -305,7 +305,7 @@
                                 <form class="mt-2" method="POST" action="/review/delete/${commentID}">
                                     @csrf
                                     <input type="hidden" id="${ commentID }" name="user-comment" value="${ commentID }">
-                                    <button class="btn btn-outline-danger" type="submit">{{ trans('titles.delete_review') }}</button>
+                                    <button class="btn btn-outline-danger" type="submit">{{ trans('detail.delete_review') }}</button>
                                 </form>
                             </div>
                         </div>

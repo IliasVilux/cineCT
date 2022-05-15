@@ -44,24 +44,24 @@
                     <p>{{ \ContentGenre::TranslateGenre($serie->genre->name) }}</p>
                 </div>
                 <div class="d-none align-content-center flex-wrap d-sm-flex">
-                    <h5 class="pe-2 fw-bold">{{ trans('titles.release') }}:</h5>
+                    <h5 class="pe-2 fw-bold">{{ trans('detail.release') }}:</h5>
                      <p>{{ $serie->release_date }}</p>
                 </div>
                 <div class="d-none align-content-center flex-wrap d-sm-flex">
-                    <h5 class="pe-2 fw-bold">{{ trans('titles.seasons') }}:</h5>
+                    <h5 class="pe-2 fw-bold">{{ trans('detail.seasons') }}:</h5>
                      <p>{{ $serie->seasons }}</p>
                 </div>
                 <div class="d-none align-content-center flex-wrap d-sm-flex">
-                    <h5 class="pe-2 fw-bold">{{ trans('titles.total_episodes') }}:</h5>
+                    <h5 class="pe-2 fw-bold">{{ trans('detail.total_episodes') }}:</h5>
                      <p>{{ $serie->total_episodes }}</p>
                 </div>
                 <div class="d-none align-content-center flex-wrap d-sm-flex">
-                    <h5 class="pe-2 fw-bold">{{ trans('titles.rating') }}:</h5>
+                    <h5 class="pe-2 fw-bold">{{ trans('detail.rating') }}:</h5>
                     <i class="fas fa-star m-1"></i>
                     <p>{{ $serie->puntuation }}/10</p>
                 </div>
                 <div class="d-flex flex-column align-items-start mt-2">
-                    <h5 class="fw-bold">{{ trans('titles.how_much') }}</h5>
+                    <h5 class="fw-bold">{{ trans('detail.how_much') }}</h5>
                     <form method="GET" class="d-flex flex-column align-items-center col-12 mb-xl-2">
                     <div class="rating col-12 d-flex flex-row-reverse justify-content-center">
                             <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
@@ -75,7 +75,7 @@
                             <input name="stars" id="e9" type="radio" value="2"><label for="e9">☆</label>
                             <input name="stars" id="e10" type="radio" value="1"><label for="e10">☆</label>
                         </div>
-                        <button type="submit" class="btn button-purple col-6 mb-2 mb-xl-0">{{ trans('titles.send') }}</button>
+                        <button type="submit" class="btn button-purple col-6 mb-2 mb-xl-0">{{ trans('detail.send') }}</button>
                     </form>
                 </div>
                 <?php
@@ -83,14 +83,14 @@
                         echo '<div class="alert alert-success">'.trans("warnings.rating_recieved").'<strong>' . $_GET['stars'] . '</strong>.</div>';
                     } elseif (isset($_GET['stars']) == '');
                 ?>
-                <div class="d-flex flex-row justify-content-center">
-                    <div class="dropdown">
+                <div class="d-flex flex-row flex-wrap justify-content-center">
+                    <div class="dropdown my-sm-2">
                         <button type="button" class="btn button-purple btn-md dropdown-toggle" data-bs-toggle="dropdown">
-                            {{trans('detail.add_favourite')}}
+                            {{trans('detail.add_favs')}}
                         </button>
                         <ul class="dropdown-menu">
                             <li>
-                                <a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#myModal">{{trans('detail.create_new_list')}}</a>
+                                <a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#myModal">{{trans('detail.list_name')}}</a>
                             </li>
                             @foreach ($userLists as $list)
                                 <li>
@@ -110,7 +110,7 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button class="btn btn-violet">{{ trans('titles.new_list') }}</button>
+                                        <button class="btn btn-violet">{{ trans('detail.new_list') }}</button>
                                         <button class="btn btn-outline-danger" data-bs-dismiss="modal">{{ trans('titles.close') }}</button>
                                     </div>
                                 </form>
@@ -124,7 +124,7 @@
                         </a>
                     @endif
                     @if (!empty($userListsWhereSerie))
-                        <div class="dropdown mx-2">
+                        <div class="dropdown mx-2 my-sm-2">
                             <button type="button" class="btn button-purple btn-sm dropdown-toggle" data-bs-toggle="dropdown">
                                 {{ trans('detail.delete_favourite') }}
                             </button>
@@ -138,9 +138,9 @@
                         </div>
                     @endif
                     @if (empty($userListsWhereAnime))
-                    <div class="social-media-links mx-2">
+                    <div class="social-media-links mx-2 my-sm-2">
                     @else
-                    <div class="social-media-links">
+                    <div class="social-media-links my-sm-2">
                     @endif
                         <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button" aria-expanded="false" aria-controls="shareComponent">
                             <i class="fas fa-share-alt"></i>
@@ -154,28 +154,28 @@
         </article>
 
         <div class="px-2">
-            <h5 class="pt-4"><b>{{ trans('titles.summary') }}:</b></h5>
+            <h5 class="pt-4"><b>{{ trans('detail.summary') }}:</b></h5>
             <p class="description col-12 d-flex">{{ $serie->description }}</p>
 
             <article class="d-sm-none">
                 <div class="d-flex flex-column">
-                    <h5 class="pe-2 fw-bold">{{ trans('titles.genre') }}:</h5>
+                    <h5 class="pe-2 fw-bold">{{ trans('detail.genre') }}:</h5>
                     <p>{{ $serie->genre->name }}</p>
                 </div>
                 <div class="d-flex flex-column">
-                    <h5 class="pe-2 fw-bold">{{ trans('titles.release') }}:</h5>
+                    <h5 class="pe-2 fw-bold">{{ trans('detail.release') }}:</h5>
                     <p>{{ $serie->release_date }}</p>
                 </div>
                 <div class="d-flex flex-column">
-                    <h5 class="pe-2 fw-bold">{{ trans('titles.seasons') }}:</h5>
+                    <h5 class="pe-2 fw-bold">{{ trans('detail.seasons') }}:</h5>
                     <p>{{ $serie->seasons }}</p>
                 </div>
                 <div class="d-flex flex-column">
-                    <h5 class="pe-2 fw-bold">{{ trans('titles.total_episodes') }}:</h5>
+                    <h5 class="pe-2 fw-bold">{{ trans('detail.total_episodes') }}:</h5>
                     <p>{{ $serie->total_episodes }}</p>
                 </div>
                 <div class="d-flex flex-column">
-                    <h5 class="pe-2 fw-bold">{{ trans('titles.rating') }}:</h5>
+                    <h5 class="pe-2 fw-bold">{{ trans('detail.rating') }}:</h5>
                     <i class="fas fa-star"></i>
                     <p>{{ $serie->puntuation }}/10</p>
                 </div>
@@ -187,7 +187,7 @@
             <form method="POST" id="create-comment" class="create_comment">
                 @csrf
                 <textarea name="description" id="description" cols="50" rows="3" placeholder="{{trans('detail.write_comment')}}"></textarea>
-                <button class="btn button-purple mt-3" type="submit" id="commentSubmit">{{ trans('titles.publish') }}</button>
+                <button class="btn button-purple mt-3" type="submit" id="commentSubmit">{{ trans('detail.publish') }}</button>
             </form>
             <div id="notify_user"></div>
             @if ($errors->has('description'))
@@ -206,7 +206,7 @@
                 <div class="col-12 p-0 p-sm-2">
                     <div class="card card-comment bg-dark">
                         <div class="card-body card-body-comment p-4">
-                            <h4 class="text-center mb-4 pb-2">{{ trans('titles.commentSection') }}</h4>
+                            <h4 class="text-center mb-4 pb-2">{{ trans('detail.commentSection') }}</h4>
 
                             <div class="row">
                                 <div class="col" id="comment-container">
@@ -279,7 +279,7 @@
                                 <form class="mt-2" method="POST" action="/review/delete/${commentID}">
                                     @csrf
                                     <input type="hidden" id="${ commentID }" name="user-comment" value="${ commentID }">
-                                    <button class="btn btn-outline-danger" type="submit">{{ trans('titles.delete_review') }}</button>
+                                    <button class="btn btn-outline-danger" type="submit">{{ trans('detail.delete_review') }}</button>
                                 </form>
                             </div>
                         </div>
