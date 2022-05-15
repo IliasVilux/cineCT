@@ -7,7 +7,7 @@
     </head>
 
     @if (count($likes) === 0)
-        <div class="notification-alert">
+        <div class="text-center notification-alert p-5">
             <h4>{{trans('profile.recent_activity')}}</h4>
             <div><i class="fab fa-gratipay"></i></div>
             <p>{{trans('profile.no_activity')}}</p>
