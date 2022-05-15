@@ -50,7 +50,7 @@
                     {{trans('profile.change_pass')}}
                 </a>
             
-                <button class="btn btn-outline-danger mt-3 col-5 px-2 ml-2" data-bs-toggle="modal" data-bs-target="#myModalDelete">
+                <button class="btn btn-outline-danger mt-3 col-5 px-2 ms-2" data-bs-toggle="modal" data-bs-target="#myModalDelete">
                     {{trans('profile.delete_profile')}}
                 </button>
 
