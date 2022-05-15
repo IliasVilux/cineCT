@@ -19,6 +19,12 @@
             <strong>{{ Session::get('signOut') }}</strong>
         </div>
     @endif
+
+    @if (Session::has('accountDeleted'))
+        <div class="alert alert-success cinect-custom-alert text-center" role="alert" id="accountDeleted">
+            <strong>{{ Session::get('accountDeleted') }}</strong>
+        </div>
+    @endif
     
 
     @if (Auth::user())
@@ -282,6 +288,13 @@
                 document.getElementById('signOut').style.display = "none";
             },3900);
         }
+
+        if(document.getElementById('accountDeleted')){
+            setTimeout( () => {
+                document.getElementById('accountDeleted').style.display = "none";
+            },3900);
+        }
+        
         
 
     </script>

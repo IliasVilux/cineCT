@@ -1,4 +1,4 @@
-@extends('/general/headerFooter')
+@extends('general.headerFooter')
 @section('content')
 
     <head>
@@ -46,15 +46,16 @@
                 </select>
             </div>
             <div class="d-flex flex-wrap flex-row justify-content-center m-0">
-                <a href="{{ route('change.password') }}" class="col-5 px-2">
-                    <button class="btn button-purple mt-3 col-12">{{trans('profile.change_pass')}}</button>
+                <a href="{{ route('change.password') }}" class="col-5 px-2 btn button-purple mt-3">
+                    {{trans('profile.change_pass')}}
                 </a>
             
-            <a href="{{ route('change.password') }}" class="col-5 px-2">
-                <button class="btn btn-outline-danger mt-3 col-12" data-bs-toggle="modal" data-bs-target="#myModal">{{trans('profile.delete_profile')}}</button>
-            </a>
+                <button class="btn btn-outline-danger mt-3 col-5 px-2 ml-2" data-bs-toggle="modal" data-bs-target="#myModalDelete">
+                    {{trans('profile.delete_profile')}}
+                </button>
+
             </div>
-            <div class="modal fade text-dark" id="myModal">
+            <div class="modal fade text-dark" id="myModalDelete">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">

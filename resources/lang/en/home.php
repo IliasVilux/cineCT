@@ -19,4 +19,5 @@ return [
     'view_more' => 'View more',
     'back' => 'Back',
     'show_translate' => 'Show translation',
+    'search_cinect' => 'Search in cinect',
 ];

@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\FavoriteList;
+use App\Models\FavouriteLists;
 use App\Models\Image;
 use App\Models\Like;
 use App\Models\Review;
@@ -54,6 +55,7 @@ class UserController extends Controller
     public function searchContent(Request $request)
     {
 
+        
         $search = $request->input('search');
 
         $request->validate([
@@ -104,8 +106,11 @@ class UserController extends Controller
         */ 
 
         //var_dump(empty($content['anime']));
+        return view('search.search', ['content' => $content, 'search' => $search]);
+    }
 
-        return view('/search/search', ['content' => $content, 'search' => $search]);
+    public function searchEmpty() {
+        return view('search.search');
     }
 
     public function profileUpdate(Request $request)
@@ -135,27 +140,57 @@ class UserController extends Controller
             
         $isset_reviews = Review::where('user_id', $id)->first();
         $isset_likes = Like::where('user_id', $id)->first();
-        
-        if($isset_likes) {
-            $likes = Like::where('user_id', $id)->get();
-            foreach($likes as $like) {
-                $like->where('user_id', $user->id)->delete();
-            }
-        }
-        
+        $userFavorites = FavoriteList::where('user_id', $id)->first();
+        $userFavoritesLists = FavouriteLists::where('user_id', $id)->first();
+        $user_likes = Like::where('user_id', $id)->get(); 
+        $user_reviews = Review::where('user_id', $id)->get();
+        $allLikes = Like::all();
+        $userAllFavorites = FavoriteList::where('user_id', $id)->get();
+        $userAllFavoritesLists = FavouriteLists::where('user_id', $id)->get();
+
+        //Eliminamos todos likes que le han dado al ususario
         if($isset_reviews) {
-            $reviews = Review::where('user_id', $id);
-            foreach($reviews as $review) {
-                $review->where('user_id', $id)->delete();
+            foreach($user_reviews as $review) {
+                foreach($allLikes as $like) {
+                    $like->where('review_id', $review->id)->delete();
+                }
             }
         }
 
+        //Eliminamos todos sus likes
+        if($user && $isset_likes) {
+            foreach($user_likes as $like) {
+                $like->delete();
+            }
+        }
+
+        //Eliminamos todas sus reviews
+        if($user && $isset_reviews) {
+            foreach($user_reviews as $review) {
+                $review->delete();
+            }
+        }
+
+
+        //Eliminamos todos sus series/pelis/animes añadidos a favoritos
+        if($user && $userFavorites) {
+            foreach($userAllFavorites as $fav) {
+                $fav->delete();
+            } 
+        }
+
+        //Eliminamos todas sus listas de favoritos
+        if($user && $userFavoritesLists) {
+            foreach($userAllFavoritesLists as $favList) {
+                $favList->delete();
+            }
+        }
 
         $userToDelete = User::findOrFail($id);
         $userToDelete->delete();
 
         Auth::logout();
-        return redirect()->to('register')->with('signOut', 'Cuenta eliminada!');
+        return redirect()->to('register')->with('accountDeleted', 'Cuenta eliminada!');
     }
 
     public function activity(){

@@ -65,4 +65,20 @@ return [
     'months' => 'mesos',
     'ago' => 'Fa',
 
+    //DB translate
+    'db_action' => 'Acció',
+    'db_adventure' => 'Aventura',
+    'db_drama' => 'Drama',
+    'db_fantasy' => 'Fantasia',
+    'db_horror' => 'Terror',
+    'db_mystery' => 'Misteri' ,
+    'db_suspense' => 'Suspens' ,
+    'db_animation' => 'Animació',
+    'db_crime' => 'Crim' ,
+    'db_family' => 'Família' ,
+    'db_science_fiction' => 'Ciència-ficció' ,
+    'db_sci_fi' => 'Ciència-ficció' ,
+    'db_war' => 'Guerra',
+
+
 ];

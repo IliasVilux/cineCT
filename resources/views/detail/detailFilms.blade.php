@@ -1,22 +1,32 @@
-@extends('/general/headerFooter')
+@extends('general.headerFooter')
 @section('content')
 
     <head>
         <link rel="stylesheet" href="{{ asset('css/general.css') }}">
         <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
-        <script type="text/javascript" src="http://www.google.com/jsapi"></script>
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <style>
+            div#social-links {
+                margin: 0 auto;
+                max-width: 500px;
+            }
+
+            div#social-links ul li {
+                display: inline-block;
+            }
+
+            div#social-links ul li a {
+                padding: 18px;
+                font-size: 30px;
+                color: #9966ff;
+            }
+
+        </style>
     </head>
     @if (Session::has('FilmAdded'))
         <div class="alert alert-success" role="alert">
             <strong>{{ Session::get('FilmAdded') }}!</strong>
-        </div>
-    @endif
-
-    @if (Session::has('FilmDeleted'))
-        <div class="alert alert-success" role="alert">
-            <strong>{{ Session::get('FilmDeleted') }}!</strong>
         </div>
     @endif
 
@@ -27,12 +37,13 @@
     @endif
 
     <section class="container">
-        <div class="container-fluid d-flex justify-content-between align-items-center">
-                <h1 class="detail-title">{{ $film->name }}</h1>
-                <a href="{{ url('/content/contentFilms') }}" class="btn button-purple my-4" title="Back">
-                {{ trans('titles.back') }}
-                </a>
-        </div>
+        <a href="{{ url('/content/contentFilms') }}" class="btn button-purple my-4" title="Back">
+            {{ trans('titles.back') }}
+        </a>
+
+
+    <section class="container">
+        <h1 class="detail-title mb-3">{{ $film->name }}</h1>
         
         <article class="d-flex flex-row flex-sm-wrap justify-content-between">
             @if ($film->poster_path == null)
@@ -44,7 +55,7 @@
             <article class="col-6 more-info bg-dark p-3 ms-1 ms-sm-0" id="datasheet">
                 <div class="d-none align-content-center flex-wrap d-sm-flex">
                     <h5 class="pe-2 fw-bold">{{ trans('detail.genre') }}:</h5>
-                    <p>{{ $film->genre->name }}</p>
+                    <p id="film-genre">{{ \ContentGenre::TranslateGenre($film->genre->name) }}</p>
                 </div>
                 <div class="d-none align-content-center flex-wrap d-sm-flex">
                     <h5 class="pe-2 fw-bold">{{ trans('detail.release') }}:</h5>
@@ -185,44 +196,50 @@
 
     <!-- START COMMMENT SECTION -->
     <section class="gradient-custom">
-        <div class="container my-0 py-0 py-sm-3">
+        <div class="container my-5 py-5">
             <div class="row d-flex justify-content-center">
-                <div class="col-12 p-0 p-sm-2">
+                <div class="col-12">
                     <div class="card card-comment bg-dark">
                         <div class="card-body card-body-comment p-4">
                             <h4 class="text-center mb-4 pb-2">{{ trans('detail.commentSection') }}</h4>
                             
                             <div class="row">
-                                <!--
+                                
                                 @if (count($comments) !== 0)
-                                    <div class="d-flex justify-content-end comment-container__sort-container mb-3" id="short_by_likes">
-                                         <a class="btn btn-order" style="border:1px solid #5A3C97; color:#ffffff;"
-                                            id="{{ $film->id }}">
-                                            <span class="comment-container__sort-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                                                    fill="currentColor" class="bi bi-filter-left" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
-                                                </svg>
-                                            </span>
-                                            {{ trans('content.order_review') }}
-                                        </a> 
+                                    <div class="d-flex justify-content-end comment-container__sort-container mb-3"
+                                        id="short_by_likes">
+                                        @if(Request::url() !== route('film.films', ['id' => $film->id , 'orderByLikes' => 'order']))
+                                            <a class="btn btn-order" type="submit" style="border:1px solid #5A3C97; color:#ffffff;"
+                                                id="{{ $film->id }}" href="{{route('film.films', ['id' => $film->id , 'orderByLikes' => 'order'])}}">
+                                                <span class="comment-container__sort-icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                                        fill="currentColor" class="bi bi-filter-left" viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                                                    </svg>
+                                                </span>
+                                                {{ trans('content.order_review') }}
+                                            </a>
+                                        @endif
                                     </div>
-                                @endif -->
+                                @endif
                                 <div class="col" id="comment-container">
 
-                                    <!-- {{-- 
-                                    @foreach ($commentsOrderByLikes as $commentsOrder)
-                                        <?php #$comment = $commentsOrder['comments'];?>
+                                    @if(Request::url() === route('film.films', ['id' => $film->id , 'orderByLikes' => 'order']))
+                                        @foreach ($commentsOrderByLikes as $commentsOrder)
+                                            <?php $comment = $commentsOrder['comments']; ?>
                                             @include('includes.review', ['comment' => $comment])
-                                    @endforeach
-                                     --}} -->
+                                        @endforeach
                                     
-                                    @foreach ($comments as $comment)
-                                        @if ($comment->film_id == $film->id && !empty($comment->description))
-                                            @include('includes.review', ['comment' => $comment])
-                                        @endif
-                                    @endforeach
+                                    @else
+
+                                        @foreach ($comments as $comment)
+                                            @if ($comment->film_id == $film->id && !empty($comment->description))
+                                                @include('includes.review', ['comment' => $comment])
+                                            @endif
+                                        @endforeach
+                                    
+                                    @endif
                                 </div>
                             </div>
                             <div class="alert alert-success d-none" id="msg_div" role="alert"></div>
@@ -236,7 +253,7 @@
     <script type="text/javascript">
         $("#notify_user").css("display", "none");
 
-        if(jQuery('.loading-comments-order-by-likes')) {
+        if (jQuery('.loading-comments-order-by-likes')) {
             jQuery('.loading-comments-order-by-likes').remove();
         }
 
@@ -258,7 +275,7 @@
                     jQuery("#commentSubmit").removeClass("loagindEffect");
                     jQuery('#notify_user').html(
                         `<div class="alert alert-success" role="alert"><i class="fas fa-check-circle"></i>${response.msg}</div>`
-                        );
+                    );
                     jQuery('#notify_user').fadeIn("slow");
                     jQuery('#create-comment')[0].reset();
                     jQuery('.spinner-border').remove();
@@ -432,49 +449,6 @@
         dislike();
 
 
-        //Short by likes with ajax
-        jQuery('#short_by_likes').click(function() {
-            let orderByLikes = 'order';
-            jQuery('#comment-container').html(
-                `<div class="text-center loading-comments-order-by-likes">
-                    <div class="spinner-border text-light" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                </div>`);
-            $.ajax({
-                    type: "GET",
-                    url: `/detail/detailFilms/{{$film->id}}/${orderByLikes}`,
-                    data: {
-                        '_token': $('input[name=_token]').val(),
-                        orderByLikes: orderByLikes,
-                    },
-                    success: function(response) {
-                        if(response.status) {
-                            jQuery('.loading-comments-order-by-likes').remove();
-                            let allComments = response.commentsOrderByLikes;
-                            let jsonResponse = [JSON.stringify(allComments)];
-                            let commmentsContent = [];
-                            
-                            for (let k in allComments) {
-                                commmentsContent.push(allComments[k]);
-                            }
-
-                            let contador = 0;
-                            let allLikes = [];
-                            commmentsContent.forEach(function(comment, index) {
-                                index = Object.keys(allComments)[contador]
-                                console.log("============");
-                                allLikes.push(comment.likes);
-                                contador++;
-                            })
-                            metodoBurbuja();
-                            console.log(allLikes);
-                        }
-                    },
-                });
-
-        });
-
         function translateDatabaseInfo() {
             let currentActiveLang = '<?= app()->getLocale() ?>';
             let contentDescription = document.getElementById("film-description");
@@ -483,18 +457,6 @@
             alert(currentActiveLang);
 
         }
-
-        function metodoBurbuja(items) {
-            var length = items.length;  
-            for (var i = 0; i < length; i++) { 
-                for (var j = 0; j < (length - i - 1); j++) { 
-                    if(items[j] > items[j+1]) {
-                    var tmp = items[j]; 
-                    items[j] = items[j+1]; 
-                    items[j+1] = tmp; 
-                    }
-                }        
-            }
-        }
+        
     </script>
 @endsection

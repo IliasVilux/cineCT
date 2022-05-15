@@ -69,23 +69,18 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     Route::get('/content/animes/{genre}', [AnimeController::class, 'filterContent'])->name('anime.animes-filtered');
 
     //TopContent
-    Route::get('/top/top', [TopController::class, 'fetchAllTopContent'])->name('top.top-content');
-    
-    Route::get('/search/search', function () {
-        return view('/search/search');
-    });
+    Route::get('/top', [TopController::class, 'fetchAllTopContent'])->name('top.top-content');
     
     //Profile Images
     Route::get('user/profile/image', [UserController::class, 'getUserProfileImg'])->name('user.profile-img');
     Route::get('user/profile/image{id}', [UserController::class, 'postUserProfileImg'])->name('user.save-profile-img');
-
-    /* Route::get('/detail/detailFilms/{id}/{orderByLikes?}', [FilmController::class,  'returnFilms'])->name('film.films'); */
-    Route::get('/detail/detailFilms/{id}', [FilmController::class,  'returnFilms'])->name('film.films');
+    
+    Route::get('/detail/detailFilms/{id}/{orderByLikes?}', [FilmController::class,  'returnFilms'])->name('film.films');
     /* Route::get('/detail/detailFilms/{id}', 'SocialShareButtonsController@ShareWidget'); */
 
-    Route::get('/detail/detailSeries/{id}', [SerieController::class,  'returnSeries'])->name('serie.series');
+    Route::get('/detail/detailSeries/{id}/{orderByLikes?}', [SerieController::class,  'returnSeries'])->name('serie.series');
 
-    Route::get('/detail/detailAnimes/{id}', [AnimeController::class,  'returnAnimes'])->name('anime.animes');
+    Route::get('/detail/detailAnimes/{id}/{orderByLikes?}', [AnimeController::class,  'returnAnimes'])->name('anime.animes');
 
     //Save Reviews
     Route::post('/film/comment/save/{id}', [ReviewController::class, 'postStoreFilmReview'])->name('comment.save.film');
@@ -112,7 +107,8 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     Route::get('/detail/detailSeries/{id}/addNewList', [SerieController::class,  'addNewList'])->name('serie.newList');
 
     //Searcher
-    Route::get('/content/{search?}', [UserController::class, 'searchContent'])->name('search-content'); 
+    Route::get('/search/search', [UserController::class, 'searchEmpty'])->name('search.view');
+    Route::get('/search/content/{search?}', [UserController::class, 'searchContent'])->name('search-content'); 
 
     
     //Show comments likes

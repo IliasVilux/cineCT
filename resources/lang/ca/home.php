@@ -19,5 +19,6 @@ return [
     'view_more' => 'Veure més',
     'back' => 'Tornar enrere',
     'show_translate' => 'Mostrar traducció',
+    'search_cinect' => 'Buscar en cinect',
 
 ];

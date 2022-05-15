@@ -110,7 +110,9 @@
 
 </section>
 {{-- Pagination --}}
+
 <div class="d-flex justify-content-center">
     {{ $series->links() }}
 </div>
+
 @endsection
