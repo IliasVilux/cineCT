@@ -36,4 +36,10 @@ return [
     'empty_msg' => 'No pots  publicar un comentari buit!',
     'too_long_msg' => 'El teu comentari és massa llarg!',
     'error_ocurred' => 'Ha hagut un error al publicar el teu comentari!',
+
+    // Session modal
+    'hi' => 'Holaa',
+    'open_session' => 'tens la sessió oberta, què vols fer?',
+    'back' => 'Tornar',
+    'close_session' => 'Tancar sessió',
 ];
