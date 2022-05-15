@@ -139,7 +139,6 @@
                         <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button" aria-expanded="false" aria-controls="shareComponent">
                             <i class="fas fa-share-alt"></i>
                         </a>
-                        @endif
                         @if(!empty($userListsWhereFilm))
                             <div class="dropdown mx-2 my-sm-2">
                                 <button type="button" class="btn button-purple btn-sm dropdown-toggle" data-bs-toggle="dropdown">
