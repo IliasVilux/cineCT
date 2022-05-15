@@ -7,6 +7,7 @@
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
+
     @if (Session::has('SerieAdded'))
         <div class="alert alert-success" role="alert">
             <strong>{{ Session::get('SerieAdded') }}!</strong>
@@ -22,6 +23,7 @@
             <strong>{{ Session::get('review_deleted') }}!</strong>
         </div>
     @endif
+    
     <section class="container">
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <h1 class="detail-title">{{ $serie->name }}</h1>
