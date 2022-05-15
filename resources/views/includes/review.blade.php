@@ -4,7 +4,7 @@
                 <i class="fas fa-user-circle fs-4 pe-1"></i>
             @else
                 @if($comment)
-                    <img class="rounded-circle shadow-1-strong me-3" src="{{ $comment->user->image->path }}" alt="a" width="65"height="65">
+                    <img class="img-profile rounded-circle shadow-1-strong me-3" src="{{ $comment->user->image->path }}" alt="a">
                 @endif
             @endif
             
@@ -39,7 +39,7 @@
             <form class="mt-2" method="POST" action="{{ route('user.comment-delete',['id' => $comment->id]) }}">
                 @csrf
                     <input type="hidden" id="{{$comment->id}}" name="user-comment" value="{{$comment->id}}">
-                    <button class="btn btn-outline-primary" type="submit">{{trans('titles.delete_review')}}</button>
+                    <button class="btn btn-outline-danger" type="submit">{{trans('titles.delete_review')}}</button>
             </form>
             @endif
             
