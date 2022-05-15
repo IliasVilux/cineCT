@@ -13,6 +13,7 @@
             <strong>{{ Session::get('AnimeAdded') }}!</strong>
         </div>
     @endif
+    
     @if (Session::has('AnimeDeleted'))
         <div class="alert alert-success" role="alert">
             <strong>{{ Session::get('AnimeDeleted') }}!</strong>
