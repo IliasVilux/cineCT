@@ -55,7 +55,7 @@
             <article class="col-6 more-info bg-dark p-3 ms-1" id="datasheet">
                     <div class="d-none align-content-center flex-wrap d-sm-flex">
                         <h5 class="pe-2 fw-bold">{{ trans('titles.genre') }}:</h5>
-                        <p>{{ $film->genre->name }}</p>
+                        <p id="film-genre">{{ \ContentGenre::TranslateGenre($film->genre->name) }}</p>
                     </div>
                     <div class="d-none align-content-center flex-wrap d-sm-flex">
                         <h5 class="pe-2 fw-bold">{{ trans('titles.release') }}:</h5>
