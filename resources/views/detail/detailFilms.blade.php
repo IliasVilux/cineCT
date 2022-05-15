@@ -72,7 +72,7 @@
                             echo '<div class="alert alert-success">'.trans("warnings.rating_recieved").'<strong>' . $_GET['stars'] . '</strong>.</div>';
                         } elseif (isset($_GET['stars']) == '');
                     ?>
-                    <div class="d-flex flex-row justify-content-center">
+                    <div class="d-flex flex-row flex-wrap justify-content-center">
                         <div class="dropdown">
                             <button type="button" class="btn button-purple btn-md dropdown-toggle" data-bs-toggle="dropdown">
                                 {{trans('detail.add_favourite')}}
@@ -112,7 +112,7 @@
                         </a>
                         @endif
                         @if(!empty($userListsWhereFilm))
-                            <div class="dropdown mx-2">
+                            <div class="dropdown mx-2 mt-sm-2 mt-lg-0">
                                 <button type="button" class="btn button-purple btn-sm dropdown-toggle" data-bs-toggle="dropdown">
                                     {{ trans('detail.delete_favourite') }}
                                 </button>
@@ -126,7 +126,7 @@
                             </div>
                         @endif
                         @if (empty($userListsWhereAnime))
-                        <div class="social-media-links mx-2">
+                        <div class="social-media-links mx-2 mt-sm-2 mt-xl-0">
                         @else
                         <div class="social-media-links">
                         @endif
