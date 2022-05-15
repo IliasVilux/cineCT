@@ -40,7 +40,7 @@
             @else
                 <img src="{{ $anime->poster_path }}" class="img-thumbnail col-6 col-md-5 col-lg-4 mb-md-0" alt="Img {{ $anime->name }}">
             @endif
-            <article class="col-6 more-info bg-dark p-3 ms-1" id="datasheet">
+            <article class="col-6 more-info bg-dark p-3 ms-1 ms-sm-0" id="datasheet">
                 <div class="d-none align-content-center flex-wrap d-sm-flex">
                     <h5 class="pe-2 fw-bold">{{ trans('detail.genre') }}:</h5>
                     <p>{{ \ContentGenre::TranslateGenre($anime->genre->name) }}</p>
