@@ -273,7 +273,7 @@ iframe {
 }
 
 
-/*@media (max-width: 600px) {
+@media (max-width: 600px) {
     .comment{
         width: 200px;
     }
@@ -320,4 +320,4 @@ iframe {
     .review-content-img{
         width: 75px;
     }
-}*/
+}

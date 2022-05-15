@@ -65,10 +65,8 @@
                             {{ trans('warnings.del_profile_conf') }}
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-info"
-                                data-bs-dismiss="modal">{{ trans('profile.cancel') }}</button>
-                            <a href="{{ route('delete.account') }}" type="button"
-                                class="btn btn-danger">{{ trans('profile.delete') }}</a>
+                            <button type="button" class="btn btn-info" data-bs-dismiss="modal">{{ trans('profile.cancel') }}</button>
+                            <a href="{{ route('delete.account') }}" type="button" class="btn btn-danger">{{ trans('profile.delete') }}</a>
                         </div>
                     </div>
                 </div>

@@ -3,6 +3,7 @@
 
     <head>
         <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/activity.css') }}">
     </head>
 
     @if (count($likes) === 0)
@@ -27,18 +28,16 @@
                             @if(Auth::user()->image_id === null)
                             <i class="fas fa-user-circle fs-4 pe-1"></i>
                             @else
-                            <img class="rounded-circle shadow-1-strong me-3"
-                            src="{{ $like->user->image->path }}" alt="{{Auth::user()->image->id}}"
-                                width="65" height="65" />
+                            <img class="rounded-circle shadow-1-strong me-3" src="{{ $like->user->image->path }}" alt="{{Auth::user()->image->id}}"/>
                             @endif
 
                         </div>
                         <div>
                             <div class="user-activity__information">
-                                <p class="mb-1"><strong>{{ $like->user->nick }}</strong> {{ trans('profile.comment_like') }}: <span
-                                        class="text-secondary">{{ $like->review->description }}</span>
-                                    <span
-                                        class="d-block ml-2 opacity-75">{{ \DateTimeFormat::timeFilter($like->created_at) }}</span>
+                                <p class="mb-1">
+                                    <strong>{{ $like->user->nick }}</strong> {{ trans('profile.comment_like') }}: 
+                                    <span class="text-secondary">{{ $like->review->description }}</span>
+                                    <span class="d-block ml-2 opacity-75">{{ \DateTimeFormat::timeFilter($like->created_at) }}</span>
                                 </p>
                             </div>
                         </div>

@@ -3,6 +3,7 @@
 
     <head>
         <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/general.css') }}">
         <script type="text/javascript" src="http://www.google.com/jsapi"></script>
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -100,8 +101,7 @@
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
                                             <button class="btn button-purple">{{ trans('titles.new_list') }}</button>
-                                            <a type="button" class="btn btn-danger"
-                                                data-bs-dismiss="modal">{{ trans('titles.close') }}</a>
+                                            <a type="button" class="btn btn-danger" data-bs-dismiss="modal">{{ trans('titles.close') }}</a>
                                         </div>
                                     </form>
 
@@ -191,7 +191,7 @@
                             <div class="row">
                                 @if (count($comments) !== 0)
                                     <div class="d-flex justify-content-end comment-container__sort-container mb-3" id="short_by_likes">
-                                        <a class="btn btn-order" style="border:1px solid #5A3C97; color:#ffffff;"
+                                        <!-- <a class="btn btn-order" style="border:1px solid #5A3C97; color:#ffffff;"
                                             id="{{ $film->id }}">
                                             <span class="comment-container__sort-icon">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
@@ -201,7 +201,7 @@
                                                 </svg>
                                             </span>
                                             {{ trans('content.order_review') }}
-                                        </a>
+                                        </a> -->
                                     </div>
                                 @endif
                                 <div class="col" id="comment-container">
@@ -276,7 +276,6 @@
                         <div class="flex-grow-1 flex-shrink-1"><div>
                             <div class="d-flex justify-content-between align-items-center">
                                 <p class="mb-1">{{ Auth::user()->nick }} <span class="text-muted" id="last-comment"></span></p> 
-                                <a href="#!"><i class="fas fa-reply fa-xs"></i><span class="text-muted">reply</span></a> 
                             </div>
                             <p class="small mb-0 comment">${ commentDescription }</p>
                             </div>
@@ -286,7 +285,7 @@
                                 <form class="mt-2" method="POST" action="/review/delete/${commentID}">
                                     @csrf
                                     <input type="hidden" id="${ commentID }" name="user-comment" value="${ commentID }">
-                                    <button class="btn btn-outline-primary" type="submit">{{ trans('titles.delete_review') }}</button>
+                                    <button class="btn btn-outline-danger" type="submit">{{ trans('titles.delete_review') }}</button>
                                 </form>
                             </div>
                         </div>
@@ -494,9 +493,5 @@
                 }        
             }
         }
-
-        
-
-        
     </script>
 @endsection

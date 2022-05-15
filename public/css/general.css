@@ -160,9 +160,6 @@ a.link-img-carousel {
   .button-purple,
   .btn.btn-outline-danger{
     font-size: 13px;
-  }
-
-  .button-purple{
     height: 29px;
   }
 }
@@ -212,6 +209,6 @@ a.link-img-carousel {
     width: 1200px;
   }
   .button-purple{
-    height: 43px;
+    height: 45px;
   }
 }
