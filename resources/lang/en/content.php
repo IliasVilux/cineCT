@@ -26,7 +26,6 @@ return [
     'fiction' => 'Sci-fi / Fantasy',
     'drama' => 'Drama / Mistery',
     'crime' => 'Warlike / Crime',
-    'send_rating' => 'Send',
 
     'samurai' => 'Samurai',
     'shounen' => 'Shounen',
