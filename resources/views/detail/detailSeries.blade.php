@@ -125,7 +125,7 @@
                     @endif
                     @if (!empty($userListsWhereSerie))
                         <div class="dropdown mx-2 my-sm-2">
-                            <button type="button" class="btn button-purple dropdown-toggle" data-bs-toggle="dropdown">
+                            <button type="button" class="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown">
                                 {{ trans('detail.delete_favourite') }}
                             </button>
                             <ul class="dropdown-menu">
