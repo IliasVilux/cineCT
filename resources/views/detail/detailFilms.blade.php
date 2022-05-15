@@ -129,7 +129,7 @@
                     </a>
                     @endif
                     @if(!empty($userListsWhereFilm))
-                        <div class="dropdown mx-2 mt-sm-2 mt-lg-0">
+                        <div class="dropdown mx-2 mt-sm-2">
                             <button type="button" class="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown">
                                 {{ trans('detail.delete_favourite') }}
                             </button>
@@ -143,7 +143,7 @@
                         </div>
                     @endif
                     @if (empty($userListsWhereAnime))
-                    <div class="social-media-links mx-2 mt-sm-2 mt-xl-0">
+                    <div class="social-media-links mx-2 mt-sm-2">
                     @else
                     <div class="social-media-links">
                     @endif
