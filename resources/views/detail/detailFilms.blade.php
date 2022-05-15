@@ -90,8 +90,8 @@
                     } elseif (isset($_GET['stars']) == '');
                 ?>
                 <div class="d-flex flex-row flex-wrap justify-content-center">
-                    <div class="dropdown">
-                        <button type="button" class="btn button-purple btn-md dropdown-toggle" data-bs-toggle="dropdown">
+                    <div class="dropdown my-sm-2">
+                        <button type="button" class="btn button-purple dropdown-toggle" data-bs-toggle="dropdown">
                             {{trans('detail.add_favs')}}
                         </button>
                         <ul class="dropdown-menu">
@@ -125,12 +125,12 @@
                     </div>
                     @if (isset($userTopList[0]->name))
                     <a href="/detail/detailFilms/{{$film->id}}/{{$userTopList[0]->id}}/addFav">
-                        <button class="btn button-purple btn-sm">{{ trans('detail.add_to') }} {{ $userTopList[0]->name }}</button>
+                        <button class="btn button-purple">{{ trans('detail.add_to') }} {{ $userTopList[0]->name }}</button>
                     </a>
                     @endif
                     @if(!empty($userListsWhereFilm))
                         <div class="dropdown mx-2 mt-sm-2 mt-lg-0">
-                            <button type="button" class="btn btn-outline-danger btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+                            <button type="button" class="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown">
                                 {{ trans('detail.delete_favourite') }}
                             </button>
                             <ul class="dropdown-menu">

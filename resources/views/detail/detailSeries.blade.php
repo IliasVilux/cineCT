@@ -120,12 +120,12 @@
 
                     @if (isset($userTopList[0]->name))
                         <a href="/detail/detailSeries/{{ $serie->id }}/{{ $userTopList[0]->id }}/addFav">
-                            <button class="btn button-purple btn-sm">{{ trans('detail.add_to') }} {{ $userTopList[0]->name }}</button>
+                            <button class="btn button-purple">{{ trans('detail.add_to') }} {{ $userTopList[0]->name }}</button>
                         </a>
                     @endif
                     @if (!empty($userListsWhereSerie))
                         <div class="dropdown mx-2 my-sm-2">
-                            <button type="button" class="btn button-purple btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+                            <button type="button" class="btn button-purple dropdown-toggle" data-bs-toggle="dropdown">
                                 {{ trans('detail.delete_favourite') }}
                             </button>
                             <ul class="dropdown-menu">

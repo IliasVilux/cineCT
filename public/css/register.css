@@ -59,6 +59,7 @@ div.card {
 .fa.fa-eye{ 
   border: 1px solid rgb(206, 212, 218);
   border-radius: 0px 4px 4px 0px;
+  padding: 5px;
 }
 
 
@@ -90,6 +91,11 @@ div.card {
     height: 50px;
     font-size: 1rem;
   }
+  .fa.fa-eye{ 
+    border: 1px solid rgb(206, 212, 218);
+    border-radius: 0px 4px 4px 0px;
+    padding: 16.5px;
+  }
 }
 
 
@@ -107,5 +113,10 @@ div.card {
   .button-purple  {
     height: 53px;
     font-size: 17px;
+  }
+  .fa.fa-eye{ 
+    border: 1px solid rgb(206, 212, 218);
+    border-radius: 0px 4px 4px 0px;
+    padding: 15.5px;
   }
 }
