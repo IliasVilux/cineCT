@@ -120,7 +120,7 @@
                                                 placeholder="Your password">
                                             <input type="checkbox" onclick="switchPassword()" name="showPassword"
                                                 id="showPassword" class="d-none">
-                                            <label for="showPassword"><i class="fa fa-eye p-2 p-sm-3"></i></label>
+                                            <label for="showPassword"><i class="fa fa-eye"></i></label>
                                         </div>
 
                                     </div>

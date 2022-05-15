@@ -121,12 +121,12 @@
                     </div>
                     @if (isset($userTopList[0]->name))
                         <a href="/detail/detailAnimes/{{ $anime->id }}/{{ $userTopList[0]->id }}/addFav">
-                            <button class="btn button-purple btn-sm">{{ trans('detail.add_to') }} {{ $userTopList[0]->name }}</button>
+                            <button class="btn button-purple">{{ trans('detail.add_to') }} {{ $userTopList[0]->name }}</button>
                         </a>
                     @endif
                     @if(!empty($userListsWhereAnime))
                         <div class="dropdown mx-2 my-sm-2">
-                            <button class="btn button-purple btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+                            <button class="btn button-purple dropdown-toggle" data-bs-toggle="dropdown">
                                 {{ trans('detail.delete_favourite') }}
                             </button>
                             <ul class="dropdown-menu">
