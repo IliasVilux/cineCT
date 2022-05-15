@@ -16,15 +16,13 @@
   
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ trans('profile.current_password') }}</label>
-  
                             <div class="col-md-6">
                                 <input id="current_password" type="password" class="form-control" name="current_password" autocomplete="current-password">
                             </div>
                         </div>
   
-                        <div class="form-group row">
+                        <div class="form-group row my-3">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ trans('profile.new_password') }}</label>
-  
                             <div class="col-md-6">
                                 <input id="update_password" type="password" class="form-control" name="update_password" autocomplete="current-password">
                             </div>
@@ -32,7 +30,6 @@
   
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ trans('profile.confirm_new_password') }}</label>
-    
                             <div class="col-md-6">
                                 <input id="update_confirm_password" type="password" class="form-control" name="update_confirm_password" autocomplete="current-password">
                             </div>
@@ -40,7 +37,7 @@
    
                         <div class="form-group row mb-0 mt-4">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn button-purple">
+                                <button type="submit" class="btn btn-violet">
                                     {{ trans('profile.update_password') }}
                                 </button>
                             </div>
