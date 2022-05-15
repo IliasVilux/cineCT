@@ -122,49 +122,49 @@
         </div>
 
 
-        <h3 class="mb-3 content-title">Top {{ trans('titles.films') }}</h3>
+        <h3 class="mb-3 text-center content-title">Top {{ trans('titles.films') }}</h3>
         <section class="cinet_top--content">
             @foreach ($films->take(10) as $film)
                 <a class="p-2" href="{{ route('film.films', ['id' => $film->id]) }}">
                     <div class="cinet_top--detail">
-                        <div><img src="{{ $film->poster_path }}" alt=""></div>
+                        <img src="{{ $film->poster_path }}" alt="">
+                        <p>{{ $film->name }}<span>{{ $film->puntuation }}</span></p>
                     </div>
-                    <p>{{ $film->name }}<span>{{ $film->puntuation }}</span></p>
                 </a>
             @endforeach
         </section>
         <div class="d-flex justify-content-center mt-2">
-            <a class="btn button-purple btn-sm col-2" href="{{ route('film.all-films') }}">{{ trans('home.view_more') }}</a>
+            <a class="btn button-purple col-2" href="{{ route('film.all-films') }}">{{ trans('home.view_more') }}</a>
         </div>
 
-        <h3 class="mt-5 content-title">Top {{ trans('titles.series') }}</h3>
+        <h3 class="mt-5 text-center content-title">Top {{ trans('titles.series') }}</h3>
         <section class="cinet_top--content">
             @foreach ($series->take(10) as $serie)
                 <a class="p-2" href="{{ route('serie.series', ['id' => $serie->id]) }}">
                     <div class="cinet_top--detail">
-                        <div><img src="{{ $serie->poster_path }}" alt=""></div>
+                        <img src="{{ $serie->poster_path }}" alt="">
+                        <p>{{ $serie->name }}<span>{{ $serie->puntuation }}</span></p>
                     </div>
-                    <p>{{ $serie->name }}<span>{{ $serie->puntuation }}</span></p>
                 </a>
             @endforeach
         </section>
         <div class="d-flex justify-content-center mt-2">
-            <a class="btn button-purple btn-sm col-2" href="{{ route('serie.all-series') }}">{{ trans('home.view_more') }}</a>
+            <a class="btn button-purple col-2" href="{{ route('serie.all-series') }}">{{ trans('home.view_more') }}</a>
         </div>
 
-        <h3 class="mt-5 content-title">Top {{ trans('titles.animes') }}</h3>
+        <h3 class="mt-5 text-center content-title">Top {{ trans('titles.animes') }}</h3>
         <section class="cinet_top--content">
             @foreach ($animes->take(10) as $anime)
                 <a class="p-2" href="{{ route('anime.animes', ['id' => $anime->id]) }}">
                     <div class="cinet_top--detail">
-                        <div><img src="{{ $anime->poster_path }}" alt=""></div>
+                        <img src="{{ $anime->poster_path }}" alt="">
+                        <p>{{ $anime->name }}<span>{{ $anime->puntuation }}</span></p>
                     </div>
-                    <p>{{ $anime->name }}<span>{{ $anime->puntuation }}</span></p>
                 </a>
             @endforeach
         </section>
         <div class="d-flex justify-content-center mt-2">
-            <a class="btn button-purple btn-sm col-2"  href="{{ route('anime.all-animes') }}">{{ trans('home.view_more') }}</a>
+            <a class="btn button-purple col-2"  href="{{ route('anime.all-animes') }}">{{ trans('home.view_more') }}</a>
         </div>
 
     </section>
