@@ -79,7 +79,7 @@
                         } elseif (isset($_GET['stars']) == '');
                     ?>
                     <div class="d-flex flex-row flex-wrap justify-content-center">
-                        <div class="dropdown">
+                        <div class="dropdown my-sm-2">
                             <button type="button" class="btn button-purple btn-md dropdown-toggle" data-bs-toggle="dropdown">
                                 {{trans('detail.add_favourite')}}
                             </button>
@@ -118,7 +118,7 @@
                         </a>
                         @endif
                         @if(!empty($userListsWhereFilm))
-                            <div class="dropdown mx-2 mt-sm-2 mt-lg-0">
+                            <div class="dropdown mx-2 my-sm-2">
                                 <button type="button" class="btn button-purple btn-sm dropdown-toggle" data-bs-toggle="dropdown">
                                     {{ trans('detail.delete_favourite') }}
                                 </button>
@@ -132,9 +132,9 @@
                             </div>
                         @endif
                         @if (empty($userListsWhereAnime))
-                        <div class="social-media-links mx-2 mt-sm-2 mt-xl-0">
+                        <div class="social-media-links mx-2 my-sm-2">
                         @else
-                        <div class="social-media-links">
+                        <div class="social-media-links my-sm-2">
                         @endif
                             <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button" aria-expanded="false" aria-controls="shareComponent">
                                 <i class="fas fa-share-alt"></i>
