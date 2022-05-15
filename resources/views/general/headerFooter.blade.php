@@ -33,7 +33,13 @@
                         </a>
                 </div>
                 <div class="d-flex flex-direction-row flex-nowrap justify-content-end align-items-center col-3">
-                <a href="{{ url('/search/search') }}" class="footer-links text-light text-uppercase"><i class="fas fa-search text-light p-0 pt-1"></i></a>
+                
+                    @if(Request::url() !== url('/search/search'))
+                        <button class="btn cinect-searchBtn-modal" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <i class="fas fa-search text-light p-0 pt-1"></i>
+                        </button>
+                    @endif
+
                     <div class="dropdown">
                         <button class="btn text-light dropdown-toggle d-flex flex-direction-row flex-nowrap justify-content-end align-items-center p-0 px-sm-2"
                             type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true">
@@ -134,6 +140,29 @@
         <!-- END NAVBAR -->
     </header>
 
+
+    <!-- SEARCH MODAL -->
+    <div class="modal fade cinect-custom-search-modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <form action="{{ route('search-content') }}" method="GET">
+                <div class="input-group align-items-center">
+                    <label id="clear-input"><i class="fas fa-times p-2"></i></label>
+                    <input type="text" class="form-control" id="search-content" name="search" placeholder="{{trans('home.search_cinect')}}">
+                    <button class="btn" style="color: #5A3C97;" type="submit" id="submitSearch"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+            <button class="cinect-modal-btn" data-bs-dismiss="modal" aria-label="Close">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                    <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                  </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+
     <!-- END HEADER -->
     <!-- START MAIN -->
     <main>
@@ -195,6 +224,7 @@
         </div>
         <!-- COPYRIGHT -->
     </footer>
+    
     <!-- END FOOTER -->
 </body>
 
