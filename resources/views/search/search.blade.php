@@ -7,8 +7,7 @@
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
-    <section class="container">
-        <h1 class="pt-2 pb-2">BUSCADOR</h1>
+    <section class="container mt-4">
         <form action="{{ route('search-content') }}" method="GET">
             <div class="input-group align-items-center">
                 <label id="clear-input"><i class="fas fa-times p-2"></i></label>
@@ -47,6 +46,7 @@
             @endif
         @endif
     </section>
+    
     <script type="text/javascript">
         var searchInput = document.getElementById("search-content");
         var clearInput = document.getElementById("clear-input");
