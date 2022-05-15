@@ -42,4 +42,7 @@ return [
     'open_session' => 'tens la sessió oberta, què vols fer?',
     'back' => 'Tornar',
     'close_session' => 'Tancar sessió',
+
+    // Search
+    'found_results' => 'Resultats trobats per',
 ];
