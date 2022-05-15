@@ -24,5 +24,10 @@ return [
     'publish' => 'Publish',
     'trailer' => 'Trailer',
     'comments' => 'Comments',
+    'add_favourite' => 'Add to favorites',
+    'delete_favourite' => 'Delete from favorites',
+    'new_list' => 'New list name',
+    'create_new_list' => 'Create new list',
+    'add_to' => 'Add to',
 
 ];

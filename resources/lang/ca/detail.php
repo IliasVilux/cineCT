@@ -24,5 +24,11 @@ return [
     'publish' => 'Publish',
     'trailer' => 'Trailer',
     'comments' => 'Comments',
+    'add_favourite' => 'Afegir a favorits',
+    'delete_favourite' => 'Eliminar de favorits',
+    'new_list' => 'Nom de la llista',
+    'create_new_list' => 'Crear una llista nova',
+    'add_to' => 'Afegir a',
+
 
 ];

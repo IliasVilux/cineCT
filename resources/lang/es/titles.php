@@ -67,6 +67,7 @@ return [
     'publish' => 'Publicar',
     'new_list' => 'Crear nueva lista',
     'trailer' => 'Tráiler',
+    'summary' => 'Resumen',
 
     // Time
     'second' => 'segundo',

@@ -27,7 +27,6 @@ return [
     'drama' => 'Drama / Mistery',
     'crime' => 'Warlike / Crime',
     'send_rating' => 'Send',
-    'add_favourite' => 'Add to favorites',
 
     'samurai' => 'Samurai',
     'shounen' => 'Shounen',

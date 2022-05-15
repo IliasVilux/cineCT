@@ -7,7 +7,7 @@
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
-    
+
     @if (Session::has('AnimeAdded'))
         <div class="alert alert-success" role="alert">
             <strong>{{ Session::get('AnimeAdded') }}!</strong>
@@ -31,8 +31,6 @@
             {{ trans('titles.back') }}
             </a>
         </div>
-
-
 
         <article class="d-flex flex-row flex-sm-wrap justify-content-between">
             @if ($anime->poster_path == null)
