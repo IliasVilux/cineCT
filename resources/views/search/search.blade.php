@@ -6,12 +6,11 @@
         <link rel="stylesheet" href="{{ asset('css/content.css') }}">
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     </head>
-    <section class="container">
-        <h1 class="pt-2 pb-2">BUSCADOR</h1>
+    <section class="container mt-5">
         <form action="{{ route('search-content') }}" method="GET">
             <div class="input-group align-items-center">
                 <label id="clear-input"><i class="fas fa-times p-2"></i></label>
-                <input type="text" class="form-control" id="search-content" name="search" placeholder="Dragon ball">
+                <input type="text" class="form-control" id="search-content" name="search" placeholder="{{trans('home.search_cinect')}}">
                 <button class="btn btn-outline-light" type="submit" id="submitSearch"><i class="fas fa-search"></i></button>
             </div>
         </form>
