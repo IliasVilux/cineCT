@@ -165,7 +165,7 @@ class FilmController extends Controller
                     }
                 }   
                 arsort($commentsOrderByLikes);
-                return view('detail.detailFilms', compact('film', 'comments', 'shareComponent', 'commentsOrderByLikes'));
+                return view('detail.detailFilms', compact('film', 'userLists', 'userListsWhereFilm', 'comments', 'shareComponent', 'userTopList', 'commentsOrderByLikes'));
             }
             return view('detail.detailFilms', compact('film', 'userLists', 'userListsWhereFilm', 'comments', 'shareComponent', 'userTopList'));
         } else {
