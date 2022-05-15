@@ -29,6 +29,10 @@ return [
     'video_error' => 'If the video is not working, is because the video was deleted from Youtube. We invite you to search a new trailer to know more about this content on ',
 
     // Detail
-    'empty_msg' => 'You can\'t publish an empty message!!',
+    'rating_recieved' => 'Rating recieved: ',
 
+    // Comments
+    'empty_msg' => 'You can\'t publish an empty message!',
+    'too_long_msg' => 'Your comment is too long!',
+    'error_ocurred' => 'There\'s been an error publishing your comment!',
 ];

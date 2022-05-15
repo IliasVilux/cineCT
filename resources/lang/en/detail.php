@@ -13,16 +13,28 @@ return [
     |
     */
 
+    // Caracteristicas
     'genre' => 'Genre',
-    'launch_date' => 'Launch date',
-    'episodes' => 'Episodes',
+    'release' => 'Release date',
+    'duration' => 'Duration',
+    'seasons' => 'Seasons',
+    'total_episodes' => 'Total episodes',
     'rating' => 'Rating',
     'how_much' => 'How much did you like it?',
+    'summary' => 'Summary',
     'send' => 'Send',
 
+    // Otras cosas
+    'commentSection' => 'Comments section',    
     'write_comment' => 'Write a comment',
     'publish' => 'Publish',
     'trailer' => 'Trailer',
     'comments' => 'Comments',
-
+    'add_favs' => 'Add to favorites',
+    'delete_favourite' => 'Delete from favorites',
+    'list_name' => 'New list name',
+    'new_list' => 'Create new list',
+    'add_to' => 'Add to',
+    'delete_review' => 'Delete review',
+ 
 ];

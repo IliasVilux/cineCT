@@ -38,6 +38,10 @@ a .button-category p{
 .img-content{
     width: 100%;
     height: 100%;
+    transition: transform .8s ease;
+}
+.img-content:hover {
+    transform: scale(1.2);
 }
 
 .page-item.disabled .page-link,

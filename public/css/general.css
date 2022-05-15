@@ -5,9 +5,10 @@ html, main, body {
 }
 
 .button-purple,
-.btn.btn-outline-danger{
+.btn-outline-danger,
+.btn-violet{
   font-size: 7px;
-  height: 18px;
+  height: 20px;
 }
 
 .button-purple{
@@ -23,16 +24,14 @@ html, main, body {
 }
 
 .btn-violet{
-  color: #FFFFFF;
+  color: #5A3C97;
   border: 1.5px solid #5A3C97;
   text-align: center;
-  transition: color 1s, background-color 1s;
 }
 
 .btn-violet:hover{
   color: #FFFFFF;
   background-color: #5A3C97;
-  animation: boxShadow 2s infinite;
 }
 
 a {
@@ -72,13 +71,6 @@ h1.detail-title {
 
 a.link-img-carousel {
   color: transparent;
-}
-
-a.link-img-detail {
-  overflow: hidden;
-  height: 160px;
-  width: 120px;
-  border-radius: 10px;
 }
 
 .img-carousel {
@@ -250,11 +242,9 @@ a.link-img-detail {
   }
   
   .button-purple,
-  .btn.btn-outline-danger{
+  .btn.btn-outline-danger,
+  .btn-violet{
     font-size: 13px;
-  }
-
-  .button-purple{
     height: 29px;
   }
 }
@@ -267,13 +257,14 @@ a.link-img-detail {
     font-size: 20px;
   }
   .button-purple,
-  .btn.btn-outline-danger{
+  .btn.btn-outline-danger,
+  .btn-violet{
     font-size: 17px;
     height: 45px;
   }
 
   .full-img {
-    width: 25%;
+    width: 22%;
     height: 300px;
   }
 
@@ -291,8 +282,11 @@ a.link-img-detail {
   html, main, body {
     font-size: 20px;
   }
+  .carousel-item.full {
+    height: 395px;
+  }
   .full-img {
-    width: 18%;
+    width: 20%;
     height: 350px;
   }
   .img-carousel{
@@ -302,8 +296,5 @@ a.link-img-detail {
   #container,
   #title-button {
     width: 1200px;
-  }
-  .button-purple{
-    height: 43px;
   }
 }

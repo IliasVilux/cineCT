@@ -2,6 +2,7 @@
 @section('content')
 
     <head>
+        <link rel="stylesheet" href="{{ asset('css/general.css') }}">
         <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
         <script type="text/javascript" src="http://www.google.com/jsapi"></script>
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -36,36 +37,45 @@
 
         <h1 class="detail-title">{{ $film->name }}</h1>
 
-        <article class="d-flex flex-column flex-sm-row flex-sm-wrap justify-content-between mt-4">
+    @if (Session::has('review_deleted'))
+        <div class="alert cinect-custom-alert text-center" role="alert" id="review_deleted">
+            <strong>{{ Session::get('review_deleted') }}!</strong>
+        </div>
+    @endif
+
+    <section class="container">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+                <h1 class="detail-title">{{ $film->name }}</h1>
+                <a href="{{ url('/content/contentFilms') }}" class="btn button-purple my-4" title="Back">
+                {{ trans('titles.back') }}
+                </a>
+        </div>
+        
+        <article class="d-flex flex-row flex-sm-wrap justify-content-between">
             @if ($film->poster_path == null)
-                <img src="/img/NoImg.jpg" class="img-thumbnail col-12 col-md-5 col-lg-4 mb-4 mb-md-0" alt="">
+                <img src="/img/NoImg.jpg" class="img-thumbnail col-6 col-md-5 col-lg-4 mb-md-0">
             @else
-                <img src="{{ $film->poster_path }}" class="img-thumbnail col-12 col-md-5 col-lg-4 mb-4 mb-md-0"
-                    alt="Img {{ $film->name }}">
+                <img src="{{ $film->poster_path }}" class="img-thumbnail col-6 col-md-5 col-lg-4 mb-md-0" alt="Img {{ $film->name }}">
             @endif
-            <article class="col-12 col-md-6 more-info bg-dark p-3">
-                <div class="p-4">
-                    <div class="d-flex nowrap">
-                        <h5 class="pe-2"><b>{{ trans('titles.genre') }}:</b></h5>
-                        <p id="film-genre">{{ \ContentGenre::TranslateGenre($film->genre->name) }}</p>
+
+            <article class="col-6 more-info bg-dark p-3 ms-1" id="datasheet">
+                    <div class="d-none align-content-center flex-wrap d-sm-flex">
+                        <h5 class="pe-2 fw-bold">{{ trans('titles.genre') }}:</h5>
+                        <p>{{ $film->genre->name }}</p>
                     </div>
-                    <div class="d-flex nowrap">
-                        <h5 class="pe-2"><b>{{ trans('titles.release') }}:</b></h5>
-                        <p> {{ $film->release_date }}</p>
+                    <div class="d-none align-content-center flex-wrap d-sm-flex">
+                        <h5 class="pe-2 fw-bold">{{ trans('titles.release') }}:</h5>
+                         <p>{{ $film->release_date }}</p>
                     </div>
-                    <div class="d-flex nowrap">
-                        <h5 class="pe-2"><b>{{ trans('titles.duration') }}:</b></h5>
-                        <p> {{ $film->duration }} min</p>
+                    <div class="d-none align-content-center flex-wrap d-sm-flex">
+                        <h5 class="pe-2 fw-bold">{{ trans('titles.rating') }}:</h5>
+                        <i class="fas fa-star m-1"></i>
+                        <p>{{ $film->puntuation }}/10</p>
                     </div>
-                    <div class="d-flex nowrap">
-                        <h5 class="pe-2"><b>{{ trans('titles.rating') }}:</b></h5>
-                        <p><i class="fas fa-star"></i>
-                        <p> {{ $film->puntuation }}</p>/10<p>
-                    </div>
-                    <div class="d-flex flex-column align-items-start">
-                        <h5 class="pe-2"><b>{{ trans('titles.how_much') }}</b></h5>
-                        <form method="GET" class="d-flex flex-column flex-xl-row align-items-center">
-                            <div class="rating col-12 me-3">
+                    <div class="d-flex flex-column align-items-start mt-2">
+                        <h5 class="fw-bold">{{ trans('titles.how_much') }}</h5>
+                        <form method="GET" class="d-flex flex-column align-items-center col-12 mb-xl-2">
+                            <div class="rating col-12 d-flex flex-row-reverse justify-content-center">
                                 <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
                                 <input name="stars" id="e2" type="radio" value="9"><label for="e2">☆</label>
                                 <input name="stars" id="e3" type="radio" value="8"><label for="e3">☆</label>
@@ -77,21 +87,73 @@
                                 <input name="stars" id="e9" type="radio" value="2"><label for="e9">☆</label>
                                 <input name="stars" id="e10" type="radio" value="1"><label for="e10">☆</label>
                             </div>
-                            <button type="submit"
-                                class="btn button-purple btn-sm col-6 mb-2 mb-xl-0">{{ trans('content.send_rating') }}</button>
+                            <button type="submit" class="btn button-purple col-6 mb-2 mb-xl-0">{{ trans('content.send_rating') }}</button>
                         </form>
                     </div>
                     <?php
-                    if (isset($_GET['stars'])) {
-                        echo '<div class="alert alert-success">Rating recibido: <strong>' . $_GET['stars'] . '</strong>.</div>';
-                    } elseif (isset($_GET['stars']) == '');
+                        if (isset($_GET['stars'])) {
+                            echo '<div class="alert alert-success">'.trans("warnings.rating_recieved").'<strong>' . $_GET['stars'] . '</strong>.</div>';
+                        } elseif (isset($_GET['stars']) == '');
                     ?>
-                    <div class="d-flex flex-row my-2">
-                        <a href="/detail/detailFilms/{{ $film->id }}/addFav"><button type="button"
-                                class="btn button-purple btn-md">{{ trans('content.add_favourite') }}</button></a>
+                    <div class="d-flex flex-row justify-content-center">
+                        <div class="dropdown">
+                            <button type="button" class="btn button-purple btn-md dropdown-toggle" data-bs-toggle="dropdown">
+                                {{trans('detail.add_favourite')}}
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#myModal">{{trans('detail.create_new_list')}}</a>
+                                </li>
+                                @foreach ($userLists as $list)
+                                    <li>
+                                        <a class="dropdown-item" href="/detail/detailFilms/{{$film->id}}/{{$list->id}}/addFav">{{ $list->name }}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <!-- Modal new list -->
+                        <div class="modal fade" id="myModal">
+                            <div class="modal-dialog text-dark">
+                                <div class="modal-content">
+                                    <form action="/detail/detailFilms/{{ $film->id }}/addNewList">
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <input type="text" id="newListName" name="newListName" class="form-control" placeholder="{{trans('detail.new_list')}}">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-violet">{{ trans('titles.new_list') }}</button>
+                                            <button class="btn btn-outline-danger" data-bs-dismiss="modal">{{ trans('titles.close') }}</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        @if (isset($userTopList[0]->name))
+                        <a href="/detail/detailFilms/{{$film->id}}/{{$userTopList[0]->id}}/addFav">
+                            <button class="btn button-purple btn-sm">{{ trans('detail.add_to') }} {{ $userTopList[0]->name }}</button>
+                        </a>
+                        @endif
+                        @if(!empty($userListsWhereFilm))
+                            <div class="dropdown mx-2">
+                                <button type="button" class="btn button-purple btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+                                    {{ trans('detail.delete_favourite') }}
+                                </button>
+                                <ul class="dropdown-menu">
+                                    @foreach ($userListsWhereFilm as $list)
+                                        <li>
+                                            <a class="dropdown-item" href="/detail/detailFilms/{{$film->id}}/{{$list->id}}/delFav">{{ $list->name }}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        @if (empty($userListsWhereAnime))
                         <div class="social-media-links mx-2">
-                            <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button"
-                                aria-expanded="false" aria-controls="shareComponent">
+                        @else
+                        <div class="social-media-links">
+                        @endif
+                            <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button" aria-expanded="false" aria-controls="shareComponent">
                                 <i class="fas fa-share-alt"></i>
                             </a>
                         </div>
@@ -100,36 +162,34 @@
                         {!! $shareComponent !!}
                     </div>
             </article>
+        </article>
 
-            <div class="px-2">
-                <h5 class="pt-4"><b>Resumen</b></h5>
-                <p class="description col-12 d-flex">{{ $film->description }}</p>
+        <div class="px-2">
+            <h5 class="pt-4"><b>{{ trans('titles.summary') }}:</b></h5>
+            <p class="description col-12 d-flex">{{ $film->description }}</p>
 
-                <article class="d-sm-none">
-                    <div class="d-flex flex-column">
-                        <h5 class="pe-2"><b>Género:</b></h5>
-                        <p>{{ $film->genre->name }}</p>
-                    </div>
-                    <div class="d-flex flex-column">
-                        <h5 class="pe-2"><b>Fecha de lanzamiento:</b></h5>
-                        <p> {{ $film->release_date }}</p>
-                    </div>
-                    <div class="d-flex flex-column">
-                        <h5 class="pe-2"><b>Puntuación:</b></h5>
-                        <p><i class="fas fa-star"></i> {{ $film->puntuation }}/10<p>
-                    </div>
-                </article>
-            </div>        
-
-        
+            <article class="d-sm-none">
+                <div class="d-flex flex-column">
+                    <h5 class="pe-2"><b>{{ trans('titles.genre') }}:</b></h5>
+                    <p>{{ $film->genre->name }}</p>
+                </div>
+                <div class="d-flex flex-column">
+                    <h5 class="pe-2"><b>{{ trans('titles.release') }}:</b></h5>
+                    <p> {{ $film->release_date }}</p>
+                </div>
+                <div class="d-flex flex-column">
+                    <h5 class="pe-2"><b>{{ trans('titles.rating') }}:</b></h5>
+                    <p><i class="fas fa-star"></i> {{ $film->puntuation }}/10<p>
+                </div>
+            </article>
+        </div>        
 
         <article class="pb-3">
             <div class="text-center pt-3 "><span id="character-counter"></span></div>
-            <form method="POST" action="" id="create-comment" class="create_comment">
+            <form method="POST" id="create-comment" class="create_comment">
                 @csrf
-                <textarea name="description" id="description" cols="50" rows="3" placeholder="Escribe un comentario"></textarea>
-                <button class="btn button-purple mt-3" type="submit"
-                    id="commentSubmit">{{ trans('titles.publish') }}</button>
+                <textarea name="description" id="description" cols="50" rows="3" placeholder="{{trans('detail.write_comment')}}"></textarea>
+                <button class="btn button-purple mt-3" type="submit" id="commentSubmit">{{ trans('titles.publish') }}</button>
             </form>
             <div id="notify_user"></div>
             @if ($errors->has('description'))
@@ -148,7 +208,9 @@
                     <div class="card card-comment bg-dark">
                         <div class="card-body card-body-comment p-4">
                             <h4 class="text-center mb-4 pb-2">{{ trans('titles.commentSection') }}</h4>
+                            
                             <div class="row">
+                                
                                 @if (count($comments) !== 0)
                                     <div class="d-flex justify-content-end comment-container__sort-container mb-3"
                                         id="short_by_likes">
@@ -189,7 +251,6 @@
                             <div class="alert alert-success d-none" id="msg_div" role="alert"></div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -237,11 +298,10 @@
                     let commentDescription = response.comment['description'];
                     let commentHtml =
                         `<div class="d-flex flex-start mb-4" id="content_id-${commentID}">
-                        <div><img class="rounded-circle shadow-1-strong me-3" src="{{ Auth::user()->image->path }}" width="65"height="65"></div>
+                        <div><img class="img-profile rounded-circle shadow-1-strong me-3" src="{{ Auth::user()->image->path }}"></div>
                         <div class="flex-grow-1 flex-shrink-1"><div>
                             <div class="d-flex justify-content-between align-items-center">
                                 <p class="mb-1">{{ Auth::user()->nick }} <span class="text-muted" id="last-comment"></span></p> 
-                                <a href="#!"><i class="fas fa-reply fa-xs"></i><span class="text-muted">reply</span></a> 
                             </div>
                             <p class="small mb-0 comment">${ commentDescription }</p>
                             </div>
@@ -251,7 +311,7 @@
                                 <form class="mt-2" method="POST" action="/review/delete/${commentID}">
                                     @csrf
                                     <input type="hidden" id="${ commentID }" name="user-comment" value="${ commentID }">
-                                    <button class="btn btn-outline-primary" type="submit">{{ trans('titles.delete_review') }}</button>
+                                    <button class="btn btn-outline-danger" type="submit">{{ trans('titles.delete_review') }}</button>
                                 </form>
                             </div>
                         </div>
@@ -291,15 +351,15 @@
 
             if (description == '') {
                 jQuery('#notify_user').html(
-                    `<div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-circle"></i>Tu comentario esta vacío.</div>`
+                    `<div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-circle"></i>{{ trans('warnings.empty_msg') }}</div>`
                 );
             } else if (description.length > 255) {
                 jQuery('#notify_user').html(
-                    `<div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-circle"></i>Tu comentario es demasiado largo.</div>`
+                    `<div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-circle"></i>{{ trans('warnings.too_long_msg') }}</div>`
                 );
             } else {
                 jQuery('#notify_user').html(
-                    `<div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-circle"></i>Ha ocurrido un error al publicar tu comentario.</div>`
+                    `<div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-circle"></i>{{ trans('warnings.error_ocurred') }}</div>`
                 );
 
                 //location.reload();
@@ -403,7 +463,6 @@
             alert(currentActiveLang);
 
         }
-
         
     </script>
 @endsection

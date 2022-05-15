@@ -19,17 +19,20 @@ h1{
     overflow: hidden;
 }
 
-.cinet_top--detail div img{
+.cinet_top--detail img{
     transition: transform .8s, opacity .5s;
 }
 
-.cinet_top--content .cinet_top--detail div img{
+.cinet_top--content .cinet_top--detail img{
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
 /*PARA QUE AL HACER HOVER EN ALGUÚNA PELI/SERIE/ANIME SU TEXTO SE MANTENGA DENTRO DEL CONTENEDOR PADRE*/
 .cinet_top--content a{
     position: relative;
+    width: 110px;
 }
 
 
@@ -167,56 +170,48 @@ h1{
     text-shadow: 2px 0 0 #fff, -1px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
 }
 
-
-@media (max-width: 600px) {
-    .cinect-carousel{
-        display: none;
-    }
+.cinect-carousel{
+    display: none;
+}
 
 
+@media screen and (min-width: 576px) {    
     .cinect-banner .carousel-inner .carousel-item img{
         opacity: .7;
     }
 
-    .cinet_top--content .cinet_top--detail div img{
+    .cinet_top--content .cinet_top--detail img{
         flex-direction: column;
-        width: 200px;
-        height: 300px;
+        width: 100%;
+        height: 100%;
     }
     .content-title{
         margin-top: 10px;
         margin-bottom: 10px;
         text-align: center;
     }
-    
 }
 
-@media only screen and (min-device-width: 601px) and (max-device-width: 1023px) {
+@media screen and (min-width: 768px) { 
     .cinect-carousel{
-        display: none;
+        display: block;
     }
     .cinect-banner .carousel-inner .carousel-item img{
         opacity: .6;
     }
 
-    .cinet_top--content .cinet_top--detail div img{
-        width: 200px;
-        height: 300px;
+    .cinet_top--content .cinet_top--detail img{
+        width: 100%;
+        height: 100%;
     }
-    .cinet_top--detail div img:hover{
+    .cinet_top--detail img:hover{
         transform: scale(1.1);
-    }
-    .cinect-carousel{
-        display: none;
     }
     .content-title{
         margin-top: 10px;
         margin-bottom: 10px;
         text-align: center;
     }
-}
-
-@media (min-width: 1024px) {
     .cinect-banner{
         display: none;
     }
@@ -226,13 +221,21 @@ h1{
         margin-right: auto;
     }
     .cinet_top--content{
-        width: 85%;
+        width: 100%;
         margin: auto;
     }
 
-    .cinet_top--content .cinet_top--detail div img{
-        width: 200px;
-        height: 300px;
+    .cinet_top--detail {
+        border-radius: 20px;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+    }
+
+    .cinet_top--content a {
+        position: relative;
+        width: 135px;
+        height: 100%;
     }
 
     .cinet_top--content a:hover p{
@@ -240,13 +243,30 @@ h1{
         opacity: 1;
     }
 
-    .cinet_top--content a:hover .cinet_top--detail div img{
+    .cinet_top--content a:hover .cinet_top--detail img{
         opacity: .6;
         transform: scale(1.1);
     }
 
-    .cinet_top--content p{
-        width: 175px;
-        margin-left: 10px;
+    .cinet_top--content p {
+        width: 88%;
+        font-size: 10px;
+    }
+}
+
+@media screen and (min-width: 1200px) { 
+    .cinet_top--content a {
+        position: relative;
+        width: 250px;
+        height: 100%;
+    }
+
+    .cinet_top--content .cinet_top--detail img{
+        width: 100%;
+        height: 100%;
+    }
+    .cinet_top--content p {
+        width: 92%;
+        font-size: 20px;
     }
 }

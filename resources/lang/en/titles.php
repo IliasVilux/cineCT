@@ -37,7 +37,6 @@ return [
     'fiction' => 'Sci-fi / Fantasy',
     'drama' => 'Drama / Mistery',
     'crime' => 'Warlike / Crime',
-    'delete_review' => 'Delete review',
 
     'samurai' => 'Samurai',
     'shounen' => 'Shounen',
@@ -49,24 +48,9 @@ return [
     'josei' => 'Josei',
     'unknown' => 'Unknown',
 
-    // Comments
-    'commentSection' => 'Comments section',
-
     // Other
     'back' => 'Back',
     'close' => 'Close',
-    'genre' => 'Genre',
-    'release' => 'Release date',
-    'duration' => 'Duration',
-    'seasons' => 'Seasons',
-    'total_episodes' => 'Total episodes',
-    'rating' => 'Punctuation',
-    'how_much' => 'How much did you like it?',
-    'send' => 'Send',
-    'add_favs' => 'Add to favorites',
-    'publish' => 'Publish',
-    'new_list' => 'Create new list',
-    'trailer' => 'Trailer',
 
     // Time
     'second' => 'second',
