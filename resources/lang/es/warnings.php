@@ -41,4 +41,9 @@ return [
     'open_session' => 'tienes tu sesión abierta, qué quieres hacer?',
     'back' => 'Volver',
     'close_session' => 'Cerrar sesión',
+
+    // Search
+    'found_results' => 'Resultados encontrados con',
+
+
 ];

@@ -41,4 +41,7 @@ return [
     'open_session' => 'you have your session open, what do you want to do?',
     'back' => 'Back',
     'close_session' => 'Close session',
+
+    // Search
+    'found_results' => 'Found results of',
 ];
