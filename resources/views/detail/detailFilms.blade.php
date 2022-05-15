@@ -139,32 +139,6 @@
                         <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button" aria-expanded="false" aria-controls="shareComponent">
                             <i class="fas fa-share-alt"></i>
                         </a>
-                        @if(!empty($userListsWhereFilm))
-                            <div class="dropdown mx-2 my-sm-2">
-                                <button type="button" class="btn button-purple btn-sm dropdown-toggle" data-bs-toggle="dropdown">
-                                    {{ trans('detail.delete_favourite') }}
-                                </button>
-                                <ul class="dropdown-menu">
-                                    @foreach ($userListsWhereFilm as $list)
-                                        <li>
-                                            <a class="dropdown-item" href="/detail/detailFilms/{{$film->id}}/{{$list->id}}/delFav">{{ $list->name }}</a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-                        @if (empty($userListsWhereAnime))
-                        <div class="social-media-links mx-2 my-sm-2">
-                        @else
-                        <div class="social-media-links my-sm-2">
-                        @endif
-                            <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button" aria-expanded="false" aria-controls="shareComponent">
-                                <i class="fas fa-share-alt"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="collapse text-center" id="shareComponent">
-                        {!! $shareComponent !!}
                     </div>
                 </div>
                 <div class="collapse text-center" id="shareComponent">
