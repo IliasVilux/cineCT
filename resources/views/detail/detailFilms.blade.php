@@ -4,7 +4,6 @@
     <head>
         <link rel="stylesheet" href="{{ asset('css/general.css') }}">
         <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
-        <script type="text/javascript" src="http://www.google.com/jsapi"></script>
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <style>
@@ -30,12 +29,6 @@
             <strong>{{ Session::get('FilmAdded') }}!</strong>
         </div>
     @endif
-    <section class="container">
-        <a href="{{ url('/content/contentFilms') }}" class="btn button-purple my-4" title="Back">
-            {{ trans('titles.back') }}
-        </a>
-
-        <h1 class="detail-title">{{ $film->name }}</h1>
 
     @if (Session::has('review_deleted'))
         <div class="alert cinect-custom-alert text-center" role="alert" id="review_deleted">
@@ -44,12 +37,13 @@
     @endif
 
     <section class="container">
-        <div class="container-fluid d-flex justify-content-between align-items-center">
-                <h1 class="detail-title">{{ $film->name }}</h1>
-                <a href="{{ url('/content/contentFilms') }}" class="btn button-purple my-4" title="Back">
-                {{ trans('titles.back') }}
-                </a>
-        </div>
+        <a href="{{ url('/content/contentFilms') }}" class="btn button-purple my-4" title="Back">
+            {{ trans('titles.back') }}
+        </a>
+
+
+    <section class="container">
+        <h1 class="detail-title mb-3">{{ $film->name }}</h1>
         
         <article class="d-flex flex-row flex-sm-wrap justify-content-between">
             @if ($film->poster_path == null)
