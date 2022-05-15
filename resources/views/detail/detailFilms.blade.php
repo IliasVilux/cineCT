@@ -36,20 +36,20 @@
             @endif
             <article class="col-6 more-info bg-dark p-3 ms-1" id="datasheet">
                     <div class="d-none align-content-center flex-wrap d-sm-flex">
-                        <h6 class="pe-2 fw-bold">{{ trans('titles.genre') }}:</h6>
-                        {{ $film->genre->name }}
+                        <h5 class="pe-2 fw-bold">{{ trans('titles.genre') }}:</h5>
+                        <p>{{ $film->genre->name }}</p>
                     </div>
                     <div class="d-none align-content-center flex-wrap d-sm-flex">
-                        <h6 class="pe-2 fw-bold">{{ trans('titles.release') }}:</h6>
-                         {{ $film->release_date }}
+                        <h5 class="pe-2 fw-bold">{{ trans('titles.release') }}:</h5>
+                         <p>{{ $film->release_date }}</p>
                     </div>
                     <div class="d-none align-content-center flex-wrap d-sm-flex">
-                        <h6 class="pe-2 fw-bold">{{ trans('titles.rating') }}:</h6>
+                        <h5 class="pe-2 fw-bold">{{ trans('titles.rating') }}:</h5>
                         <i class="fas fa-star m-1"></i>
-                         {{ $film->puntuation }}/10
+                         <p>{{ $film->puntuation }}/10</p>
                     </div>
                     <div class="d-flex flex-column align-items-start mt-2">
-                        <h6 class="fw-bold">{{ trans('titles.how_much') }}</h6>
+                        <h5 class="fw-bold">{{ trans('titles.how_much') }}</h5>
                         <form method="GET" class="d-flex flex-column align-items-center col-12 mb-xl-2">
                             <div class="rating col-12 d-flex flex-row-reverse justify-content-center">
                                 <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
@@ -272,7 +272,7 @@
                     let commentDescription = response.comment['description'];
                     let commentHtml =
                         `<div class="d-flex flex-start mb-4" id="content_id-${commentID}">
-                        <div><img class="rounded-circle shadow-1-strong me-3" src="{{ Auth::user()->image->path }}" width="65"height="65"></div>
+                        <div><img class="img-profile rounded-circle shadow-1-strong me-3" src="{{ Auth::user()->image->path }}"></div>
                         <div class="flex-grow-1 flex-shrink-1"><div>
                             <div class="d-flex justify-content-between align-items-center">
                                 <p class="mb-1">{{ Auth::user()->nick }} <span class="text-muted" id="last-comment"></span></p> 

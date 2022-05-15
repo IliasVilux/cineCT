@@ -74,13 +74,6 @@ a.link-img-carousel {
   color: transparent;
 }
 
-a.link-img-detail {
-  overflow: hidden;
-  height: 160px;
-  width: 120px;
-  border-radius: 10px;
-}
-
 .img-carousel {
   transition: transform .8s ease;
   width: 60px;
