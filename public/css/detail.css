@@ -257,7 +257,10 @@ iframe {
         width: 600px;
         height: 300px;
     }
-    
+    .img-profile {
+        width: 65px;
+        height: 65px;
+    }  
 }
 
 @media screen and (min-width: 768px){
@@ -269,11 +272,15 @@ iframe {
     }
     .rating label {
         font-size: 43px;
-    }    
+    }   
+    iframe {
+        width: 660px;
+        height: 380px;
+    }
 }
 
 
-@media (max-width: 600px) {
+/*@media (max-width: 600px) {
     .comment{
         width: 200px;
     }
@@ -320,4 +327,4 @@ iframe {
     .review-content-img{
         width: 75px;
     }
-}
+}*/

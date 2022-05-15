@@ -184,8 +184,7 @@
             <h3 class="text-uppercase pb-3">Tráiler</h3>
             <!-- START TRAILER SECTION -->
             @if ($anime->trailer_link != null)
-                <iframe class="w-75" height="500"
-                    src="https://www.youtube.com/embed/{{ $anime->trailer_link }}" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/{{ $anime->trailer_link }}" allowfullscreen></iframe>
                 <div class="alert alert-dark w-75 my-3" role="alert">
                     {{ trans('warnings.video_error') }}
                     <a href="https://www.youtube.com/results?search_query={{ $anime->name }} trailer">Youtube</a>.

@@ -6,7 +6,7 @@
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 </head>
 <section class="slider">
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide carousel-fade " data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
                 aria-current="true" aria-label="Slide 1"></button>
