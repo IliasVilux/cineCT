@@ -178,12 +178,9 @@
         <a href="{{asset('/content/contentSeries')}}"><button type="button" class="btn button-purple btn-sm">{{trans('home.view_more')}}</button></a>
     </div>
     <div class="container-fluid d-flex flex-row align-items-center p-0" id="container">
-        <a class="btn-floating me-0" href="#series" data-bs-slide="prev"><i class="fa fa-chevron-left"
-                aria-hidden="true"></i></a>
+        <a class="btn-floating me-0" href="#series" data-bs-slide="prev"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
 
-        <div id="series" class="carousel slide carousel-fade carousel-equal-heights my-4" data-bs-ride="carousel"
-            data-bs-interval="false">
-
+        <div id="series" class="carousel slide carousel-fade carousel-equal-heights my-4" data-bs-ride="carousel" data-bs-interval="false">
             <div class="carousel-inner" role="listbox">
                 <?php            
                         

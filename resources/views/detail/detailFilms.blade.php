@@ -2,8 +2,8 @@
 @section('content')
 
     <head>
-        <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
         <link rel="stylesheet" href="{{ asset('css/general.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
         <script type="text/javascript" src="http://www.google.com/jsapi"></script>
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <meta name="csrf-token" content="{{ csrf_token() }}">
