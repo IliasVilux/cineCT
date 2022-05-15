@@ -20,6 +20,12 @@
         </div>
     @endif
 
+    @if (Session::has('review_deleted'))
+        <div class="alert cinect-custom-alert text-center" role="alert" id="review_deleted">
+            <strong>{{ Session::get('review_deleted') }}!</strong>
+        </div>
+    @endif
+
     <section class="container">
         <div class="container-fluid d-flex justify-content-between align-items-center">
                 <h1 class="detail-title">{{ $film->name }}</h1>

@@ -13,23 +13,28 @@ return [
     |
     */
 
+    // Caracteristicas
     'genre' => 'Género',
-    'launch_date' => 'Fecha de lanzamiento',
+    'release' => 'Fecha de lanzamiento',
+    'duration' => 'Duración',
     'seasons' => 'Temporadas',
-    'episodes' => 'Episodios',
+    'total_episodes' => 'Capítulos totales',
     'rating' => 'Puntuación',
     'how_much' => '¿Cuánto te ha gustado?',
+    'summary' => 'Resumen',
     'send' => 'Enviar',
 
+    // Otras cosas
+    'commentSection' => 'Sección de comentarios',    
     'write_comment' => 'Escribe un comentario',
     'publish' => 'Publicar',
     'trailer' => 'Tráiler',
     'comments' => 'Comentarios',
-    'add_favourite' => 'Añadir a favoritos',
+    'add_favs' => 'Añadir a favoritos',
     'delete_favourite' => 'Borrar de favoritos',
-    'new_list' => 'Nombre de la lista',
-    'create_new_list' => 'Crear una lista nueva',
+    'list_name' => 'Nombre de la lista',
+    'new_list' => 'Crear nueva lista',
     'add_to' => 'Añadir a',
-    
+    'delete_review' => 'Eliminar comentario',
 
 ];
