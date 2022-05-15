@@ -2,6 +2,7 @@
 @section('content')
 
     <head>
+        <link rel="stylesheet" href="{{ asset('css/general.css') }}">
         <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -271,7 +272,6 @@
                         <div class="flex-grow-1 flex-shrink-1"><div>
                             <div class="d-flex justify-content-between align-items-center">
                                 <p class="mb-1">{{ Auth::user()->nick }} <span class="text-muted" id="last-comment"></span></p> 
-                                <a href="#!"><i class="fas fa-reply fa-xs"></i><span class="text-muted">reply</span></a> 
                             </div>
                             <p class="small mb-0 comment">${ commentDescription }</p>
                             </div>
@@ -281,7 +281,7 @@
                                 <form class="mt-2" method="POST" action="/review/delete/${commentID}">
                                     @csrf
                                     <input type="hidden" id="${ commentID }" name="user-comment" value="${ commentID }">
-                                    <button class="btn btn-outline-primary" type="submit">{{ trans('titles.delete_review') }}</button>
+                                    <button class="btn btn-outline-danger" type="submit">{{ trans('titles.delete_review') }}</button>
                                 </form>
                             </div>
                         </div>

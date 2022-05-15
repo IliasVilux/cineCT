@@ -167,9 +167,6 @@ a.link-img-detail {
   .button-purple,
   .btn.btn-outline-danger{
     font-size: 13px;
-  }
-
-  .button-purple{
     height: 29px;
   }
 }
@@ -219,6 +216,6 @@ a.link-img-detail {
     width: 1200px;
   }
   .button-purple{
-    height: 43px;
+    height: 45px;
   }
 }

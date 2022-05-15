@@ -132,9 +132,10 @@
                     <p>{{ $film->name }}<span>{{ $film->puntuation }}</span></p>
                 </a>
             @endforeach
-            <a class="d-block btn btn-link mt-4 w-100 text-decoration-none border-0"
-                    href="{{ route('film.all-films') }}">{{ trans('home.view_more') }}</a>
         </section>
+        <div class="d-flex justify-content-center mt-2">
+            <a class="btn button-purple btn-sm col-2" href="{{ route('film.all-films') }}">{{ trans('home.view_more') }}</a>
+        </div>
 
         <h3 class="mt-5 content-title">Top {{ trans('titles.series') }}</h3>
         <section class="cinet_top--content">
@@ -146,9 +147,10 @@
                     <p>{{ $serie->name }}<span>{{ $serie->puntuation }}</span></p>
                 </a>
             @endforeach
-            <a class="d-block btn btn-link mt-4 w-100 text-decoration-none border-0"
-                    href="{{ route('serie.all-series') }}">{{ trans('home.view_more') }}</a>
         </section>
+        <div class="d-flex justify-content-center mt-2">
+            <a class="btn button-purple btn-sm col-2" href="{{ route('serie.all-series') }}">{{ trans('home.view_more') }}</a>
+        </div>
 
         <h3 class="mt-5 content-title">Top {{ trans('titles.animes') }}</h3>
         <section class="cinet_top--content">
@@ -160,9 +162,10 @@
                     <p>{{ $anime->name }}<span>{{ $anime->puntuation }}</span></p>
                 </a>
             @endforeach
-            <a class="d-block btn btn-link mt-4 w-100 text-decoration-none border-0" 
-                    href="{{ route('anime.all-animes') }}">{{ trans('home.view_more') }}</a>
         </section>
+        <div class="d-flex justify-content-center mt-2">
+            <a class="btn button-purple btn-sm col-2"  href="{{ route('anime.all-animes') }}">{{ trans('home.view_more') }}</a>
+        </div>
 
     </section>
 
