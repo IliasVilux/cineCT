@@ -139,7 +139,7 @@
           <div class="modal-content">
             <form action="{{ route('search-content') }}" method="GET">
                 <div class="input-group align-items-center">
-                    <label id="clear-input"><i class="fas fa-times p-2"></i></label>
+                    <label style="visibility: hidden;" id="clear-input"><i class="fas fa-times p-2"></i></label>
                     <input type="text" class="form-control" id="search-content" name="search" placeholder="{{trans('home.search_cinect')}}">
                     <button class="btn" style="color: #5A3C97;" type="submit" id="submitSearch"><i class="fas fa-search"></i></button>
                 </div>
@@ -203,7 +203,7 @@
     let mybutton = document.getElementById("btn-back-to-top");
     // When the user scrolls down 20px from the top of the document, show the button
     window.onscroll = function () {
-    scrollFunction();
+        scrollFunction();
     };
 
     function scrollFunction() {

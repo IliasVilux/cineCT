@@ -65,7 +65,7 @@
         </section>
     </div>
 
-    <a href="{{ url('/') }}" class="btn button-purple" title="Home">
+    <a href="{{ url('/home') }}" class="btn button-purple my-3" title="Home">
         Home
     </a>
     @if($data['list']->top_list == 1)

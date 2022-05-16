@@ -91,9 +91,11 @@
                                     <div class="col-12 p-0">
                                         <label for="password" class="form-label">{{ trans('register.pass') }}</label>
                                         <div class="input-group">
-                                            <input type="password" class="form-control" id="password" name="password" placeholder="{{ trans('register.pass_ph') }}">
-                                            <input type="checkbox" onclick="switchPassword()" name="showPassword" id="showPassword" class="d-none">
-                                            <label for="showPassword"><i class="fa fa-eye"></i></label>
+                                            <input type="password" class="form-control" id="password" name="password"
+                                                placeholder="Your password">
+                                            <input type="checkbox" onclick="switchPassword()" name="showPassword"
+                                                id="showPassword" class="d-none">
+                                            <label for="showPassword"><i class="fa fa-eye p-3 border-0" id="icon-switch"></i></label>
                                         </div>
                                     </div>
                                     <div class="form-check d-flex justify-content-start my-sm-3">

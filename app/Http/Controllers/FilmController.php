@@ -144,7 +144,8 @@ class FilmController extends Controller
         $userListsWhereFilm = [];
         $userFilmsInLists = FavoriteList::where('user_id', $user)->where('film_id', $id)->get();
         $contentRate = substr(Rating::where('film_id', $id)->avg('rate'), 0, 4);
-
+        $totalVotes = Rating::where('film_id', $id)->count();
+        $userVoteExists = Rating::where('user_id', $user)->where('film_id', $id)->first();
         foreach($userFilmsInLists as $filmInLists)
         {
             foreach($userLists as $list)
@@ -167,9 +168,9 @@ class FilmController extends Controller
                     }
                 }   
                 arsort($commentsOrderByLikes);
-                return view('detail.detailFilms', compact('film', 'userLists', 'userListsWhereFilm', 'comments', 'shareComponent', 'userTopList', 'commentsOrderByLikes', 'contentRate'));
+                return view('detail.detailFilms', compact('film', 'userLists', 'userListsWhereFilm', 'comments', 'shareComponent', 'userTopList', 'commentsOrderByLikes', 'contentRate', 'userVoteExists', 'totalVotes'));
             }
-            return view('detail.detailFilms', compact('film', 'userLists', 'userListsWhereFilm', 'comments', 'shareComponent', 'userTopList', 'contentRate'));
+            return view('detail.detailFilms', compact('film', 'userLists', 'userListsWhereFilm', 'comments', 'shareComponent', 'userTopList', 'contentRate', 'userVoteExists', 'totalVotes'));
         } else {
             return response('No encontrado', 404);
         }
