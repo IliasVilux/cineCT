@@ -129,8 +129,8 @@
                     </div>
 
                     @if (isset($userTopList[0]->name))
-                        <a href="/detail/detailSeries/{{ $serie->id }}/{{ $userTopList[0]->id }}/addFav">
-                            <button class="btn button-purple">{{ trans('detail.add_to') }} {{ $userTopList[0]->name }}</button>
+                        <a class="btn button-purple mt-2 mx-1" href="/detail/detailSeries/{{ $serie->id }}/{{ $userTopList[0]->id }}/addFav">
+                            {{ trans('detail.add_to') }} {{ $userTopList[0]->name }}
                         </a>
                     @endif
                     @if (!empty($userListsWhereSerie))
