@@ -36,7 +36,7 @@
             <form class="mt-2" method="POST" action="{{ route('user.comment-delete',['id' => $comment->id]) }}">
                 @csrf
                 <input type="hidden" id="{{$comment->id}}" name="user-comment" value="{{$comment->id}}">
-                <button class="btn btn-outline-danger" type="submit">{{trans('titles.delete_review')}}</button>
+                <button class="btn btn-outline-danger" type="submit">{{trans('detail.delete_review')}}</button>
             </form>
             @endif
             
