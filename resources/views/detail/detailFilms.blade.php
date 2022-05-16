@@ -64,15 +64,15 @@
                 <div class="d-none align-content-center flex-wrap d-sm-flex">
                     @if(empty($contentRate) || $contentRate == '')
                         <i class="fas fa-star m-1"></i>
-                        <i>Todavía no ha votado nigún usuario, sé el primero en votar!</i>
+                        <i>{{ trans('detail.no_votes_yet') }}</i>
                     @else
                         <h5 class="pe-2 fw-bold">{{ trans('detail.rating') }}:</h5>
                         <i class="fas fa-star m-1"></i>
-                        <p>{{ $contentRate }}/10 <i>( {{ $totalVotes }} personas han votado esta pelicula)</i></p>
+                        <p>{{ $contentRate }}/10 <i>( {{ $totalVotes }} {{ trans('detail.people_voted') }}</i></p>
                     @endif
                 </div>
                 @if($userVoteExists)
-                <h5 class="fw-bold text-center my-4">Actualmente ya has votado esta pelicula</h5>
+                <h5 class="fw-bold text-center my-4">{{ trans('detail.voted') }}</h5>
                 @else
                     <div class="d-flex flex-column align-items-start mt-2">
                         <h5 class="fw-bold">{{ trans('detail.how_much') }}</h5>

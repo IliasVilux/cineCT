@@ -37,4 +37,9 @@ return [
     'add_to' => 'Añadir a',
     'delete_review' => 'Eliminar comentario',
 
+    // Rating
+    'no_votes_yet' => 'Todavía no ha votado nigún usuario, sé el primero en votar!',
+    'people_voted' => 'personas han votado)',
+    'voted' => 'Ya has votado',
+
 ];

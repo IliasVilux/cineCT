@@ -36,5 +36,10 @@ return [
     'new_list' => 'Create new list',
     'add_to' => 'Add to',
     'delete_review' => 'Delete review',
+    
+    // Rating
+    'no_votes_yet' => 'Ther are no votes yet, be the first one to vote!',
+    'people_voted' => 'people have voted)',
+    'voted' => 'You have already voted',
  
 ];
