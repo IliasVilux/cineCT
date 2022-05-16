@@ -144,8 +144,8 @@ class FilmController extends Controller
         $userListsWhereFilm = [];
         $userFilmsInLists = FavoriteList::where('user_id', $user)->where('film_id', $id)->get();
         $contentRate = substr(Rating::where('film_id', $id)->avg('rate'), 0, 4);
-        $totalVotes = Rating::where('film_id', $film->id)->count();
-        $userVoteExists = Rating::where('user_id', $user)->where('film_id', $film->id)->first();
+        $totalVotes = Rating::where('film_id', $id)->count();
+        $userVoteExists = Rating::where('user_id', $user)->where('film_id', $id)->first();
         foreach($userFilmsInLists as $filmInLists)
         {
             foreach($userLists as $list)

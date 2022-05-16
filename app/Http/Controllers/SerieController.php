@@ -131,7 +131,8 @@ class SerieController extends Controller
         $userListsWhereSerie = [];
         $userSeriesInLists = FavoriteList::where('user_id', $user)->where('serie_id', $id)->get();
         $contentRate = substr(Rating::where('serie_id', $id)->avg('rate'), 0, 4);
-
+        $totalVotes = Rating::where('serie_id', $id)->count();
+        $userVoteExists = Rating::where('user_id', $user)->where('serie_id', $id)->first();
         foreach($userSeriesInLists as $SerieInLists)
         {
             foreach($userLists as $list)
@@ -147,7 +148,7 @@ class SerieController extends Controller
         $shareComponent = $this->ShareWidget();
 
         if (!is_null($serie)) {
-            return view('/detail/detailSeries', compact('serie', 'userLists', 'userListsWhereSerie', 'userTopList', 'comments', 'shareComponent', 'contentRate'));
+            return view('/detail/detailSeries', compact('serie', 'userLists', 'userListsWhereSerie', 'userTopList', 'comments', 'shareComponent', 'contentRate', 'userVoteExists', 'totalVotes'));
         } else {
             return response('No encontrado', 404);
         }

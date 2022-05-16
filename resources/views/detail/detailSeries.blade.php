@@ -23,11 +23,6 @@
             <strong>{{ Session::get('review_deleted') }}!</strong>
         </div>
     @endif
-    @if (Session::has('RateAdded'))
-        <div class="alert alert-success" role="alert">
-            <strong>{{ Session::get('RateAdded') }}!</strong>
-        </div>
-    @endif
 
     <section class="container">
         <div class="container-fluid d-flex justify-content-between align-items-center">
@@ -61,30 +56,43 @@
                      <p>{{ $serie->total_episodes }}</p>
                 </div>
                 <div class="d-none align-content-center flex-wrap d-sm-flex">
-                    <h5 class="pe-2 fw-bold">{{ trans('detail.rating') }}:</h5>
+                    @if(empty($contentRate) || $contentRate == '')
                     <i class="fas fa-star m-1"></i>
-                    <p>{{ $contentRate }}/10</p>
+                    <i>Todavía no ha votado nigún usuario, sé el primero en votar!</i>
+                    @else
+                        <h5 class="pe-2 fw-bold">{{ trans('detail.rating') }}:</h5>
+                        <i class="fas fa-star m-1"></i>
+                        <p>{{ $contentRate }}/10 <i>( {{ $totalVotes }} personas han votado esta serie)</i></p>
+                    @endif
                 </div>
-                <div class="d-flex flex-column align-items-start mt-2">
-                    <h5 class="fw-bold">{{ trans('detail.how_much') }}</h5>
-                    <form method="POST" class="d-flex flex-column align-items-center col-12 mb-xl-2" action="{{ route('user.add_rating_serie', ['idSerie' => $serie->id]) }}">
-                    @csrf
-                    <div class="rating col-12 d-flex flex-row-reverse justify-content-center">
-                            <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
-                            <input name="stars" id="e2" type="radio" value="9"><label for="e2">☆</label>
-                            <input name="stars" id="e3" type="radio" value="8"><label for="e3">☆</label>
-                            <input name="stars" id="e4" type="radio" value="7"><label for="e4">☆</label>
-                            <input name="stars" id="e5" type="radio" value="6"><label for="e5">☆</label>
-                            <input name="stars" id="e6" type="radio" value="5"><label for="e6">☆</label>
-                            <input name="stars" id="e7" type="radio" value="4"><label for="e7">☆</label>
-                            <input name="stars" id="e8" type="radio" value="3"><label for="e8">☆</label>
-                            <input name="stars" id="e9" type="radio" value="2"><label for="e9">☆</label>
-                            <input name="stars" id="e10" type="radio" value="1"><label for="e10">☆</label>
-                        </div>
-                        <button type="submit" class="btn button-purple col-6 mb-2 mb-xl-0">{{ trans('detail.send') }}</button>
-                    </form>
-                </div>
-                
+                @if($userVoteExists)
+                <h5 class="fw-bold text-center my-4">Actualmente ya has votado esta serie</h5>
+                @else
+                    <div class="d-flex flex-column align-items-start mt-2">
+                        <h5 class="fw-bold">{{ trans('detail.how_much') }}</h5>
+                        <form method="POST" class="d-flex flex-column align-items-center col-12 mb-xl-2" action="{{ route('user.add_rating_serie', ['idSerie' => $serie->id]) }}">
+                        @csrf
+                        <div class="rating col-12 d-flex flex-row-reverse justify-content-center">
+                                <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
+                                <input name="stars" id="e2" type="radio" value="9"><label for="e2">☆</label>
+                                <input name="stars" id="e3" type="radio" value="8"><label for="e3">☆</label>
+                                <input name="stars" id="e4" type="radio" value="7"><label for="e4">☆</label>
+                                <input name="stars" id="e5" type="radio" value="6"><label for="e5">☆</label>
+                                <input name="stars" id="e6" type="radio" value="5"><label for="e6">☆</label>
+                                <input name="stars" id="e7" type="radio" value="4"><label for="e7">☆</label>
+                                <input name="stars" id="e8" type="radio" value="3"><label for="e8">☆</label>
+                                <input name="stars" id="e9" type="radio" value="2"><label for="e9">☆</label>
+                                <input name="stars" id="e10" type="radio" value="1"><label for="e10">☆</label>
+                            </div>
+                            <button type="submit" class="btn button-purple col-6 mb-2 mb-xl-0">{{ trans('detail.send') }}</button>
+                        </form>
+                    </div>
+                @endif
+                @if (Session::has('RateAdded'))
+                    <div class="alert alert-success" role="alert">
+                        <strong>{{ Session::get('RateAdded') }}!</strong>
+                    </div>
+                @endif
                 <div class="d-flex flex-row flex-wrap justify-content-center">
                     <div class="dropdown my-sm-2">
                         <button type="button" class="btn button-purple btn-md dropdown-toggle" data-bs-toggle="dropdown">
