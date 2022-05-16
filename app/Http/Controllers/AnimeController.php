@@ -156,6 +156,8 @@ class AnimeController extends Controller
         $userLists = FavouriteLists::query()->where('user_id', $user)->get();
         $userListsWhereAnime = [];
         $userAnimeInLists = FavoriteList::query()->where('user_id', $user)->where('anime_id', $id)->get();
+        $contentRate = substr(Rating::where('anime_id', $id)->avg('rate'), 0, 4);
+
         foreach($userAnimeInLists as $animeInLists)
         {
             foreach($userLists as $list)
@@ -172,7 +174,7 @@ class AnimeController extends Controller
         
 
         if (!is_null($anime)) {
-            return view('/detail.detailAnimes', compact('anime', 'userLists', 'userListsWhereAnime', 'comments', 'shareComponent', 'userTopList'));
+            return view('/detail.detailAnimes', compact('anime', 'userLists', 'userListsWhereAnime', 'comments', 'shareComponent', 'userTopList', 'contentRate'));
             //return view('/detail.detailAnimes', compact('anime', 'userLists', 'comments', 'shareComponent'));
         } else {
             return response('No encontrado', 404);
@@ -298,5 +300,23 @@ class AnimeController extends Controller
 
             return view('content.filterAnime', ['animes' => $animes, 'genre' => $genre]);
         }
+    }
+
+    public function postRatingAnime($id, Request $request)
+    {
+        $user = Auth::user()->id;
+
+        $userRate = $request->input('stars');
+        $checkUserRate = Rating::where('user_id', $user)->where('anime_id', $id)->first();
+
+        if(!isset($checkUserRate))
+        {
+            $rate = Rating::create([
+                'user_id' => $user,
+                'anime_id' => $id,
+                'rate' => $userRate,
+            ]);
+            return redirect()->to('/detail/detailAnimes/' . $id)->with('RateAdded', 'Se ha añadido tu voto.');
+        } return redirect()->to('/detail/detailAnimes/' . $id);
     }
 }
