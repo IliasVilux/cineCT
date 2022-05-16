@@ -2,8 +2,6 @@
 @section('content')
 
 <head>
-    <link rel="stylesheet" href="{{asset('css/detail.css')}}">
-    <link rel="stylesheet" href="{{asset('css/content.css')}}">
     <link rel="stylesheet" href="{{ asset('css/top.css') }}">
     <link rel="stylesheet" href="{{ asset('css/like.css') }}">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -23,7 +21,6 @@
     <section class="container top_content my-5">
         <section class="cinet_top--content">
             @foreach($data['animes'] as $anime)
-            <div class="content--card">
                 <a class="p-1" href="{{ route('anime.animes',  ['id' => $anime->id]) }}">
                     <div class="cinet_top--detail">
                         <div>
@@ -36,10 +33,8 @@
                     </div>
                     <p>{{ $anime->name }}<span>{{ $anime->puntuation }}</span></p>
                 </a>
-            </div>
             @endforeach
             @foreach($data['series'] as $serie)
-            <div class="content--card">
                 <a class="p-1" href="{{ route('serie.series',  ['id' => $serie->id]) }}">
                     <div class="cinet_top--detail">
                         <div>
@@ -52,10 +47,8 @@
                     </div>
                     <p>{{ $serie->name }}<span>{{ $serie->puntuation }}</span></p>
                 </a>
-            </div>
             @endforeach
             @foreach($data['films'] as $film)
-            <div class="content--card">
                 <a class="p-1" href="{{ route('film.films',  ['id' => $film->id]) }}">
                     <div class="cinet_top--detail">
                         <div>
@@ -68,7 +61,6 @@
                     </div>
                     <p>{{ $film->name }}<span>{{ $film->puntuation }}</span></p>
                 </a>
-            </div>
             @endforeach
         </section>
     </div>
