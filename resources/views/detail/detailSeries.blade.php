@@ -84,11 +84,7 @@
                         <button type="submit" class="btn button-purple col-6 mb-2 mb-xl-0">{{ trans('detail.send') }}</button>
                     </form>
                 </div>
-                <?php
-                    if (isset($_GET['stars'])) {
-                        echo '<div class="alert alert-success">'.trans("warnings.rating_recieved").'<strong>' . $_GET['stars'] . '</strong>.</div>';
-                    } elseif (isset($_GET['stars']) == '');
-                ?>
+                
                 <div class="d-flex flex-row flex-wrap justify-content-center">
                     <div class="dropdown my-sm-2">
                         <button type="button" class="btn button-purple btn-md dropdown-toggle" data-bs-toggle="dropdown">

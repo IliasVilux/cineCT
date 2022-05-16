@@ -9,6 +9,7 @@ use App\Models\Image;
 use App\Models\Review;
 use App\Models\FavoriteList;
 use App\Models\FavouriteLists;
+use App\Models\Rating;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use App\Models\User;
@@ -157,6 +158,8 @@ class AnimeController extends Controller
         $userListsWhereAnime = [];
         $userAnimeInLists = FavoriteList::query()->where('user_id', $user)->where('anime_id', $id)->get();
         $contentRate = substr(Rating::where('anime_id', $id)->avg('rate'), 0, 4);
+        $totalVotes = Rating::where('anime_id', $id)->count();
+        $userVoteExists = Rating::where('user_id', $user)->where('anime_id', $id)->first();
 
         foreach($userAnimeInLists as $animeInLists)
         {
@@ -174,7 +177,7 @@ class AnimeController extends Controller
         
 
         if (!is_null($anime)) {
-            return view('/detail.detailAnimes', compact('anime', 'userLists', 'userListsWhereAnime', 'comments', 'shareComponent', 'userTopList', 'contentRate'));
+            return view('/detail.detailAnimes', compact('anime', 'userLists', 'userListsWhereAnime', 'comments', 'shareComponent', 'userTopList', 'contentRate', 'userVoteExists', 'totalVotes'));
             //return view('/detail.detailAnimes', compact('anime', 'userLists', 'comments', 'shareComponent'));
         } else {
             return response('No encontrado', 404);
