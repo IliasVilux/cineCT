@@ -73,7 +73,7 @@
 <section class="d-flex flex-wrap align-items-center mt-md-2">
     <!--EMPIEZAN: TODOS LOS BOTONES PARA FILTRAR-->
     @foreach ($genres as $genre)
-        <a href="{{route('anime.animes-filtered', ['genre' => $genre]) }}" class="col-lg col-3">
+        <a href="{{route('anime.animes-filtered', ['genre' => $genre->name]) }}" class="col-lg col-3">
             <button class="button-category col-12">
                 <p class="m-0">{{ trans('titles.' . $genre->name . '') }}</p>
             </button>
