@@ -162,7 +162,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="collapse text-center" id="shareComponent">
+                <div class="collapse text-center my-3" id="shareComponent">
                     {!! $shareComponent !!}
                 </div>
             </article>
