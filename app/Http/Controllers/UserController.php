@@ -12,6 +12,7 @@ use App\Models\FavoriteList;
 use App\Models\FavouriteLists;
 use App\Models\Image;
 use App\Models\Like;
+use App\Models\Rating;
 use App\Models\Review;
 
 use Illuminate\Support\Facades\App;
@@ -164,11 +165,13 @@ class UserController extends Controller
         $isset_likes = Like::where('user_id', $id)->first();
         $userFavorites = FavoriteList::where('user_id', $id)->first();
         $userFavoritesLists = FavouriteLists::where('user_id', $id)->first();
+        $userRatingVote = Rating::where('user_id', $id)->first();
         $user_likes = Like::where('user_id', $id)->get(); 
         $user_reviews = Review::where('user_id', $id)->get();
         $allLikes = Like::all();
         $userAllFavorites = FavoriteList::where('user_id', $id)->get();
         $userAllFavoritesLists = FavouriteLists::where('user_id', $id)->get();
+        $AllUserRatingVotes = Rating::where('user_id', $id)->get();
 
         //Eliminamos todos likes que le han dado al ususario
         if($isset_reviews) {
@@ -205,6 +208,13 @@ class UserController extends Controller
         if($user && $userFavoritesLists) {
             foreach($userAllFavoritesLists as $favList) {
                 $favList->delete();
+            }
+        }
+
+        //Eliminamos sus votos
+        if($user && $userRatingVote) {
+            foreach($AllUserRatingVotes as $vote) {
+                $vote->delete();
             }
         }
 
