@@ -65,7 +65,7 @@
         </section>
     </div>
 
-    <a href="{{ url('/home') }}" class="btn button-purple my-3" title="Home">
+    <a href="{{ url('/user/list') }}" class="btn button-purple my-3" title="Listas">
         Home
     </a>
     

@@ -39,7 +39,7 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     //User-Auth Actions
     Route::get('/user/profile', [UserController::class, 'userProfile'])->name('user.profile');
     Route::get('/user/list', [UserController::class, 'userFavoriteList'])->name('user.favorite.list');
-    Route::get('/user/list', [UserController::class, 'userFavoriteList'])->name('user.favorite.list');
+    //Route::get('/user/list', [UserController::class, 'userFavoriteList'])->name('user.favorite.list');
     Route::get('/user/lista-fav/{id}', [UserController::class, 'specificFavoriteList'])->name('user.specific-favorite.list');
     Route::get('/user/lista-fav/removeFav/{id}', [UserController::class, 'removeFavContent'])->name('user.specific-favorite.list');
     Route::get('/user/lista-fav/{id}/addFavorite', [UserController::class, 'setFavoriteList'])->name('user.specific-favorite-add-top.list');
