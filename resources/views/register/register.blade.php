@@ -95,7 +95,7 @@
                                                 placeholder="Your password">
                                             <input type="checkbox" onclick="switchPassword()" name="showPassword"
                                                 id="showPassword" class="d-none">
-                                            <label for="showPassword"><i class="fa fa-eye p-3 border-0" id="icon-switch"></i></label>
+                                            <label for="showPassword"><i class="fa fa-eye" id="icon-switch"></i></label>
                                         </div>
                                     </div>
                                     <div class="form-check d-flex justify-content-start my-sm-3">

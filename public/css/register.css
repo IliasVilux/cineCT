@@ -61,7 +61,11 @@ div.card {
   border-radius: 0px 4px 4px 0px;
   padding: 5px;
 }
-
+.fa.fa-eye-slash {
+  border: 1px solid rgb(206, 212, 218);
+  border-radius: 0px 4px 4px 0px;
+  padding: 15.5px;
+}
 
 /* BUTTONS */
 .button-purple{
