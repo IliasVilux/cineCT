@@ -29,4 +29,10 @@ return [
     'last_name' => 'Cognom',
     'pass2' => 'Repetir contrassenya',
 
+    //  Placeholders
+    'email_ph' => 'elteuemail@gmail.com', 
+    'username_ph' => 'El teu usuari', 
+    'pass_ph' => 'La teva contrasenya', 
+    'pass2_ph' => 'Repeteix la teva contrasenya', 
+
 ];
