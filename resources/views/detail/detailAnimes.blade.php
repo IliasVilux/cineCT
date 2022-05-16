@@ -43,19 +43,19 @@
             <article class="col-6 more-info bg-dark p-3 ms-1 ms-sm-0" id="datasheet">
                 <div class="d-none align-content-center flex-wrap d-sm-flex">
                     <h5 class="pe-2 fw-bold">{{ trans('detail.genre') }}:</h5>
-                    <p>{{ \ContentGenre::TranslateGenre($anime->genre->name) }}</p>
+                    <h5 class="fw-normal">{{ \ContentGenre::TranslateGenre($anime->genre->name) }}</h5>
                 </div>
                 <div class="d-none align-content-center flex-wrap d-sm-flex">
                     <h5 class="pe-2 fw-bold">{{ trans('detail.release') }}:</h5>
-                    <p>{{ $anime->release_date }}</p>
+                    <h5 class="fw-normal">{{ $anime->release_date }}</h5>
                 </div>
                 <div class="d-none align-content-center flex-wrap d-sm-flex">
                     <h5 class="pe-2 fw-bold">{{ trans('detail.duration') }}:</h5>
-                    <p>{{ $anime->duration }}min</p> 
+                    <h5 class="fw-normal">{{ $anime->duration }}min</h5>
                 </div>
                 <div class="d-none align-content-center flex-wrap d-sm-flex">
                     <h5 class="pe-2 fw-bold">{{ trans('detail.total_episodes') }}:</h5>
-                    <p>{{ $anime->total_episodes }}</p>
+                    <h5 class="fw-normal">{{ $anime->total_episodes }}</h5>
                 </div>
                 <div class="d-none align-content-center flex-wrap d-sm-flex">
                     @if(empty($contentRate) || $contentRate == '')
@@ -64,7 +64,7 @@
                     @else
                         <h5 class="pe-2 fw-bold">{{ trans('detail.rating') }}:</h5>
                         <i class="fas fa-star m-1"></i>
-                        <p>{{ $contentRate }}/10 <i>( {{ $totalVotes }} personas han votado este anime)</i></p>
+                        <h5 class="fw-normal">{{ $contentRate }}/10 <i>( {{ $totalVotes }} personas han votado este anime)</i></h5>
                     @endif
                 </div>
                 @if($userVoteExists)

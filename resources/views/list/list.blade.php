@@ -22,13 +22,13 @@
             @if($favList->top_list == 1)
                 <a href="lista-fav/{{$favList->id}}" class="image-link col-4 col-md-3 col-lg-2 p-2 search-content-info">
                     <div class="mt-4 p-2 w-100 bg-dark text-white rounded button-gold cursor">
-                        <h4>{{$favList->name}}</h4>
+                        <h4 class="ms-2">{{$favList->name}}</h4>
                     </div>  
                 </a>
             @else
                 <a href="lista-fav/{{$favList->id}}">
                     <div class="mt-4 p-2 w-100 bg-dark text-white rounded button-list cursor">
-                        <h4>{{$favList->name}}</h4>
+                        <h4 class="ms-2">{{$favList->name}}</h4>
                     </div>
                 </a>
             @endif
