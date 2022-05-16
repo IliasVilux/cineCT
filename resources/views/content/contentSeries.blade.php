@@ -79,12 +79,12 @@
 
         foreach($series as $serie) {
             echo '<a href="/detail/detailSeries/'.$serie->id.'" class="image-link col-3 col-sm-2 p-2">';
-            if($serie->poster_path == NULL) {
-            echo '<img src="/img/NoImg.jpg" class="img-content col-12" alt="No Image">';
-            } else {
-            echo '<img src="'.$serie->poster_path.'" class="img-content col-12" alt="'.$serie->name.'">
-            </a>';
-            }
+                if($serie->poster_path == NULL) {
+                    echo '<img src="/img/NoImg.jpg" class="img-content col-12" alt="No Image">';
+                    } else {
+                    echo '<img src="'.$serie->poster_path.'" class="img-content col-12" alt="'.$serie->name.'">';
+                }
+            echo '</a>';
         }
     echo '</div>';
             
