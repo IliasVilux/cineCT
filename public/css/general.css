@@ -278,6 +278,13 @@ a.link-img-carousel {
   }
   
 
+  .img-profile-navbar {
+    height: 35px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+
   .full-img {
     width: 25%;
     height: 225px;
