@@ -36,6 +36,12 @@
         </div>
     @endif
 
+    @if (Session::has('RateAdded'))
+        <div class="alert alert-success" role="alert">
+            <strong>{{ Session::get('RateAdded') }}!</strong>
+        </div>
+    @endif
+
     <section class="container">
         <a href="{{ url('/content/contentFilms') }}" class="btn button-purple my-4" title="Back">
             {{ trans('titles.back') }}
@@ -64,11 +70,12 @@
                 <div class="d-none align-content-center flex-wrap d-sm-flex">
                     <h5 class="pe-2 fw-bold">{{ trans('detail.rating') }}:</h5>
                     <i class="fas fa-star m-1"></i>
-                    <p>{{ $film->puntuation }}/10</p>
+                    <p>{{ $contentRate }}/10</p>
                 </div>
                 <div class="d-flex flex-column align-items-start mt-2">
                     <h5 class="fw-bold">{{ trans('detail.how_much') }}</h5>
-                    <form method="GET" class="d-flex flex-column align-items-center col-12 mb-xl-2">
+                    <form method="POST" class="d-flex flex-column align-items-center col-12 mb-xl-2" action="{{ route('user.add_rating_film', ['idFilm' => $film->id]) }}">
+                        @csrf
                         <div class="rating col-12 d-flex flex-row-reverse justify-content-center">
                             <input name="stars" id="e1" type="radio" value="10"><label for="e1">☆</label>
                             <input name="stars" id="e2" type="radio" value="9"><label for="e2">☆</label>
@@ -90,8 +97,8 @@
                     } elseif (isset($_GET['stars']) == '');
                 ?>
                 <div class="d-flex flex-row flex-wrap justify-content-center">
-                    <div class="dropdown">
-                        <button type="button" class="btn button-purple btn-md dropdown-toggle" data-bs-toggle="dropdown">
+                    <div class="dropdown my-sm-2">
+                        <button type="button" class="btn button-purple dropdown-toggle" data-bs-toggle="dropdown">
                             {{trans('detail.add_favs')}}
                         </button>
                         <ul class="dropdown-menu">
@@ -125,12 +132,12 @@
                     </div>
                     @if (isset($userTopList[0]->name))
                     <a href="/detail/detailFilms/{{$film->id}}/{{$userTopList[0]->id}}/addFav">
-                        <button class="btn button-purple btn-sm">{{ trans('detail.add_to') }} {{ $userTopList[0]->name }}</button>
+                        <button class="btn button-purple">{{ trans('detail.add_to') }} {{ $userTopList[0]->name }}</button>
                     </a>
                     @endif
                     @if(!empty($userListsWhereFilm))
-                        <div class="dropdown mx-2 mt-sm-2 mt-lg-0">
-                            <button type="button" class="btn btn-outline-danger btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+                        <div class="dropdown mx-2 mt-sm-2">
+                            <button type="button" class="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown">
                                 {{ trans('detail.delete_favourite') }}
                             </button>
                             <ul class="dropdown-menu">
@@ -143,7 +150,7 @@
                         </div>
                     @endif
                     @if (empty($userListsWhereAnime))
-                    <div class="social-media-links mx-2 mt-sm-2 mt-xl-0">
+                    <div class="social-media-links mx-2 mt-sm-2">
                     @else
                     <div class="social-media-links">
                     @endif
@@ -173,7 +180,7 @@
                 </div>
                 <div class="d-flex flex-column">
                     <h5 class="pe-2"><b>{{ trans('detail.rating') }}:</b></h5>
-                    <p><i class="fas fa-star"></i> {{ $film->puntuation }}/10<p>
+                    <p><i class="fas fa-star"></i> {{ $contentRate }}/10<p>
                 </div>
             </article>
         </div>        

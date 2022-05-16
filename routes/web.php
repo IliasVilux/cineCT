@@ -39,11 +39,19 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     //User-Auth Actions
     Route::get('/user/profile', [UserController::class, 'userProfile'])->name('user.profile');
     Route::get('/user/list', [UserController::class, 'userFavoriteList'])->name('user.favorite.list');
+    Route::get('/user/list', [UserController::class, 'userFavoriteList'])->name('user.favorite.list');
+    Route::get('/user/lista-fav/{id}', [UserController::class, 'specificFavoriteList'])->name('user.specific-favorite.list');
+    Route::get('/user/lista-fav/removeFav/{id}', [UserController::class, 'removeFavContent'])->name('user.specific-favorite.list');
+    Route::get('/user/lista-fav/{id}/addFavorite', [UserController::class, 'setFavoriteList'])->name('user.specific-favorite-add-top.list');
+    Route::get('/user/lista-fav/{id}/deleteFavorite', [UserController::class, 'unsetFavoriteList'])->name('user.specific-favorite-delete-top.list');
+
+    Route::post('/detail/detailFilms/rate/{idFilm}', [FilmController::class, 'postRatingFilm'])->name('user.add_rating_film');
+    Route::post('/detail/detailSeries/rate/{idSerie}', [SerieController::class, 'postRatingSerie'])->name('user.add_rating_serie');
+    Route::post('/detail/detailAnimes/rate/{idAnime}', [AnimeController::class, 'postRatingAnime'])->name('user.add_rating_anime');
     
     //User-Auth Actions
     Route::post('/user/profile', [UserController::class, 'profileUpdate'])->name('user.update');
     
-    Route::get('/user/list', [UserController::class, 'userFavoriteList'])->name('user.favorite.list');
 
     Route::get('/user/profile/change-password', [ChangePasswordController::class, 'index'])->name('change.password');
     Route::post('/user/profile/change-password', [ChangePasswordController::class, 'store'])->name('change.password.post');

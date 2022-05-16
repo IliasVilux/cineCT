@@ -4,12 +4,10 @@
 	<link rel="stylesheet" href="{{asset('css/general.css')}}">
 </head>
 <section class="container">
-
     <div class="container my-5">
         <h2>{{ trans('profile.change_img') }}</h2>
         <p>{{ trans('profile.profile_icon') }}</p>
     </div>
-
     <div class="profile-images">
         @foreach ($images as $image)
         <div>

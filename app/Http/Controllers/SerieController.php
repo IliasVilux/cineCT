@@ -9,9 +9,10 @@ use App\Models\Image;
 use App\Models\Review;
 use App\Models\FavoriteList;
 use App\Models\FavouriteLists;
+use App\Models\User;
+use App\Models\Rating;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
-use App\Models\User;
 
 class SerieController extends Controller
 {
@@ -129,6 +130,8 @@ class SerieController extends Controller
         $userLists = FavouriteLists::query()->where('user_id', $user)->get();
         $userListsWhereSerie = [];
         $userSeriesInLists = FavoriteList::where('user_id', $user)->where('serie_id', $id)->get();
+        $contentRate = substr(Rating::where('serie_id', $id)->avg('rate'), 0, 4);
+
         foreach($userSeriesInLists as $SerieInLists)
         {
             foreach($userLists as $list)
@@ -144,7 +147,7 @@ class SerieController extends Controller
         $shareComponent = $this->ShareWidget();
 
         if (!is_null($serie)) {
-            return view('/detail/detailSeries', compact('serie', 'userLists', 'userListsWhereSerie', 'userTopList', 'comments', 'shareComponent'));
+            return view('/detail/detailSeries', compact('serie', 'userLists', 'userListsWhereSerie', 'userTopList', 'comments', 'shareComponent', 'contentRate'));
         } else {
             return response('No encontrado', 404);
         }
@@ -182,7 +185,6 @@ class SerieController extends Controller
         $user = Auth::user()->id;
         $newListName = $request->input('newListName');
         $listUser = FavouriteLists::where('name', $newListName)->where('user_id', $user)->get('id')->max();
-
         $serie_name = Serie::query()->where('id', $idSerie)->get();
 
         $request->validate([
@@ -276,5 +278,23 @@ class SerieController extends Controller
             
         }
         
+    }
+
+    public function postRatingSerie($id, Request $request)
+    {
+        $user = Auth::user()->id;
+
+        $userRate = $request->input('stars');
+        $checkUserRate = Rating::where('user_id', $user)->where('serie_id', $id)->first();
+
+        if(!isset($checkUserRate))
+        {
+            $rate = Rating::create([
+                'user_id' => $user,
+                'serie_id' => $id,
+                'rate' => $userRate,
+            ]);
+            return redirect()->to('/detail/detailSeries/' . $id)->with('RateAdded', 'Se ha añadido tu voto.');
+        } return redirect()->to('/detail/detailSeries/' . $id);
     }
 }

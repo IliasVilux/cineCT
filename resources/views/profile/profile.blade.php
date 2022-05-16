@@ -20,7 +20,7 @@
         </div>
 
         <div class="d-flex justify-content-center">
-        <a href="{{ route('user.profile-img') }}" class="col-5">
+            <a href="{{ route('user.profile-img') }}" class="col-5">
                 <button class="btn button-purple mt-3 col-12">{{trans('profile.change_img')}}</button>
             </a>
         </div>
@@ -31,10 +31,9 @@
                 <label for="username" class="form-label">{{ trans('profile.username') }}</label>
                 <input type="text" class="form-control" name="username" id="username" value="{{ Auth::user()->nick }}">
             </div>
-            <div class="col-12 col-sm-6 p-0 m-0 py-2 px-4 ps-sm-2">
+            <div class="d-none col-12 col-sm-6 p-0 m-0 py-2 px-4 ps-sm-2">
                 <label for="realName" class="form-label">{{ trans('profile.name') }}</label>
-                <input type="text" class="form-control" name="realName" id="realName"
-                    value="{{ Auth::user()->name . ' ' . Auth::user()->surname }}" disabled>
+                <input type="text" class="form-control" name="realName" id="realName" value="{{ Auth::user()->name . ' ' . Auth::user()->surname }}" disabled>
             </div>
             <div class="col-12 col-sm-6 p-0 m-0 py-2 px-4 pe-sm-2">
                 <label class="form-label">{{ trans('profile.language') }}</label>
@@ -46,33 +45,32 @@
                 </select>
             </div>
             <div class="d-flex flex-wrap flex-row justify-content-center m-0">
-                <a href="{{ route('change.password') }}" class="col-5 px-2">
-                    <button class="btn button-purple mt-3 col-12">{{trans('profile.change_pass')}}</button>
+                <a href="{{ route('change.password') }}" class="col-4 px-2 btn button-purple mt-3">
+                    {{trans('profile.change_pass')}}
                 </a>
-            
-            <a href="{{ route('change.password') }}" class="col-5 px-2">
-                <button class="btn btn-outline-danger mt-3 col-12" data-bs-toggle="modal" data-bs-target="#myModal">{{trans('profile.delete_profile')}}</button>
-            </a>
+                <button class="btn btn-outline-danger mt-3 col-4 px-2 ms-2" data-bs-toggle="modal" data-bs-target="#myModalDelete">
+                    {{trans('profile.delete_profile')}}
+                </button>
             </div>
-            <div class="modal fade text-dark" id="myModal">
+            <div class="modal fade text-dark" id="myModalDelete">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title">{{ trans('profile.delete_profile') }}</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            <button class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
                             {{ trans('warnings.del_profile_conf') }}
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-info" data-bs-dismiss="modal">{{ trans('profile.cancel') }}</button>
-                            <a href="{{ route('delete.account') }}" type="button" class="btn btn-danger">{{ trans('profile.delete') }}</a>
+                            <button class="btn btn-info" data-bs-dismiss="modal">{{ trans('profile.cancel') }}</button>
+                            <a href="{{ route('delete.account') }}" type="button" class="btn btn-outline-danger">{{ trans('profile.delete') }}</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="d-flex justify-content-center m-0">
-                <button type="submit" class="btn button-purple mt-3 col-5">{{ trans('profile.save') }}</button>
+                <button type="submit" class="btn button-purple mt-3 col-4">{{ trans('profile.save') }}</button>
             </div>
         </form>
     </section>

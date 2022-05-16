@@ -10,9 +10,10 @@ use App\Models\Review;
 use App\Models\FavoriteList;
 use App\Models\FavouriteLists;
 use App\Models\Like;
+use App\Models\User;
+use App\Models\Rating;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
-use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class FilmController extends Controller
@@ -142,6 +143,7 @@ class FilmController extends Controller
         $shareComponent = $this->ShareWidget();
         $userListsWhereFilm = [];
         $userFilmsInLists = FavoriteList::where('user_id', $user)->where('film_id', $id)->get();
+        $contentRate = substr(Rating::where('film_id', $id)->avg('rate'), 0, 4);
 
         foreach($userFilmsInLists as $filmInLists)
         {
@@ -165,9 +167,9 @@ class FilmController extends Controller
                     }
                 }   
                 arsort($commentsOrderByLikes);
-                return view('detail.detailFilms', compact('film', 'userLists', 'userListsWhereFilm', 'comments', 'shareComponent', 'userTopList', 'commentsOrderByLikes'));
+                return view('detail.detailFilms', compact('film', 'userLists', 'userListsWhereFilm', 'comments', 'shareComponent', 'userTopList', 'commentsOrderByLikes', 'contentRate'));
             }
-            return view('detail.detailFilms', compact('film', 'userLists', 'userListsWhereFilm', 'comments', 'shareComponent', 'userTopList'));
+            return view('detail.detailFilms', compact('film', 'userLists', 'userListsWhereFilm', 'comments', 'shareComponent', 'userTopList', 'contentRate'));
         } else {
             return response('No encontrado', 404);
         }
@@ -291,6 +293,24 @@ class FilmController extends Controller
 
             return view('content.filterFilm', ['films' => $films, 'genre' => $genre]);
         }
+    }
+
+    public function postRatingFilm($id, Request $request)
+    {
+        $user = Auth::user()->id;
+
+        $userRate = $request->input('stars');
+        $checkUserRate = Rating::where('user_id', $user)->where('film_id', $id)->first();
+
+        if(!isset($checkUserRate))
+        {
+            $rate = Rating::create([
+                'user_id' => $user,
+                'film_id' => $id,
+                'rate' => $userRate,
+            ]);
+            return redirect()->to('/detail/detailFilms/' . $id)->with('RateAdded', 'Se ha añadido tu voto.');
+        } return redirect()->to('/detail/detailFilms/' . $id);
     }
 
     

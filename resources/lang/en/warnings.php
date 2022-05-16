@@ -35,4 +35,13 @@ return [
     'empty_msg' => 'You can\'t publish an empty message!',
     'too_long_msg' => 'Your comment is too long!',
     'error_ocurred' => 'There\'s been an error publishing your comment!',
+
+    // Session modal
+    'hi' => 'Hii',
+    'open_session' => 'you have your session open, what do you want to do?',
+    'back' => 'Back',
+    'close_session' => 'Close session',
+
+    // Search
+    'found_results' => 'Found results of',
 ];
