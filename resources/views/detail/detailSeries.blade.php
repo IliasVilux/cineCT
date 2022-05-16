@@ -113,7 +113,8 @@
                     <div class="modal fade" id="myModal">
                         <div class="modal-dialog text-dark">
                             <div class="modal-content">
-                                <form action="/detail/detailSeries/{{ $serie->id }}/addNewList">
+                                <form method="POST" action="/detail/detailSeries/{{ $serie->id }}/addNewList">
+                                    @csrf
                                     <div class="modal-body">
                                         <div class="form-group">
                                             <input type="text" id="newListName" name="newListName" class="form-control" placeholder="{{trans('detail.new_list')}}">

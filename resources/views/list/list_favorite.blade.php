@@ -68,6 +68,7 @@
     <a href="{{ url('/home') }}" class="btn button-purple my-3" title="Home">
         Home
     </a>
+    
     @if($data['list']->top_list == 1)
         <a href="{{$data['list']->id}}/deleteFavorite" class="btn button-purple" title="Home">
             Eliminar lista destacada

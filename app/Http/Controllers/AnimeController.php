@@ -216,7 +216,6 @@ class AnimeController extends Controller
         $user = Auth::user()->id;
         $newListName = $request->input('newListName');
         $listUser = FavouriteLists::where('name', $newListName)->where('user_id', $user)->get('id')->max();
-        dd($listUser);
         $anime_name = Anime::query()->where('id', $idAnime)->get();
 
         $request->validate([

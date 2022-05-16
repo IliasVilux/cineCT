@@ -110,9 +110,9 @@ Route::group(['middleware' => 'authenticate.user'], function () {
     Route::get('/detail/detailFilms/{id}/{flid}/delFav', [FilmController::class,  'delFavourite'])->name('film.del-fav');
 
     //Add new List
-    Route::get('/detail/detailAnimes/{id}/addNewList', [AnimeController::class,  'addNewList'])->name('anime.newList');
-    Route::get('/detail/detailFilms/{id}/addNewList', [FilmController::class,  'addNewList'])->name('film.newList');
-    Route::get('/detail/detailSeries/{id}/addNewList', [SerieController::class,  'addNewList'])->name('serie.newList');
+    Route::post('/detail/detailAnimes/{id}/addNewList', [AnimeController::class,  'addNewList'])->name('anime.newList');
+    Route::post('/detail/detailFilms/{id}/addNewList', [FilmController::class,  'addNewList'])->name('film.newList');
+    Route::post('/detail/detailSeries/{id}/addNewList', [SerieController::class,  'addNewList'])->name('serie.newList');
 
     //Searcher
     Route::get('/search/search', [UserController::class, 'searchEmpty'])->name('search.view');
