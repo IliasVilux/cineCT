@@ -40,7 +40,7 @@
             @endif
             <article class="col-6 more-info bg-dark p-3" id="datasheet">
                 <div class="d-none d-sm-flex nowrap">
-                    <h6 class="pe-2"><b>{{ trans('titles.genre') }}:</b></h6>
+                    <h6 class="pe-2"><b>{{ trans('detail.genre') }}:</b></h6>
                     <p>{{ \ContentGenre::TranslateGenre($serie->genre->name) }}</p>
                 </div>
                 <div class="d-none align-content-center flex-wrap d-sm-flex">
