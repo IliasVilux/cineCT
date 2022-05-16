@@ -77,12 +77,12 @@
                                         <div class="tab-content" id="pills-tabContent">
                                             <div class="tab-pane fade show active" id="auth_with_email" role="tabpanel" aria-labelledby="auth_with_email-tab">
                                                 <label for="email" class="form-label">{{ trans('register.email') }}</label>
-                                                <input type="text" class="form-control" id="email" name="email" placeholder="Your email" autofocus>
+                                                <input type="text" class="form-control" id="email" name="email" placeholder="{{ trans('register.email_ph') }}" autofocus>
                                             </div>
                                             <div class="tab-pane fade" id="auth_with_nickname" role="tabpanel" aria-labelledby="auth_with_nickname-tab">
                                                 <div class="col-12">
                                                     <label for="nick" class="form-label">{{ trans('register.username') }}</label>
-                                                    <input type="text" class="form-control" id="nick" name="nick" placeholder="Your username" autofocus>
+                                                    <input type="text" class="form-control" id="nick" name="nick" placeholder="{{ trans('register.username_ph') }}" autofocus>
                                                 </div>
                                             </div>
                                         </div>
@@ -91,7 +91,7 @@
                                     <div class="col-12 p-0">
                                         <label for="password" class="form-label">{{ trans('register.pass') }}</label>
                                         <div class="input-group">
-                                            <input type="password" class="form-control" id="password" name="password" placeholder="Your password">
+                                            <input type="password" class="form-control" id="password" name="password" placeholder="{{ trans('register.pass_ph') }}">
                                             <input type="checkbox" onclick="switchPassword()" name="showPassword" id="showPassword" class="d-none">
                                             <label for="showPassword"><i class="fa fa-eye"></i></label>
                                         </div>
@@ -158,28 +158,20 @@
 
                                     <div class="row p-0">
                                         <div class="col-12 col-md-6 mb-2 mb-sm-3 p-0 pe-sm-0 pe-md-3">
-                                            <label for="register_name" class="form-label">{{ trans('register.name') }}</label>
-                                            <input type="text" class="form-control" id="register_name" name="register_name" placeholder="Mark" value="{{ old('register_name') }}" autofocus>
-                                        </div>
-                                        <div class="col-12 col-md-6 mb-2 mb-sm-3 p-0">
-                                            <label for="register_surname" class="form-label">{{ trans('register.last_name') }}</label>
-                                            <input type="text" class="form-control" id="register_surname" name="register_surname" placeholder="Ruffalo" value="{{ old('register_surname') }}" autofocus>
-                                        </div>
-                                        <div class="col-12 col-md-6 mb-2 mb-sm-3 p-0 pe-sm-0 pe-md-3">
                                             <label for="nick" class="form-label">{{ trans('register.username') }}</label>
-                                            <input type="text" class="form-control" id="register_nick" name="register_nick" placeholder="mark20" value="{{ old('register_nick') }}" autofocus>
+                                            <input type="text" class="form-control" id="register_nick" name="register_nick" placeholder="{{ trans('register.username_ph') }}" value="{{ old('register_nick') }}" autofocus>
                                         </div>
                                         <div class="col-12 col-md-6 mb-2 mb-sm-3 p-0">
                                             <label for="register_email" class="form-label">{{ trans('register.email') }}</label>
-                                            <input type="email" class="form-control" id="register_email" name="register_email" placeholder="youremail@gmail.com" value="{{ old('register_email') }}" autofocus>
+                                            <input type="email" class="form-control" id="register_email" name="register_email" placeholder="{{ trans('register.email_ph') }}" value="{{ old('register_email') }}" autofocus>
                                         </div>
                                         <div class="col-12 col-md-6 p-0 mb-2 mb-sm-3 mb-md-0 pe-sm-0 pe-md-3">
                                             <label for="register_password" class="form-label">{{ trans('register.pass') }}</label>
-                                            <input type="password" class="form-control" id="register_password" name="register_password" placeholder="New password" autofocus>
+                                            <input type="password" class="form-control" id="register_password" name="register_password" placeholder="{{ trans('register.pass_ph') }}" autofocus>
                                         </div>
                                         <div class="col-12 col-md-6 p-0">
                                             <label for="register_password_repeat" class="form-label">{{ trans('register.pass2') }}</label>
-                                            <input type="password" class="form-control" id="register_password_repeat" name="register_password_repeat" placeholder="Repeat password" autofocus>
+                                            <input type="password" class="form-control" id="register_password_repeat" name="register_password_repeat" placeholder="{{ trans('register.pass2_ph') }}" autofocus>
                                         </div>
                                     </div>
 
