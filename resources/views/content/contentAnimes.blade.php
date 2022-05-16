@@ -111,13 +111,9 @@
                 if ($anime->poster_path === null) {
                     echo '<img src="/img/NoImg.jpg" class="img-content col-12" alt="No Image">';
                 } else {
-                    echo '<img src="' .
-                        $anime->poster_path .
-                        '" class="img-content col-12" alt="' .
-                        $anime->name .
-                        '">
-                </a>';
+                    echo '<img src="' .$anime->poster_path .'" class="img-content col-12" alt="' .$anime->name .'">';
                 }
+                echo '</a>';
             }
             echo ' </div>';
         } else {

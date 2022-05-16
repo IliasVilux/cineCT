@@ -82,12 +82,12 @@
 
         foreach($films as $film) {
             echo '<a href="/detail/detailFilms/'.$film->id.'" class="image-link col-3 col-sm-2 p-2">';
-            if($film->poster_path === NULL) {
-            echo '<img src="/img/NoImg.jpg" class="img-content col-12" alt="No Image">';
-            } else {
-            echo '<img src="'.$film->poster_path.'" class="img-content col-12" alt="'.$film->name.'">
-            </a>';
-            }
+                if($film->poster_path === NULL) {
+                    echo '<img src="/img/NoImg.jpg" class="img-content col-12" alt="No Image">';
+                } else {
+                    echo '<img src="'.$film->poster_path.'" class="img-content col-12" alt="'.$film->name.'">';
+                }
+            echo '</a>';
         }
             echo' </div>';
         } else {

@@ -29,4 +29,10 @@ return [
     'last_name' => 'Apellido',
     'pass2' => 'Repetir contraseña',
 
+    //  Placeholders
+    'email_ph' => 'tuemail@gmail.com', 
+    'username_ph' => 'Tu nombre de usuario', 
+    'pass_ph' => 'Tu contraseña', 
+    'pass2_ph' => 'Repite tu contraseña', 
+
 ];
