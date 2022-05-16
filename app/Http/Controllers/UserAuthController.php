@@ -56,17 +56,17 @@ class UserAuthController extends Controller
 
     public function userRegister(Request $request)
     {
-        $register_name = $request->input('register_name');
+        //$register_name = $request->input('register_name');
         $register_nick = $request->input('register_nick');
-        $register_surname = $request->input('register_surname');
+        //$register_surname = $request->input('register_surname');
         $register_email = $request->input('register_email');
         $register_password = $request->input('register_password');
 
         
 
         $validate = $this->validate($request, [
-            'register_name' => 'required|string|min:3|max:255',
-            'register_surname' => 'required|string|max:255',
+            //'register_name' => 'required|string|min:3|max:255',
+            //'register_surname' => 'required|string|max:255',
             'register_nick' => 'required|string|max:15|',
             'register_email' => 'required|string|email|',
             'register_password' => 'required|min:6',
@@ -81,9 +81,9 @@ class UserAuthController extends Controller
         }
 
         $user = User::create([
-            'name' => $register_name,
+            //'name' => $register_name,
             'email' => $register_email,
-            'surname' => $register_surname,
+            //'surname' => $register_surname,
             'nick' => $register_nick,
             'image_id' => 18,
             'lang' => 'en',

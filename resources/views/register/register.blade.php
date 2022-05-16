@@ -126,16 +126,18 @@
                                         </div>
                                     @endif
                                     <div class="register-erros">
+                                        {{--
                                         @if ($errors->has('register_name'))
-                                            <div class="mt-2 alert alert-danger">
-                                                {{ trans('warnings.name_wrong') }}
-                                            </div>
+                                        <div class="mt-2 alert alert-danger">
+                                            {{ trans('warnings.name_wrong') }}
+                                        </div>
                                         @endif
                                         @if ($errors->has('register_surname'))
-                                            <div class="mt-2 alert alert-danger">
-                                                {{ trans('warnings.last_name_wrong') }}
-                                            </div>
+                                        <div class="mt-2 alert alert-danger">
+                                            {{ trans('warnings.last_name_wrong') }}
+                                        </div>
                                         @endif
+                                         --}}
                                         @if ($errors->has('register_nick'))
                                             <div class="mt-2 alert alert-danger">
                                                 {{ trans('warnings.user_used') }}
