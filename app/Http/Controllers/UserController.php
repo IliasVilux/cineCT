@@ -74,6 +74,26 @@ class UserController extends Controller
 
         return redirect()->back();
     }
+    public function deleteFavoriteList($id){
+        $userIdList = Auth::User()->id;
+
+        $content = FavoriteList::where('user_id', $userIdList)->where('list_id', $id)->get();
+        if (isset($content))
+        {
+            foreach($content as $one)
+            {
+                $one->delete();
+            }
+        }
+        $list = FavouriteLists::where('id', $id)->where('user_id', $userIdList)->first();
+        if(isset($list))
+        {
+            $list->delete();
+        }
+
+        return redirect()->to('/user/list');
+
+    }
 
     public function searchContent(Request $request)
     {

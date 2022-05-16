@@ -70,7 +70,7 @@
     </a>
     
     @if($data['list']->top_list == 1)
-        <a href="{{$data['list']->id}}/deleteFavorite" class="btn button-purple" title="Home">
+        <a href="{{$data['list']->id}}/unsetFavorite" class="btn button-purple" title="Home">
             Eliminar lista destacada
         </a>
     @else
@@ -78,6 +78,10 @@
             Guardar como lista destacada
         </a>
     @endif
+
+    <a href="{{$data['list']->id}}/deleteFavorite" class="btn button-purple" title="Home">
+        Eliminar lista
+    </a>
 @endif
 <!-- END COMMENT SECTION -->
 @endsection
