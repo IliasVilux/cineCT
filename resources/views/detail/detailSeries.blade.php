@@ -45,25 +45,25 @@
             @endif
             <article class="col-6 more-info bg-dark p-3" id="datasheet">
                 <div class="d-none d-sm-flex nowrap">
-                    <h6 class="pe-2"><b>{{ trans('titles.genre') }}:</b></h6>
-                    <p>{{ \ContentGenre::TranslateGenre($serie->genre->name) }}</p>
+                    <h5 class="pe-2 fw-bold"><b>{{ trans('detail.genre') }}:</b></h6>
+                    <h5 class="fw-normal">{{ \ContentGenre::TranslateGenre($serie->genre->name) }}</h5>
                 </div>
                 <div class="d-none align-content-center flex-wrap d-sm-flex">
                     <h5 class="pe-2 fw-bold">{{ trans('detail.release') }}:</h5>
-                     <p>{{ $serie->release_date }}</p>
+                    <h5 class="fw-normal">{{ $serie->release_date }}</h5>
                 </div>
                 <div class="d-none align-content-center flex-wrap d-sm-flex">
                     <h5 class="pe-2 fw-bold">{{ trans('detail.seasons') }}:</h5>
-                     <p>{{ $serie->seasons }}</p>
+                    <h5 class="fw-normal">{{ $serie->seasons }}</h5>
                 </div>
                 <div class="d-none align-content-center flex-wrap d-sm-flex">
                     <h5 class="pe-2 fw-bold">{{ trans('detail.total_episodes') }}:</h5>
-                     <p>{{ $serie->total_episodes }}</p>
+                    <h5 class="fw-normal">{{ $serie->total_episodes }}</h5>
                 </div>
                 <div class="d-none align-content-center flex-wrap d-sm-flex">
                     <h5 class="pe-2 fw-bold">{{ trans('detail.rating') }}:</h5>
-                    <i class="fas fa-star m-1"></i>
-                    <p>{{ $contentRate }}/10</p>
+                    <i class="fas fa-star"></i>
+                    <h5 class="fw-normal">{{ $contentRate }}/10</h5>
                 </div>
                 <div class="d-flex flex-column align-items-start mt-2">
                     <h5 class="fw-bold">{{ trans('detail.how_much') }}</h5>
@@ -161,29 +161,29 @@
 
         <div class="px-2">
             <h5 class="pt-4"><b>{{ trans('detail.summary') }}:</b></h5>
-            <p class="description col-12 d-flex">{{ $serie->description }}</p>
+            <h5 class="fw-normal" class="description col-12 d-flex">{{ $serie->description }}</h5>
 
             <article class="d-sm-none">
                 <div class="d-flex flex-column">
                     <h5 class="pe-2 fw-bold">{{ trans('detail.genre') }}:</h5>
-                    <p>{{ $serie->genre->name }}</p>
+                    <h5 class="fw-normal">{{ $serie->genre->name }}</h5>
                 </div>
                 <div class="d-flex flex-column">
                     <h5 class="pe-2 fw-bold">{{ trans('detail.release') }}:</h5>
-                    <p>{{ $serie->release_date }}</p>
+                    <h5 class="fw-normal">{{ $serie->release_date }}</h5>
                 </div>
                 <div class="d-flex flex-column">
                     <h5 class="pe-2 fw-bold">{{ trans('detail.seasons') }}:</h5>
-                    <p>{{ $serie->seasons }}</p>
+                    <h5 class="fw-normal">{{ $serie->seasons }}</h5>
                 </div>
                 <div class="d-flex flex-column">
                     <h5 class="pe-2 fw-bold">{{ trans('detail.total_episodes') }}:</h5>
-                    <p>{{ $serie->total_episodes }}</p>
+                    <h5 class="fw-normal">{{ $serie->total_episodes }}</h5>
                 </div>
                 <div class="d-flex flex-column">
                     <h5 class="pe-2 fw-bold">{{ trans('detail.rating') }}:</h5>
                     <i class="fas fa-star"></i>
-                    <p>{{ $contentRate }}/10</p>
+                    <h5 class="fw-normal">{{ $contentRate }}/10</h5>
                 </div>
             </article>
         </div>

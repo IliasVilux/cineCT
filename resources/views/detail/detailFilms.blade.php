@@ -61,16 +61,16 @@
             <article class="col-6 more-info bg-dark p-3 ms-1 ms-sm-0" id="datasheet">
                 <div class="d-none align-content-center flex-wrap d-sm-flex">
                     <h5 class="pe-2 fw-bold">{{ trans('detail.genre') }}:</h5>
-                    <p id="film-genre">{{ \ContentGenre::TranslateGenre($film->genre->name) }}</p>
+                    <h5 class="fw-normal" id="film-genre">{{ \ContentGenre::TranslateGenre($film->genre->name) }}</h5>
                 </div>
                 <div class="d-none align-content-center flex-wrap d-sm-flex">
                     <h5 class="pe-2 fw-bold">{{ trans('detail.release') }}:</h5>
-                        <p>{{ $film->release_date }}</p>
+                    <h5 class="fw-normal">{{ $film->release_date }}</h5>
                 </div>
                 <div class="d-none align-content-center flex-wrap d-sm-flex">
                     <h5 class="pe-2 fw-bold">{{ trans('detail.rating') }}:</h5>
                     <i class="fas fa-star m-1"></i>
-                    <p>{{ $contentRate }}/10</p>
+                    <h5 class="fw-normal">{{ $contentRate }}/10</h5>
                 </div>
                 <div class="d-flex flex-column align-items-start mt-2">
                     <h5 class="fw-bold">{{ trans('detail.how_much') }}</h5>
@@ -167,20 +167,20 @@
 
         <div class="px-2">
             <h5 class="pt-4"><b>{{ trans('detail.summary') }}</b></h5>
-            <p class="description col-12 d-flex">{{ $film->description }}</p>
+            <h5 class="description col-12 d-flex fw-normal">{{ $film->description }}</h5>
 
             <article class="d-sm-none">
                 <div class="d-flex flex-column">
                     <h5 class="pe-2"><b>{{ trans('detail.genre') }}:</b></h5>
-                    <p>{{ $film->genre->name }}</p>
+                    <h5 class="fw-normal">{{ $film->genre->name }}</h5>
                 </div>
                 <div class="d-flex flex-column">
                     <h5 class="pe-2"><b>{{ trans('detail.release') }}:</b></h5>
-                    <p> {{ $film->release_date }}</p>
+                    <h5 class="fw-normal"> {{ $film->release_date }}</h5>
                 </div>
                 <div class="d-flex flex-column">
                     <h5 class="pe-2"><b>{{ trans('detail.rating') }}:</b></h5>
-                    <p><i class="fas fa-star"></i> {{ $contentRate }}/10<p>
+                    <h5 class="fw-normal"><i class="fas fa-star"></i> {{ $contentRate }}/10<h5>
                 </div>
             </article>
         </div>        

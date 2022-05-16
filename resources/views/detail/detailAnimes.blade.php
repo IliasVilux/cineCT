@@ -162,29 +162,29 @@
 
         <div class="px-2">
             <h5 class="pt-4"><b>{{ trans('detail.summary') }}</b></h5>
-            <p class="description col-12 d-flex">{{ $anime->description }}</p>
+            <h5 class="description col-12 d-flex fw-normal">{{ $anime->description }}<h5>
 
             <article class="d-sm-none">
                 <div class="d-flex flex-column">
                     <h5 class="pe-2 fw-bold">{{ trans('detail.genre') }}:</h5>
-                    <p>{{ $anime->genre->name }}</p>
+                    <h5 class="fw-normal">{{ $anime->genre->name }}<h5>
                 </div>
                 <div class="d-flex flex-column">
                     <h5 class="pe-2 fw-bold">{{ trans('detail.release') }}:</h5>
-                    <p>{{ $anime->release_date }}</p>
+                    <h5 class="fw-normal">{{ $anime->release_date }}<h5>
                 </div>
                 <div class="d-flex flex-column">
                     <h5 class="pe-2 fw-bold">{{ trans('detail.duration') }}:</h5>
-                    <p>{{ $anime->duration }}min</p> 
+                    <h5 class="fw-normal">{{ $anime->duration }}min</h5>
                 </div>
                 <div class="d-flex flex-column">
                     <h5 class="pe-2 fw-bold">{{ trans('detail.total_episodes') }}:</h5>
-                    <p>{{ $anime->total_episodes }}</p>
+                    <h5 class="fw-normal">{{ $anime->total_episodes }}<h5>
                 </div>
                 <div class="d-flex flex-column">
                     <h5 class="pe-2 fw-bold">{{ trans('detail.rating') }}:</h5>
                     <i class="fas fa-star m-1"></i>
-                    <p>{{ $contentRate }}/10</p>
+                    <h5 class="fw-normal">{{ $contentRate }}/10<h5>
                 </div>
             </article>
         </div>
