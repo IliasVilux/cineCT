@@ -347,7 +347,7 @@ a.link-img-carousel {
   }
   .full-img {
     width: 20%;
-    height: 350px;
+    height: 395px;
   }
   .img-carousel{
     height: 160px;
@@ -356,5 +356,14 @@ a.link-img-carousel {
   #container,
   #title-button {
     width: 1200px;
+  }
+  .section-content {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .full-img {
+      width: 17%;
   }
 }
