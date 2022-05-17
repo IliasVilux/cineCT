@@ -12,6 +12,10 @@ html, main, body {
   bottom: 20px;
   right: 20px;
   display: none;
+  font-size: 15px;
+  height: 40px;
+  width: 40px;
+  z-index: 3;
 }
 
 #btn-back-to-top:hover {
@@ -54,17 +58,6 @@ html, main, body {
   border: 1px solid #FFFFFF;
   color: white;
   background-color: #5A3C97;
-}
-
-.button-gold{
-  color: #FFFFFF;
-  border: 2px solid #d4b91f;
-  background-color: #16181d;
-}
-.button-gold:hover{
-  border: 2px solid #FFFFFF;
-  color: white;
-  background-color: #ffdd1c;
 }
 
 .btn.btn-danger {
@@ -154,7 +147,7 @@ a.link-img-carousel {
 }
 
 .img-profile-navbar {
-  height: 15px;
+  height: 25px;
   object-fit: cover;
   border-radius: 50%;
 }
@@ -302,6 +295,12 @@ a.link-img-carousel {
     font-size: 13px;
     height: 29px;
   }
+
+  #btn-back-to-top {
+    font-size: 25px;
+    height: 65px;
+    width: 65px;
+  }
 }
 
 
@@ -324,8 +323,8 @@ a.link-img-carousel {
   }
 
   .full-img {
-    width: 22%;
-    height: 350px;
+    width: 26%;
+    height: 338px;
   }
 
   .img-carousel{

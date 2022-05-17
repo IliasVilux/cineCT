@@ -12,7 +12,7 @@
             <div class="d-flex flex-row justify-content-between align-items-center">
                 <h4 class="mt-2 mb-3">{{trans('titles.'.$genre.'')}}</h4>
                 <div class="d-flex justify-content-center">
-                    <a href="{{ url('/content/contentFilms') }}" class="btn button-purple my-4" title="Back">Back</a>
+                    <a href="{{ url('/content/contentFilms') }}" class="btn button-purple my-4" title="Back">{{ trans('titles.back') }}</a>
                 </div>
             </div>
 

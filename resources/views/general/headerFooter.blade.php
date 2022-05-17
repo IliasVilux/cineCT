@@ -87,37 +87,37 @@
                         <ul class="list-unstyled">
                             <li>
                                 <a href="{{ url('home') }}" class="menu-links text-light text-uppercase">
-                                    <i class="fas fa-home pe-5"></i>{{trans('titles.home')}}
+                                    <i class="fas fa-home iconos"></i>{{trans('titles.home')}}
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ url('/content/contentFilms') }}" class="menu-links text-light text-uppercase">
-                                    <i class="fas fa-film pe-5"></i>{{trans('titles.films')}}
+                                    <i class="fas fa-film iconos"></i>{{trans('titles.films')}}
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ url('/content/contentSeries') }}" class="menu-links text-light text-uppercase">
-                                    <i class="fas fa-tv pe-5"></i>{{trans('titles.series')}}
+                                    <i class="fas fa-tv iconos"></i>{{trans('titles.series')}}
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ url('/content/contentAnimes') }}" class="menu-links text-light text-uppercase">
-                                    <i class="fas fa-dragon pe-5"></i>{{trans('titles.animes')}}
+                                    <i class="fas fa-dragon iconos"></i>{{trans('titles.animes')}}
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('top.top-content') }}" class="menu-links text-light text-uppercase">
-                                    <i class="fas fa-sort-amount-up-alt pe-5"></i>{{trans('titles.top')}}
+                                    <i class="fas fa-sort-amount-up-alt iconos"></i>{{trans('titles.top')}}
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('search.view') }}" class="menu-links text-light text-uppercase">
-                                    <i class="fas fa-search pe-5 fa-2x"></i>{{trans('titles.search')}}
+                                    <i class="fas fa-search iconos"></i>{{trans('titles.search')}}
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('user.favorite.list') }}" class="menu-links text-light text-uppercase">
-                                    <i class="fas fa-th-list pe-5"></i>{{trans('titles.lists')}}
+                                    <i class="fas fa-th-list iconos"></i>{{trans('titles.lists')}}
                                 </a>
                             </li>
                         </ul>

@@ -72,8 +72,6 @@ a .button-category p{
 }
 
 
-/*MOBILE*/
-
 @media only screen and (min-width: 576px) {
     a .button-category{
         font-size: 15px;
@@ -91,7 +89,6 @@ a .button-category p{
     }
 }
 
-/*DESKTOP*/
 @media only screen and (min-width: 768px) {
     .button-category {
         height: 50px;

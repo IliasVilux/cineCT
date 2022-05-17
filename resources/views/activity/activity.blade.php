@@ -23,22 +23,18 @@
             <a href="{{ route('anime.animes', ['id' => $like->review->anime->id]) }}#content_id-{{$like->review->id}}">
             @endif
                 <div class="d-flex align-items-center mb-2">
-                    <div>
+                    <div class="row">
                         @if(Auth::user()->image_id === null)
                         <i class="fas fa-user-circle fs-4 pe-1"></i>
                         @else
-                        <img class="img-profile-activity rounded-circle shadow-1-strong me-3" src="{{ $like->user->image->path }}" alt="{{Auth::user()->image->id}}"/>
+                        <img class="img-profile-activity rounded-circle shadow-1-strong" src="{{ $like->user->image->path }}" alt="{{Auth::user()->image->id}}"/>
                         @endif
-                    </div>
-                    <div>
-                        <div class="user-activity__information">
+                        <div class="user-activity__information p-0">
                             <p class="mb-1">
                                 <strong>{{ $like->user->nick }}</strong> {{ trans('profile.comment_like') }}: 
                                 <span class="text-secondary">{{ $like->review->description }}</span>
                             </p>
                         </div>
-                    </div>
-                    <div>
                         @if ($like->review->film)
                             @if ($like->review->film->poster_path == null)
                                 <img src="/img/NoImg.jpg" class="review-content-img" alt="Img">

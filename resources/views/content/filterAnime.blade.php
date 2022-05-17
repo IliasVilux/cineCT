@@ -16,7 +16,7 @@
                 <h4 class="mt-2 mb-3">{{trans('titles.'.$genre.'')}}</h4>
                 @endif
                 <div class="d-flex justify-content-center">
-                    <a href="{{ url('/content/contentAnimes') }}" class="btn button-purple my-4" title="Back">Back</a>
+                    <a href="{{ url('/content/contentAnimes') }}" class="btn button-purple my-4" title="Back">{{ trans('titles.back') }}</a>
                 </div>
             </div>
 
