@@ -86,38 +86,38 @@
                     <div class="offcanvas-body px-4">
                         <ul class="list-unstyled">
                             <li>
-                                <a href="{{ url('home') }}" class="footer-links text-light text-uppercase m-0">
-                                    <i class="fas fa-home pe-2"></i>{{trans('titles.home')}}
+                                <a href="{{ url('home') }}" class="menu-links text-light text-uppercase">
+                                    <i class="fas fa-home pe-5"></i>{{trans('titles.home')}}
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ url('/content/contentFilms') }}" class="footer-links text-light text-uppercase m-0">
-                                    <i class="fas fa-film pe-2"></i>{{trans('titles.films')}}
+                                <a href="{{ url('/content/contentFilms') }}" class="menu-links text-light text-uppercase">
+                                    <i class="fas fa-film pe-5"></i>{{trans('titles.films')}}
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ url('/content/contentSeries') }}" class="footer-links text-light text-uppercase m-0">
-                                    <i class="fas fa-tv pe-2"></i>{{trans('titles.series')}}
+                                <a href="{{ url('/content/contentSeries') }}" class="menu-links text-light text-uppercase">
+                                    <i class="fas fa-tv pe-5"></i>{{trans('titles.series')}}
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ url('/content/contentAnimes') }}" class="footer-links text-light text-uppercase m-0">
-                                    <i class="fas fa-dragon pe-2"></i>{{trans('titles.animes')}}
+                                <a href="{{ url('/content/contentAnimes') }}" class="menu-links text-light text-uppercase">
+                                    <i class="fas fa-dragon pe-5"></i>{{trans('titles.animes')}}
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('top.top-content') }}" class="footer-links text-light text-uppercase m-0">
-                                    <i class="fas fa-sort-amount-up-alt pe-2"></i>{{trans('titles.top')}}
+                                <a href="{{ route('top.top-content') }}" class="menu-links text-light text-uppercase">
+                                    <i class="fas fa-sort-amount-up-alt pe-5"></i>{{trans('titles.top')}}
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('search.view') }}" class="footer-links text-light text-uppercase m-0">
-                                    <i class="fas fa-search pe-2"></i>{{trans('titles.search')}}
+                                <a href="{{ route('search.view') }}" class="menu-links text-light text-uppercase">
+                                    <i class="fas fa-search pe-5 fa-2x"></i>{{trans('titles.search')}}
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('user.favorite.list') }}" class="footer-links text-light text-uppercase m-0">
-                                    <i class="fas fa-th-list pe-2"></i>{{trans('titles.lists')}}
+                                <a href="{{ route('user.favorite.list') }}" class="menu-links text-light text-uppercase">
+                                    <i class="fas fa-th-list pe-5"></i>{{trans('titles.lists')}}
                                 </a>
                             </li>
                         </ul>
@@ -153,7 +153,7 @@
         @yield('content')
     </main>
     <!-- END MAIN -->
-    <button class="btn btn-floating btn-md" id="btn-back-to-top">
+    <button class="btn btn-floating btn-lg" id="btn-back-to-top">
         <i class="fas fa-arrow-up"></i>
     </button>
     <!-- START FOOTER -->

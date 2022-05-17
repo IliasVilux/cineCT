@@ -56,11 +56,18 @@ ul.list-unstyled li a i.fas {
   width: 23px;
 }
 
-/* Iconos */
-
-i.fas.fa-search {
-  font-size: 9px;
+a.menu-links {
+  margin: 10px 0px;
+  font-size: 20px;
+  text-decoration: none;
 }
+
+a.menu-links:hover {
+  text-decoration: underline;
+}
+
+
+/* Iconos */
 
 .fas.fa-user-circle {
   font-size: 10px;
