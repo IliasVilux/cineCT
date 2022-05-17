@@ -17,6 +17,7 @@ h1{
 .cinet_top--detail{
     border-radius: 20px;
     overflow: hidden;
+    height: 145px;
 }
 
 .cinet_top--detail img{

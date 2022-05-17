@@ -49,38 +49,32 @@
                             @endif
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
-                            @if (auth()->check())
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('user.profile') }}">
-                                        <i class="fas fa-user-circle pe-sm-1"></i>
-                                        {{trans('titles.profile')}}
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{route('user.favorite.list')}}">
-                                        <i class="fas fa-list px-1"></i>
-                                        {{trans('titles.lists')}}
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{route('user.activity')}}">
-                                        <i class="fas fa-bell px-1"></i>
-                                        {{trans('titles.activity')}}
-                                    </a>
-                                </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('signout.user') }}">
-                                        <i class="fas fa-sign-out-alt px-1"></i>{{trans('titles.logout')}}
-                                    </a>
-                                </li>
-                            @else
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('user.create') }}"><i class="fas fa-user-circle"></i>Iniciar Session</a>
-                                </li>
-                            @endif
+                            <li>
+                                <a class="dropdown-item" href="{{ route('user.profile') }}">
+                                    <i class="fas fa-user-circle pe-sm-1"></i>
+                                    {{trans('titles.profile')}}
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{{route('user.favorite.list')}}">
+                                    <i class="fas fa-list px-1"></i>
+                                    {{trans('titles.lists')}}
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{{route('user.activity')}}">
+                                    <i class="fas fa-bell px-1"></i>
+                                    {{trans('titles.activity')}}
+                                </a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/">
+                                    <i class="fas fa-sign-out-alt px-1"></i>{{trans('titles.logout')}}
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>

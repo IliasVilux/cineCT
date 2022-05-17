@@ -98,16 +98,9 @@
                                             <label for="showPassword"><i class="fa fa-eye" id="icon-switch"></i></label>
                                         </div>
                                     </div>
-                                    <div class="form-check d-flex justify-content-start my-sm-3">
-                                        <input class="form-check-input" type="checkbox" id="rememberData" />
-                                        <label class="form-check-label mx-2" value="1" for="rememberData">{{ trans('register.remember') }}</label>
-                                    </div>
 
-                                    <button class="btn button-purple btn-sm btn-block mt-0 rounded-3" id="btn-login" type="submit">{{ trans('register.login') }}</button>
+                                    <button class="btn button-purple btn-sm btn-block mt-3 rounded-3" id="btn-login" type="submit">{{ trans('register.login') }}</button>
 
-                                    <hr class="my-3">
-
-                                    <p class="small m-0"><a class="text-dark-50" href="#!">{{ trans('register.forgot_pass') }}</a></p>
                                 </form>
                             </div>
                         </div>
@@ -179,12 +172,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-check d-flex justify-content-start align-items-center my-2 my-sm-4">
-                                        <input class="form-check-input mb-1" type="checkbox" value="" id="rememberRegister" />
-                                        <label class="form-check-label mx-2" for="rememberRegister">{{ trans('register.remember') }}</label>
-                                    </div>
-
-                                    <button class="btn button-purple btn-sm btn-block m-0 rounded-3" id="btn-register" type="submit">{{ trans('register.register') }}</button>
+                                    <button class="btn button-purple btn-sm btn-block mt-3 rounded-3" id="btn-register" type="submit">{{ trans('register.register') }}</button>
                                 </form>
                             </div>
                         </div>

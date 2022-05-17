@@ -8,11 +8,12 @@ img.logo {
 body,
 .form-control,
 button {
-  font-size: 0.7rem;
+  font-size: 1.2rem;
 }
 
 /* Botones register-login*/
-.nav-link{
+.nav-link,
+.nav-link:hover{
   color: white;
 }
 
@@ -59,12 +60,12 @@ div.card {
 .fa.fa-eye{ 
   border: 1px solid rgb(206, 212, 218);
   border-radius: 0px 4px 4px 0px;
-  padding: 5px;
+  padding: 10px;
 }
 .fa.fa-eye-slash {
   border: 1px solid rgb(206, 212, 218);
   border-radius: 0px 4px 4px 0px;
-  padding: 15.5px;
+  padding: 10px;
 }
 
 /* BUTTONS */

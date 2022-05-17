@@ -37,13 +37,15 @@
     @endif
 
     <section class="container">
-        <a href="{{ url('/content/contentFilms') }}" class="btn button-purple my-4" title="Back">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <h1 class="detail-title">{{ $film->name }}</h1>
+            <a href="{{ url('/content/contentFilms') }}" class="btn button-purple my-4" title="Back">
             {{ trans('titles.back') }}
-        </a>
+            </a>
+        </div>
 
 
     <section class="container">
-        <h1 class="detail-title mb-3">{{ $film->name }}</h1>
         
         <article class="d-flex flex-row flex-sm-wrap justify-content-between">
             @if ($film->poster_path == null)

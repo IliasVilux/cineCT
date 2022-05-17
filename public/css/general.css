@@ -28,8 +28,8 @@ html, main, body {
 .button-purple,
 .btn-outline-danger,
 .btn-violet{
-  font-size: 7px;
-  height: 20px;
+  font-size: 12px;
+  height: 33px;
 }
 
 .button-purple{
@@ -325,7 +325,7 @@ a.link-img-carousel {
 
   .full-img {
     width: 22%;
-    height: 300px;
+    height: 350px;
   }
 
   .img-carousel{
