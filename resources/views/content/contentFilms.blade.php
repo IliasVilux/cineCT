@@ -72,7 +72,7 @@
 </section>
 
 <section class="container p-5">
-    <h5 class="col-3 text-uppercase">{{ trans('titles.films') }}</h5>
+    <h3 class="col-3 text-uppercase">{{ trans('titles.films') }}</h3>
     <div class="d-flex justify-content-center">
         {{ $films->links() }}
     </div>

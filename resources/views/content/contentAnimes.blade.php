@@ -99,7 +99,7 @@
 </div>
 
 <section class="container p-5">
-    <h5 class="col-3 text-uppercase">{{ trans('titles.animes') }}</h5>
+    <h3 class="col-3 text-uppercase">{{ trans('titles.animes') }}</h3>
     <div class="d-flex justify-content-center">
         {{ $animes->links() }}
     </div>

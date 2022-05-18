@@ -51,7 +51,7 @@
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
                             <li>
                                 <a class="dropdown-item" href="{{ route('user.profile') }}">
-                                    <i class="fas fa-user-circle pe-sm-1"></i>
+                                    <i class="fas fa-user-circle px-1"></i>
                                     {{trans('titles.profile')}}
                                 </a>
                             </li>
@@ -169,7 +169,7 @@
                     <a href="{{ url('/content/contentAnimes') }}" class="footer-links text-white px-md-1">{{trans('titles.animes')}}</a>
                     <a href="{{ route('top.top-content') }}" class="footer-links text-white px-md-1">{{trans('titles.top')}}</a>
                     <a href="{{ route('search.view') }}" class="footer-links text-white px-md-1">{{trans('titles.search')}}</a>
-                    <a href="{{ url('/list/list') }}" class="footer-links text-white px-md-1">{{trans('titles.lists')}}</a>
+                    <a href="{{ url('/user/list') }}" class="footer-links text-white px-md-1">{{trans('titles.lists')}}</a>
                 </div>
             </section>
             <!-- SECTION: LINKS -->

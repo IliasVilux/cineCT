@@ -1,7 +1,7 @@
 html, main, body {
   background: #16181d;
   color: #FFFFFF;
-  font-size: 10px;
+  font-size: 14px;
 }
 
 #btn-back-to-top {
@@ -80,7 +80,7 @@ a {
 }
 
 h3.title{
-  font-size: 13px;
+  font-size: 15px;
   margin: 0;
 }
 
