@@ -6,7 +6,7 @@ html{
 /* EXTRA INFO AT THE RIGHT */
 
 h5 {
-    font-size: 13px;
+    font-size: 15px;
 }
 
 #datasheet {
@@ -73,7 +73,7 @@ div#social-links ul li a {
     -moz-transition: color .4s;
     -o-transition: color .4s;
     transition: color .4s;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .rating label:hover~label,
