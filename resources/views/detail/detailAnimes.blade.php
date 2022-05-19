@@ -51,7 +51,7 @@
                 </div>
                 <div class="d-none align-content-center flex-wrap d-sm-flex">
                     <h5 class="pe-2 fw-bold">{{ trans('detail.duration') }}:</h5>
-                    <h5 class="fw-normal">{{ $anime->duration }}min</h5>
+                    <h5 class="fw-normal">{{ $anime->duration }} min</h5>
                 </div>
                 <div class="d-none align-content-center flex-wrap d-sm-flex">
                     <h5 class="pe-2 fw-bold">{{ trans('detail.total_episodes') }}:</h5>
@@ -59,11 +59,11 @@
                 </div>
                 <div class="d-none align-content-center flex-wrap d-sm-flex">
                     @if(empty($contentRate) || $contentRate == '')
-                        <i class="fas fa-star m-1"></i>
+                        <i class="fas fa-star mb-1 me-1 "></i>
                         <i>{{ trans('detail.no_votes_yet') }}</i>
                     @else
                         <h5 class="pe-2 fw-bold">{{ trans('detail.rating') }}:</h5>
-                        <i class="fas fa-star m-1"></i>
+                        <i class="fas fa-star mb-1 me-1 "></i>
                         <h5 class="fw-normal">{{ $contentRate }}/10 <i>( {{ $totalVotes }} {{ trans('detail.people_voted') }}</i></h5>
                     @endif
                 </div>
@@ -180,7 +180,7 @@
                 </div>
                 <div class="d-flex flex-column">
                     <h5 class="pe-2 fw-bold">{{ trans('detail.duration') }}:</h5>
-                    <h5 class="fw-normal">{{ $anime->duration }}min</h5>
+                    <h5 class="fw-normal">{{ $anime->duration }} min</h5>
                 </div>
                 <div class="d-flex flex-column">
                     <h5 class="pe-2 fw-bold">{{ trans('detail.total_episodes') }}:</h5>
@@ -188,7 +188,7 @@
                 </div>
                 <div class="d-flex flex-column">
                     <h5 class="pe-2 fw-bold">{{ trans('detail.rating') }}:</h5>
-                    <i class="fas fa-star m-1"></i>
+                    <i class="fas fa-star mb-1 me-1 "></i>
                     <h5 class="fw-normal">{{ $contentRate }}/10<h5>
                 </div>
             </article>

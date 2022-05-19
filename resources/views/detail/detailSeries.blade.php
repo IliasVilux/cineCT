@@ -57,11 +57,11 @@
                 </div>
                 <div class="d-none align-content-center flex-wrap d-sm-flex">
                     @if(empty($contentRate) || $contentRate == '')
-                    <i class="fas fa-star m-1"></i>
+                    <i class="fas fa-star mb-1 me-1 "></i>
                     <i>{{ trans('detail.no_votes_yet') }}</i>
                     @else
                         <h5 class="pe-2 fw-bold">{{ trans('detail.rating') }}:</h5>
-                        <i class="fas fa-star m-1"></i>
+                        <i class="fas fa-star mb-1 me-1 "></i>
                         <p>{{ $contentRate }}/10 <i>( {{ $totalVotes }} {{ trans('detail.people_voted') }}</i></p>
                     @endif
                 </div>
