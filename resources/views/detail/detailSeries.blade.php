@@ -95,7 +95,7 @@
                 @endif
                 <div class="d-flex flex-row flex-wrap justify-content-center">
                     <div class="dropdown my-sm-2">
-                        <button type="button" class="btn button-purple btn-md dropdown-toggle" data-bs-toggle="dropdown">
+                        <button type="button" class="btn button-purple dropdown-toggle" data-bs-toggle="dropdown">
                             {{trans('detail.add_favs')}}
                         </button>
                         <ul class="dropdown-menu">
@@ -130,13 +130,13 @@
                     </div>
 
                     @if (isset($userTopList[0]->name))
-                        <a class="btn button-purple mt-2 mx-1" href="/detail/detailSeries/{{ $serie->id }}/{{ $userTopList[0]->id }}/addFav">
+                        <a class="btn button-purple my-2 mx-1" href="/detail/detailSeries/{{ $serie->id }}/{{ $userTopList[0]->id }}/addFav">
                             {{ trans('detail.add_to') }} {{ $userTopList[0]->name }}
                         </a>
                     @endif
                     @if (!empty($userListsWhereSerie))
                         <div class="dropdown mx-2 my-sm-2">
-                            <button type="button" class="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown">
+                            <button type="button" class="btn btn-outline-danger dropdown-toggle mb-2" data-bs-toggle="dropdown">
                                 {{ trans('detail.delete_favourite') }}
                             </button>
                             <ul class="dropdown-menu">
@@ -193,7 +193,7 @@
             </article>
         </div>
 
-        <article class="pb-3">
+        <article class="m-0">
             <div class="text-center pt-3 "><span id="character-counter"></span></div>
             <form method="POST" id="create-comment" class="create_comment">
                 @csrf

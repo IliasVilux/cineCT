@@ -137,13 +137,13 @@
                         </div>
                     </div>
                     @if (isset($userTopList[0]->name))
-                    <a class="btn button-purple mt-2 mx-1" href="/detail/detailFilms/{{$film->id}}/{{$userTopList[0]->id}}/addFav">
+                    <a class="btn button-purple my-2 mx-1" href="/detail/detailFilms/{{$film->id}}/{{$userTopList[0]->id}}/addFav">
                         {{ trans('detail.add_to') }} {{ $userTopList[0]->name }}
                     </a>
                     @endif
                     @if(!empty($userListsWhereFilm))
                         <div class="dropdown mx-2 mt-sm-2">
-                            <button type="button" class="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown">
+                            <button type="button" class="btn btn-outline-danger dropdown-toggle mb-2" data-bs-toggle="dropdown">
                                 {{ trans('detail.delete_favourite') }}
                             </button>
                             <ul class="dropdown-menu">
@@ -191,7 +191,7 @@
             </article>
         </div>        
 
-        <article class="pb-3">
+        <article class="m-0">
             <div class="text-center pt-3 "><span id="character-counter"></span></div>
             <form method="POST" id="create-comment" class="create_comment">
                 @csrf
@@ -209,7 +209,7 @@
 
     <!-- START COMMMENT SECTION -->
     <section class="gradient-custom">
-        <div class="container my-5 py-5">
+        <div class="container my-5">
             <div class="row d-flex justify-content-center">
                 <div class="col-12">
                     <div class="card card-comment bg-dark">
@@ -222,16 +222,15 @@
                                     <div class="d-flex justify-content-end comment-container__sort-container mb-3"
                                         id="short_by_likes">
                                         @if(Request::url() !== route('film.films', ['id' => $film->id , 'orderByLikes' => 'order']))
-                                            <a class="btn btn-order" type="submit" style="border:1px solid #5A3C97; color:#ffffff;"
-                                                id="{{ $film->id }}" href="{{route('film.films', ['id' => $film->id , 'orderByLikes' => 'order'])}}">
-                                                <span class="comment-container__sort-icon">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                            <a class="btn button-purple" type="submit" id="{{ $film->id }}" href="{{route('film.films', ['id' => $film->id , 'orderByLikes' => 'order'])}}">
+                                                <span class="comment-container__sort-icon py-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="15"
                                                         fill="currentColor" class="bi bi-filter-left" viewBox="0 0 16 16">
                                                         <path
                                                             d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
                                                     </svg>
+                                                    {{ trans('content.order_review') }}
                                                 </span>
-                                                {{ trans('content.order_review') }}
                                             </a>
                                         @endif
                                     </div>

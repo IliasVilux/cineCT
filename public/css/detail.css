@@ -6,7 +6,7 @@ html{
 /* EXTRA INFO AT THE RIGHT */
 
 h5 {
-    font-size: 10px;
+    font-size: 13px;
 }
 
 #datasheet {
@@ -73,7 +73,7 @@ div#social-links ul li a {
     -moz-transition: color .4s;
     -o-transition: color .4s;
     transition: color .4s;
-    font-size: 12px;
+    font-size: 16px;
 }
 
 .rating label:hover~label,
@@ -214,6 +214,10 @@ iframe {
     height: 40px;
 }
 
+.comment-container__sort-icon{
+    margin: 0px 2px;
+}
+
 
 @keyframes boxShadow {
     50% {box-shadow: 0 5px 50px rgba(145, 92, 182, .4);}
@@ -260,6 +264,9 @@ iframe {
         width: 65px;
         height: 65px;
     }  
+    a.btn.button-purple#1 {
+        height: 42px;
+    }
 }
 
 @media screen and (min-width: 768px){

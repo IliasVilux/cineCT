@@ -131,13 +131,13 @@
                         </div>
                     </div>
                     @if (isset($userTopList[0]->name))
-                        <a class="btn button-purple mt-2 mx-1" href="/detail/detailAnimes/{{ $anime->id }}/{{ $userTopList[0]->id }}/addFav">
+                        <a class="btn button-purple my-2 mx-1" href="/detail/detailAnimes/{{ $anime->id }}/{{ $userTopList[0]->id }}/addFav">
                             {{ trans('detail.add_to') }} {{ $userTopList[0]->name }}
                         </a>
                     @endif
                     @if(!empty($userListsWhereAnime))
                         <div class="dropdown mx-2 my-sm-2">
-                            <button class="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown">
+                            <button class="btn btn-outline-danger dropdown-toggle mb-2" data-bs-toggle="dropdown">
                                 {{ trans('detail.delete_favourite') }}
                             </button>
                             <ul class="dropdown-menu">
@@ -206,7 +206,7 @@
         </article>
         <!-- END TRAILER SECTION -->
 
-        <article class="pb-3">
+        <article class="m-0">
             <div class="text-center pt-3 "><span id="character-counter"></span></div>
             <form method="POST" action="" id="create-comment" class="create_comment">
                 @csrf
