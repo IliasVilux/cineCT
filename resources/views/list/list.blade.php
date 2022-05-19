@@ -4,7 +4,7 @@
 <section class="container">
     <p class="d-none">{{$cont = 0}}</p>
     <div class="container-fluid d-flex justify-content-between align-items-center">
-            <h2>MIS LISTAS</h2>
+            <h2>{{ trans('titles.lists') }}</h2>
             <a href="{{ url('/home') }}" class="btn button-purple my-4" title="Back">
             {{ trans('titles.back') }}
             </a>
