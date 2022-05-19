@@ -220,6 +220,26 @@ a.link-img-carousel {
   font-weight: 600;
 }
 
+/*CHANGE-PASSWORS STYLES*/
+.change-password-container .card{
+  background-color: #16181d;
+  color: #FFFFFF;
+}
+
+.change-password-container .card-header{
+  border: 1px solid #5A3C97;
+  margin-bottom: 25px;
+}
+.change-password-container .card input{
+  outline: none;
+  border: 1px solid #5A3C97; 
+  background-color: #16181d; 
+  border-radius: 10px;
+}
+
+.change-password-container .card input:focus{
+  color: #FFFFFF;
+}
 
 @media (min-width: 1024px) {
   .profile-images:hover div{

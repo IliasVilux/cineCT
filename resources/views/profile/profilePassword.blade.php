@@ -1,10 +1,10 @@
 @extends('/general/headerFooter')
 @section('content')
-<div class="container text-dark">
+<div class="container change-password-container">
     <div class="row justify-content-center">
         <div class="col-md-8 my-5">
             <div class="card">
-                <div class="card-header">{{ trans('profile.update_password') }}</div>
+                <div class="card-header text-center p-3 text-light">{{ trans('profile.update_password') }}</div>
    
                 <div class="card-body">
                     <form method="POST" action="{{ route('change.password') }}">
@@ -37,7 +37,7 @@
    
                         <div class="form-group row mb-0 mt-4">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-violet">
+                                <button type="submit" class="btn btn-violet text-light">
                                     {{ trans('profile.update_password') }}
                                 </button>
                             </div>
