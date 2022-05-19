@@ -12,7 +12,13 @@
             <p>{{trans('profile.no_activity')}}</p>
         </div>
     @else
-    <h2 class="text-center p-3 mb-4 mt-2">{{ trans('titles.activity') }}</h2>
+    <div class="container d-flex justify-content-between align-items-center">
+        <h2 class="text-center text-uppercase p-3 mb-4 mt-2">{{ trans('titles.activity') }}</h2>
+
+            <a href="{{ url('/content/contentAnimes') }}" class="btn button-purple my-4" title="Back">
+            {{ trans('titles.back') }}
+            </a>
+        </div>
     @foreach ($likes as $like)
         <div class="user-activity mb-2">
             @if ($like->review->film)
@@ -23,11 +29,11 @@
             <a href="{{ route('anime.animes', ['id' => $like->review->anime->id]) }}#content_id-{{$like->review->id}}">
             @endif
                 <div class="d-flex align-items-center mb-2">
-                    <div class="row">
+                    <div class="d-flex flex-row align-items-center">
                         @if(Auth::user()->image_id === null)
                         <i class="fas fa-user-circle fs-4 pe-1"></i>
                         @else
-                        <img class="img-profile-activity rounded-circle shadow-1-strong" src="{{ $like->user->image->path }}" alt="{{Auth::user()->image->id}}"/>
+                        <img class="img-profile-activity rounded-circle shadow-1-strong me-2 mx-sm-3" src="{{ $like->user->image->path }}" alt="{{Auth::user()->image->id}}"/>
                         @endif
                         <div class="user-activity__information p-0">
                             <p class="mb-1">

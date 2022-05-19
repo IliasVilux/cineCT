@@ -28,7 +28,7 @@
 
     <section class="container">
         <div class="container-fluid d-flex justify-content-between align-items-center">
-            <h1 class="detail-title">{{ $anime->name }}</h1>
+            <h2 class="detail-title">{{ $anime->name }}</h2>
             <a href="{{ url('/content/contentAnimes') }}" class="btn button-purple my-4" title="Back">
             {{ trans('titles.back') }}
             </a>

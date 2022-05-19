@@ -2,14 +2,10 @@
 @section('content')
 
 <section class="container">
-@if(!Auth::user())
-<h3>Para crear tu lista de favoritos necessitas estar logueado, <a href="{{route('register.user')}}">INICIA SESSIÓN</a></h3>
-
-@else
     <p class="d-none">{{$cont = 0}}</p>
     <div class="container-fluid d-flex justify-content-between align-items-center">
-            <h1>MIS LISTAS</h1>
-            <a href="{{ url('/content/contentAnimes') }}" class="btn button-purple my-4" title="Back">
+            <h2>MIS LISTAS</h2>
+            <a href="{{ url('/home') }}" class="btn button-purple my-4" title="Back">
             {{ trans('titles.back') }}
             </a>
         </div>
@@ -32,8 +28,6 @@
         </div>
         <p class="d-none">{{$cont++}}</p>
     @endforeach
-
-    @endif
 </section>
 <!-- END COMMENT SECTION -->
 @endsection
