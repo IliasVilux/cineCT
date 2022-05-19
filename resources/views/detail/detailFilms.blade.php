@@ -13,7 +13,11 @@
             <strong>{{ Session::get('FilmAdded') }}!</strong>
         </div>
     @endif
-
+    @if (Session::has('FilmDeleted'))
+        <div class="alert alert-success" role="alert">
+            <strong>{{ Session::get('FilmDeleted') }}!</strong>
+        </div>
+    @endif
     @if (Session::has('review_deleted'))
         <div class="alert cinect-custom-alert text-center" role="alert" id="review_deleted">
             <strong>{{ Session::get('review_deleted') }}!</strong>
@@ -28,9 +32,6 @@
             </a>
         </div>
 
-
-    <section class="container">
-        
         <article class="d-flex flex-row flex-sm-wrap justify-content-between">
             @if ($film->poster_path == null)
                 <img src="/img/NoImg.jpg" class="img-thumbnail col-6 col-md-5 col-lg-4 mb-md-0">
@@ -127,7 +128,7 @@
                     @endif
                     @if(!empty($userListsWhereFilm))
                         <div class="dropdown mx-2 mt-sm-2">
-                            <button type="button" class="btn btn-outline-danger dropdown-toggle my-2 mb-2" data-bs-toggle="dropdown">
+                            <button type="button" class="btn btn-outline-danger dropdown-toggle my-2 my-sm-0 mb-2" data-bs-toggle="dropdown">
                                 {{ trans('detail.delete_favourite') }}
                             </button>
                             <ul class="dropdown-menu">
@@ -144,7 +145,7 @@
                     @else
                     <div class="social-media-links">
                     @endif
-                        <a class="btn button-purple m-2" data-bs-toggle="collapse" href="#shareComponent" role="button" aria-expanded="false" aria-controls="shareComponent">
+                        <a class="btn button-purple m-2 m-sm-0" data-bs-toggle="collapse" href="#shareComponent" role="button" aria-expanded="false" aria-controls="shareComponent">
                             <i class="fas fa-share-alt"></i>
                         </a>
                     </div>
@@ -193,9 +194,9 @@
 
     <!-- START COMMMENT SECTION -->
     <section class="gradient-custom">
-        <div class="container my-5">
+        <div class="container my-0 py-0 py-sm-3">
             <div class="row d-flex justify-content-center">
-                <div class="col-12">
+                <div class="col-12 p-0 p-sm-2">
                     <div class="card card-comment bg-dark">
                         <div class="card-body card-body-comment p-4">
                             <h4 class="text-center mb-4 pb-2">{{ trans('detail.commentSection') }}</h4>

@@ -130,13 +130,13 @@
                     </div>
 
                     @if (isset($userTopList[0]->name))
-                        <a class="btn button-purple my-2 mx-1" href="/detail/detailSeries/{{ $serie->id }}/{{ $userTopList[0]->id }}/addFav">
+                        <a class="btn button-purple mx-1" href="/detail/detailSeries/{{ $serie->id }}/{{ $userTopList[0]->id }}/addFav">
                             {{ trans('detail.add_to') }} {{ $userTopList[0]->name }}
                         </a>
                     @endif
                     @if (!empty($userListsWhereSerie))
-                        <div class="dropdown mx-2 my-sm-2">
-                            <button type="button" class="btn btn-outline-danger dropdown-toggle mb-2" data-bs-toggle="dropdown">
+                    <div class="dropdown mx-2 mt-sm-2">
+                            <button type="button" class="btn btn-outline-danger dropdown-toggle my-2 my-sm-0 mb-2" data-bs-toggle="dropdown">
                                 {{ trans('detail.delete_favourite') }}
                             </button>
                             <ul class="dropdown-menu">
@@ -149,11 +149,11 @@
                         </div>
                     @endif
                     @if (empty($userListsWhereAnime))
-                    <div class="social-media-links mx-2 my-sm-2">
+                    <div class="social-media-links mx-2 mt-sm-2">
                     @else
-                    <div class="social-media-links my-sm-2">
+                    <div class="social-media-links">
                     @endif
-                        <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button" aria-expanded="false" aria-controls="shareComponent">
+                        <a class="btn button-purple m-2 m-sm-0" data-bs-toggle="collapse" href="#shareComponent" role="button" aria-expanded="false" aria-controls="shareComponent">
                             <i class="fas fa-share-alt"></i>
                         </a>
                     </div>
