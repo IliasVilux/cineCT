@@ -73,7 +73,7 @@ div#social-links ul li a {
     -moz-transition: color .4s;
     -o-transition: color .4s;
     transition: color .4s;
-    font-size: 18px;
+    font-size: 15px;
 }
 
 .rating label:hover~label,
