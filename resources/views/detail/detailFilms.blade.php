@@ -176,7 +176,7 @@
             </article>
         </div>        
 
-        <article class="m-0">
+        <article class="m-0 pb-3">
             <div class="text-center pt-3 "><span id="character-counter"></span></div>
             <form method="POST" id="create-comment" class="create_comment">
                 @csrf
