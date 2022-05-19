@@ -102,10 +102,12 @@ button#btn-register{
     font-size: 1rem;
   }
   .fa.fa-eye{ 
-    border: 1px solid rgb(206, 212, 218);
-    border-radius: 0px 4px 4px 0px;
     padding: 16.5px;
   }
+  .fa.fa-eye-slash {
+    padding: 16.5px;
+  }
+  
   button#btn-login, button#btn-register {
     font-size: 22px;
     height: 52px;
@@ -129,8 +131,9 @@ button#btn-register{
     font-size: 17px;
   }
   .fa.fa-eye{ 
-    border: 1px solid rgb(206, 212, 218);
-    border-radius: 0px 4px 4px 0px;
+    padding: 15.5px;
+  }
+  .fa.fa-eye-slash {
     padding: 15.5px;
   }
   button#btn-login, button#btn-register {
