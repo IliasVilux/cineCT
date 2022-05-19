@@ -99,7 +99,7 @@
                                         </div>
                                     </div>
 
-                                    <button class="btn button-purple btn-sm btn-block mt-3 rounded-3" id="btn-login" type="submit">{{ trans('register.login') }}</button>
+                                    <button class="btn button-purple btn-sm btn-block mt-4 rounded-3" id="btn-login" type="submit">{{ trans('register.login') }}</button>
 
                                 </form>
                             </div>
@@ -172,7 +172,7 @@
                                         </div>
                                     </div>
 
-                                    <button class="btn button-purple btn-sm btn-block mt-3 rounded-3" id="btn-register" type="submit">{{ trans('register.register') }}</button>
+                                    <button class="btn button-purple btn-sm btn-block mt-4 rounded-3" id="btn-register" type="submit">{{ trans('register.register') }}</button>
                                 </form>
                             </div>
                         </div>
