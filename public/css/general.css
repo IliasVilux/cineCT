@@ -40,6 +40,9 @@ html, main, body {
   color: #FFFFFF;
   border: 1px solid #5A3C97;
   background-color: #16181d;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .button-purple:hover{

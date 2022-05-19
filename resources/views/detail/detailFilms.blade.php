@@ -6,24 +6,8 @@
         <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <style>
-            div#social-links {
-                margin: 0 auto;
-                max-width: 500px;
-            }
-
-            div#social-links ul li {
-                display: inline-block;
-            }
-
-            div#social-links ul li a {
-                padding: 18px;
-                font-size: 30px;
-                color: #9966ff;
-            }
-
-        </style>
     </head>
+
     @if (Session::has('FilmAdded'))
         <div class="alert alert-success" role="alert">
             <strong>{{ Session::get('FilmAdded') }}!</strong>
@@ -125,7 +109,7 @@
                                     @csrf
                                     <div class="modal-body">
                                         <div class="form-group">
-                                            <input type="text" id="newListName" name="newListName" class="form-control" placeholder="{{trans('detail.new_list')}}">
+                                            <input type="text" id="newListName" name="newListName" class="form-control" placeholder="{{trans('detail.new_list')}}" maxlength="15">
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -137,13 +121,13 @@
                         </div>
                     </div>
                     @if (isset($userTopList[0]->name))
-                    <a class="btn button-purple my-2 mx-1" href="/detail/detailFilms/{{$film->id}}/{{$userTopList[0]->id}}/addFav">
+                    <a class="btn button-purple mx-1" href="/detail/detailFilms/{{$film->id}}/{{$userTopList[0]->id}}/addFav">
                         {{ trans('detail.add_to') }} {{ $userTopList[0]->name }}
                     </a>
                     @endif
                     @if(!empty($userListsWhereFilm))
                         <div class="dropdown mx-2 mt-sm-2">
-                            <button type="button" class="btn btn-outline-danger dropdown-toggle mb-2" data-bs-toggle="dropdown">
+                            <button type="button" class="btn btn-outline-danger dropdown-toggle my-2 mb-2" data-bs-toggle="dropdown">
                                 {{ trans('detail.delete_favourite') }}
                             </button>
                             <ul class="dropdown-menu">
@@ -160,7 +144,7 @@
                     @else
                     <div class="social-media-links">
                     @endif
-                        <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button" aria-expanded="false" aria-controls="shareComponent">
+                        <a class="btn button-purple m-2" data-bs-toggle="collapse" href="#shareComponent" role="button" aria-expanded="false" aria-controls="shareComponent">
                             <i class="fas fa-share-alt"></i>
                         </a>
                     </div>
