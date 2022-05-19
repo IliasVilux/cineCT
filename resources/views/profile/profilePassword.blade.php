@@ -40,6 +40,9 @@
                                 <button type="submit" class="btn btn-violet text-light">
                                     {{ trans('profile.update_password') }}
                                 </button>
+                                <a type="submit" class="btn btn-outline-danger text-light" href="{{route('user.update')}}">
+                                    {{ trans('profile.cancel') }}
+                                </a>
                             </div>
                         </div>
                     </form>
