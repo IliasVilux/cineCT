@@ -50,11 +50,11 @@
                 </div>
                 <div class="d-none align-content-center flex-wrap d-sm-flex">
                     @if(empty($contentRate) || $contentRate == '')
-                        <i class="fas fa-star mb-1 me-1 "></i>
+                        <i class="fas fa-star mb-1 me-1"></i>
                         <i>{{ trans('detail.no_votes_yet') }}</i>
                     @else
                         <h5 class="pe-2 fw-bold">{{ trans('detail.rating') }}:</h5>
-                        <i class="fas fa-star mb-1 me-1 "></i>
+                        <i class="fas fa-star mb-1 me-1"></i>
                         <p>{{ $contentRate }}/10 <i>( {{ $totalVotes }} {{ trans('detail.people_voted') }}</i></p>
                     @endif
                 </div>
@@ -145,7 +145,7 @@
                     @else
                     <div class="social-media-links">
                     @endif
-                        <a class="btn button-purple m-2 m-sm-0" data-bs-toggle="collapse" href="#shareComponent" role="button" aria-expanded="false" aria-controls="shareComponent">
+                        <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button" aria-expanded="false" aria-controls="shareComponent">
                             <i class="fas fa-share-alt"></i>
                         </a>
                     </div>

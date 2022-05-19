@@ -154,7 +154,7 @@
                     @else
                     <div class="social-media-links">
                     @endif
-                    <a class="btn button-purple m-2 m-sm-0" data-bs-toggle="collapse" href="#shareComponent" role="button" aria-expanded="false" aria-controls="shareComponent">
+                    <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button" aria-expanded="false" aria-controls="shareComponent">
                             <i class="fas fa-share-alt"></i>
                         </a>
                     </div>
@@ -188,8 +188,8 @@
                 </div>
                 <div class="d-flex flex-column">
                     <h5 class="pe-2 fw-bold">{{ trans('detail.rating') }}:</h5>
-                    <i class="fas fa-star mb-1 me-1 "></i>
-                    <h5 class="fw-normal">{{ $contentRate }}/10<h5>
+                    <h5 class="fw-normal"><i class="fas fa-star mb-1 me-1 "></i>
+                    {{ $contentRate }}/10<h5>
                 </div>
             </article>
         </div>

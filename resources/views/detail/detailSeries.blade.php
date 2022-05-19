@@ -153,7 +153,7 @@
                     @else
                     <div class="social-media-links">
                     @endif
-                        <a class="btn button-purple m-2 m-sm-0" data-bs-toggle="collapse" href="#shareComponent" role="button" aria-expanded="false" aria-controls="shareComponent">
+                        <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button" aria-expanded="false" aria-controls="shareComponent">
                             <i class="fas fa-share-alt"></i>
                         </a>
                     </div>
