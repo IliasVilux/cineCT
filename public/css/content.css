@@ -71,7 +71,6 @@ a .button-category p{
     padding: 5px;
 }
 
-
 @media only screen and (min-width: 576px) {
     a .button-category{
         font-size: 15px;
