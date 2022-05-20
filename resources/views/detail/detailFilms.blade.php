@@ -27,7 +27,7 @@
     <section class="container">
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <h1 class="detail-title">{{ $film->name }}</h1>
-            <a href="{{ url('/content/contentFilms') }}" class="btn button-purple my-4" title="Back">
+            <a href="{{ url('/content/contentFilms') }}" class="btn button-purple my-4">
             {{ trans('titles.back') }}
             </a>
         </div>

@@ -12,7 +12,7 @@
             <div class="d-flex flex-row justify-content-between align-items-center">
                 <h4 class="mt-2 mb-3">{{trans('titles.'.$genre.'')}}</h4>
                 <div class="d-flex justify-content-center">
-                    <a href="{{ url('/content/contentFilms') }}" class="btn button-purple my-4" title="Back">{{ trans('titles.back') }}</a>
+                    <a href="{{ url('/content/contentFilms') }}" class="btn button-purple my-4">{{ trans('titles.back') }}</a>
                 </div>
             </div>
 
@@ -30,7 +30,7 @@
         @else
             <div class="text-center">
                 <h4 class="mt-2 mb-3">{{trans('titles.'.$genre.'')}}</h4>
-                <a href="{{ url('/content/contentFilms') }}" class="btn button-purple my-4" title="Back">{{trans('home.back')}}</a>
+                <a href="{{ url('/content/contentFilms') }}" class="btn button-purple my-4">{{trans('home.back')}}</a>
                 <h5 class="text-center">{{trans('content.film_genre_not_have_content')}}</h5>
             </div>
         @endif

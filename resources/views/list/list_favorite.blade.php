@@ -13,8 +13,8 @@
     <p id="idList" style="display: none;">{{ $data['list']->id }}</p>
     <div class="container-fluid d-flex justify-content-between align-items-center px-5">
             <h1 class="text-uppercase">{{$data['list']->name}}</h1>
-            <a href="{{ url('/user/list') }}" class="btn button-purple my-4" title="Back">
-            {{ trans('titles.back') }}
+            <a href="{{ url('/user/list') }}" class="btn button-purple my-4">
+            {{ trans('titles.lists') }}
             </a>
         </div>
 

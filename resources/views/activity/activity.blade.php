@@ -6,19 +6,26 @@
     </head>
 
     @if (count($likes) === 0)
-        <div class="text-center notification-alert p-5">
+    <div class="container d-flex justify-content-between align-items-center">
+        <h2 class="text-center text-uppercase p-3 mb-4 mt-2">{{ trans('titles.activity') }}</h2>
+        <a href="{{ url('/home') }}" class="btn button-purple my-4">
+        {{ trans('titles.home') }}
+        </a>
+    </div>
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="text-center notification-alert px-3 col-10">
             <h4>{{trans('profile.recent_activity')}}</h4>
             <div><i class="fab fa-gratipay"></i></div>
             <p>{{trans('profile.no_activity')}}</p>
         </div>
+        </div>
     @else
     <div class="container d-flex justify-content-between align-items-center">
         <h2 class="text-center text-uppercase p-3 mb-4 mt-2">{{ trans('titles.activity') }}</h2>
-
-            <a href="{{ url('/content/contentAnimes') }}" class="btn button-purple my-4" title="Back">
-            {{ trans('titles.back') }}
-            </a>
-        </div>
+        <a href="{{ url('/home') }}" class="btn button-purple my-4">
+        {{ trans('titles.home') }}
+        </a>
+    </div>
     @foreach ($likes as $like)
         <div class="user-activity mb-2">
             @if ($like->review->film)
@@ -63,6 +70,7 @@
                     </div>
                 </div>
             </a>
+        </div>
         </div>
     @endforeach
     {{-- Pagination --}}

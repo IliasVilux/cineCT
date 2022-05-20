@@ -3,8 +3,8 @@
 <div class="container change-password-container">
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <h1 class="detail-title">{{ trans('profile.update_password') }}</h1>
-            <a href="{{ url('/profile/profile') }}" class="btn button-purple my-4" title="Back">
-            {{ trans('titles.back') }}
+            <a href="{{ url('/user/profile') }}" class="btn button-purple my-4">
+            {{ trans('titles.profile') }}
             </a>
         </div>
         <div class="col-12 px-5 my-3 mb-5">
