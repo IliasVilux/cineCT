@@ -1,54 +1,46 @@
 @extends('/general/headerFooter')
 @section('content')
 <div class="container change-password-container">
-    <div class="row justify-content-center">
-        <div class="col-md-8 my-5">
-            <div class="card">
-                <div class="card-header text-center p-3 text-light">{{ trans('profile.update_password') }}</div>
-   
-                <div class="card-body">
-                    <form method="POST" action="{{ route('change.password') }}">
-                        @csrf 
-   
-                         @foreach ($errors->all() as $error)
-                            <p class="text-danger">{{ $error }}</p>
-                         @endforeach 
-  
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ trans('profile.current_password') }}</label>
-                            <div class="col-md-6">
-                                <input id="current_password" type="password" class="form-control" name="current_password" autocomplete="current-password">
-                            </div>
-                        </div>
-  
-                        <div class="form-group row my-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ trans('profile.new_password') }}</label>
-                            <div class="col-md-6">
-                                <input id="update_password" type="password" class="form-control" name="update_password" autocomplete="current-password">
-                            </div>
-                        </div>
-  
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ trans('profile.confirm_new_password') }}</label>
-                            <div class="col-md-6">
-                                <input id="update_confirm_password" type="password" class="form-control" name="update_confirm_password" autocomplete="current-password">
-                            </div>
-                        </div>
-   
-                        <div class="form-group row mb-0 mt-4">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-violet text-light">
-                                    {{ trans('profile.update_password') }}
-                                </button>
-                                <a type="submit" class="btn btn-outline-danger text-light" href="{{route('user.update')}}">
-                                    {{ trans('profile.cancel') }}
-                                </a>
-                            </div>
-                        </div>
-                    </form>
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <h1 class="detail-title">{{ trans('profile.update_password') }}</h1>
+            <a href="{{ url('/profile/profile') }}" class="btn button-purple my-4" title="Back">
+            {{ trans('titles.back') }}
+            </a>
+        </div>
+        <div class="col-12 px-5 my-3 mb-5">
+        <form method="POST" action="{{ route('change.password') }}">
+            @csrf 
+
+                @foreach ($errors->all() as $error)
+                <p class="text-danger">{{ $error }}</p>
+                @endforeach 
+
+            <div class="d-flex flex-column">
+                <label for="password" class="col-form-label text-md-right">{{ trans('profile.pass') }}</label>
+                    <input id="current_password" type="password" class="form-control col-lg" placeholder="{{ trans('profile.current_password') }}" name="current_password" autocomplete="current-password">
+            </div>
+
+            <div class="d-flex flex-column my-3">
+                <label for="password" class="col-form-label text-md-right">{{ trans('profile.new_password') }}</label>
+                    <input id="update_password" type="password" class="form-control col-lg" placeholder="{{ trans('profile.new_password2') }}" name="update_password" autocomplete="current-password">
+            </div>
+
+            <div class="d-flex flex-column">
+                <label for="password" class="col-form-label text-md-right">{{ trans('profile.repeat_password') }}</label>
+                    <input id="update_confirm_password" type="password" class="form-control col-lg" placeholder="{{ trans('profile.repeat_password2') }}" name="update_confirm_password" autocomplete="current-password">
+            </div>
+
+            <div class="row mb-0 mt-4">
+                <div>
+                    <button type="submit" class="btn btn-violet text-light">
+                        {{ trans('profile.update_password') }}
+                    </button>
+                    <a type="submit" class="btn btn-outline-danger text-light" href="{{route('user.update')}}">
+                        {{ trans('profile.cancel') }}
+                    </a>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 @endsection
