@@ -30,15 +30,13 @@
                     <input id="update_confirm_password" type="password" class="form-control col-lg" placeholder="{{ trans('profile.repeat_password2') }}" name="update_confirm_password" autocomplete="current-password">
             </div>
 
-            <div class="row mb-0 mt-4">
-                <div>
-                    <button type="submit" class="btn btn-violet text-light">
-                        {{ trans('profile.update_password') }}
-                    </button>
-                    <a type="submit" class="btn btn-outline-danger text-light" href="{{route('user.update')}}">
-                        {{ trans('profile.cancel') }}
-                    </a>
-                </div>
+            <div class="d-flex flex-column flex-sm-row mb-0 mt-4">
+                <button type="submit" class="btn btn-violet text-light me-2 mb-2 col-10 col-sm-4">
+                    {{ trans('profile.update_password') }}
+                </button>
+                <a type="submit" class="btn btn-outline-danger text-light col-10 col-sm-4" href="{{route('user.update')}}">
+                    {{ trans('profile.cancel') }}
+                </a>
             </div>
         </form>
     </div>
