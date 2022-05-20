@@ -26,11 +26,16 @@ return [
     'profile_icon' => 'Tria una imatge de perfil',
     'img_updated' => 'S\'ha actualitzat la teva foto de perfil',
     'update_password' => 'Actualitzar contrasenya',
-    'current_password' => 'Contrasenya actual',
-    'new_password' => 'Nova contrasenya',
-    'confirm_new_password' => 'Confirma nova contrasenya',
     'recent_activity' => 'Activitat recent',
     'no_activity'=> 'Quan algú interactuï amb els teus comentaris, es mostraran aquí',
     'comment_like' => 'ha donat like al teu comentari',
+
+    // Actualizar contraseña
+    'pass' => 'Contrasenya',
+    'current_password' => 'Contrasenya actual',
+    'new_password' => 'Nova contrasenya',
+    'new_password2' => 'La teva nova contrasenya',
+    'repeat_password' => 'Repeteix la nova contrasenya',
+    'repeat_password2' => 'Confirma la teva nova contrasenya',
 
 ];

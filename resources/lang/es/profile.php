@@ -26,11 +26,16 @@ return [
     'profile_icon' => 'Elije una imagen de perfil',
     'img_updated' => 'Tu imagen de perfil se ha actualizado',
     'update_password' => 'Actualizar contraseña',
-    'current_password' => 'Contraseña actual',
-    'new_password' => 'Nueva contraseña',
-    'confirm_new_password' => 'Confirma nueva contraseña',
     'recent_activity' => 'Actividad reciente',
     'no_activity'=> 'Cuando alguien interactúe con tus comentarios, se mostrarán aquí',
     'comment_like' => 'le ha dado me gusta a tu comentario',
+
+    // Actualizar contraseña
+    'pass' => 'Contraseña',
+    'current_password' => 'Contraseña actual',
+    'new_password' => 'Nueva contraseña',
+    'new_password2' => 'Tu nueva contraseña',
+    'repeat_password' => 'Repite la nueva contraseña',
+    'repeat_password2' => 'Confirma tu nueva contraseña',
 
 ];
