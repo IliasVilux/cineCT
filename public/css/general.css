@@ -32,7 +32,8 @@ html, main, body {
 
 .button-purple,
 .btn-outline-danger,
-.btn-violet{
+.btn-violet,
+.btn.btn-info{
   font-size: 10px;
   height: 26px;
 }
@@ -316,7 +317,8 @@ a.link-img-carousel {
   
   .button-purple,
   .btn.btn-outline-danger,
-  .btn-violet{
+  .btn-violet,
+  .btn.btn-info{
     font-size: 13px;
     height: 29px;
   }
@@ -342,7 +344,9 @@ a.link-img-carousel {
   
   .button-purple,
   .btn.btn-outline-danger,
-  .btn-violet{
+  .btn-violet,
+  .btn-outline-danger,
+  .btn.btn-info{
     font-size: 17px;
     height: 45px;
   }

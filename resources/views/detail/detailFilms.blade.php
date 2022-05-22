@@ -93,7 +93,7 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li>
-                                <a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#myModal">{{trans('detail.list_name')}}</a>
+                                <a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#myModal">{{trans('detail.new_list')}}</a>
                             </li>
                             @foreach ($userLists as $list)
                                 <li>
@@ -110,7 +110,7 @@
                                     @csrf
                                     <div class="modal-body">
                                         <div class="form-group">
-                                            <input type="text" id="newListName" name="newListName" class="form-control" placeholder="{{trans('detail.new_list')}}" maxlength="15">
+                                            <input type="text" id="newListName" name="newListName" class="form-control" placeholder="{{trans('detail.list_name')}}" maxlength="15">
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -145,7 +145,7 @@
                     @else
                     <div class="social-media-links">
                     @endif
-                        <a class="btn button-purple" data-bs-toggle="collapse" href="#shareComponent" role="button" aria-expanded="false" aria-controls="shareComponent">
+                        <a class="btn button-purple m-2 m-sm-0" data-bs-toggle="collapse" href="#shareComponent" role="button" aria-expanded="false" aria-controls="shareComponent">
                             <i class="fas fa-share-alt"></i>
                         </a>
                     </div>
