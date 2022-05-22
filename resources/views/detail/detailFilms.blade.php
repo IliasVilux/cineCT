@@ -122,7 +122,7 @@
                         </div>
                     </div>
                     @if (isset($userTopList[0]->name))
-                    <a class="btn button-purple mx-1" href="/detail/detailFilms/{{$film->id}}/{{$userTopList[0]->id}}/addFav">
+                    <a class="btn button-purple m-2" href="/detail/detailFilms/{{$film->id}}/{{$userTopList[0]->id}}/addFav">
                         {{ trans('detail.add_to') }} {{ $userTopList[0]->name }}
                     </a>
                     @endif
