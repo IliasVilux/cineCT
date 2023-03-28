@@ -5,3 +5,8 @@
 /docker-*.sh text eol=lf
 /sbt-dist/bin/*.bash text eol=lf
 /sbt-dist/bin/sbt text eol=lf
+
+*.css linguist-vendored
+*.scss linguist-vendored
+*.js linguist-vendored
+CHANGELOG.md export-ignore
