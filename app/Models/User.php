@@ -24,7 +24,7 @@ class User extends Authenticatable
         //'name',
         //'surname',
         'email',
-        'nick',
+        'nickname',
         'image_id',
         'lang',
         'locale',

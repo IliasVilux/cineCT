@@ -27,6 +27,8 @@ use Illuminate\Support\Facades\Route;
     return view('register');
 });*/
 
+Route::get('/seeder', [SerieController::class, 'store']);
+
 Route::get('/', [UserAuthController::class, 'index'])->name('user.login.register');
 Route::get('/login', [UserAuthController::class, 'index']);
 Route::get('/register', [UserAuthController::class, 'index'])->name('user.create');

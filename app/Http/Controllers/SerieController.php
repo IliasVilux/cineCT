@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 use App\Models\Serie;
 use App\Models\Genre;
 use App\Models\Image;
@@ -16,111 +17,91 @@ use Illuminate\Support\Facades\Http;
 
 class SerieController extends Controller
 {
-    public static function store(){
-        
+    private $tmdb_api_key;
+
+    public function __construct()
+    {
+        $this->tmdb_api_key = env('TMDB_API_KEY');
+    }
+
+    public function store(){    
         $contador = 1;
-        $apiLinks = array();
         $allSeries = array();
+        $genreMap = [
+            10759 => 1,  // Action & Adventure -> Action
+            16 => 17,    // Animation -> Animation
+            35 => 3,     // Comedy -> Comedy
+            80 => 18,    // Crime -> Crime
+            99 => 2,     // Documentary -> Adventure
+            18 => 4,     // Drama -> Drama
+            10751 => 19, // Family -> Family
+            10762 => 2,  // Kids -> Adventure
+            9648 => 7,   // Mystery -> Mystery
+            10763 => 10, // News -> Suspense
+            10764 => 9,  // Reality -> Sci-Fi
+            10765 => 9,  // Sci-Fi & Fantasy -> Sci-Fi
+            10766 => 15, // Soap -> Shoujo
+            10767 => 10, // Talk -> Suspense
+            10768 => 21, // War & Politics -> War
+            37 => 1     // Western -> Action
+        ];
 
+        $client = new Client();
         do{
-            //$serieApi = Http::get('https://api.themoviedb.org/3/tv/' .$contador. '?api_key=9d981b068284aca44fb7530bdd218c30&language=en-EN');
-            $serieApi = Http::get('https://api.themoviedb.org/' . $contador . '/discover/tv?api_key=9d981b068284aca44fb7530bdd218c30&with_genres=10765');
-            //genres //https://api.themoviedb.org/3/genre/tv/list?api_key=9d981b068284aca44fb7530bdd218c30&language=en-US
-            array_push($apiLinks, $serieApi);
+            $response = $client->request('GET', 'https://api.themoviedb.org/3/discover/tv', [
+                'query' => [
+                    'language' => 'en-US',
+                    'page' => $contador,
+                ],
+                'headers' => [
+                    'Authorization' => 'Bearer ' . $this->tmdb_api_key,
+                    'Accept' => 'application/json',
+                ],
+            ]);
+
+            $responseSeries = json_decode($response->getBody())->{'results'};
+
+            foreach ($responseSeries as $serie)
+            {
+                $responseDetail = $client->request('GET', 'https://api.themoviedb.org/3/find/' . $serie->{'id'} . '?external_source=tvdb_id', [
+                    'headers' => [
+                        'Authorization' => 'Bearer ' . $this->tmdb_api_key,
+                        'Accept' => 'application/json',
+                    ],
+                ]);
+                $jsonDetail = json_decode($responseDetail->getBody());
+                if (isset($jsonDetail->{'tv_season_results'}[0])){
+                    $jsonDetail = $jsonDetail->{'tv_season_results'}[0];
+                    $serie->{'season_number'} = $jsonDetail->{'season_number'};
+                    $serie->{'episode_count'} = $jsonDetail->{'episode_count'};
+                } else {
+                    $serie->{'season_number'} = 0;
+                    $serie->{'episode_count'} = 0;
+                }
+
+                if (isset($serie->{'genre_ids'}) && !empty($serie->{'genre_ids'})){
+                    $firstGenreId = $serie->{'genre_ids'}[0];
+                    if (array_key_exists($firstGenreId, $genreMap)) {
+                        $serie->{'genre_ids'} = $genreMap[$firstGenreId];
+                    } else {
+                        $serie->{'genre_ids'} = null; 
+                    }
+                } else {
+                    $serie->{'genre_ids'} = null;
+                }
+                $serie->{'vote_average'} = intval($serie->{'vote_average'});
+                if (!empty($serie->{'first_air_date'})){
+                    $serie->{'first_air_date'} = substr($serie->{'first_air_date'}, 0, 4);
+                } else {
+                    $serie->{'first_air_date'} = null;
+                }
+                $allSeries[] = $serie;
+            }
+
             $contador++;
-        }while($contador < 20);
-        
-        foreach($apiLinks as $link) {
-            $serieJson = json_decode($link);
-            /*
-            if (!empty($serieJson->{'genres'})){
-                $genreName = $serieJson->{'genres'}[0]->{'name'};
-                if($genreName == "Action") {
-                    $serieJson->{'genres'}[0]->{'name'} = 1;
-                }else if($genreName == "Adventure"){
-                    $serieJson->{'genres'}[0]->{'name'} = 2;
-                }else if($genreName == "Comedy"){
-                    $serieJson->{'genres'}[0]->{'name'} = 3;                
-                }else if($genreName == "Drama"){
-                    $serieJson->{'genres'}[0]->{'name'} = 4;  
-                }else if($genreName == "Fantasy"){
-                    $serieJson->{'genres'}[0]->{'name'} = 5;                
-                }else if($genreName == "Horror"){
-                    $serieJson->{'genres'}[0]->{'name'} = 6;                
-                }else if($genreName == "Mystery"){
-                    $serieJson->{'genres'}[0]->{'name'} = 7;                
-                }else if($genreName == "Romance"){
-                    $serieJson->{'genres'}[0]->{'name'} = 8;                
-                }else if($genreName == "Sci-Fi"){
-                    $serieJson->{'genres'}[0]->{'name'} = 9;                
-                }else if($genreName == "Suspense"){
-                    $serieJson->{'genres'}[0]->{'name'} = 10;                
-                }else if($genreName == "Demons"){
-                    $serieJson->{'genres'}[0]->{'name'} = 11;                
-                }else if($genreName == "Mecha"){
-                    $serieJson->{'genres'}[0]->{'name'} = 12;                
-                }else if($genreName == "Samurai"){
-                    $serieJson->{'genres'}[0]->{'name'} = 13;                
-                }else if($genreName == "Josei"){
-                    $serieJson->{'genres'}[0]->{'name'} = 14;                
-                }else if($genreName == "Seinen"){
-                    $serieJson->{'genres'}[0]->{'name'} = 15;                
-                }else if($genreName == "Shoujo"){
-                    $serieJson->{'genres'}[0]->{'name'} = 16;                
-                }else if($genreName == "Shounen"){
-                    $serieJson->{'genres'}[0]->{'name'} = 17;                
-                }else if($genreName == "Animation"){
-                    $serieJson->{'genres'}[0]->{'name'} = 18;                
-                }else if($genreName == "Crime"){
-                    $serieJson->{'genres'}[0]->{'name'} = 19;                
-                }else if($genreName == "Family"){
-                    $serieJson->{'genres'}[0]->{'name'} = 20;                
-                }else if($genreName == "Science Fiction"){
-                    $serieJson->{'genres'}[0]->{'name'} = 21;                
-                }else if($genreName == "War"){
-                    $serieJson->{'genres'}[0]->{'name'} = 22;
-                }else{
-                    $serieJson->{'genres'}[0]->{'name'} = 23;
-                }
-            }
-            */
-            if (isset($serieJson->{'results'})) {
-                array_push($allSeries, $serieJson);
-            }
-            
-        }
+        }while($contador < 15);
 
-        foreach ($allSeries as $serieContent) {
-
-            $count = count($serieContent->{'results'});
-
-            for ($i = 0; $i < $count; $i++) {
-
-                if($serieContent->{'results'}[$i]->{'name'} === "Loki" 
-                || $serieContent->{'results'}[$i]->{'name'} === "WandaVision" 
-                || $serieContent->{'results'}[$i]->{'name'} === "Superman & Lois"
-                || $serieContent->{'results'}[$i]->{'name'} === "The Flash"
-                ) {
-
-                    $serieContent->{'results'}[$i]->{'first_air_date'} = substr($serieContent->{'results'}[$i]->{'first_air_date'}, 0, 4);
-                    $serieContent->{'results'}[$i]->{'poster_path'} = 'https://image.tmdb.org/t/p/w500' . $serieContent->{'results'}[$i]->{'poster_path'};
-
-                    /*
-                    echo 'Nombre; ' . $serieContent->{'results'}[$i]->{'name'} . '<br>';
-                    echo 'description: ' . $serieContent->{'results'}[$i]->{'overview'} . '<br>';
-                    echo "poster_path: <a href='" . $serieContent->{'results'}[$i]->{'poster_path'} . "' target='blank_'>Foto</a><br>";
-                    echo 'puntuation:' . $serieContent->{'results'}[$i]->{'vote_average'} . '<br>';
-                    echo 'release_date: ' . $serieContent->{'results'}[$i]->{'first_air_date'} . '<br><br>';
-                    */
-                    
-                }
-            }
-            break;
-        }
-
-        //die();
         return $allSeries;
-
     }
 
     public function returnSeries($id) {

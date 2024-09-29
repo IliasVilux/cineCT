@@ -16,8 +16,9 @@ class CreateSeriesTable extends Migration
         Schema::create('series', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('poster_path');
             $table->text('description');
-            $table->year('release_date');
+            $table->year('release_date')->nullable();
             $table->integer('seasons');
             $table->integer('total_episodes');
             $table->boolean('top');
@@ -34,5 +35,8 @@ class CreateSeriesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('series');
+        Schema::table('series', function (Blueprint $table) {
+            $table->year('release_date')->nullable(false)->change();
+        });
     }
 }

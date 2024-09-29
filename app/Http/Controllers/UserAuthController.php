@@ -42,7 +42,7 @@ class UserAuthController extends Controller
                 'nick' => 'required|string',
                 'password' => 'required'
             ]);
-            $logInData = $request->only('nick', 'password');
+            $logInData = $request->only('nickname', 'password');
             
             if(Auth::attempt($logInData)){
                 return redirect()->to('/home')
@@ -74,7 +74,7 @@ class UserAuthController extends Controller
 
         ]);
 
-        $userExist = User::where('email', '=', $register_email)->orWhere('nick', '=', $register_nick)->first();
+        $userExist = User::where('email', '=', $register_email)->orWhere('nickname', '=', $register_nick)->first();
 
         if($userExist) {
             return redirect("register")->with('userExist','Ya existe un usuario con este nick o email');
@@ -84,7 +84,7 @@ class UserAuthController extends Controller
             //'name' => $register_name,
             'email' => $register_email,
             //'surname' => $register_surname,
-            'nick' => $register_nick,
+            'nickname' => $register_nick,
             'image_id' => 18,
             'lang' => 'en',
             'locale' => 'en',
