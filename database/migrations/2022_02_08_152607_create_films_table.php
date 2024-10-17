@@ -16,10 +16,12 @@ class CreateFilmsTable extends Migration
         Schema::create('films', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('poster_path');
             $table->text('description');
-            $table->year('release_date');
+            $table->year('release_date')->nullable();
             $table->boolean('top');
             $table->integer('puntuation');
+            $table->integer('duration');
             $table->timestamps();
         });
     }
@@ -32,5 +34,8 @@ class CreateFilmsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('films');
+        Schema::table('films', function (Blueprint $table) {
+            $table->year('release_date')->nullable(false)->change();
+        });
     }
 }

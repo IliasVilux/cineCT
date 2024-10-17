@@ -63,21 +63,15 @@ class SerieController extends Controller
 
             foreach ($responseSeries as $serie)
             {
-                $responseDetail = $client->request('GET', 'https://api.themoviedb.org/3/find/' . $serie->{'id'} . '?external_source=tvdb_id', [
+                $responseDetail = $client->request('GET', 'https://api.themoviedb.org/3/tv/' . $serie->{'id'} . '?language=es-ES', [
                     'headers' => [
                         'Authorization' => 'Bearer ' . $this->tmdb_api_key,
                         'Accept' => 'application/json',
                     ],
                 ]);
                 $jsonDetail = json_decode($responseDetail->getBody());
-                if (isset($jsonDetail->{'tv_season_results'}[0])){
-                    $jsonDetail = $jsonDetail->{'tv_season_results'}[0];
-                    $serie->{'season_number'} = $jsonDetail->{'season_number'};
-                    $serie->{'episode_count'} = $jsonDetail->{'episode_count'};
-                } else {
-                    $serie->{'season_number'} = 0;
-                    $serie->{'episode_count'} = 0;
-                }
+                $serie->{'season_number'} = $jsonDetail->{'number_of_seasons'};
+                $serie->{'episode_count'} = $jsonDetail->{'number_of_episodes'};
 
                 if (isset($serie->{'genre_ids'}) && !empty($serie->{'genre_ids'})){
                     $firstGenreId = $serie->{'genre_ids'}[0];
@@ -95,7 +89,11 @@ class SerieController extends Controller
                 } else {
                     $serie->{'first_air_date'} = null;
                 }
-                $allSeries[] = $serie;
+                if (!empty($serie->{'poster_path'}))
+                {
+                    $allSeries[] = $serie;
+                }
+
             }
 
             $contador++;

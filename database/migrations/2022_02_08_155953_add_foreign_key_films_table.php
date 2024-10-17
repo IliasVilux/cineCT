@@ -14,10 +14,10 @@ class AddForeignKeyFilmsTable extends Migration
     public function up()
     {
         Schema::table('films', function (Blueprint $table) {
-            $table->bigInteger('genre_id')->unsigned();
-            $table->foreign('genre_id')->references('id')->on('genres');
-            $table->bigInteger('platform_available_id')->unsigned();
-            $table->foreign('platform_available_id')->references('id')->on('platforms');
+            $table->bigInteger('genre_id')->unsigned()->nullable();
+            $table->foreign('genre_id')->references('id')->on('genres')->onDelete('set null');
+            // $table->bigInteger('platform_available_id')->unsigned();
+            // $table->foreign('platform_available_id')->references('id')->on('platforms');
         });
     }
 

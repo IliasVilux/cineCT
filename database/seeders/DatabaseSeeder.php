@@ -46,65 +46,22 @@ class DatabaseSeeder extends Seeder
             ]); 
         }
 
-        // $tmp = FilmController::store();
-        // foreach ($tmp as $tmp2){
-        //     DB::table('films')->insert([
-        //         'image_api_id' => $tmp2->{'id'},
-        //         'name' => $tmp2->{'title'},
-        //         'duration' => $tmp2->{'runtime'}, 
-        //         'description' => $tmp2->{'overview'},
-        //         'genre_id' => $tmp2->{'genres'}[0]->{'name'},
-        //         'release_date' => $tmp2->{'release_date'},
-        //         'puntuation' => $tmp2->{'vote_average'},
-        //         'created_at' => now(),
-        //         'updated_at' => now()
-        //     ]);
-        // } 
-
-        //Peliculas segun su genero (api : https://api.themoviedb.org/'.$contador.'/discover/movie?api_key=9d981b068284aca44fb7530bdd218c30&with_genres=27)
-        // $tmp = FilmController::store();
-        
-        // foreach ($tmp as $tmp2){
-            
-        //     for ($i=0; $i < count($tmp2->{'results'}); $i++) { 
-                
-        //         DB::table('films')->insert([
-        //             'original_id' => $tmp2->{'results'}[$i]->{'id'},
-        //             'name' => $tmp2->{'results'}[$i]->{'title'},
-        //             'genre_id' => '8',
-        //             'description' => $tmp2->{'results'}[$i]->{'overview'},
-        //             'poster_path' => $tmp2->{'results'}[$i]->{'backdrop_path'},
-        //             'duration' => '0', 
-        //             'release_date' => $tmp2->{'results'}[$i]->{'release_date'},
-        //             'puntuation' => $tmp2->{'results'}[$i]->{'vote_average'},
-        //             'created_at' => now(),
-        //             'updated_at' => now()
-        //         ]);
-
-        //     }
-            
-        //     $count = count($tmp2->{'results'});
-        //     for ($i=0; $i < $count; $i++) { 
-
-        //         if($tmp2->{'results'}[$i]->{'genre_ids'}[0] == 10751) {
-                
-        //             DB::table('films')->insert([
-        //                 'original_id' => $tmp2->{'results'}[$i]->{'id'},
-        //                 'name' => $tmp2->{'results'}[$i]->{'title'},
-        //                 'genre_id' => '20',
-        //                 'description' => $tmp2->{'results'}[$i]->{'overview'},
-        //                 'poster_path' => $tmp2->{'results'}[$i]->{'poster_path'},
-        //                 'duration' => rand(90, 115), 
-        //                 'release_date' => $tmp2->{'results'}[$i]->{'release_date'},
-        //                 'puntuation' => $tmp2->{'results'}[$i]->{'vote_average'},
-        //                 'created_at' => now(),
-        //                 'updated_at' => now()
-        //             ]);
-        //         }
-
-        //     }
-        //     break;
-        // }  
+        $filmController = new FilmController();
+        $tmp = $filmController->store();
+        foreach ($tmp as $tmp2){
+            DB::table('films')->insert([
+                'name' => $tmp2->{'title'},
+                'poster_path' => $tmp2->{'poster_path'},
+                'duration' => $tmp2->{'duration'}, 
+                'description' => $tmp2->{'overview'},
+                'genre_id' => $tmp2->{'genre_ids'},
+                'release_date' => $tmp2->{'release_date'},
+                'puntuation' => $tmp2->{'vote_average'},
+                'top' => false,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+        } 
 
         // $tmp = AnimeController::store();
         // foreach ($tmp as $tmp2){
