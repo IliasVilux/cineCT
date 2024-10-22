@@ -1,0 +1,4 @@
+### Petición para descubrir series
+GET https://api.themoviedb.org/3/discover/tv?language=en-US&page=1 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MGYyNTI0ZmQ1MjVhNTA0MmI0YjlkNGZhODQzYTQ2ZSIsIm5iZiI6MTcyNzU1ODc4MS45NjM3MDgsInN1YiI6IjY0NmJiOTVkMzNhMzc2MDE1OGRhZjYyZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.HCUXuqzRvqfuCCKYDYJ-KKalVVYXtD6wIkKYYoXEk5Y
+Accept: application/json
