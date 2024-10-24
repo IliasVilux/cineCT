@@ -16,8 +16,8 @@ class AddForeignKeyAnimesTable extends Migration
         Schema::table('animes', function (Blueprint $table) {
             $table->bigInteger('genre_id')->unsigned();
             $table->foreign('genre_id')->references('id')->on('genres');
-            $table->bigInteger('platform_available_id')->unsigned();
-            $table->foreign('platform_available_id')->references('id')->on('platforms');
+            // $table->bigInteger('platform_available_id')->unsigned();
+            // $table->foreign('platform_available_id')->references('id')->on('platforms');
         });
     }
 
@@ -30,7 +30,7 @@ class AddForeignKeyAnimesTable extends Migration
     {
         Schema::table('animes', function (Blueprint $table) {
             $table->dropForeign('animes_genre_id_foreign');
-            $table->dropForeign('animes_platform_available_id_foreign');
+            // $table->dropForeign('animes_platform_available_id_foreign');
         });
     }
 }

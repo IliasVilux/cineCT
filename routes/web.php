@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
     return view('register');
 });*/
 
-Route::get('/seeder', [FilmController::class, 'store']);
+Route::get('/seeder', [AnimeController::class, 'store']);
 
 Route::get('/', [UserAuthController::class, 'index'])->name('user.login.register');
 Route::get('/login', [UserAuthController::class, 'index']);

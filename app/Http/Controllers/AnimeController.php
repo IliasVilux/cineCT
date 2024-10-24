@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 use App\Models\Anime;
 use App\Models\Genre;
 use App\Models\Image;
@@ -16,135 +17,100 @@ use App\Models\User;
 
 class AnimeController extends Controller
 {
-    public static function store()
+    public function store()
     {
         $contador = 1;
-        $apiLinks = array();
         $allAnimes = array();
 
+        $client = new Client();
         do {
-            $animeApi = Http::get('https://api.jikan.moe/v4/anime/' . $contador);
-            array_push($apiLinks, $animeApi);
-            $contador++;
-            sleep(4);
-        } while ($contador < 12);
+            try {
+                $response = $client->request('GET', 'https://api.jikan.moe/v4/anime/' . $contador . '/full');
+                $responseAnime = json_decode($response->getBody())->{'data'};
 
-        foreach ($apiLinks as $link) {
-            $animeJson = json_decode($link);
-            if (isset($animeJson->{'data'}->{'mal_id'}) && $animeJson->{'data'}->{'type'} == 'TV') {
-                $animeJson->{'data'}->{'duration'} = substr($animeJson->{'data'}->{'duration'}, 0, 2);
-                if (!empty($animeJson->{'data'}->{'themes'})) {
-                    $themeName = $animeJson->{'data'}->{'themes'}[0]->{'name'};
-                    switch ($themeName) {
-                        case "Sci-Fi":
-                            $animeJson->{'data'}->{'themes'}[0]->{'name'} = 9;
+                if (!empty($responseAnime->{'genres'})) {
+                    $genre = strtolower($responseAnime->{'genres'}[0]->{'name'});
+                    switch ($genre) {
+                        case "action":
+                            $responseAnime->{'genres'} = 1;
                             break;
-                        case "Demons":
-                            $animeJson->{'data'}->{'themes'}[0]->{'name'} = 11;
+                        case "adventure":
+                            $responseAnime->{'genres'} = 2;
                             break;
-                        case "Mecha":
-                            $animeJson->{'data'}->{'themes'}[0]->{'name'} = 12;
+                        case "comedy":
+                            $responseAnime->{'genres'} = 3;
                             break;
-                        case "Samurai":
-                            $animeJson->{'data'}->{'themes'}[0]->{'name'} = 13;
+                        case "drama":
+                            $responseAnime->{'genres'} = 4;
                             break;
-                        case "Josei":
-                            $animeJson->{'data'}->{'themes'}[0]->{'name'} = 14;
+                        case "fantasy":
+                            $responseAnime->{'genres'} = 5;
                             break;
-                        case "Seinen":
-                            $animeJson->{'data'}->{'themes'}[0]->{'name'} = 15;
+                        case "horror":
+                            $responseAnime->{'genres'} = 6;
                             break;
-                        case "Shoujo":
-                            $animeJson->{'data'}->{'themes'}[0]->{'name'} = 16;
+                        case "mystery":
+                            $responseAnime->{'genres'} = 7;
                             break;
-                        case "Shounen":
-                            $animeJson->{'data'}->{'themes'}[0]->{'name'} = 17;
+                        case "romance":
+                            $responseAnime->{'genres'} = 8;
                             break;
-                        default:
-                            $animeJson->{'data'}->{'themes'}[0]->{'name'} = 23;
+                        case "sci-fi":
+                            $responseAnime->{'genres'} = 9;
                             break;
-                    }
-                    array_push($allAnimes, $animeJson);
-                } else if (!empty($animeJson->{'data'}->{'genres'})) {
-                    $genreName = $animeJson->{'data'}->{'genres'}[0]->{'name'};
-                    switch ($genreName) {
-                        case "Action":
-                            $animeJson->{'data'}->{'genres'}[0]->{'name'} = 1;
+                        case "suspense":
+                            $responseAnime->{'genres'} = 10;
                             break;
-                        case "Adventure":
-                            $animeJson->{'data'}->{'genres'}[0]->{'name'} = 2;
+                        case "mecha":
+                            $responseAnime->{'genres'} = 11;
                             break;
-                        case "Comedy":
-                            $animeJson->{'data'}->{'genres'}[0]->{'name'} = 3;
+                        case "samurai":
+                            $responseAnime->{'genres'} = 12;
                             break;
-                        case "Drama":
-                            $animeJson->{'data'}->{'genres'}[0]->{'name'} = 4;
+                        case "josei":
+                            $responseAnime->{'genres'} = 13;
                             break;
-                        case "Fantasy":
-                            $animeJson->{'data'}->{'genres'}[0]->{'name'} = 5;
+                        case "seinen":
+                            $responseAnime->{'genres'} = 14;
                             break;
-                        case "Horror":
-                            $animeJson->{'data'}->{'genres'}[0]->{'name'} = 6;
+                        case "shoujo":
+                            $responseAnime->{'genres'} = 15;
                             break;
-                        case "Mystery":
-                            $animeJson->{'data'}->{'genres'}[0]->{'name'} = 7;
+                        case "shounen":
+                            $responseAnime->{'genres'} = 16;
                             break;
-                        case "Romance":
-                            $animeJson->{'data'}->{'genres'}[0]->{'name'} = 8;
+                        case "animation":
+                            $responseAnime->{'genres'} = 17;
                             break;
-                        case "Suspense":
-                            $animeJson->{'data'}->{'genres'}[0]->{'name'} = 10;
+                        case "organized crime":
+                            $responseAnime->{'genres'} = 18;
                             break;
-                        case "Animation":
-                            $animeJson->{'data'}->{'genres'}[0]->{'name'} = 18;
+                        case "family":
+                            $responseAnime->{'genres'} = 19;
                             break;
-                        case "Crime":
-                            $animeJson->{'data'}->{'genres'}[0]->{'name'} = 19;
+                        case "science fiction":
+                            $responseAnime->{'genres'} = 20;
                             break;
-                        case "Family":
-                            $animeJson->{'data'}->{'genres'}[0]->{'name'} = 20;
-                            break;
-                        case "Science Fiction":
-                            $animeJson->{'data'}->{'genres'}[0]->{'name'} = 21;
-                            break;
-                        case "War":
-                            $animeJson->{'data'}->{'genres'}[0]->{'name'} = 22;
+                        case "war":
+                            $responseAnime->{'genres'} = 21;
                             break;
                         default:
-                            $animeJson->{'data'}->{'themes'}[0]->{'name'} = 23;
+                            $responseAnime->{'genres'} = 17;
                             break;
                     }
-                    array_push($allAnimes, $animeJson);
+                }                
+                $durationParts = explode(' ', $responseAnime->{'duration'});
+                $responseAnime->{'duration'} = $durationParts[0];
+                $responseAnime->{'score'} = round($responseAnime->{'score'});
+
+                $allAnimes[] = $responseAnime;
+                if ($contador % 3 == 0) {
+                    sleep(1);
                 }
+            } catch (\GuzzleHttp\Exception\ClientException $e) {
             }
-        }
-
-        /* foreach ($allAnimes as $asd){
-            if (isset($asd->{'data'}->{'themes'}[0]->{'name'})){
-                echo $asd->{'data'}->{'themes'}[0]->{'name'};
-            } else if (isset($asd->{'data'}->{'genres'}[0]->{'name'})){
-                echo $asd->{'data'}->{'genres'}[0]->{'name'};
-            }
-        } */
-        echo "<section style='display: flex;'>";
-        foreach ($allAnimes as $asd) {
-            echo "<div style='width: 30%'>";
-            echo "<img src='" . $asd->{'data'}->{'images'}->{'webp'}->{'large_image_url'} . "'><br>";
-            echo $asd->{'data'}->{'title'} . "<br>";
-            echo $asd->{'data'}->{'duration'} . "<br>";
-            echo $asd->{'data'}->{'synopsis'} . "<br>";
-            if (isset($tmp2->{'data'}->{'themes'}[0]->{'name'})) {
-                echo $asd->{'data'}->{'themes'}[0]->{'name'} . "<br>";
-            } else if (isset($tmp2->{'data'}->{'genres'}[0]->{'name'})) {
-                echo $asd->{'data'}->{'genres'}[0]->{'name'} . "<br>";
-            }
-            echo $asd->{'data'}->{'year'} . "<br>";
-            echo $asd->{'data'}->{'score'} . "<br>";
-            echo "<br>----------------------------------<br>";
-            echo "</div>";
-        }
-        echo "</section>";
-        die();
+            $contador++;
+        } while ($contador < 500);
 
         return $allAnimes;
     }
@@ -161,11 +127,9 @@ class AnimeController extends Controller
         $totalVotes = Rating::where('anime_id', $id)->count();
         $userVoteExists = Rating::where('user_id', $user)->where('anime_id', $id)->first();
 
-        foreach($userAnimeInLists as $animeInLists)
-        {
-            foreach($userLists as $list)
-            {
-                if($list->id == $animeInLists->list_id){
+        foreach ($userAnimeInLists as $animeInLists) {
+            foreach ($userLists as $list) {
+                if ($list->id == $animeInLists->list_id) {
                     array_push($userListsWhereAnime, $list);
                 }
             }
@@ -174,7 +138,7 @@ class AnimeController extends Controller
         $userTopList = FavouriteLists::query()->where('user_id', $user)->where('top_list', 1)->get();
         $comments = Review::where('anime_id', '=', $id)->get();
         $shareComponent = $this->ShareWidget();
-        
+
 
         if (!is_null($anime)) {
             return view('/detail.detailAnimes', compact('anime', 'userLists', 'userListsWhereAnime', 'comments', 'shareComponent', 'userTopList', 'contentRate', 'userVoteExists', 'totalVotes'));
@@ -208,7 +172,7 @@ class AnimeController extends Controller
         $lista->delete();
         $anime_name = Anime::query()->where('id', $idA)->get();
 
-        return redirect()->to('/detail/detailAnimes/' . $idA)->with('AnimeDeleted','Se ha eliminado ' . $anime_name[0]->name . ' de tu lista de favoritos');
+        return redirect()->to('/detail/detailAnimes/' . $idA)->with('AnimeDeleted', 'Se ha eliminado ' . $anime_name[0]->name . ' de tu lista de favoritos');
     }
 
     public function addNewList($idAnime, Request $request)
@@ -229,8 +193,10 @@ class AnimeController extends Controller
             ]);
             $idList = FavouriteLists::where('name', $newListName)->get('id')->max();
             $this->addFavourite($idAnime, $idList->id);
-            return redirect()->to('/detail/detailAnimes/' . $idAnime)->with('AnimeAdded','Se ha añadido ' . $anime_name[0]->name . ' a tu lista de favoritos');
-        } else { return redirect()->to('/detail/detailAnimes/' . $idAnime); }
+            return redirect()->to('/detail/detailAnimes/' . $idAnime)->with('AnimeAdded', 'Se ha añadido ' . $anime_name[0]->name . ' a tu lista de favoritos');
+        } else {
+            return redirect()->to('/detail/detailAnimes/' . $idAnime);
+        }
     }
 
     public function ShareWidget()
@@ -311,14 +277,14 @@ class AnimeController extends Controller
         $userRate = $request->input('stars');
         $checkUserRate = Rating::where('user_id', $user)->where('anime_id', $id)->first();
 
-        if(!isset($checkUserRate))
-        {
+        if (!isset($checkUserRate)) {
             $rate = Rating::create([
                 'user_id' => $user,
                 'anime_id' => $id,
                 'rate' => $userRate,
             ]);
             return redirect()->to('/detail/detailAnimes/' . $id)->with('RateAdded', 'Se ha añadido tu voto.');
-        } return redirect()->to('/detail/detailAnimes/' . $id);
+        }
+        return redirect()->to('/detail/detailAnimes/' . $id);
     }
 }

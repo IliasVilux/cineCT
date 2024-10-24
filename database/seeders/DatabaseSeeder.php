@@ -63,27 +63,24 @@ class DatabaseSeeder extends Seeder
             ]);
         } 
 
-        // $tmp = AnimeController::store();
-        // foreach ($tmp as $tmp2){
-        //     if (isset($tmp2->{'data'}->{'themes'}[0]->{'name'})){
-        //         $genreValidation = $tmp2->{'data'}->{'themes'}[0]->{'name'};
-        //     } else if (isset($tmp2->{'data'}->{'genres'}[0]->{'name'})){
-        //         $genreValidation = $tmp2->{'data'}->{'genres'}[0]->{'name'};
-        //     }
-        //     DB::table('animes')->insert([
-        //         'name' => $tmp2->{'data'}->{'title'},
-        //         'description' => $tmp2->{'data'}->{'synopsis'},
-        //         'poster_path' => $tmp2->{'data'}->{'images'}->{'webp'}->{'large_image_url'},
-        //         'trailer_link' => $tmp2->{'data'}->{'trailer'}->{'youtube_id'},
-        //         'release_date' => $tmp2->{'data'}->{'year'},
-        //         'duration' => $tmp2->{'data'}->{'duration'}, 
-        //         'total_episodes' => $tmp2->{'data'}->{'episodes'},
-        //         'puntuation' => $tmp2->{'data'}->{'score'},
-        //         'genre_id' => $genreValidation,
-        //         'created_at' => now(),
-        //         'updated_at' => now()
-        //     ]);
-        // }
+        $animeController = new AnimeController();
+        $tmp = $animeController->store();
+        foreach ($tmp as $tmp2){
+            DB::table('animes')->insert([
+                'name' => $tmp2->{'title'},
+                'description' => $tmp2->{'synopsis'},
+                'poster_path' => $tmp2->{'images'}->{'webp'}->{'large_image_url'},
+                'trailer_link' => $tmp2->{'trailer'}->{'youtube_id'},
+                'release_date' => $tmp2->{'year'},
+                'duration' => $tmp2->{'duration'}, 
+                'total_episodes' => $tmp2->{'episodes'},
+                'puntuation' => $tmp2->{'score'},
+                'genre_id' => $tmp2->{'genres'},
+                'top' => false,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+        }
 
         // $tmp = CharacterController::store();
         // foreach ($tmp as $tmp2){

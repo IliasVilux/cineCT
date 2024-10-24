@@ -17,11 +17,14 @@ class CreateAnimesTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->year('release_date');
-            $table->integer('seasons');
-            $table->integer('total_episodes');
+            $table->string('poster_path');
+            $table->year('release_date')->nullable();
+            $table->integer('seasons')->default(0);
+            $table->integer('total_episodes')->default(0);
             $table->boolean('top');
             $table->integer('puntuation');
+            $table->integer('duration')->default(0);
+            $table->string('trailer_link')->nullable();
             $table->timestamps();
         });
     }
