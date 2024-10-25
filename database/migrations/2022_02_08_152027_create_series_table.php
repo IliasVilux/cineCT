@@ -20,7 +20,7 @@ class CreateSeriesTable extends Migration
             $table->text('description');
             $table->year('release_date')->nullable();
             $table->integer('seasons');
-            $table->integer('total_episodes');
+            $table->integer('total_episodes')->default(0);
             $table->boolean('top');
             $table->integer('puntuation');
             $table->timestamps();

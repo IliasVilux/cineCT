@@ -8,6 +8,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\CharacterController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\TopController;
 use Illuminate\Support\Facades\Route;
@@ -27,7 +28,7 @@ use Illuminate\Support\Facades\Route;
     return view('register');
 });*/
 
-Route::get('/seeder', [AnimeController::class, 'store']);
+Route::get('/seeder', [CharacterController::class, 'store']);
 
 Route::get('/', [UserAuthController::class, 'index'])->name('user.login.register');
 Route::get('/login', [UserAuthController::class, 'index']);

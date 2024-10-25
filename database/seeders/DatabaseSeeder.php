@@ -82,18 +82,16 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        // $tmp = CharacterController::store();
-        // foreach ($tmp as $tmp2){
-        //     if (!empty($tmp2->{'data'}->{'nicknames'}) && isset($tmp2->{'data'}->{'nicknames'}[0])){
-        //         $characterNickname = $tmp2->{'data'}->{'nicknames'}[0];
-        //     } else { $characterNickname = ""; }
-        //     DB::table('characters')->insert([
-        //         'name' => $tmp2->{'data'}->{'name'},
-        //         'surname' => $characterNickname,
-        //         'anime_id' => $tmp2->{'data'}->{'mal_id'},
-        //         'created_at' => now(),
-        //         'updated_at' => now()
-        //     ]);
-        // }
+        $characterController = new CharacterController();
+        $tmp = $characterController->store();
+        foreach ($tmp as $tmp2){
+            DB::table('characters')->insert([
+                'name' => $tmp2->{'name'},
+                'surname' => $tmp2->{'nicknames'},
+                'anime_id' => $tmp2->{'anime'},
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+        }
     }
 }

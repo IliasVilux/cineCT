@@ -14,8 +14,8 @@ class AddForeignKeyCharactersTable extends Migration
     public function up()
     {
         Schema::table('characters', function (Blueprint $table) {
-            $table->bigInteger('anime_id')->unsigned();
-            $table->foreign('anime_id')->references('id')->on('animes');
+            $table->bigInteger('anime_id')->unsigned()->nullable();
+            $table->foreign('anime_id')->references('id')->on('animes')->nullOnDelete();
         });
     }
 
