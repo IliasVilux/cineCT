@@ -97,7 +97,7 @@ class SerieController extends Controller
             }
 
             $contador++;
-        }while($contador < 15);
+        }while($contador < 105);
 
         return $allSeries;
     }

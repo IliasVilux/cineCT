@@ -16,7 +16,7 @@ class CreateFilmsTable extends Migration
         Schema::create('films', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('poster_path');
+            $table->string('poster_path')->nullable();
             $table->text('description');
             $table->year('release_date')->nullable();
             $table->boolean('top');

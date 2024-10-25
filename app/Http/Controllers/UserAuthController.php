@@ -85,7 +85,7 @@ class UserAuthController extends Controller
             'email' => $register_email,
             //'surname' => $register_surname,
             'nickname' => $register_nick,
-            'image_id' => 18,
+            'image_id' => 1,
             'lang' => 'en',
             'locale' => 'en',
             'password' => $register_password

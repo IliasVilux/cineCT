@@ -14,9 +14,9 @@ class AddForeignKeyUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->bigInteger('profile_image_id')->unsigned();
-            $table->foreign('profile_image_id')->references('id')->on('profile_images');
-            $table->bigInteger('fav_genre_id')->unsigned();
+            $table->bigInteger('image_id')->unsigned();
+            $table->foreign('image_id')->references('id')->on('profile_images');
+            $table->bigInteger('fav_genre_id')->unsigned()->default(1);
             $table->foreign('fav_genre_id')->references('id')->on('genres');
         });
     }
