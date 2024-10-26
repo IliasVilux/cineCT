@@ -16,42 +16,42 @@ class UserAuthController extends Controller
 
     public function userLogin(Request $request)
     {
-
         $nick = $request->input('nick');
         $email = $request->input('email');
-        
-        //login con email
-        if(isset($email) && !empty($email)){
+
+        // Login con email
+        if (isset($email) && !empty($email)) {
             $nick = null;
             $request->validate([
                 'email' => 'required|email',
                 'password' => 'required|min:8|max:15'
             ]);
+
             $logInData = $request->only('email', 'password');
-            
-            if(Auth::attempt($logInData)){
+
+            if (Auth::attempt($logInData)) {
                 return redirect()->to('/home')
-                            ->with('userLogged','Sessión Iniciada');
+                    ->with('userLogged', 'Sesión Iniciada');
             }
         }
 
-        //login con nickname
-        if(isset($nick) && !empty($nick)){
+        // Login con nickname
+        if (isset($nick) && !empty($nick)) {
             $email = null;
             $request->validate([
                 'nick' => 'required|string',
-                'password' => 'required'
+                'password' => 'required|min:8|max:15'
             ]);
-            $logInData = $request->only('nickname', 'password');
-            
-            if(Auth::attempt($logInData)){
+
+            $logInData = ['nickname' => $nick, 'password' => $request->input('password')];
+
+            if (Auth::attempt($logInData)) {
                 return redirect()->to('/home')
-                            ->with('userLogged','Sessión Iniciada');
+                    ->with('userLogged', 'Sesión Iniciada');
             }
         }
 
-        return redirect("register")->with('authErrorMsg','Los datos que has introducido no pertenece a ninguna cuenta.');
-        
+        return redirect("register")->with('authErrorMsg', 'Los datos que has introducido no pertenecen a ninguna cuenta.');
     }
 
     public function userRegister(Request $request)
@@ -62,7 +62,7 @@ class UserAuthController extends Controller
         $register_email = $request->input('register_email');
         $register_password = $request->input('register_password');
 
-        
+
 
         $validate = $this->validate($request, [
             //'register_name' => 'required|string|min:3|max:255',
@@ -76,8 +76,8 @@ class UserAuthController extends Controller
 
         $userExist = User::where('email', '=', $register_email)->orWhere('nickname', '=', $register_nick)->first();
 
-        if($userExist) {
-            return redirect("register")->with('userExist','Ya existe un usuario con este nick o email');
+        if ($userExist) {
+            return redirect("register")->with('userExist', 'Ya existe un usuario con este nick o email');
         }
 
         $user = User::create([
@@ -92,18 +92,18 @@ class UserAuthController extends Controller
         ]);
 
         auth()->login($user);
-        
 
-        return redirect()->to('/home')->with('welcomeUser', 'Bienvenido a cinect '.$register_nick.'!');
+
+        return redirect()->to('/home')->with('welcomeUser', 'Bienvenido a cinect ' . $register_nick . '!');
     }
 
 
     public function userSignOut()
     {
         Auth::logout();
-        
+
         Session::flush();
-  
+
         return redirect()->to('register')->with('signOut', 'Tu sessión se ha cerrado');
     }
 }
